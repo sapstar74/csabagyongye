@@ -106,7 +106,7 @@ FESTMENY_QUESTIONS = [
         'options': ['Rembrandt', 'Jackson Pollock', 'Hieronymus Bosch', 'René Magritte'],
         'correct': 2,
         'explanation': 'The Garden of Earthly Delights - Hieronymus Bosch (1503-1515)',
-        'image_file': 'the-garden-of-earthly-delights---hieronymus-bosch-1515.jpg',
+        'image_file': 'the-garden-of-earthly-delights---hierno1515.jpg',
         'topic': 'festmények'
     },
     {
