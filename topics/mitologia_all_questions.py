@@ -366,28 +366,28 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki az északi mitológiában a menny istene? (Odin - az istenek atyja, aki egy szemét feláldozta a bölcsességért)",
         "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Odin az északi mitológiában a menny istene, az istenek atyja.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a mennydörgés istene? (Thor - aki Mjölnir kalapácsával harcol, Odin fia)",
         "options": ["Odin", "Thor", "Loki", "Freyr"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Thor az északi mitológiában a mennydörgés istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a csalárdság istene? (Loki - a trükkös isten, aki gyakran bajt okoz az isteneknek)",
         "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 3,
+                "correct": 2,
         "explanation": "Loki az északi mitológiában a csalárdság istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a szerelem istennője? (Freya - a szerelem és szépség istennője, aki a Valkürök vezetője)",
         "options": ["Frigg", "Freya", "Sif", "Hel"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Freya az északi mitológiában a szerelem istennője.",
         "topic": "mitológia"
     },
@@ -415,14 +415,14 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki az északi mitológiában a halál istennője? (Hel - a halottak istennője, Loki lánya, aki az alvilágban uralkodik)",
         "options": ["Freya", "Frigg", "Sif", "Hel"],
-                "correct": 2,
+                "correct": 3,
         "explanation": "Hel az északi mitológiában a halál istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Mi az északi mitológiában a világfa neve? (Yggdrasil - a három világot összekötő óriási kőrisfa)",
         "options": ["Bifröst", "Yggdrasil", "Valhalla", "Asgard"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Yggdrasil az északi mitológiában a világfa.",
         "topic": "mitológia"
     },
@@ -443,21 +443,21 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Mi az északi mitológiában a szivárványhíd neve? (Bifröst - a menny és a föld közötti híd)",
         "options": ["Bifröst", "Yggdrasil", "Valhalla", "Asgard"],
-                "correct": 1,
+                "correct": 0,
         "explanation": "Bifröst az északi mitológiában a szivárványhíd.",
         "topic": "mitológia"
     },
     {
         "question": "Mi az északi mitológiában az emberek világának neve? (Midgard - a középső világ, ahol az emberek élnek)",
         "options": ["Asgard", "Valhalla", "Midgard", "Helheim"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Midgard az északi mitológiában az emberek világa.",
         "topic": "mitológia"
     },
     {
         "question": "Mi az északi mitológiában az alvilág neve? (Helheim - a halottak világa, ahol Hel uralkodik)",
         "options": ["Asgard", "Valhalla", "Midgard", "Helheim"],
-                "correct": 2,
+                "correct": 3,
         "explanation": "Helheim az északi mitológiában az alvilág.",
         "topic": "mitológia"
     },
@@ -471,35 +471,35 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Mi az északi mitológiában Odin lándzsájának neve? (Gungnir - a soha nem tévedő lándzsa)",
         "options": ["Gungnir", "Mjölnir", "Sleipnir", "Bifröst"],
-                "correct": 3,
+                "correct": 0,
         "explanation": "Gungnir az északi mitológiában Odin lándzsájának neve.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a háború istene? (Tyr - aki egy kezét feláldozta a farkas Fenrir megkötéséért)",
         "options": ["Thor", "Odin", "Tyr", "Freyr"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Tyr az északi mitológiában a háború istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a tenger istene? (Njord - a tengerek és halászat istene, Freya és Freyr apja)",
         "options": ["Thor", "Odin", "Njord", "Freyr"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Njord az északi mitológiában a tenger istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a történetek istennője? (Saga - a történetek és bölcsesség istennője)",
         "options": ["Freya", "Frigg", "Saga", "Sif"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Saga az északi mitológiában a történetek istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Mi az északi mitológiában a világ végének neve? (Ragnarök - az istenek és a világ pusztulása)",
         "options": ["Helheim", "Valhalla", "Ragnarök", "Yggdrasil"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Ragnarök az északi mitológiában a világ végének neve.",
         "topic": "mitológia"
     },
@@ -513,21 +513,21 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Mi az északi mitológiában Odin lovának neve? (Sleipnir - nyolclábú ló, Loki fia)",
         "options": ["Sleipnir", "Fenrir", "Jormungandr", "Hel"],
-                "correct": 1,
+                "correct": 0,
         "explanation": "Sleipnir az északi mitológiában Odin lovának neve.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a világkígyó? (Jormungandr - Loki fia, aki a világot öleli körül)",
         "options": ["Jormungandr", "Fenrir", "Sleipnir", "Hel"],
-                "correct": 2,
+                "correct": 0,
         "explanation": "Jormungandr az északi mitológiában a világkígyó.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az északi mitológiában a hollók istene? (Huginn és Muninn - Odin hollói, a gondolat és az emlékezet)",
         "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Huginn és Muninn az északi mitológiában Odin hollói.",
         "topic": "mitológia"
     },
@@ -542,7 +542,7 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a kínai mitológiában a menny istene? (Jü-ti - a menny ura, aki a világot uralja)",
         "options": ["Jü-ti", "Jade Császár", "Pangu", "Nuwa"],
-                "correct": 1,
+                "correct": 0,
         "explanation": "Jü-ti a kínai mitológiában a menny istene.",
         "topic": "mitológia"
     },
@@ -556,14 +556,14 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a kínai mitológiában az emberiség teremtője? (Nuwa - aki agyagból formálta az embereket)",
         "options": ["Jü-ti", "Jade Császár", "Pangu", "Nuwa"],
-                "correct": 2,
+                "correct": 3,
         "explanation": "Nuwa a kínai mitológiában az emberiség teremtője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a kínai mitológiában a hold istennője? (Csang-e - aki a holdban él és a halhatatlanság elixírjét őrzi)",
         "options": ["Csang-e", "Hszien-nü", "Kuan-jin", "Ma-cu"],
-                "correct": 3,
+                "correct": 0,
         "explanation": "Csang-e a kínai mitológiában a hold istennője.",
         "topic": "mitológia"
     },
@@ -584,14 +584,14 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a kínai mitológiában a háború istene? (Kuan-jü - a hűség és bátorság istene)",
         "options": ["Kuan-jü", "Csang Fej", "Li Tien", "Vang Mu"],
-                "correct": 1,
+                "correct": 0,
         "explanation": "Kuan-jü a kínai mitológiában a háború istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a kínai mitológiában a gazdagság istene? (Csaj Seng - a gazdagság és szerencse istene)",
         "options": ["Kuan-jü", "Csaj Seng", "Li Tien", "Vang Mu"],
-                "correct": 2,
+                "correct": 1,
         "explanation": "Csaj Seng a kínai mitológiában a gazdagság istene.",
         "topic": "mitológia"
     },
@@ -605,7 +605,7 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a kínai mitológiában a halhatatlanság istennője? (Vang Mu - a halhatatlanság és gyógyítás istennője)",
         "options": ["Kuan-jü", "Csaj Seng", "Li Tien", "Vang Mu"],
-                "correct": 2,
+                "correct": 3,
         "explanation": "Vang Mu a kínai mitológiában a halhatatlanság istennője.",
         "topic": "mitológia"
     },
