@@ -22,7 +22,7 @@ from topics.sport_logok import SPORT_LOGOK_QUESTIONS
 from topics.zaszlok_all_questions import ZASZLOK_QUESTIONS_ALL
 from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
-from fix_idiota_szavak import IDIOTA_SZAVAK_QUESTIONS_FIXED as IDIOTA_SZAVAK_QUESTIONS
+from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
