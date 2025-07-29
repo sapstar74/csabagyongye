@@ -1226,10 +1226,6 @@ def show_quiz():
     # Ha már válaszoltunk, mutassuk meg az eredményt
     if selected_answer is not None:
         is_correct = selected_answer == new_correct_index
-        if is_correct:
-            st.success("✅ Helyes válasz!")
-        else:
-            st.error(f"❌ Helytelen! A helyes válasz: {options[new_correct_index]}")
         # --- Helyes válasz gomb (Könnyű módban) ---
         difficulty = st.session_state.mode_manager.current_difficulty
         if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -1264,10 +1260,7 @@ def show_quiz():
                         is_correct = user_answer_clean == correct_answer
                         
                         if is_correct:
-                            st.success("✅ Helyes válasz!")
                             st.session_state.score += 1
-                        else:
-                            st.error(f"❌ Helytelen! A helyes válasz: {question.get('correct_answer', '')}")
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
@@ -1305,10 +1298,7 @@ def show_quiz():
                         is_correct = user_answer_clean == correct_answer
                         
                         if is_correct:
-                            st.success("✅ Helyes válasz!")
                             st.session_state.score += 1
-                        else:
-                            st.error(f"❌ Helytelen! A helyes válasz: {options[new_correct_index]}")
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
