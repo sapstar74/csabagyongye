@@ -1373,12 +1373,7 @@ def show_quiz():
             if answer_state and (time.time() - answer_state['timestamp']) < 2.0:
                 show_answer_feedback = True
                 
-            # Egyszerű szöveges visszajelzés 2 másodpercig
-            if show_answer_feedback:
-                if answer_state['is_correct']:
-                    st.success("✅ Helyes válasz!")
-                else:
-                    st.error(f"❌ Helytelen! A helyes válasz: {options[answer_state['correct_index']]}")
+
                 
 
             
