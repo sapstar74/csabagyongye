@@ -1199,7 +1199,7 @@ def show_quiz():
         difficulty = st.session_state.mode_manager.current_difficulty
         if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
             st.markdown(f"""
-            <div style=\"position: fixed; bottom: 20px; right: 20px; z-index: 1000;\">
+                            <div style=\"position: fixed; bottom: 40px; right: 20px; z-index: 1000;\">
                 <div class=\"rotated-answer\">
                     <button style=\"background-color: #28a745; color: white; border: none; border-radius: 8px; padding: 10px 15px; font-size: 16px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\">
                         {options[new_correct_index]}
@@ -1358,7 +1358,7 @@ def show_quiz():
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
                 st.markdown(f"""
-                <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                <div style="position: fixed; bottom: 40px; right: 20px; z-index: 1000;">
                     <div class="rotated-answer">
                         <button style="background-color: #28a745; color: white; border: none; border-radius: 8px; padding: 10px 15px; font-size: 16px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
                             {options[new_correct_index]}
