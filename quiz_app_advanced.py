@@ -13,8 +13,7 @@ import base64
 from topics.foldrajz_complete import FOLDRAJZ_QUESTIONS_COMPLETE as FOLDRAJZ_QUESTIONS
 from topics.komolyzene_uj import KOMOLYZENE_QUESTIONS
 from topics.tudosok import TUDOSOK_QUESTIONS
-from topics.mitologia_all_questions import MITOLOGIA_QUESTIONS_ALL
-from topics.haboru_all_questions import HABORU_QUESTIONS_ALL
+
 from topics.kiralyok import KIRALYOK_QUESTIONS
 from topics.allatok_balanced import ALLATOK_QUESTIONS_BALANCED
 from topics.dramak import DRAMAK_QUESTIONS
@@ -248,10 +247,8 @@ QUIZ_DATA_BY_TOPIC = {
     "komolyzene": KOMOLYZENE_QUESTIONS,
     "magyar_zenekarok": MAGYAR_ZENEKAROK_QUESTIONS_UJ,
     "nemzetkozi_zenekarok": NEMZETKOZI_ZENEKAROK_QUESTIONS,
-    "háborúk": HABORU_QUESTIONS_ALL,
     "magyar_királyok": KIRALYOK_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
-    "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,
     "drámák": DRAMAK_QUESTIONS,
     "sport_logók": SPORT_LOGOK_QUESTIONS,
@@ -298,10 +295,8 @@ def reset_quiz():
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "festmények": "🎨 Festmények",
-        "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok",
-        "mitológia": "🏛️ Mitológia",
         "állatok": "🐾 Állatok",
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
@@ -572,10 +567,8 @@ def show_topic_selection():
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "festmények": "🎨 Festmények",
-        "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok",
-        "mitológia": "🏛️ Mitológia",
         "állatok": "🐾 Állatok",
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
