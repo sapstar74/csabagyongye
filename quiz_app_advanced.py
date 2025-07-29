@@ -1373,35 +1373,14 @@ def show_quiz():
             if answer_state and (time.time() - answer_state['timestamp']) < 2.0:
                 show_answer_feedback = True
                 
-            # JavaScript a gombok stílusának módosításához
+            # Egyszerű szöveges visszajelzés 2 másodpercig
             if show_answer_feedback:
-                st.markdown(f"""
-                <script>
-                setTimeout(function() {{
-                    // Kiválasztott válasz stílusának beállítása
-                    var selectedButton = document.querySelector('[data-testid="stButton"] button[data-selected-index="{answer_state['selected_index']}"]');
-                    if (selectedButton) {{
-                        if ({str(answer_state['is_correct']).lower()}) {{
-                            selectedButton.style.backgroundColor = '#28a745';
-                            selectedButton.style.color = 'white';
-                            selectedButton.style.border = '3px solid #28a745';
-                        }} else {{
-                            selectedButton.style.backgroundColor = '#dc3545';
-                            selectedButton.style.color = 'white';
-                            selectedButton.style.border = '3px solid #dc3545';
-                        }}
-                    }}
-                    
-                    // Helyes válasz stílusának beállítása
-                    var correctButton = document.querySelector('[data-testid="stButton"] button[data-selected-index="{answer_state['correct_index']}"]');
-                    if (correctButton) {{
-                        correctButton.style.backgroundColor = '#28a745';
-                        correctButton.style.color = 'white';
-                        correctButton.style.border = '3px solid #28a745';
-                    }}
-                }}, 100);
-                </script>
-                """, unsafe_allow_html=True)
+                if answer_state['is_correct']:
+                    st.success("✅ Helyes válasz!")
+                else:
+                    st.error(f"❌ Helytelen! A helyes válasz: {options[answer_state['correct_index']]}")
+                
+
             
             # Válaszlehetőségek elrendezése
             col1, col2 = st.columns(2)
@@ -1410,17 +1389,6 @@ def show_quiz():
             with col1:
                 for i in range(0, min(2, len(options))):
                     option = options[i]
-                    
-                    # Inline stílus meghatározása válasz állapot alapján
-                    button_style = ""
-                    if show_answer_feedback:
-                        if i == answer_state['selected_index']:
-                            if answer_state['is_correct']:
-                                button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
-                            else:
-                                button_style = "background-color: #dc3545; color: white; border: 3px solid #dc3545;"
-                        elif i == answer_state['correct_index']:
-                            button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
@@ -1431,17 +1399,6 @@ def show_quiz():
             with col2:
                 for i in range(2, min(4, len(options))):
                     option = options[i]
-                    
-                    # Inline stílus meghatározása válasz állapot alapján
-                    button_style = ""
-                    if show_answer_feedback:
-                        if i == answer_state['selected_index']:
-                            if answer_state['is_correct']:
-                                button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
-                            else:
-                                button_style = "background-color: #dc3545; color: white; border: 3px solid #dc3545;"
-                        elif i == answer_state['correct_index']:
-                            button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
