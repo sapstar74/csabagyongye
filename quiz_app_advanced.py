@@ -1367,11 +1367,7 @@ def show_quiz():
             </style>
             """, unsafe_allow_html=True)
             
-            # Válasz állapot ellenőrzése
-            answer_state = getattr(st.session_state, 'answer_state', None)
-            show_answer_feedback = False
-            if answer_state and (time.time() - answer_state['timestamp']) < 2.0:
-                show_answer_feedback = True
+
                 
 
                 
@@ -1387,9 +1383,11 @@ def show_quiz():
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
-                        if selected_answer is None:
-                            handle_answer(i, new_correct_index, options, question)
-                            st.rerun()
+                        handle_answer(i, new_correct_index, options, question)
+                        if st.session_state.quiz_state != 'results':
+                            st.session_state.current_question += 1
+                            st.session_state.question_start_time = datetime.now()
+                        st.rerun()
             
             with col2:
                 for i in range(2, min(4, len(options))):
@@ -1397,9 +1395,11 @@ def show_quiz():
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
-                        if selected_answer is None:
-                            handle_answer(i, new_correct_index, options, question)
-                            st.rerun()
+                        handle_answer(i, new_correct_index, options, question)
+                        if st.session_state.quiz_state != 'results':
+                            st.session_state.current_question += 1
+                            st.session_state.question_start_time = datetime.now()
+                        st.rerun()
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -1413,16 +1413,7 @@ def show_quiz():
                 </div>
                 """, unsafe_allow_html=True)
             
-            # Automatikus következő kérdésre lépés 2 másodperc után
-            if show_answer_feedback:
-                if st.session_state.quiz_state != 'results':
-                    st.session_state.current_question += 1
-                    st.session_state.question_start_time = datetime.now()
-                    st.session_state.answer_state = None
-                    st.rerun()
-                else:
-                    # Ha ez az utolsó kérdés, akkor töröljük a válasz állapotot
-                    st.session_state.answer_state = None
+
             
             # Automatikus válasz beküldés (opcionális)
             if st.button("😊 Jó napom van!", key=f"auto_answer_{st.session_state.current_question}", use_container_width=True):
@@ -1470,14 +1461,6 @@ def handle_answer(selected_index, correct_index, options, question):
         'is_correct': is_correct,
         'time_taken': (datetime.now() - st.session_state.question_start_time).total_seconds()
     })
-    
-    # Válasz állapot beállítása 2 másodpercre
-    st.session_state.answer_state = {
-        'selected_index': selected_index,
-        'correct_index': correct_index,
-        'is_correct': is_correct,
-        'timestamp': time.time()
-    }
     
     # Ne hívjuk meg a st.rerun()-t itt, hagyjuk, hogy a show_quiz() kezelje a következő kérdést
 
