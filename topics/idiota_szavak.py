@@ -189,5 +189,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'Takla-Makán' jelentése: Kína sivataga""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Mit jelent az alábbi idióta szó: **Dahomey**?""",
+        "correct_answer": """Afrikai királyság Benin területén 16-19. században""",
+        "explanation": """A(z) 'Dahomey' jelentése: Afrikai királyság Benin területén 16-19. században""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
