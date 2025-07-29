@@ -11,7 +11,7 @@ import os
 from pathlib import Path
 import base64
 from topics.foldrajz_complete import FOLDRAJZ_QUESTIONS_COMPLETE as FOLDRAJZ_QUESTIONS
-from topics.komolyzene_uj_fixed import KOMOLYZENE_QUESTIONS
+from topics.komolyzene_uj import KOMOLYZENE_QUESTIONS
 from topics.tudosok import TUDOSOK_QUESTIONS
 from topics.mitologia_all_questions import MITOLOGIA_QUESTIONS_ALL
 from topics.haboru_all_questions import HABORU_QUESTIONS_ALL
