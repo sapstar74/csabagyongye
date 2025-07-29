@@ -1088,10 +1088,9 @@ def show_quiz():
         
         # Zászló képek útvonal javítása
         if logo_path.startswith("data/flags/"):
-            # A world_flags_project/data/flags/ könyvtárból töltjük be
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            parent_dir = os.path.dirname(current_dir)
-            logo_path = os.path.join(parent_dir, "world_flags_project", logo_path)
+            # A data/flags/ könyvtárból töltjük be (már a projektben van)
+            # Nincs szükség további útvonal módosításra
+            pass
         
         if os.path.exists(logo_path):
             st.image(logo_path, width=200)
