@@ -142,7 +142,6 @@ reorganize_*.py
 verify_*.py
 check_*.py
 find_*.py
-search_*.py
 expand_*.py
 real_*.py
 manual_*.py
@@ -177,6 +176,6 @@ output/
 uploads/
 
 # Old mapping files
-*_mapping_*.py
 *_mapping_backup.py
 *_mapping_old.py
+audio_files_backup/
