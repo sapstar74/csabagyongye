@@ -1101,7 +1101,7 @@ def show_quiz():
             # Logó középre pozícionálása
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                st.image(logo_path, width=200)
+                st.image(logo_path, width=400)
         else:
             st.warning(f"Logó fájl nem található: {logo_path}")
     
