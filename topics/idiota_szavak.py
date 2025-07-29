@@ -196,5 +196,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'Dahomey' jelentése: Afrikai királyság Benin területén 16-19. században""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Mit jelent az alábbi idióta szó: **Futurama**?""",
+        "correct_answer": """Amerikai rajzfilmsorozat""",
+        "explanation": """A(z) 'Futurama' jelentése: Amerikai rajzfilmsorozat""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
