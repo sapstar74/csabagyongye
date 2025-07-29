@@ -8,7 +8,8 @@ HABORU_QUESTIONS_ALL = [
             "1387-1503",
             "1437-1553",
         ],
-                "explanation": "A Százéves háború 1337-1453 között zajlott.",
+                "correct": 0,
+        "explanation": "A Százéves háború 1337-1453 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -19,7 +20,8 @@ HABORU_QUESTIONS_ALL = [
             "Anglia vs Francia Királyság",
             "Francia Királyság vs Anglia",
         ],
-                "explanation": "A Százéves háború során Anglia vs Francia Királyság harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Százéves háború során Anglia vs Francia Királyság harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -30,7 +32,8 @@ HABORU_QUESTIONS_ALL = [
             "1504-1516",
             "1554-1566",
         ],
-                "explanation": "A Tizenhárom éves háború 1454-1466 között zajlott.",
+                "correct": 0,
+        "explanation": "A Tizenhárom éves háború 1454-1466 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -41,7 +44,8 @@ HABORU_QUESTIONS_ALL = [
             "Porosz Konföderáció, Lengyel Királyság vs Teuton Lovagrend",
             "Teuton Lovagrend vs Porosz Konföderáció",
         ],
-                "explanation": "A Tizenhárom éves háború során Porosz Konföderáció, Lengyel Királyság vs Teuton Lovagrend harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Tizenhárom éves háború során Porosz Konföderáció, Lengyel Királyság vs Teuton Lovagrend harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -52,7 +56,8 @@ HABORU_QUESTIONS_ALL = [
             "1668-1698",
             "1718-1748",
         ],
-                "explanation": "A Harmincéves háború 1618-1648 között zajlott.",
+                "correct": 0,
+        "explanation": "A Harmincéves háború 1618-1648 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -63,7 +68,8 @@ HABORU_QUESTIONS_ALL = [
             "Katolikus Habsburgok, Spanyolország vs Protestáns államok",
             "Protestáns államok vs Katolikus Habsburgok",
         ],
-                "explanation": "A Harmincéves háború során Katolikus Habsburgok, Spanyolország vs Protestáns államok, Franciaország, Svédország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Harmincéves háború során Katolikus Habsburgok, Spanyolország vs Protestáns államok, Franciaország, Svédország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -74,7 +80,8 @@ HABORU_QUESTIONS_ALL = [
             "1751-1764",
             "1801-1814",
         ],
-                "explanation": "A Spanyol örökösödési háború 1701-1714 között zajlott.",
+                "correct": 0,
+        "explanation": "A Spanyol örökösödési háború 1701-1714 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -85,7 +92,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország, Spanyolország vs Ausztria",
             "Ausztria vs Franciaország",
         ],
-                "explanation": "A Spanyol örökösödési háború során Franciaország, Spanyolország vs Ausztria, Nagy-Britannia, Hollandia harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Spanyol örökösödési háború során Franciaország, Spanyolország vs Ausztria, Nagy-Britannia, Hollandia harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -96,7 +104,8 @@ HABORU_QUESTIONS_ALL = [
             "1790-1798",
             "1840-1848",
         ],
-                "explanation": "A Osztrák örökösödési háború 1740-1748 között zajlott.",
+                "correct": 0,
+        "explanation": "A Osztrák örökösödési háború 1740-1748 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -107,7 +116,8 @@ HABORU_QUESTIONS_ALL = [
             "Ausztria vs Poroszország",
             "Poroszország vs Ausztria",
         ],
-                "explanation": "A Osztrák örökösödési háború során Ausztria vs Poroszország, Franciaország, Spanyolország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Osztrák örökösödési háború során Ausztria vs Poroszország, Franciaország, Spanyolország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -118,7 +128,8 @@ HABORU_QUESTIONS_ALL = [
             "1806-1813",
             "1856-1863",
         ],
-                "explanation": "A Hétéves háború 1756-1763 között zajlott.",
+                "correct": 0,
+        "explanation": "A Hétéves háború 1756-1763 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -129,7 +140,8 @@ HABORU_QUESTIONS_ALL = [
             "Nagy-Britannia, Poroszország vs Franciaország",
             "Franciaország vs Nagy-Britannia",
         ],
-                "explanation": "A Hétéves háború során Nagy-Britannia, Poroszország vs Franciaország, Ausztria, Oroszország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Hétéves háború során Nagy-Britannia, Poroszország vs Franciaország, Ausztria, Oroszország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -140,7 +152,8 @@ HABORU_QUESTIONS_ALL = [
             "1853-1865",
             "1903-1915",
         ],
-                "explanation": "A Napóleoni háborúk 1803-1815 között zajlott.",
+                "correct": 0,
+        "explanation": "A Napóleoni háborúk 1803-1815 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -151,7 +164,8 @@ HABORU_QUESTIONS_ALL = [
             "Napóleoni Franciaország vs Európai szövetséges hatalmak",
             "Európai szövetséges hatalmak vs Napóleoni Franciaország",
         ],
-                "explanation": "A Napóleoni háborúk során Napóleoni Franciaország vs Európai szövetséges hatalmak harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Napóleoni háborúk során Napóleoni Franciaország vs Európai szövetséges hatalmak harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -162,7 +176,8 @@ HABORU_QUESTIONS_ALL = [
             "1858-1859",
             "1908-1909",
         ],
-                "explanation": "A Finn háború 1808-1809 között zajlott.",
+                "correct": 0,
+        "explanation": "A Finn háború 1808-1809 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -173,7 +188,8 @@ HABORU_QUESTIONS_ALL = [
             "Svédország vs Orosz Birodalom",
             "Orosz Birodalom vs Svédország",
         ],
-                "explanation": "A Finn háború során Svédország vs Orosz Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Finn háború során Svédország vs Orosz Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -184,7 +200,8 @@ HABORU_QUESTIONS_ALL = [
             "1871-1879",
             "1921-1929",
         ],
-                "explanation": "A Görög függetlenségi háború 1821-1829 között zajlott.",
+                "correct": 0,
+        "explanation": "A Görög függetlenségi háború 1821-1829 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -195,7 +212,8 @@ HABORU_QUESTIONS_ALL = [
             "Görög felkelők vs Oszmán Birodalom",
             "Oszmán Birodalom vs Görög felkelők",
         ],
-                "explanation": "A Görög függetlenségi háború során Görög felkelők vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Görög függetlenségi háború során Görög felkelők vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -206,7 +224,8 @@ HABORU_QUESTIONS_ALL = [
             "1903-1906",
             "1953-1956",
         ],
-                "explanation": "A Krími háború 1853-1856 között zajlott.",
+                "correct": 0,
+        "explanation": "A Krími háború 1853-1856 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -217,7 +236,8 @@ HABORU_QUESTIONS_ALL = [
             "Oroszország vs Oszmán Birodalom",
             "Oszmán Birodalom vs Oroszország",
         ],
-                "explanation": "A Krími háború során Oroszország vs Oszmán Birodalom, Egyesült Királyság, Franciaország, Szardínia harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Krími háború során Oroszország vs Oszmán Birodalom, Egyesült Királyság, Franciaország, Szardínia harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -228,7 +248,8 @@ HABORU_QUESTIONS_ALL = [
             "1962-1963",
             "2012-2013",
         ],
-                "explanation": "A Első Balkán-háború 1912-1913 között zajlott.",
+                "correct": 0,
+        "explanation": "A Első Balkán-háború 1912-1913 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -239,7 +260,8 @@ HABORU_QUESTIONS_ALL = [
             "Balkán Liga vs Oszmán Birodalom",
             "Oszmán Birodalom vs Balkán Liga",
         ],
-                "explanation": "A Első Balkán-háború során Balkán Liga vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Első Balkán-háború során Balkán Liga vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -250,7 +272,8 @@ HABORU_QUESTIONS_ALL = [
             "1963-1963",
             "2013-2013",
         ],
-                "explanation": "A Második Balkán-háború 1913 között zajlott.",
+                "correct": 0,
+        "explanation": "A Második Balkán-háború 1913 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -261,7 +284,8 @@ HABORU_QUESTIONS_ALL = [
             "Bulgária vs volt szövetségesei",
             "volt szövetségesei vs Bulgária",
         ],
-                "explanation": "A Második Balkán-háború során Bulgária vs volt szövetségesei harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Második Balkán-háború során Bulgária vs volt szövetségesei harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -272,7 +296,8 @@ HABORU_QUESTIONS_ALL = [
             "1964-1968",
             "2014-2018",
         ],
-                "explanation": "A Első világháború 1914-1918 között zajlott.",
+                "correct": 0,
+        "explanation": "A Első világháború 1914-1918 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -283,7 +308,8 @@ HABORU_QUESTIONS_ALL = [
             "Központi hatalmak vs Antant",
             "Antant vs Központi hatalmak",
         ],
-                "explanation": "A Első világháború során Központi hatalmak vs Antant harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Első világháború során Központi hatalmak vs Antant harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -294,7 +320,8 @@ HABORU_QUESTIONS_ALL = [
             "1986-1989",
             "2036-2039",
         ],
-                "explanation": "A Spanyol polgárháború 1936-1939 között zajlott.",
+                "correct": 0,
+        "explanation": "A Spanyol polgárháború 1936-1939 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -305,7 +332,8 @@ HABORU_QUESTIONS_ALL = [
             "Köztársaságiak vs Franco tábornok nemzeti erői",
             "Franco tábornok nemzeti erői vs Köztársaságiak",
         ],
-                "explanation": "A Spanyol polgárháború során Köztársaságiak vs Franco tábornok nemzeti erői harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Spanyol polgárháború során Köztársaságiak vs Franco tábornok nemzeti erői harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -316,7 +344,8 @@ HABORU_QUESTIONS_ALL = [
             "1989-1995",
             "2039-2045",
         ],
-                "explanation": "A Második világháború 1939-1945 között zajlott.",
+                "correct": 0,
+        "explanation": "A Második világháború 1939-1945 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -327,7 +356,8 @@ HABORU_QUESTIONS_ALL = [
             "Tengelyhatalmak vs Szövetségesek",
             "Szövetségesek vs Tengelyhatalmak",
         ],
-                "explanation": "A Második világháború során Tengelyhatalmak vs Szövetségesek harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Második világháború során Tengelyhatalmak vs Szövetségesek harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -338,7 +368,8 @@ HABORU_QUESTIONS_ALL = [
             "1391-1414",
             "1441-1464",
         ],
-                "explanation": "A Bretagne-i örökösödési háború 1341-1364 között zajlott.",
+                "correct": 0,
+        "explanation": "A Bretagne-i örökösödési háború 1341-1364 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -349,7 +380,8 @@ HABORU_QUESTIONS_ALL = [
             "Montfort-ház vs Blois-ház",
             "Blois-ház vs Montfort-ház",
         ],
-                "explanation": "A Bretagne-i örökösödési háború során Montfort-ház vs Blois-ház harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Bretagne-i örökösödési háború során Montfort-ház vs Blois-ház harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -360,7 +392,8 @@ HABORU_QUESTIONS_ALL = [
             "1425-1428",
             "1475-1478",
         ],
-                "explanation": "A Nyolc Szent háborúja 1375-1378 között zajlott.",
+                "correct": 0,
+        "explanation": "A Nyolc Szent háborúja 1375-1378 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -371,7 +404,8 @@ HABORU_QUESTIONS_ALL = [
             "Pápai Állam vs Firenze",
             "Firenze vs Pápai Állam",
         ],
-                "explanation": "A Nyolc Szent háborúja során Pápai Állam vs Firenze, Milánó, Siena koalíciója harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Nyolc Szent háborúja során Pápai Állam vs Firenze, Milánó, Siena koalíciója harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -382,7 +416,8 @@ HABORU_QUESTIONS_ALL = [
             "1382-1407",
             "1432-1457",
         ],
-                "explanation": "A Második skót függetlenségi háború 1332-1357 között zajlott.",
+                "correct": 0,
+        "explanation": "A Második skót függetlenségi háború 1332-1357 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -393,7 +428,8 @@ HABORU_QUESTIONS_ALL = [
             "Skót Királyság vs Angol Királyság",
             "Angol Királyság vs Skót Királyság",
         ],
-                "explanation": "A Második skót függetlenségi háború során Skót Királyság vs Angol Királyság harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Második skót függetlenségi háború során Skót Királyság vs Angol Királyság harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -404,7 +440,8 @@ HABORU_QUESTIONS_ALL = [
             "1406-1425",
             "1456-1475",
         ],
-                "explanation": "A Két Péter háborúja 1356-1375 között zajlott.",
+                "correct": 0,
+        "explanation": "A Két Péter háborúja 1356-1375 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -415,7 +452,8 @@ HABORU_QUESTIONS_ALL = [
             "Kasztíliai Királyság vs Aragóniai Királyság",
             "Aragóniai Királyság vs Kasztíliai Királyság",
         ],
-                "explanation": "A Két Péter háborúja során Kasztíliai Királyság vs Aragóniai Királyság harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Két Péter háborúja során Kasztíliai Királyság vs Aragóniai Királyság harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -426,7 +464,8 @@ HABORU_QUESTIONS_ALL = [
             "1431-1431",
             "1481-1481",
         ],
-                "explanation": "A Angol parasztlázadás 1381 között zajlott.",
+                "correct": 0,
+        "explanation": "A Angol parasztlázadás 1381 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -437,7 +476,8 @@ HABORU_QUESTIONS_ALL = [
             "Angol parasztság vs Angol Királyság",
             "Angol Királyság vs Angol parasztság",
         ],
-                "explanation": "A Angol parasztlázadás során Angol parasztság vs Angol Királyság harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Angol parasztlázadás során Angol parasztság vs Angol Királyság harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -448,7 +488,8 @@ HABORU_QUESTIONS_ALL = [
             "1446-1446",
             "1496-1496",
         ],
-                "explanation": "A Nikápolyi csata 1396 között zajlott.",
+                "correct": 0,
+        "explanation": "A Nikápolyi csata 1396 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -459,7 +500,8 @@ HABORU_QUESTIONS_ALL = [
             "Keresztes hadsereg vs Oszmán Birodalom",
             "Oszmán Birodalom vs Keresztes hadsereg",
         ],
-                "explanation": "A Nikápolyi csata során Keresztes hadsereg vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Nikápolyi csata során Keresztes hadsereg vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -470,7 +512,8 @@ HABORU_QUESTIONS_ALL = [
             "1513-1529",
             "1563-1579",
         ],
-                "explanation": "A Oszmán–velencei háború 1463-1479 között zajlott.",
+                "correct": 0,
+        "explanation": "A Oszmán–velencei háború 1463-1479 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -481,7 +524,8 @@ HABORU_QUESTIONS_ALL = [
             "Velencei Köztársaság vs Oszmán Birodalom",
             "Oszmán Birodalom vs Velencei Köztársaság",
         ],
-                "explanation": "A Oszmán–velencei háború során Velencei Köztársaság vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Oszmán–velencei háború során Velencei Köztársaság vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -492,7 +536,8 @@ HABORU_QUESTIONS_ALL = [
             "1524-1527",
             "1574-1577",
         ],
-                "explanation": "A Burgundiai háborúk 1474-1477 között zajlott.",
+                "correct": 0,
+        "explanation": "A Burgundiai háborúk 1474-1477 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -503,7 +548,8 @@ HABORU_QUESTIONS_ALL = [
             "Burgundiai Állam vs Ósvájci Konföderáció",
             "Ósvájci Konföderáció vs Burgundiai Állam",
         ],
-                "explanation": "A Burgundiai háborúk során Burgundiai Állam vs Ósvájci Konföderáció harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Burgundiai háborúk során Burgundiai Állam vs Ósvájci Konföderáció harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -514,7 +560,8 @@ HABORU_QUESTIONS_ALL = [
             "1532-1542",
             "1582-1592",
         ],
-                "explanation": "A Granadai háború 1482-1492 között zajlott.",
+                "correct": 0,
+        "explanation": "A Granadai háború 1482-1492 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -525,7 +572,8 @@ HABORU_QUESTIONS_ALL = [
             "Kasztíliai Királyság vs Granadai Emirátus",
             "Granadai Emirátus vs Kasztíliai Királyság",
         ],
-                "explanation": "A Granadai háború során Kasztíliai Királyság vs Granadai Emirátus harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Granadai háború során Kasztíliai Királyság vs Granadai Emirátus harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -536,7 +584,8 @@ HABORU_QUESTIONS_ALL = [
             "1544-1548",
             "1594-1598",
         ],
-                "explanation": "A Itáliai háború (1494-1498) 1494-1498 között zajlott.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1494-1498) 1494-1498 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -547,7 +596,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Velencei Liga",
             "Velencei Liga vs Franciaország",
         ],
-                "explanation": "A Itáliai háború (1494-1498) során Franciaország vs Velencei Liga harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1494-1498) során Franciaország vs Velencei Liga harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -558,7 +608,8 @@ HABORU_QUESTIONS_ALL = [
             "1525-1529",
             "1575-1579",
         ],
-                "explanation": "A Kasztíliai örökösödési háború 1475-1479 között zajlott.",
+                "correct": 0,
+        "explanation": "A Kasztíliai örökösödési háború 1475-1479 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -569,7 +620,8 @@ HABORU_QUESTIONS_ALL = [
             "I. Izabella támogatói vs Johanna la Beltraneja támogatói",
             "Johanna la Beltraneja támogatói vs I. Izabella támogatói",
         ],
-                "explanation": "A Kasztíliai örökösödési háború során I. Izabella támogatói vs Johanna la Beltraneja támogatói harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Kasztíliai örökösödési háború során I. Izabella támogatói vs Johanna la Beltraneja támogatói harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -580,7 +632,8 @@ HABORU_QUESTIONS_ALL = [
             "1558-1566",
             "1608-1616",
         ],
-                "explanation": "A Cambrai-i Liga háborúja 1508-1516 között zajlott.",
+                "correct": 0,
+        "explanation": "A Cambrai-i Liga háborúja 1508-1516 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -591,7 +644,8 @@ HABORU_QUESTIONS_ALL = [
             "1571-1576",
             "1621-1626",
         ],
-                "explanation": "A Itáliai háború (1521-1526) 1521-1526 között zajlott.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1521-1526) 1521-1526 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -602,7 +656,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
         ],
-                "explanation": "A Itáliai háború (1521-1526) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1521-1526) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -613,7 +668,8 @@ HABORU_QUESTIONS_ALL = [
             "1576-1580",
             "1626-1630",
         ],
-                "explanation": "A Cognaci Liga háborúja 1526-1530 között zajlott.",
+                "correct": 0,
+        "explanation": "A Cognaci Liga háborúja 1526-1530 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -624,7 +680,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország, Pápai Állam vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
         ],
-                "explanation": "A Cognaci Liga háborúja során Franciaország, Pápai Állam vs Német-római Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Cognaci Liga háborúja során Franciaország, Pápai Állam vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -635,7 +692,8 @@ HABORU_QUESTIONS_ALL = [
             "1586-1588",
             "1636-1638",
         ],
-                "explanation": "A Itáliai háború (1536-1538) 1536-1538 között zajlott.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1536-1538) 1536-1538 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -646,7 +704,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
         ],
-                "explanation": "A Itáliai háború (1536-1538) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1536-1538) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -657,7 +716,8 @@ HABORU_QUESTIONS_ALL = [
             "1592-1596",
             "1642-1646",
         ],
-                "explanation": "A Itáliai háború (1542-1546) 1542-1546 között zajlott.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1542-1546) 1542-1546 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -668,7 +728,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
         ],
-                "explanation": "A Itáliai háború (1542-1546) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1542-1546) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -679,7 +740,8 @@ HABORU_QUESTIONS_ALL = [
             "1601-1609",
             "1651-1659",
         ],
-                "explanation": "A Itáliai háború (1551-1559) 1551-1559 között zajlott.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1551-1559) 1551-1559 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -690,7 +752,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
         ],
-                "explanation": "A Itáliai háború (1551-1559) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Itáliai háború (1551-1559) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -701,7 +764,8 @@ HABORU_QUESTIONS_ALL = [
             "1574-1575",
             "1624-1625",
         ],
-                "explanation": "A Német parasztháború 1524-1525 között zajlott.",
+                "correct": 0,
+        "explanation": "A Német parasztháború 1524-1525 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -712,7 +776,8 @@ HABORU_QUESTIONS_ALL = [
             "Paraszti seregek vs Sváb Liga",
             "Sváb Liga vs Paraszti seregek",
         ],
-                "explanation": "A Német parasztháború során Paraszti seregek vs Sváb Liga harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Német parasztháború során Paraszti seregek vs Sváb Liga harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -723,7 +788,8 @@ HABORU_QUESTIONS_ALL = [
             "1612-1648",
             "1662-1698",
         ],
-                "explanation": "A Francia vallásháborúk 1562-1598 között zajlott.",
+                "correct": 0,
+        "explanation": "A Francia vallásháborúk 1562-1598 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -734,7 +800,8 @@ HABORU_QUESTIONS_ALL = [
             "Hugenották vs Francia katolikusok",
             "Francia katolikusok vs Hugenották",
         ],
-                "explanation": "A Francia vallásháborúk során Hugenották vs Francia katolikusok harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Francia vallásháborúk során Hugenották vs Francia katolikusok harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -745,7 +812,8 @@ HABORU_QUESTIONS_ALL = [
             "1576-1841",
             "1626-1891",
         ],
-                "explanation": "A Oszmán–osztrák háborúk 1526-1791 között zajlott.",
+                "correct": 0,
+        "explanation": "A Oszmán–osztrák háborúk 1526-1791 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -756,7 +824,8 @@ HABORU_QUESTIONS_ALL = [
             "Oszmán Birodalom vs Habsburg Birodalom",
             "Habsburg Birodalom vs Oszmán Birodalom",
         ],
-                "explanation": "A Oszmán–osztrák háborúk során Oszmán Birodalom vs Habsburg Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Oszmán–osztrák háborúk során Oszmán Birodalom vs Habsburg Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -767,7 +836,8 @@ HABORU_QUESTIONS_ALL = [
             "1670-1671",
             "1720-1721",
         ],
-                "explanation": "A Lengyel–török háborúk 1620-1621 között zajlott.",
+                "correct": 0,
+        "explanation": "A Lengyel–török háborúk 1620-1621 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -778,7 +848,8 @@ HABORU_QUESTIONS_ALL = [
             "Lengyel-Litván Unió vs Oszmán Birodalom",
             "Oszmán Birodalom vs Lengyel-Litván Unió",
         ],
-                "explanation": "A Lengyel–török háborúk során Lengyel-Litván Unió vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Lengyel–török háborúk során Lengyel-Litván Unió vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -789,7 +860,8 @@ HABORU_QUESTIONS_ALL = [
             "1689-1703",
             "1739-1753",
         ],
-                "explanation": "A A három királyság háborúi 1639-1653 között zajlott.",
+                "correct": 0,
+        "explanation": "A A három királyság háborúi 1639-1653 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -800,7 +872,8 @@ HABORU_QUESTIONS_ALL = [
             "Angol királypártiak vs Angol parlamentaristák",
             "Angol parlamentaristák vs Angol királypártiak",
         ],
-                "explanation": "A A három királyság háborúi során Angol királypártiak vs Angol parlamentaristák harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A A három királyság háborúi során Angol királypártiak vs Angol parlamentaristák harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -811,7 +884,8 @@ HABORU_QUESTIONS_ALL = [
             "1704-1717",
             "1754-1767",
         ],
-                "explanation": "A Orosz–lengyel háború 1654-1667 között zajlott.",
+                "correct": 0,
+        "explanation": "A Orosz–lengyel háború 1654-1667 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -822,7 +896,8 @@ HABORU_QUESTIONS_ALL = [
             "Orosz Cárság vs Lengyel-Litván Unió",
             "Lengyel-Litván Unió vs Orosz Cárság",
         ],
-                "explanation": "A Orosz–lengyel háború során Orosz Cárság vs Lengyel-Litván Unió harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Orosz–lengyel háború során Orosz Cárság vs Lengyel-Litván Unió harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -833,7 +908,8 @@ HABORU_QUESTIONS_ALL = [
             "1707-1710",
             "1757-1760",
         ],
-                "explanation": "A Dán–svéd háborúk 1657-1660 között zajlott.",
+                "correct": 0,
+        "explanation": "A Dán–svéd háborúk 1657-1660 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -844,7 +920,8 @@ HABORU_QUESTIONS_ALL = [
             "Dánia-Norvégia vs Svédország",
             "Svédország vs Dánia-Norvégia",
         ],
-                "explanation": "A Dán–svéd háborúk során Dánia-Norvégia vs Svédország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Dán–svéd háborúk során Dánia-Norvégia vs Svédország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -855,7 +932,8 @@ HABORU_QUESTIONS_ALL = [
             "1751-1764",
             "1801-1814",
         ],
-                "explanation": "A Spanyol örökösödési háború 1701-1714 között zajlott.",
+                "correct": 0,
+        "explanation": "A Spanyol örökösödési háború 1701-1714 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -866,7 +944,8 @@ HABORU_QUESTIONS_ALL = [
             "Franciaország vs Nagy Koalíció",
             "Nagy Koalíció vs Franciaország",
         ],
-                "explanation": "A Spanyol örökösödési háború során Franciaország vs Nagy Koalíció harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Spanyol örökösödési háború során Franciaország vs Nagy Koalíció harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -877,7 +956,8 @@ HABORU_QUESTIONS_ALL = [
             "1750-1771",
             "1800-1821",
         ],
-                "explanation": "A Nagy északi háború 1700-1721 között zajlott.",
+                "correct": 0,
+        "explanation": "A Nagy északi háború 1700-1721 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -888,7 +968,8 @@ HABORU_QUESTIONS_ALL = [
             "Svédország vs Oroszország",
             "Oroszország vs Svédország",
         ],
-                "explanation": "A Nagy északi háború során Svédország vs Oroszország, Dánia-Norvégia, Szászország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Nagy északi háború során Svédország vs Oroszország, Dánia-Norvégia, Szászország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -899,7 +980,8 @@ HABORU_QUESTIONS_ALL = [
             "1790-1798",
             "1840-1848",
         ],
-                "explanation": "A Osztrák örökösödési háború 1740-1748 között zajlott.",
+                "correct": 0,
+        "explanation": "A Osztrák örökösödési háború 1740-1748 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -910,7 +992,8 @@ HABORU_QUESTIONS_ALL = [
             "Ausztria vs Poroszország",
             "Poroszország vs Ausztria",
         ],
-                "explanation": "A Osztrák örökösödési háború során Ausztria vs Poroszország, Franciaország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Osztrák örökösödési háború során Ausztria vs Poroszország, Franciaország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -921,7 +1004,8 @@ HABORU_QUESTIONS_ALL = [
             "1806-1813",
             "1856-1863",
         ],
-                "explanation": "A Hétéves háború 1756-1763 között zajlott.",
+                "correct": 0,
+        "explanation": "A Hétéves háború 1756-1763 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -932,7 +1016,8 @@ HABORU_QUESTIONS_ALL = [
             "Nagy-Britannia, Poroszország vs Franciaország",
             "Franciaország vs Nagy-Britannia",
         ],
-                "explanation": "A Hétéves háború során Nagy-Britannia, Poroszország vs Franciaország, Ausztria harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Hétéves háború során Nagy-Britannia, Poroszország vs Franciaország, Ausztria harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -943,7 +1028,8 @@ HABORU_QUESTIONS_ALL = [
             "1825-1833",
             "1875-1883",
         ],
-                "explanation": "A Amerikai függetlenségi háború 1775-1783 között zajlott.",
+                "correct": 0,
+        "explanation": "A Amerikai függetlenségi háború 1775-1783 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -954,7 +1040,8 @@ HABORU_QUESTIONS_ALL = [
             "Amerikai kolóniák vs Nagy-Britannia",
             "Nagy-Britannia vs Amerikai kolóniák",
         ],
-                "explanation": "A Amerikai függetlenségi háború során Amerikai kolóniák vs Nagy-Britannia harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Amerikai függetlenségi háború során Amerikai kolóniák vs Nagy-Britannia harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -965,7 +1052,8 @@ HABORU_QUESTIONS_ALL = [
             "1842-1852",
             "1892-1902",
         ],
-                "explanation": "A Francia forradalmi háborúk 1792-1802 között zajlott.",
+                "correct": 0,
+        "explanation": "A Francia forradalmi háborúk 1792-1802 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -976,7 +1064,8 @@ HABORU_QUESTIONS_ALL = [
             "Francia Köztársaság vs Európai monarchiák",
             "Európai monarchiák vs Francia Köztársaság",
         ],
-                "explanation": "A Francia forradalmi háborúk során Francia Köztársaság vs Európai monarchiák harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Francia forradalmi háborúk során Francia Köztársaság vs Európai monarchiák harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -987,7 +1076,8 @@ HABORU_QUESTIONS_ALL = [
             "1853-1865",
             "1903-1915",
         ],
-                "explanation": "A Napóleoni háborúk 1803-1815 között zajlott.",
+                "correct": 0,
+        "explanation": "A Napóleoni háborúk 1803-1815 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -998,7 +1088,8 @@ HABORU_QUESTIONS_ALL = [
             "Napóleoni Franciaország vs Koalíciók",
             "Koalíciók vs Napóleoni Franciaország",
         ],
-                "explanation": "A Napóleoni háborúk során Napóleoni Franciaország vs Koalíciók harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Napóleoni háborúk során Napóleoni Franciaország vs Koalíciók harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1009,7 +1100,8 @@ HABORU_QUESTIONS_ALL = [
             "1858-1859",
             "1908-1909",
         ],
-                "explanation": "A Finn háború 1808-1809 között zajlott.",
+                "correct": 0,
+        "explanation": "A Finn háború 1808-1809 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1020,7 +1112,8 @@ HABORU_QUESTIONS_ALL = [
             "Svédország vs Orosz Birodalom",
             "Orosz Birodalom vs Svédország",
         ],
-                "explanation": "A Finn háború során Svédország vs Orosz Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Finn háború során Svédország vs Orosz Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1031,7 +1124,8 @@ HABORU_QUESTIONS_ALL = [
             "1871-1879",
             "1921-1929",
         ],
-                "explanation": "A Görög függetlenségi háború 1821-1829 között zajlott.",
+                "correct": 0,
+        "explanation": "A Görög függetlenségi háború 1821-1829 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1042,7 +1136,8 @@ HABORU_QUESTIONS_ALL = [
             "Görög felkelők vs Oszmán Birodalom",
             "Oszmán Birodalom vs Görög felkelők",
         ],
-                "explanation": "A Görög függetlenségi háború során Görög felkelők vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Görög függetlenségi háború során Görög felkelők vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1053,7 +1148,8 @@ HABORU_QUESTIONS_ALL = [
             "1903-1906",
             "1953-1956",
         ],
-                "explanation": "A Krími háború 1853-1856 között zajlott.",
+                "correct": 0,
+        "explanation": "A Krími háború 1853-1856 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1064,7 +1160,8 @@ HABORU_QUESTIONS_ALL = [
             "Oroszország vs Oszmán Birodalom",
             "Oszmán Birodalom vs Oroszország",
         ],
-                "explanation": "A Krími háború során Oroszország vs Oszmán Birodalom, Nagy-Britannia, Franciaország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Krími háború során Oroszország vs Oszmán Birodalom, Nagy-Britannia, Franciaország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1075,7 +1172,8 @@ HABORU_QUESTIONS_ALL = [
             "1898-1921",
             "1948-1971",
         ],
-                "explanation": "A Olasz függetlenségi háborúk 1848-1871 között zajlott.",
+                "correct": 0,
+        "explanation": "A Olasz függetlenségi háborúk 1848-1871 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1086,7 +1184,8 @@ HABORU_QUESTIONS_ALL = [
             "Olasz államok vs Ausztria",
             "Ausztria vs Olasz államok",
         ],
-                "explanation": "A Olasz függetlenségi háborúk során Olasz államok vs Ausztria harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Olasz függetlenségi háborúk során Olasz államok vs Ausztria harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1097,7 +1196,8 @@ HABORU_QUESTIONS_ALL = [
             "1914-1921",
             "1964-1971",
         ],
-                "explanation": "A Német egységesítési háborúk 1864-1871 között zajlott.",
+                "correct": 0,
+        "explanation": "A Német egységesítési háborúk 1864-1871 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1108,7 +1208,8 @@ HABORU_QUESTIONS_ALL = [
             "Poroszország vs Dánia",
             "Dánia vs Poroszország",
         ],
-                "explanation": "A Német egységesítési háborúk során Poroszország vs Dánia, Ausztria, Franciaország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Német egységesítési háborúk során Poroszország vs Dánia, Ausztria, Franciaország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1119,7 +1220,8 @@ HABORU_QUESTIONS_ALL = [
             "1911-1915",
             "1961-1965",
         ],
-                "explanation": "A Amerikai polgárháború 1861-1865 között zajlott.",
+                "correct": 0,
+        "explanation": "A Amerikai polgárháború 1861-1865 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1130,7 +1232,8 @@ HABORU_QUESTIONS_ALL = [
             "Északi államok vs Déli államok",
             "Déli államok vs Északi államok",
         ],
-                "explanation": "A Amerikai polgárháború során Északi államok vs Déli államok harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Amerikai polgárháború során Északi államok vs Déli államok harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1141,7 +1244,8 @@ HABORU_QUESTIONS_ALL = [
             "1920-1921",
             "1970-1971",
         ],
-                "explanation": "A Porosz–francia háború 1870-1871 között zajlott.",
+                "correct": 0,
+        "explanation": "A Porosz–francia háború 1870-1871 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1152,7 +1256,8 @@ HABORU_QUESTIONS_ALL = [
             "Poroszország vs Franciaország",
             "Franciaország vs Poroszország",
         ],
-                "explanation": "A Porosz–francia háború során Poroszország vs Franciaország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Porosz–francia háború során Poroszország vs Franciaország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1163,7 +1268,8 @@ HABORU_QUESTIONS_ALL = [
             "1927-1928",
             "1977-1978",
         ],
-                "explanation": "A Orosz–török háború 1877-1878 között zajlott.",
+                "correct": 0,
+        "explanation": "A Orosz–török háború 1877-1878 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1174,7 +1280,8 @@ HABORU_QUESTIONS_ALL = [
             "Orosz Birodalom vs Oszmán Birodalom",
             "Oszmán Birodalom vs Orosz Birodalom",
         ],
-                "explanation": "A Orosz–török háború során Orosz Birodalom vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Orosz–török háború során Orosz Birodalom vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1185,7 +1292,8 @@ HABORU_QUESTIONS_ALL = [
             "1948-1948",
             "1998-1998",
         ],
-                "explanation": "A Spanyol–amerikai háború 1898 között zajlott.",
+                "correct": 0,
+        "explanation": "A Spanyol–amerikai háború 1898 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1196,7 +1304,8 @@ HABORU_QUESTIONS_ALL = [
             "Egyesült Államok vs Spanyolország",
             "Spanyolország vs Egyesült Államok",
         ],
-                "explanation": "A Spanyol–amerikai háború során Egyesült Államok vs Spanyolország harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Spanyol–amerikai háború során Egyesült Államok vs Spanyolország harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1207,7 +1316,8 @@ HABORU_QUESTIONS_ALL = [
             "1930-1952",
             "1980-2002",
         ],
-                "explanation": "A Búr háborúk 1880-1902 között zajlott.",
+                "correct": 0,
+        "explanation": "A Búr háborúk 1880-1902 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1218,7 +1328,8 @@ HABORU_QUESTIONS_ALL = [
             "Nagy-Britannia vs Búr köztársaságok",
             "Búr köztársaságok vs Nagy-Britannia",
         ],
-                "explanation": "A Búr háborúk során Nagy-Britannia vs Búr köztársaságok harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Búr háborúk során Nagy-Britannia vs Búr köztársaságok harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1229,7 +1340,8 @@ HABORU_QUESTIONS_ALL = [
             "1954-1955",
             "2004-2005",
         ],
-                "explanation": "A Orosz–japán háború 1904-1905 között zajlott.",
+                "correct": 0,
+        "explanation": "A Orosz–japán háború 1904-1905 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1240,7 +1352,8 @@ HABORU_QUESTIONS_ALL = [
             "Orosz Birodalom vs Japán Birodalom",
             "Japán Birodalom vs Orosz Birodalom",
         ],
-                "explanation": "A Orosz–japán háború során Orosz Birodalom vs Japán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Orosz–japán háború során Orosz Birodalom vs Japán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1251,7 +1364,8 @@ HABORU_QUESTIONS_ALL = [
             "1962-1963",
             "2012-2013",
         ],
-                "explanation": "A Balkán háborúk 1912-1913 között zajlott.",
+                "correct": 0,
+        "explanation": "A Balkán háborúk 1912-1913 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1262,7 +1376,8 @@ HABORU_QUESTIONS_ALL = [
             "Balkán Liga vs Oszmán Birodalom",
             "Oszmán Birodalom vs Balkán Liga",
         ],
-                "explanation": "A Balkán háborúk során Balkán Liga vs Oszmán Birodalom harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Balkán háborúk során Balkán Liga vs Oszmán Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1273,7 +1388,8 @@ HABORU_QUESTIONS_ALL = [
             "1964-1968",
             "2014-2018",
         ],
-                "explanation": "A Első világháború 1914-1918 között zajlott.",
+                "correct": 0,
+        "explanation": "A Első világháború 1914-1918 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1284,7 +1400,8 @@ HABORU_QUESTIONS_ALL = [
             "Központi hatalmak vs Antant",
             "Antant vs Központi hatalmak",
         ],
-                "explanation": "A Első világháború során Központi hatalmak vs Antant harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Első világháború során Központi hatalmak vs Antant harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1295,7 +1412,8 @@ HABORU_QUESTIONS_ALL = [
             "1967-1973",
             "2017-2023",
         ],
-                "explanation": "A Orosz polgárháború 1917-1923 között zajlott.",
+                "correct": 0,
+        "explanation": "A Orosz polgárháború 1917-1923 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1306,7 +1424,8 @@ HABORU_QUESTIONS_ALL = [
             "Vörösök vs Fehérek",
             "Fehérek vs Vörösök",
         ],
-                "explanation": "A Orosz polgárháború során Vörösök vs Fehérek harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Orosz polgárháború során Vörösök vs Fehérek harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1317,7 +1436,8 @@ HABORU_QUESTIONS_ALL = [
             "1969-1973",
             "2019-2023",
         ],
-                "explanation": "A Török függetlenségi háború 1919-1923 között zajlott.",
+                "correct": 0,
+        "explanation": "A Török függetlenségi háború 1919-1923 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1328,7 +1448,8 @@ HABORU_QUESTIONS_ALL = [
             "Török nemzeti erők vs Görögország",
             "Görögország vs Török nemzeti erők",
         ],
-                "explanation": "A Török függetlenségi háború során Török nemzeti erők vs Görögország, Nagy-Britannia harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Török függetlenségi háború során Török nemzeti erők vs Görögország, Nagy-Britannia harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1339,7 +1460,8 @@ HABORU_QUESTIONS_ALL = [
             "1986-1989",
             "2036-2039",
         ],
-                "explanation": "A Spanyol polgárháború 1936-1939 között zajlott.",
+                "correct": 0,
+        "explanation": "A Spanyol polgárháború 1936-1939 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1350,7 +1472,8 @@ HABORU_QUESTIONS_ALL = [
             "Köztársaságiak vs Nemzeti erők",
             "Nemzeti erők vs Köztársaságiak",
         ],
-                "explanation": "A Spanyol polgárháború során Köztársaságiak vs Nemzeti erők harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Spanyol polgárháború során Köztársaságiak vs Nemzeti erők harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1361,7 +1484,8 @@ HABORU_QUESTIONS_ALL = [
             "1989-1995",
             "2039-2045",
         ],
-                "explanation": "A Második világháború 1939-1945 között zajlott.",
+                "correct": 0,
+        "explanation": "A Második világháború 1939-1945 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1372,7 +1496,8 @@ HABORU_QUESTIONS_ALL = [
             "Tengelyhatalmak vs Szövetségesek",
             "Szövetségesek vs Tengelyhatalmak",
         ],
-                "explanation": "A Második világháború során Tengelyhatalmak vs Szövetségesek harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Második világháború során Tengelyhatalmak vs Szövetségesek harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1383,7 +1508,8 @@ HABORU_QUESTIONS_ALL = [
             "2000-2003",
             "2050-2053",
         ],
-                "explanation": "A Koreai háború 1950-1953 között zajlott.",
+                "correct": 0,
+        "explanation": "A Koreai háború 1950-1953 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1394,7 +1520,8 @@ HABORU_QUESTIONS_ALL = [
             "Észak-Korea vs Dél-Korea",
             "Dél-Korea vs Észak-Korea",
         ],
-                "explanation": "A Koreai háború során Észak-Korea vs Dél-Korea, ENSZ harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Koreai háború során Észak-Korea vs Dél-Korea, ENSZ harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1405,7 +1532,8 @@ HABORU_QUESTIONS_ALL = [
             "2005-2025",
             "2055-2075",
         ],
-                "explanation": "A Vietnámi háború 1955-1975 között zajlott.",
+                "correct": 0,
+        "explanation": "A Vietnámi háború 1955-1975 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1416,7 +1544,8 @@ HABORU_QUESTIONS_ALL = [
             "Észak-Vietnám vs Dél-Vietnám",
             "Dél-Vietnám vs Észak-Vietnám",
         ],
-                "explanation": "A Vietnámi háború során Észak-Vietnám vs Dél-Vietnám, Egyesült Államok harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Vietnámi háború során Észak-Vietnám vs Dél-Vietnám, Egyesült Államok harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1427,7 +1556,8 @@ HABORU_QUESTIONS_ALL = [
             "2017-2017",
             "2067-2067",
         ],
-                "explanation": "A Szikiai háború 1967 között zajlott.",
+                "correct": 0,
+        "explanation": "A Szikiai háború 1967 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1438,7 +1568,8 @@ HABORU_QUESTIONS_ALL = [
             "Izrael vs Arab államok",
             "Arab államok vs Izrael",
         ],
-                "explanation": "A Szikiai háború során Izrael vs Arab államok harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Szikiai háború során Izrael vs Arab államok harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1449,7 +1580,8 @@ HABORU_QUESTIONS_ALL = [
             "2023-2023",
             "2073-2073",
         ],
-                "explanation": "A Jom Kippur háború 1973 között zajlott.",
+                "correct": 0,
+        "explanation": "A Jom Kippur háború 1973 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1460,7 +1592,8 @@ HABORU_QUESTIONS_ALL = [
             "Izrael vs Egyiptom",
             "Egyiptom vs Izrael",
         ],
-                "explanation": "A Jom Kippur háború során Izrael vs Egyiptom, Szíria harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Jom Kippur háború során Izrael vs Egyiptom, Szíria harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1471,7 +1604,8 @@ HABORU_QUESTIONS_ALL = [
             "2032-2032",
             "2082-2082",
         ],
-                "explanation": "A Falkland-háború 1982 között zajlott.",
+                "correct": 0,
+        "explanation": "A Falkland-háború 1982 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1482,7 +1616,8 @@ HABORU_QUESTIONS_ALL = [
             "Argentína vs Nagy-Britannia",
             "Nagy-Britannia vs Argentína",
         ],
-                "explanation": "A Falkland-háború során Argentína vs Nagy-Britannia harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Falkland-háború során Argentína vs Nagy-Britannia harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1493,7 +1628,8 @@ HABORU_QUESTIONS_ALL = [
             "2040-2041",
             "2090-2091",
         ],
-                "explanation": "A Öbölháború 1990-1991 között zajlott.",
+                "correct": 0,
+        "explanation": "A Öbölháború 1990-1991 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1504,7 +1640,8 @@ HABORU_QUESTIONS_ALL = [
             "Irak vs ENSZ koalíció",
             "ENSZ koalíció vs Irak",
         ],
-                "explanation": "A Öbölháború során Irak vs ENSZ koalíció harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Öbölháború során Irak vs ENSZ koalíció harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1515,7 +1652,8 @@ HABORU_QUESTIONS_ALL = [
             "2041-2051",
             "2091-2101",
         ],
-                "explanation": "A Jugoszláv háborúk 1991-2001 között zajlott.",
+                "correct": 0,
+        "explanation": "A Jugoszláv háborúk 1991-2001 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1526,7 +1664,8 @@ HABORU_QUESTIONS_ALL = [
             "2051-2071",
             "2101-2121",
         ],
-                "explanation": "A Afganisztáni háború 2001-2021 között zajlott.",
+                "correct": 0,
+        "explanation": "A Afganisztáni háború 2001-2021 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1537,7 +1676,8 @@ HABORU_QUESTIONS_ALL = [
             "Egyesült Államok vs Taliban",
             "Taliban vs Egyesült Államok",
         ],
-                "explanation": "A Afganisztáni háború során Egyesült Államok vs Taliban harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Afganisztáni háború során Egyesült Államok vs Taliban harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1548,7 +1688,8 @@ HABORU_QUESTIONS_ALL = [
             "2053-2061",
             "2103-2111",
         ],
-                "explanation": "A Iraki háború 2003-2011 között zajlott.",
+                "correct": 0,
+        "explanation": "A Iraki háború 2003-2011 között zajlott.",
         "topic": "háborúk"
     },
     {
@@ -1559,7 +1700,8 @@ HABORU_QUESTIONS_ALL = [
             "Egyesült Államok vs Irak",
             "Irak vs Egyesült Államok",
         ],
-                "explanation": "A Iraki háború során Egyesült Államok vs Irak harcoltak egymással.",
+                "correct": 0,
+        "explanation": "A Iraki háború során Egyesült Államok vs Irak harcoltak egymással.",
         "topic": "háborúk"
     },
 ]
