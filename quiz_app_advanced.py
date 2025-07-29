@@ -1243,8 +1243,8 @@ def show_quiz():
         difficulty = st.session_state.mode_manager.current_difficulty
         question_type = question.get("question_type", "multiple_choice")
         
-        # Idióta szavak kérdések vagy nehéz mód: szöveges bevitel
-        if question_type == "text_input" or difficulty == DifficultyLevel.HARD:
+        # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
+        if question_type == "text_input" or (difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia"):
             # Szöveges bevitel mód
             st.markdown("### 💬 Írd be a válaszod:")
             
