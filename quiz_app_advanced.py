@@ -1088,9 +1088,14 @@ def show_quiz():
         
         # Zászló képek útvonal javítása
         if logo_path.startswith("data/flags/"):
-            # Abszolút útvonal létrehozása a jelenlegi fájlhoz képest
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            logo_path = os.path.join(current_dir, logo_path)
+            # Streamlit Cloud és lokális környezet kompatibilitás
+            # Először próbáljuk meg a jelenlegi munkakönyvtárból (Streamlit Cloud)
+            if os.path.exists(logo_path):
+                pass  # Már jó az útvonal
+            else:
+                # Ha nem található, próbáljuk meg a quiz_app_advanced.py fájl helyétől
+                current_dir = os.path.dirname(os.path.abspath(__file__))
+                logo_path = os.path.join(current_dir, logo_path)
         
         if os.path.exists(logo_path):
             st.image(logo_path, width=200)
