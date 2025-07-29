@@ -104,42 +104,42 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a görög mitológiában a bosszú istennője? (Némeszisz - aki mindenkit sújt, akit túlzott büszkeség jellemez)",
         "options": ["Athéné", "Némeszisz", "Artemisz", "Héra"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Némeszisz a görög mitológiában a bosszú istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában a halál megszemélyesítője? (Thanatosz - az alvilág egyik istene)",
         "options": ["Hadész", "Kharón", "Thanatosz", "Orpheusz"],
-                "correct": 0,
+                "correct": 2,
         "explanation": "Thanatosz a görög mitológiában a halál megszemélyesítője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában az ifjúság istennője? (Hébé - Zeus és Héra lánya, az istenek pohárnoka)",
         "options": ["Artemisz", "Hébé", "Irisz", "Hesztia"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Hébé a görög mitológiában az ifjúság istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában a szivárvány istennője? (Irisz - Héra szolgálatában áll, az istenek hírnöke)",
         "options": ["Artemisz", "Hébé", "Irisz", "Hesztia"],
-                "correct": 0,
+                "correct": 2,
         "explanation": "Irisz a görög mitológiában a szivárvány istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában az otthon és tűzhely istennője? (Hesztia - a család és otthon védőistennője)",
         "options": ["Héra", "Hesztia", "Démétér", "Hébé"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Hesztia a görög mitológiában az otthon és tűzhely istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában a természet és pásztorok istene? (Pán - aki kecskelábú és kecskeszarvú)",
         "options": ["Hermész", "Apollón", "Pán", "Dionüszosz"],
-                "correct": 0,
+                "correct": 2,
         "explanation": "Pán a görög mitológiában a természet és pásztorok istene.",
         "topic": "mitológia"
     },
@@ -154,49 +154,49 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki Akhilleusz anyja? (Thetisz - tengeri istennő, aki fiát a Stüx folyóba mártotta, hogy halhatatlanná tegye)",
         "options": ["Héra", "Aphrodité", "Thetisz", "Artemisz"],
-                "correct": 0,
+                "correct": 2,
         "explanation": "Thetisz tengeri istennő Akhilleusz anyja.",
         "topic": "mitológia"
     },
     {
         "question": "Ki az alvilág révésze? (Kharón - aki a halottak lelkét viszi át a Stüx folyón, pénzért)",
         "options": ["Hadész", "Orpheusz", "Hermész", "Kharón"],
-                "correct": 0,
+                "correct": 3,
         "explanation": "Kharón az alvilág révésze, aki a halottak lelkét viszi át a Stüx folyón.",
         "topic": "mitológia"
     },
     {
         "question": "Mi okozta a trójai háborút? (Aphrodité aranyalmája - amit Párisznak adott, hogy a legszebb nőt megkapja)",
         "options": ["Héra bosszúja", "Zeus haragja", "Athéné bosszúja", "Aphrodité aranyalmája"],
-                "correct": 0,
+                "correct": 3,
         "explanation": "Aphrodité aranyalmája okozta a trójai háborút.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában a szépség megtestesítője? (Adonisz - kivételes szépségű ifjú, akit Aphrodité és Perszephoné is szeretett)",
         "options": ["Apollón", "Adonisz", "Narkisszosz", "Orpheusz"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Adonisz a görög mitológiában a szépség megtestesítője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a görög mitológiában a legendás zenész és költő? (Orpheusz - aki lement az alvilágba, hogy visszahozza feleségét)",
         "options": ["Apollón", "Orpheusz", "Hermész", "Dionüszosz"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Orpheusz a görög mitológiában a legendás zenész és költő.",
         "topic": "mitológia"
     },
     {
         "question": "Ki Akhilleusz apja? (Péleusz - halandó hős, aki Thetisz tengeri istennőt vette feleségül)",
         "options": ["Zeusz", "Poszeidón", "Péleusz", "Hermész"],
-                "correct": 0,
+                "correct": 2,
         "explanation": "Péleusz Akhilleusz apja, halandó hős.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a trójai háború kirobbantója? (Párisz - trójai királyfi, aki választotta Aphroditét a szépségversenyen)",
         "options": ["Hektór", "Párisz", "Agamemnón", "Odüsszeusz"],
-                "correct": 0,
+                "correct": 1,
         "explanation": "Párisz a trójai háború kirobbantója.",
         "topic": "mitológia"
     },
