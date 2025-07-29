@@ -1350,14 +1350,14 @@ def show_quiz():
                 line-height: 1.5 !important;
             }
             
-            /* Válasz visszajelzés stílusok */
-            .correct-answer {
+            /* Dinamikus gomb stílusok */
+            .stButton > button[data-selected="correct"] {
                 background-color: #28a745 !important;
                 color: white !important;
                 border: 3px solid #28a745 !important;
             }
             
-            .incorrect-answer {
+            .stButton > button[data-selected="incorrect"] {
                 background-color: #dc3545 !important;
                 color: white !important;
                 border: 3px solid #dc3545 !important;
@@ -1372,6 +1372,36 @@ def show_quiz():
             show_answer_feedback = False
             if answer_state and (time.time() - answer_state['timestamp']) < 2.0:
                 show_answer_feedback = True
+                
+            # JavaScript a gombok stílusának módosításához
+            if show_answer_feedback:
+                st.markdown(f"""
+                <script>
+                setTimeout(function() {{
+                    // Kiválasztott válasz stílusának beállítása
+                    var selectedButton = document.querySelector('[data-testid="stButton"] button[data-selected-index="{answer_state['selected_index']}"]');
+                    if (selectedButton) {{
+                        if ({str(answer_state['is_correct']).lower()}) {{
+                            selectedButton.style.backgroundColor = '#28a745';
+                            selectedButton.style.color = 'white';
+                            selectedButton.style.border = '3px solid #28a745';
+                        }} else {{
+                            selectedButton.style.backgroundColor = '#dc3545';
+                            selectedButton.style.color = 'white';
+                            selectedButton.style.border = '3px solid #dc3545';
+                        }}
+                    }}
+                    
+                    // Helyes válasz stílusának beállítása
+                    var correctButton = document.querySelector('[data-testid="stButton"] button[data-selected-index="{answer_state['correct_index']}"]');
+                    if (correctButton) {{
+                        correctButton.style.backgroundColor = '#28a745';
+                        correctButton.style.color = 'white';
+                        correctButton.style.border = '3px solid #28a745';
+                    }}
+                }}, 100);
+                </script>
+                """, unsafe_allow_html=True)
             
             # Válaszlehetőségek elrendezése
             col1, col2 = st.columns(2)
@@ -1381,16 +1411,16 @@ def show_quiz():
                 for i in range(0, min(2, len(options))):
                     option = options[i]
                     
-                    # CSS osztály meghatározása válasz állapot alapján
-                    button_class = ""
+                    # Inline stílus meghatározása válasz állapot alapján
+                    button_style = ""
                     if show_answer_feedback:
                         if i == answer_state['selected_index']:
                             if answer_state['is_correct']:
-                                button_class = "correct-answer"
+                                button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                             else:
-                                button_class = "incorrect-answer"
+                                button_style = "background-color: #dc3545; color: white; border: 3px solid #dc3545;"
                         elif i == answer_state['correct_index']:
-                            button_class = "correct-answer"
+                            button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
@@ -1402,16 +1432,16 @@ def show_quiz():
                 for i in range(2, min(4, len(options))):
                     option = options[i]
                     
-                    # CSS osztály meghatározása válasz állapot alapján
-                    button_class = ""
+                    # Inline stílus meghatározása válasz állapot alapján
+                    button_style = ""
                     if show_answer_feedback:
                         if i == answer_state['selected_index']:
                             if answer_state['is_correct']:
-                                button_class = "correct-answer"
+                                button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                             else:
-                                button_class = "incorrect-answer"
+                                button_style = "background-color: #dc3545; color: white; border: 3px solid #dc3545;"
                         elif i == answer_state['correct_index']:
-                            button_class = "correct-answer"
+                            button_style = "background-color: #28a745; color: white; border: 3px solid #28a745;"
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
