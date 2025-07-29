@@ -1359,8 +1359,27 @@ def show_quiz():
                 min-height: 60px !important;
                 line-height: 1.5 !important;
             }
+            
+            /* Válasz visszajelzés stílusok */
+            .correct-answer {
+                background-color: #28a745 !important;
+                color: white !important;
+                border: 3px solid #28a745 !important;
+            }
+            
+            .incorrect-answer {
+                background-color: #dc3545 !important;
+                color: white !important;
+                border: 3px solid #dc3545 !important;
+            }
             </style>
             """, unsafe_allow_html=True)
+            
+            # Válasz állapot ellenőrzése
+            answer_state = getattr(st.session_state, 'answer_state', None)
+            show_answer_feedback = False
+            if answer_state and (time.time() - answer_state['timestamp']) < 2.0:
+                show_answer_feedback = True
             
             # Válaszlehetőségek elrendezése
             col1, col2 = st.columns(2)
@@ -1369,26 +1388,44 @@ def show_quiz():
             with col1:
                 for i in range(0, min(2, len(options))):
                     option = options[i]
+                    
+                    # CSS osztály meghatározása válasz állapot alapján
+                    button_class = ""
+                    if show_answer_feedback:
+                        if i == answer_state['selected_index']:
+                            if answer_state['is_correct']:
+                                button_class = "correct-answer"
+                            else:
+                                button_class = "incorrect-answer"
+                        elif i == answer_state['correct_index']:
+                            button_class = "correct-answer"
+                    
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
                         if selected_answer is None:
                             handle_answer(i, new_correct_index, options, question)
-                            if st.session_state.quiz_state != 'results':
-                                st.session_state.current_question += 1
-                                st.session_state.question_start_time = datetime.now()
-                                st.rerun()
+                            st.rerun()
             
             with col2:
                 for i in range(2, min(4, len(options))):
                     option = options[i]
+                    
+                    # CSS osztály meghatározása válasz állapot alapján
+                    button_class = ""
+                    if show_answer_feedback:
+                        if i == answer_state['selected_index']:
+                            if answer_state['is_correct']:
+                                button_class = "correct-answer"
+                            else:
+                                button_class = "incorrect-answer"
+                        elif i == answer_state['correct_index']:
+                            button_class = "correct-answer"
+                    
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
                         if selected_answer is None:
                             handle_answer(i, new_correct_index, options, question)
-                            if st.session_state.quiz_state != 'results':
-                                st.session_state.current_question += 1
-                                st.session_state.question_start_time = datetime.now()
-                                st.rerun()
+                            st.rerun()
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -1402,16 +1439,20 @@ def show_quiz():
                 </div>
                 """, unsafe_allow_html=True)
             
+            # Automatikus következő kérdésre lépés 2 másodperc után
+            if show_answer_feedback:
+                if st.session_state.quiz_state != 'results':
+                    st.session_state.current_question += 1
+                    st.session_state.question_start_time = datetime.now()
+                    st.session_state.answer_state = None
+                    st.rerun()
+            
             # Automatikus válasz beküldés (opcionális)
             if st.button("😊 Jó napom van!", key=f"auto_answer_{st.session_state.current_question}", use_container_width=True):
                 # Véletlenszerű válasz kiválasztása
                 random_answer = random.randint(0, len(options) - 1)
                 handle_answer(random_answer, new_correct_index, options, question)
-                # Automatikusan folytatjuk a következő kérdéssel
-                if st.session_state.quiz_state != 'results':
-                    st.session_state.current_question += 1
-                    st.session_state.question_start_time = datetime.now()
-                    st.rerun()
+                st.rerun()
     
     # Kvíz újraindítás gomb minden kérdéshez (a válaszlehetőségek után)
     st.markdown("---")
@@ -1452,6 +1493,14 @@ def handle_answer(selected_index, correct_index, options, question):
         'is_correct': is_correct,
         'time_taken': (datetime.now() - st.session_state.question_start_time).total_seconds()
     })
+    
+    # Válasz állapot beállítása 2 másodpercre
+    st.session_state.answer_state = {
+        'selected_index': selected_index,
+        'correct_index': correct_index,
+        'is_correct': is_correct,
+        'timestamp': time.time()
+    }
     
     # Ne hívjuk meg a st.rerun()-t itt, hagyjuk, hogy a show_quiz() kezelje a következő kérdést
 
