@@ -1372,6 +1372,12 @@ def show_quiz():
                 color: white !important;
                 border: 3px solid #dc3545 !important;
             }
+            
+            /* Gombok mindig kattinthatóak */
+            .stButton > button:disabled {
+                opacity: 1 !important;
+                cursor: pointer !important;
+            }
             </style>
             """, unsafe_allow_html=True)
             
@@ -1402,9 +1408,8 @@ def show_quiz():
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
-                        if selected_answer is None:
-                            handle_answer(i, new_correct_index, options, question)
-                            st.rerun()
+                        handle_answer(i, new_correct_index, options, question)
+                        st.rerun()
             
             with col2:
                 for i in range(2, min(4, len(options))):
@@ -1423,9 +1428,8 @@ def show_quiz():
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
-                        if selected_answer is None:
-                            handle_answer(i, new_correct_index, options, question)
-                            st.rerun()
+                        handle_answer(i, new_correct_index, options, question)
+                        st.rerun()
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -1446,6 +1450,9 @@ def show_quiz():
                     st.session_state.question_start_time = datetime.now()
                     st.session_state.answer_state = None
                     st.rerun()
+                else:
+                    # Ha ez az utolsó kérdés, akkor töröljük a válasz állapotot
+                    st.session_state.answer_state = None
             
             # Automatikus válasz beküldés (opcionális)
             if st.button("😊 Jó napom van!", key=f"auto_answer_{st.session_state.current_question}", use_container_width=True):
