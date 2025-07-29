@@ -1098,7 +1098,10 @@ def show_quiz():
                 logo_path = os.path.join(current_dir, logo_path)
         
         if os.path.exists(logo_path):
-            st.image(logo_path, width=200)
+            # Logó középre pozícionálása
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.image(logo_path, width=200)
         else:
             st.warning(f"Logó fájl nem található: {logo_path}")
     
