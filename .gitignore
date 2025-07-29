@@ -1,0 +1,182 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Streamlit
+.streamlit/
+
+# Audio backup folders (csak ezeket zárjuk ki)
+audio_files_backup/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Test files
+test_*.py
+*_test.py
+debug_*.py
+
+# Old scripts
+download_*.py
+extract_*.py
+create_*.py
+fix_*.py
+update_*.py
+rename_*.py
+reorganize_*.py
+verify_*.py
+check_*.py
+find_*.py
+search_*.py
+expand_*.py
+real_*.py
+manual_*.py
+working_*.py
+simple_*.py
+complete_*.py
+full_*.py
+demo.py
+s
+
+# Documentation files
+*.md
+*.bat
+*.sh
+*.json
+*.yml
+*.yaml
+
+# PDF files
+*.pdf
+
+# Old topic files
+topics/*_backup.py
+topics/*_old.py
+topics/*_manual.py
+topics/*_results.py
+topics/*_links.py
+topics/*_config.py
+
+# Output folders
+output/
+uploads/
+
+# Old mapping files
+*_mapping_*.py
+*_mapping_backup.py
+*_mapping_old.py
