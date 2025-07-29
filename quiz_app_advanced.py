@@ -497,6 +497,34 @@ def start_quiz():
 
 def main():
     """Fő alkalmazás"""
+    # Session state inicializálása
+    if 'quiz_state' not in st.session_state:
+        st.session_state.quiz_state = 'selection'
+    if 'selected_topics' not in st.session_state:
+        st.session_state.selected_topics = []
+    if 'current_question' not in st.session_state:
+        st.session_state.current_question = 0
+    if 'score' not in st.session_state:
+        st.session_state.score = 0
+    if 'answers' not in st.session_state:
+        st.session_state.answers = []
+    if 'quiz_questions' not in st.session_state:
+        st.session_state.quiz_questions = []
+    if 'quiz_start_time' not in st.session_state:
+        st.session_state.quiz_start_time = None
+    if 'question_answers' not in st.session_state:
+        st.session_state.question_answers = {}
+    if 'question_options' not in st.session_state:
+        st.session_state.question_options = {}
+    if 'mode_manager' not in st.session_state:
+        st.session_state.mode_manager = QuizModeManager()
+    if 'question_start_time' not in st.session_state:
+        st.session_state.question_start_time = None
+    if 'show_image_modal' not in st.session_state:
+        st.session_state.show_image_modal = False
+    if 'image_modal_states' not in st.session_state:
+        st.session_state.image_modal_states = {}
+    
     st.markdown('<h1 class="main-header">🎯 Quiz Alkalmazás - Fejlett Verzió</h1>', unsafe_allow_html=True)
     
     # Sidebar navigáció
