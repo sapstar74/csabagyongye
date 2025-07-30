@@ -462,6 +462,31 @@ FESTMENY_QUESTIONS = [
         'image_file': 'wheat-field-with-cypresses---vincent-van-gogh-1899.jpg',
         'topic': 'festmények'
     },
+    # További új festmény kérdések
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Paul Gauguin', 'Vincent van Gogh', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
+        'correct': 0,
+        'explanation': 'Two Tahitian Women - Paul Gauguin (1899)',
+        'image_file': 'two-tahitian-women---paul-gaugin-1899.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Paul Klee', 'Wassily Kandinsky', 'Franz Marc', 'August Macke'],
+        'correct': 0,
+        'explanation': 'Villa R - Paul Klee (1919)',
+        'image_file': 'villa-r---paul-klee-1919.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Amedeo Modigliani', 'Pablo Picasso', 'Henri Matisse', 'Georges Braque'],
+        'correct': 0,
+        'explanation': 'Woman with Black Cravat - Amedeo Modigliani (1917)',
+        'image_file': 'woman-with-black-cravat---amedeo-modigliani-1917.jpg',
+        'topic': 'festmények'
+    },
 ]
 
 if __name__ == "__main__":
