@@ -487,6 +487,127 @@ FESTMENY_QUESTIONS = [
         'image_file': 'woman-with-black-cravat---amedeo-modigliani-1917.jpg',
         'topic': 'festmények'
     },
+    # További hiányzó festmény kérdések
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'],
+        'correct': 0,
+        'explanation': 'Low Tide at Pourville, near Dieppe - Claude Monet (1882)',
+        'image_file': 'Claude_Monet-Low_Tide_at_Pourville__near_Dieppe__1882.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Georges Seurat', 'Paul Signac', 'Camille Pissarro', 'Henri-Edmond Cross'],
+        'correct': 0,
+        'explanation': 'A Sunday on La Grande Jatte - Georges Seurat (1884)',
+        'image_file': 'a-sunday-on-la-grande-jatte---georges-seurat-1884.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Henri de Toulouse-Lautrec', 'Edgar Degas', 'Pierre-Auguste Renoir', 'Édouard Manet'],
+        'correct': 0,
+        'explanation': 'At the Moulin Rouge - Henri de Toulouse-Lautrec (1892)',
+        'image_file': 'at-the-moulin-rouge---henri-de-toulouselautrec-1892.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
+        'correct': 0,
+        'explanation': 'Gabrielle with Jewellery - Pierre-Auguste Renoir (1910)',
+        'image_file': 'gabrielle-with-jewellery---pierreauguste-renoir-1910.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Pablo Picasso', 'Georges Braque', 'Juan Gris', 'Fernand Léger'],
+        'correct': 0,
+        'explanation': 'Guernica - Pablo Picasso (1937) - Alternatív verzió',
+        'image_file': 'guernica-pablo-picasso-1937.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Wassily Kandinsky', 'Franz Marc', 'August Macke', 'Paul Klee'],
+        'correct': 0,
+        'explanation': 'Improvisation 26 - Wassily Kandinsky (1912)',
+        'image_file': 'improvisation-26---wassily-kandinsky-1912.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Edgar Degas', 'Pierre-Auguste Renoir', 'Claude Monet', 'Édouard Manet'],
+        'correct': 0,
+        'explanation': 'La Classe de Danse - Edgar Degas (1871)',
+        'image_file': 'la-classe-de-danse---edgar-degas-1871.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
+        'correct': 0,
+        'explanation': 'La Liseuse - Pierre-Auguste Renoir (1874)',
+        'image_file': 'la-liseuse---pierreauguste-renoir-1874.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Ferdinand Hodler', 'Claude Monet', 'Camille Pissarro', 'Alfred Sisley'],
+        'correct': 0,
+        'explanation': 'Lake Geneva as Seen from Chexbres - Ferdinand Hodler (1905)',
+        'image_file': 'lake-geneva-as-seen-from-chexbres---ferdinand-hodler-1905.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['August Macke', 'Franz Marc', 'Wassily Kandinsky', 'Paul Klee'],
+        'correct': 0,
+        'explanation': 'People by a Blue Lake - August Macke (1913)',
+        'image_file': 'people-by-a-blue-lake---august-macke-1913.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Alexej von Jawlensky', 'Wassily Kandinsky', 'Franz Marc', 'Paul Klee'],
+        'correct': 0,
+        'explanation': 'Summer Evening in Murnau - Alexej von Jawlensky (1908)',
+        'image_file': 'summer-evening-in-murnau---alexej-von-jawlensky-1908.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Edvard Munch', 'Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec'],
+        'correct': 0,
+        'explanation': 'The Girls on the Bridge - Edvard Munch (1905)',
+        'image_file': 'the-girls-on-the-bridge---edward-munch-1905.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
+        'correct': 0,
+        'explanation': 'The Man with the Golden Helmet - Rembrandt (1650)',
+        'image_file': 'the-man-with-the-golden-helmet---rembrandt-1650.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Edward Hicks', 'Thomas Cole', 'Asher Brown Durand', 'Frederic Edwin Church'],
+        'correct': 0,
+        'explanation': 'The Peaceable Kingdom - Edward Hicks (1833)',
+        'image_file': 'the-peaceable-kingdom---edward-hicks-1833.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Pieter Bruegel the Elder', 'Jan Brueghel the Elder', 'Hieronymus Bosch', 'Jan van Eyck'],
+        'correct': 0,
+        'explanation': 'The Peasant Wedding - Pieter Bruegel the Elder (1568)',
+        'image_file': 'the-peasant-wedding---pieter-bruegel-the-elder-1568.jpg',
+        'topic': 'festmények'
+    },
 ]
 
 if __name__ == "__main__":
