@@ -1556,7 +1556,15 @@ def show_results():
         "duration_seconds": duration_seconds,
         "question_details": st.session_state.answers
     }
-    st.session_state.analytics.record_quiz_session(quiz_data)
+    
+    # Analytics objektum ellenőrzése és inicializálása ha szükséges
+    if 'analytics' not in st.session_state:
+        st.session_state.analytics = QuizAnalytics()
+    
+    try:
+        st.session_state.analytics.record_quiz_session(quiz_data)
+    except Exception as e:
+        st.warning(f"Analytics rögzítés sikertelen: {e}")
     
     # Eredmények megjelenítése - jobb formázással
     col1, col2, col3, col4 = st.columns(4)
