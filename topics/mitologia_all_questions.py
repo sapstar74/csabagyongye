@@ -613,7 +613,7 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a japán mitológiában a nap istennője? (Amateraszu - a nap istennője, a japán császár család ősanyja)",
         "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 1,
+                "correct": 0,
         "explanation": "Amateraszu a japán mitológiában a nap istennője.",
         "topic": "mitológia"
     },
@@ -627,21 +627,21 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a japán mitológiában a hold istene? (Cukujomi - a hold istene, Amateraszu és Suszanoo testvére)",
         "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Cukujomi a japán mitológiában a hold istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a rizs istennője? (Inari - a rizs, termékenység és rókák istennője)",
         "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 1,
+                "correct": 3,
         "explanation": "Inari a japán mitológiában a rizs istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a harcos isten? (Hacsiman - a harcosok és íjászat istene)",
         "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 2,
+                "correct": 0,
         "explanation": "Hacsiman a japán mitológiában a harcos isten.",
         "topic": "mitológia"
     },
@@ -655,42 +655,42 @@ MITOLOGIA_QUESTIONS_ALL = [
     {
         "question": "Ki a japán mitológiában a háború istene? (Bisamon - a háború és védelmező isten)",
         "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 3,
+                "correct": 2,
         "explanation": "Bisamon a japán mitológiában a háború istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a gazdagság istene? (Daiszoku - a gazdagság és termékenység istene)",
         "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 1,
+                "correct": 3,
         "explanation": "Daiszoku a japán mitológiában a gazdagság istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a halál istennője? (Izanami - a halál és föld alatti világ istennője)",
         "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 2,
+                "correct": 0,
         "explanation": "Izanami a japán mitológiában a halál istennője.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a teremtés istene? (Izanagi - aki Izanamival együtt teremtette a japán szigeteket)",
         "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 3,
+                "correct": 1,
         "explanation": "Izanagi a japán mitológiában a teremtés istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a tűz istene? (Kagucucsi - a tűz istene, akinek születése Izanami halálát okozta)",
         "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 1,
+                "correct": 2,
         "explanation": "Kagucucsi a japán mitológiában a tűz istene.",
         "topic": "mitológia"
     },
     {
         "question": "Ki a japán mitológiában a halhatatlanság istene? (Amida - a halhatatlanság és megváltás istene)",
         "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 1,
+                "correct": 3,
         "explanation": "Amida a japán mitológiában a halhatatlanság istene.",
         "topic": "mitológia"
     }
