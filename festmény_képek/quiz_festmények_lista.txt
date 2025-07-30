@@ -1,0 +1,188 @@
+=== FESTMÉNY KÉPEK A QUIZ ALKALMAZÁSBAN ===
+Összesen: 60 kérdés
+
+1. Mona Lisa - Leonardo da Vinci (1503-1519)
+   Fájl: mona-lisa---Leonardo-Da-Vinci-1519.jpg
+
+2. The Starry Night - Vincent van Gogh (1889)
+   Fájl: the-starry-night---vincent-van-gogh-1889.jpg
+
+3. The Scream - Edvard Munch (1893)
+   Fájl: the-scream---edvard-munch-1893.jpg
+
+4. The Persistence of Memory - Salvador Dalí (1931)
+   Fájl: the-persistence-of-memory---salvador-dal-1931.jpg
+
+5. Girl with a Pearl Earring - Johannes Vermeer (1665)
+   Fájl: girl-with-a-pearl-earring---johannes-vermeer-1665.jpg
+
+6. The Birth of Venus - Sandro Botticelli (1485)
+   Fájl: the-birth-of-venus---sandro-botticelli-1485.jpg
+
+7. Guernica - Pablo Picasso (1937)
+   Fájl: guernica---pablo-picasso-1937.jpg
+
+8. The Night Watch - Rembrandt (1642)
+   Fájl: the-night-watch---rembrandt-1642.jpg
+
+9. Water Lilies - Claude Monet (1916)
+   Fájl: water-lilies---claude-monet-1916.jpg
+
+10. The Kiss - Gustav Klimt (1908)
+    Fájl: the-kiss---gustav-klimt-1908.jpg
+
+11. Self Portrait with Bandaged Ear - Vincent van Gogh (1889)
+    Fájl: self-portrait-with-bandaged-ear---vincent-van-gogh-1889.jpg
+
+12. The Last Supper - Leonardo da Vinci (1495-1498)
+    Fájl: the-last-supper---Leonardo-da-Vinci-1495.jpg
+
+13. The Garden of Earthly Delights - Hieronymus Bosch (1515)
+    Fájl: the-garden-of-earthly-delights---hierno1515.jpg
+
+14. Les Demoiselles d'Avignon - Pablo Picasso (1907)
+    Fájl: les-demoiselles-davignon---pablo-picasso-1907.jpg
+
+15. The Arnolfini Portrait - Jan van Eyck (1434)
+    Fájl: the-arnolfini-portrait---jan-van-eyck-1434.jpg
+
+16. The Creation of Adam - Michelangelo (1512)
+    Fájl: the-creation-of-adam---michelangelo-1512.jpg
+
+17. The School of Athens - Raphael (1511)
+    Fájl: the-school-of-athens---raphael-1511.jpg
+
+18. Impression Sunrise - Claude Monet (1872)
+    Fájl: impression-sunrise---claude-monet-1872.jpg
+
+19. The Son of Man - René Magritte (1964)
+    Fájl: the-son-of-man---ren-magritte-1964.jpg
+
+20. American Gothic - Grant Wood (1930)
+    Fájl: american-gothic---grant-wood-1930.jpg
+
+21. The Great Wave off Kanagawa - Katsushika Hokusai (1831)
+    Fájl: the-great-wave-off-kanagawa---katsushika-hokusai-1831.jpg
+
+22. The Thinker - Auguste Rodin (1904)
+    Fájl: the-thinker---auguste-rodin-1904.jpg
+
+23. The Dance - Henri Matisse (1910)
+    Fájl: the-dance---henri-matisse-1910.jpg
+
+24. Composition VII - Wassily Kandinsky (1913)
+    Fájl: composition-vii---wassily-kandinsky-1913.jpg
+
+25. The Two Fridas - Frida Kahlo (1939)
+    Fájl: the-two-fridas---frida-kahlo-1939.jpg
+
+26. Campbell's Soup Cans - Andy Warhol (1962)
+    Fájl: campbells-soup-cans---andy-warhol-1962.jpg
+
+27. Number 1 (Lavender Mist) - Jackson Pollock (1950)
+    Fájl: number-1-lavender-mist---jackson-pollock-1950.jpg
+
+28. The Card Players - Paul Cézanne (1892)
+    Fájl: the-card-players---paul-czanne-1892.jpg
+
+29. The Luncheon on the Grass - Édouard Manet (1863)
+    Fájl: the-luncheon-on-the-grass---douard-manet-1863.jpg
+
+30. The Hay Wain - John Constable (1821)
+    Fájl: the-hay-wain---john-constable-1821.jpg
+
+31. Antoine Laurent Lavoisier and Marie Anne Lavoisier - Jacques-Louis David
+    Fájl: antoine-laurent-lavoisier-and-marie-anne-lavoisier---jacques-louis-david.jpg
+
+32. Banquet of the Officers of the St George - Frans Hals (1616)
+    Fájl: banquet-of-the-officers-of-the-st-george---frans-hals-1616.jpg
+
+33. Bedroom in Arles - Vincent van Gogh (1889)
+    Fájl: bedroom-in-arles---vincent-van-gogh-1889.jpg
+
+34. Charles I at the Hunt - Anthony van Dyck (1635)
+    Fájl: charles-i-at-the-hunt---anthony-van-dyck-1635.jpg
+
+35. Cortazzo - Oreste Cortazzo
+    Fájl: cortazzo---oreste-cortazzo.jpg
+
+36. El Expolio - El Greco (1577)
+    Fájl: el-expolio---el-greco-1577.jpg
+
+37. El Tres de Mayo - Francisco Goya (1808)
+    Fájl: el-tres-de-mayothe---francisco-goya-1808.jpg
+
+38. Feast in the House of Levi - Paolo Veronese (1573)
+    Fájl: feast-in-the-house-of-levi---paolo-veronese-1573.jpg
+
+39. Finding of the Body of St Mark - Jacopo Tintoretto (1562)
+    Fájl: finding-of-the-body-of-st-markl---jacopo-tintoretto-1562.jpg
+
+40. French Portrait de Madame Duvaucey - Jean-Auguste-Dominique Ingres (1807)
+    Fájl: french-portrait-de-madame-duvaucey---jean-auguste-dominique-ingres-1807.jpg
+
+41. Le Pont d'Argenteuil - Claude Monet
+    Fájl: le-pont-dargenteuil---claude-monet.jpg
+
+42. Lotus Serenity - Sailesh Chatterjee
+    Fájl: lotus-serenity----sailesh-chatterjee.jpg
+
+43. Michelangelo Buonarroti - Daniel Volterra
+    Fájl: michelangelo-buonarroti---daniel-volterra.jpg
+
+44. Paradise with the Creation and Fall of Man - Jan Brueghel the Elder (1615)
+    Fájl: paradise-with-the-creation-and-fall-of-man---jan-brueghel-the-elder-1615.jpg
+
+45. Portrait of Charles V Seated - Titian
+    Fájl: portrait-of-charles-v-seated---titian.jpg
+
+46. Portraits of the Duke and Duchess of Urbino - Piero della Francesca (1473)
+    Fájl: portraits-of-the-duke-and-duchess-of-urbino-federico-da-montefeltro-and-battista-sforza---piero-della-rancesca-1473.jpg
+
+47. Seaport with the Embarkation of the Queen of Sheba - Claude Lorrain (1648)
+    Fájl: seaport-with-the-embarkation-of-the-queen-of-sheba---claude-lorrain-1648.jpg
+
+48. Self Portrait - Rembrandt (1659)
+    Fájl: selfportrait---rembrandt-1659.jpg
+
+49. Sorrow - Vincent van Gogh (1882)
+    Fájl: sorrow---vincent-van-gogh-1882.jpg
+
+50. The Art of Painting - Johannes Vermeer (1666)
+    Fájl: the-art-of-painting---johannes-vermeer-1666.jpg
+
+51. The Calling of Saint Matthew - Caravaggio (1599)
+    Fájl: the-calling-of-saint-matthew---caravaggio-1599.jpg
+
+52. The Crucifixion - Jan van Eyck
+    Fájl: the-crucifiction ---jan-van-eyck.jpg
+
+53. The Holy Family - Rembrandt (2023)
+    Fájl: the-holy-family-rembrandt---goldenartists-2023.jpg
+
+54. The Lady with an Ermine - Leonardo da Vinci (1490)
+    Fájl: the-lady-with-an-ermine-portrait-of-cecilia-gallerani---leonardo-da-vinci-1490.jpg
+
+55. The Oath of the Horatii - Jacques-Louis David (1784)
+    Fájl: the-oath-of-the-horatii---jacqueslouis-david-1784.jpg
+
+56. The Rape of the Daughters of Leucippus - Peter Paul Rubens (1618)
+    Fájl: the-rape-of-the-daughters-of-leucippus---peter-paul-rubens-1618.jpg
+
+57. Wheat Field with Cypresses - Vincent van Gogh (1899)
+    Fájl: wheat-field-with-cypresses---vincent-van-gogh-1899.jpg
+
+58. Two Tahitian Women - Paul Gauguin (1899)
+    Fájl: two-tahitian-women---paul-gaugin-1899.jpg
+
+59. Villa R - Paul Klee (1919)
+    Fájl: villa-r---paul-klee-1919.jpg
+
+60. Woman with Black Cravat - Amedeo Modigliani (1917)
+    Fájl: woman-with-black-cravat---amedeo-modigliani-1917.jpg
+
+=== ÖSSZESÍTÉS ===
+- Összes kérdés: 60
+- Összes képfájl: 60
+- Mappában lévő képek: 77
+- Használaton kívüli képek: 17 
