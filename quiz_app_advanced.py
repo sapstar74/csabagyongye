@@ -1420,6 +1420,9 @@ def show_quiz():
                 # Véletlenszerű válasz kiválasztása
                 random_answer = random.randint(0, len(options) - 1)
                 handle_answer(random_answer, new_correct_index, options, question)
+                if st.session_state.quiz_state != 'results':
+                    st.session_state.current_question += 1
+                    st.session_state.question_start_time = datetime.now()
                 st.rerun()
     
     # Kvíz újraindítás gomb minden kérdéshez (a válaszlehetőségek után)
