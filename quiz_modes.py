@@ -205,7 +205,6 @@ class QuizModeUI:
         
         # Visszaadjuk a kiválasztott értékeket
         return selected_mode, selected_difficulty
-        return selected_mode, selected_difficulty
     
     @staticmethod
     def show_mode_info(mode_manager: QuizModeManager):

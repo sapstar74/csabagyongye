@@ -31,6 +31,8 @@ class QuizAnalytics:
             "quiz_sessions": [],
             "topic_performance": {},
             "user_progress": {},
+            "player_performance": {},
+            "player_topic_performance": {},
             "difficulty_analysis": {},
             "time_analysis": {},
             "total_quizzes": 0,
@@ -47,6 +49,7 @@ class QuizAnalytics:
         """Quiz session rögzítése"""
         session = {
             "timestamp": datetime.now().isoformat(),
+            "player": quiz_data.get("player", "Vendég"),
             "topics": quiz_data.get("topics", []),
             "total_questions": quiz_data.get("total_questions", 0),
             "correct_answers": quiz_data.get("correct_answers", 0),
@@ -84,6 +87,41 @@ class QuizAnalytics:
                 "worst_score": min(scores)
             }
             for topic, scores in topic_performance.items()
+        }
+        
+        # Játékos teljesítmény
+        player_performance = defaultdict(list)
+        player_topic_performance = defaultdict(lambda: defaultdict(list))
+        
+        for session in sessions:
+            player = session.get("player", "Vendég")
+            player_performance[player].append(session["score_percentage"])
+            
+            for topic in session["topics"]:
+                player_topic_performance[player][topic].append(session["score_percentage"])
+        
+        self.analytics_data["player_performance"] = {
+            player: {
+                "average_score": sum(scores) / len(scores),
+                "total_quizzes": len(scores),
+                "best_score": max(scores),
+                "worst_score": min(scores),
+                "total_questions": sum(s["total_questions"] for s in sessions if s.get("player") == player)
+            }
+            for player, scores in player_performance.items()
+        }
+        
+        self.analytics_data["player_topic_performance"] = {
+            player: {
+                topic: {
+                    "average_score": sum(scores) / len(scores),
+                    "total_quizzes": len(scores),
+                    "best_score": max(scores),
+                    "worst_score": min(scores)
+                }
+                for topic, scores in topics.items()
+            }
+            for player, topics in player_topic_performance.items()
         }
         
         # Idő elemzés
@@ -163,6 +201,28 @@ class QuizAnalytics:
         """Idő szerinti lebontás"""
         return self.analytics_data["time_analysis"]
     
+    def get_player_performance(self):
+        """Játékos teljesítmény adatok"""
+        return self.analytics_data.get("player_performance", {})
+    
+    def get_player_topic_performance(self):
+        """Játékos témakör teljesítmény adatok"""
+        return self.analytics_data.get("player_topic_performance", {})
+    
+    def get_best_player(self):
+        """Legjobb játékos"""
+        player_performance = self.get_player_performance()
+        if not player_performance:
+            return None
+        
+        best_player = max(player_performance.items(), key=lambda x: x[1]["average_score"])
+        return {
+            "player": best_player[0],
+            "average_score": best_player[1]["average_score"],
+            "total_quizzes": best_player[1]["total_quizzes"],
+            "total_questions": best_player[1]["total_questions"]
+        }
+    
     def get_weekly_progress(self, weeks=4):
         """Heti progress"""
         sessions = self.analytics_data["quiz_sessions"]
@@ -191,6 +251,14 @@ def show_analytics_dashboard():
     analytics = QuizAnalytics()
     
     st.markdown("## 📊 Quiz Analytics Dashboard")
+    
+    # Játékos szűrés
+    player_performance = analytics.get_player_performance()
+    if player_performance:
+        players = ["Összes játékos"] + list(player_performance.keys())
+        selected_filter_player = st.selectbox("Szűrés játékos szerint:", players, key="analytics_filter_player")
+    else:
+        selected_filter_player = "Összes játékos"
     
     # Összefoglaló statisztikák
     summary = analytics.get_performance_summary()
@@ -229,6 +297,26 @@ def show_analytics_dashboard():
             - Quizek: {summary['worst_topic']['total_quizzes']}
             """)
     
+    # Játékos teljesítmény
+    player_performance = analytics.get_player_performance()
+    if player_performance:
+        st.markdown("### 👥 Játékos Teljesítmény")
+        
+        player_data = []
+        for player, data in player_performance.items():
+            player_data.append({
+                "Játékos": player,
+                "Átlagos Pontszám": round(data["average_score"], 2),
+                "Quizek Száma": data["total_quizzes"],
+                "Kérdések Száma": data["total_questions"],
+                "Legjobb Pontszám": data["best_score"],
+                "Legrosszabb Pontszám": data["worst_score"]
+            })
+        
+        df_players = pd.DataFrame(player_data)
+        df_players = df_players.sort_values("Átlagos Pontszám", ascending=False)
+        st.dataframe(df_players, use_container_width=True)
+    
     # Témakörök lebontása
     topic_breakdown = analytics.get_topic_breakdown()
     if topic_breakdown:
@@ -245,6 +333,33 @@ def show_analytics_dashboard():
         
         df = pd.DataFrame(topic_data)
         st.dataframe(df, use_container_width=True)
+    
+    # Játékos témakör teljesítmény
+    player_topic_performance = analytics.get_player_topic_performance()
+    if player_topic_performance:
+        st.markdown("### 🎯 Játékos Témakör Teljesítmény")
+        
+        # Játékos kiválasztás
+        players = list(player_topic_performance.keys())
+        if players:
+            selected_player = st.selectbox("Válassz játékost:", players, key="analytics_player_select")
+            
+            if selected_player in player_topic_performance:
+                player_topics = player_topic_performance[selected_player]
+                
+                player_topic_data = []
+                for topic, data in player_topics.items():
+                    player_topic_data.append({
+                        "Témakör": topic,
+                        "Átlagos Pontszám": round(data["average_score"], 2),
+                        "Quizek Száma": data["total_quizzes"],
+                        "Legjobb Pontszám": data["best_score"],
+                        "Legrosszabb Pontszám": data["worst_score"]
+                    })
+                
+                df_player_topics = pd.DataFrame(player_topic_data)
+                df_player_topics = df_player_topics.sort_values("Átlagos Pontszám", ascending=False)
+                st.dataframe(df_player_topics, use_container_width=True)
     
     # Heti progress
     weekly_progress = analytics.get_weekly_progress()

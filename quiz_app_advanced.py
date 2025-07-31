@@ -545,7 +545,7 @@ def main():
     if 'other_total_questions' not in st.session_state:
         st.session_state.other_total_questions = st.session_state.get('default_other_questions', 40)
     if 'music_total_questions' not in st.session_state:
-        st.session_state.music_total_questions = st.session_state.get('default_music_questions', 20)
+        st.session_state.music_total_questions = st.session_state.get('default_music_questions', 10)
     
     st.markdown('<h1 style="text-align: center; font-size: 3rem; color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
     
@@ -554,10 +554,9 @@ def main():
         st.markdown("## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
-            ["Quiz", "Keresés", "Analytics", "Beállítások"],
+            ["Quiz", "Analytics", "Beállítások"],
             format_func=lambda x: {
                 "Quiz": "🎯 Quiz",
-                "Keresés": "🔍 Keresés",
                 "Analytics": "📊 Analytics", 
                 "Beállítások": "⚙️ Beállítások"
             }[x]
@@ -565,8 +564,6 @@ def main():
     
     if page == "Quiz":
         show_quiz_page()
-    elif page == "Keresés":
-        show_search_page()
     elif page == "Analytics":
         show_analytics_page()
     elif page == "Beállítások":
@@ -592,6 +589,15 @@ def show_search_page():
 
 def show_topic_selection():
     """Témakör kiválasztás"""
+    
+    # Felhasználó kiválasztás
+    st.markdown("### 👤 Játékos Kiválasztás")
+    
+    # Játékos kiválasztó mező középre igazítva
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+    with col2:
+        players = ["Éva", "Ákos", "Orsika", "Mikcsi", "Ildi", "Szabi", "Hanna", "Villő", "Béla", "Gábor", "Emese", "Vendég"]
+        selected_player = st.selectbox("Válassz játékost:", players, key="selected_player")
     
     # Quiz mód kiválasztás
     selected_mode, selected_difficulty = QuizModeUI.show_mode_selection()
@@ -638,11 +644,12 @@ def show_topic_selection():
     # Kérdésszám beállítás csúszkával
     col1, col2 = st.columns(2)
     with col1:
-        random_question_count = st.slider("Randomizáláshoz használandó kérdésszám", 10, 100, 40, key="random_question_count")
+        random_question_count = st.slider("Randomizáláshoz használandó kérdésszám", 10, 100, st.session_state.get('default_other_questions', 40), key="random_question_count")
     
     with col2:
-        random_music_question_count = st.slider("Zenei randomizáláshoz használandó kérdésszám", 5, 50, 20, key="random_music_question_count")
+        random_music_question_count = st.slider("Zenei randomizáláshoz használandó kérdésszám", 5, 50, st.session_state.get('default_music_questions', 10), key="random_music_question_count")
     
+    # Randomizáló gombok egy sorban
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -671,8 +678,50 @@ def show_topic_selection():
             
             st.success(f"✅ Teljes kvíz létrehozva! {len(topics)} témakör kiválasztva, összesen {total_music_questions + total_other_questions} kérdés!")
             st.rerun()
-    
+        
     with col2:
+        if st.button("🎵 Random zenei témakörök kiválasztása", type="secondary", use_container_width=True):
+            # Zenei témakörök kiválasztása
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
+            num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
+            selected_music_topics = random.sample(music_topics, num_music_topics)
+            
+            # Kérdések elosztása a zenei témakörök között
+            questions_per_music_topic = random_music_question_count // num_music_topics
+            remaining_music_questions = random_music_question_count % num_music_topics
+            
+            # Meglévő nem-zenei témakörök megtartása
+            existing_other_topics = [topic for topic in st.session_state.selected_topics if topic not in music_topics]
+            
+            # Témakörök kiválasztása (nem-zenei + új zenei)
+            st.session_state.selected_topics = existing_other_topics + selected_music_topics
+            
+            # Gomb állapotok frissítése (checkbox helyett)
+            for topic_key in topics.keys():
+                if topic_key in selected_music_topics or topic_key in existing_other_topics:
+                    # A gombok állapota automatikusan frissül a selected_topics alapján
+                    pass
+                elif topic_key in music_topics:  # Csak zenei témakörök törlése
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
+            
+            # Kérdésszámok beállítása
+            for i, topic in enumerate(selected_music_topics):
+                topic_questions = questions_per_music_topic + (1 if i < remaining_music_questions else 0)
+                max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                topic_questions = min(topic_questions, max_available)
+                st.session_state[f'{topic}_questions'] = topic_questions
+                # Ne módosítsuk a final_ értékeket, ha már létrejöttek a slider-ek
+                if f'final_{topic}_questions' not in st.session_state:
+                    st.session_state[f'final_{topic}_questions'] = topic_questions
+            
+            # Alapértelmezett értékek beállítása
+            st.session_state['music_total_questions'] = random_music_question_count
+            
+            st.success(f"✅ {num_music_topics} zenei témakör kiválasztva + meglévő nem-zenei témakörök megtartva, {random_music_question_count} kérdés elosztva!")
+            st.rerun()
+        
+    with col3:
         if st.button("🎲 Random témakörök kiválasztása (zene nélkül)", type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
             music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
@@ -717,54 +766,15 @@ def show_topic_selection():
             st.rerun()
     
     with col2:
-        if st.button("🎵 Random zenei témakörök kiválasztása", type="secondary", use_container_width=True):
-            # Zenei témakörök kiválasztása
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
-            num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
-            selected_music_topics = random.sample(music_topics, num_music_topics)
-            
-            # Kérdések elosztása a zenei témakörök között
-            questions_per_music_topic = random_music_question_count // num_music_topics
-            remaining_music_questions = random_music_question_count % num_music_topics
-            
-            # Meglévő nem-zenei témakörök megtartása
-            existing_other_topics = [topic for topic in st.session_state.selected_topics if topic not in music_topics]
-            
-            # Témakörök kiválasztása (nem-zenei + új zenei)
-            st.session_state.selected_topics = existing_other_topics + selected_music_topics
-            
-            # Gomb állapotok frissítése (checkbox helyett)
-            for topic_key in topics.keys():
-                if topic_key in selected_music_topics or topic_key in existing_other_topics:
-                    # A gombok állapota automatikusan frissül a selected_topics alapján
-                    pass
-                elif topic_key in music_topics:  # Csak zenei témakörök törlése
-                    if topic_key in st.session_state.selected_topics:
-                        st.session_state.selected_topics.remove(topic_key)
-            
-            # Kérdésszámok beállítása
-            for i, topic in enumerate(selected_music_topics):
-                topic_questions = questions_per_music_topic + (1 if i < remaining_music_questions else 0)
-                max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                topic_questions = min(topic_questions, max_available)
-                st.session_state[f'{topic}_questions'] = topic_questions
-                # Ne módosítsuk a final_ értékeket, ha már létrejöttek a slider-ek
-                if f'final_{topic}_questions' not in st.session_state:
-                    st.session_state[f'final_{topic}_questions'] = topic_questions
-            
-            # Alapértelmezett értékek beállítása
-            st.session_state['music_total_questions'] = random_music_question_count
-            
-            st.success(f"✅ {num_music_topics} zenei témakör kiválasztva + meglévő nem-zenei témakörök megtartva, {random_music_question_count} kérdés elosztva!")
-            st.rerun()
+        pass
     
     with col3:
-        st.markdown("### 📊 Gyors beállítások")
-        st.markdown("Használd a **Teljes kvíz létrehozása** gombot az első oszlopban a leggyorsabb beállításhoz!")
+        pass
     
     st.markdown("---")
     
     # Témakörök kiválasztása
+    st.markdown("### 📚 Egyéb témakörök")
     col1, col2, col3 = st.columns(3)
     
     # Egyenlő elosztás kiszámítása a kiválasztott témakörök között
@@ -777,7 +787,7 @@ def show_topic_selection():
     for i, topic in enumerate(selected_topics):
         fair_distribution[topic] = fair_share + (1 if i < remainder else 0)
 
-    # CSS a gombok egységes magasságához
+    # CSS a gombok egységes magasságához és játékos kiválasztó mezőhöz
     st.markdown("""
     <style>
         /* Egységes gomb magasság */
@@ -788,6 +798,60 @@ def show_topic_selection():
         /* Oszlopok egységes magasság */
         div[data-testid="column"] {
             min-height: 600px !important;
+        }
+        /* Játékos kiválasztó mező stílus */
+        .stSelectbox > div > div {
+            font-size: 2em !important;
+            width: 25vw !important;
+        }
+        .stSelectbox > div > div > div {
+            font-size: 2em !important;
+        }
+        /* Kiválasztott érték betűmérete */
+        .stSelectbox > div > div > div > div {
+            font-size: 2em !important;
+        }
+        /* Legördülő lista elemek betűmérete */
+        .stSelectbox > div > div > div > div > div {
+            font-size: 2em !important;
+        }
+        /* Legördülő menü elemek */
+        .stSelectbox > div > div > div > div > div > div {
+            font-size: 2em !important;
+        }
+        /* Játékos kiválasztó mező specifikus stílus - csak a selected_player key-vel */
+        [data-testid="stSelectbox"]:has([data-baseweb="select"]:has([data-testid="selected_player"])) {
+            font-size: 2em !important;
+        }
+        [data-testid="stSelectbox"]:has([data-baseweb="select"]:has([data-testid="selected_player"])) * {
+            font-size: 2em !important;
+        }
+        /* Navigáció selectbox szélessége */
+        .stSelectbox {
+            width: 50% !important;
+        }
+        /* Minden más input mező normál méretű */
+        .stSelectbox:not(:has([data-testid="selected_player"])),
+        .stSlider,
+        .stNumberInput,
+        .stCheckbox {
+            font-size: 1em !important;
+        }
+        .stSelectbox:not(:has([data-testid="selected_player"])) *,
+        .stSlider *,
+        .stNumberInput *,
+        .stCheckbox * {
+            font-size: 1em !important;
+        }
+        /* Slider-ek specifikus stílus */
+        .stSlider > div > div > div {
+            font-size: 1em !important;
+        }
+        .stSlider > div > div > div > div {
+            font-size: 1em !important;
+        }
+        .stSlider > div > div > div > div > div {
+            font-size: 1em !important;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -823,7 +887,6 @@ def show_topic_selection():
                     )
     
     with col2:
-        st.markdown("### 📚 Egyéb témakörök")
         other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0]]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
@@ -1611,6 +1674,7 @@ def show_results():
     
     # Analytics rögzítése
     quiz_data = {
+        "player": st.session_state.get("selected_player", "Vendég"),
         "topics": st.session_state.selected_topics,
         "total_questions": total_questions,
         "correct_answers": correct_answers,
@@ -1712,6 +1776,26 @@ def show_results():
             <p><strong>{st.session_state.mode_manager.current_difficulty.value.title()}</strong></p>
         </div>
         """, unsafe_allow_html=True)
+    
+    # Játékos statisztika
+    player_name = st.session_state.get("selected_player", "Vendég")
+    st.markdown(f"### 👤 Játékos: {player_name}")
+    
+    # Játékos teljesítmény lekérdezése
+    if 'analytics' in st.session_state:
+        player_performance = st.session_state.analytics.get_player_performance()
+        if player_name in player_performance:
+            player_data = player_performance[player_name]
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.metric("📊 Összes Quiz", player_data["total_quizzes"])
+            with col2:
+                st.metric("🎯 Átlagos Pontszám", f"{player_data['average_score']:.1f}%")
+            with col3:
+                st.metric("🏆 Legjobb Pontszám", f"{player_data['best_score']:.1f}%")
+            with col4:
+                st.metric("📝 Összes Kérdés", player_data["total_questions"])
     
     # Részletes eredmények
     st.markdown("### 📋 Kérdésenkénti eredmények")
