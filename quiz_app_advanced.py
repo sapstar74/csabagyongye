@@ -943,7 +943,7 @@ def show_topic_selection():
                     )
     
     with col3:
-        st.markdown("&nbsp;")  # Üres hely a cím magasságához
+        st.markdown("### &nbsp;")  # Üres cím a cím magasságához
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 1:
                 # Kattintható gomb a checkbox helyett
