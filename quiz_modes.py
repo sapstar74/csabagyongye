@@ -116,7 +116,6 @@ class QuizModeUI:
     @staticmethod
     def show_mode_selection():
         """Mód kiválasztás megjelenítése"""
-        st.markdown("## 🎮 Quiz Mód Kiválasztása")
         
         col1, col2 = st.columns(2)
         

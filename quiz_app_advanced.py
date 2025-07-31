@@ -543,7 +543,7 @@ def main():
     if 'image_modal_states' not in st.session_state:
         st.session_state.image_modal_states = {}
     
-        st.markdown('<h1 class="main-header">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="text-align: center; font-size: 3rem; color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
     
     # Sidebar navigáció
     with st.sidebar:
@@ -588,7 +588,6 @@ def show_search_page():
 
 def show_topic_selection():
     """Témakör kiválasztás"""
-    st.markdown("## 📚 Témakörök és Mód Kiválasztása")
     
     # Quiz mód kiválasztás
     selected_mode, selected_difficulty = QuizModeUI.show_mode_selection()
