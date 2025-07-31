@@ -1,7 +1,7 @@
 # Teljes háborús kérdések a PDF 25-32 oldalak alapján
 HABORU_QUESTIONS_ALL = [
     {
-        "question": "Mikor zajlott a Százéves háború? (1337-1453)",
+        "question": "Mikor zajlott a Százéves háború?",
         "options": [
             "1337-1453",
             "1287-1403",
@@ -13,7 +13,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Százéves háború során? (Anglia vs Francia Királyság)",
+        "question": "Kik voltak a szembenálló felek a Százéves háború során?",
         "options": [
             "Anglia vs Francia Királyság",
             "Francia Királyság vs Anglia",
@@ -25,7 +25,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Tizenhárom éves háború? (1454-1466)",
+        "question": "Mikor zajlott a Tizenhárom éves háború?",
         "options": [
             "1454-1466",
             "1404-1416",
@@ -37,7 +37,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Tizenhárom éves háború során? (Porosz Konföderáció, Lengyel Királyság vs Teuton Lovagrend)",
+        "question": "Kik voltak a szembenálló felek a Tizenhárom éves háború során?",
         "options": [
             "Porosz Konföderáció, Lengyel Királyság vs Teuton Lovagrend",
             "Teuton Lovagrend vs Porosz Konföderáció, Lengyel Királyság",
@@ -49,7 +49,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Harmincéves háború? (1618-1648)",
+        "question": "Mikor zajlott a Harmincéves háború?",
         "options": [
             "1618-1648",
             "1568-1598",
@@ -61,7 +61,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Harmincéves háború során? (Katolikus Habsburgok, Spanyolország vs Protestáns államok, Franciaország, Svédország)",
+        "question": "Kik voltak a szembenálló felek a Harmincéves háború során?",
         "options": [
             "Katolikus Habsburgok, Spanyolország vs Protestáns államok, Franciaország, Svédország",
             "Protestáns államok, Franciaország, Svédország vs Katolikus Habsburgok, Spanyolország",
@@ -73,7 +73,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Spanyol örökösödési háború? (1701-1714)",
+        "question": "Mikor zajlott a Spanyol örökösödési háború?",
         "options": [
             "1701-1714",
             "1651-1664",
@@ -85,7 +85,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Spanyol örökösödési háború során? (Franciaország, Spanyolország vs Ausztria, Nagy-Britannia, Hollandia)",
+        "question": "Kik voltak a szembenálló felek a Spanyol örökösödési háború során?",
         "options": [
             "Franciaország, Spanyolország vs Ausztria, Nagy-Britannia, Hollandia",
             "Ausztria, Nagy-Britannia, Hollandia vs Franciaország, Spanyolország",
@@ -97,7 +97,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Osztrák örökösödési háború? (1740-1748)",
+        "question": "Mikor zajlott a Osztrák örökösödési háború?",
         "options": [
             "1740-1748",
             "1690-1698",
@@ -109,7 +109,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Osztrák örökösödési háború során? (Ausztria vs Poroszország, Franciaország, Spanyolország)",
+        "question": "Kik voltak a szembenálló felek a Osztrák örökösödési háború során?",
         "options": [
             "Ausztria vs Poroszország, Franciaország, Spanyolország",
             "Poroszország, Franciaország, Spanyolország vs Ausztria",
@@ -121,7 +121,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Hétéves háború? (1756-1763)",
+        "question": "Mikor zajlott a Hétéves háború?",
         "options": [
             "1756-1763",
             "1706-1713",
@@ -133,7 +133,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Hétéves háború során? (Nagy-Britannia, Poroszország vs Franciaország, Ausztria, Oroszország)",
+        "question": "Kik voltak a szembenálló felek a Hétéves háború során?",
         "options": [
             "Nagy-Britannia, Poroszország vs Franciaország, Ausztria, Oroszország",
             "Franciaország, Ausztria, Oroszország vs Nagy-Britannia, Poroszország",
@@ -145,7 +145,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Napóleoni háborúk? (1803-1815)",
+        "question": "Mikor zajlott a Napóleoni háborúk?",
         "options": [
             "1803-1815",
             "1753-1765",
@@ -157,7 +157,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Napóleoni háborúk során? (Napóleoni Franciaország vs Európai szövetséges hatalmak)",
+        "question": "Kik voltak a szembenálló felek a Napóleoni háborúk során?",
         "options": [
             "Napóleoni Franciaország vs Európai szövetséges hatalmak",
             "Európai szövetséges hatalmak vs Napóleoni Franciaország",
@@ -169,7 +169,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Finn háború? (1808-1809)",
+        "question": "Mikor zajlott a Finn háború?",
         "options": [
             "1808-1809",
             "1758-1759",
@@ -181,7 +181,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Finn háború során? (Svédország vs Orosz Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Finn háború során?",
         "options": [
             "Svédország vs Orosz Birodalom",
             "Orosz Birodalom vs Svédország",
@@ -193,7 +193,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Görög függetlenségi háború? (1821-1829)",
+        "question": "Mikor zajlott a Görög függetlenségi háború?",
         "options": [
             "1821-1829",
             "1771-1779",
@@ -205,7 +205,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Görög függetlenségi háború során? (Görög felkelők vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Görög függetlenségi háború során?",
         "options": [
             "Görög felkelők vs Oszmán Birodalom",
             "Oszmán Birodalom vs Görög felkelők",
@@ -217,7 +217,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Krími háború? (1853-1856)",
+        "question": "Mikor zajlott a Krími háború?",
         "options": [
             "1853-1856",
             "1803-1806",
@@ -229,7 +229,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Krími háború során? (Oroszország vs Oszmán Birodalom, Egyesült Királyság, Franciaország, Szardínia)",
+        "question": "Kik voltak a szembenálló felek a Krími háború során?",
         "options": [
             "Oroszország vs Oszmán Birodalom, Egyesült Királyság, Franciaország, Szardínia",
             "Oszmán Birodalom, Egyesült Királyság, Franciaország, Szardínia vs Oroszország",
@@ -241,7 +241,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Első Balkán-háború? (1912-1913)",
+        "question": "Mikor zajlott a Első Balkán-háború?",
         "options": [
             "1912-1913",
             "1862-1863",
@@ -253,7 +253,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Első Balkán-háború során? (Balkán Liga vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Első Balkán-háború során?",
         "options": [
             "Balkán Liga vs Oszmán Birodalom",
             "Oszmán Birodalom vs Balkán Liga",
@@ -265,7 +265,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Második Balkán-háború? (1913)",
+        "question": "Mikor zajlott a Második Balkán-háború?",
         "options": [
             "1913",
             "1863-1863",
@@ -277,7 +277,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Második Balkán-háború során? (Bulgária vs volt szövetségesei)",
+        "question": "Kik voltak a szembenálló felek a Második Balkán-háború során?",
         "options": [
             "Bulgária vs volt szövetségesei",
             "volt szövetségesei vs Bulgária",
@@ -289,7 +289,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Első világháború? (1914-1918)",
+        "question": "Mikor zajlott a Első világháború?",
         "options": [
             "1914-1918",
             "1864-1868",
@@ -301,7 +301,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Első világháború során? (Központi hatalmak vs Antant)",
+        "question": "Kik voltak a szembenálló felek a Első világháború során?",
         "options": [
             "Központi hatalmak vs Antant",
             "Antant vs Központi hatalmak",
@@ -313,7 +313,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Spanyol polgárháború? (1936-1939)",
+        "question": "Mikor zajlott a Spanyol polgárháború?",
         "options": [
             "1936-1939",
             "1886-1889",
@@ -325,7 +325,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Spanyol polgárháború során? (Köztársaságiak vs Franco tábornok nemzeti erői)",
+        "question": "Kik voltak a szembenálló felek a Spanyol polgárháború során?",
         "options": [
             "Köztársaságiak vs Franco tábornok nemzeti erői",
             "Franco tábornok nemzeti erői vs Köztársaságiak",
@@ -337,7 +337,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Második világháború? (1939-1945)",
+        "question": "Mikor zajlott a Második világháború?",
         "options": [
             "1939-1945",
             "1889-1895",
@@ -349,7 +349,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Második világháború során? (Tengelyhatalmak vs Szövetségesek)",
+        "question": "Kik voltak a szembenálló felek a Második világháború során?",
         "options": [
             "Tengelyhatalmak vs Szövetségesek",
             "Szövetségesek vs Tengelyhatalmak",
@@ -361,7 +361,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Bretagne-i örökösödési háború? (1341-1364)",
+        "question": "Mikor zajlott a Bretagne-i örökösödési háború?",
         "options": [
             "1341-1364",
             "1291-1314",
@@ -373,7 +373,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Bretagne-i örökösödési háború során? (Montfort-ház vs Blois-ház)",
+        "question": "Kik voltak a szembenálló felek a Bretagne-i örökösödési háború során?",
         "options": [
             "Montfort-ház vs Blois-ház",
             "Blois-ház vs Montfort-ház",
@@ -385,7 +385,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Nyolc Szent háborúja? (1375-1378)",
+        "question": "Mikor zajlott a Nyolc Szent háborúja?",
         "options": [
             "1375-1378",
             "1325-1328",
@@ -397,7 +397,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Nyolc Szent háborúja során? (Pápai Állam vs Firenze, Milánó, Siena koalíciója)",
+        "question": "Kik voltak a szembenálló felek a Nyolc Szent háborúja során?",
         "options": [
             "Pápai Állam vs Firenze, Milánó, Siena koalíciója",
             "Firenze, Milánó, Siena koalíciója vs Pápai Állam",
@@ -409,7 +409,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Második skót függetlenségi háború? (1332-1357)",
+        "question": "Mikor zajlott a Második skót függetlenségi háború?",
         "options": [
             "1332-1357",
             "1282-1307",
@@ -421,7 +421,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Második skót függetlenségi háború során? (Skót Királyság vs Angol Királyság)",
+        "question": "Kik voltak a szembenálló felek a Második skót függetlenségi háború során?",
         "options": [
             "Skót Királyság vs Angol Királyság",
             "Angol Királyság vs Skót Királyság",
@@ -433,7 +433,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Két Péter háborúja? (1356-1375)",
+        "question": "Mikor zajlott a Két Péter háborúja?",
         "options": [
             "1356-1375",
             "1306-1325",
@@ -445,7 +445,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Két Péter háborúja során? (Kasztíliai Királyság vs Aragóniai Királyság)",
+        "question": "Kik voltak a szembenálló felek a Két Péter háborúja során?",
         "options": [
             "Kasztíliai Királyság vs Aragóniai Királyság",
             "Aragóniai Királyság vs Kasztíliai Királyság",
@@ -457,7 +457,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Angol parasztlázadás? (1381)",
+        "question": "Mikor zajlott a Angol parasztlázadás?",
         "options": [
             "1381",
             "1331-1331",
@@ -469,7 +469,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Angol parasztlázadás során? (Angol parasztság vs Angol Királyság)",
+        "question": "Kik voltak a szembenálló felek a Angol parasztlázadás során?",
         "options": [
             "Angol parasztság vs Angol Királyság",
             "Angol Királyság vs Angol parasztság",
@@ -481,7 +481,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Nikápolyi csata? (1396)",
+        "question": "Mikor zajlott a Nikápolyi csata?",
         "options": [
             "1396",
             "1346-1346",
@@ -493,7 +493,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Nikápolyi csata során? (Keresztes hadsereg vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Nikápolyi csata során?",
         "options": [
             "Keresztes hadsereg vs Oszmán Birodalom",
             "Oszmán Birodalom vs Keresztes hadsereg",
@@ -505,7 +505,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Oszmán–velencei háború? (1463-1479)",
+        "question": "Mikor zajlott a Oszmán–velencei háború?",
         "options": [
             "1463-1479",
             "1413-1429",
@@ -517,7 +517,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Oszmán–velencei háború során? (Velencei Köztársaság vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Oszmán–velencei háború során?",
         "options": [
             "Velencei Köztársaság vs Oszmán Birodalom",
             "Oszmán Birodalom vs Velencei Köztársaság",
@@ -529,7 +529,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Burgundiai háborúk? (1474-1477)",
+        "question": "Mikor zajlott a Burgundiai háborúk?",
         "options": [
             "1474-1477",
             "1424-1427",
@@ -541,7 +541,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Burgundiai háborúk során? (Burgundiai Állam vs Ósvájci Konföderáció)",
+        "question": "Kik voltak a szembenálló felek a Burgundiai háborúk során?",
         "options": [
             "Burgundiai Állam vs Ósvájci Konföderáció",
             "Ósvájci Konföderáció vs Burgundiai Állam",
@@ -553,7 +553,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Granadai háború? (1482-1492)",
+        "question": "Mikor zajlott a Granadai háború?",
         "options": [
             "1482-1492",
             "1432-1442",
@@ -565,7 +565,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Granadai háború során? (Kasztíliai Királyság vs Granadai Emirátus)",
+        "question": "Kik voltak a szembenálló felek a Granadai háború során?",
         "options": [
             "Kasztíliai Királyság vs Granadai Emirátus",
             "Granadai Emirátus vs Kasztíliai Királyság",
@@ -577,7 +577,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1494-1498)? (1494-1498)",
+        "question": "Mikor zajlott a Itáliai háború (1494-1498)?",
         "options": [
             "1494-1498",
             "1444-1448",
@@ -589,7 +589,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1494-1498) során? (Franciaország vs Velencei Liga)",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború (1494-1498) során?",
         "options": [
             "Franciaország vs Velencei Liga",
             "Velencei Liga vs Franciaország",
@@ -601,7 +601,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Kasztíliai örökösödési háború? (1475-1479)",
+        "question": "Mikor zajlott a Kasztíliai örökösödési háború?",
         "options": [
             "1475-1479",
             "1425-1429",
@@ -613,7 +613,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Kasztíliai örökösödési háború során? (I. Izabella támogatói vs Johanna la Beltraneja támogatói)",
+        "question": "Kik voltak a szembenálló felek a Kasztíliai örökösödési háború során?",
         "options": [
             "I. Izabella támogatói vs Johanna la Beltraneja támogatói",
             "Johanna la Beltraneja támogatói vs I. Izabella támogatói",
@@ -625,7 +625,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Cambrai-i Liga háborúja? (1508-1516)",
+        "question": "Mikor zajlott a Cambrai-i Liga háborúja?",
         "options": [
             "1508-1516",
             "1458-1466",
@@ -637,7 +637,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1521-1526)? (1521-1526)",
+        "question": "Mikor zajlott a Itáliai háború (1521-1526)?",
         "options": [
             "1521-1526",
             "1471-1476",
@@ -649,7 +649,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1521-1526) során? (Franciaország vs Német-római Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború (1521-1526) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -661,7 +661,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Cognaci Liga háborúja? (1526-1530)",
+        "question": "Mikor zajlott a Cognaci Liga háborúja?",
         "options": [
             "1526-1530",
             "1476-1480",
@@ -673,7 +673,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Cognaci Liga háborúja során? (Franciaország, Pápai Állam vs Német-római Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Cognaci Liga háborúja során?",
         "options": [
             "Franciaország, Pápai Állam vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország, Pápai Állam",
@@ -685,7 +685,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1536-1538)? (1536-1538)",
+        "question": "Mikor zajlott a Itáliai háború (1536-1538)?",
         "options": [
             "1536-1538",
             "1486-1488",
@@ -697,7 +697,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1536-1538) során? (Franciaország vs Német-római Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború (1536-1538) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -709,7 +709,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1542-1546)? (1542-1546)",
+        "question": "Mikor zajlott a Itáliai háború (1542-1546)?",
         "options": [
             "1542-1546",
             "1492-1496",
@@ -721,7 +721,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1542-1546) során? (Franciaország vs Német-római Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború (1542-1546) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -733,7 +733,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1551-1559)? (1551-1559)",
+        "question": "Mikor zajlott a Itáliai háború (1551-1559)?",
         "options": [
             "1551-1559",
             "1501-1509",
@@ -745,7 +745,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1551-1559) során? (Franciaország vs Német-római Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború (1551-1559) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -757,7 +757,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Német parasztháború? (1524-1525)",
+        "question": "Mikor zajlott a Német parasztháború?",
         "options": [
             "1524-1525",
             "1474-1475",
@@ -769,7 +769,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Német parasztháború során? (Paraszti seregek vs Sváb Liga)",
+        "question": "Kik voltak a szembenálló felek a Német parasztháború során?",
         "options": [
             "Paraszti seregek vs Sváb Liga",
             "Sváb Liga vs Paraszti seregek",
@@ -781,7 +781,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Francia vallásháborúk? (1562-1598)",
+        "question": "Mikor zajlott a Francia vallásháborúk?",
         "options": [
             "1562-1598",
             "1512-1548",
@@ -793,7 +793,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Francia vallásháborúk során? (Hugenották vs Francia katolikusok)",
+        "question": "Kik voltak a szembenálló felek a Francia vallásháborúk során?",
         "options": [
             "Hugenották vs Francia katolikusok",
             "Francia katolikusok vs Hugenották",
@@ -805,7 +805,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Oszmán–osztrák háborúk? (1526-1791)",
+        "question": "Mikor zajlott a Oszmán–osztrák háborúk?",
         "options": [
             "1526-1791",
             "1476-1741",
@@ -817,7 +817,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Oszmán–osztrák háborúk során? (Oszmán Birodalom vs Habsburg Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Oszmán–osztrák háborúk során?",
         "options": [
             "Oszmán Birodalom vs Habsburg Birodalom",
             "Habsburg Birodalom vs Oszmán Birodalom",
@@ -829,7 +829,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Lengyel–török háborúk? (1620-1621)",
+        "question": "Mikor zajlott a Lengyel–török háborúk?",
         "options": [
             "1620-1621",
             "1570-1571",
@@ -841,7 +841,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Lengyel–török háborúk során? (Lengyel-Litván Unió vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Lengyel–török háborúk során?",
         "options": [
             "Lengyel-Litván Unió vs Oszmán Birodalom",
             "Oszmán Birodalom vs Lengyel-Litván Unió",
@@ -853,7 +853,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a A három királyság háborúi? (1639-1653)",
+        "question": "Mikor zajlott a A három királyság háborúi?",
         "options": [
             "1639-1653",
             "1589-1603",
@@ -865,7 +865,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a A három királyság háborúi során? (Angol királypártiak vs Angol parlamentaristák)",
+        "question": "Kik voltak a szembenálló felek a A három királyság háborúi során?",
         "options": [
             "Angol királypártiak vs Angol parlamentaristák",
             "Angol parlamentaristák vs Angol királypártiak",
@@ -877,7 +877,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Orosz–lengyel háború? (1654-1667)",
+        "question": "Mikor zajlott a Orosz–lengyel háború?",
         "options": [
             "1654-1667",
             "1604-1617",
@@ -889,7 +889,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Orosz–lengyel háború során? (Orosz Cárság vs Lengyel-Litván Unió)",
+        "question": "Kik voltak a szembenálló felek a Orosz–lengyel háború során?",
         "options": [
             "Orosz Cárság vs Lengyel-Litván Unió",
             "Lengyel-Litván Unió vs Orosz Cárság",
@@ -901,7 +901,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Dán–svéd háborúk? (1657-1660)",
+        "question": "Mikor zajlott a Dán–svéd háborúk?",
         "options": [
             "1657-1660",
             "1607-1610",
@@ -913,7 +913,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Dán–svéd háborúk során? (Dánia-Norvégia vs Svédország)",
+        "question": "Kik voltak a szembenálló felek a Dán–svéd háborúk során?",
         "options": [
             "Dánia-Norvégia vs Svédország",
             "Svédország vs Dánia-Norvégia",
@@ -925,7 +925,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Spanyol örökösödési háború? (1701-1714)",
+        "question": "Mikor zajlott a Spanyol örökösödési háború?",
         "options": [
             "1701-1714",
             "1651-1664",
@@ -937,7 +937,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Spanyol örökösödési háború során? (Franciaország vs Nagy Koalíció)",
+        "question": "Kik voltak a szembenálló felek a Spanyol örökösödési háború során?",
         "options": [
             "Franciaország vs Nagy Koalíció",
             "Nagy Koalíció vs Franciaország",
@@ -949,7 +949,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Nagy északi háború? (1700-1721)",
+        "question": "Mikor zajlott a Nagy északi háború?",
         "options": [
             "1700-1721",
             "1650-1671",
@@ -961,7 +961,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Nagy északi háború során? (Svédország vs Oroszország, Dánia-Norvégia, Szászország)",
+        "question": "Kik voltak a szembenálló felek a Nagy északi háború során?",
         "options": [
             "Svédország vs Oroszország, Dánia-Norvégia, Szászország",
             "Oroszország, Dánia-Norvégia, Szászország vs Svédország",
@@ -973,7 +973,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Osztrák örökösödési háború? (1740-1748)",
+        "question": "Mikor zajlott a Osztrák örökösödési háború?",
         "options": [
             "1740-1748",
             "1690-1698",
@@ -985,7 +985,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Osztrák örökösödési háború során? (Ausztria vs Poroszország, Franciaország)",
+        "question": "Kik voltak a szembenálló felek a Osztrák örökösödési háború során?",
         "options": [
             "Ausztria vs Poroszország, Franciaország",
             "Poroszország, Franciaország vs Ausztria",
@@ -997,7 +997,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Hétéves háború? (1756-1763)",
+        "question": "Mikor zajlott a Hétéves háború?",
         "options": [
             "1756-1763",
             "1706-1713",
@@ -1009,7 +1009,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Hétéves háború során? (Nagy-Britannia, Poroszország vs Franciaország, Ausztria)",
+        "question": "Kik voltak a szembenálló felek a Hétéves háború során?",
         "options": [
             "Nagy-Britannia, Poroszország vs Franciaország, Ausztria",
             "Franciaország, Ausztria vs Nagy-Britannia, Poroszország",
@@ -1021,7 +1021,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Amerikai függetlenségi háború? (1775-1783)",
+        "question": "Mikor zajlott a Amerikai függetlenségi háború?",
         "options": [
             "1775-1783",
             "1725-1733",
@@ -1033,7 +1033,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Amerikai függetlenségi háború során? (Amerikai kolóniák vs Nagy-Britannia)",
+        "question": "Kik voltak a szembenálló felek a Amerikai függetlenségi háború során?",
         "options": [
             "Amerikai kolóniák vs Nagy-Britannia",
             "Nagy-Britannia vs Amerikai kolóniák",
@@ -1045,7 +1045,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Francia forradalmi háborúk? (1792-1802)",
+        "question": "Mikor zajlott a Francia forradalmi háborúk?",
         "options": [
             "1792-1802",
             "1742-1752",
@@ -1057,7 +1057,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Francia forradalmi háborúk során? (Francia Köztársaság vs Európai monarchiák)",
+        "question": "Kik voltak a szembenálló felek a Francia forradalmi háborúk során?",
         "options": [
             "Francia Köztársaság vs Európai monarchiák",
             "Európai monarchiák vs Francia Köztársaság",
@@ -1069,7 +1069,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Napóleoni háborúk? (1803-1815)",
+        "question": "Mikor zajlott a Napóleoni háborúk?",
         "options": [
             "1803-1815",
             "1753-1765",
@@ -1081,7 +1081,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Napóleoni háborúk során? (Napóleoni Franciaország vs Koalíciók)",
+        "question": "Kik voltak a szembenálló felek a Napóleoni háborúk során?",
         "options": [
             "Napóleoni Franciaország vs Koalíciók",
             "Koalíciók vs Napóleoni Franciaország",
@@ -1093,7 +1093,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Finn háború? (1808-1809)",
+        "question": "Mikor zajlott a Finn háború?",
         "options": [
             "1808-1809",
             "1758-1759",
@@ -1105,7 +1105,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Finn háború során? (Svédország vs Orosz Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Finn háború során?",
         "options": [
             "Svédország vs Orosz Birodalom",
             "Orosz Birodalom vs Svédország",
@@ -1117,7 +1117,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Görög függetlenségi háború? (1821-1829)",
+        "question": "Mikor zajlott a Görög függetlenségi háború?",
         "options": [
             "1821-1829",
             "1771-1779",
@@ -1129,7 +1129,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Görög függetlenségi háború során? (Görög felkelők vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Görög függetlenségi háború során?",
         "options": [
             "Görög felkelők vs Oszmán Birodalom",
             "Oszmán Birodalom vs Görög felkelők",
@@ -1141,7 +1141,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Krími háború? (1853-1856)",
+        "question": "Mikor zajlott a Krími háború?",
         "options": [
             "1853-1856",
             "1803-1806",
@@ -1153,7 +1153,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Krími háború során? (Oroszország vs Oszmán Birodalom, Nagy-Britannia, Franciaország)",
+        "question": "Kik voltak a szembenálló felek a Krími háború során?",
         "options": [
             "Oroszország vs Oszmán Birodalom, Nagy-Britannia, Franciaország",
             "Oszmán Birodalom, Nagy-Britannia, Franciaország vs Oroszország",
@@ -1165,7 +1165,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Olasz függetlenségi háborúk? (1848-1871)",
+        "question": "Mikor zajlott a Olasz függetlenségi háborúk?",
         "options": [
             "1848-1871",
             "1798-1821",
@@ -1177,7 +1177,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Olasz függetlenségi háborúk során? (Olasz államok vs Ausztria)",
+        "question": "Kik voltak a szembenálló felek a Olasz függetlenségi háborúk során?",
         "options": [
             "Olasz államok vs Ausztria",
             "Ausztria vs Olasz államok",
@@ -1189,7 +1189,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Német egységesítési háborúk? (1864-1871)",
+        "question": "Mikor zajlott a Német egységesítési háborúk?",
         "options": [
             "1864-1871",
             "1814-1821",
@@ -1201,7 +1201,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Német egységesítési háborúk során? (Poroszország vs Dánia, Ausztria, Franciaország)",
+        "question": "Kik voltak a szembenálló felek a Német egységesítési háborúk során?",
         "options": [
             "Poroszország vs Dánia, Ausztria, Franciaország",
             "Dánia, Ausztria, Franciaország vs Poroszország",
@@ -1213,7 +1213,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Amerikai polgárháború? (1861-1865)",
+        "question": "Mikor zajlott a Amerikai polgárháború?",
         "options": [
             "1861-1865",
             "1811-1815",
@@ -1225,7 +1225,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Amerikai polgárháború során? (Északi államok vs Déli államok)",
+        "question": "Kik voltak a szembenálló felek a Amerikai polgárháború során?",
         "options": [
             "Északi államok vs Déli államok",
             "Déli államok vs Északi államok",
@@ -1237,7 +1237,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Porosz–francia háború? (1870-1871)",
+        "question": "Mikor zajlott a Porosz–francia háború?",
         "options": [
             "1870-1871",
             "1820-1821",
@@ -1249,7 +1249,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Porosz–francia háború során? (Poroszország vs Franciaország)",
+        "question": "Kik voltak a szembenálló felek a Porosz–francia háború során?",
         "options": [
             "Poroszország vs Franciaország",
             "Franciaország vs Poroszország",
@@ -1261,7 +1261,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Orosz–török háború? (1877-1878)",
+        "question": "Mikor zajlott a Orosz–török háború?",
         "options": [
             "1877-1878",
             "1827-1828",
@@ -1273,7 +1273,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Orosz–török háború során? (Orosz Birodalom vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Orosz–török háború során?",
         "options": [
             "Orosz Birodalom vs Oszmán Birodalom",
             "Oszmán Birodalom vs Orosz Birodalom",
@@ -1285,7 +1285,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Spanyol–amerikai háború? (1898)",
+        "question": "Mikor zajlott a Spanyol–amerikai háború?",
         "options": [
             "1898",
             "1848-1848",
@@ -1297,7 +1297,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Spanyol–amerikai háború során? (Egyesült Államok vs Spanyolország)",
+        "question": "Kik voltak a szembenálló felek a Spanyol–amerikai háború során?",
         "options": [
             "Egyesült Államok vs Spanyolország",
             "Spanyolország vs Egyesült Államok",
@@ -1309,7 +1309,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Búr háborúk? (1880-1902)",
+        "question": "Mikor zajlott a Búr háborúk?",
         "options": [
             "1880-1902",
             "1830-1852",
@@ -1321,7 +1321,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Búr háborúk során? (Nagy-Britannia vs Búr köztársaságok)",
+        "question": "Kik voltak a szembenálló felek a Búr háborúk során?",
         "options": [
             "Nagy-Britannia vs Búr köztársaságok",
             "Búr köztársaságok vs Nagy-Britannia",
@@ -1333,7 +1333,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Orosz–japán háború? (1904-1905)",
+        "question": "Mikor zajlott a Orosz–japán háború?",
         "options": [
             "1904-1905",
             "1854-1855",
@@ -1345,7 +1345,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Orosz–japán háború során? (Orosz Birodalom vs Japán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Orosz–japán háború során?",
         "options": [
             "Orosz Birodalom vs Japán Birodalom",
             "Japán Birodalom vs Orosz Birodalom",
@@ -1357,7 +1357,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Balkán háborúk? (1912-1913)",
+        "question": "Mikor zajlott a Balkán háborúk?",
         "options": [
             "1912-1913",
             "1862-1863",
@@ -1369,7 +1369,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Balkán háborúk során? (Balkán Liga vs Oszmán Birodalom)",
+        "question": "Kik voltak a szembenálló felek a Balkán háborúk során?",
         "options": [
             "Balkán Liga vs Oszmán Birodalom",
             "Oszmán Birodalom vs Balkán Liga",
@@ -1381,7 +1381,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Első világháború? (1914-1918)",
+        "question": "Mikor zajlott a Első világháború?",
         "options": [
             "1914-1918",
             "1864-1868",
@@ -1393,7 +1393,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Első világháború során? (Központi hatalmak vs Antant)",
+        "question": "Kik voltak a szembenálló felek a Első világháború során?",
         "options": [
             "Központi hatalmak vs Antant",
             "Antant vs Központi hatalmak",
@@ -1405,7 +1405,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Orosz polgárháború? (1917-1923)",
+        "question": "Mikor zajlott a Orosz polgárháború?",
         "options": [
             "1917-1923",
             "1867-1873",
@@ -1417,7 +1417,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Orosz polgárháború során? (Vörösök vs Fehérek)",
+        "question": "Kik voltak a szembenálló felek a Orosz polgárháború során?",
         "options": [
             "Vörösök vs Fehérek",
             "Fehérek vs Vörösök",
@@ -1429,7 +1429,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Török függetlenségi háború? (1919-1923)",
+        "question": "Mikor zajlott a Török függetlenségi háború?",
         "options": [
             "1919-1923",
             "1869-1873",
@@ -1441,7 +1441,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Török függetlenségi háború során? (Török nemzeti erők vs Görögország, Nagy-Britannia)",
+        "question": "Kik voltak a szembenálló felek a Török függetlenségi háború során?",
         "options": [
             "Török nemzeti erők vs Görögország, Nagy-Britannia",
             "Görögország, Nagy-Britannia vs Török nemzeti erők",
@@ -1453,7 +1453,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Spanyol polgárháború? (1936-1939)",
+        "question": "Mikor zajlott a Spanyol polgárháború?",
         "options": [
             "1936-1939",
             "1886-1889",
@@ -1465,7 +1465,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Spanyol polgárháború során? (Köztársaságiak vs Nemzeti erők)",
+        "question": "Kik voltak a szembenálló felek a Spanyol polgárháború során?",
         "options": [
             "Köztársaságiak vs Nemzeti erők",
             "Nemzeti erők vs Köztársaságiak",
@@ -1477,7 +1477,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Második világháború? (1939-1945)",
+        "question": "Mikor zajlott a Második világháború?",
         "options": [
             "1939-1945",
             "1889-1895",
@@ -1489,7 +1489,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Második világháború során? (Tengelyhatalmak vs Szövetségesek)",
+        "question": "Kik voltak a szembenálló felek a Második világháború során?",
         "options": [
             "Tengelyhatalmak vs Szövetségesek",
             "Szövetségesek vs Tengelyhatalmak",
@@ -1501,7 +1501,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Koreai háború? (1950-1953)",
+        "question": "Mikor zajlott a Koreai háború?",
         "options": [
             "1950-1953",
             "1900-1903",
@@ -1513,7 +1513,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Koreai háború során? (Észak-Korea vs Dél-Korea, ENSZ)",
+        "question": "Kik voltak a szembenálló felek a Koreai háború során?",
         "options": [
             "Észak-Korea vs Dél-Korea, ENSZ",
             "Dél-Korea, ENSZ vs Észak-Korea",
@@ -1525,7 +1525,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Vietnámi háború? (1955-1975)",
+        "question": "Mikor zajlott a Vietnámi háború?",
         "options": [
             "1955-1975",
             "1905-1925",
@@ -1537,7 +1537,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Vietnámi háború során? (Észak-Vietnám vs Dél-Vietnám, Egyesült Államok)",
+        "question": "Kik voltak a szembenálló felek a Vietnámi háború során?",
         "options": [
             "Észak-Vietnám vs Dél-Vietnám, Egyesült Államok",
             "Dél-Vietnám, Egyesült Államok vs Észak-Vietnám",
@@ -1549,7 +1549,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Szikiai háború? (1967)",
+        "question": "Mikor zajlott a Szikiai háború?",
         "options": [
             "1967",
             "1917-1917",
@@ -1561,7 +1561,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Szikiai háború során? (Izrael vs Arab államok)",
+        "question": "Kik voltak a szembenálló felek a Szikiai háború során?",
         "options": [
             "Izrael vs Arab államok",
             "Arab államok vs Izrael",
@@ -1573,7 +1573,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Jom Kippur háború? (1973)",
+        "question": "Mikor zajlott a Jom Kippur háború?",
         "options": [
             "1973",
             "1923-1923",
@@ -1585,7 +1585,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Jom Kippur háború során? (Izrael vs Egyiptom, Szíria)",
+        "question": "Kik voltak a szembenálló felek a Jom Kippur háború során?",
         "options": [
             "Izrael vs Egyiptom, Szíria",
             "Egyiptom, Szíria vs Izrael",
@@ -1597,7 +1597,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Falkland-háború? (1982)",
+        "question": "Mikor zajlott a Falkland-háború?",
         "options": [
             "1982",
             "1932-1932",
@@ -1609,7 +1609,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Falkland-háború során? (Argentína vs Nagy-Britannia)",
+        "question": "Kik voltak a szembenálló felek a Falkland-háború során?",
         "options": [
             "Argentína vs Nagy-Britannia",
             "Nagy-Britannia vs Argentína",
@@ -1621,7 +1621,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Öbölháború? (1990-1991)",
+        "question": "Mikor zajlott a Öbölháború?",
         "options": [
             "1990-1991",
             "1940-1941",
@@ -1633,7 +1633,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Öbölháború során? (Irak vs ENSZ koalíció)",
+        "question": "Kik voltak a szembenálló felek a Öbölháború során?",
         "options": [
             "Irak vs ENSZ koalíció",
             "ENSZ koalíció vs Irak",
@@ -1645,7 +1645,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Jugoszláv háborúk? (1991-2001)",
+        "question": "Mikor zajlott a Jugoszláv háborúk?",
         "options": [
             "1991-2001",
             "1941-1951",
@@ -1657,7 +1657,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Afganisztáni háború? (2001-2021)",
+        "question": "Mikor zajlott a Afganisztáni háború?",
         "options": [
             "2001-2021",
             "1951-1971",
@@ -1669,7 +1669,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Afganisztáni háború során? (Egyesült Államok vs Taliban)",
+        "question": "Kik voltak a szembenálló felek a Afganisztáni háború során?",
         "options": [
             "Egyesült Államok vs Taliban",
             "Taliban vs Egyesült Államok",
@@ -1681,7 +1681,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Iraki háború? (2003-2011)",
+        "question": "Mikor zajlott a Iraki háború?",
         "options": [
             "2003-2011",
             "1953-1961",
@@ -1693,7 +1693,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Iraki háború során? (Egyesült Államok vs Irak)",
+        "question": "Kik voltak a szembenálló felek a Iraki háború során?",
         "options": [
             "Egyesült Államok vs Irak",
             "Irak vs Egyesült Államok",
