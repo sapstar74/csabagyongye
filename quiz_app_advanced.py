@@ -542,6 +542,10 @@ def main():
         st.session_state.show_image_modal = False
     if 'image_modal_states' not in st.session_state:
         st.session_state.image_modal_states = {}
+    if 'other_total_questions' not in st.session_state:
+        st.session_state.other_total_questions = st.session_state.get('default_other_questions', 40)
+    if 'music_total_questions' not in st.session_state:
+        st.session_state.music_total_questions = st.session_state.get('default_music_questions', 20)
     
     st.markdown('<h1 style="text-align: center; font-size: 3rem; color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
     
@@ -642,6 +646,33 @@ def show_topic_selection():
     col1, col2, col3 = st.columns(3)
     
     with col1:
+        if st.button("🎯 Teljes kvíz létrehozása", type="primary", use_container_width=True):
+            # Összes témakör kiválasztása
+            st.session_state.selected_topics = list(topics.keys())
+            
+            # Kérdésszámok beállítása minden témakörre
+            for topic_key in topics.keys():
+                max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
+                # Alapértelmezett érték: 3 minden témakörnél
+                default_questions = min(3, max_questions)
+                st.session_state[f'final_{topic_key}_questions'] = default_questions
+            
+            # Összesítő értékek beállítása
+            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t]
+            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t]
+            
+            # Zenei kérdések összege
+            total_music_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
+            st.session_state['music_total_questions'] = total_music_questions
+            
+            # Egyéb kérdések összege
+            total_other_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in other_topics)
+            st.session_state['other_total_questions'] = total_other_questions
+            
+            st.success(f"✅ Teljes kvíz létrehozva! {len(topics)} témakör kiválasztva, összesen {total_music_questions + total_other_questions} kérdés!")
+            st.rerun()
+    
+    with col2:
         if st.button("🎲 Random témakörök kiválasztása (zene nélkül)", type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
             music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
@@ -728,31 +759,8 @@ def show_topic_selection():
             st.rerun()
     
     with col3:
-        if st.button("🎯 Teljes kvíz létrehozása", type="primary", use_container_width=True):
-            # Összes témakör kiválasztása
-            st.session_state.selected_topics = list(topics.keys())
-            
-            # Kérdésszámok beállítása minden témakörre
-            for topic_key in topics.keys():
-                max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                # Alapértelmezett érték: 3 minden témakörnél
-                default_questions = min(3, max_questions)
-                st.session_state[f'final_{topic_key}_questions'] = default_questions
-            
-            # Összesítő értékek beállítása
-            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t]
-            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t]
-            
-            # Zenei kérdések összege
-            total_music_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
-            st.session_state['music_total_questions'] = total_music_questions
-            
-            # Egyéb kérdések összege
-            total_other_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in other_topics)
-            st.session_state['other_total_questions'] = total_other_questions
-            
-            st.success(f"✅ Teljes kvíz létrehozva! {len(topics)} témakör kiválasztva, összesen {total_music_questions + total_other_questions} kérdés!")
-            st.rerun()
+        st.markdown("### 📊 Gyors beállítások")
+        st.markdown("Használd a **Teljes kvíz létrehozása** gombot az első oszlopban a leggyorsabb beállításhoz!")
     
     st.markdown("---")
     
@@ -815,6 +823,7 @@ def show_topic_selection():
                     )
     
     with col2:
+        st.markdown("### 📚 Egyéb témakörök")
         other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0]]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
@@ -845,7 +854,6 @@ def show_topic_selection():
                     )
     
     with col3:
-        st.markdown("### 📚 Egyéb témakörök")
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 1:
                 # Kattintható gomb a checkbox helyett
@@ -891,7 +899,7 @@ def show_topic_selection():
             
             col1, col2 = st.columns(2)
             with col1:
-                music_total_questions = st.slider("Összes zenei kérdés száma", 1, total_music_questions, current_music_total, key="music_total_questions")
+                music_total_questions = st.slider("Összes zenei kérdés száma", 1, total_music_questions, st.session_state.get('default_music_questions', current_music_total), key="music_total_questions")
             with col2:
                 music_auto_distribute = st.checkbox("Automatikus elosztás a zenei témakörök között", True, key="music_auto_distribute")
             
@@ -911,7 +919,7 @@ def show_topic_selection():
             # Automatikus elosztás egyéb témakörök között
             col1, col2 = st.columns(2)
             with col1:
-                other_total_questions = st.slider("Összes egyéb kérdés száma", 1, 200, key="other_total_questions")
+                other_total_questions = st.slider("Összes egyéb kérdés száma", 1, 200, st.session_state.get('default_other_questions', 40), key="other_total_questions")
             
             with col2:
                 other_auto_distribute = st.checkbox("Automatikus elosztás az egyéb témakörök között", True, key="other_auto_distribute")
@@ -1742,40 +1750,53 @@ def show_settings_page():
     
     with col1:
         st.markdown("#### Alapértelmezett beállítások")
-        default_music_questions = st.number_input("Alapértelmezett zenei kérdések", 1, 20, 10)
-        default_other_questions = st.number_input("Alapértelmezett egyéb kérdések", 1, 20, 10)
+        default_music_questions = st.number_input("Alapértelmezett zenei kérdések", 1, 20, st.session_state.get('default_music_questions', 10))
+        default_other_questions = st.number_input("Alapértelmezett egyéb kérdések", 1, 100, st.session_state.get('default_other_questions', 40))
     
     with col2:
         st.markdown("#### Időzítő beállítások")
-        default_timed_limit = st.number_input("Alapértelmezett időkorlát (másodperc)", 10, 60, 30)
-        default_challenge_limit = st.number_input("Kihívás mód időkorlát (másodperc)", 10, 30, 20)
+        default_timed_limit = st.number_input("Alapértelmezett időkorlát (másodperc)", 10, 60, st.session_state.get('default_timed_limit', 30))
+        default_challenge_limit = st.number_input("Kihívás mód időkorlát (másodperc)", 10, 30, st.session_state.get('default_challenge_limit', 20))
     
     st.markdown("### 🎵 Audio Beállítások")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        auto_play_audio = st.checkbox("Automatikus audio lejátszás", False)
-        show_audio_filename = st.checkbox("Audio fájlnév megjelenítése", True)
+        auto_play_audio = st.checkbox("Automatikus audio lejátszás", st.session_state.get('auto_play_audio', False))
+        show_audio_filename = st.checkbox("Audio fájlnév megjelenítése", st.session_state.get('show_audio_filename', True))
     
     with col2:
-        audio_volume = st.slider("Alapértelmezett hangerő", 0, 100, 50)
-        audio_quality = st.selectbox("Audio minőség", ["Alacsony", "Közepes", "Magas"], index=1)
+        audio_volume = st.slider("Alapértelmezett hangerő", 0, 100, st.session_state.get('audio_volume', 50))
+        audio_quality = st.selectbox("Audio minőség", ["Alacsony", "Közepes", "Magas"], index=["Alacsony", "Közepes", "Magas"].index(st.session_state.get('audio_quality', "Közepes")))
     
     st.markdown("### 📊 Analytics Beállítások")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        track_performance = st.checkbox("Teljesítmény követése", True)
-        save_detailed_results = st.checkbox("Részletes eredmények mentése", True)
+        track_performance = st.checkbox("Teljesítmény követése", st.session_state.get('track_performance', True))
+        save_detailed_results = st.checkbox("Részletes eredmények mentése", st.session_state.get('save_detailed_results', True))
     
     with col2:
-        analytics_retention_days = st.number_input("Analytics adatok megőrzése (nap)", 30, 365, 90)
-        export_analytics = st.checkbox("Analytics exportálása", False)
+        analytics_retention_days = st.number_input("Analytics adatok megőrzése (nap)", 30, 365, st.session_state.get('analytics_retention_days', 90))
+        export_analytics = st.checkbox("Analytics exportálása", st.session_state.get('export_analytics', False))
     
     # Beállítások mentése
     if st.button("💾 Beállítások mentése", type="primary"):
+        # Beállítások mentése session state-be
+        st.session_state.default_music_questions = default_music_questions
+        st.session_state.default_other_questions = default_other_questions
+        st.session_state.default_timed_limit = default_timed_limit
+        st.session_state.default_challenge_limit = default_challenge_limit
+        st.session_state.auto_play_audio = auto_play_audio
+        st.session_state.show_audio_filename = show_audio_filename
+        st.session_state.audio_volume = audio_volume
+        st.session_state.audio_quality = audio_quality
+        st.session_state.track_performance = track_performance
+        st.session_state.save_detailed_results = save_detailed_results
+        st.session_state.analytics_retention_days = analytics_retention_days
+        st.session_state.export_analytics = export_analytics
         st.success("Beállítások mentve!")
 
 if __name__ == "__main__":
