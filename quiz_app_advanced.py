@@ -1,5 +1,5 @@
 """
-🧠 PDF Alapú Quiz Alkalmazás - Fejlett Verzió
+🎯 Csabagyöngye Tréning Center 😄
 Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 """
 
@@ -44,7 +44,7 @@ def get_image_base64(image_path):
 
 # Page config
 st.set_page_config(
-    page_title="Quiz App - Fejlett Verzió",
+    page_title="Csabagyöngye Tréning Center",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -543,7 +543,7 @@ def main():
     if 'image_modal_states' not in st.session_state:
         st.session_state.image_modal_states = {}
     
-    st.markdown('<h1 class="main-header">🎯 Quiz Alkalmazás - Fejlett Verzió</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 class="main-header">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
     
     # Sidebar navigáció
     with st.sidebar:
@@ -729,9 +729,30 @@ def show_topic_selection():
             st.rerun()
     
     with col3:
-        if st.button("🔄 Reset kiválasztás", type="secondary", use_container_width=True):
-            st.session_state.selected_topics = []
-            # Gomb állapotok automatikusan frissülnek a selected_topics alapján
+        if st.button("🎯 Teljes kvíz létrehozása", type="primary", use_container_width=True):
+            # Összes témakör kiválasztása
+            st.session_state.selected_topics = list(topics.keys())
+            
+            # Kérdésszámok beállítása minden témakörre
+            for topic_key in topics.keys():
+                max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
+                # Alapértelmezett érték: 3 minden témakörnél
+                default_questions = min(3, max_questions)
+                st.session_state[f'final_{topic_key}_questions'] = default_questions
+            
+            # Összesítő értékek beállítása
+            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t]
+            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t]
+            
+            # Zenei kérdések összege
+            total_music_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
+            st.session_state['music_total_questions'] = total_music_questions
+            
+            # Egyéb kérdések összege
+            total_other_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in other_topics)
+            st.session_state['other_total_questions'] = total_other_questions
+            
+            st.success(f"✅ Teljes kvíz létrehozva! {len(topics)} témakör kiválasztva, összesen {total_music_questions + total_other_questions} kérdés!")
             st.rerun()
     
     st.markdown("---")
@@ -760,10 +781,6 @@ def show_topic_selection():
         /* Oszlopok egységes magasság */
         div[data-testid="column"] {
             min-height: 600px !important;
-        }
-        /* Földrajz témakör előtti margó */
-        div[data-testid="column"]:nth-child(2) {
-            padding-top: 60px !important;
         }
     </style>
     """, unsafe_allow_html=True)
