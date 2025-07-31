@@ -20,14 +20,6 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
     },
     {
         "question": "Ki az előadó?",
-        "audio_file": "56_Ektomorf.mp3",
-        "options": ['Ektomorf', 'Hétköznapi Csalódások', 'Alvin és a Mókusok', 'Tudósok'],
-        "correct": 0,
-        "explanation": "Ektomorf magyar metal zenekar",
-        "topic": "magyar_zenekarok_uj"
-    },
-    {
-        "question": "Ki az előadó?",
         "audio_file": "31_Tudósok.mp3",
         "options": ['Tudósok', 'Alvin és a Mókusok', 'Hétköznapi Csalódások', 'Tankcsapda'],
         "correct": 0,
