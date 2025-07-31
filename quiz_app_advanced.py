@@ -417,8 +417,8 @@ def start_quiz():
         st.error("Kérlek válassz ki legalább egy témaköröt!")
         return
     
-    # Végleges kérdésszám használata
-    final_question_count = st.session_state.get('final_question_count', 40)
+    # Végleges kérdésszám használata - ha nincs beállítva, akkor 0 (a tényleges kérdések számától függ)
+    final_question_count = st.session_state.get('final_question_count', 0)
     
     all_questions = []
     total_selected_questions = 0
@@ -496,11 +496,14 @@ def start_quiz():
     random.shuffle(all_questions)
     
     # Végleges kérdésszám alkalmazása - csak akkor, ha több kérdés van, mint amit kértünk
-    if len(all_questions) > final_question_count:
+    if final_question_count > 0 and len(all_questions) > final_question_count:
         all_questions = all_questions[:final_question_count]
     
     # Debug információ
-    st.info(f"Kiválasztott kérdések: {len(all_questions)} / {final_question_count} (összesen: {total_selected_questions})")
+    if final_question_count > 0:
+        st.info(f"Kiválasztott kérdések: {len(all_questions)} / {final_question_count} (összesen: {total_selected_questions})")
+    else:
+        st.info(f"Kiválasztott kérdések: {len(all_questions)} (összesen: {total_selected_questions})")
     if invalid_questions > 0:
         st.warning(f"{invalid_questions} érvénytelen kérdés kihagyva")
     
@@ -1064,9 +1067,8 @@ def show_topic_selection():
         
         # Quiz indítás gomb
         if st.button("🚀 Quiz indítása", type="primary", use_container_width=True):
-            # Végleges kérdésszám beállítása - csak akkor, ha még nincs beállítva
-            if 'final_question_count' not in st.session_state:
-                st.session_state.final_question_count = final_question_count
+            # Végleges kérdésszám beállítása mindig a jelenlegi értékre
+            st.session_state.final_question_count = final_question_count
             start_quiz()
 
 def show_quiz():
@@ -1432,10 +1434,9 @@ def show_quiz():
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
-                            st.rerun()
                         else:
                             st.session_state.quiz_state = 'results'
-                            st.rerun()
+                        st.rerun()
                     else:
                         st.warning("Kérlek, írj be egy választ!")
             else:
@@ -1470,10 +1471,9 @@ def show_quiz():
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
-                            st.rerun()
                         else:
                             st.session_state.quiz_state = 'results'
-                            st.rerun()
+                        st.rerun()
                     else:
                         st.warning("Kérlek, írj be egy választ!")
         
@@ -1536,10 +1536,6 @@ def show_quiz():
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
                         handle_answer(i, new_correct_index, options, question)
-                        if st.session_state.quiz_state != 'results':
-                            st.session_state.current_question += 1
-                            st.session_state.question_start_time = datetime.now()
-                        st.rerun()
             
             with col2:
                 for i in range(2, min(4, len(options))):
@@ -1548,10 +1544,6 @@ def show_quiz():
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
                                use_container_width=True, help="Válaszlehetőség"):
                         handle_answer(i, new_correct_index, options, question)
-                        if st.session_state.quiz_state != 'results':
-                            st.session_state.current_question += 1
-                            st.session_state.question_start_time = datetime.now()
-                        st.rerun()
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -1572,10 +1564,6 @@ def show_quiz():
                 # Véletlenszerű válasz kiválasztása
                 random_answer = random.randint(0, len(options) - 1)
                 handle_answer(random_answer, new_correct_index, options, question)
-                if st.session_state.quiz_state != 'results':
-                    st.session_state.current_question += 1
-                    st.session_state.question_start_time = datetime.now()
-                st.rerun()
     
     # Kvíz újraindítás gomb minden kérdéshez (a válaszlehetőségek után)
     st.markdown("---")
@@ -1617,7 +1605,13 @@ def handle_answer(selected_index, correct_index, options, question):
         'time_taken': (datetime.now() - st.session_state.question_start_time).total_seconds()
     })
     
-    # Ne hívjuk meg a st.rerun()-t itt, hagyjuk, hogy a show_quiz() kezelje a következő kérdést
+    # Következő kérdésre lépés
+    if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
+        st.session_state.current_question += 1
+        st.session_state.question_start_time = datetime.now()
+    else:
+        st.session_state.quiz_state = 'results'
+    st.rerun()
 
 def handle_time_up():
     """Idő lejárt kezelése"""
