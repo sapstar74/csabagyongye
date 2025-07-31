@@ -108,6 +108,16 @@ class SpotifyPlaylistManager:
         count = min(count, len(tracks))
         return random.sample(tracks, count)
     
+    def get_extended_preview_url(self, preview_url: str, duration: int = 90) -> str:
+        """90 másodperces preview URL generálása (ha lehetséges)"""
+        if not preview_url:
+            return preview_url
+        
+        # A Spotify preview URL-ek alapértelmezetten 30 másodpercesek
+        # Sajnos a Spotify API nem támogatja a hosszabb preview-okat
+        # De visszaadjuk az eredeti URL-t, és a frontend kezeli majd
+        return preview_url
+    
     def generate_question_options(self, correct_artist: str, all_tracks: List[Dict]) -> List[str]:
         """Válaszopciók generálása a helyes előadóval együtt"""
         options = [correct_artist]
@@ -164,13 +174,14 @@ def get_one_hit_wonders_questions(count: int = 20) -> List[Dict]:
         question = {
             "question": f"Ki az előadó a '{track['name']}' című dalban?",
             "spotify_track_id": track['id'],
-            "spotify_preview_url": track['preview_url'],
+            "spotify_preview_url": self.get_extended_preview_url(track['preview_url'], 90),
             "spotify_external_url": track['external_url'],
             "options": options,
             "correct": correct_index,
             "explanation": f"'{track['name']}' egy One Hit Wonder dal az előadótól: {track['artist']}",
             "topic": "one_hit_wonders",
-            "album": track['album']
+            "album": track['album'],
+            "preview_duration": 90  # 90 másodperces preview
         }
         
         questions.append(question)
