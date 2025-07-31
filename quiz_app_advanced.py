@@ -685,8 +685,8 @@ def show_topic_selection():
             st.session_state.selected_topics = list(topics.keys())
             
             # Zenei és egyéb témakörök szétválasztása
-            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t]
-            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t]
+            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t or t == "one_hit_wonders"]
+            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t and t != "one_hit_wonders"]
             
             # Kérdések elosztása a zenei témakörök között
             if music_topics:
@@ -774,7 +774,7 @@ def show_topic_selection():
     with col3:
         if st.button("🎲 Random témakörök kiválasztása (zene nélkül)", type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
             available_topics = [topic for topic in topics.keys() if topic not in music_topics]
             num_topics = random.randint(5, min(8, len(available_topics)))  # 5-8 témakör között
             selected_random_topics = random.sample(available_topics, num_topics)
@@ -911,7 +911,7 @@ def show_topic_selection():
     with col1:
         st.markdown("### 🎵 Zenei témakörök")
         for topic_key, topic_name in topics.items():
-            if "zene" in topic_key or "zenekar" in topic_key:
+            if "zene" in topic_key or "zenekar" in topic_key or topic_key == "one_hit_wonders":
                 # Kattintható gomb a checkbox helyett
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
@@ -939,7 +939,7 @@ def show_topic_selection():
     
     with col2:
         st.markdown("### 📚 Egyéb témakörök")
-        other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0]]
+        other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0] and t[0] != "one_hit_wonders"]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
                 # Kattintható gomb a checkbox helyett
