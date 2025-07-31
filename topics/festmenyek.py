@@ -608,6 +608,86 @@ FESTMENY_QUESTIONS = [
         'image_file': 'the-peasant-wedding---pieter-bruegel-the-elder-1568.jpg',
         'topic': 'festmények'
     },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Vincent van Gogh', 'Henri Matisse', 'Salvador Dalí', 'Jean-Antoine Watteau'],
+        'correct': 3,
+        'explanation': 'Einschiffung Nach Kythera - Jean-Antoine Watteau (1719)',
+        'image_file': 'einschiffung-nach-kythera---jeanantoine-watteau-1719.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Francisco Goya', 'Gustav Klimt', 'Jeanbaptiste Camille Corot', 'Claude Monet'],
+        'correct': 2,
+        'explanation': 'The Bridge At Narni - Jeanbaptiste Camille Corot (1826)',
+        'image_file': 'the-bridge-at-narni---jeanbaptiste-camille-corot-1826.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Jacob Isaacksz van Ruisdael', 'Wassily Kandinsky', 'Frida Kahlo', 'Pablo Picasso'],
+        'correct': 0,
+        'explanation': 'De Molen Bij Wijk Bij Duurstede - Jacob Isaacksz van Ruisdael (1668)',
+        'image_file': 'de-molen-bij-wijk-bij-duurstede----jacob-isaacksz-van-ruisdael-1668.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Johannes Vermeer', 'Giorgione', 'Claude Monet', 'Titian'],
+        'correct': 1,
+        'explanation': 'Schlummernde Venus - Giorgione (1508)',
+        'image_file': 'schlummernde-venus---titian-giorgione-1508.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Wassily Kandinsky', 'El Greco', 'Max Liebermann', 'Rembrandt'],
+        'correct': 2,
+        'explanation': 'Het Papegaaienlaantje - Max Liebermann (1902)',
+        'image_file': 'het-papegaaienlaantje---max-liebermann-1902.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Vincent van Gogh', 'Michelangelo', 'Claude Monet', 'Wassily Kandinsky'],
+        'correct': 1,
+        'explanation': 'Giudizio Universale - Michelangelo (1536)',
+        'image_file': 'giudizio-universale---michelangelo-1536.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Paul Cézanne', 'René Magritte', 'Francesco Guardi', 'Claude Monet'],
+        'correct': 2,
+        'explanation': 'View Of Piazzetta San Marco Towards The San Giorgio Maggiore - Francesco Guardi',
+        'image_file': 'view-of-piazzetta-san-marco-towards-the-san-giorgio-maggiore---francesco-guardi-unknown.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Vincent Van Gogh', 'Pierre-Auguste Renoir', 'Rembrandt', 'Andy Warhol'],
+        'correct': 0,
+        'explanation': 'A Langlois Hd Arles Mellett - Vincent Van Gogh (1888)',
+        'image_file': 'a-langlois-hd-arles-mellett---vincent-van-gogh-1888.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Henri Matisse', 'Francisco Goya', 'Edvard Munch', 'Henri Rousseau'],
+        'correct': 3,
+        'explanation': 'La Bohémienne Endormie - Henri Rousseau (1897)',
+        'image_file': 'la-bohémienne-endormie---henri_rousseau-1897.jpg',
+        'topic': 'festmények'
+    },
+    {
+        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+        'options': ['Jackson Pollock', 'George Caleb Bingham', 'Michelangelo', 'Salvador Dalí'],
+        'correct': 1,
+        'explanation': 'Pelzhndler Auf Dem Missouri - George Caleb Bingham (1845)',
+        'image_file': 'pelzhndler-auf-dem-missouri---george-caleb-bingham-1845.jpg',
+        'topic': 'festmények'
+    }
 ]
 
 if __name__ == "__main__":

@@ -98,6 +98,24 @@ st.markdown("""
         text-align: left;
         padding: 1rem;
         margin: 0.5rem 0;
+    }
+    /* Egységes gomb magasság és igazítás */
+    .stButton > button {
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 10px !important;
+    }
+    /* Témakör oszlopok egységes magasság */
+    .topic-column {
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    .topic-column > div {
+        flex: 1;
+    }
         border: 2px solid #e0e0e0;
         border-radius: 10px;
         background-color: transparent;
@@ -602,7 +620,7 @@ def show_topic_selection():
         "festmények": "🎨 Festmények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
-        "tudósok": "🔬 Tudósok",
+        "tudósok": "🔬 Tudósok, művészek, híres emberek",
         "mitológia": "🏛️ Mitológia",
         "állatok": "🐾 Állatok",
         "drámák": "🎭 Drámák",
@@ -642,13 +660,14 @@ def show_topic_selection():
             # Témakörök kiválasztása (zenei + új random)
             st.session_state.selected_topics = existing_music_topics + selected_random_topics
             
-            # Checkbox állapotok frissítése
+            # Gomb állapotok frissítése (checkbox helyett)
             for topic_key in topics.keys():
-                checkbox_key = f"topic_{topic_key}"
                 if topic_key in selected_random_topics or topic_key in existing_music_topics:
-                    st.session_state[checkbox_key] = True
+                    # A gombok állapota automatikusan frissül a selected_topics alapján
+                    pass
                 elif topic_key not in music_topics:  # Csak nem-zenei témakörök törlése
-                    st.session_state[checkbox_key] = False
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
             
             # Kérdésszámok beállítása
             for i, topic in enumerate(selected_random_topics):
@@ -684,13 +703,14 @@ def show_topic_selection():
             # Témakörök kiválasztása (nem-zenei + új zenei)
             st.session_state.selected_topics = existing_other_topics + selected_music_topics
             
-            # Checkbox állapotok frissítése
+            # Gomb állapotok frissítése (checkbox helyett)
             for topic_key in topics.keys():
-                checkbox_key = f"topic_{topic_key}"
                 if topic_key in selected_music_topics or topic_key in existing_other_topics:
-                    st.session_state[checkbox_key] = True
+                    # A gombok állapota automatikusan frissül a selected_topics alapján
+                    pass
                 elif topic_key in music_topics:  # Csak zenei témakörök törlése
-                    st.session_state[checkbox_key] = False
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
             
             # Kérdésszámok beállítása
             for i, topic in enumerate(selected_music_topics):
@@ -711,10 +731,7 @@ def show_topic_selection():
     with col3:
         if st.button("🔄 Reset kiválasztás", type="secondary", use_container_width=True):
             st.session_state.selected_topics = []
-            # Checkbox állapotok törlése
-            for topic_key in topics.keys():
-                checkbox_key = f"topic_{topic_key}"
-                st.session_state[checkbox_key] = False
+            # Gomb állapotok automatikusan frissülnek a selected_topics alapján
             st.rerun()
     
     st.markdown("---")
@@ -732,91 +749,112 @@ def show_topic_selection():
     for i, topic in enumerate(selected_topics):
         fair_distribution[topic] = fair_share + (1 if i < remainder else 0)
 
-
+    # CSS a gombok egységes magasságához
+    st.markdown("""
+    <style>
+        /* Egységes gomb magasság */
+        .stButton > button {
+            height: 50px !important;
+            margin-bottom: 8px !important;
+        }
+        /* Oszlopok egységes magasság */
+        div[data-testid="column"] {
+            min-height: 600px !important;
+        }
+        /* Földrajz témakör előtti margó */
+        div[data-testid="column"]:nth-child(2) {
+            padding-top: 60px !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
     with col1:
         st.markdown("### 🎵 Zenei témakörök")
         for topic_key, topic_name in topics.items():
             if "zene" in topic_key or "zenekar" in topic_key:
-                # Checkbox állapot kezelése
-                checkbox_key = f"topic_{topic_key}"
-                # Alapértelmezetten nincs bejelölve, csak ha már kiválasztva van
-                default_checked = topic_key in st.session_state.selected_topics
-                is_checked = st.checkbox(topic_name, key=checkbox_key, value=default_checked)
+                # Kattintható gomb a checkbox helyett
+                is_selected = topic_key in st.session_state.selected_topics
+                button_style = "primary" if is_selected else "secondary"
                 
-                # Témakör hozzáadása/eltávolítása a listából
-                if is_checked and topic_key not in st.session_state.selected_topics:
-                    st.session_state.selected_topics.append(topic_key)
-                elif not is_checked and topic_key in st.session_state.selected_topics:
-                    st.session_state.selected_topics.remove(topic_key)
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                    # Témakör hozzáadása/eltávolítása a listából
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
+                    else:
+                        st.session_state.selected_topics.append(topic_key)
+                    st.rerun()
                 
-                # Egyedi slider közvetlenül a checkbox alatt
+                # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 20 zenei témaköröknél (növelve 10-ről)
-                    default_questions = min(20, max_questions)
+                    # Alapértelmezett érték: 3 minden témakörnél
+                    default_questions = min(3, max_questions)
                     st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
+                        value=default_questions,
                         key=f"final_{topic_key}_questions"
                     )
     
     with col2:
-        st.markdown("### 📚 Egyéb témakörök")
         other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0]]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
-                # Checkbox állapot kezelése
-                checkbox_key = f"topic_{topic_key}"
-                # Alapértelmezetten nincs bejelölve
-                is_checked = st.checkbox(topic_name, key=checkbox_key)
+                # Kattintható gomb a checkbox helyett
+                is_selected = topic_key in st.session_state.selected_topics
+                button_style = "primary" if is_selected else "secondary"
                 
-                # Témakör hozzáadása/eltávolítása a listából
-                if is_checked and topic_key not in st.session_state.selected_topics:
-                    st.session_state.selected_topics.append(topic_key)
-                elif not is_checked and topic_key in st.session_state.selected_topics:
-                    st.session_state.selected_topics.remove(topic_key)
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                    # Témakör hozzáadása/eltávolítása a listából
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
+                    else:
+                        st.session_state.selected_topics.append(topic_key)
+                    st.rerun()
                 
-                # Egyedi slider közvetlenül a checkbox alatt
+                # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 20 egyéb témaköröknél
-                    default_questions = min(20, max_questions)
+                    # Alapértelmezett érték: 3 minden témakörnél
+                    default_questions = min(3, max_questions)
                     st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
+                        value=default_questions,
                         key=f"final_{topic_key}_questions"
                     )
     
     with col3:
-        st.markdown("### 📚 Egyéb témakörök (folyt.)")
+        st.markdown("### 📚 Egyéb témakörök")
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 1:
-                # Checkbox állapot kezelése
-                checkbox_key = f"topic_{topic_key}"
-                # Alapértelmezetten nincs bejelölve
-                is_checked = st.checkbox(topic_name, key=checkbox_key)
+                # Kattintható gomb a checkbox helyett
+                is_selected = topic_key in st.session_state.selected_topics
+                button_style = "primary" if is_selected else "secondary"
                 
-                # Témakör hozzáadása/eltávolítása a listából
-                if is_checked and topic_key not in st.session_state.selected_topics:
-                    st.session_state.selected_topics.append(topic_key)
-                elif not is_checked and topic_key in st.session_state.selected_topics:
-                    st.session_state.selected_topics.remove(topic_key)
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                    # Témakör hozzáadása/eltávolítása a listából
+                    if topic_key in st.session_state.selected_topics:
+                        st.session_state.selected_topics.remove(topic_key)
+                    else:
+                        st.session_state.selected_topics.append(topic_key)
+                    st.rerun()
                 
-                # Egyedi slider közvetlenül a checkbox alatt
+                # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 20 egyéb témaköröknél
-                    default_questions = min(20, max_questions)
+                    # Alapértelmezett érték: 3 minden témakörnél
+                    default_questions = min(3, max_questions)
                     st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
+                        value=default_questions,
                         key=f"final_{topic_key}_questions"
                     )
     

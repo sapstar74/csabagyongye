@@ -71,5 +71,19 @@ TUDOSOK_QUESTIONS = [
         "correct": 2,
         "explanation": "A ganglion idegdúc, idegsejtek csoportosulása.",
         "topic": "tudósok"
+    },
+    {
+        "question": "Ki volt Bakunyin Mihail?",
+        "options": ["Orosz anarchista író", "Szovjet politikus", "Orosz költő", "Szovjet tudós"],
+        "correct": 0,
+        "explanation": "Bakunyin Mihail (1814-1876) orosz anarchista író és filozófus volt.",
+        "topic": "tudósok"
+    },
+    {
+        "question": "Ki volt Bondarcsuk Szergej?",
+        "options": ["Szovjet rendező", "Orosz író", "Szovjet színész", "Orosz zeneszerző"],
+        "correct": 0,
+        "explanation": "Bondarcsuk Szergej (1920-1994) szovjet filmrendező és színész volt.",
+        "topic": "tudósok"
     }
 ] 
