@@ -27,7 +27,7 @@ from topics.festmenyek import FESTMENY_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
-from nemzetkozi_audio_mapping_complete import get_nemzetkozi_audio_path
+from nemzetkozi_audio_mapping_updated import get_nemzetkozi_audio_path
 from quiz_analytics import QuizAnalytics
 from quiz_modes import QuizModeManager, QuizMode, DifficultyLevel, QuizModeUI, QuizScoring
 from auto_audio_player import auto_audio_player_simple
@@ -334,7 +334,7 @@ def reset_quiz():
 
 def get_audio_file_for_question(question, topic):
     """Visszaadja az audio fájl elérési útját a kérdéshez"""
-    if topic == "magyar_zenekarok":
+    if topic == "magyar_zenekarok" or topic == "magyar_zenekarok_uj":
         if "original_index" in question:
             try:
                 index = int(question["original_index"])
@@ -343,6 +343,12 @@ def get_audio_file_for_question(question, topic):
                     return str(audio_path)
             except Exception as e:
                 pass
+        elif "audio_file" in question and question["audio_file"]:
+            # Ha van audio_file mező, próbáljuk közvetlenül
+            audio_dir = Path(__file__).parent / "audio_files_magyar_uj"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
         return None
     elif topic == "nemzetkozi_zenekarok":
         # Nemzetközi zenekarok - audio_file vagy original_index alapú
@@ -448,7 +454,7 @@ def start_quiz():
                         continue
                     question['topic'] = topic
                     # --- Magyar zenekarok: opciók és helyes válasz igazítása ---
-                    if topic == "magyar_zenekarok":
+                    if topic == "magyar_zenekarok" or topic == "magyar_zenekarok_uj":
                         # A fájlnév alapján keressük meg a mapping indexét
                         audio_file = question.get("audio_file", "")
                         if audio_file:
@@ -905,12 +911,11 @@ def show_topic_selection():
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
-                    st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
-                        value=default_questions,
+                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
                         key=f"final_{topic_key}_questions"
                     )
     
@@ -936,12 +941,11 @@ def show_topic_selection():
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
-                    st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
-                        value=default_questions,
+                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
                         key=f"final_{topic_key}_questions"
                     )
     
@@ -966,12 +970,11 @@ def show_topic_selection():
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
-                    st.session_state.setdefault(f"final_{topic_key}_questions", default_questions)
                     final_topic_questions = st.slider(
                         f"{topic_name} kérdések száma",
                         min_value=0,
                         max_value=max_questions,
-                        value=default_questions,
+                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
                         key=f"final_{topic_key}_questions"
                     )
     
