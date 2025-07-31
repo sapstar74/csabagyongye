@@ -20,6 +20,14 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
     },
     {
         "question": "Ki az előadó?",
+        "audio_file": "56_Ektomorf.mp3",
+        "options": ['Ektomorf', 'Hétköznapi Csalódások', 'Alvin és a Mókusok', 'Tudósok'],
+        "correct": 0,
+        "explanation": "Ektomorf magyar metal zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
         "audio_file": "31_Tudósok.mp3",
         "options": ['Tudósok', 'Alvin és a Mókusok', 'Hétköznapi Csalódások', 'Tankcsapda'],
         "correct": 0,
@@ -558,6 +566,198 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
         "question": "Ki az előadó?",
         "audio_file": "21_Korai_Öröm.mp3",
         "options": ['Korai Öröm', 'Republic', 'P. Mobil', 'Quimby'],
+        "correct": 0,
+        "explanation": "Korai Öröm magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "71_Bagossy_Brothers_Company.mp3",
+        "options": ['Bagossy Brothers Company', 'Bagossy Brothers', 'Republic', 'Korai Öröm'],
+        "correct": 0,
+        "explanation": "Bagossy Brothers Company magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "72_Neoton_Família.mp3",
+        "options": ['Neoton Família', 'Bagossy Brothers Company', 'Bagossy Brothers', 'Republic'],
+        "correct": 0,
+        "explanation": "Neoton Família magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "73_Follow_the_flow.mp3",
+        "options": ['Follow the Flow', 'Neoton Família', 'Bagossy Brothers Company', 'Bagossy Brothers'],
+        "correct": 0,
+        "explanation": "Follow the Flow magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "74_4Street.mp3",
+        "options": ['4Street', 'Follow the Flow', 'Neoton Família', 'Bagossy Brothers Company'],
+        "correct": 0,
+        "explanation": "4Street magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "75_Bagossy_Brothers.mp3",
+        "options": ['Bagossy Brothers', '4Street', 'Follow the Flow', 'Neoton Família'],
+        "correct": 0,
+        "explanation": "Bagossy Brothers magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "76_Csaknekedkislány.mp3",
+        "options": ['Csaknekedkislány', 'Bagossy Brothers', '4Street', 'Follow the Flow'],
+        "correct": 0,
+        "explanation": "Csaknekedkislány magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "77_Lóci_játszik.mp3",
+        "options": ['Lóci játszik', 'Csaknekedkislány', 'Bagossy Brothers', '4Street'],
+        "correct": 0,
+        "explanation": "Lóci játszik magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "78_Galaxisok.mp3",
+        "options": ['Galaxisok', 'Lóci játszik', 'Csaknekedkislány', 'Bagossy Brothers'],
+        "correct": 0,
+        "explanation": "Galaxisok magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "79_Parno_Graszt.mp3",
+        "options": ['Parno Graszt', 'Galaxisok', 'Lóci játszik', 'Csaknekedkislány'],
+        "correct": 0,
+        "explanation": "Parno Graszt magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "80_Palya_Bea.mp3",
+        "options": ['Palya Bea', 'Parno Graszt', 'Galaxisok', 'Lóci játszik'],
+        "correct": 0,
+        "explanation": "Palya Bea magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "81_Bohemian_Betyars.mp3",
+        "options": ['Bohemian Betyars', 'Palya Bea', 'Parno Graszt', 'Galaxisok'],
+        "correct": 0,
+        "explanation": "Bohemian Betyars magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "82_Aurevoir.mp3",
+        "options": ['Aurevoir', 'Bohemian Betyars', 'Palya Bea', 'Parno Graszt'],
+        "correct": 0,
+        "explanation": "Aurevoir magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "83_Dánielffy.mp3",
+        "options": ['Dánielffy', 'Aurevoir', 'Bohemian Betyars', 'Palya Bea'],
+        "correct": 0,
+        "explanation": "Dánielffy magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "84_Ham_Ko_Ham.mp3",
+        "options": ['Ham Ko Ham', 'Dánielffy', 'Aurevoir', 'Bohemian Betyars'],
+        "correct": 0,
+        "explanation": "Ham Ko Ham magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "85_Carbonfools.mp3",
+        "options": ['Carbonfools', 'Ham Ko Ham', 'Dánielffy', 'Aurevoir'],
+        "correct": 0,
+        "explanation": "Carbonfools magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "86_Zagar.mp3",
+        "options": ['Zagar', 'Carbonfools', 'Ham Ko Ham', 'Dánielffy'],
+        "correct": 0,
+        "explanation": "Zagar magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "87_Neo.mp3",
+        "options": ['Neo', 'Zagar', 'Carbonfools', 'Ham Ko Ham'],
+        "correct": 0,
+        "explanation": "Neo magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "88_Soulwave.mp3",
+        "options": ['Soulwave', 'Neo', 'Zagar', 'Carbonfools'],
+        "correct": 0,
+        "explanation": "Soulwave magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "89_Quimby.mp3",
+        "options": ['Quimby', 'Soulwave', 'Neo', 'Zagar'],
+        "correct": 0,
+        "explanation": "Quimby magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "90_Tankcsapda.mp3",
+        "options": ['Tankcsapda', 'Quimby', 'Soulwave', 'Neo'],
+        "correct": 0,
+        "explanation": "Tankcsapda magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "91_P._Mobil.mp3",
+        "options": ['P. Mobil', 'Tankcsapda', 'Quimby', 'Soulwave'],
+        "correct": 0,
+        "explanation": "P. Mobil magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "92_Republic.mp3",
+        "options": ['Republic', 'P. Mobil', 'Tankcsapda', 'Quimby'],
+        "correct": 0,
+        "explanation": "Republic magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "93_Bonanza_Banzai.mp3",
+        "options": ['Bonanza Banzai', 'Republic', 'P. Mobil', 'Tankcsapda'],
+        "correct": 0,
+        "explanation": "Bonanza Banzai magyar zenekar",
+        "topic": "magyar_zenekarok_uj"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "94_Korai_Öröm.mp3",
+        "options": ['Korai Öröm', 'Bonanza Banzai', 'Republic', 'P. Mobil'],
         "correct": 0,
         "explanation": "Korai Öröm magyar zenekar",
         "topic": "magyar_zenekarok_uj"
