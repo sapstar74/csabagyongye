@@ -1233,7 +1233,7 @@ def show_quiz():
     
     # Audio, Spotify embed vagy kép megjelenítése
     audio_file = get_audio_file_for_question(question, topic)
-    if topic == "nemzetkozi_zenekarok" or topic == "magyar_zenekarok":
+    if topic == "nemzetkozi_zenekarok" or topic == "magyar_zenekarok" or topic == "one_hit_wonders":
         # Minden zenei kérdésnél megpróbáljuk megjeleníteni az audio playert
         if audio_file and os.path.exists(audio_file):
             try:
