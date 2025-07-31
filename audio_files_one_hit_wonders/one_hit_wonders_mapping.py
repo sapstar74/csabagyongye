@@ -1,0 +1,71 @@
+# One Hit Wonders Audio Mapping
+import os
+from pathlib import Path
+
+AUDIO_DIR = Path(__file__).parent
+ONE_HIT_WONDERS_AUDIO_MAPPING = {
+    1: "01_Wheatus_Teenage Dirtbag.mp3",
+    2: "02_Gotye_Somebody That I Used To Know.mp3",
+    4: "04_Soft Cell_Tainted Love.mp3",
+    5: "05_Mark Morrison_Return of the Mack.mp3",
+    8: "08_Daniel Powter_Bad Day.mp3",
+    9: "09_Fountains Of Wayne_Stacy's Mom.mp3",
+    12: "12_Meredith Brooks_Bitch.mp3",
+    14: "14_Vanilla Ice_Ice Ice Baby.mp3",
+    16: "16_The Buggles_Video Killed The Radio Star.mp3",
+    17: "17_Marc Cohn_Walking in Memphis.mp3",
+    18: "18_Whigfield_Saturday Night.mp3",
+    19: "19_Baha Men_Who Let The Dogs Out.mp3",
+    20: "20_Metro Station_Shake It.mp3",
+    21: "21_Snow_Informer.mp3",
+    22: "22_Caesars_Jerk It Out.mp3",
+    23: "23_José González_Heartbeats.mp3",
+    24: "24_MAGIC!_Rude.mp3",
+    25: "25_Kevin Lyttle_Turn Me On.mp3",
+    26: "26_Anita Ward_Ring My Bell.mp3",
+    27: "27_Tim Deluxe_It Just Won't Do.mp3",
+    28: "28_Men Without Hats_Safety Dance.mp3",
+    29: "29_Icona Pop_I Love It.mp3",
+    30: "30_Gyptian_Hold You - Hold Yuh.mp3",
+    31: "31_Los del Río_Macarena.mp3",
+    32: "32_PSY_Gangnam Style.mp3",
+    33: "33_Baauer_Harlem Shake.mp3",
+    34: "34_Carly Rae Jepsen_Call Me Maybe.mp3",
+    35: "35_Lorde_Royals.mp3",
+    36: "36_Foster the People_Pumped Up Kicks.mp3",
+    37: "37_fun._Some Nights.mp3",
+    38: "38_fun._We Are Young.mp3",
+    40: "40_Imagine Dragons_Radioactive.mp3",
+    41: "41_AWOLNATION_Sail.mp3",
+    42: "42_Macklemore & Ryan Lewis_Thrift Shop.mp3",
+    43: "43_Macklemore & Ryan Lewis_Can't Hold Us.mp3",
+    44: "44_Daft Punk_Get Lucky.mp3",
+    45: "45_Robin Thicke_Blurred Lines.mp3",
+    46: "46_Mark Ronson ft. Bruno Mars_Uptown Funk.mp3",
+    48: "48_Taylor Swift_Blank Space.mp3",
+    49: "49_WALK THE MOON_Shut Up and Dance.mp3",
+    50: "50_OMI_Cheerleader.mp3",
+    51: "51_Wiz Khalifa ft. Charlie Puth_See You Again.mp3",
+    52: "52_Iggy Azalea ft. Charli XCX_Fancy.mp3",
+    53: "53_Meghan Trainor_All About That Bass.mp3",
+    54: "54_Luis Fonsi ft. Daddy Yankee_Despacito.mp3",
+    55: "55_Ed Sheeran_Shape of You.mp3",
+    56: "56_Camila Cabello_Havana.mp3",
+    57: "57_Dua Lipa_New Rules.mp3",
+    58: "58_Billie Eilish_Bad Guy.mp3",
+    59: "59_Lil Nas X_Old Town Road.mp3",
+    60: "60_Tones and I_Dance Monkey.mp3",
+    61: "61_The Weeknd_Blinding Lights.mp3",
+    62: "62_Dua Lipa_Levitating.mp3",
+    63: "63_The Kid LAROI & Justin Bieber_Stay.mp3",
+    64: "64_Harry Styles_As It Was.mp3",
+    65: "65_Miley Cyrus_Flowers.mp3",
+    67: "67_Taylor Swift_Cruel Summer.mp3",
+    68: "68_Morgan Wallen_Last Night.mp3",
+}
+
+def get_one_hit_wonders_audio_path(index):
+    """One Hit Wonders audio fájl elérési útja"""
+    if index in ONE_HIT_WONDERS_AUDIO_MAPPING:
+        return AUDIO_DIR / ONE_HIT_WONDERS_AUDIO_MAPPING[index]
+    return None

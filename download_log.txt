@@ -1,0 +1,233 @@
+🎵 One Hit Wonders dalok letöltése és 90 másodperces vágása
+============================================================
+📁 Output könyvtár: audio_files_one_hit_wonders
+📥 Letöltés: 01. Wheatus - Teenage Dirtbag
+✅ Sikeres: 01_Wheatus_Teenage Dirtbag.mp3
+📥 Letöltés: 02. Gotye - Somebody That I Used To Know
+✅ Sikeres: 02_Gotye_Somebody That I Used To Know.mp3
+📥 Letöltés: 03. Of Monsters and Men - Little Talks
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] ghb6eDopW8M: Video unavailable
+
+📥 Letöltés: 04. Soft Cell - Tainted Love
+✅ Sikeres: 04_Soft Cell_Tainted Love.mp3
+📥 Letöltés: 05. Mark Morrison - Return of the Mack
+✅ Sikeres: 05_Mark Morrison_Return of the Mack.mp3
+📥 Letöltés: 06. Crazy Town - Butterfly
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] vo3HqXJZqgE: Video unavailable
+
+📥 Letöltés: 07. Peter Bjorn and John - Young Folks
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] 2R6uJf6QJYE: Video unavailable
+
+📥 Letöltés: 08. Daniel Powter - Bad Day
+✅ Sikeres: 08_Daniel Powter_Bad Day.mp3
+📥 Letöltés: 09. Fountains Of Wayne - Stacy's Mom
+✅ Sikeres: 09_Fountains Of Wayne_Stacy's Mom.mp3
+📥 Letöltés: 10. Rednex - Cotton Eye Joe
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] wv_1oO0zNug: Video unavailable
+
+📥 Letöltés: 11. Spin Doctors - Two Princes
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] 7kkc6eBYjTM: Video unavailable
+
+📥 Letöltés: 12. Meredith Brooks - Bitch
+✅ Sikeres: 12_Meredith Brooks_Bitch.mp3
+📥 Letöltés: 13. The Knack - My Sharona
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] OFSrInhfLjQ: Video unavailable
+
+📥 Letöltés: 14. Vanilla Ice - Ice Ice Baby
+✅ Sikeres: 14_Vanilla Ice_Ice Ice Baby.mp3
+📥 Letöltés: 15. Travie McCoy - Billionaire
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] 8i20lL9wXqo: Video unavailable
+
+📥 Letöltés: 16. The Buggles - Video Killed The Radio Star
+✅ Sikeres: 16_The Buggles_Video Killed The Radio Star.mp3
+📥 Letöltés: 17. Marc Cohn - Walking in Memphis
+✅ Sikeres: 17_Marc Cohn_Walking in Memphis.mp3
+📥 Letöltés: 18. Whigfield - Saturday Night
+✅ Sikeres: 18_Whigfield_Saturday Night.mp3
+📥 Letöltés: 19. Baha Men - Who Let The Dogs Out
+✅ Sikeres: 19_Baha Men_Who Let The Dogs Out.mp3
+📥 Letöltés: 20. Metro Station - Shake It
+✅ Sikeres: 20_Metro Station_Shake It.mp3
+📥 Letöltés: 21. Snow - Informer
+✅ Sikeres: 21_Snow_Informer.mp3
+📥 Letöltés: 22. Caesars - Jerk It Out
+✅ Sikeres: 22_Caesars_Jerk It Out.mp3
+📥 Letöltés: 23. José González - Heartbeats
+✅ Sikeres: 23_José González_Heartbeats.mp3
+📥 Letöltés: 24. MAGIC! - Rude
+✅ Sikeres: 24_MAGIC!_Rude.mp3
+📥 Letöltés: 25. Kevin Lyttle - Turn Me On
+✅ Sikeres: 25_Kevin Lyttle_Turn Me On.mp3
+📥 Letöltés: 26. Anita Ward - Ring My Bell
+✅ Sikeres: 26_Anita Ward_Ring My Bell.mp3
+📥 Letöltés: 27. Tim Deluxe - It Just Won't Do
+✅ Sikeres: 27_Tim Deluxe_It Just Won't Do.mp3
+📥 Letöltés: 28. Men Without Hats - Safety Dance
+✅ Sikeres: 28_Men Without Hats_Safety Dance.mp3
+📥 Letöltés: 29. Icona Pop - I Love It
+✅ Sikeres: 29_Icona Pop_I Love It.mp3
+📥 Letöltés: 30. Gyptian - Hold You - Hold Yuh
+✅ Sikeres: 30_Gyptian_Hold You - Hold Yuh.mp3
+📥 Letöltés: 31. Los del Río - Macarena
+✅ Sikeres: 31_Los del Río_Macarena.mp3
+📥 Letöltés: 32. PSY - Gangnam Style
+✅ Sikeres: 32_PSY_Gangnam Style.mp3
+📥 Letöltés: 33. Baauer - Harlem Shake
+✅ Sikeres: 33_Baauer_Harlem Shake.mp3
+📥 Letöltés: 34. Carly Rae Jepsen - Call Me Maybe
+✅ Sikeres: 34_Carly Rae Jepsen_Call Me Maybe.mp3
+📥 Letöltés: 35. Lorde - Royals
+✅ Sikeres: 35_Lorde_Royals.mp3
+📥 Letöltés: 36. Foster the People - Pumped Up Kicks
+✅ Sikeres: 36_Foster the People_Pumped Up Kicks.mp3
+📥 Letöltés: 37. fun. - Some Nights
+✅ Sikeres: 37_fun._Some Nights.mp3
+📥 Letöltés: 38. fun. - We Are Young
+✅ Sikeres: 38_fun._We Are Young.mp3
+📥 Letöltés: 39. The Lumineers - Ho Hey
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] zvCBSSwgtgU: Video unavailable
+
+📥 Letöltés: 40. Imagine Dragons - Radioactive
+✅ Sikeres: 40_Imagine Dragons_Radioactive.mp3
+📥 Letöltés: 41. AWOLNATION - Sail
+✅ Sikeres: 41_AWOLNATION_Sail.mp3
+📥 Letöltés: 42. Macklemore & Ryan Lewis - Thrift Shop
+✅ Sikeres: 42_Macklemore & Ryan Lewis_Thrift Shop.mp3
+📥 Letöltés: 43. Macklemore & Ryan Lewis - Can't Hold Us
+✅ Sikeres: 43_Macklemore & Ryan Lewis_Can't Hold Us.mp3
+📥 Letöltés: 44. Daft Punk - Get Lucky
+✅ Sikeres: 44_Daft Punk_Get Lucky.mp3
+📥 Letöltés: 45. Robin Thicke - Blurred Lines
+✅ Sikeres: 45_Robin Thicke_Blurred Lines.mp3
+📥 Letöltés: 46. Mark Ronson ft. Bruno Mars - Uptown Funk
+✅ Sikeres: 46_Mark Ronson ft. Bruno Mars_Uptown Funk.mp3
+📥 Letöltés: 47. Taylor Swift - Shake It Off
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] nz2UcoRc3qQ: Video unavailable
+
+📥 Letöltés: 48. Taylor Swift - Blank Space
+✅ Sikeres: 48_Taylor Swift_Blank Space.mp3
+📥 Letöltés: 49. WALK THE MOON - Shut Up and Dance
+✅ Sikeres: 49_WALK THE MOON_Shut Up and Dance.mp3
+📥 Letöltés: 50. OMI - Cheerleader
+✅ Sikeres: 50_OMI_Cheerleader.mp3
+📥 Letöltés: 51. Wiz Khalifa ft. Charlie Puth - See You Again
+✅ Sikeres: 51_Wiz Khalifa ft. Charlie Puth_See You Again.mp3
+📥 Letöltés: 52. Iggy Azalea ft. Charli XCX - Fancy
+✅ Sikeres: 52_Iggy Azalea ft. Charli XCX_Fancy.mp3
+📥 Letöltés: 53. Meghan Trainor - All About That Bass
+✅ Sikeres: 53_Meghan Trainor_All About That Bass.mp3
+📥 Letöltés: 54. Luis Fonsi ft. Daddy Yankee - Despacito
+✅ Sikeres: 54_Luis Fonsi ft. Daddy Yankee_Despacito.mp3
+📥 Letöltés: 55. Ed Sheeran - Shape of You
+✅ Sikeres: 55_Ed Sheeran_Shape of You.mp3
+📥 Letöltés: 56. Camila Cabello - Havana
+✅ Sikeres: 56_Camila Cabello_Havana.mp3
+📥 Letöltés: 57. Dua Lipa - New Rules
+✅ Sikeres: 57_Dua Lipa_New Rules.mp3
+📥 Letöltés: 58. Billie Eilish - Bad Guy
+✅ Sikeres: 58_Billie Eilish_Bad Guy.mp3
+📥 Letöltés: 59. Lil Nas X - Old Town Road
+✅ Sikeres: 59_Lil Nas X_Old Town Road.mp3
+📥 Letöltés: 60. Tones and I - Dance Monkey
+✅ Sikeres: 60_Tones and I_Dance Monkey.mp3
+📥 Letöltés: 61. The Weeknd - Blinding Lights
+✅ Sikeres: 61_The Weeknd_Blinding Lights.mp3
+📥 Letöltés: 62. Dua Lipa - Levitating
+✅ Sikeres: 62_Dua Lipa_Levitating.mp3
+📥 Letöltés: 63. The Kid LAROI & Justin Bieber - Stay
+✅ Sikeres: 63_The Kid LAROI & Justin Bieber_Stay.mp3
+📥 Letöltés: 64. Harry Styles - As It Was
+✅ Sikeres: 64_Harry Styles_As It Was.mp3
+📥 Letöltés: 65. Miley Cyrus - Flowers
+✅ Sikeres: 65_Miley Cyrus_Flowers.mp3
+📥 Letöltés: 66. Olivia Rodrigo - Vampire
+❌ Hiba: /Users/zsigagabor/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: [youtube] 1v4bU8WgTgQ: Video unavailable
+
+📥 Letöltés: 67. Taylor Swift - Cruel Summer
+✅ Sikeres: 67_Taylor Swift_Cruel Summer.mp3
+📥 Letöltés: 68. Morgan Wallen - Last Night
+✅ Sikeres: 68_Morgan Wallen_Last Night.mp3
+
+📊 Letöltés eredménye:
+✅ Sikeres letöltések: 58/68
+📝 Mapping fájl létrehozva: audio_files_one_hit_wonders/one_hit_wonders_mapping.py
+
+📋 Sikeresen letöltött dalok:
+  01. Wheatus - Teenage Dirtbag
+  02. Gotye - Somebody That I Used To Know
+  04. Soft Cell - Tainted Love
+  05. Mark Morrison - Return of the Mack
+  08. Daniel Powter - Bad Day
+  09. Fountains Of Wayne - Stacy's Mom
+  12. Meredith Brooks - Bitch
+  14. Vanilla Ice - Ice Ice Baby
+  16. The Buggles - Video Killed The Radio Star
+  17. Marc Cohn - Walking in Memphis
+  18. Whigfield - Saturday Night
+  19. Baha Men - Who Let The Dogs Out
+  20. Metro Station - Shake It
+  21. Snow - Informer
+  22. Caesars - Jerk It Out
+  23. José González - Heartbeats
+  24. MAGIC! - Rude
+  25. Kevin Lyttle - Turn Me On
+  26. Anita Ward - Ring My Bell
+  27. Tim Deluxe - It Just Won't Do
+  28. Men Without Hats - Safety Dance
+  29. Icona Pop - I Love It
+  30. Gyptian - Hold You - Hold Yuh
+  31. Los del Río - Macarena
+  32. PSY - Gangnam Style
+  33. Baauer - Harlem Shake
+  34. Carly Rae Jepsen - Call Me Maybe
+  35. Lorde - Royals
+  36. Foster the People - Pumped Up Kicks
+  37. fun. - Some Nights
+  38. fun. - We Are Young
+  40. Imagine Dragons - Radioactive
+  41. AWOLNATION - Sail
+  42. Macklemore & Ryan Lewis - Thrift Shop
+  43. Macklemore & Ryan Lewis - Can't Hold Us
+  44. Daft Punk - Get Lucky
+  45. Robin Thicke - Blurred Lines
+  46. Mark Ronson ft. Bruno Mars - Uptown Funk
+  48. Taylor Swift - Blank Space
+  49. WALK THE MOON - Shut Up and Dance
+  50. OMI - Cheerleader
+  51. Wiz Khalifa ft. Charlie Puth - See You Again
+  52. Iggy Azalea ft. Charli XCX - Fancy
+  53. Meghan Trainor - All About That Bass
+  54. Luis Fonsi ft. Daddy Yankee - Despacito
+  55. Ed Sheeran - Shape of You
+  56. Camila Cabello - Havana
+  57. Dua Lipa - New Rules
+  58. Billie Eilish - Bad Guy
+  59. Lil Nas X - Old Town Road
+  60. Tones and I - Dance Monkey
+  61. The Weeknd - Blinding Lights
+  62. Dua Lipa - Levitating
+  63. The Kid LAROI & Justin Bieber - Stay
+  64. Harry Styles - As It Was
+  65. Miley Cyrus - Flowers
+  67. Taylor Swift - Cruel Summer
+  68. Morgan Wallen - Last Night
