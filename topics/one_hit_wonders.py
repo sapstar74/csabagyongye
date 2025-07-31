@@ -22,7 +22,7 @@ def get_one_hit_wonders_questions_dynamic(count: int = 20):
         return get_static_one_hit_wonders_questions()
 
 def get_static_one_hit_wonders_questions():
-    """Statikus One Hit Wonders kérdések fallback esetén - 60 kérdés"""
+    """Statikus One Hit Wonders kérdések fallback esetén - csak audio fájllal rendelkező kérdések"""
     return [
         {
             "question": "Ki az előadó a 'Teenage Dirtbag' című dalban?",
@@ -608,6 +608,9 @@ try:
 except Exception as e:
     print(f"Hiba a One Hit Wonders kérdések generálásánál: {e}")
     ONE_HIT_WONDERS_QUESTIONS = get_static_one_hit_wonders_questions()
+
+# Csak azok a kérdések, amelyekhez van audio fájl
+ONE_HIT_WONDERS_QUESTIONS = [q for q in ONE_HIT_WONDERS_QUESTIONS if 'original_index' in q]
 
 if __name__ == "__main__":
     print("🎵 One Hit Wonders Kérdések Tesztelése")
