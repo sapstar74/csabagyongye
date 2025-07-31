@@ -404,7 +404,21 @@ def get_audio_file_for_question(question, topic):
             if audio_path.exists():
                 return str(audio_path)
     elif topic == "one_hit_wonders":
-        # Spotify preview URL kezelése
+        # One Hit Wonders audio fájl kezelése
+        if "original_index" in question:
+            try:
+                # Audio fájl elérési útja az audio_files_one_hit_wonders mappából
+                index = int(question["original_index"])
+                audio_dir = Path(__file__).parent / "audio_files_one_hit_wonders"
+                # Fájlnév keresése az index alapján
+                for filename in os.listdir(audio_dir):
+                    if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
+                        audio_path = audio_dir / filename
+                        if audio_path.exists():
+                            return str(audio_path)
+            except Exception as e:
+                print(f"[DEBUG] Hiba a One Hit Wonders audio fájl keresésénél: {e}")
+        # Spotify preview URL fallback
         if "spotify_preview_url" in question and question["spotify_preview_url"]:
             return question["spotify_preview_url"]
         return None
