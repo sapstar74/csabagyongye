@@ -24,6 +24,7 @@ from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
+from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
@@ -266,6 +267,7 @@ QUIZ_DATA_BY_TOPIC = {
     "komolyzene": KOMOLYZENE_QUESTIONS,
     "magyar_zenekarok": MAGYAR_ZENEKAROK_QUESTIONS_UJ,
     "nemzetkozi_zenekarok": NEMZETKOZI_ZENEKAROK_QUESTIONS,
+    "one_hit_wonders": ONE_HIT_WONDERS_QUESTIONS,
     "háborúk": HABORU_QUESTIONS_ALL,
     "magyar_királyok": KIRALYOK_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
@@ -401,6 +403,11 @@ def get_audio_file_for_question(question, topic):
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
                 return str(audio_path)
+    elif topic == "one_hit_wonders":
+        # Spotify preview URL kezelése
+        if "spotify_preview_url" in question and question["spotify_preview_url"]:
+            return question["spotify_preview_url"]
+        return None
     else:
         # Egyéb témakörök - youtube_audio_mapping használata
         if "original_index" in question:
@@ -635,6 +642,7 @@ def show_topic_selection():
         "komolyzene": "🎼 Komolyzene",
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
+        "one_hit_wonders": "⭐ One Hit Wonders",
         "festmények": "🎨 Festmények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
@@ -711,7 +719,7 @@ def show_topic_selection():
     with col2:
         if st.button("🎵 Random zenei témakörök kiválasztása", type="secondary", use_container_width=True):
             # Zenei témakörök kiválasztása
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
             num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
             selected_music_topics = random.sample(music_topics, num_music_topics)
             
