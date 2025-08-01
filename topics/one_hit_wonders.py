@@ -562,6 +562,15 @@ def get_static_one_hit_wonders_questions():
             "topic": "one_hit_wonders",
             "preview_duration": 90,
             "original_index": 70
+        },
+        {
+            "question": "Ki az előadó a 'Stolen Dance' című dalban?",
+            "options": ["Milky Chance", "Of Monsters and Men", "Vance Joy", "Passenger"],
+            "correct": 0,
+            "explanation": "'Stolen Dance' egy One Hit Wonder dal az előadótól: Milky Chance",
+            "topic": "one_hit_wonders",
+            "preview_duration": 120,
+            "original_index": 71
         }
     ]
 
