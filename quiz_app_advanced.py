@@ -421,7 +421,9 @@ def get_audio_file_for_question(question, topic):
                             print(f"[DEBUG] One Hit Wonders - Index: {index}, Audio fájl: {filename}")
                             # Streamlit felületen is megjelenítjük a debug információt
                             st.info(f"🔍 DEBUG: One Hit Wonders - Index: {index}, Audio fájl: {filename}")
-                            st.warning(f"🎯 DEBUG: One Hit Wonders - Kérdés sorszáma: {st.session_state.get('current_question', 'N/A') + 1}")
+                            current_question_num = st.session_state.get('current_question', 0) + 1
+                            st.warning(f"🎯 DEBUG: One Hit Wonders - Kérdés sorszáma: {current_question_num}")
+                            st.info(f"📊 DEBUG: One Hit Wonders - Teljes kérdés lista pozíció: {st.session_state.get('current_question', 0)} / {len(st.session_state.get('quiz_questions', []))}")
                             return str(audio_path)
             except Exception as e:
                 print(f"[DEBUG] Hiba a One Hit Wonders audio fájl keresésénél: {e}")
