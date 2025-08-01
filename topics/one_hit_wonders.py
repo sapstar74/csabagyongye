@@ -553,6 +553,15 @@ def get_static_one_hit_wonders_questions():
             "topic": "one_hit_wonders",
             "preview_duration": 90,
             "original_index": 69
+        },
+        {
+            "question": "Ki az előadó a 'Lemon Tree' című dalban?",
+            "options": ["Fools Garden", "The Cranberries", "The Cardigans", "The Corrs"],
+            "correct": 0,
+            "explanation": "'Lemon Tree' egy One Hit Wonder dal az előadótól: Fools Garden",
+            "topic": "one_hit_wonders",
+            "preview_duration": 90,
+            "original_index": 70
         }
     ]
 
