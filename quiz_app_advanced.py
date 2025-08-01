@@ -415,18 +415,10 @@ def get_audio_file_for_question(question, topic):
                     if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
                         audio_path = audio_dir / filename
                         if audio_path.exists():
-                            # DEBUG: Kiírjuk a kérdés és audio fájl információit
-                            question_text = question.get("question", "Ismeretlen kérdés")
-                            print(f"[DEBUG] One Hit Wonders - Kérdés: {question_text}")
-                            print(f"[DEBUG] One Hit Wonders - Index: {index}, Audio fájl: {filename}")
-                            # Streamlit felületen is megjelenítjük a debug információt
-                            st.info(f"🔍 DEBUG: One Hit Wonders - Index: {index}, Audio fájl: {filename}")
-                            current_question_num = st.session_state.get('current_question', 0) + 1
-                            st.warning(f"🎯 DEBUG: One Hit Wonders - Kérdés sorszáma: {current_question_num}")
-                            st.info(f"📊 DEBUG: One Hit Wonders - Teljes kérdés lista pozíció: {st.session_state.get('current_question', 0)} / {len(st.session_state.get('quiz_questions', []))}")
+                            # Audio fájl megtalálva
                             return str(audio_path)
             except Exception as e:
-                print(f"[DEBUG] Hiba a One Hit Wonders audio fájl keresésénél: {e}")
+                pass
         # Spotify preview URL fallback
         if "spotify_preview_url" in question and question["spotify_preview_url"]:
             return question["spotify_preview_url"]
@@ -484,11 +476,7 @@ def start_quiz():
                         continue
                     question['topic'] = topic
                     
-                    # DEBUG: One Hit Wonders kérdés kiválasztás
-                    if topic == "one_hit_wonders":
-                        original_idx = question.get('original_index', 'N/A')
-                        question_text = question.get('question', 'N/A')
-                        print(f"[DEBUG] One Hit Wonders kérdés kiválasztás - Lista index: {idx}, Original index: {original_idx}, Kérdés: {question_text}")
+
                     # --- Magyar zenekarok: opciók és helyes válasz igazítása ---
                     if topic == "magyar_zenekarok" or topic == "magyar_zenekarok_uj":
                         # A fájlnév alapján keressük meg a mapping indexét
@@ -1262,14 +1250,7 @@ def show_quiz():
         if audio_file and os.path.exists(audio_file):
             try:
                 abs_path = os.path.abspath(audio_file)
-                # DEBUG: One Hit Wonders esetén kiírjuk a lejátszott fájl nevét
-                if topic == "one_hit_wonders":
-                    filename = os.path.basename(audio_file)
-                    print(f"[DEBUG] One Hit Wonders - Lejátszott fájl: {filename}")
-                    print(f"[DEBUG] One Hit Wonders - Kérdés: {question_text}")
-                    # Streamlit felületen is megjelenítjük a debug információt
-                    st.success(f"🎵 DEBUG: One Hit Wonders - Lejátszott fájl: {filename}")
-                    st.info(f"📝 DEBUG: One Hit Wonders - Kérdés: {question_text}")
+                
                 st.audio(abs_path, format="audio/mp3")
             except Exception as e:
                 st.error(f"Audio fájl lejátszási hiba: {e}")
