@@ -415,6 +415,10 @@ def get_audio_file_for_question(question, topic):
                     if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
                         audio_path = audio_dir / filename
                         if audio_path.exists():
+                            # DEBUG: Kiírjuk a kérdés és audio fájl információit
+                            question_text = question.get("question", "Ismeretlen kérdés")
+                            print(f"[DEBUG] One Hit Wonders - Kérdés: {question_text}")
+                            print(f"[DEBUG] One Hit Wonders - Index: {index}, Audio fájl: {filename}")
                             return str(audio_path)
             except Exception as e:
                 print(f"[DEBUG] Hiba a One Hit Wonders audio fájl keresésénél: {e}")
@@ -1242,6 +1246,11 @@ def show_quiz():
         if audio_file and os.path.exists(audio_file):
             try:
                 abs_path = os.path.abspath(audio_file)
+                # DEBUG: One Hit Wonders esetén kiírjuk a lejátszott fájl nevét
+                if topic == "one_hit_wonders":
+                    filename = os.path.basename(audio_file)
+                    print(f"[DEBUG] One Hit Wonders - Lejátszott fájl: {filename}")
+                    print(f"[DEBUG] One Hit Wonders - Kérdés: {question_text}")
                 st.audio(abs_path, format="audio/mp3")
             except Exception as e:
                 st.error(f"Audio fájl lejátszási hiba: {e}")
