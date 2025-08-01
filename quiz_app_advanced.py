@@ -483,6 +483,12 @@ def start_quiz():
                         debug_invalid.append((topic, idx, question))
                         continue
                     question['topic'] = topic
+                    
+                    # DEBUG: One Hit Wonders kérdés kiválasztás
+                    if topic == "one_hit_wonders":
+                        original_idx = question.get('original_index', 'N/A')
+                        question_text = question.get('question', 'N/A')
+                        print(f"[DEBUG] One Hit Wonders kérdés kiválasztás - Lista index: {idx}, Original index: {original_idx}, Kérdés: {question_text}")
                     # --- Magyar zenekarok: opciók és helyes válasz igazítása ---
                     if topic == "magyar_zenekarok" or topic == "magyar_zenekarok_uj":
                         # A fájlnév alapján keressük meg a mapping indexét
@@ -514,7 +520,12 @@ def start_quiz():
                         else:
                             question['original_index'] = idx  # Fallback
                     else:
-                        question['original_index'] = idx
+                        # One Hit Wonders esetén megtartjuk az eredeti original_index-et
+                        if topic == "one_hit_wonders":
+                            # Az original_index már be van állítva a kérdésben, ne módosítsuk
+                            pass
+                        else:
+                            question['original_index'] = idx
                     all_questions.append(question)
     print(f"[DEBUG] Összes kiválasztott kérdés (szűrés előtt): {total_selected_questions}")
     if invalid_questions > 0:
