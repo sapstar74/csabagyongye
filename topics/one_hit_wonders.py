@@ -544,6 +544,15 @@ def get_static_one_hit_wonders_questions():
             "topic": "one_hit_wonders",
             "preview_duration": 90,
             "original_index": 68
+        },
+        {
+            "question": "Ki az előadó a 'Smooth Criminal' című dalban?",
+            "options": ["Michael Jackson", "Alien Ant Farm", "The Weeknd", "Bruno Mars"],
+            "correct": 1,
+            "explanation": "'Smooth Criminal' egy One Hit Wonder dal az előadótól: Alien Ant Farm",
+            "topic": "one_hit_wonders",
+            "preview_duration": 90,
+            "original_index": 69
         }
     ]
 
