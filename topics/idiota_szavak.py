@@ -170,9 +170,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Milyen vallási mozgalom kezdődik **J** betűvel?""",
-        "correct_answer": """Jamaicai vallási mozgalom""",
-        "explanation": """A Jamaicai vallási mozgalom a Rasztafári vallás. Ez egy monoteista vallási mozgalom, amely Etiópia volt császárát, Hailé Szelassziét tekinti Isten megtestesülésének.""",
+        "question": """Jamaikai vallás **R** betűvel""",
+        "correct_answer": """Rasztafári""",
+        "explanation": """A Jamaikai vallás R betűvel a Rasztafári vallás. Ez egy monoteista vallási mozgalom, amely Etiópia volt császárát, Hailé Szelassziét tekinti Isten megtestesülésének.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
