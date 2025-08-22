@@ -170,9 +170,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Rasztafári vallás**?""",
+        "question": """Milyen vallási mozgalom kezdődik **J** betűvel?""",
         "correct_answer": """Jamaicai vallási mozgalom""",
-        "explanation": """A(z) 'Rasztafári vallás' jelentése: Jamaicai vallási mozgalom""",
+        "explanation": """A Jamaicai vallási mozgalom a Rasztafári vallás. Ez egy monoteista vallási mozgalom, amely Etiópia volt császárát, Hailé Szelassziét tekinti Isten megtestesülésének.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -198,9 +198,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Futurama**?""",
+        "question": """Milyen rajzfilmsorozat kezdődik **A** betűvel?""",
         "correct_answer": """Amerikai rajzfilmsorozat""",
-        "explanation": """A(z) 'Futurama' jelentése: Amerikai rajzfilmsorozat""",
+        "explanation": """Az Amerikai rajzfilmsorozat a Futurama. Ez egy sci-fi animációs sorozat, amelyet Matt Groening készített, és egy pizzafutár, Fry kalandjait követi a 31. században.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
