@@ -460,6 +460,9 @@ def start_quiz():
             print(f"[DEBUG] {topic} összes kérdés: {len(topic_questions)}")
             # Egyedi témakör slider használata
             questions_count = st.session_state.get(f'final_{topic}_questions', 0)
+            # Ha nincs beállítva slider érték, használjuk az alapértelmezett értéket
+            if questions_count == 0:
+                questions_count = min(3, len(topic_questions))
             questions_count = min(questions_count, len(topic_questions))
             print(f"[DEBUG] {topic} kiválasztott kérdésszám: {questions_count}")
             
