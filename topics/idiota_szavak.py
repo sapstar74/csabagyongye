@@ -203,5 +203,14 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'Futurama' jelentése: Amerikai rajzfilmsorozat""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Ki írta le a Lagrange mechanikát?
+
+**Lagrange pontok:** Egymás körül keringő tömeg (pl. Föld és Nap) gravitációs terében, ahol egy harmadik, sokkal kisebb test (pl. űrszonda) viszonylagos mozdulatlanságban maradhat. Ezen pontok segítségével azonosíthatók az asztrodinamikai szempontból stabil vagy instabil pályák, különösen a Hold, a Föld és a Nap rendszerében, valamint más bolygórendszerekben.""",
+        "correct_answer": """Joseph-Louis Lagrange""",
+        "explanation": """A Lagrange mechanikát Joseph-Louis Lagrange (1736-1813) olasz-francia matematikus és fizikus írta le. A Lagrange pontok az űrhajózásban fontos szerepet játszanak, mivel ezeken a pontokon az űreszközök minimális energia felhasználással stabil pályán maradhatnak.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]

@@ -592,13 +592,70 @@ def main():
         st.markdown("## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
-            ["Quiz", "Analytics", "Beállítások"],
+            ["Quiz", "Analytics", "Beállítások", "Spotify Playlist"],
             format_func=lambda x: {
                 "Quiz": "🎯 Quiz",
                 "Analytics": "📊 Analytics", 
-                "Beállítások": "⚙️ Beállítások"
+                "Beállítások": "⚙️ Beállítások",
+                "Spotify Playlist": "🎵 Spotify Playlist"
             }[x]
         )
+        
+        # Spotify playlist funkció (ha elérhető)
+        if page == "Spotify Playlist":
+            st.markdown("---")
+            st.markdown("### 🎵 Spotify Playlist")
+            
+            try:
+                from spotify_playlist_integration import SpotifyPlaylistQuiz, format_duration, format_views
+                
+                # Spotify Playlist Quiz inicializálása
+                if 'spotify_quiz' not in st.session_state:
+                    st.session_state.spotify_quiz = SpotifyPlaylistQuiz()
+                
+                # Playlist URL input
+                playlist_url = st.text_input(
+                    "Spotify Playlist URL",
+                    placeholder="https://open.spotify.com/playlist/...",
+                    help="Illeszd be a Spotify playlist URL-jét"
+                )
+                
+                if st.button("🔍 Playlist Feldolgozása", type="primary"):
+                    if playlist_url:
+                        with st.spinner("Playlist feldolgozása..."):
+                            st.session_state.playlist_tracks = st.session_state.spotify_quiz.process_playlist(playlist_url)
+                        st.success("✅ Playlist feldolgozva!")
+                    else:
+                        st.error("❌ Kérlek adj meg egy Spotify playlist URL-t!")
+                
+                # Playlist megjelenítése (ha van)
+                if hasattr(st.session_state, 'playlist_tracks') and st.session_state.playlist_tracks:
+                    st.markdown("### 📋 Playlist Elemek")
+                    
+                    # Első 3 track megjelenítése
+                    for i, track in enumerate(st.session_state.playlist_tracks[:3]):
+                        with st.expander(f"{track['name']} - {', '.join(track['artists'])}"):
+                            st.markdown(f"**Album:** {track['album']}")
+                            st.markdown(f"**Hossz:** {format_duration(track['duration_ms'])}")
+                            
+                            if track.get('youtube_url'):
+                                st.success("✅ YouTube találat")
+                                if track.get('youtube_views'):
+                                    st.markdown(f"👁️ {format_views(track['youtube_views'])} nézettség")
+                                st.markdown(f"[📺 YouTube]({track['youtube_url']})")
+                            else:
+                                st.error("❌ Nincs YouTube találat")
+                            
+                            if track.get('external_url'):
+                                st.markdown(f"[🎵 Spotify]({track['external_url']})")
+                    
+                    # További trackek
+                    if len(st.session_state.playlist_tracks) > 3:
+                        st.markdown(f"... és még {len(st.session_state.playlist_tracks) - 3} track")
+                
+            except ImportError:
+                st.error("❌ Spotify playlist funkció nem elérhető")
+                st.info("A spotify_playlist_integration.py fájl szükséges")
     
     if page == "Quiz":
         show_quiz_page()
@@ -606,6 +663,8 @@ def main():
         show_analytics_page()
     elif page == "Beállítások":
         show_settings_page()
+    elif page == "Spotify Playlist":
+        show_spotify_playlist_page()
 
 def show_quiz_page():
     """Quiz oldal megjelenítése"""
@@ -1937,6 +1996,122 @@ def show_settings_page():
         st.session_state.analytics_retention_days = analytics_retention_days
         st.session_state.export_analytics = export_analytics
         st.success("Beállítások mentve!")
+
+def show_spotify_playlist_page():
+    """Spotify playlist oldal megjelenítése"""
+    st.markdown("## 🎵 Spotify Playlist")
+    
+    try:
+        from spotify_playlist_integration import SpotifyPlaylistQuiz, format_duration, format_views
+        
+        # Spotify Playlist Quiz inicializálása
+        if 'spotify_quiz' not in st.session_state:
+            st.session_state.spotify_quiz = SpotifyPlaylistQuiz()
+        
+        # Fő tartalom
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            st.markdown("### 📋 Playlist Feldolgozás")
+            
+            # Playlist URL input
+            playlist_url = st.text_input(
+                "Spotify Playlist URL",
+                placeholder="https://open.spotify.com/playlist/...",
+                help="Illeszd be a Spotify playlist URL-jét"
+            )
+            
+            if st.button("🔍 Playlist Feldolgozása", type="primary"):
+                if playlist_url:
+                    with st.spinner("Playlist feldolgozása..."):
+                        st.session_state.playlist_tracks = st.session_state.spotify_quiz.process_playlist(playlist_url)
+                    st.success("✅ Playlist feldolgozva!")
+                else:
+                    st.error("❌ Kérlek adj meg egy Spotify playlist URL-t!")
+        
+        with col2:
+            st.markdown("### 📊 Statisztikák")
+            if hasattr(st.session_state, 'playlist_tracks') and st.session_state.playlist_tracks:
+                total_tracks = len(st.session_state.playlist_tracks)
+                youtube_tracks = len([t for t in st.session_state.playlist_tracks if t.get('youtube_url')])
+                
+                st.metric("Összes track", total_tracks)
+                st.metric("YouTube találat", youtube_tracks)
+                st.metric("Találati arány", f"{youtube_tracks/total_tracks*100:.1f}%")
+        
+        # Playlist megjelenítése (ha van)
+        if hasattr(st.session_state, 'playlist_tracks') and st.session_state.playlist_tracks:
+            st.markdown("---")
+            st.markdown("### 🎵 Playlist Elemek")
+            
+            # Grid layout a trackekhez
+            cols_per_row = 3
+            for i in range(0, len(st.session_state.playlist_tracks), cols_per_row):
+                row_tracks = st.session_state.playlist_tracks[i:i + cols_per_row]
+                cols = st.columns(cols_per_row)
+                
+                for j, track in enumerate(row_tracks):
+                    with cols[j]:
+                        # Album Art Work megjelenítése (ha van)
+                        if track.get('album_art_url'):
+                            st.image(track['album_art_url'], width=150, caption=f"Album: {track['album']}")
+                        else:
+                            st.image("https://via.placeholder.com/150x150/666666/FFFFFF?text=No+Image", 
+                                   width=150, caption=f"Album: {track['album']}")
+                        
+                        # Track információk
+                        st.markdown(f"**{track['name']}**")
+                        st.markdown(f"*{', '.join(track['artists'])}*")
+                        st.markdown(f"⏱️ {format_duration(track['duration_ms'])}")
+                        
+                        # YouTube státusz
+                        if track.get('youtube_url'):
+                            st.success("✅ YouTube találat")
+                            if track.get('youtube_views'):
+                                st.markdown(f"👁️ {format_views(track['youtube_views'])} nézettség")
+                        else:
+                            st.error("❌ Nincs YouTube találat")
+                        
+                        # Linkek
+                        if track.get('external_url'):
+                            st.markdown(f"[🎵 Spotify]({track['external_url']})")
+                        if track.get('youtube_url'):
+                            st.markdown(f"[📺 YouTube]({track['youtube_url']})")
+                        
+                        st.markdown("---")
+            
+            # Részletes táblázat is elérhető
+            with st.expander("📊 Részletes Táblázat"):
+                # Táblázat adatok előkészítése
+                table_data = []
+                for i, track in enumerate(st.session_state.playlist_tracks):
+                    row = {
+                        "Sorszám": i + 1,
+                        "Cím": track['name'],
+                        "Előadó": ", ".join(track['artists']),
+                        "Album": track['album'],
+                        "Hossz": format_duration(track['duration_ms']),
+                        "YouTube": "✅" if track.get('youtube_url') else "❌"
+                    }
+                    
+                    if track.get('youtube_url'):
+                        row["YouTube Cím"] = track.get('youtube_title', 'N/A')
+                        row["YouTube Hossz"] = format_duration(track.get('youtube_duration', 0) * 1000) if track.get('youtube_duration') else 'N/A'
+                        row["Nézettség"] = format_views(track.get('youtube_views', 0)) if track.get('youtube_views') else 'N/A'
+                    
+                    table_data.append(row)
+                
+                # Táblázat megjelenítése
+                st.dataframe(
+                    table_data,
+                    use_container_width=True,
+                    hide_index=True
+                )
+    
+    except ImportError:
+        st.error("❌ Spotify playlist funkció nem elérhető")
+        st.info("A spotify_playlist_integration.py fájl szükséges")
+        st.code("pip install yt-dlp")
 
 if __name__ == "__main__":
     main() 

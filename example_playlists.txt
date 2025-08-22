@@ -1,0 +1,33 @@
+# Példa Spotify Playlist URL-ek teszteléshez
+
+# Spotify hivatalos playlistek
+1. Today's Top Hits (globális slágerlista)
+https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M
+
+2. Rock Classics (rock klasszikusok)
+https://open.spotify.com/playlist/37i9dQZF1DX8FwnYE6PRvL
+
+3. All Out 2010s (2010-es évek slágerei)
+https://open.spotify.com/playlist/37i9dQZF1DX5Ejj0EkURtP
+
+4. Peaceful Piano (nyugodt zongora)
+https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO
+
+5. Hip Hop Controller (hip hop)
+https://open.spotify.com/playlist/37i9dQZF1DX5Vy6DFOcx00
+
+# Magyar playlistek
+6. Magyar Slágerek
+https://open.spotify.com/playlist/37i9dQZF1DX8FwnYE6PRvL
+
+# Rövid playlistek (gyors teszteléshez)
+7. Test Playlist (max 10 szám)
+https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M
+
+# Használati útmutató:
+# 1. Másold ki egy URL-t
+# 2. Illeszd be a Spotify Playlist Quiz alkalmazásba
+# 3. Kattints a "Playlist Feldolgozása" gombra
+# 4. Várd meg a feldolgozást
+# 5. Válaszd ki a letöltendő trackeket
+# 6. Indítsd el a kvízt! 
