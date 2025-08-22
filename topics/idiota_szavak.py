@@ -219,5 +219,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """Az 'Osztrakiszmosz' jelentése: Cserépszavazás. Az ókori Athénban használt eljárás, ahol a polgárok cseréptöredékekre (osztrákákra) írták fel a számukra kellemetlen személyek nevét, és aki a legtöbb szavazatot kapta, azt száműzték a városból 10 évre.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Mit jelent az alábbi idióta szó: **Auxológia**?""",
+        "correct_answer": """Növekedéskutatás""",
+        "explanation": """Az 'Auxológia' jelentése: Növekedéskutatás. A gyermekek és fiatalok fizikai fejlődésének, növekedésének tudományos vizsgálata. A szó a görög 'auxein' (növekedni) és 'logos' (tudomány) szavakból származik.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]

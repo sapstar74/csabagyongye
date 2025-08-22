@@ -1,0 +1,2 @@
+lsof -ti:8502 | xargs kill -9
+export PATH=$PATH:/Users/zsigagabor/Library/Python/3.9/bin && streamlit run test_mock_tracks.py  --server.port 8502

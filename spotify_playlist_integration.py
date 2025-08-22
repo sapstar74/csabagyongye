@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
 """
 Spotify Playlist Integration Module
-- Spotify playlist elemek lekérése
-- YouTube keresés a metadata alapján
-- yt-dlp letöltés optimalizált beállításokkal
+- OAuth alapú Spotify playlist elérés
+- YouTube keresés és letöltés
 """
 
 import requests
-import json
 import time
 import re
 import yt_dlp
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional
 import os
-from spotify_api_config import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_API_BASE_URL
+from spotify_api_config import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
+from urllib.parse import quote
 
 # Streamlit import opcionális
 try:
@@ -21,105 +20,186 @@ try:
     STREAMLIT_AVAILABLE = True
 except ImportError:
     STREAMLIT_AVAILABLE = False
-    # Mock st objektum teszteléshez
     class MockSt:
         def info(self, msg): print(f"INFO: {msg}")
         def success(self, msg): print(f"SUCCESS: {msg}")
         def warning(self, msg): print(f"WARNING: {msg}")
         def error(self, msg): print(f"ERROR: {msg}")
-        def write(self, msg): print(f"WRITE: {msg}")
     st = MockSt()
 
 class SpotifyPlaylistManager:
     def __init__(self):
-        self.access_token = None
-        self.token_expires_at = 0
-        
-    def get_access_token(self) -> str:
-        """Spotify access token lekérése"""
-        if self.access_token and time.time() < self.token_expires_at:
-            return self.access_token
-            
-        auth_url = "https://accounts.spotify.com/api/token"
-        auth_response = requests.post(auth_url, {
-            'grant_type': 'client_credentials',
-            'client_id': SPOTIFY_CLIENT_ID,
-            'client_secret': SPOTIFY_CLIENT_SECRET,
-        })
-        
-        if auth_response.status_code == 200:
-            auth_data = auth_response.json()
-            self.access_token = auth_data['access_token']
-            self.token_expires_at = time.time() + auth_data['expires_in'] - 60  # 1 perc buffer
-            return self.access_token
+        self.oauth_access_token = None
+        self.oauth_token_expires_at = 0
+        self.redirect_uri = "http://127.0.0.1:8501/callback"
+    
+    def set_oauth_token_manual(self, token: str, expires_in: int = 3600):
+        """Manuális OAuth token beállítás teszteléshez"""
+        self.oauth_access_token = token
+        self.oauth_token_expires_at = time.time() + expires_in - 60
+        if STREAMLIT_AVAILABLE:
+            st.success(f"✅ OAuth token manuálisan beállítva: {token[:20]}...")
         else:
-            raise Exception(f"Spotify auth failed: {auth_response.status_code}")
+            print(f"✅ OAuth token manuálisan beállítva: {token[:20]}...")
+    
+    def restore_oauth_token(self, token: str, expires_at: float):
+        """OAuth token visszaállítása session state-ből"""
+        self.oauth_access_token = token
+        self.oauth_token_expires_at = expires_at
+        if STREAMLIT_AVAILABLE:
+            st.success(f"✅ OAuth token visszaállítva: {token[:20]}...")
+        else:
+            print(f"✅ OAuth token visszaállítva: {token[:20]}...")
+    
+    def get_oauth_authorization_url(self) -> str:
+        """OAuth autorizációs URL generálása"""
+        scopes = [
+            "user-read-private",
+            "user-read-email",
+            "playlist-read-private",
+            "playlist-read-collaborative"
+        ]
+        
+        params = {
+            'client_id': SPOTIFY_CLIENT_ID,
+            'response_type': 'code',
+            'redirect_uri': self.redirect_uri,
+            'scope': ' '.join(scopes),
+            'show_dialog': 'true'
+        }
+        
+        auth_url = f"https://accounts.spotify.com/authorize?client_id={params['client_id']}&response_type={params['response_type']}&redirect_uri={quote(params['redirect_uri'])}&scope={quote(params['scope'])}&show_dialog={params['show_dialog']}"
+        return auth_url
+    
+    def get_oauth_access_token(self, authorization_code: str) -> Optional[str]:
+        """OAuth access token beszerzése"""
+        if STREAMLIT_AVAILABLE:
+            st.info(f"🔑 OAuth token kérése... Code: {authorization_code[:10]}...")
+        
+        data = {
+            'grant_type': 'authorization_code',
+            'code': authorization_code,
+            'redirect_uri': self.redirect_uri,
+            'client_id': SPOTIFY_CLIENT_ID,
+            'client_secret': SPOTIFY_CLIENT_SECRET
+        }
+        
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        
+        try:
+            if STREAMLIT_AVAILABLE:
+                st.info("📡 Spotify API hívás...")
+            
+            response = requests.post("https://accounts.spotify.com/api/token", data=data, headers=headers)
+            
+            if STREAMLIT_AVAILABLE:
+                st.info(f"📊 Response status: {response.status_code}")
+            
+            if response.status_code == 200:
+                token_data = response.json()
+                self.oauth_access_token = token_data.get('access_token')
+                self.oauth_token_expires_at = time.time() + token_data.get('expires_in', 3600) - 60
+                
+                if STREAMLIT_AVAILABLE:
+                    st.success(f"✅ OAuth token sikeres: {self.oauth_access_token[:20]}...")
+                    st.info(f"⏰ Lejárat: {self.oauth_token_expires_at - time.time():.0f}s múlva")
+                
+                return self.oauth_access_token
+            else:
+                if STREAMLIT_AVAILABLE:
+                    st.error(f"❌ OAuth token hiba: {response.status_code}")
+                    st.error(f"📄 Response: {response.text}")
+                else:
+                    print(f"OAuth token hiba: {response.status_code} - {response.text}")
+                return None
+                
+        except Exception as e:
+            if STREAMLIT_AVAILABLE:
+                st.error(f"❌ OAuth token hiba: {e}")
+            else:
+                print(f"OAuth token hiba: {e}")
+            return None
     
     def get_playlist_tracks(self, playlist_url: str) -> List[Dict]:
-        """Playlist elemek lekérése"""
-        # Playlist ID kinyerése az URL-ből
+        """Playlist trackek lekérése OAuth token-nel"""
+        if not self.oauth_access_token or time.time() >= self.oauth_token_expires_at:
+            if STREAMLIT_AVAILABLE:
+                st.error("❌ OAuth token szükséges nyilvános playlistekhez!")
+                st.info("🔐 Kérlek állítsd be az OAuth tokent a fenti expanderben!")
+            else:
+                print("ERROR: OAuth token szükséges nyilvános playlistekhez!")
+            return []
+        
         playlist_id = self._extract_playlist_id(playlist_url)
         if not playlist_id:
-            raise ValueError("Érvénytelen Spotify playlist URL")
+            if STREAMLIT_AVAILABLE:
+                st.error("❌ Érvénytelen Spotify playlist URL!")
+            else:
+                print("ERROR: Érvénytelen Spotify playlist URL!")
+            return []
         
-        # Mock adatok teszteléshez (mivel Client Credentials nem engedélyezi a nyilvános playlisteket)
-        print("INFO: Mock adatok használata teszteléshez")
-        return self._get_mock_tracks()
-    
-    def _get_mock_tracks(self) -> List[Dict]:
-        """Mock track adatok teszteléshez"""
-        return [
-            {
-                'id': 'mock_1',
-                'name': 'Bohemian Rhapsody',
-                'artists': ['Queen'],
-                'album': 'A Night at the Opera',
-                'duration_ms': 354000,
-                'external_url': 'https://open.spotify.com/track/mock_1',
-                'preview_url': None,
-                'album_art_url': 'https://i.scdn.co/image/ab67616d0000b273ce4f1737e6c24e4c0f0c5c0f'
-            },
-            {
-                'id': 'mock_2',
-                'name': 'Hotel California',
-                'artists': ['Eagles'],
-                'album': 'Hotel California',
-                'duration_ms': 391000,
-                'external_url': 'https://open.spotify.com/track/mock_2',
-                'preview_url': None,
-                'album_art_url': 'https://i.scdn.co/image/ab67616d0000b273ce4f1737e6c24e4c0f0c5c0f'
-            },
-            {
-                'id': 'mock_3',
-                'name': 'Stairway to Heaven',
-                'artists': ['Led Zeppelin'],
-                'album': 'Led Zeppelin IV',
-                'duration_ms': 482000,
-                'external_url': 'https://open.spotify.com/track/mock_3',
-                'preview_url': None,
-                'album_art_url': 'https://i.scdn.co/image/ab67616d0000b273ce4f1737e6c24e4c0f0c5c0f'
-            },
-            {
-                'id': 'mock_4',
-                'name': 'Imagine',
-                'artists': ['John Lennon'],
-                'album': 'Imagine',
-                'duration_ms': 183000,
-                'external_url': 'https://open.spotify.com/track/mock_4',
-                'preview_url': None,
-                'album_art_url': 'https://i.scdn.co/image/ab67616d0000b273ce4f1737e6c24e4c0f0c5c0f'
-            },
-            {
-                'id': 'mock_5',
-                'name': 'Yesterday',
-                'artists': ['The Beatles'],
-                'album': 'Help!',
-                'duration_ms': 125000,
-                'external_url': 'https://open.spotify.com/track/mock_5',
-                'preview_url': None,
-                'album_art_url': 'https://i.scdn.co/image/ab67616d0000b273ce4f1737e6c24e4c0f0c5c0f'
-            }
-        ]
+        headers = {
+            'Authorization': f'Bearer {self.oauth_access_token}',
+            'Content-Type': 'application/json'
+        }
+        
+        try:
+            playlist_url_api = f"https://api.spotify.com/v1/playlists/{playlist_id}"
+            
+            if STREAMLIT_AVAILABLE:
+                st.info(f"🎵 Playlist lekérdezés: {playlist_id}")
+                st.info(f"🔗 API URL: {playlist_url_api}")
+                st.info(f"🔑 Token: {self.oauth_access_token[:20]}...")
+            
+            response = requests.get(playlist_url_api, headers=headers)
+            
+            if STREAMLIT_AVAILABLE:
+                st.info(f"📊 Response status: {response.status_code}")
+            
+            if response.status_code != 200:
+                if STREAMLIT_AVAILABLE:
+                    st.error(f"❌ Hiba a playlist lekérdezésénél: {response.status_code}")
+                    st.error(f"📄 Response: {response.text}")
+                else:
+                    print(f"ERROR: Hiba a playlist lekérdezésénél: {response.status_code}")
+                return []
+            
+            playlist_data = response.json()
+            tracks = []
+            
+            for item in playlist_data.get('tracks', {}).get('items', []):
+                track_data = item.get('track')
+                if not track_data:
+                    continue
+                
+                album_images = track_data.get('album', {}).get('images', [])
+                album_art_url = album_images[0].get('url') if album_images else None
+                
+                track = {
+                    'id': track_data.get('id'),
+                    'name': track_data.get('name'),
+                    'artists': [artist.get('name') for artist in track_data.get('artists', [])],
+                    'album': track_data.get('album', {}).get('name'),
+                    'duration_ms': track_data.get('duration_ms'),
+                    'external_url': track_data.get('external_urls', {}).get('spotify'),
+                    'preview_url': track_data.get('preview_url'),
+                    'album_art_url': album_art_url
+                }
+                tracks.append(track)
+            
+            if STREAMLIT_AVAILABLE:
+                st.success(f"✅ {len(tracks)} track betöltve a playlistből!")
+            
+            return tracks
+            
+        except Exception as e:
+            if STREAMLIT_AVAILABLE:
+                st.error(f"❌ Hiba a playlist lekérdezésénél: {e}")
+            else:
+                print(f"ERROR: Hiba a playlist lekérdezésénél: {e}")
+            return []
     
     def _extract_playlist_id(self, playlist_url: str) -> Optional[str]:
         """Playlist ID kinyerése URL-ből"""
@@ -134,6 +214,7 @@ class SpotifyPlaylistManager:
                 return match.group(1)
         return None
 
+
 class YouTubeSearcher:
     def __init__(self):
         self.ydl_opts = {
@@ -147,12 +228,10 @@ class YouTubeSearcher:
     
     def search_track(self, track_info: Dict) -> Optional[Dict]:
         """YouTube keresés track metadata alapján"""
-        # Keresési kifejezés összeállítása
         search_query = self._build_search_query(track_info)
         
         try:
             with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
-                # YouTube keresés
                 search_results = ydl.extract_info(f"ytsearch10:{search_query}", download=False)
                 
                 if not search_results or 'entries' not in search_results:
@@ -162,29 +241,33 @@ class YouTubeSearcher:
                 if not entries:
                     return None
                 
-                # Legjobb találat kiválasztása
                 best_match = self._select_best_match(entries, track_info)
+                
+                if best_match:
+                    video_id = best_match.get('id')
+                    if video_id:
+                        thumbnail_url = f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg"
+                        best_match['thumbnail_url'] = thumbnail_url
+                
                 return best_match
                 
         except Exception as e:
-            st.error(f"YouTube keresési hiba: {e}")
+            if STREAMLIT_AVAILABLE:
+                st.error(f"YouTube keresési hiba: {e}")
+            else:
+                print(f"YouTube keresési hiba: {e}")
             return None
     
     def _build_search_query(self, track_info: Dict) -> str:
         """Keresési kifejezés összeállítása"""
         artists = " ".join(track_info['artists'])
         track_name = track_info['name']
-        
-        # Alap keresési kifejezés
         query = f"{artists} - {track_name}"
         
-        # Kiegészítések a pontosabb találathoz
         if track_info['album']:
             query += f" {track_info['album']}"
         
-        # Sponsored és live tartalmak kiszűrése
         query += " -sponsored -live -cover -remix"
-        
         return query
     
     def _select_best_match(self, entries: List[Dict], track_info: Dict) -> Optional[Dict]:
@@ -198,161 +281,201 @@ class YouTubeSearcher:
             title = entry.get('title', '').lower()
             duration = entry.get('duration', 0)
             
-            # Sponsored tartalmak kiszűrése
             if any(spam in title for spam in ['sponsored', 'ad', 'reklám', 'promo']):
                 continue
             
-            # Live tartalmak kiszűrése
-            if any(live in title for live in ['live', 'élő', 'concert', 'koncert']):
+            if duration > 600:  # 10 perc felett
                 continue
-            
-            # Cover és remix tartalmak kiszűrése
-            if any(cover in title for cover in ['cover', 'remix', 'mashup']):
-                continue
-            
-            # Hossz ellenőrzése (nem túl rövid, nem túl hosszú)
-            if duration and 30 < duration < 600:  # 30 másodperc - 10 perc
-                valid_entries.append(entry)
+                
+            valid_entries.append(entry)
         
         if not valid_entries:
             return None
         
-        # Rendezés prioritások szerint
+        # Legjobb találat kiválasztása (legrövidebb, legtöbb nézettség)
         def score_entry(entry):
-            score = 0
             title = entry.get('title', '').lower()
-            view_count = entry.get('view_count', 0)
             duration = entry.get('duration', 0)
+            view_count = entry.get('view_count', 0)
             
-            # Nézettség alapján pontozás
-            if view_count > 1000000:
-                score += 10
-            elif view_count > 100000:
-                score += 5
-            elif view_count > 10000:
-                score += 2
+            # Alap pontszám
+            score = 0
             
-            # Cím egyezés alapján pontozás
+            # Cím egyezés
             track_name = track_info['name'].lower()
             artists = " ".join(track_info['artists']).lower()
             
             if track_name in title:
+                score += 10
+            if any(artist.lower() in title for artist in track_info['artists']):
                 score += 5
-            if artists in title:
-                score += 3
             
-            # Hossz optimalizálás (2-5 perc között)
-            if 120 <= duration <= 300:
-                score += 3
-            elif 60 <= duration <= 600:
-                score += 1
+            # Időtartam (rövidebb = jobb)
+            if duration > 0:
+                score += max(0, 10 - duration // 30)
+            
+            # Nézettség (több = jobb)
+            if view_count > 0:
+                score += min(5, view_count // 1000000)
             
             return score
         
-        # Legjobb találat kiválasztása
         best_entry = max(valid_entries, key=score_entry)
         return best_entry
 
+
 class AudioDownloader:
-    def __init__(self, output_dir: str = "audio_files", max_duration: int = 90):
-        self.output_dir = output_dir
+    def __init__(self, output_dir: str = None, max_duration: int = 90):
+        self.output_dir = output_dir or os.path.expanduser("~/Downloads")
         self.max_duration = max_duration
         
-        # Könyvtár létrehozása, ha nem létezik
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
     
     def download_track(self, youtube_url: str, track_info: Dict) -> Optional[str]:
-        """Track letöltése YouTube URL-ből yt-dlp parancssal"""
+        """Track letöltése YouTube URL-ből"""
         try:
-            # Egyedi fájlnév generálása
-            safe_title = self._sanitize_filename(f"{track_info['artists'][0]} - {track_info['name']}")
-            output_filename = f"{self.output_dir}/{safe_title}.mp3"
+            # Fájlnév generálása
+            artists = " ".join(track_info['artists'])
+            track_name = track_info['name']
+            filename = f"{artists} - {track_name}.mp3"
+            filename = self._sanitize_filename(filename)
             
-            # yt-dlp parancs összeállítása
-            cmd = [
-                "python3", "-m", "yt_dlp",
-                "--extract-audio",
-                "--audio-format", "mp3",
-                "--audio-quality", "0",  # Legjobb minőség
-                "--output", output_filename,
-                "--postprocessor-args", f"ffmpeg:-ss 0 -t {self.max_duration}",  # Vágás 0-tól max_duration-ig
-                "--no-warnings",
-                "--quiet",
-                youtube_url
-            ]
+            output_path = os.path.join(self.output_dir, filename)
             
-            # Parancs végrehajtása
-            import subprocess
-            result = subprocess.run(cmd, capture_output=True, text=True)
+            # yt-dlp beállítások
+            ydl_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': output_path,
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'quiet': True,
+                'no_warnings': True
+            }
             
-            if result.returncode == 0:
-                if os.path.exists(output_filename):
-                    return output_filename
-                else:
-                    st.warning(f"Fájl nem található: {output_filename}")
-                    return None
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                ydl.download([youtube_url])
+            
+            if os.path.exists(output_path):
+                return output_path
             else:
-                st.error(f"yt-dlp hiba: {result.stderr}")
                 return None
-                    
+                
         except Exception as e:
-            st.error(f"Letöltési hiba: {e}")
+            if STREAMLIT_AVAILABLE:
+                st.error(f"Letöltési hiba: {e}")
+            else:
+                print(f"Letöltési hiba: {e}")
             return None
     
     def _sanitize_filename(self, filename: str) -> str:
         """Fájlnév tisztítása"""
         # Speciális karakterek eltávolítása
-        filename = re.sub(r'[<>:"/\\|?*]', '', filename)
-        # Túl hosszú nevek levágása
-        if len(filename) > 100:
-            filename = filename[:100]
-        return filename.strip()
+        invalid_chars = '<>:"/\\|?*'
+        for char in invalid_chars:
+            filename = filename.replace(char, '')
+        
+        # Hossz korlátozása
+        if len(filename) > 200:
+            filename = filename[:200]
+        
+        return filename
 
-# Fő integrációs osztály
+
 class SpotifyPlaylistQuiz:
     def __init__(self):
         self.playlist_manager = SpotifyPlaylistManager()
         self.youtube_searcher = YouTubeSearcher()
         self.audio_downloader = AudioDownloader()
     
-    def process_playlist(self, playlist_url: str) -> List[Dict]:
-        """Playlist feldolgozása teljes folyamattal"""
+    def restore_oauth_token(self, token: str, expires_at: float):
+        """OAuth token visszaállítása session state-ből"""
+        self.playlist_manager.restore_oauth_token(token, expires_at)
+    
+    def get_oauth_authorization_url(self) -> str:
+        """OAuth autorizációs URL generálása"""
+        return self.playlist_manager.get_oauth_authorization_url()
+    
+    def set_oauth_access_token(self, authorization_code: str) -> bool:
+        """OAuth access token beállítása"""
         try:
-            # 1. Playlist elemek lekérése
-            st.info("🎵 Spotify playlist elemek lekérése...")
+            if STREAMLIT_AVAILABLE:
+                st.info(f"🔑 OAuth token beállítása... Code: {authorization_code[:10]}...")
+            
+            token = self.playlist_manager.get_oauth_access_token(authorization_code)
+            
+            if token:
+                if STREAMLIT_AVAILABLE:
+                    st.success(f"✅ OAuth token sikeresen beállítva: {token[:20]}...")
+                return True
+            else:
+                if STREAMLIT_AVAILABLE:
+                    st.error("❌ OAuth token beállítása sikertelen!")
+                return False
+                
+        except Exception as e:
+            if STREAMLIT_AVAILABLE:
+                st.error(f"❌ OAuth token hiba: {e}")
+            else:
+                print(f"ERROR: OAuth token hiba: {e}")
+            return False
+    
+    def get_playlist_tracks_only(self, playlist_url: str) -> List[Dict]:
+        """Csak Spotify adatok lekérése, YouTube keresés nélkül"""
+        try:
+            if STREAMLIT_AVAILABLE:
+                st.info("🎵 Spotify playlist elemek lekérése...")
+            
             tracks = self.playlist_manager.get_playlist_tracks(playlist_url)
-            st.success(f"✅ {len(tracks)} track betöltve")
             
-            processed_tracks = []
+            if STREAMLIT_AVAILABLE:
+                st.success(f"✅ {len(tracks)} track betöltve Spotify adatokkal")
             
-            for i, track in enumerate(tracks):
-                st.write(f"🔍 Feldolgozás: {track['name']} - {', '.join(track['artists'])}")
-                
-                # 2. YouTube keresés
-                youtube_result = self.youtube_searcher.search_track(track)
-                
-                if youtube_result:
-                    track['youtube_url'] = f"https://www.youtube.com/watch?v={youtube_result['id']}"
-                    track['youtube_title'] = youtube_result['title']
-                    track['youtube_duration'] = youtube_result.get('duration', 0)
-                    track['youtube_views'] = youtube_result.get('view_count', 0)
-                    
-                    st.success(f"✅ YouTube találat: {youtube_result['title']}")
-                else:
-                    st.warning(f"⚠️ Nincs YouTube találat: {track['name']}")
-                    track['youtube_url'] = None
-                
-                processed_tracks.append(track)
-                
-                # Rate limiting
-                time.sleep(1)
-            
-            return processed_tracks
+            return tracks
             
         except Exception as e:
-            st.error(f"Hiba a playlist feldolgozásakor: {e}")
+            if STREAMLIT_AVAILABLE:
+                st.error(f"Hiba a playlist betöltésekor: {e}")
+            else:
+                print(f"ERROR: Hiba a playlist betöltésekor: {e}")
             return []
+    
+    def search_youtube_for_track(self, track: Dict) -> Optional[Dict]:
+        """YouTube keresés egy konkrét trackhez"""
+        try:
+            if STREAMLIT_AVAILABLE:
+                st.info(f"🔍 YouTube keresés: {track['name']} - {', '.join(track['artists'])}")
+            
+            youtube_result = self.youtube_searcher.search_track(track)
+            
+            if youtube_result:
+                result = {
+                    'url': f"https://www.youtube.com/watch?v={youtube_result['id']}",
+                    'title': youtube_result['title'],
+                    'views': youtube_result.get('view_count', 0),
+                    'duration': youtube_result.get('duration', 0),
+                    'thumbnail_url': youtube_result.get('thumbnail_url')
+                }
+                
+                if STREAMLIT_AVAILABLE:
+                    st.success(f"✅ YouTube találat: {youtube_result['title']}")
+                
+                return result
+            else:
+                if STREAMLIT_AVAILABLE:
+                    st.warning(f"⚠️ Nincs YouTube találat: {track['name']}")
+                
+                return None
+                
+        except Exception as e:
+            if STREAMLIT_AVAILABLE:
+                st.error(f"Hiba a YouTube kereséskor: {e}")
+            else:
+                print(f"ERROR: Hiba a YouTube kereséskor: {e}")
+            return None
     
     def download_selected_tracks(self, tracks: List[Dict], selected_indices: List[int]) -> List[str]:
         """Kiválasztott trackek letöltése"""
@@ -362,41 +485,36 @@ class SpotifyPlaylistQuiz:
             if idx < len(tracks):
                 track = tracks[idx]
                 if track.get('youtube_url'):
-                    st.write(f"⬇️ Letöltés: {track['name']}")
-                    
-                    file_path = self.audio_downloader.download_track(
-                        track['youtube_url'], 
-                        track
-                    )
-                    
-                    if file_path:
-                        downloaded_files.append(file_path)
-                        st.success(f"✅ Letöltve: {os.path.basename(file_path)}")
-                    else:
-                        st.error(f"❌ Letöltés sikertelen: {track['name']}")
-                else:
-                    st.warning(f"⚠️ Nincs YouTube URL: {track['name']}")
+                    with st.spinner(f"Letöltés: {track['name']}..."):
+                        downloaded_file = self.audio_downloader.download_track(track['youtube_url'], track)
+                        if downloaded_file:
+                            downloaded_files.append(downloaded_file)
+                            st.success(f"✅ Letöltve: {os.path.basename(downloaded_file)}")
+                        else:
+                            st.error(f"❌ Letöltési hiba: {track['name']}")
         
         return downloaded_files
 
-# Segédfüggvények
+
 def format_duration(ms: int) -> str:
-    """Milliszekundumok formázása"""
-    if ms is None:
-        return "N/A"
-    try:
-        seconds = int(ms) // 1000
-        minutes = seconds // 60
-        seconds = seconds % 60
-        return f"{minutes}:{seconds:02d}"
-    except (ValueError, TypeError):
-        return "N/A"
+    """Időtartam formázása"""
+    if not ms:
+        return "0:00"
+    
+    seconds = ms // 1000
+    minutes = seconds // 60
+    seconds = seconds % 60
+    return f"{minutes}:{seconds:02d}"
+
 
 def format_views(views: int) -> str:
     """Nézettség formázása"""
+    if not views:
+        return "0"
+    
     if views >= 1000000:
-        return f"{views/1000000:.1f}M"
+        return f"{views // 1000000}M"
     elif views >= 1000:
-        return f"{views/1000:.1f}K"
+        return f"{views // 1000}K"
     else:
         return str(views) 

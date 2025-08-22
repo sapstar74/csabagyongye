@@ -7,8 +7,8 @@ Spotify API konfiguráció
 # Kérlek add meg a saját Client ID és Client Secret értékeidet
 # Ezeket a Spotify Developer Dashboard-on találod: https://developer.spotify.com/dashboard
 
-SPOTIFY_CLIENT_ID = "4d1cd07e3eb14487b6bc714c9d94cf89"
-SPOTIFY_CLIENT_SECRET = "6aa54bf8edad42b5b925b7dd3becab90"
+SPOTIFY_CLIENT_ID = "b288da1cbde34062aba6724de8531c46"
+SPOTIFY_CLIENT_SECRET = "bd3b3835e63744149f580ebb919cbdd3"
 
 # API beállítások
 SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1"
@@ -67,8 +67,8 @@ def print_setup_instructions():
     print("4. Töltsd ki az adatokat:")
     print("   - App name: Magyar Zenekarok Quiz")
     print("   - App description: Quiz app magyar zenekarok Spotify linkjeivel")
-    print("   - Redirect URI: http://localhost:8888/callback")
-    print("   - Website: http://localhost:8888")
+    print("   - Redirect URI: http://127.0.0.1:8501/callback")
+    print("   - Website: http://127.0.0.1:8501")
     print()
     print("5. Az alkalmazás létrehozása után másold ki:")
     print("   - Client ID")
