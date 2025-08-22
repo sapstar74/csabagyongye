@@ -1467,12 +1467,52 @@ def show_quiz():
         question_type = question.get("question_type", "multiple_choice")
         
         # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
-        if question_type == "text_input" or (difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia"):
-            # Szöveges bevitel mód
+        if question_type == "text_input":
+            # Text input kérdések mindig szöveges bevitellel
             st.markdown("### 💬 Írd be a válaszod:")
             
             # Idióta szavak kérdéseknél a correct_answer mezőt használjuk
-            if question_type == "text_input":
+            correct_answer = question.get("correct_answer", "").lower().strip()
+            user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
+            
+            if st.button("✅ Válasz beküldése", key=f"submit_{st.session_state.current_question}", use_container_width=True):
+                if user_answer:
+                    # Válasz ellenőrzése (case-insensitive)
+                    user_answer_clean = user_answer.lower().strip()
+                    is_correct = user_answer_clean == correct_answer
+                    
+                    if is_correct:
+                        st.session_state.score += 1
+                    
+                    # Válasz mentése
+                    st.session_state.question_answers[st.session_state.current_question] = user_answer
+                    st.session_state.answers.append({
+                        'question': question.get("question", "Ismeretlen kérdés"),
+                        'selected': user_answer,
+                        'correct': question.get('correct_answer', ''),
+                        'options': [],
+                        'is_correct': is_correct,
+                        'time_taken': (datetime.now() - st.session_state.question_start_time).total_seconds()
+                    })
+                    
+                    # Streak frissítése
+                    st.session_state.mode_manager.update_streak(is_correct)
+                    
+                    # Következő kérdés
+                    if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
+                        st.session_state.current_question += 1
+                        st.session_state.question_start_time = datetime.now()
+                    else:
+                        st.session_state.quiz_state = 'results'
+                    st.rerun()
+                else:
+                    st.warning("Kérlek, írj be egy választ!")
+        elif difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia":
+            # Nehéz mód: feleletválasztós kérdések szöveges bevitellel
+            st.markdown("### 💬 Írd be a válaszod:")
+            
+            # Nehéz mód kérdéseknél az options alapján
+            if 'options' in locals() and 'new_correct_index' in locals():
                 correct_answer = question.get("correct_answer", "").lower().strip()
                 user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
                 
