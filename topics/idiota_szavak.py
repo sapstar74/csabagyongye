@@ -177,9 +177,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Plutharkosz**?""",
+        "question": """Ki volt **Plutharkosz**?""",
         "correct_answer": """Görög történetíró""",
-        "explanation": """A(z) 'Plutharkosz' jelentése: Görög történetíró""",
+        "explanation": """Plutharkosz (kb. 46-120) ókori görög történetíró, filozófus és biográfus volt. Legismertebb művei a 'Párhuzamos életrajzok', ahol görög és római híres személyek életét hasonlította össze.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -214,9 +214,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Osztrakiszmosz**?""",
-        "correct_answer": """Cserépszavazás""",
-        "explanation": """Az 'Osztrakiszmosz' jelentése: Cserépszavazás. Az ókori Athénban használt eljárás, ahol a polgárok cseréptöredékekre (osztrákákra) írták fel a számukra kellemetlen személyek nevét, és aki a legtöbb szavazatot kapta, azt száműzték a városból 10 évre.""",
+        "question": """Mit neveztek **cserépszavazás**nak az ókori Athénban?""",
+        "correct_answer": """Osztrakiszmosz""",
+        "explanation": """A cserépszavazást ókori görögül 'osztrákiszmosz'-nak nevezték. Az ókori Athénban használt eljárás, ahol a polgárok cseréptöredékekre (osztrákákra) írták fel a számukra kellemetlen személyek nevét, és aki a legtöbb szavazatot kapta, azt száműzték a városból 10 évre.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
