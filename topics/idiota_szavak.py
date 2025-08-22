@@ -177,9 +177,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Ki volt **Plutharkosz**?""",
-        "correct_answer": """Görög történetíró""",
-        "explanation": """Plutharkosz (kb. 46-120) ókori görög történetíró, filozófus és biográfus volt. Legismertebb művei a 'Párhuzamos életrajzok', ahol görög és római híres személyek életét hasonlította össze.""",
+        "question": """Melyik történetíróhoz fűződik a **Párhuzamos életrajzok**?""",
+        "correct_answer": """Plutharkosz""",
+        "explanation": """A 'Párhuzamos életrajzok' Plutharkosz (kb. 46-120) ókori görög történetíró, filozófus és biográfus műve. Ebben a műben görög és római híres személyek életét hasonlította össze.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
