@@ -1135,7 +1135,7 @@ def show_quiz():
     topic = question.get('topic', 'unknown')
     
     # Extra biztonsági ellenőrzés - ha a kérdés érvénytelen, ugorjunk a következőre
-    if "options" not in question or "correct" not in question:
+    if question.get("question_type") != "text_input" and ("options" not in question or "correct" not in question):
         st.warning(f"Érvénytelen kérdés kihagyva: {question.get('question', 'Ismeretlen')}")
         st.session_state.current_question += 1
         if st.session_state.current_question >= len(st.session_state.quiz_questions):
