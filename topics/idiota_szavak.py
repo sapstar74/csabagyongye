@@ -59,9 +59,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Milyen helyszín a **From Dusk Till Dawn** filmben?""",
-        "correct_answer": """Fiktív bár""",
-        "explanation": """A From Dusk Till Dawn filmben a helyszín egy fiktív bár, a Titty Twister. Ez egy vampírok által lakott bár, ahol a film főbb cselekménye játszódik.""",
+        "question": """Hogy hívják a fiktív bárt a **From Dusk Till Dawn** filmből?""",
+        "correct_answer": """Titty Twister""",
+        "explanation": """A From Dusk Till Dawn filmben a fiktív bár neve Titty Twister. Ez egy vampírok által lakott bár, ahol a film főbb cselekménye játszódik.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -108,9 +108,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **autókláv**?""",
-        "correct_answer": """Nyerség, nyomás alatt működő készülék""",
-        "explanation": """A(z) 'autókláv' jelentése: Nyerség, nyomás alatt működő készülék""",
+        "question": """Mi az az eszköz, ami nyomás és magas hőmérséklet mellett fertőtlenítésre használunk?""",
+        "correct_answer": """Autókláv""",
+        "explanation": """Az autókláv egy nyomás és magas hőmérséklet mellett működő fertőtlenítő készülék. Laboratóriumokban, kórházakban és ipari környezetben használják a sterilizálásra. A magas hőmérséklet és nyomás kombinációja biztosítja a mikroorganizmusok teljes elpusztítását.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
