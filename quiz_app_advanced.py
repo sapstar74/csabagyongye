@@ -1477,9 +1477,14 @@ def show_quiz():
             
             if st.button("✅ Válasz beküldése", key=f"submit_{st.session_state.current_question}", use_container_width=True):
                 if user_answer:
-                    # Válasz ellenőrzése (case-insensitive)
+                    # Válasz ellenőrzése (case-insensitive) - részleges egyezés is elfogadható
                     user_answer_clean = user_answer.lower().strip()
-                    is_correct = user_answer_clean == correct_answer
+                    correct_answer_clean = correct_answer.lower().strip()
+                    
+                    # Teljes egyezés vagy részleges egyezés (ha a felhasználó válasza tartalmazza a helyes válasz kulcsszavait)
+                    is_correct = (user_answer_clean == correct_answer_clean or 
+                                any(keyword in user_answer_clean for keyword in correct_answer_clean.split() if len(keyword) > 3) or
+                                any(keyword in correct_answer_clean for keyword in user_answer_clean.split() if len(keyword) > 3))
                     
                     if is_correct:
                         st.session_state.score += 1
