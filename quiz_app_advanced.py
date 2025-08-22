@@ -1938,8 +1938,8 @@ def show_results():
         <div class="summary-box">
             <h4>{status} Kérdés {i+1}</h4>
             <p><strong>Kérdés:</strong> {answer['question']}</p>
-            <p><strong>Válaszod:</strong> {answer['options'][answer['selected']] if answer['selected'] >= 0 else 'Idő lejárt'}</p>
-            <p><strong>Helyes válasz:</strong> {answer['options'][answer['correct']]}</p>
+            <p><strong>Válaszod:</strong> {answer['selected'] if isinstance(answer['selected'], str) else (answer['options'][answer['selected']] if answer['selected'] >= 0 else 'Idő lejárt')}</p>
+            <p><strong>Helyes válasz:</strong> {answer['correct'] if isinstance(answer['correct'], str) else answer['options'][answer['correct']]}</p>
             <p><strong>Válaszidő:</strong> {answer['time_taken']:.1f} másodperc</p>
         </div>
         """, unsafe_allow_html=True)
