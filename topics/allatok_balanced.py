@@ -313,5 +313,12 @@ ALLATOK_QUESTIONS_BALANCED = [
         "correct": 0,
         "explanation": "A zorilla más néven csíkos görény, Afrikában élő ragadozó.",
         "topic": "állatok"
+    },
+    {
+        "question": "Mi a burunduk?",
+        "options": ["Sibériai csíkos mókus", "Kínai mókus", "Japán mókus", "Mongol mókus"],
+        "correct": 0,
+        "explanation": "A burunduk egy sibériai csíkos mókus, amely a tűlevelű erdőkben él és a föld alatt is mozog.",
+        "topic": "állatok"
     }
 ] 
