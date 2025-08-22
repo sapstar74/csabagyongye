@@ -212,5 +212,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A Lagrange mechanikát Joseph-Louis Lagrange (1736-1813) olasz-francia matematikus és fizikus írta le. A Lagrange pontok az űrhajózásban fontos szerepet játszanak, mivel ezeken a pontokon az űreszközök minimális energia felhasználással stabil pályán maradhatnak.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Mit jelent az alábbi idióta szó: **Osztrakiszmosz**?""",
+        "correct_answer": """Cserépszavazás""",
+        "explanation": """Az 'Osztrakiszmosz' jelentése: Cserépszavazás. Az ókori Athénban használt eljárás, ahol a polgárok cseréptöredékekre (osztrákákra) írták fel a számukra kellemetlen személyek nevét, és aki a legtöbb szavazatot kapta, azt száműzték a városból 10 évre.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
