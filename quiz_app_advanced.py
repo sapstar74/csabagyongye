@@ -1445,7 +1445,10 @@ def show_quiz():
             is_correct = selected_answer == new_correct_index
         # --- Helyes válasz gomb (Könnyű módban) ---
         difficulty = st.session_state.mode_manager.current_difficulty
-        if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
+        if question_type == "text_input":
+            # Text input kérdések esetén nincs helyes válasz gomb
+            pass
+        elif difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
             st.markdown(f"""
                             <div style=\"position: fixed; bottom: 40px; right: 20px; z-index: 1000;\">
                 <div class=\"rotated-answer\">
