@@ -1507,7 +1507,7 @@ def show_quiz():
                     st.rerun()
                 else:
                     st.warning("Kérlek, írj be egy választ!")
-        elif difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia":
+        elif difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia" and 'options' in locals() and 'new_correct_index' in locals():
             # Nehéz mód: feleletválasztós kérdések szöveges bevitellel
             st.markdown("### 💬 Írd be a válaszod:")
             
