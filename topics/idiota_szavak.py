@@ -88,8 +88,8 @@ IDIOTA_SZAVAK_QUESTIONS = [
     },
     {
         "question": """Mit jelent az alábbi idióta szó: **kallisztenix**?""",
-        "correct_answer": """Görög atléta, ókori sportoló""",
-        "explanation": """A(z) 'kallisztenix' jelentése: Görög atléta, ókori sportoló""",
+        "correct_answer": """Ókori görög pankráció bajnok""",
+        "explanation": """A kallisztenix egy ókori görög pankráció bajnok volt. A pankráció egy kevert harcművészet volt, amely bokszot és birkózást ötvözött. Kallisztenix a Kr.e. 2. században élt és többszörös olimpiai bajnok volt.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
