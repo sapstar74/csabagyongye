@@ -29,13 +29,7 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
-    {
-        "question": """Mit jelent az alábbi idióta szó: **aguti**?""",
-        "correct_answer": """Dél-amerikai rágcsálófaj""",
-        "explanation": """A(z) 'aguti' jelentése: Dél-amerikai rágcsálófaj""",
-        "topic": "idiota_szavak",
-        "question_type": "text_input"
-    },
+
     {
         "question": """Mit jelent az alábbi idióta szó: **ladino**?""",
         "correct_answer": """Spanyol nyelvjárás, sefárd zsidók nyelve""",
@@ -65,9 +59,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Titty Twister**?""",
-        "correct_answer": """Fiktív bár a From Dusk Till Dawn filmből""",
-        "explanation": """A(z) 'Titty Twister' jelentése: Fiktív bár a From Dusk Till Dawn filmből""",
+        "question": """Milyen helyszín a **From Dusk Till Dawn** filmben?""",
+        "correct_answer": """Fiktív bár""",
+        "explanation": """A From Dusk Till Dawn filmben a helyszín egy fiktív bár, a Titty Twister. Ez egy vampírok által lakott bár, ahol a film főbb cselekménye játszódik.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
