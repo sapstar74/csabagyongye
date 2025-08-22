@@ -1385,23 +1385,41 @@ def show_quiz():
     if 'question_options' not in st.session_state:
         st.session_state.question_options = {}
     
-    # Válaszlehetőségek randomizálása - robusztus hibakezeléssel
-    if st.session_state.current_question not in st.session_state.question_options:
-        try:
-            # Minden hozzáférést a try blokkon belül végezünk
-            options = question["options"].copy()
-            # Biztosan integer legyen a correct index
-            correct_index = int(question["correct"])
-            correct_answer = options[correct_index]
-            random.shuffle(options)
-            new_correct_index = options.index(correct_answer)
-            st.session_state.question_options[st.session_state.current_question] = {
-                'options': options,
-                'correct_index': new_correct_index
-            }
-        except (KeyError, IndexError, ValueError, TypeError) as e:
-            st.error(f"Hibás kérdés adatok: {e}. Kérdés: {question.get('question', 'Ismeretlen')}")
-            # Automatikusan folytatjuk a következő kérdéssel
+    # Válaszlehetőségek randomizálása - csak többválasztós kérdések esetén
+    question_type = question.get("question_type", "multiple_choice")
+    
+    if question_type == "text_input":
+        # Text input kérdések esetén nincs szükség options randomizálásra
+        pass
+    else:
+        # Többválasztós kérdések esetén options randomizálás
+        if st.session_state.current_question not in st.session_state.question_options:
+            try:
+                # Minden hozzáférést a try blokkon belül végezünk
+                options = question["options"].copy()
+                # Biztosan integer legyen a correct index
+                correct_index = int(question["correct"])
+                correct_answer = options[correct_index]
+                random.shuffle(options)
+                new_correct_index = options.index(correct_answer)
+                st.session_state.question_options[st.session_state.current_question] = {
+                    'options': options,
+                    'correct_index': new_correct_index
+                }
+            except (KeyError, IndexError, ValueError, TypeError) as e:
+                st.error(f"Hibás kérdés adatok: {e}. Kérdés: {question.get('question', 'Ismeretlen')}")
+                # Automatikusan folytatjuk a következő kérdéssel
+                st.session_state.current_question += 1
+                if st.session_state.current_question >= len(st.session_state.quiz_questions):
+                    st.session_state.quiz_state = 'results'
+                    st.rerun()
+                else:
+                    st.rerun()
+                return
+        
+        # Extra biztonsági ellenőrzés az options_data elérése előtt
+        if st.session_state.current_question not in st.session_state.question_options:
+            st.error("Hibás kérdés adatok - automatikus folytatás")
             st.session_state.current_question += 1
             if st.session_state.current_question >= len(st.session_state.quiz_questions):
                 st.session_state.quiz_state = 'results'
@@ -1409,28 +1427,22 @@ def show_quiz():
             else:
                 st.rerun()
             return
-    
-    # Extra biztonsági ellenőrzés az options_data elérése előtt
-    if st.session_state.current_question not in st.session_state.question_options:
-        st.error("Hibás kérdés adatok - automatikus folytatás")
-        st.session_state.current_question += 1
-        if st.session_state.current_question >= len(st.session_state.quiz_questions):
-            st.session_state.quiz_state = 'results'
-            st.rerun()
-        else:
-            st.rerun()
-        return
-    
-    options_data = st.session_state.question_options[st.session_state.current_question]
-    options = options_data['options']
-    new_correct_index = options_data['correct_index']
+        
+        options_data = st.session_state.question_options[st.session_state.current_question]
+        options = options_data['options']
+        new_correct_index = options_data['correct_index']
     
     # Válasz megjelenítése
     selected_answer = st.session_state.question_answers.get(st.session_state.current_question)
     
     # Ha már válaszoltunk, mutassuk meg az eredményt
     if selected_answer is not None:
-        is_correct = selected_answer == new_correct_index
+        if question_type == "text_input":
+            # Text input kérdések esetén a válasz szöveges
+            is_correct = selected_answer.lower().strip() == question.get("correct_answer", "").lower().strip()
+        else:
+            # Többválasztós kérdések esetén index alapú
+            is_correct = selected_answer == new_correct_index
         # --- Helyes válasz gomb (Könnyű módban) ---
         difficulty = st.session_state.mode_manager.current_difficulty
         if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
