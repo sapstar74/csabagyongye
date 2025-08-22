@@ -198,9 +198,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Milyen rajzfilmsorozat kezdődik **A** betűvel?""",
-        "correct_answer": """Amerikai rajzfilmsorozat""",
-        "explanation": """Az Amerikai rajzfilmsorozat a Futurama. Ez egy sci-fi animációs sorozat, amelyet Matt Groening készített, és egy pizzafutár, Fry kalandjait követi a 31. században.""",
+        "question": """Amerikai rajzfilmsorozat 1999-től **F** betűvel""",
+        "correct_answer": """Futurama""",
+        "explanation": """Az Amerikai rajzfilmsorozat 1999-től F betűvel a Futurama. Ez egy sci-fi animációs sorozat, amelyet Matt Groening készített, és egy pizzafutár, Fry kalandjait követi a 31. században.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
