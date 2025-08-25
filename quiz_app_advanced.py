@@ -2841,8 +2841,13 @@ def show_youtube_search_tab():
                                                     st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
                                                     st.info("🎯 A track most már elérhető a quiz-ben!")
                                                     
-                                                    # Eredmények törlése
-                                                    del st.session_state.youtube_search_results
+                                                    # Eredmények törlése és újraindítás
+                                                    if 'youtube_search_results' in st.session_state:
+                                                        del st.session_state.youtube_search_results
+                                                    
+                                                    # Késleltetett újraindítás a pop-up megjelenítéséhez
+                                                    import time
+                                                    time.sleep(3)  # 3 másodperc várakozás
                                                     st.rerun()
                                 else:
                                     status.update(label="❌ Hiba a YouTube információk lekérése során!", state="error")
