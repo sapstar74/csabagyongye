@@ -3025,7 +3025,12 @@ def search_youtube_tracks(query):
 def download_and_integrate_track(track_info, category, custom_options=None):
     """Track letöltése és integrálása"""
     try:
-        import yt_dlp
+        try:
+            import yt_dlp
+        except ImportError:
+            st.error("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
+            return False
+        
         import os
         from pathlib import Path
         

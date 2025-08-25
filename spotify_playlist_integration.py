@@ -8,7 +8,12 @@ Spotify Playlist Integration Module
 import requests
 import time
 import re
-import yt_dlp
+try:
+    import yt_dlp
+    YT_DLP_AVAILABLE = True
+except ImportError:
+    YT_DLP_AVAILABLE = False
+    yt_dlp = None
 from typing import List, Dict, Optional
 import os
 from spotify_api_config import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
@@ -228,6 +233,13 @@ class YouTubeSearcher:
     
     def search_track(self, track_info: Dict) -> Optional[Dict]:
         """YouTube keresés track metadata alapján"""
+        if not YT_DLP_AVAILABLE:
+            if STREAMLIT_AVAILABLE:
+                st.error("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
+            else:
+                print("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
+            return None
+            
         search_query = self._build_search_query(track_info)
         
         try:
@@ -356,6 +368,13 @@ class AudioDownloader:
                 'no_warnings': True
             }
             
+            if not YT_DLP_AVAILABLE:
+                if STREAMLIT_AVAILABLE:
+                    st.error("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
+                else:
+                    print("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
+                return None
+                
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([youtube_url])
             
