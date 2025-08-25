@@ -221,11 +221,4 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
-    {
-        "question": """Ki tervezte **Dzsószer fáraó piramisát**?""",
-        "correct_answer": """Imhotep""",
-        "explanation": """Dzsószer fáraó piramisát Imhotep tervezte. Imhotep (kb. 2650-2600 Kr.e.) ókori egyiptomi építész, orvos, írnok és tanácsadó volt, aki a világ első kőpiramisát, a lépcsős piramist tervezte Szakkarában. Később istenként is tisztelték.""",
-        "topic": "idiota_szavak",
-        "question_type": "text_input"
-    }
 ]

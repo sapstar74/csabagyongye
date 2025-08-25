@@ -85,5 +85,12 @@ TUDOSOK_QUESTIONS = [
         "correct": 0,
         "explanation": "Bondarcsuk Szergej (1920-1994) szovjet filmrendező és színész volt.",
         "topic": "tudósok"
+    },
+    {
+        "question": "Ki tervezte Dzsószer fáraó piramisát?",
+        "options": ["Imhotep", "Hemiunu", "Sznofru", "Kheopsz"],
+        "correct": 0,
+        "explanation": "Dzsószer fáraó piramisát Imhotep tervezte. Imhotep (kb. 2650-2600 Kr.e.) ókori egyiptomi építész, orvos, írnok és tanácsadó volt, aki a világ első kőpiramisát, a lépcsős piramist tervezte Szakkarában. Később istenként is tisztelték.",
+        "topic": "tudósok"
     }
 ] 
