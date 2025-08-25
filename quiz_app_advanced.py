@@ -2925,8 +2925,10 @@ def download_and_integrate_track(track_info, category):
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
             }],
-            'download_ranges': lambda info: [[0, 120]],  # 2 perc
+            'download_ranges': lambda info, http_headers: [[0, 120]],  # 2 perc
             'force_keyframes_at_cuts': True,
+            'quiet': True,
+            'no_warnings': True,
         }
         
         # Letöltés
