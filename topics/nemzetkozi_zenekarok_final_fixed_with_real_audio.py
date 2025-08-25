@@ -666,4 +666,18 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "explanation": "Stakka Bo - Nemzetközi előadó",
         "topic": "nemzetkozi_zenekarok",
     },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "audio_files/nemzetkozi_zenekarok/Audioslave - Like a Stone.mp3",
+        "original_index": 67,
+        "options": [
+            "Audioslave",
+            "Soundgarden",
+            "Pearl Jam",
+            "Nirvana"
+        ],
+        "correct": 0,
+        "explanation": "Audioslave - Nemzetközi zenekar",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
