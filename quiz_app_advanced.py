@@ -2859,12 +2859,47 @@ def search_youtube_tracks(query):
                             for key, value in data.items():
                                 if key == 'videoRenderer':
                                     video_info = value
-                                    title = video_info.get('title', {}).get('runs', [{}])[0].get('text', '')
-                                    channel = video_info.get('ownerText', {}).get('runs', [{}])[0].get('text', '')
+                                    
+                                    # Title kinyerése
+                                    title_obj = video_info.get('title', {})
+                                    if isinstance(title_obj, dict) and 'runs' in title_obj:
+                                        title = title_obj['runs'][0].get('text', '') if title_obj['runs'] else ''
+                                    else:
+                                        title = str(title_obj)
+                                    
+                                    # Channel kinyerése
+                                    channel_obj = video_info.get('ownerText', {})
+                                    if isinstance(channel_obj, dict) and 'runs' in channel_obj:
+                                        channel = channel_obj['runs'][0].get('text', '') if channel_obj['runs'] else ''
+                                    else:
+                                        channel = str(channel_obj)
+                                    
                                     video_id = video_info.get('videoId', '')
-                                    duration = video_info.get('lengthText', {}).get('simpleText', '')
-                                    views = video_info.get('viewCountText', {}).get('simpleText', '')
-                                    thumbnail = video_info.get('thumbnail', {}).get('thumbnails', [{}])[-1].get('url', '')
+                                    
+                                    # Duration kinyerése
+                                    duration_obj = video_info.get('lengthText', {})
+                                    if isinstance(duration_obj, dict):
+                                        duration = duration_obj.get('simpleText', '')
+                                    else:
+                                        duration = str(duration_obj)
+                                    
+                                    # Views kinyerése
+                                    views_obj = video_info.get('viewCountText', {})
+                                    if isinstance(views_obj, dict):
+                                        views = views_obj.get('simpleText', '')
+                                    else:
+                                        views = str(views_obj)
+                                    
+                                    # Thumbnail kinyerése
+                                    thumbnail_obj = video_info.get('thumbnail', {})
+                                    if isinstance(thumbnail_obj, dict) and 'thumbnails' in thumbnail_obj:
+                                        thumbnails = thumbnail_obj['thumbnails']
+                                        if thumbnails and len(thumbnails) > 0:
+                                            thumbnail = thumbnails[-1].get('url', '')
+                                        else:
+                                            thumbnail = f"https://i.ytimg.com/vi/{video_id}/default.jpg"
+                                    else:
+                                        thumbnail = f"https://i.ytimg.com/vi/{video_id}/default.jpg"
                                     
                                     if video_id and title:
                                         videos.append({
@@ -2873,7 +2908,7 @@ def search_youtube_tracks(query):
                                             'duration': duration,
                                             'views': views,
                                             'url': f"https://www.youtube.com/watch?v={video_id}",
-                                            'thumbnail': f"https://i.ytimg.com/vi/{video_id}/default.jpg"
+                                            'thumbnail': thumbnail
                                         })
                                 elif isinstance(value, (dict, list)):
                                     extract_videos(value)
