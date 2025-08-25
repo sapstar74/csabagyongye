@@ -2793,7 +2793,7 @@ def show_youtube_search_tab():
                     st.markdown(f"**Nézők:** {result.get('views', 'Ismeretlen')}")
                 
                 with col3:
-                    # Kategória választás és letöltés gomb egymás mellett
+                    # Kategória választás
                     music_categories = {
                         "magyar_zenekarok": "🎵 Magyar",
                         "nemzetkozi_zenekarok": "🌍 Nemzetközi", 
@@ -2807,6 +2807,13 @@ def show_youtube_search_tab():
                         format_func=lambda x: music_categories[x]
                     )
                     
+                    # Szerkeszthető válasz opciók
+                    st.markdown("**Válasz opciók:**")
+                    option_1 = st.text_input("1. helyes válasz:", value=result.get('channel', 'Ismeretlen előadó'), key=f"opt1_{i}")
+                    option_2 = st.text_input("2. opció:", value="Bastille", key=f"opt2_{i}")
+                    option_3 = st.text_input("3. opció:", value="Imagine Dragons", key=f"opt3_{i}")
+                    option_4 = st.text_input("4. opció:", value="The Weeknd", key=f"opt4_{i}")
+                    
                     # Letöltés gomb
                     if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
                         # Részletes letöltési folyamat
@@ -2815,7 +2822,9 @@ def show_youtube_search_tab():
                         # 1. Lépés: YouTube információk lekérése
                         with st.status("🔍 YouTube információk lekérése...", expanded=True) as status:
                             try:
-                                success = download_and_integrate_track(result, selected_category)
+                                # Egyedi opciók használata
+                                custom_options = [option_1, option_2, option_3, option_4]
+                                success = download_and_integrate_track(result, selected_category, custom_options)
                                 if success:
                                     status.update(label="✅ YouTube információk sikeresen lekérdezve!", state="complete")
                                     
@@ -2973,7 +2982,7 @@ def search_youtube_tracks(query):
         st.error(f"YouTube keresési hiba: {e}")
         return []
 
-def download_and_integrate_track(track_info, category):
+def download_and_integrate_track(track_info, category, custom_options=None):
     """Track letöltése és integrálása"""
     try:
         import yt_dlp
@@ -3053,7 +3062,7 @@ def download_and_integrate_track(track_info, category):
         
         # Quiz kérdés generálása
         st.info("🎯 Quiz kérdés generálása...")
-        question = generate_quiz_question(track_info, audio_file, category)
+        question = generate_quiz_question(track_info, audio_file, category, custom_options)
         st.info(f"✅ Quiz kérdés generálva: {question['question']}")
         
         # Kérdés hozzáadása a megfelelő kategóriához
@@ -3069,7 +3078,7 @@ def download_and_integrate_track(track_info, category):
         st.error(f"Hiba részletei: {traceback.format_exc()}")
         return False
 
-def generate_quiz_question(track_info, audio_file, category):
+def generate_quiz_question(track_info, audio_file, category, custom_options=None):
     """Quiz kérdés generálása a track alapján"""
     try:
         # Debug: track_info ellenőrzés
@@ -3081,19 +3090,23 @@ def generate_quiz_question(track_info, audio_file, category):
         title = track_info.get('title', 'Ismeretlen cím')
         channel = track_info.get('channel', 'Ismeretlen előadó')
         
-        # Kategória alapú kérdés és opciók generálása
+        # Kategória alapú kérdés
         if category == "komolyzene":
-            # Komolyzene: zeneszerző kérdés
             question_text = "Ki a zeneszerző?"
-            correct_answer = channel
-            # Hasonló zeneszerzők
-            similar_options = ["Beethoven", "Mozart", "Bach"]
         else:
-            # Pop/rock: előadó kérdés
             question_text = "Ki az előadó?"
+        
+        # Opciók használata
+        if custom_options and len(custom_options) >= 4:
+            # Egyedi opciók használata
+            options = custom_options
+            correct_answer = options[0]  # Első opció a helyes válasz
+        else:
+            # Alapértelmezett opciók
             correct_answer = channel
-            # Hasonló előadók kategóriánként
-            if category == "magyar_zenekarok":
+            if category == "komolyzene":
+                similar_options = ["Beethoven", "Mozart", "Bach"]
+            elif category == "magyar_zenekarok":
                 similar_options = ["Kispál és a Borz", "Elefánt", "Quimby"]
             elif category == "nemzetkozi_zenekarok":
                 similar_options = ["Imagine Dragons", "Bastille", "The Weeknd"]
@@ -3101,14 +3114,13 @@ def generate_quiz_question(track_info, audio_file, category):
                 similar_options = ["Bastille", "Imagine Dragons", "The Chainsmokers"]
             else:
                 similar_options = ["Előadó 1", "Előadó 2", "Előadó 3"]
-        
-        # Opciók generálása: helyes válasz + 3 hasonló + 1 szerkeszthető
-        options = [
-            correct_answer,
-            similar_options[0],
-            similar_options[1],
-            "Szerkeszthető opció"
-        ]
+            
+            options = [
+                correct_answer,
+                similar_options[0],
+                similar_options[1],
+                "Szerkeszthető opció"
+            ]
         
         # Kérdés objektum
         question = {
