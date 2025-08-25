@@ -2826,42 +2826,81 @@ def show_youtube_search_tab():
 def search_youtube_tracks(query):
     """YouTube keresés implementáció"""
     try:
-        # Alternatív megoldás: egyszerű mock adatok a teszteléshez
-        # Később implementálható a valódi YouTube API vagy más könyvtár
-        mock_results = [
-            {
-                'title': f"{query} - Előadó 1",
-                'channel': "Hivatalos csatorna",
-                'duration': "3:45",
-                'views': "1.2M",
-                'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                'thumbnail': "https://picsum.photos/120/90"
-            },
-            {
-                'title': f"{query} - Előadó 2",
-                'channel': "Zenei csatorna",
-                'duration': "4:20",
-                'views': "856K",
-                'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                'thumbnail': "https://picsum.photos/120/90"
-            },
-            {
-                'title': f"{query} - Előadó 3",
-                'channel': "Koncert felvétel",
-                'duration': "5:15",
-                'views': "2.1M",
-                'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                'thumbnail': "https://picsum.photos/120/90"
-            }
-        ]
+        import requests
+        import json
+        import re
         
-        # Sponsored találatok kiszűrése
-        processed_results = []
-        for video in mock_results:
-            if 'sponsored' not in video.get('title', '').lower() and 'reklám' not in video.get('title', '').lower():
-                processed_results.append(video)
+        # YouTube keresés közvetlenül a YouTube API nélkül
+        search_url = f"https://www.youtube.com/results?search_query={query.replace(' ', '+')}"
         
-        return processed_results
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        
+        response = requests.get(search_url, headers=headers)
+        
+        if response.status_code == 200:
+            # YouTube oldal tartalmából kinyerjük a videó adatokat
+            html_content = response.text
+            
+            # ytInitialData keresése
+            yt_initial_data_match = re.search(r'var ytInitialData = ({.*?});', html_content)
+            
+            if yt_initial_data_match:
+                try:
+                    yt_data = json.loads(yt_initial_data_match.group(1))
+                    
+                    # Videó adatok kinyerése
+                    videos = []
+                    
+                    # Keresési eredmények keresése a JSON-ben
+                    def extract_videos(data):
+                        if isinstance(data, dict):
+                            for key, value in data.items():
+                                if key == 'videoRenderer':
+                                    video_info = value
+                                    title = video_info.get('title', {}).get('runs', [{}])[0].get('text', '')
+                                    channel = video_info.get('ownerText', {}).get('runs', [{}])[0].get('text', '')
+                                    video_id = video_info.get('videoId', '')
+                                    duration = video_info.get('lengthText', {}).get('simpleText', '')
+                                    views = video_info.get('viewCountText', {}).get('simpleText', '')
+                                    thumbnail = video_info.get('thumbnail', {}).get('thumbnails', [{}])[-1].get('url', '')
+                                    
+                                    if video_id and title:
+                                        videos.append({
+                                            'title': title,
+                                            'channel': channel,
+                                            'duration': duration,
+                                            'views': views,
+                                            'url': f"https://www.youtube.com/watch?v={video_id}",
+                                            'thumbnail': f"https://i.ytimg.com/vi/{video_id}/default.jpg"
+                                        })
+                                elif isinstance(value, (dict, list)):
+                                    extract_videos(value)
+                        elif isinstance(data, list):
+                            for item in data:
+                                extract_videos(item)
+                    
+                    extract_videos(yt_data)
+                    
+                    # Sponsored találatok kiszűrése
+                    processed_results = []
+                    for video in videos[:5]:  # Maximum 5 találat
+                        if 'sponsored' not in video.get('title', '').lower() and 'reklám' not in video.get('title', '').lower():
+                            processed_results.append(video)
+                    
+                    return processed_results
+                    
+                except json.JSONDecodeError:
+                    st.error("Hiba a YouTube adatok feldolgozásakor")
+                    return []
+            else:
+                st.error("Nem sikerült megtalálni a YouTube adatokat")
+                return []
+        else:
+            st.error(f"YouTube oldal betöltési hiba: {response.status_code}")
+            return []
+            
     except Exception as e:
         st.error(f"YouTube keresési hiba: {e}")
         return []
@@ -2869,19 +2908,32 @@ def search_youtube_tracks(query):
 def download_and_integrate_track(track_info, category):
     """Track letöltése és integrálása"""
     try:
+        import yt_dlp
         import os
         from pathlib import Path
-        
-        # Mock letöltés - valós implementációhoz yt-dlp szükséges
-        st.info("🎵 Mock letöltés - valós implementáció fejlesztés alatt")
         
         # Letöltési könyvtár létrehozása
         download_dir = Path("audio_files") / category
         download_dir.mkdir(parents=True, exist_ok=True)
         
-        # Mock audio fájl név
-        safe_title = "".join(c for c in track_info['title'] if c.isalnum() or c in (' ', '-', '_')).rstrip()
-        audio_file = str(download_dir / f"{safe_title}.mp3")
+        # yt-dlp konfiguráció (2 perc letöltés)
+        ydl_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': str(download_dir / '%(title)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+            'download_ranges': lambda info: [[0, 120]],  # 2 perc
+            'force_keyframes_at_cuts': True,
+        }
+        
+        # Letöltés
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(track_info['url'], download=True)
+            audio_file = ydl.prepare_filename(info)
+            audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
         
         # Quiz kérdés generálása
         question = generate_quiz_question(track_info, audio_file, category)
@@ -2889,7 +2941,6 @@ def download_and_integrate_track(track_info, category):
         # Kérdés hozzáadása a megfelelő kategóriához
         add_question_to_category(question, category)
         
-        st.success(f"✅ Mock track sikeresen integrálva: {track_info['title']}")
         return True
     except Exception as e:
         st.error(f"Letöltési hiba: {e}")
