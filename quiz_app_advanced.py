@@ -2822,6 +2822,25 @@ def show_youtube_search_tab():
                         <div style="text-align: center;">
                         <h3>📋 Letöltési és integrálási folyamat</h3>
                         </div>
+                        <style>
+                        /* Státuszjelentés középre igazítása és olvashatóvá tétele */
+                        [data-testid="stStatus"] {
+                            margin: 0 auto !important;
+                            max-width: 800px !important;
+                            text-align: center !important;
+                            font-size: 16px !important;
+                            padding: 20px !important;
+                            border-radius: 10px !important;
+                            background-color: #f0f2f6 !important;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+                        }
+                        /* Státuszjelentés ne tűnjön el */
+                        [data-testid="stStatus"] .stStatus {
+                            display: block !important;
+                            visibility: visible !important;
+                            opacity: 1 !important;
+                        }
+                        </style>
                         """, unsafe_allow_html=True)
                         
                         # Progress bar és egyszerű szövegek
