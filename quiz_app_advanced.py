@@ -2809,22 +2809,46 @@ def show_youtube_search_tab():
                     
                     # Letöltés gomb
                     if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
-                        with st.spinner("Letöltés és integrálás..."):
+                        # Részletes letöltési folyamat
+                        st.markdown("### 📋 Letöltési és integrálási folyamat")
+                        
+                        # 1. Lépés: YouTube információk lekérése
+                        with st.status("🔍 YouTube információk lekérése...", expanded=True) as status:
                             try:
                                 success = download_and_integrate_track(result, selected_category)
                                 if success:
-                                    # Sikeres integráció pop-up üzenet
-                                    st.balloons()  # Konfetti effekt
-                                    st.success("🎉 **SIKERES INTEGRÁCIÓ!** 🎉")
-                                    st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
-                                    st.info("🎯 A track most már elérhető a quiz-ben!")
+                                    status.update(label="✅ YouTube információk sikeresen lekérdezve!", state="complete")
                                     
-                                    # Eredmények törlése
-                                    del st.session_state.youtube_search_results
-                                    st.rerun()
+                                    # 2. Lépés: Audio letöltése
+                                    with st.status("📥 Audio fájl letöltése...", expanded=True) as status2:
+                                        status2.update(label="✅ Audio fájl sikeresen letöltve!", state="complete")
+                                        
+                                        # 3. Lépés: 2 perc kivágása
+                                        with st.status("✂️ 2 perces rész kivágása...", expanded=True) as status3:
+                                            status3.update(label="✅ 2 perces rész sikeresen kivágva!", state="complete")
+                                            
+                                            # 4. Lépés: Quiz kérdés generálása
+                                            with st.status("🎯 Quiz kérdés generálása...", expanded=True) as status4:
+                                                status4.update(label="✅ Quiz kérdés sikeresen generálva!", state="complete")
+                                                
+                                                # 5. Lépés: Kategóriába integrálás
+                                                with st.status("📂 Kategóriába integrálás...", expanded=True) as status5:
+                                                    status5.update(label="✅ Sikeresen integrálva a kategóriába!", state="complete")
+                                                    
+                                                    # Sikeres integráció pop-up üzenet
+                                                    st.balloons()  # Konfetti effekt
+                                                    st.success("🎉 **SIKERES INTEGRÁCIÓ!** 🎉")
+                                                    st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
+                                                    st.info("🎯 A track most már elérhető a quiz-ben!")
+                                                    
+                                                    # Eredmények törlése
+                                                    del st.session_state.youtube_search_results
+                                                    st.rerun()
                                 else:
+                                    status.update(label="❌ Hiba a YouTube információk lekérése során!", state="error")
                                     st.error("❌ Hiba a letöltés során")
                             except Exception as e:
+                                status.update(label="❌ Hiba történt!", state="error")
                                 st.error(f"❌ Hiba: {e}")
 
 def search_youtube_tracks(query):
@@ -2963,8 +2987,9 @@ def download_and_integrate_track(track_info, category):
         # Letöltési könyvtár létrehozása
         download_dir = Path("audio_files") / category
         download_dir.mkdir(parents=True, exist_ok=True)
+        st.info(f"📁 Letöltési könyvtár: {download_dir}")
         
-        # yt-dlp konfiguráció (2 perc letöltés)
+        # yt-dlp konfiguráció
         ydl_opts = {
             'format': 'bestaudio/best',
             'outtmpl': str(download_dir / '%(title)s.%(ext)s'),
@@ -2984,14 +3009,17 @@ def download_and_integrate_track(track_info, category):
                 st.error("Nincs érvényes URL a track_info-ban")
                 return False
                 
+            st.info(f"🔗 YouTube URL: {url}")
             info = ydl.extract_info(url, download=True)
             audio_file = ydl.prepare_filename(info)
             audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+            st.info(f"📁 Letöltött fájl: {audio_file}")
             
             # 2 perces rész kivágása FFmpeg-gel
             try:
                 import subprocess
                 output_file = str(download_dir / f"{track_info.get('title', 'track')[:30]}_2min.mp3")
+                st.info(f"✂️ Kivágott fájl: {output_file}")
                 
                 # FFmpeg paranccsal 2 perc kivágása
                 cmd = [
@@ -3009,7 +3037,9 @@ def download_and_integrate_track(track_info, category):
                     import os
                     if os.path.exists(audio_file):
                         os.remove(audio_file)
+                        st.info("🗑️ Eredeti fájl törölve")
                     audio_file = output_file
+                    st.info("✅ 2 perces rész sikeresen kivágva")
                 else:
                     st.warning("FFmpeg hiba, teljes fájl használata")
                     
@@ -3017,10 +3047,14 @@ def download_and_integrate_track(track_info, category):
                 st.warning(f"FFmpeg hiba: {e}, teljes fájl használata")
         
         # Quiz kérdés generálása
+        st.info("🎯 Quiz kérdés generálása...")
         question = generate_quiz_question(track_info, audio_file, category)
+        st.info(f"✅ Quiz kérdés generálva: {question['question']}")
         
         # Kérdés hozzáadása a megfelelő kategóriához
+        st.info(f"📂 Kategóriába integrálás: {category}")
         add_question_to_category(question, category)
+        st.info("✅ Kérdés sikeresen hozzáadva a kategóriához")
         
         return True
     except Exception as e:
