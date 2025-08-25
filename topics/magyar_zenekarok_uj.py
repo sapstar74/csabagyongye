@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-25 16:39:59
+# Generated on: 2025-08-25 17:01:31
 
 MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
     {
@@ -1198,5 +1198,17 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
         "audio_file": "94_Korai_Öröm.mp3",
         "topic": "magyar_zenekarok_uj",
     },
-
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "4F Club",
+            "Betty Blue",
+            "Emergency House",
+            "Kozmix",
+        ],
+        "correct": 0,
+        "explanation": "4F Club - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp4",
+        "topic": "magyar_zenekarok",
+    },
 ]

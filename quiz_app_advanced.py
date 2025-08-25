@@ -2849,10 +2849,45 @@ def show_youtube_search_tab():
                                                 with st.status("📂 Kategóriába integrálás...", expanded=True) as status5:
                                                     status5.update(label="✅ Sikeresen integrálva a kategóriába!", state="complete")
                                                     
+                                                    # 6. Lépés: GitHub frissítés
+                                                    with st.status("🚀 GitHub frissítés...", expanded=True) as status6:
+                                                        try:
+                                                            # Git frissítés
+                                                            import subprocess
+                                                            import os
+                                                            
+                                                            # Git add
+                                                            result_add = subprocess.run(['git', 'add', '.'], 
+                                                                                      capture_output=True, text=True, cwd=os.getcwd())
+                                                            
+                                                            if result_add.returncode == 0:
+                                                                # Git commit
+                                                                commit_message = f"🎵 Új track hozzáadva: {result['title']} - {selected_category}"
+                                                                result_commit = subprocess.run(['git', 'commit', '-m', commit_message], 
+                                                                                              capture_output=True, text=True, cwd=os.getcwd())
+                                                                
+                                                                if result_commit.returncode == 0:
+                                                                    # Git push
+                                                                    result_push = subprocess.run(['git', 'push'], 
+                                                                                                capture_output=True, text=True, cwd=os.getcwd())
+                                                                    
+                                                                    if result_push.returncode == 0:
+                                                                        status6.update(label="✅ GitHub sikeresen frissítve!", state="complete")
+                                                                    else:
+                                                                        status6.update(label="⚠️ Git push hiba", state="error")
+                                                                else:
+                                                                    status6.update(label="⚠️ Git commit hiba", state="error")
+                                                            else:
+                                                                status6.update(label="⚠️ Git add hiba", state="error")
+                                                                
+                                                        except Exception as e:
+                                                            status6.update(label="⚠️ Git hiba", state="error")
+                                                    
                                                     # Sikeres integráció pop-up üzenet
                                                     st.balloons()  # Konfetti effekt
                                                     st.success("🎉 **SIKERES INTEGRÁCIÓ!** 🎉")
                                                     st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
+                                                    st.info("🚀 GitHub is frissítve!")
                                                     st.info("🎯 A track most már elérhető a quiz-ben!")
                                                     
                                                     # Eredmények törlése és újraindítás
