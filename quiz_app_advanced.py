@@ -2968,7 +2968,12 @@ def download_and_integrate_track(track_info, category):
         
         # Letöltés
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(track_info['url'], download=True)
+            url = track_info.get('url', '')
+            if not url:
+                st.error("Nincs érvényes URL a track_info-ban")
+                return False
+                
+            info = ydl.extract_info(url, download=True)
             audio_file = ydl.prepare_filename(info)
             audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
         
@@ -2985,17 +2990,21 @@ def download_and_integrate_track(track_info, category):
 
 def generate_quiz_question(track_info, audio_file, category):
     """Quiz kérdés generálása a track alapján"""
+    # Biztonságos adatkinyerés
+    title = track_info.get('title', 'Ismeretlen cím')
+    channel = track_info.get('channel', 'Ismeretlen előadó')
+    
     # Egyszerű kérdés generálás
     question = {
         'question': f'Mi ennek a dalnak a címe?',
         'options': [
-            track_info['title'],
-            f"Alternatív 1 - {track_info['title']}",
-            f"Alternatív 2 - {track_info['title']}", 
-            f"Alternatív 3 - {track_info['title']}"
+            title,
+            f"Alternatív 1 - {title}",
+            f"Alternatív 2 - {title}", 
+            f"Alternatív 3 - {title}"
         ],
         'correct': 0,
-        'explanation': f"Ez a dal: {track_info['title']} - {track_info['channel']}",
+        'explanation': f"Ez a dal: {title} - {channel}",
         'audio_file': audio_file,
         'topic': category
     }
