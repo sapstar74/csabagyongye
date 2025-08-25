@@ -2808,7 +2808,7 @@ def show_youtube_search_tab():
                     )
                     
                     # Letöltés gomb
-                    if st.button(f"📥 Letöltés", key=f"download_{i}", type="primary"):
+                    if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
                         with st.spinner("Letöltés és integrálás..."):
                             try:
                                 success = download_and_integrate_track(result, selected_category)
