@@ -2,23 +2,23 @@
 
 IDIOTA_SZAVAK_QUESTIONS = [
     {
-        "question": """Mit jelent az alábbi idióta szó: **Hygge**?""",
-        "correct_answer": """Dán életfelfogás, kellemes, otthonos hangulat""",
-        "explanation": """A(z) 'Hygge' jelentése: Dán életfelfogás, kellemes, otthonos hangulat""",
+        "question": """Hogy hívják a **dán életfelfogást, kellemes, otthonos hangulatot**?""",
+        "correct_answer": """Hygge""",
+        "explanation": """A dán életfelfogást, kellemes, otthonos hangulatot hygge-nek hívják. Ez a dán kultúra egyik alapvető fogalma, amely a kellemes, otthonos pillanatokat jelenti.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **ikigai**?""",
-        "correct_answer": """Japán életcél fogalom, az élet értelme""",
-        "explanation": """A(z) 'ikigai' jelentése: Japán életcél fogalom, az élet értelme""",
+        "question": """Hogy hívják a **japán életcél fogalmat, az élet értelmét**?""",
+        "correct_answer": """Ikigai""",
+        "explanation": """A japán életcél fogalmat, az élet értelmét ikigai-nak hívják. Ez a japán filozófia egyik alapvető fogalma, amely az élet értelmét és célját jelenti.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **onsen**?""",
-        "correct_answer": """Japán termálfürdő""",
-        "explanation": """A(z) 'onsen' jelentése: Japán termálfürdő""",
+        "question": """Hogy hívják a **japán termálfürdőt**?""",
+        "correct_answer": """Onsen""",
+        "explanation": """A japán termálfürdőt onsennak hívják. Ezek a természetes forróvizes forrásokból táplálkozó fürdők, amelyek a japán kultúra fontos részei.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -31,9 +31,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
     },
 
     {
-        "question": """Mit jelent az alábbi idióta szó: **ladino**?""",
-        "correct_answer": """Spanyol nyelvjárás, sefárd zsidók nyelve""",
-        "explanation": """A(z) 'ladino' jelentése: Spanyol nyelvjárás, sefárd zsidók nyelve""",
+        "question": """Hogy hívják a **sefárd zsidók nyelvét**?""",
+        "correct_answer": """Ladino""",
+        "explanation": """A sefárd zsidók nyelvét ladinonak hívják. Ez egy spanyol nyelvjárás, amelyet a 1492-es kiűzetés után a sefárd zsidók őriztek meg és használtak.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -52,9 +52,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **merengue**?""",
-        "correct_answer": """Dominikai tánc és zenei stílus""",
-        "explanation": """A(z) 'merengue' jelentése: Dominikai tánc és zenei stílus""",
+        "question": """Hogy hívják a **dominikai táncot és zenei stílust**?""",
+        "correct_answer": """Merengue""",
+        "explanation": """A dominikai táncot és zenei stílust merengue-nek hívják. Ez a Dominikai Köztársaság nemzeti tánca, amely gyors tempójú és ritmikus.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -94,9 +94,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **kamerlengo**?""",
-        "correct_answer": """Pápai hivatalnok""",
-        "explanation": """A(z) 'kamerlengo' jelentése: Pápai hivatalnok""",
+        "question": """Hogy hívják a **pápai hivatalnokot**?""",
+        "correct_answer": """Kamerlengo""",
+        "explanation": """A pápai hivatalnokot kamerlengonek hívják. Ez a Vatikán egyik legmagasabb rangú hivatalnoka, aki a pápai kamara vezetője.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
@@ -115,51 +115,51 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **kwanza**?""",
-        "correct_answer": """Angolai pénznem""",
-        "explanation": """A(z) 'kwanza' jelentése: Angolai pénznem""",
+        "question": """Milyen pénznem **K** betűvel?""",
+        "correct_answer": """Kwanza""",
+        "explanation": """A K betűvel kezdődő pénznem a Kwanza, amely Angola hivatalos pénzneme. A kwanza 1977-ben váltotta fel az angolai escudót.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **CapCut**?""",
-        "correct_answer": """Video szerkesztő alkalmazás""",
-        "explanation": """A(z) 'CapCut' jelentése: Video szerkesztő alkalmazás""",
+        "question": """Hogy hívják a **video szerkesztő alkalmazást**?""",
+        "correct_answer": """CapCut""",
+        "explanation": """A video szerkesztő alkalmazást CapCut-nak hívják. Ez a ByteDance által fejlesztett ingyenes video szerkesztő alkalmazás, amely TikTok videók készítésére is használható.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Unilad**?""",
-        "correct_answer": """Brit média cég""",
-        "explanation": """A(z) 'Unilad' jelentése: Brit média cég""",
+        "question": """Hogy hívják a **brit média céget**?""",
+        "correct_answer": """Unilad""",
+        "explanation": """A brit média céget Unilad-nak hívják. Ez egy digitális média cég, amely fiatal férfiaknak szóló tartalmakat készít.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **CD Projekt RED**?""",
-        "correct_answer": """Lengyel játékfejlesztő cég""",
-        "explanation": """A(z) 'CD Projekt RED' jelentése: Lengyel játékfejlesztő cég""",
+        "question": """Hogy hívják a **lengyel játékfejlesztő céget**?""",
+        "correct_answer": """CD Projekt RED""",
+        "explanation": """A lengyel játékfejlesztő céget CD Projekt RED-nek hívják. Ez a cég a Witcher sorozat és a Cyberpunk 2077 fejlesztője.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **nadír**?""",
-        "correct_answer": """Az égbolt legalsó pontja""",
-        "explanation": """A(z) 'nadír' jelentése: Az égbolt legalsó pontja""",
+        "question": """Hogy hívják az **égbolt legalsó pontját**?""",
+        "correct_answer": """Nadír""",
+        "explanation": """Az égbolt legalsó pontját nadírnak hívják. Ez a zenit ellentéte - míg a zenit a fejünk feletti pont, addig a nadír a lábunk alatti pont az égbolton.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **eseményhorizont**?""",
-        "correct_answer": """Fekete lyuk határa""",
-        "explanation": """A(z) 'eseményhorizont' jelentése: Fekete lyuk határa""",
+        "question": """Hogy hívják a **fekete lyuk határát**?""",
+        "correct_answer": """Eseményhorizont""",
+        "explanation": """A fekete lyuk határát eseményhorizontnak hívják. Ez az a pont, ahonnan már semmi, még a fény sem tud kiszabadulni a fekete lyuk gravitációs teréből.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
     {
-        "question": """Mit jelent az alábbi idióta szó: **Tankréd lovag**?""",
-        "correct_answer": """Keresztes lovag, Tasso művéből""",
-        "explanation": """A(z) 'Tankréd lovag' jelentése: Keresztes lovag, Tasso művéből""",
+        "question": """Hogy hívják a **keresztes lovagot Tasso művéből**?""",
+        "correct_answer": """Tankréd lovag""",
+        "explanation": """A keresztes lovagot Tasso művéből Tankréd lovagnak hívják. Ez Torquato Tasso 'A megszabadított Jeruzsálem' című eposzából származó karakter, aki a keresztes lovagok egyik vezetője.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
