@@ -150,11 +150,18 @@ class QuizModeUI:
                 }
             }
             
-            selected_mode = st.selectbox(
-                "Válassz módot:",
-                list(mode_options.keys()),
-                format_func=lambda x: f"{mode_options[x]['icon']} {x}"
-            )
+            # Mód gombok
+            selected_mode = None
+            mode_cols = st.columns(len(mode_options))
+            
+            for i, (mode_name, mode_info) in enumerate(mode_options.items()):
+                with mode_cols[i]:
+                    if st.button(f"{mode_info['icon']} {mode_name}", key=f"mode_{mode_name}"):
+                        selected_mode = mode_name
+            
+            # Ha nincs kiválasztott mód, alapértelmezett
+            if selected_mode is None:
+                selected_mode = "normál"
             
             # Mód leírása
             if selected_mode in mode_options:
@@ -188,11 +195,18 @@ class QuizModeUI:
                 }
             }
             
-            selected_difficulty = st.selectbox(
-                "Válassz nehézségi szintet:",
-                list(difficulty_options.keys()),
-                format_func=lambda x: f"{difficulty_options[x]['icon']} {x}"
-            )
+            # Nehézség gombok
+            selected_difficulty = None
+            difficulty_cols = st.columns(len(difficulty_options))
+            
+            for i, (difficulty_name, difficulty_info) in enumerate(difficulty_options.items()):
+                with difficulty_cols[i]:
+                    if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=f"difficulty_{difficulty_name}"):
+                        selected_difficulty = difficulty_name
+            
+            # Ha nincs kiválasztott nehézség, alapértelmezett
+            if selected_difficulty is None:
+                selected_difficulty = "közepes"
             
             # Nehézség leírása
             if selected_difficulty in difficulty_options:
