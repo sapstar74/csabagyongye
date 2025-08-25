@@ -603,10 +603,10 @@ def main():
         st.markdown("## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
-            ["Spotify Playlist", "Quiz", "Analytics", "Beállítások", "Audio hozzáadása"],
+            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása"],
             format_func=lambda x: {
-                "Spotify Playlist": "🎵 Spotify Playlist",
                 "Quiz": "🎯 Quiz",
+                "Spotify Playlist": "🎵 Spotify Playlist",
                 "Analytics": "📊 Analytics", 
                 "Beállítások": "⚙️ Beállítások",
                 "Audio hozzáadása": "🎵 Audio hozzáadása"
