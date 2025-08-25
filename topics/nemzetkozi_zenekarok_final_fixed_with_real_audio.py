@@ -658,9 +658,9 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "original_index": 66,
         "options": [
             "Stakka Bo",
-            "Stakka & Bo",
-            "Bo Stakka",
-            "Stakka Brothers"
+            "Boomfunk MC",
+            "Stereo MCs",
+            "The KLF"
         ],
         "correct": 0,
         "explanation": "Stakka Bo - Nemzetközi előadó",
