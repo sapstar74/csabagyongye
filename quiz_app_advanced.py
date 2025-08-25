@@ -2747,22 +2747,6 @@ def show_youtube_search_tab():
     """YouTube keresés alapú track hozzáadás"""
     st.markdown("### 🎵 YouTube Keresés")
     
-    # Zenei kategória kiválasztás
-    st.markdown("#### 📂 Célkategória kiválasztása")
-    music_categories = {
-        "magyar_zenekarok": "🎵 Magyar könnyűzene",
-        "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok", 
-        "one_hit_wonders": "⭐ One Hit Wonders"
-    }
-    
-    selected_category = st.radio(
-        "Válassz zenei kategóriát:",
-        list(music_categories.keys()),
-        format_func=lambda x: music_categories[x]
-    )
-    
-    st.markdown("---")
-    
     # YouTube keresés
     st.markdown("#### 🔍 YouTube Keresés")
     search_query = st.text_input(
@@ -2794,7 +2778,7 @@ def show_youtube_search_tab():
         
         for i, result in enumerate(st.session_state.youtube_search_results):
             with st.expander(f"🎵 {result['title']} - {result['channel']}", expanded=False):
-                col1, col2 = st.columns([1, 2])
+                col1, col2, col3 = st.columns([1, 2, 1])
                 
                 with col1:
                     if result.get('thumbnail'):
@@ -2807,9 +2791,24 @@ def show_youtube_search_tab():
                     st.markdown(f"**Csatorna:** {result['channel']}")
                     st.markdown(f"**Hossz:** {result.get('duration', 'Ismeretlen')}")
                     st.markdown(f"**Nézők:** {result.get('views', 'Ismeretlen')}")
+                
+                with col3:
+                    # Kategória választás és letöltés gomb egymás mellett
+                    music_categories = {
+                        "magyar_zenekarok": "🎵 Magyar",
+                        "nemzetkozi_zenekarok": "🌍 Nemzetközi", 
+                        "one_hit_wonders": "⭐ One Hit Wonders"
+                    }
+                    
+                    selected_category = st.selectbox(
+                        "Kategória:",
+                        list(music_categories.keys()),
+                        key=f"category_{i}",
+                        format_func=lambda x: music_categories[x]
+                    )
                     
                     # Letöltés gomb
-                    if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}"):
+                    if st.button(f"📥 Letöltés", key=f"download_{i}", type="primary"):
                         with st.spinner("Letöltés és integrálás..."):
                             try:
                                 success = download_and_integrate_track(result, selected_category)
