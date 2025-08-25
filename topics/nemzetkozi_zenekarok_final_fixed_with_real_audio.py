@@ -652,4 +652,18 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "topic": "nemzetkozi_zenekarok",
         "audio_file": "65_Nelly_Furtado.mp3",
     },
+    {
+        "question": "Mi ennek a dalnak a címe?",
+        "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "original_index": 66,
+        "options": [
+            "Stakka Bo - Here We Go",
+            "Alternatív 1 - Stakka Bo - Here We Go",
+            "Alternatív 2 - Stakka Bo - Here We Go", 
+            "Alternatív 3 - Stakka Bo - Here We Go"
+        ],
+        "correct": 0,
+        "explanation": "Ez a dal: Stakka Bo - Here We Go - Stakka Bo",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
