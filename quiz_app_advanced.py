@@ -2968,8 +2968,6 @@ def download_and_integrate_track(track_info, category):
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
             }],
-            'download_ranges': lambda info, http_headers: [[0, 120]],  # 2 perc
-            'force_keyframes_at_cuts': True,
             'quiet': True,
             'no_warnings': True,
         }
@@ -2984,6 +2982,34 @@ def download_and_integrate_track(track_info, category):
             info = ydl.extract_info(url, download=True)
             audio_file = ydl.prepare_filename(info)
             audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+            
+            # 2 perces rész kivágása FFmpeg-gel
+            try:
+                import subprocess
+                output_file = str(download_dir / f"{track_info.get('title', 'track')[:30]}_2min.mp3")
+                
+                # FFmpeg paranccsal 2 perc kivágása
+                cmd = [
+                    'ffmpeg', '-i', audio_file, 
+                    '-t', '120',  # 2 perc = 120 másodperc
+                    '-c', 'copy',  # Kódolás nélkül (gyors)
+                    '-y',  # Felülírás
+                    output_file
+                ]
+                
+                result = subprocess.run(cmd, capture_output=True, text=True)
+                
+                if result.returncode == 0:
+                    # Eredeti fájl törlése, csak a 2 perces marad
+                    import os
+                    if os.path.exists(audio_file):
+                        os.remove(audio_file)
+                    audio_file = output_file
+                else:
+                    st.warning("FFmpeg hiba, teljes fájl használata")
+                    
+            except Exception as e:
+                st.warning(f"FFmpeg hiba: {e}, teljes fájl használata")
         
         # Quiz kérdés generálása
         question = generate_quiz_question(track_info, audio_file, category)
