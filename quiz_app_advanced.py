@@ -2947,6 +2947,15 @@ def download_and_integrate_track(track_info, category):
         import os
         from pathlib import Path
         
+        # Debug: track_info struktúra kiírása
+        st.info(f"Track info típusa: {type(track_info)}")
+        st.info(f"Track info tartalma: {track_info}")
+        
+        # Ellenőrizzük, hogy track_info dict-e
+        if not isinstance(track_info, dict):
+            st.error(f"Track info nem dict típusú: {type(track_info)}")
+            return False
+        
         # Letöltési könyvtár létrehozása
         download_dir = Path("audio_files") / category
         download_dir.mkdir(parents=True, exist_ok=True)
@@ -2986,29 +2995,49 @@ def download_and_integrate_track(track_info, category):
         return True
     except Exception as e:
         st.error(f"Letöltési hiba: {e}")
+        st.error(f"Hiba típusa: {type(e)}")
+        import traceback
+        st.error(f"Hiba részletei: {traceback.format_exc()}")
         return False
 
 def generate_quiz_question(track_info, audio_file, category):
     """Quiz kérdés generálása a track alapján"""
-    # Biztonságos adatkinyerés
-    title = track_info.get('title', 'Ismeretlen cím')
-    channel = track_info.get('channel', 'Ismeretlen előadó')
-    
-    # Egyszerű kérdés generálás
-    question = {
-        'question': f'Mi ennek a dalnak a címe?',
-        'options': [
-            title,
-            f"Alternatív 1 - {title}",
-            f"Alternatív 2 - {title}", 
-            f"Alternatív 3 - {title}"
-        ],
-        'correct': 0,
-        'explanation': f"Ez a dal: {title} - {channel}",
-        'audio_file': audio_file,
-        'topic': category
-    }
-    return question
+    try:
+        # Debug: track_info ellenőrzés
+        if not isinstance(track_info, dict):
+            st.error(f"Track info nem dict típusú a generate_quiz_question-ban: {type(track_info)}")
+            track_info = {}
+        
+        # Biztonságos adatkinyerés
+        title = track_info.get('title', 'Ismeretlen cím')
+        channel = track_info.get('channel', 'Ismeretlen előadó')
+        
+        # Egyszerű kérdés generálás
+        question = {
+            'question': f'Mi ennek a dalnak a címe?',
+            'options': [
+                title,
+                f"Alternatív 1 - {title}",
+                f"Alternatív 2 - {title}", 
+                f"Alternatív 3 - {title}"
+            ],
+            'correct': 0,
+            'explanation': f"Ez a dal: {title} - {channel}",
+            'audio_file': audio_file,
+            'topic': category
+        }
+        return question
+    except Exception as e:
+        st.error(f"Hiba a quiz kérdés generálásakor: {e}")
+        # Fallback kérdés
+        return {
+            'question': 'Mi ennek a dalnak a címe?',
+            'options': ['Ismeretlen cím', 'Alternatív 1', 'Alternatív 2', 'Alternatív 3'],
+            'correct': 0,
+            'explanation': 'Ismeretlen dal',
+            'audio_file': audio_file,
+            'topic': category
+        }
 
 def add_question_to_category(question, category):
     """Kérdés hozzáadása a megfelelő kategóriához"""
