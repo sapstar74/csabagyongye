@@ -2817,58 +2817,17 @@ def show_youtube_search_tab():
                     
                     # Letöltés gomb
                     if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
-                        # Egyszerű, középre igazított státuszjelentés
+                        # Részletes letöltési folyamat középre igazítva
                         st.markdown("""
                         <div style="text-align: center;">
                         <h3>📋 Letöltési és integrálási folyamat</h3>
                         </div>
                         """, unsafe_allow_html=True)
                         
-                        # Progress bar és egyszerű szövegek
-                        progress_bar = st.progress(0)
-                        st.markdown("### 🔍 1. YouTube információk lekérése...")
+                        # Középre igazított státuszjelentés
+                        col1, col2, col3 = st.columns([1, 2, 1])
                         
-                        try:
-                                # Egyedi opciók használata
-                                custom_options = [option_1, option_2, option_3, option_4]
-                                success = download_and_integrate_track(result, selected_category, custom_options)
-                                if success:
-                                    progress_bar.progress(16)
-                                    st.success("✅ **1. YouTube információk sikeresen lekérdezve!**")
-                                    
-                                    # 2. Lépés: Audio letöltése
-                                    st.markdown("### 📥 2. Audio fájl letöltése...")
-                                    progress_bar.progress(33)
-                                    st.success("✅ **2. Audio fájl sikeresen letöltve!**")
-                                    
-                                    # 3. Lépés: 2 perc kivágása
-                                    st.markdown("### ✂️ 3. 2 perces rész kivágása...")
-                                    progress_bar.progress(50)
-                                    st.success("✅ **3. 2 perces rész sikeresen kivágva!**")
-                                    
-                                    # 4. Lépés: Quiz kérdés generálása
-                                    st.markdown("### 🎯 4. Quiz kérdés generálása...")
-                                    progress_bar.progress(66)
-                                    st.success("✅ **4. Quiz kérdés sikeresen generálva!**")
-                                    
-                                    # 5. Lépés: Kategóriába integrálás
-                                    st.markdown("### 📂 5. Kategóriába integrálás...")
-                                    progress_bar.progress(83)
-                                    st.success("✅ **5. Sikeresen integrálva a kategóriába!**")
-                                    
-                                    # 6. Lépés: GitHub frissítés
-                                    st.markdown("### 🚀 6. GitHub frissítés...")
-                                    progress_bar.progress(100)
-                                    
-                                    try:
-                                        status2.update(label="✅ Audio fájl sikeresen letöltve!", state="complete")
-                                        
-                                        # 3. Lépés: 2 perc kivágása
-                                        with st.status("✂️ 2 perces rész kivágása...", expanded=True) as status3:
-                                            status3.update(label="✅ 2 perces rész sikeresen kivágva!", state="complete")
-                                            
-                                            # 4. Lépés: Quiz kérdés generálása
-                                            with st.status("🎯 Quiz kérdés generálása...", expanded=True) as status4:
+                        with col2:
                                                 status4.update(label="✅ Quiz kérdés sikeresen generálva!", state="complete")
                                                 
                                                 # 5. Lépés: Kategóriába integrálás
