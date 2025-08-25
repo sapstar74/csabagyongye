@@ -2022,17 +2022,20 @@ def show_audio_addition_page():
     """Audio hozzáadása oldal megjelenítése"""
     st.markdown("## 🎵 Audio Hozzáadása")
     
-    # Tab-ok létrehozása
-    tab1, tab2, tab3 = st.tabs(["🎵 Spotify Playlist", "📁 Helyi Fájlok", "🔗 YouTube Linkek"])
+    # Két fő opció
+    option = st.radio(
+        "Válassz hozzáadási módszert:",
+        ["A) Track hozzáadása YouTube kereséssel", "B) Spotify playlist alapú keresés"],
+        format_func=lambda x: {
+            "A) Track hozzáadása YouTube kereséssel": "🎵 A) YouTube Keresés",
+            "B) Spotify playlist alapú keresés": "🎵 B) Spotify Playlist"
+        }[x]
+    )
     
-    with tab1:
+    if option == "A) Track hozzáadása YouTube kereséssel":
+        show_youtube_search_tab()
+    else:
         show_spotify_playlist_tab()
-    
-    with tab2:
-        show_local_files_tab()
-    
-    with tab3:
-        show_youtube_links_tab()
 
 def show_spotify_playlist_main():
     """Spotify playlist fő képernyő"""
@@ -2739,6 +2742,191 @@ def show_youtube_links_tab():
             - **Formátum:** MP3
             - **Méret:** 8.2 MB
             """)
+
+def show_youtube_search_tab():
+    """YouTube keresés alapú track hozzáadás"""
+    st.markdown("### 🎵 YouTube Keresés")
+    
+    # Zenei kategória kiválasztás
+    st.markdown("#### 📂 Célkategória kiválasztása")
+    music_categories = {
+        "magyar_zenekarok": "🎵 Magyar könnyűzene",
+        "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok", 
+        "one_hit_wonders": "⭐ One Hit Wonders"
+    }
+    
+    selected_category = st.radio(
+        "Válassz zenei kategóriát:",
+        list(music_categories.keys()),
+        format_func=lambda x: music_categories[x]
+    )
+    
+    st.markdown("---")
+    
+    # YouTube keresés
+    st.markdown("#### 🔍 YouTube Keresés")
+    search_query = st.text_input(
+        "Keresési kifejezés:",
+        placeholder="Például: Queen Bohemian Rhapsody",
+        help="Add meg a keresendő zene címét és előadóját"
+    )
+    
+    if st.button("🔍 Keresés indítása", type="primary"):
+        if search_query:
+            with st.spinner("YouTube keresés folyamatban..."):
+                try:
+                    # YouTube keresés implementáció
+                    search_results = search_youtube_tracks(search_query)
+                    if search_results:
+                        st.session_state.youtube_search_results = search_results
+                        st.success(f"✅ {len(search_results)} találat!")
+                        st.rerun()
+                    else:
+                        st.error("❌ Nem találtam megfelelő találatokat")
+                except Exception as e:
+                    st.error(f"❌ Hiba a keresés során: {e}")
+        else:
+            st.warning("⚠️ Kérlek add meg a keresési kifejezést!")
+    
+    # Keresési eredmények megjelenítése
+    if hasattr(st.session_state, 'youtube_search_results') and st.session_state.youtube_search_results:
+        st.markdown("#### 📋 Keresési eredmények")
+        
+        for i, result in enumerate(st.session_state.youtube_search_results):
+            with st.expander(f"🎵 {result['title']} - {result['channel']}", expanded=False):
+                col1, col2 = st.columns([1, 2])
+                
+                with col1:
+                    if result.get('thumbnail'):
+                        st.image(result['thumbnail'], width=120)
+                    else:
+                        st.markdown("📷 Nincs kép")
+                
+                with col2:
+                    st.markdown(f"**Cím:** {result['title']}")
+                    st.markdown(f"**Csatorna:** {result['channel']}")
+                    st.markdown(f"**Hossz:** {result.get('duration', 'Ismeretlen')}")
+                    st.markdown(f"**Nézők:** {result.get('views', 'Ismeretlen')}")
+                    
+                    # Letöltés gomb
+                    if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}"):
+                        with st.spinner("Letöltés és integrálás..."):
+                            try:
+                                success = download_and_integrate_track(result, selected_category)
+                                if success:
+                                    st.success("✅ Track sikeresen letöltve és integrálva!")
+                                    # Eredmények törlése
+                                    del st.session_state.youtube_search_results
+                                    st.rerun()
+                                else:
+                                    st.error("❌ Hiba a letöltés során")
+                            except Exception as e:
+                                st.error(f"❌ Hiba: {e}")
+
+def search_youtube_tracks(query):
+    """YouTube keresés implementáció"""
+    try:
+        from youtubesearchpython import VideosSearch
+        
+        # YouTube keresés
+        search = VideosSearch(query, limit=5)
+        results = search.result()
+        
+        # Eredmények feldolgozása
+        processed_results = []
+        for video in results['result']:
+            # Sponsored találatok kiszűrése
+            if 'sponsored' not in video.get('title', '').lower() and 'reklám' not in video.get('title', '').lower():
+                processed_results.append({
+                    'title': video.get('title', ''),
+                    'channel': video.get('channel', {}).get('name', ''),
+                    'duration': video.get('duration', ''),
+                    'views': video.get('viewCount', {}).get('text', ''),
+                    'url': video.get('link', ''),
+                    'thumbnail': video.get('thumbnails', [{}])[0].get('url', '') if video.get('thumbnails') else None
+                })
+        
+        return processed_results
+    except Exception as e:
+        st.error(f"YouTube keresési hiba: {e}")
+        return []
+
+def download_and_integrate_track(track_info, category):
+    """Track letöltése és integrálása"""
+    try:
+        import yt_dlp
+        import os
+        from pathlib import Path
+        
+        # Letöltési könyvtár létrehozása
+        download_dir = Path("audio_files") / category
+        download_dir.mkdir(parents=True, exist_ok=True)
+        
+        # yt-dlp konfiguráció (2 perc letöltés)
+        ydl_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': str(download_dir / '%(title)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+            'download_ranges': lambda info: [[0, 120]],  # 2 perc
+            'force_keyframes_at_cuts': True,
+        }
+        
+        # Letöltés
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(track_info['url'], download=True)
+            audio_file = ydl.prepare_filename(info)
+            audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+        
+        # Quiz kérdés generálása
+        question = generate_quiz_question(track_info, audio_file, category)
+        
+        # Kérdés hozzáadása a megfelelő kategóriához
+        add_question_to_category(question, category)
+        
+        return True
+    except Exception as e:
+        st.error(f"Letöltési hiba: {e}")
+        return False
+
+def generate_quiz_question(track_info, audio_file, category):
+    """Quiz kérdés generálása a track alapján"""
+    # Egyszerű kérdés generálás
+    question = {
+        'question': f'Mi ennek a dalnak a címe?',
+        'options': [
+            track_info['title'],
+            f"Alternatív 1 - {track_info['title']}",
+            f"Alternatív 2 - {track_info['title']}", 
+            f"Alternatív 3 - {track_info['title']}"
+        ],
+        'correct': 0,
+        'explanation': f"Ez a dal: {track_info['title']} - {track_info['channel']}",
+        'audio_file': audio_file,
+        'topic': category
+    }
+    return question
+
+def add_question_to_category(question, category):
+    """Kérdés hozzáadása a megfelelő kategóriához"""
+    try:
+        # Importálás a megfelelő kategóriából
+        if category == "magyar_zenekarok":
+            from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
+            MAGYAR_ZENEKAROK_QUESTIONS_UJ.append(question)
+        elif category == "nemzetkozi_zenekarok":
+            from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
+            NEMZETKOZI_ZENEKAROK_QUESTIONS.append(question)
+        elif category == "one_hit_wonders":
+            from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
+            ONE_HIT_WONDERS_QUESTIONS.append(question)
+        
+        st.success(f"✅ Kérdés hozzáadva a {category} kategóriához!")
+    except Exception as e:
+        st.error(f"Hiba a kérdés hozzáadásakor: {e}")
 
 if __name__ == "__main__":
     main() 
