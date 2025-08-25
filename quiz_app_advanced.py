@@ -3115,16 +3115,61 @@ def add_question_to_category(question, category):
         if category == "magyar_zenekarok":
             from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
             MAGYAR_ZENEKAROK_QUESTIONS_UJ.append(question)
+            # Fájlba mentés
+            save_questions_to_file(MAGYAR_ZENEKAROK_QUESTIONS_UJ, "topics/magyar_zenekarok_uj.py", "MAGYAR_ZENEKAROK_QUESTIONS_UJ")
         elif category == "nemzetkozi_zenekarok":
             from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
             NEMZETKOZI_ZENEKAROK_QUESTIONS.append(question)
+            # Fájlba mentés
+            save_questions_to_file(NEMZETKOZI_ZENEKAROK_QUESTIONS, "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py", "NEMZETKOZI_ZENEKAROK_QUESTIONS")
         elif category == "one_hit_wonders":
             from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
             ONE_HIT_WONDERS_QUESTIONS.append(question)
+            # Fájlba mentés
+            save_questions_to_file(ONE_HIT_WONDERS_QUESTIONS, "topics/one_hit_wonders.py", "ONE_HIT_WONDERS_QUESTIONS")
         
-        st.success(f"✅ Kérdés hozzáadva a {category} kategóriához!")
+        st.success(f"✅ Kérdés hozzáadva a {category} kategóriához és fájlba mentve!")
     except Exception as e:
         st.error(f"Hiba a kérdés hozzáadásakor: {e}")
+
+def save_questions_to_file(questions_list, file_path, variable_name):
+    """Kérdések mentése fájlba"""
+    try:
+        import os
+        
+        # Fájl tartalom generálása
+        content = f"""# Auto-generated questions file
+# Generated on: {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+{variable_name} = [
+"""
+        
+        # Kérdések hozzáadása
+        for i, question in enumerate(questions_list):
+            content += "    {\n"
+            content += f'        "question": "{question["question"]}",\n'
+            content += '        "options": [\n'
+            for option in question["options"]:
+                content += f'            "{option}",\n'
+            content += '        ],\n'
+            content += f'        "correct": {question["correct"]},\n'
+            content += f'        "explanation": "{question["explanation"]}",\n'
+            if "audio_file" in question:
+                content += f'        "audio_file": "{question["audio_file"]}",\n'
+            if "topic" in question:
+                content += f'        "topic": "{question["topic"]}",\n'
+            content += "    },\n"
+        
+        content += "]\n"
+        
+        # Fájlba írás
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        st.info(f"💾 Kérdések mentve: {file_path}")
+        
+    except Exception as e:
+        st.error(f"Hiba a fájl mentésekor: {e}")
 
 if __name__ == "__main__":
     main() 
