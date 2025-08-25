@@ -3081,17 +3081,41 @@ def generate_quiz_question(track_info, audio_file, category):
         title = track_info.get('title', 'Ismeretlen cím')
         channel = track_info.get('channel', 'Ismeretlen előadó')
         
-        # Egyszerű kérdés generálás
+        # Kategória alapú kérdés és opciók generálása
+        if category == "komolyzene":
+            # Komolyzene: zeneszerző kérdés
+            question_text = "Ki a zeneszerző?"
+            correct_answer = channel
+            # Hasonló zeneszerzők
+            similar_options = ["Beethoven", "Mozart", "Bach"]
+        else:
+            # Pop/rock: előadó kérdés
+            question_text = "Ki az előadó?"
+            correct_answer = channel
+            # Hasonló előadók kategóriánként
+            if category == "magyar_zenekarok":
+                similar_options = ["Kispál és a Borz", "Elefánt", "Quimby"]
+            elif category == "nemzetkozi_zenekarok":
+                similar_options = ["Imagine Dragons", "Bastille", "The Weeknd"]
+            elif category == "one_hit_wonders":
+                similar_options = ["Bastille", "Imagine Dragons", "The Chainsmokers"]
+            else:
+                similar_options = ["Előadó 1", "Előadó 2", "Előadó 3"]
+        
+        # Opciók generálása: helyes válasz + 3 hasonló + 1 szerkeszthető
+        options = [
+            correct_answer,
+            similar_options[0],
+            similar_options[1],
+            "Szerkeszthető opció"
+        ]
+        
+        # Kérdés objektum
         question = {
-            'question': f'Mi ennek a dalnak a címe?',
-            'options': [
-                title,
-                f"Alternatív 1 - {title}",
-                f"Alternatív 2 - {title}", 
-                f"Alternatív 3 - {title}"
-            ],
+            'question': question_text,
+            'options': options,
             'correct': 0,
-            'explanation': f"Ez a dal: {title} - {channel}",
+            'explanation': f"{correct_answer} - {category.replace('_', ' ').title()}",
             'audio_file': audio_file,
             'topic': category
         }
@@ -3100,8 +3124,8 @@ def generate_quiz_question(track_info, audio_file, category):
         st.error(f"Hiba a quiz kérdés generálásakor: {e}")
         # Fallback kérdés
         return {
-            'question': 'Mi ennek a dalnak a címe?',
-            'options': ['Ismeretlen cím', 'Alternatív 1', 'Alternatív 2', 'Alternatív 3'],
+            'question': 'Ki az előadó?',
+            'options': ['Ismeretlen előadó', 'Előadó 1', 'Előadó 2', 'Szerkeszthető opció'],
             'correct': 0,
             'explanation': 'Ismeretlen dal',
             'audio_file': audio_file,

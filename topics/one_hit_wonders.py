@@ -571,6 +571,15 @@ def get_static_one_hit_wonders_questions():
             "topic": "one_hit_wonders",
             "preview_duration": 120,
             "original_index": 71
+        },
+        {
+            "question": "Ki az előadó?",
+            "audio_file": "audio_files/one_hit_wonders/Ylvis - Mr. Toot [Official music video HD].mp3",
+            "options": ["Ylvis", "Bastille", "Imagine Dragons", "Szerkeszthető opció"],
+            "correct": 0,
+            "explanation": "Ylvis - One Hit Wonder előadó",
+            "topic": "one_hit_wonders",
+            "original_index": 72
         }
     ]
 
