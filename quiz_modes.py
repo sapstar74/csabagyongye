@@ -117,6 +117,27 @@ class QuizModeUI:
     def show_mode_selection():
         """Mód kiválasztás megjelenítése"""
         
+        # CSS stílusok a kiválasztott gombokhoz
+        st.markdown("""
+        <style>
+        .selected-button {
+            background-color: #28a745 !important;
+            color: white !important;
+            border-color: #28a745 !important;
+        }
+        .selected-button:hover {
+            background-color: #218838 !important;
+            border-color: #1e7e34 !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Session state inicializálása
+        if 'selected_mode' not in st.session_state:
+            st.session_state.selected_mode = "normál"
+        if 'selected_difficulty' not in st.session_state:
+            st.session_state.selected_difficulty = "közepes"
+        
         col1, col2 = st.columns(2)
         
         with col1:
@@ -151,19 +172,22 @@ class QuizModeUI:
             }
             
             # Mód gombok
-            selected_mode = None
             mode_cols = st.columns(len(mode_options))
             
             for i, (mode_name, mode_info) in enumerate(mode_options.items()):
                 with mode_cols[i]:
-                    if st.button(f"{mode_info['icon']} {mode_name}", key=f"mode_{mode_name}"):
-                        selected_mode = mode_name
-            
-            # Ha nincs kiválasztott mód, alapértelmezett
-            if selected_mode is None:
-                selected_mode = "normál"
+                    button_key = f"mode_{mode_name}"
+                    is_selected = st.session_state.selected_mode == mode_name
+                    
+                    # Gomb stílus beállítása
+                    button_style = "background-color: #28a745; color: white; border-color: #28a745;" if is_selected else ""
+                    
+                    if st.button(f"{mode_info['icon']} {mode_name}", key=button_key, help=mode_info['description']):
+                        st.session_state.selected_mode = mode_name
+                        st.rerun()
             
             # Mód leírása
+            selected_mode = st.session_state.selected_mode
             if selected_mode in mode_options:
                 mode_info = mode_options[selected_mode]
                 st.markdown(f"**{mode_info['description']}**")
@@ -196,19 +220,19 @@ class QuizModeUI:
             }
             
             # Nehézség gombok
-            selected_difficulty = None
             difficulty_cols = st.columns(len(difficulty_options))
             
             for i, (difficulty_name, difficulty_info) in enumerate(difficulty_options.items()):
                 with difficulty_cols[i]:
-                    if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=f"difficulty_{difficulty_name}"):
-                        selected_difficulty = difficulty_name
-            
-            # Ha nincs kiválasztott nehézség, alapértelmezett
-            if selected_difficulty is None:
-                selected_difficulty = "közepes"
+                    button_key = f"difficulty_{difficulty_name}"
+                    is_selected = st.session_state.selected_difficulty == difficulty_name
+                    
+                    if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=button_key, help=difficulty_info['description']):
+                        st.session_state.selected_difficulty = difficulty_name
+                        st.rerun()
             
             # Nehézség leírása
+            selected_difficulty = st.session_state.selected_difficulty
             if selected_difficulty in difficulty_options:
                 difficulty_info = difficulty_options[selected_difficulty]
                 st.markdown(f"**{difficulty_info['description']}**")
@@ -218,7 +242,7 @@ class QuizModeUI:
                 st.markdown(f"**Pontszám szorzó:** {difficulty_info['multiplier']}x")
         
         # Visszaadjuk a kiválasztott értékeket
-        return selected_mode, selected_difficulty
+        return st.session_state.selected_mode, st.session_state.selected_difficulty
     
     @staticmethod
     def show_mode_info(mode_manager: QuizModeManager):
