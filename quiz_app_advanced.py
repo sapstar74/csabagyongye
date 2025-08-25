@@ -2797,6 +2797,7 @@ def show_youtube_search_tab():
                     music_categories = {
                         "magyar_zenekarok": "🎵 Magyar",
                         "nemzetkozi_zenekarok": "🌍 Nemzetközi", 
+                        "komolyzene": "🎼 Komolyzene",
                         "one_hit_wonders": "⭐ One Hit Wonders"
                     }
                     
@@ -2816,8 +2817,12 @@ def show_youtube_search_tab():
                     
                     # Letöltés gomb
                     if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
-                        # Részletes letöltési folyamat
-                        st.markdown("### 📋 Letöltési és integrálási folyamat")
+                        # Részletes letöltési folyamat középre igazítva
+                        st.markdown("""
+                        <div style="text-align: center;">
+                        <h3>📋 Letöltési és integrálási folyamat</h3>
+                        </div>
+                        """, unsafe_allow_html=True)
                         
                         # 1. Lépés: YouTube információk lekérése
                         with st.status("🔍 YouTube információk lekérése...", expanded=True) as status:
@@ -3142,6 +3147,11 @@ def add_question_to_category(question, category):
             NEMZETKOZI_ZENEKAROK_QUESTIONS.append(question)
             # Fájlba mentés
             save_questions_to_file(NEMZETKOZI_ZENEKAROK_QUESTIONS, "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py", "NEMZETKOZI_ZENEKAROK_QUESTIONS")
+        elif category == "komolyzene":
+            from topics.komolyzene import KOMPOLYZENE_QUESTIONS
+            KOMPOLYZENE_QUESTIONS.append(question)
+            # Fájlba mentés
+            save_questions_to_file(KOMPOLYZENE_QUESTIONS, "topics/komolyzene.py", "KOMPOLYZENE_QUESTIONS")
         elif category == "one_hit_wonders":
             from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
             ONE_HIT_WONDERS_QUESTIONS.append(question)
