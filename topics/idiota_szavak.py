@@ -220,5 +220,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """Az 'Auxológia' jelentése: Növekedéskutatás. A gyermekek és fiatalok fizikai fejlődésének, növekedésének tudományos vizsgálata. A szó a görög 'auxein' (növekedni) és 'logos' (tudomány) szavakból származik.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """Ki tervezte **Dzsószer fáraó piramisát**?""",
+        "correct_answer": """Imhotep""",
+        "explanation": """Dzsószer fáraó piramisát Imhotep tervezte. Imhotep (kb. 2650-2600 Kr.e.) ókori egyiptomi építész, orvos, írnok és tanácsadó volt, aki a világ első kőpiramisát, a lépcsős piramist tervezte Szakkarában. Később istenként is tisztelték.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
