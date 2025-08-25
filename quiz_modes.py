@@ -138,108 +138,108 @@ class QuizModeUI:
         if 'selected_difficulty' not in st.session_state:
             st.session_state.selected_difficulty = "közepes"
         
-        col1, col2 = st.columns(2)
+        # Módok kategória
+        st.markdown("### 📋 Módok")
         
-        with col1:
-            st.markdown("### 📋 Módok")
-            
-            mode_options = {
-                "normál": {
-                    "description": "Hagyományos quiz mód",
-                    "icon": "📝",
-                    "features": ["Nincs időkorlát", "Nincs életrendszer", "Részletes eredmények"]
-                },
-                "időzített": {
-                    "description": "Időkorlátozott quiz",
-                    "icon": "⏱️",
-                    "features": ["30 másodperc/kérdés", "Gyors válaszok", "Idő nyomás"]
-                },
-                "túlélés": {
-                    "description": "Túlélési mód",
-                    "icon": "💀",
-                    "features": ["3 élet", "Hibák után élet elvesztése", "Hosszú sorozatok"]
-                },
-                "gyakorlás": {
-                    "description": "Gyakorló mód",
-                    "icon": "📚",
-                    "features": ["Azonnali visszajelzés", "Magyarázatok", "Nincs pontszám"]
-                },
-                "kihívás": {
-                    "description": "Kihívás mód",
-                    "icon": "🏆",
-                    "features": ["1 élet", "20 másodperc/kérdés", "Legmagasabb pontszámok"]
-                }
+        mode_options = {
+            "normál": {
+                "description": "Hagyományos quiz mód",
+                "icon": "📝",
+                "features": ["Nincs időkorlát", "Nincs életrendszer", "Részletes eredmények"]
+            },
+            "időzített": {
+                "description": "Időkorlátozott quiz",
+                "icon": "⏱️",
+                "features": ["30 másodperc/kérdés", "Gyors válaszok", "Idő nyomás"]
+            },
+            "túlélés": {
+                "description": "Túlélési mód",
+                "icon": "💀",
+                "features": ["3 élet", "Hibák után élet elvesztése", "Hosszú sorozatok"]
+            },
+            "gyakorlás": {
+                "description": "Gyakorló mód",
+                "icon": "📚",
+                "features": ["Azonnali visszajelzés", "Magyarázatok", "Nincs pontszám"]
+            },
+            "kihívás": {
+                "description": "Kihívás mód",
+                "icon": "🏆",
+                "features": ["1 élet", "20 másodperc/kérdés", "Legmagasabb pontszámok"]
             }
-            
-            # Mód gombok
-            mode_cols = st.columns(len(mode_options))
-            
-            for i, (mode_name, mode_info) in enumerate(mode_options.items()):
-                with mode_cols[i]:
-                    button_key = f"mode_{mode_name}"
-                    is_selected = st.session_state.selected_mode == mode_name
-                    
-                    # Gomb stílus beállítása
-                    button_style = "background-color: #28a745; color: white; border-color: #28a745;" if is_selected else ""
-                    
-                    if st.button(f"{mode_info['icon']} {mode_name}", key=button_key, help=mode_info['description']):
-                        st.session_state.selected_mode = mode_name
-                        st.rerun()
-            
-            # Mód leírása
-            selected_mode = st.session_state.selected_mode
-            if selected_mode in mode_options:
-                mode_info = mode_options[selected_mode]
-                st.markdown(f"**{mode_info['description']}**")
-                st.markdown("**Jellemzők:**")
-                for feature in mode_info['features']:
-                    st.markdown(f"• {feature}")
+        }
         
-        with col2:
-            st.markdown("### 🎯 Nehézségi Szint")
-            
-            difficulty_options = {
-                "könnyű": {
-                    "description": "Könnyű - feleletválasztós + megoldás",
-                    "icon": "🟢",
-                    "multiplier": 0.5,
-                    "features": ["Feleletválasztós kérdések", "Megoldás megjelenítése", "Segítség a jobb alsó sarokban"]
-                },
-                "közepes": {
-                    "description": "Közepes - feleletválasztós",
-                    "icon": "🟡",
-                    "multiplier": 1.0,
-                    "features": ["Feleletválasztós kérdések", "Nincs megoldás", "Hagyományos quiz"]
-                },
-                "nehéz": {
-                    "description": "Nehéz - szabad szöveges bevitel",
-                    "icon": "🔴",
-                    "multiplier": 1.5,
-                    "features": ["Szöveges bevitel", "Pontos válasz szükséges", "Legnehezebb mód"]
-                }
+        # Mód gombok
+        mode_cols = st.columns(len(mode_options))
+        
+        for i, (mode_name, mode_info) in enumerate(mode_options.items()):
+            with mode_cols[i]:
+                button_key = f"mode_{mode_name}"
+                is_selected = st.session_state.selected_mode == mode_name
+                
+                # Gomb stílus beállítása
+                button_style = "background-color: #28a745; color: white; border-color: #28a745;" if is_selected else ""
+                
+                if st.button(f"{mode_info['icon']} {mode_name}", key=button_key, help=mode_info['description']):
+                    st.session_state.selected_mode = mode_name
+                    st.rerun()
+        
+        # Mód leírása
+        selected_mode = st.session_state.selected_mode
+        if selected_mode in mode_options:
+            mode_info = mode_options[selected_mode]
+            st.markdown(f"**{mode_info['description']}**")
+            st.markdown("**Jellemzők:**")
+            for feature in mode_info['features']:
+                st.markdown(f"• {feature}")
+        
+        st.markdown("---")  # Elválasztó vonal
+        
+        # Nehézségi Szint kategória
+        st.markdown("### 🎯 Nehézségi Szint")
+        
+        difficulty_options = {
+            "könnyű": {
+                "description": "Könnyű - feleletválasztós + megoldás",
+                "icon": "🟢",
+                "multiplier": 0.5,
+                "features": ["Feleletválasztós kérdések", "Megoldás megjelenítése", "Segítség a jobb alsó sarokban"]
+            },
+            "közepes": {
+                "description": "Közepes - feleletválasztós",
+                "icon": "🟡",
+                "multiplier": 1.0,
+                "features": ["Feleletválasztós kérdések", "Nincs megoldás", "Hagyományos quiz"]
+            },
+            "nehéz": {
+                "description": "Nehéz - szabad szöveges bevitel",
+                "icon": "🔴",
+                "multiplier": 1.5,
+                "features": ["Szöveges bevitel", "Pontos válasz szükséges", "Legnehezebb mód"]
             }
-            
-            # Nehézség gombok
-            difficulty_cols = st.columns(len(difficulty_options))
-            
-            for i, (difficulty_name, difficulty_info) in enumerate(difficulty_options.items()):
-                with difficulty_cols[i]:
-                    button_key = f"difficulty_{difficulty_name}"
-                    is_selected = st.session_state.selected_difficulty == difficulty_name
-                    
-                    if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=button_key, help=difficulty_info['description']):
-                        st.session_state.selected_difficulty = difficulty_name
-                        st.rerun()
-            
-            # Nehézség leírása
-            selected_difficulty = st.session_state.selected_difficulty
-            if selected_difficulty in difficulty_options:
-                difficulty_info = difficulty_options[selected_difficulty]
-                st.markdown(f"**{difficulty_info['description']}**")
-                st.markdown("**Jellemzők:**")
-                for feature in difficulty_info['features']:
-                    st.markdown(f"• {feature}")
-                st.markdown(f"**Pontszám szorzó:** {difficulty_info['multiplier']}x")
+        }
+        
+        # Nehézség gombok
+        difficulty_cols = st.columns(len(difficulty_options))
+        
+        for i, (difficulty_name, difficulty_info) in enumerate(difficulty_options.items()):
+            with difficulty_cols[i]:
+                button_key = f"difficulty_{difficulty_name}"
+                is_selected = st.session_state.selected_difficulty == difficulty_name
+                
+                if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=button_key, help=difficulty_info['description']):
+                    st.session_state.selected_difficulty = difficulty_name
+                    st.rerun()
+        
+        # Nehézség leírása
+        selected_difficulty = st.session_state.selected_difficulty
+        if selected_difficulty in difficulty_options:
+            difficulty_info = difficulty_options[selected_difficulty]
+            st.markdown(f"**{difficulty_info['description']}**")
+            st.markdown("**Jellemzők:**")
+            for feature in difficulty_info['features']:
+                st.markdown(f"• {feature}")
+            st.markdown(f"**Pontszám szorzó:** {difficulty_info['multiplier']}x")
         
         # Visszaadjuk a kiválasztott értékeket
         return st.session_state.selected_mode, st.session_state.selected_difficulty
