@@ -2989,10 +2989,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         import os
         from pathlib import Path
         
-        # Debug: track_info struktúra kiírása
-        st.info(f"Track info típusa: {type(track_info)}")
-        st.info(f"Track info tartalma: {track_info}")
-        
         # Ellenőrizzük, hogy track_info dict-e
         if not isinstance(track_info, dict):
             st.error(f"Track info nem dict típusú: {type(track_info)}")
@@ -3001,7 +2997,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         # Letöltési könyvtár létrehozása
         download_dir = Path("audio_files") / category
         download_dir.mkdir(parents=True, exist_ok=True)
-        st.info(f"📁 Letöltési könyvtár: {download_dir}")
         
         # yt-dlp konfiguráció
         ydl_opts = {
@@ -3023,17 +3018,14 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 st.error("Nincs érvényes URL a track_info-ban")
                 return False
                 
-            st.info(f"🔗 YouTube URL: {url}")
             info = ydl.extract_info(url, download=True)
             audio_file = ydl.prepare_filename(info)
             audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
-            st.info(f"📁 Letöltött fájl: {audio_file}")
             
             # 2 perces rész kivágása FFmpeg-gel
             try:
                 import subprocess
                 output_file = str(download_dir / f"{track_info.get('title', 'track')[:30]}_2min.mp3")
-                st.info(f"✂️ Kivágott fájl: {output_file}")
                 
                 # FFmpeg paranccsal 2 perc kivágása
                 cmd = [
@@ -3051,9 +3043,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     import os
                     if os.path.exists(audio_file):
                         os.remove(audio_file)
-                        st.info("🗑️ Eredeti fájl törölve")
                     audio_file = output_file
-                    st.info("✅ 2 perces rész sikeresen kivágva")
                 else:
                     st.warning("FFmpeg hiba, teljes fájl használata")
                     
@@ -3061,14 +3051,10 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 st.warning(f"FFmpeg hiba: {e}, teljes fájl használata")
         
         # Quiz kérdés generálása
-        st.info("🎯 Quiz kérdés generálása...")
         question = generate_quiz_question(track_info, audio_file, category, custom_options)
-        st.info(f"✅ Quiz kérdés generálva: {question['question']}")
         
         # Kérdés hozzáadása a megfelelő kategóriához
-        st.info(f"📂 Kategóriába integrálás: {category}")
         add_question_to_category(question, category)
-        st.info("✅ Kérdés sikeresen hozzáadva a kategóriához")
         
         return True
     except Exception as e:
@@ -3081,9 +3067,8 @@ def download_and_integrate_track(track_info, category, custom_options=None):
 def generate_quiz_question(track_info, audio_file, category, custom_options=None):
     """Quiz kérdés generálása a track alapján"""
     try:
-        # Debug: track_info ellenőrzés
+        # Track_info ellenőrzés
         if not isinstance(track_info, dict):
-            st.error(f"Track info nem dict típusú a generate_quiz_question-ban: {type(track_info)}")
             track_info = {}
         
         # Biztonságos adatkinyerés
@@ -3133,7 +3118,6 @@ def generate_quiz_question(track_info, audio_file, category, custom_options=None
         }
         return question
     except Exception as e:
-        st.error(f"Hiba a quiz kérdés generálásakor: {e}")
         # Fallback kérdés
         return {
             'question': 'Ki az előadó?',
@@ -3164,7 +3148,8 @@ def add_question_to_category(question, category):
             # Fájlba mentés
             save_questions_to_file(ONE_HIT_WONDERS_QUESTIONS, "topics/one_hit_wonders.py", "ONE_HIT_WONDERS_QUESTIONS")
         
-        st.success(f"✅ Kérdés hozzáadva a {category} kategóriához és fájlba mentve!")
+        # Sikeres hozzáadás
+        pass
     except Exception as e:
         st.error(f"Hiba a kérdés hozzáadásakor: {e}")
 
@@ -3201,8 +3186,6 @@ def save_questions_to_file(questions_list, file_path, variable_name):
         # Fájlba írás
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
-        
-        st.info(f"💾 Kérdések mentve: {file_path}")
         
     except Exception as e:
         st.error(f"Hiba a fájl mentésekor: {e}")
