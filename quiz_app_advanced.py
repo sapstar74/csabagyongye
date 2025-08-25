@@ -2813,7 +2813,12 @@ def show_youtube_search_tab():
                             try:
                                 success = download_and_integrate_track(result, selected_category)
                                 if success:
-                                    st.success("✅ Track sikeresen letöltve és integrálva!")
+                                    # Sikeres integráció pop-up üzenet
+                                    st.balloons()  # Konfetti effekt
+                                    st.success("🎉 **SIKERES INTEGRÁCIÓ!** 🎉")
+                                    st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
+                                    st.info("🎯 A track most már elérhető a quiz-ben!")
+                                    
                                     # Eredmények törlése
                                     del st.session_state.youtube_search_results
                                     st.rerun()
