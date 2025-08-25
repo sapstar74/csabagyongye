@@ -117,21 +117,6 @@ class QuizModeUI:
     def show_mode_selection():
         """Mód kiválasztás megjelenítése"""
         
-        # CSS stílusok a kiválasztott gombokhoz
-        st.markdown("""
-        <style>
-        .selected-button {
-            background-color: #28a745 !important;
-            color: white !important;
-            border-color: #28a745 !important;
-        }
-        .selected-button:hover {
-            background-color: #218838 !important;
-            border-color: #1e7e34 !important;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-        
         # Session state inicializálása
         if 'selected_mode' not in st.session_state:
             st.session_state.selected_mode = "normál"
@@ -169,18 +154,15 @@ class QuizModeUI:
             }
         }
         
-        # Mód gombok
+        # Mód gombok (mint a témaköröknél)
         mode_cols = st.columns(len(mode_options))
         
         for i, (mode_name, mode_info) in enumerate(mode_options.items()):
             with mode_cols[i]:
-                button_key = f"mode_{mode_name}"
                 is_selected = st.session_state.selected_mode == mode_name
+                button_style = "primary" if is_selected else "secondary"
                 
-                # Gomb stílus beállítása
-                button_style = "background-color: #28a745; color: white; border-color: #28a745;" if is_selected else ""
-                
-                if st.button(f"{mode_info['icon']} {mode_name}", key=button_key, help=mode_info['description']):
+                if st.button(f"{mode_info['icon']} {mode_name}", key=f"mode_{mode_name}", type=button_style, use_container_width=True):
                     st.session_state.selected_mode = mode_name
                     st.rerun()
         
@@ -219,15 +201,15 @@ class QuizModeUI:
             }
         }
         
-        # Nehézség gombok
+        # Nehézség gombok (mint a témaköröknél)
         difficulty_cols = st.columns(len(difficulty_options))
         
         for i, (difficulty_name, difficulty_info) in enumerate(difficulty_options.items()):
             with difficulty_cols[i]:
-                button_key = f"difficulty_{difficulty_name}"
                 is_selected = st.session_state.selected_difficulty == difficulty_name
+                button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=button_key, help=difficulty_info['description']):
+                if st.button(f"{difficulty_info['icon']} {difficulty_name}", key=f"difficulty_{difficulty_name}", type=button_style, use_container_width=True):
                     st.session_state.selected_difficulty = difficulty_name
                     st.rerun()
         
