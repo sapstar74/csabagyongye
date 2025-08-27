@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-25 22:18:32
+# Generated on: 2025-08-26 10:41:10
 
 NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
@@ -884,6 +884,45 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Queen - Nemzetkozi Zenekarok",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Queen - '39 (Official Lyric Video).mp4",
+        "topic": "nemzetkozi_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "The Beatles",
+            "Rolling Stones",
+            "Beach Boys",
+            "Ringo Starr",
+        ],
+        "correct": 0,
+        "explanation": "The Beatles - Nemzetkozi Zenekarok",
+        "audio_file": "audio_files/nemzetkozi_zenekarok/The Beatles - For No One.mp4",
+        "topic": "nemzetkozi_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "The Rolling Stones",
+            "The Beatles",
+            "T-Rex",
+            "Ramones",
+        ],
+        "correct": 0,
+        "explanation": "The Rolling Stones - Nemzetkozi Zenekarok",
+        "audio_file": "audio_files/nemzetkozi_zenekarok/The Rolling Stones - Paint It, Black (Official Lyric Video).mp4",
+        "topic": "nemzetkozi_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Alphaville",
+            "Ultravox",
+            "New Order",
+            "A-ha",
+        ],
+        "correct": 0,
+        "explanation": "Alphaville - Nemzetkozi Zenekarok",
+        "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
 ]

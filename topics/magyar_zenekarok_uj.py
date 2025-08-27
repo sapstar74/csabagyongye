@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-25 17:01:31
+# Generated on: 2025-08-26 10:46:56
 
 MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
     {
@@ -1209,6 +1209,71 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
         "correct": 0,
         "explanation": "4F Club - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp4",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "A Kutya Vacsorája",
+            "Pál utcai fiúk",
+            "Kiscsillag",
+            "Lovasi András",
+        ],
+        "correct": 0,
+        "explanation": "A Kutya Vacsorája - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/A Kutya Vacsorája： Ez a mese (OFFICIAL VIDEO).mp4",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Kaukázus",
+            "30Y",
+            "Kiscsillag",
+            "Kistehén",
+        ],
+        "correct": 0,
+        "explanation": "Kaukázus - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/Kaukázus - Honvéd ⧸⧸ HIVATALOS SZÖVEGVIDEÓ.mp4",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "P. Box",
+            "P. Mobile",
+            "Beatrice",
+            "Vikidál Gyula",
+        ],
+        "correct": 0,
+        "explanation": "P. Box - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/Radics Béla - Zöld csillag.mp4",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "P.Box",
+            "P.Mobile",
+            "Vikidál Gyula",
+            "Deák Bill Gyula",
+        ],
+        "correct": 0,
+        "explanation": "P.Box - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/P.Box - A zöld a bibor és a fekete( HD ).mp4",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "30Y",
+            "Kiscsillag",
+            "Kaukázus",
+            "Lovasi András",
+        ],
+        "correct": 0,
+        "explanation": "30Y - Magyar Zenekarok",
+        "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
         "topic": "magyar_zenekarok",
     },
 ]

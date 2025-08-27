@@ -3,10 +3,10 @@
 Komolyzenei audio fájlok mapping-je
 """
 
-# Komolyzenei audio fájlok mapping-je
+# Komolyzenei audio fájlok mapping-je - frissítve a valóságos fájlok alapján
 KOMOLYZENE_AUDIO_MAPPING = {
     # Dvorak
-    0: "1_Dvorak_New_World_Symphony.mp3",
+    0: "Dvořák： 9. Sinfonie (»Aus der Neuen Welt«) ∙ hr-Sinfonieorchester ∙ Andrés Orozco-Estrada.mp3",
     1: "2_Dvorak_Humoresque.mp3", 
     2: "3_Dvorak_Symphony_8.mp3",
     
@@ -102,12 +102,16 @@ def get_komolyzene_audio_path(index):
     from pathlib import Path
     filename = get_komolyzene_audio_filename(index)
     if filename:
-        # Próbáljuk meg az új mappát először
+        # ÚJ: próbáljuk az új mappából
+        audio_dir = Path(__file__).parent / "audio_files/komolyzene"
+        audio_path = audio_dir / filename
+        if audio_path.exists():
+            return audio_path
+        # Fallback: régi mappák
         audio_dir = Path(__file__).parent / "audio_files_komolyzene_uj"
         audio_path = audio_dir / filename
         if audio_path.exists():
             return audio_path
-        # Ha nem található, próbáljuk meg a régi mappát
         audio_dir = Path(__file__).parent / "audio_files_komolyzene"
         return audio_dir / filename
     return None
