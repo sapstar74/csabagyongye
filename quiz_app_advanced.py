@@ -1251,18 +1251,6 @@ def show_audio_track_management_page():
                 except Exception as e:
                     st.error(f"DataFrame hiba: {e}")
                 
-                # Alternatív megjelenítés mindig
-                st.markdown("### 📋 Részletes lista")
-                for i, row in enumerate(table_data):
-                    st.markdown(f"""
-                    **{i+1}. {row['Előadó']} - {row['Szám címe']}**
-                    - Opció1: {row['Opció1']}
-                    - Opció2: {row['Opció2']}
-                    - Opció3: {row['Opció3']}
-                    - Opció4: {row['Opció4']}
-                    ---
-                    """)
-                
 
                 
                 # Szerkesztési funkció - soronkénti szerkesztés
