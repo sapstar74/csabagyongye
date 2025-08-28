@@ -1258,6 +1258,10 @@ def show_audio_track_management_page():
                             duration_str = "N/A"
                             st.session_state[duration_cache_key] = duration_str
                 
+                # Debug: table_data hossza előtt
+                if i < 3:
+                    st.info(f"🔍 table_data hossza előtt: {len(table_data)}")
+                
                 table_data.append({
                     "Előadó": artist,
                     "Szám címe": song_title,
@@ -1271,6 +1275,10 @@ def show_audio_track_management_page():
                     "question_text": question_text,
                     "matching_track": matching_track
                 })
+                
+                # Debug: table_data hossza után
+                if i < 3:
+                    st.info(f"🔍 table_data hossza után: {len(table_data)}")
                 
                 # Debug: első néhány sor hozzáadása
                 if i < 3:
