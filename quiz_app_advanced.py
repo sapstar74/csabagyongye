@@ -861,7 +861,7 @@ def load_questions_from_file(file_path):
             spec.loader.exec_module(module)
             
             # Különböző kérdés változók keresése
-            question_vars = ['QUESTIONS', 'NEMZETKOZI_ZENEKAROK_QUESTIONS', 'ONE_HIT_WONDERS_QUESTIONS', 'MAGYAR_ZENEKAROK_QUESTIONS', 'KOMOLYZENE_QUESTIONS']
+            question_vars = ['QUESTIONS', 'NEMZETKOZI_ZENEKAROK_QUESTIONS', 'ONE_HIT_WONDERS_QUESTIONS', 'MAGYAR_ZENEKAROK_QUESTIONS', 'MAGYAR_ZENEKAROK_QUESTIONS_UJ', 'KOMOLYZENE_QUESTIONS']
             
             for var_name in question_vars:
                 if hasattr(module, var_name):
