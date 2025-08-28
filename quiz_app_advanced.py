@@ -946,12 +946,23 @@ def find_matching_question(track_name, questions):
     """Kérdés keresése track név alapján"""
     track_name_lower = track_name.lower()
     
-    # 1. Pontos egyezés keresése
+    # 1. Audio file alapján keresés (legpontosabb)
+    for q in questions:
+        if 'audio_file' in q:
+            audio_file = q['audio_file'].lower()
+            # Kiterjesztés nélküli fájlnév összehasonlítása
+            audio_file_no_ext = os.path.splitext(audio_file)[0]
+            track_name_no_ext = os.path.splitext(track_name)[0]
+            
+            if audio_file_no_ext == track_name_no_ext:
+                return q
+    
+    # 2. Pontos egyezés keresése a kérdésben
     for q in questions:
         if track_name_lower in q['question'].lower() or q['question'].lower() in track_name_lower:
             return q
     
-    # 2. Ha nincs pontos egyezés, keresés a track nevének részei alapján
+    # 3. Ha nincs pontos egyezés, keresés a track nevének részei alapján
     track_words = [word.strip() for word in track_name_lower.replace('-', ' ').replace('_', ' ').split() if len(word.strip()) > 2]
     
     for q in questions:
@@ -961,7 +972,7 @@ def find_matching_question(track_name, questions):
         if matching_words >= 2:  # Legalább 2 szó egyezik
             return q
     
-    # 3. Ha még mindig nincs találat, keresés az előadó neve alapján
+    # 4. Ha még mindig nincs találat, keresés az előadó neve alapján
     if '-' in track_name_lower:
         artist_name = track_name_lower.split('-')[0].strip()
         for q in questions:
