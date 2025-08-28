@@ -1102,7 +1102,13 @@ def show_audio_track_management_page():
                 table_data = []
                 
                 # Kérdések alapján táblázat létrehozása
+                st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
                 for i, question in enumerate(questions):
+                    # Debug: első néhány kérdés
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
+                        st.info(f"🔍 Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
+                    
                     # Kérdés szövegéből előadó és szám cím kinyerése
                     question_text = question['question']
                     
@@ -1121,6 +1127,11 @@ def show_audio_track_management_page():
                         question_audio_file = question['audio_file']
                         question_audio_no_ext = os.path.splitext(question_audio_file)[0]
                         matching_track = track_cache.get(question_audio_no_ext)
+                        
+                        # Debug: első néhány kérdés matching
+                        if i < 3:
+                            st.info(f"🔍 Kérdés {i}: question_audio_no_ext = {question_audio_no_ext}")
+                            st.info(f"🔍 Kérdés {i}: matching_track = {matching_track is not None}")
                     
                     # Ha nincs audio_file vagy nem talált track-et, akkor a find_matching_question-t használjuk
                     if not matching_track:
@@ -1253,6 +1264,10 @@ def show_audio_track_management_page():
                     "question_text": question_text,
                     "matching_track": matching_track
                 })
+                
+                # Debug: első néhány sor hozzáadása
+                if i < 3:
+                    st.info(f"✅ Sor {i} hozzáadva: {artist} - {song_title}")
             
             # Cache mentése
             st.session_state[cache_key] = table_data
