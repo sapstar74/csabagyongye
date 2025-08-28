@@ -1105,6 +1105,16 @@ def show_audio_track_management_page():
                         matching_track = track
                         break
                 
+                # Debug: első néhány kérdés ellenőrzése
+                if i < 3:  # Csak az első 3 sor
+                    st.info(f"🔍 Debug: Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
+                    st.info(f"🔍 Debug: Kérdés {i}: matching_track = {matching_track}")
+                    if matching_track:
+                        st.info(f"🔍 Debug: Kérdés {i}: track name = {matching_track.get('name', 'Nincs')}")
+                        st.info(f"🔍 Debug: Kérdés {i}: audio_path = {matching_track.get('audio_path', 'Nincs')}")
+                    else:
+                        st.info(f"🔍 Debug: Kérdés {i}: Nincs matching track!")
+                
 
                 
                 # Kérdés szövegéből szám cím kinyerése
