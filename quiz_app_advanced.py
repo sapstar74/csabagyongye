@@ -1192,9 +1192,6 @@ def show_audio_track_management_page():
                 import pandas as pd
                 df = pd.DataFrame(table_data)
                 
-                # Csak a megjelenítendő oszlopok
-                display_columns = ["Play", "Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]
-                
                 # Play gombok hozzáadása
                 play_buttons = []
                 for i, row in enumerate(table_data):
@@ -1205,7 +1202,7 @@ def show_audio_track_management_page():
                         play_buttons.append("❌ N/A")
                 
                 # DataFrame létrehozása play gombokkal
-                display_df = df[display_columns].copy()
+                display_df = df.copy()
                 display_df.insert(0, "Play", play_buttons)
                 
                 # Stílusok hozzáadása
