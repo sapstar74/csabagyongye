@@ -1264,10 +1264,8 @@ def show_audio_track_management_page():
                     )
                 
                 # Egyszerű táblázat megjelenítés
-                st.markdown("### 📊 Track lista")
                 
                 # Teljes táblázat megjelenítés
-                st.markdown("### 📊 Teljes táblázat")
                 st.markdown("**Kattints egy sorra a kijelöléshez, majd használd a Play gombot:**")
                 
                 # Sor kiválasztás a táblázatból
