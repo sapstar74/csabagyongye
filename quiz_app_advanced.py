@@ -1265,95 +1265,142 @@ def show_audio_track_management_page():
                 
 
                 
-                # Szerkesztési funkció
+                # Szerkesztési funkció - soronkénti szerkesztés
                 st.markdown("### ✏️ Szerkesztés")
-                selected_track = st.selectbox(
-                    "Válassz track-et szerkesztéshez:",
-                    options=[f"{row['Előadó']} - {row['Szám címe']}" for row in table_data],
-                    key="edit_track_selector"
+                
+                # Módosított kérdések követése
+                if 'modified_questions' not in st.session_state:
+                    st.session_state.modified_questions = set()
+                
+                # Szerkesztési mód választó
+                edit_mode = st.radio(
+                    "Szerkesztési mód:",
+                    ["📋 Lista nézet", "✏️ Szerkesztés"],
+                    horizontal=True
                 )
                 
-                if selected_track:
-                    # Kiválasztott track adatainak megkeresése
-                    selected_index = None
-                    for i, row in enumerate(table_data):
-                        if f"{row['Előadó']} - {row['Szám címe']}" == selected_track:
-                            selected_index = i
-                            break
+                # Módosított kérdések megjelenítése
+                if st.session_state.modified_questions:
+                    st.info(f"📝 **{len(st.session_state.modified_questions)} kérdés módosítva** - Ne felejtsd el menteni a változásokat!")
+                
+                if edit_mode == "✏️ Szerkesztés":
+                    st.markdown("**Válassz egy sort a szerkesztéshez:**")
                     
-                    if selected_index is not None:
-                        selected_row = table_data[selected_index]
+                    # Szerkesztési űrlapok minden sorhoz
+                    for i, row in enumerate(table_data):
+                        # Módosított kérdés jelölése
+                        is_modified = row['question_index'] in st.session_state.modified_questions
+                        expander_title = f"📝 {i+1}. {row['Előadó']} - {row['Szám címe']}"
+                        if is_modified:
+                            expander_title += " ✏️ (módosítva)"
                         
-                        with st.expander("📝 Kérdés és opciók szerkesztése", expanded=True):
-                            col1, col2 = st.columns(2)
-                            
-                            with col1:
-                                st.markdown(f"**Kérdés:** {selected_row['question_text']}")
-                            
-                            with col2:
-                                if selected_row['matching_track']:
-                                    st.markdown(f"**Audio fájl:** `{selected_row['matching_track']['audio_path']}`")
-                                else:
-                                    st.markdown("**Audio fájl:** Nincs találat")
-                            
-                                                        # Kérdés szerkesztése
-                            question_index = selected_row['question_index']
+                        with st.expander(expander_title, expanded=False):
+                            question_index = row['question_index']
                             current_question = questions[question_index]
                             
+                            # Kérdés szerkesztése
                             question_text = st.text_input(
                                 "Kérdés:",
                                 value=current_question['question'],
-                                key=f"question_edit_{selected_index}"
+                                key=f"question_edit_{i}"
                             )
                             
                             # Opciók szerkesztése
                             st.markdown("**Válaszopciók:**")
+                            col1, col2 = st.columns(2)
+                            
                             options = []
-                            for j in range(4):
-                                option = st.text_input(
-                                    f"Opció {j+1}:",
-                                    value=current_question['options'][j] if j < len(current_question['options']) else "",
-                                    key=f"option_edit_{selected_index}_{j}"
-                                )
-                                options.append(option)
+                            with col1:
+                                for j in range(2):
+                                    option = st.text_input(
+                                        f"Opció {j+1}:",
+                                        value=current_question['options'][j] if j < len(current_question['options']) else "",
+                                        key=f"option_edit_{i}_{j}"
+                                    )
+                                    options.append(option)
+                            
+                            with col2:
+                                for j in range(2, 4):
+                                    option = st.text_input(
+                                        f"Opció {j+1}:",
+                                        value=current_question['options'][j] if j < len(current_question['options']) else "",
+                                        key=f"option_edit_{i}_{j}"
+                                    )
+                                    options.append(option)
                             
                             # Helyes válasz kiválasztása
                             correct_answer = st.selectbox(
                                 "Helyes válasz:",
                                 options=options,
                                 index=current_question['correct'] if current_question['correct'] < len(options) else 0,
-                                key=f"correct_edit_{selected_index}"
+                                key=f"correct_edit_{i}"
                             )
                             
                             # Mentés gomb
-                            if st.button("💾 Mentés", key=f"save_edit_{selected_index}"):
-                                # Kérdés frissítése
-                                updated_question = {
-                                    "question": question_text,
-                                    "options": options,
-                                    "correct": options.index(correct_answer) if correct_answer in options else 0
-                                }
-                                
-                                # Kérdés frissítése a listában
-                                questions[question_index] = updated_question
-                                
-                                # Fájl mentése
-                                if save_questions_to_file(question_file_path, questions):
-                                    st.success("✅ Kérdés sikeresen mentve!")
+                            col1, col2, col3 = st.columns([1, 1, 1])
+                            with col2:
+                                if st.button("💾 Mentés", key=f"save_edit_{i}", type="primary"):
+                                    # Kérdés frissítése
+                                    updated_question = {
+                                        "question": question_text,
+                                        "options": options,
+                                        "correct": options.index(correct_answer) if correct_answer in options else 0
+                                    }
                                     
-                                    # Git műveletek
-                                    try:
-                                        subprocess.run(['git', 'add', question_file_path], check=True)
-                                        subprocess.run(['git', 'commit', '-m', f'Update question for {selected_row["Előadó"]} - {selected_row["Szám címe"]}'], check=True)
-                                        subprocess.run(['git', 'push'], check=True)
-                                        st.success("✅ Változások GitHub-ra feltöltve!")
-                                        st.rerun()
-                                    except subprocess.CalledProcessError as e:
-                                        st.error(f"❌ Git hiba: {e}")
-                                else:
-                                    st.error("❌ Hiba a mentés során!")
-                            else:
-                                st.warning("⚠️ Nincs található kérdés ehhez a track-hez.")
+                                    # Kérdés frissítése a listában
+                                    questions[question_index] = updated_question
+                                    
+                                    # Módosított kérdés jelölése
+                                    st.session_state.modified_questions.add(question_index)
+                                    
+                                    # Fájl mentése
+                                    if save_questions_to_file(question_file_path, questions):
+                                        st.success("✅ Kérdés sikeresen mentve!")
+                                        
+                                        # Git műveletek
+                                        try:
+                                            import subprocess
+                                            subprocess.run(['git', 'add', question_file_path], check=True)
+                                            subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
+                                            subprocess.run(['git', 'push'], check=True)
+                                            st.success("✅ Változások GitHub-ra feltöltve!")
+                                            st.rerun()
+                                        except subprocess.CalledProcessError as e:
+                                            st.error(f"❌ Git hiba: {e}")
+                                    else:
+                                        st.error("❌ Hiba a mentés során!")
+                
+                else:
+                    # Lista nézet - csak megjelenítés
+                    st.markdown("**Válassz a fenti opciók közül a szerkesztéshez.**")
+                
+                # Összes változás mentése gomb
+                st.markdown("---")
+                st.markdown("### 💾 Összes változás mentése")
+                
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    if st.button("🚀 Összes változás mentése és Git Push", type="primary", use_container_width=True):
+                        # Fájl mentése
+                        if save_questions_to_file(question_file_path, questions):
+                            st.success("✅ Kérdések sikeresen mentve!")
+                            
+                            # Git műveletek
+                            try:
+                                import subprocess
+                                subprocess.run(['git', 'add', question_file_path], check=True)
+                                subprocess.run(['git', 'commit', '-m', f'Update multiple questions in {selected_category}'], check=True)
+                                subprocess.run(['git', 'push'], check=True)
+                                st.success("✅ Összes változás GitHub-ra feltöltve!")
+                                
+                                # Módosított kérdések listájának törlése
+                                st.session_state.modified_questions.clear()
+                                
+                                st.rerun()
+                            except subprocess.CalledProcessError as e:
+                                st.error(f"❌ Git hiba: {e}")
+                        else:
+                            st.error("❌ Hiba a mentés során!")
 
 def show_github_sync_page():
     """GitHub szinkronizációs oldal megjelenítése"""
