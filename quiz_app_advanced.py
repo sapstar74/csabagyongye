@@ -1111,7 +1111,7 @@ def show_audio_track_management_page():
                     
                     # Kérdés szövegéből előadó és szám cím kinyerése
                     question_text = question['question']
-                    
+                
                     # Helyes válasz az előadó
                     artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
                     
