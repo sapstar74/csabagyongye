@@ -822,12 +822,28 @@ def get_audio_tracks_by_category():
         audio_dirs = category_info["audio_dirs"]
         question_file = category_info["question_file"]
         
+        # Debug: magyar zenekarok esetén
+        if category_key == "magyar_zenekarok":
+            st.info(f"🔍 Debug: Magyar zenekarok audio_dirs: {audio_dirs}")
+        
         # Audiofájlok keresése minden könyvtárban
         for audio_dir in audio_dirs:
             if os.path.exists(audio_dir):
+                # Debug: magyar zenekarok esetén
+                if category_key == "magyar_zenekarok":
+                    st.info(f"🔍 Debug: Audio dir létezik: {audio_dir}")
+                
                 # MP3, WAV, M4A fájlok keresése
                 for ext in ["*.mp3", "*.wav", "*.m4a"]:
                     audio_files = glob.glob(f"{audio_dir}/{ext}")
+                    
+                    # Debug: magyar zenekarok esetén
+                    if category_key == "magyar_zenekarok" and ext == "*.mp3":
+                        st.info(f"🔍 Debug: MP3 fájlok száma: {len(audio_files)}")
+                        st.info(f"🔍 Debug: Első 5 MP3 fájl: {audio_files[:5]}")
+                        alvin_files = [f for f in audio_files if 'Alvin' in f]
+                        st.info(f"🔍 Debug: Alvin fájlok: {alvin_files}")
+                    
                     for audio_file in audio_files:
                         track_name = os.path.splitext(os.path.basename(audio_file))[0]
                         
@@ -838,6 +854,12 @@ def get_audio_tracks_by_category():
                                 "audio_path": audio_file,
                                 "question_file": question_file
                             })
+        
+        # Debug: magyar zenekarok esetén
+        if category_key == "magyar_zenekarok":
+            st.info(f"🔍 Debug: Tracks száma: {len(tracks)}")
+            alvin_tracks = [t for t in tracks if 'Alvin' in t['name']]
+            st.info(f"🔍 Debug: Alvin tracks: {alvin_tracks}")
         
         tracks_by_category[category_key] = {
             "title": category_info["title"],
