@@ -1113,6 +1113,7 @@ def show_audio_track_management_page():
                         track_name = track['name']
                         
                         # Kiterjesztés nélküli összehasonlítás
+                        import os
                         question_audio_no_ext = os.path.splitext(question_audio_file)[0]
                         track_name_no_ext = os.path.splitext(track_name)[0]
                         
