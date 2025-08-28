@@ -1037,6 +1037,17 @@ def show_audio_track_management_page():
     ---
     """)
     
+    # Cache törlés gomb
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🗑️ Cache törlése", type="secondary", use_container_width=True):
+            # Cache kulcsok törlése
+            cache_keys_to_delete = [key for key in st.session_state.keys() if key.startswith("audio_track_data_") or key.startswith("duration_")]
+            for key in cache_keys_to_delete:
+                del st.session_state[key]
+            st.success("✅ Cache törölve! Az oldal újratöltődik...")
+            st.rerun()
+    
     # Track-ek betöltése kategóriánként
     tracks_by_category = get_audio_tracks_by_category()
     
@@ -1059,51 +1070,57 @@ def show_audio_track_management_page():
             
 
             
-            # Kérdések betöltése - az első track-ből vesszük a kérdésfájl elérési útját
-            question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
-            if question_file_path:
-                questions = load_questions_from_file(question_file_path)
+            # Cache key létrehozása
+            cache_key = f"audio_track_data_{selected_category}"
+            
+            # Ellenőrizzük, hogy van-e cache-ben
+            if cache_key in st.session_state:
+                table_data = st.session_state[cache_key]
+                st.info(f"⚡ Cache-ből betöltve: {len(table_data)} sor")
             else:
-                questions = []
-            
-            # Táblázat adatok előkészítése a kérdésfájlokból
-            table_data = []
-            
-            # Kérdések alapján táblázat létrehozása
-            for i, question in enumerate(questions):
-                # Kérdés szövegéből előadó és szám cím kinyerése
-                question_text = question['question']
+                # Kérdések betöltése - az első track-ből vesszük a kérdésfájl elérési útját
+                question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
+                if question_file_path:
+                    questions = load_questions_from_file(question_file_path)
+                else:
+                    questions = []
                 
-                # Helyes válasz az előadó
-                artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
-                
-                # Helyes válasz
-                correct_answer = question['options'][question['correct']] if question['correct'] < len(question['options']) else "N/A"
-                
-                # Opciók
-                options = question['options'] + [""] * (4 - len(question['options']))  # 4 opcióra kiegészítés
-                
-                # Audio fájl keresése a track neve alapján
-                matching_track = None
+                # Track név cache létrehozása gyorsabb kereséshez
+                track_cache = {}
                 for track in category_info['tracks']:
-                    # Közvetlen összehasonlítás az audio_file alapján
+                    track_name_no_ext = os.path.splitext(track['name'])[0]
+                    track_cache[track_name_no_ext] = track
+                
+                # Táblázat adatok előkészítése a kérdésfájlokból
+                table_data = []
+                
+                # Kérdések alapján táblázat létrehozása
+                for i, question in enumerate(questions):
+                    # Kérdés szövegéből előadó és szám cím kinyerése
+                    question_text = question['question']
+                    
+                    # Helyes válasz az előadó
+                    artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
+                    
+                    # Helyes válasz
+                    correct_answer = question['options'][question['correct']] if question['correct'] < len(question['options']) else "N/A"
+                    
+                    # Opciók
+                    options = question['options'] + [""] * (4 - len(question['options']))  # 4 opcióra kiegészítés
+                    
+                    # Audio fájl keresése a track neve alapján - gyorsított verzió
+                    matching_track = None
                     if 'audio_file' in question:
                         question_audio_file = question['audio_file']
-                        track_name = track['name']
-                        
-                        # Kiterjesztés nélküli összehasonlítás
-                        import os
                         question_audio_no_ext = os.path.splitext(question_audio_file)[0]
-                        track_name_no_ext = os.path.splitext(track_name)[0]
-                        
-                        if question_audio_no_ext == track_name_no_ext:
-                            matching_track = track
-                            break
+                        matching_track = track_cache.get(question_audio_no_ext)
                     
-                    # Ha nincs audio_file, akkor a find_matching_question-t használjuk
-                    elif find_matching_question(track['name'], [question]):
-                        matching_track = track
-                        break
+                    # Ha nincs audio_file vagy nem talált track-et, akkor a find_matching_question-t használjuk
+                    if not matching_track:
+                        for track in category_info['tracks']:
+                            if find_matching_question(track['name'], [question]):
+                                matching_track = track
+                                break
                 
 
                 
@@ -1195,18 +1212,26 @@ def show_audio_track_management_page():
                     if cleaned_text and len(cleaned_text) > 3:
                         song_title = cleaned_text[:50] + "..." if len(cleaned_text) > 50 else cleaned_text
                 
-                # Audio fájl hosszának meghatározása
+                # Audio fájl hosszának meghatározása - gyorsított verzió
                 duration_str = "N/A"
                 if matching_track:
-                    try:
-                        import subprocess
-                        duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
-                        duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=10)
-                        if duration_result.returncode == 0 and duration_result.stdout.strip():
-                            duration_seconds = float(duration_result.stdout.strip())
-                            duration_str = f"{int(duration_seconds // 60)}:{int(duration_seconds % 60):02d}"
-                    except:
-                        duration_str = "N/A"
+                    # Cache key a duration-hoz
+                    duration_cache_key = f"duration_{matching_track['audio_path']}"
+                    if duration_cache_key in st.session_state:
+                        duration_str = st.session_state[duration_cache_key]
+                    else:
+                        try:
+                            import subprocess
+                            duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
+                            duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=5)  # Rövidített timeout
+                            if duration_result.returncode == 0 and duration_result.stdout.strip():
+                                duration_seconds = float(duration_result.stdout.strip())
+                                duration_str = f"{int(duration_seconds // 60)}:{int(duration_seconds % 60):02d}"
+                                # Cache mentése
+                                st.session_state[duration_cache_key] = duration_str
+                        except:
+                            duration_str = "N/A"
+                            st.session_state[duration_cache_key] = duration_str
                 
                 table_data.append({
                     "Előadó": artist,
@@ -1221,6 +1246,9 @@ def show_audio_track_management_page():
                     "question_text": question_text,
                     "matching_track": matching_track
                 })
+            
+            # Cache mentése
+            st.session_state[cache_key] = table_data
             
 
             
