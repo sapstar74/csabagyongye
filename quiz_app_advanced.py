@@ -1110,6 +1110,10 @@ def show_audio_track_management_page():
                         st.info(f"🔍 Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
                         st.info(f"🔍 Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
                     
+                    # Debug: első kérdés részletes ellenőrzése
+                    if i == 0:
+                        st.info(f"🔍 Első kérdés teljes adatai: {question}")
+                    
                     # Kérdés szövegéből előadó és szám cím kinyerése
                     question_text = question['question']
                 
