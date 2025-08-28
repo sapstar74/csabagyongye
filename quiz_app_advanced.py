@@ -1280,6 +1280,9 @@ def show_audio_track_management_page():
                         }
                     )
                 
+                # Stílusok alkalmazása a display_df-re
+                style_dataframe(display_df)
+                
                 # Egyszerű táblázat megjelenítés
                 
                 # Teljes táblázat megjelenítés
@@ -1317,12 +1320,7 @@ def show_audio_track_management_page():
                                 for i, track in enumerate(category_info['tracks'][:10]):  # Csak az első 10
                                     st.info(f"  {i}: {track['name']}")
                 
-                # DataFrame megjelenítés
-                try:
-                    st.dataframe(display_df, use_container_width=True, hide_index=True)
-                    st.success("✅ Táblázat sikeresen megjelenítve!")
-                except Exception as e:
-                    st.error(f"DataFrame hiba: {e}")
+                # DataFrame megjelenítés már megtörtént a style_dataframe függvényben
                 
 
                 
