@@ -1288,6 +1288,12 @@ def show_audio_track_management_page():
                                 st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
                             else:
                                 st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                                # Debug információk
+                                st.info(f"🔍 Debug: Kérdés index: {selected_data.get('question_index', 'N/A')}")
+                                st.info(f"🔍 Debug: Matching track: {selected_data.get('matching_track', 'Nincs')}")
+                                if selected_data.get('matching_track'):
+                                    st.info(f"🔍 Debug: Track név: {selected_data['matching_track'].get('name', 'N/A')}")
+                                    st.info(f"🔍 Debug: Audio path: {selected_data['matching_track'].get('audio_path', 'Nincs')}")
                 
                 # DataFrame megjelenítés
                 try:
