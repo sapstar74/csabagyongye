@@ -1121,6 +1121,8 @@ def show_audio_track_management_page():
                 
                     # Helyes válasz az előadó
                     artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: artist = {artist}")
                     
                     # Helyes válasz
                     correct_answer = question['options'][question['correct']] if question['correct'] < len(question['options']) else "N/A"
@@ -1218,6 +1220,8 @@ def show_audio_track_management_page():
                 # 5. Track név alapján - ha van matching track
                 elif matching_track and 'name' in matching_track:
                     song_title = matching_track['name']
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: song_title = {song_title} (track name)")
                 
                 # 6. Spotify embed alapján - ha van a kérdésben
                 if song_title == "Ismeretlen szám" and 'spotify_embed' in question:
@@ -1236,6 +1240,10 @@ def show_audio_track_management_page():
                     cleaned_text = question_text.replace("Ki az előadó?", "").replace("Ki a zeneszerző?", "").replace("Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:", "").strip()
                     if cleaned_text and len(cleaned_text) > 3:
                         song_title = cleaned_text[:50] + "..." if len(cleaned_text) > 50 else cleaned_text
+                
+                # Debug: song_title végleges értéke
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: VÉGLEGES song_title = {song_title}")
                 
                 # Audio fájl hosszának meghatározása - gyorsított verzió
                 duration_str = "N/A"
