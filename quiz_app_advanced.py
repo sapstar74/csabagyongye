@@ -822,27 +822,12 @@ def get_audio_tracks_by_category():
         audio_dirs = category_info["audio_dirs"]
         question_file = category_info["question_file"]
         
-        # Debug: magyar zenekarok esetén
-        if category_key == "magyar_zenekarok":
-            st.info(f"🔍 Debug: Magyar zenekarok audio_dirs: {audio_dirs}")
-        
         # Audiofájlok keresése minden könyvtárban
         for audio_dir in audio_dirs:
             if os.path.exists(audio_dir):
-                # Debug: magyar zenekarok esetén
-                if category_key == "magyar_zenekarok":
-                    st.info(f"🔍 Debug: Audio dir létezik: {audio_dir}")
-                
                 # MP3, WAV, M4A fájlok keresése
                 for ext in ["*.mp3", "*.wav", "*.m4a"]:
                     audio_files = glob.glob(f"{audio_dir}/{ext}")
-                    
-                    # Debug: magyar zenekarok esetén
-                    if category_key == "magyar_zenekarok" and ext == "*.mp3":
-                        st.info(f"🔍 Debug: MP3 fájlok száma: {len(audio_files)}")
-                        st.info(f"🔍 Debug: Első 5 MP3 fájl: {audio_files[:5]}")
-                        alvin_files = [f for f in audio_files if 'Alvin' in f]
-                        st.info(f"🔍 Debug: Alvin fájlok: {alvin_files}")
                     
                     for audio_file in audio_files:
                         track_name = os.path.splitext(os.path.basename(audio_file))[0]
@@ -854,12 +839,6 @@ def get_audio_tracks_by_category():
                                 "audio_path": audio_file,
                                 "question_file": question_file
                             })
-        
-        # Debug: magyar zenekarok esetén
-        if category_key == "magyar_zenekarok":
-            st.info(f"🔍 Debug: Tracks száma: {len(tracks)}")
-            alvin_tracks = [t for t in tracks if 'Alvin' in t['name']]
-            st.info(f"🔍 Debug: Alvin tracks: {alvin_tracks}")
         
         tracks_by_category[category_key] = {
             "title": category_info["title"],
@@ -1126,21 +1105,7 @@ def show_audio_track_management_page():
                         matching_track = track
                         break
                 
-                # Debug: első néhány track és kérdés ellenőrzése
-                if i < 3:  # Csak az első 3 sor
-                    st.info(f"🔍 Debug: Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
-                    st.info(f"🔍 Debug: Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
-                    st.info(f"🔍 Debug: Kérdés {i}: matching_track = {matching_track}")
-                    if matching_track:
-                        st.info(f"🔍 Debug: Kérdés {i}: track name = {matching_track.get('name', 'Nincs')}")
-                        st.info(f"🔍 Debug: Kérdés {i}: audio_path = {matching_track.get('audio_path', 'Nincs')}")
-                    
-                    # Debug: első néhány track név
-                    if i == 0:  # Csak az első kérdésnél
-                        st.info(f"🔍 Debug: Első 5 track név:")
-                        for j, track in enumerate(category_info['tracks'][:5]):
-                            st.info(f"  Track {j}: {track.get('name', 'Nincs')}")
-                            st.info(f"  Track {j}: audio_path = {track.get('audio_path', 'Nincs')}")
+
                 
                 # Kérdés szövegéből szám cím kinyerése
                 song_title = "Ismeretlen szám"
@@ -1267,13 +1232,6 @@ def show_audio_track_management_page():
                 row_numbers = []
                 filenames = []
                 
-                # Debug: első néhány sor ellenőrzése
-                st.info(f"🔍 Debug: table_data hossza: {len(table_data)}")
-                for i, row in enumerate(table_data[:3]):  # Csak az első 3 sor
-                    st.info(f"🔍 Debug: Sor {i}: matching_track = {row.get('matching_track', 'Nincs')}")
-                    if row.get('matching_track'):
-                        st.info(f"🔍 Debug: Sor {i}: audio_path = {row['matching_track'].get('audio_path', 'Nincs')}")
-                
                 for row in table_data:
                     if row['matching_track'] and 'audio_path' in row['matching_track']:
                         audio_path = row['matching_track']['audio_path']
@@ -1288,12 +1246,6 @@ def show_audio_track_management_page():
                     else:
                         filenames.append("N/A")
                         row_numbers.append("N/A")
-                
-                # Debug: eredmények ellenőrzése
-                st.info(f"🔍 Debug: row_numbers hossza: {len(row_numbers)}")
-                st.info(f"🔍 Debug: filenames hossza: {len(filenames)}")
-                st.info(f"🔍 Debug: első 3 row_numbers: {row_numbers[:3]}")
-                st.info(f"🔍 Debug: első 3 filenames: {filenames[:3]}")
                 
                 # DataFrame létrehozása sorszámokkal és fájlnévvel
                 display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
