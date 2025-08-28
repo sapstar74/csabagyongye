@@ -1078,12 +1078,15 @@ def show_audio_track_management_page():
                 table_data = st.session_state[cache_key]
                 st.info(f"⚡ Cache-ből betöltve: {len(table_data)} sor")
             else:
+                st.info(f"🔄 Új adatok betöltése...")
                 # Kérdések betöltése - az első track-ből vesszük a kérdésfájl elérési útját
                 question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
                 if question_file_path:
                     questions = load_questions_from_file(question_file_path)
+                    st.info(f"📚 Kérdések betöltve: {len(questions)} kérdés")
                 else:
                     questions = []
+                    st.info("❌ Nincs kérdésfájl!")
                 
                 # Track név cache létrehozása gyorsabb kereséshez
                 import os
@@ -1091,6 +1094,9 @@ def show_audio_track_management_page():
                 for track in category_info['tracks']:
                     track_name_no_ext = os.path.splitext(track['name'])[0]
                     track_cache[track_name_no_ext] = track
+                
+                st.info(f"🎵 Track cache létrehozva: {len(track_cache)} track")
+                st.info(f"🎵 Első 3 track: {list(track_cache.keys())[:3]}")
                 
                 # Táblázat adatok előkészítése a kérdésfájlokból
                 table_data = []
@@ -1250,6 +1256,7 @@ def show_audio_track_management_page():
             
             # Cache mentése
             st.session_state[cache_key] = table_data
+            st.info(f"💾 Cache mentve: {len(table_data)} sor")
             
 
             
