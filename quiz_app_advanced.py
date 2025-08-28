@@ -1201,8 +1201,8 @@ def show_audio_track_management_page():
                     else:
                         play_buttons.append("🎵 Play")
                 
-                # DataFrame létrehozása play gombokkal
-                display_df = df.copy()
+                # DataFrame létrehozása play gombokkal (csak szükséges oszlopokkal)
+                display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
                 display_df.insert(0, "Play", play_buttons)
                 
                 # Stílusok hozzáadása
