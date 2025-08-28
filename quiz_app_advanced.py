@@ -1253,21 +1253,33 @@ def show_audio_track_management_page():
                 # Egyszerű táblázat megjelenítés
                 st.markdown("### 📊 Track lista")
                 
-                # Teljes táblázat megjelenítés play gombokkal
+                # Play gombok megjelenítése a táblázat felett
+                st.markdown("### 🎵 Audio lejátszás")
+                st.markdown("**Kattints a Play gombra az audio lejátszásához:**")
+                
+                # Play gombok sorokban
+                cols_per_row = 3
+                for i in range(0, len(table_data), cols_per_row):
+                    cols = st.columns(cols_per_row)
+                    for j in range(cols_per_row):
+                        if i + j < len(table_data):
+                            row = table_data[i + j]
+                            with cols[j]:
+                                if row['matching_track'] and 'audio_path' in row['matching_track']:
+                                    audio_path = row['matching_track']['audio_path']
+                                    if st.button(f"🎵 {row['Előadó'][:15]}...", key=f"play_{i+j}"):
+                                        try:
+                                            st.audio(audio_path, format='audio/mp3')
+                                            st.success(f"✅ {row['Előadó']} - {row['Szám címe']}")
+                                        except Exception as e:
+                                            st.error(f"❌ Hiba: {e}")
+                                else:
+                                    st.markdown(f"🎵 {row['Előadó'][:15]}... (nincs audio)")
+                
+                st.markdown("---")
+                
+                # Teljes táblázat megjelenítés
                 st.markdown("### 📊 Teljes táblázat")
-                
-                # Play gombok hozzáadása a táblázathoz
-                for i, row in enumerate(table_data):
-                    if row['matching_track'] and 'audio_path' in row['matching_track']:
-                        audio_path = row['matching_track']['audio_path']
-                        if st.button(f"🎵 Play {row['Előadó']} - {row['Szám címe']}", key=f"play_{i}"):
-                            try:
-                                st.audio(audio_path, format='audio/mp3')
-                                st.success(f"✅ Lejátszás: {row['Előadó']} - {row['Szám címe']}")
-                            except Exception as e:
-                                st.error(f"❌ Hiba a lejátszás során: {e}")
-                
-                # DataFrame megjelenítés
                 try:
                     st.dataframe(display_df, use_container_width=True, hide_index=True)
                     st.success("✅ Táblázat sikeresen megjelenítve!")
