@@ -1212,23 +1212,27 @@ def show_audio_track_management_page():
                 
                 # Sorszámok hozzáadása a fájlnévből
                 row_numbers = []
+                filenames = []
                 for row in table_data:
                     if row['matching_track'] and 'audio_path' in row['matching_track']:
                         audio_path = row['matching_track']['audio_path']
                         filename = os.path.basename(audio_path)
                         filename_no_ext = os.path.splitext(filename)[0]
+                        filenames.append(filename)
                         # Szám kinyerése a fájlnévből (pl. "41_Alvin_és_a_Mókusok" -> "41")
                         if '_' in filename_no_ext and filename_no_ext.split('_')[0].isdigit():
                             row_numbers.append(filename_no_ext.split('_')[0])
                         else:
                             row_numbers.append("N/A")
                     else:
+                        filenames.append("N/A")
                         row_numbers.append("N/A")
                 
                 # DataFrame létrehozása sorszámokkal és play gombokkal
                 display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
                 display_df.insert(0, "Sorszám", row_numbers)
-                display_df.insert(1, "Play", ["🎵 Play"] * len(table_data))
+                display_df.insert(1, "Fájlnév", filenames)
+                display_df.insert(2, "Play", ["🎵 Play"] * len(table_data))
                 
                 # Stílusok hozzáadása
                 def style_dataframe(df):
@@ -1266,6 +1270,9 @@ def show_audio_track_management_page():
                         use_container_width=True,
                         hide_index=True,
                         column_config={
+                            "Sorszám": st.column_config.TextColumn("Sorszám", width="small"),
+                            "Fájlnév": st.column_config.TextColumn("Fájlnév", width="medium"),
+                            "Play": st.column_config.TextColumn("Play", width="small"),
                             "Előadó": st.column_config.TextColumn("Előadó", width="medium"),
                             "Szám címe": st.column_config.TextColumn("Szám címe", width="large"),
                             "Opció1": st.column_config.TextColumn("Opció1", width="medium"),
