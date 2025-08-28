@@ -1266,7 +1266,6 @@ def show_audio_track_management_page():
                 # Egyszerű táblázat megjelenítés
                 
                 # Teljes táblázat megjelenítés
-                st.markdown("**Kattints egy sorra a kijelöléshez, majd használd a Play gombot:**")
                 
                 # Sor kiválasztás a táblázatból
                 selected_row_index = st.selectbox(
