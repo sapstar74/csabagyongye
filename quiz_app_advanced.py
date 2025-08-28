@@ -1097,6 +1097,13 @@ def show_audio_track_management_page():
                     if matching_track:
                         st.info(f"🔍 Debug: Kérdés {i}: track name = {matching_track.get('name', 'Nincs')}")
                         st.info(f"🔍 Debug: Kérdés {i}: audio_path = {matching_track.get('audio_path', 'Nincs')}")
+                    
+                    # Debug: első néhány track név
+                    if i == 0:  # Csak az első kérdésnél
+                        st.info(f"🔍 Debug: Első 5 track név:")
+                        for j, track in enumerate(category_info['tracks'][:5]):
+                            st.info(f"  Track {j}: {track.get('name', 'Nincs')}")
+                            st.info(f"  Track {j}: audio_path = {track.get('audio_path', 'Nincs')}")
                 
                 # Kérdés szövegéből szám cím kinyerése
                 song_title = "Ismeretlen szám"
