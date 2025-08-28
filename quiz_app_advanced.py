@@ -1294,6 +1294,11 @@ def show_audio_track_management_page():
                                 if selected_data.get('matching_track'):
                                     st.info(f"🔍 Debug: Track név: {selected_data['matching_track'].get('name', 'N/A')}")
                                     st.info(f"🔍 Debug: Audio path: {selected_data['matching_track'].get('audio_path', 'Nincs')}")
+                                
+                                # Debug: összes track név listázása
+                                st.info("🔍 Debug: Összes track név:")
+                                for i, track in enumerate(category_info['tracks'][:10]):  # Csak az első 10
+                                    st.info(f"  {i}: {track['name']}")
                 
                 # DataFrame megjelenítés
                 try:
