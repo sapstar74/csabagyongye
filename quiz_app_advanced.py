@@ -1210,8 +1210,20 @@ def show_audio_track_management_page():
                 import pandas as pd
                 df = pd.DataFrame(table_data)
                 
-                # Sorszámok hozzáadása
-                row_numbers = [f"{i+1}" for i in range(len(table_data))]
+                # Sorszámok hozzáadása a fájlnévből
+                row_numbers = []
+                for row in table_data:
+                    if row['matching_track'] and 'audio_path' in row['matching_track']:
+                        audio_path = row['matching_track']['audio_path']
+                        filename = os.path.basename(audio_path)
+                        filename_no_ext = os.path.splitext(filename)[0]
+                        # Szám kinyerése a fájlnévből (pl. "41_Alvin_és_a_Mókusok" -> "41")
+                        if '_' in filename_no_ext and filename_no_ext.split('_')[0].isdigit():
+                            row_numbers.append(filename_no_ext.split('_')[0])
+                        else:
+                            row_numbers.append("N/A")
+                    else:
+                        row_numbers.append("N/A")
                 
                 # DataFrame létrehozása sorszámokkal és play gombokkal
                 display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
