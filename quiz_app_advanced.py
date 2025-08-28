@@ -1105,6 +1105,8 @@ def show_audio_track_management_page():
                 st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
                 processed_count = 0
                 for i, question in enumerate(questions):
+                    st.info(f"🔄 Ciklus iteráció {i} kezdete")
+                    
                     # Debug: első néhány kérdés
                     if i < 3:
                         st.info(f"🔍 Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
