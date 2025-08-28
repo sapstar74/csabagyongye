@@ -1203,18 +1203,13 @@ def show_audio_track_management_page():
                 import pandas as pd
                 df = pd.DataFrame(table_data)
                 
-                # Play gombok hozzáadása
-                play_buttons = []
-                for i, row in enumerate(table_data):
-                    if row['matching_track'] and 'audio_path' in row['matching_track']:
-                        audio_path = row['matching_track']['audio_path']
-                        play_buttons.append(f"🎵 Play")
-                    else:
-                        play_buttons.append("🎵 Play")
+                # Sorszámok hozzáadása
+                row_numbers = [f"{i+1}" for i in range(len(table_data))]
                 
-                # DataFrame létrehozása play gombokkal (csak szükséges oszlopokkal)
+                # DataFrame létrehozása sorszámokkal és play gombokkal
                 display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
-                display_df.insert(0, "Play", play_buttons)
+                display_df.insert(0, "Sorszám", row_numbers)
+                display_df.insert(1, "Play", ["🎵 Play"] * len(table_data))
                 
                 # Stílusok hozzáadása
                 def style_dataframe(df):
@@ -1266,27 +1261,29 @@ def show_audio_track_management_page():
                 
                 # Teljes táblázat megjelenítés
                 st.markdown("### 📊 Teljes táblázat")
-                st.markdown("**Válassz egy sort az audio lejátszásához:**")
+                st.markdown("**Kattints egy sorra a kijelöléshez, majd használd a Play gombot:**")
                 
-                # Sor kiválasztás
-                selected_row = st.selectbox(
-                    "Válassz egy sort az audio lejátszásához:",
+                # Sor kiválasztás a táblázatból
+                selected_row_index = st.selectbox(
+                    "Válassz egy sort:",
                     options=[f"{i+1}. {row['Előadó']} - {row['Szám címe']}" for i, row in enumerate(table_data)],
                     key="audio_row_selector"
                 )
                 
-                if selected_row:
-                    # Kiválasztott sor indexének meghatározása
-                    selected_index = int(selected_row.split('.')[0]) - 1
+                # Play gomb a kijelölt sorhoz
+                if selected_row_index:
+                    selected_index = int(selected_row_index.split('.')[0]) - 1
                     selected_data = table_data[selected_index]
                     
-                    # Audio lejátszás
-                    if selected_data['matching_track'] and 'audio_path' in selected_data['matching_track']:
-                        audio_path = selected_data['matching_track']['audio_path']
-                        st.audio(audio_path, format='audio/mp3')
-                        st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
-                    else:
-                        st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        if st.button(f"🎵 Play {selected_data['Előadó']} - {selected_data['Szám címe']}", type="primary", use_container_width=True):
+                            if selected_data['matching_track'] and 'audio_path' in selected_data['matching_track']:
+                                audio_path = selected_data['matching_track']['audio_path']
+                                st.audio(audio_path, format='audio/mp3')
+                                st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                            else:
+                                st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
                 
                 # DataFrame megjelenítés
                 try:
