@@ -1107,7 +1107,21 @@ def show_audio_track_management_page():
                 # Audio fájl keresése a track neve alapján
                 matching_track = None
                 for track in category_info['tracks']:
-                    if find_matching_question(track['name'], [question]):
+                    # Közvetlen összehasonlítás az audio_file alapján
+                    if 'audio_file' in question:
+                        question_audio_file = question['audio_file']
+                        track_name = track['name']
+                        
+                        # Kiterjesztés nélküli összehasonlítás
+                        question_audio_no_ext = os.path.splitext(question_audio_file)[0]
+                        track_name_no_ext = os.path.splitext(track_name)[0]
+                        
+                        if question_audio_no_ext == track_name_no_ext:
+                            matching_track = track
+                            break
+                    
+                    # Ha nincs audio_file, akkor a find_matching_question-t használjuk
+                    elif find_matching_question(track['name'], [question]):
                         matching_track = track
                         break
                 
