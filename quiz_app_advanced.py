@@ -1086,6 +1086,7 @@ def show_audio_track_management_page():
                     questions = []
                 
                 # Track név cache létrehozása gyorsabb kereséshez
+                import os
                 track_cache = {}
                 for track in category_info['tracks']:
                     track_name_no_ext = os.path.splitext(track['name'])[0]
