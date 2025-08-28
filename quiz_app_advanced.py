@@ -956,6 +956,13 @@ def find_matching_question(track_name, questions):
             
             if audio_file_no_ext == track_name_no_ext:
                 return q
+            
+            # Ha a track név szám előtaggal van (pl. "37_Pokolgép"), 
+            # próbáljuk meg a szám nélküli verziót is
+            if '_' in track_name_no_ext and track_name_no_ext.split('_')[0].isdigit():
+                track_name_without_number = '_'.join(track_name_no_ext.split('_')[1:])
+                if audio_file_no_ext.endswith(track_name_without_number):
+                    return q
     
     # 2. Pontos egyezés keresése a kérdésben
     for q in questions:
