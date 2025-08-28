@@ -1213,6 +1213,14 @@ def show_audio_track_management_page():
                 # Sorszámok hozzáadása a fájlnévből
                 row_numbers = []
                 filenames = []
+                
+                # Debug: első néhány sor ellenőrzése
+                st.info(f"🔍 Debug: table_data hossza: {len(table_data)}")
+                for i, row in enumerate(table_data[:3]):  # Csak az első 3 sor
+                    st.info(f"🔍 Debug: Sor {i}: matching_track = {row.get('matching_track', 'Nincs')}")
+                    if row.get('matching_track'):
+                        st.info(f"🔍 Debug: Sor {i}: audio_path = {row['matching_track'].get('audio_path', 'Nincs')}")
+                
                 for row in table_data:
                     if row['matching_track'] and 'audio_path' in row['matching_track']:
                         audio_path = row['matching_track']['audio_path']
@@ -1227,6 +1235,12 @@ def show_audio_track_management_page():
                     else:
                         filenames.append("N/A")
                         row_numbers.append("N/A")
+                
+                # Debug: eredmények ellenőrzése
+                st.info(f"🔍 Debug: row_numbers hossza: {len(row_numbers)}")
+                st.info(f"🔍 Debug: filenames hossza: {len(filenames)}")
+                st.info(f"🔍 Debug: első 3 row_numbers: {row_numbers[:3]}")
+                st.info(f"🔍 Debug: első 3 filenames: {filenames[:3]}")
                 
                 # DataFrame létrehozása sorszámokkal és fájlnévvel
                 display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
