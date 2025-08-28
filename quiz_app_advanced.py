@@ -1103,6 +1103,7 @@ def show_audio_track_management_page():
                 
                 # Kérdések alapján táblázat létrehozása
                 st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
+                processed_count = 0
                 for i, question in enumerate(questions):
                     # Debug: első néhány kérdés
                     if i < 3:
@@ -1268,10 +1269,15 @@ def show_audio_track_management_page():
                 # Debug: első néhány sor hozzáadása
                 if i < 3:
                     st.info(f"✅ Sor {i} hozzáadva: {artist} - {song_title}")
+                
+                processed_count += 1
+                if processed_count % 10 == 0:  # Minden 10. kérdésnél
+                    st.info(f"📊 Feldolgozott kérdések: {processed_count}/{len(questions)}")
             
             # Cache mentése
             st.session_state[cache_key] = table_data
             st.info(f"💾 Cache mentve: {len(table_data)} sor")
+            st.info(f"📊 Összesen feldolgozott kérdés: {processed_count}")
             
 
             
