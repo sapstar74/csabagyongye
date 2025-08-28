@@ -1255,6 +1255,29 @@ def show_audio_track_management_page():
                 
                 # Teljes táblázat megjelenítés
                 st.markdown("### 📊 Teljes táblázat")
+                st.markdown("**Válassz egy sort az audio lejátszásához:**")
+                
+                # Sor kiválasztás
+                selected_row = st.selectbox(
+                    "Válassz egy sort az audio lejátszásához:",
+                    options=[f"{i+1}. {row['Előadó']} - {row['Szám címe']}" for i, row in enumerate(table_data)],
+                    key="audio_row_selector"
+                )
+                
+                if selected_row:
+                    # Kiválasztott sor indexének meghatározása
+                    selected_index = int(selected_row.split('.')[0]) - 1
+                    selected_data = table_data[selected_index]
+                    
+                    # Audio lejátszás
+                    if selected_data['matching_track'] and 'audio_path' in selected_data['matching_track']:
+                        audio_path = selected_data['matching_track']['audio_path']
+                        st.audio(audio_path, format='audio/mp3')
+                        st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                    else:
+                        st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                
+                # DataFrame megjelenítés
                 try:
                     st.dataframe(display_df, use_container_width=True, hide_index=True)
                     st.success("✅ Táblázat sikeresen megjelenítve!")
