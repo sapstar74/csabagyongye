@@ -4225,7 +4225,8 @@ def save_questions_to_file(questions_list, file_path, variable_name):
                 content += f'            "{option}",\n'
             content += '        ],\n'
             content += f'        "correct": {question["correct"]},\n'
-            content += f'        "explanation": "{question["explanation"]}",\n'
+            if "explanation" in question:
+                content += f'        "explanation": "{question["explanation"]}",\n'
             if "audio_file" in question:
                 content += f'        "audio_file": "{question["audio_file"]}",\n'
             if "topic" in question:
