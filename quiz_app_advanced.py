@@ -1350,11 +1350,6 @@ def show_audio_track_management_page():
                             with col2:
                                 if st.button("💾 Mentés", key=f"save_edit_{i}", type="primary"):
                                     try:
-                                        st.info(f"🔍 Debug: Mentés gomb megnyomva - Sor {i}")
-                                        st.info(f"🔍 Debug: Kérdés: {question_text}")
-                                        st.info(f"🔍 Debug: Opciók: {options}")
-                                        st.info(f"🔍 Debug: Helyes válasz: {correct_answer}")
-                                        
                                         # Kérdés frissítése
                                         updated_question = {
                                             "question": question_text,
@@ -1371,15 +1366,12 @@ def show_audio_track_management_page():
                                             updated_question['topic'] = current_question['topic']
                                         
                                         # Kérdés frissítése a listában
-                                        st.info(f"🔍 Debug: Kérdés frissítése - Index: {question_index}")
                                         questions[question_index] = updated_question
                                         
                                         # Módosított kérdés jelölése
                                         st.session_state.modified_questions.add(question_index)
-                                        st.info(f"🔍 Debug: Módosított kérdések: {st.session_state.modified_questions}")
                                         
                                         # Fájl mentése
-                                        st.info(f"🔍 Debug: save_questions_to_file hívása")
                                         if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                             st.success("✅ Kérdés sikeresen mentve!")
                                             
@@ -4202,12 +4194,6 @@ def save_questions_to_file(questions_list, file_path, variable_name):
     try:
         import os
         
-        # Debug üzenetek
-        st.info(f"🔍 Debug: Mentés kezdete")
-        st.info(f"🔍 Debug: Fájl: {file_path}")
-        st.info(f"🔍 Debug: Változó név: {variable_name}")
-        st.info(f"🔍 Debug: Kérdések száma: {len(questions_list)}")
-        
         # Fájl tartalom generálása
         content = f"""# Auto-generated questions file
 # Generated on: {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -4234,16 +4220,10 @@ def save_questions_to_file(questions_list, file_path, variable_name):
         
         content += "]\n"
         
-        # Debug: tartalom megjelenítése
-        st.info(f"🔍 Debug: Generált tartalom (első 500 karakter):")
-        st.code(content[:500] + "..." if len(content) > 500 else content)
-        
         # Fájlba írás
-        st.info(f"🔍 Debug: Fájl írása: {file_path}")
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
         
-        st.info(f"🔍 Debug: Fájl írása sikeres!")
         return True
         
     except Exception as e:
