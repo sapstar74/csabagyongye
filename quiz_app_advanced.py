@@ -4244,9 +4244,11 @@ def save_questions_to_file(questions_list, file_path, variable_name):
             f.write(content)
         
         st.info(f"🔍 Debug: Fájl írása sikeres!")
+        return True
         
     except Exception as e:
         st.error(f"Hiba a fájl mentésekor: {e}")
+        return False
 
 if __name__ == "__main__":
     main() 
