@@ -1069,17 +1069,23 @@ def show_audio_track_management_page():
             st.markdown(f"📊 **{len(category_info['tracks'])} track található**")
             
 
+            # EGYSZERŰ CACHE RENDSZER
+            cache_key = f"simple_audio_data_{selected_category}"
             
-            # Cache key létrehozása
-            cache_key = f"audio_track_data_{selected_category}"
+            # Cache törlése gomb
+            if st.button("🗑️ Cache törlése"):
+                if cache_key in st.session_state:
+                    del st.session_state[cache_key]
+                st.rerun()
             
-            # Ellenőrizzük, hogy van-e cache-ben
+            # Cache ellenőrzése
             if cache_key in st.session_state:
                 table_data = st.session_state[cache_key]
-                st.info(f"⚡ Cache-ből betöltve: {len(table_data)} sor")
+                st.info(f"📊 Cache betöltve: {len(table_data)} sor")
             else:
-                st.info(f"🔄 Új adatok betöltése...")
-                # Kérdések betöltése - az első track-ből vesszük a kérdésfájl elérési útját
+                st.info("🔄 Új adatok betöltése...")
+                
+                # Kérdések betöltése
                 question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
                 if question_file_path:
                     questions = load_questions_from_file(question_file_path)
@@ -1088,7 +1094,7 @@ def show_audio_track_management_page():
                     questions = []
                     st.info("❌ Nincs kérdésfájl!")
                 
-                # Track név cache létrehozása gyorsabb kereséshez
+                # Track cache létrehozása
                 import os
                 track_cache = {}
                 for track in category_info['tracks']:
@@ -1096,234 +1102,77 @@ def show_audio_track_management_page():
                     track_cache[track_name_no_ext] = track
                 
                 st.info(f"🎵 Track cache létrehozva: {len(track_cache)} track")
-                st.info(f"🎵 Első 3 track: {list(track_cache.keys())[:3]}")
                 
-                # Táblázat adatok előkészítése a kérdésfájlokból
+                # EGYSZERŰ TÁBLÁZAT LÉTREHOZÁS
                 table_data = []
-                
-                # Kérdések alapján táblázat létrehozása
                 st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
-                processed_count = 0
-                for i, question in enumerate(questions):
-                    st.info(f"🔄 Ciklus iteráció {i} kezdete")
-                    
-                    # Debug: első néhány kérdés
-                    if i < 3:
-                        st.info(f"🔍 Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
-                        st.info(f"🔍 Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
-                    
-                    # Debug: első kérdés részletes ellenőrzése
-                    if i == 0:
-                        st.info(f"🔍 Első kérdés teljes adatai: {question}")
-                    
-                    # Kérdés szövegéből előadó és szám cím kinyerése
-                    question_text = question['question']
                 
-                    # Helyes válasz az előadó
+                for i, question in enumerate(questions):
+                    # Alapvető adatok kinyerése
+                    question_text = question['question']
                     artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
-                    if i < 3:
-                        st.info(f"🔍 Kérdés {i}: artist = {artist}")
-                    
-                    # Helyes válasz
                     correct_answer = question['options'][question['correct']] if question['correct'] < len(question['options']) else "N/A"
+                    options = question['options'] + [""] * (4 - len(question['options']))
                     
-                    # Opciók
-                    options = question['options'] + [""] * (4 - len(question['options']))  # 4 opcióra kiegészítés
-                    
-                    # Audio fájl keresése a track neve alapján - gyorsított verzió
+                    # Audio fájl keresése
                     matching_track = None
                     if 'audio_file' in question:
                         question_audio_file = question['audio_file']
                         question_audio_no_ext = os.path.splitext(question_audio_file)[0]
                         matching_track = track_cache.get(question_audio_no_ext)
-                        
-                        # Debug: első néhány kérdés matching
-                        if i < 3:
-                            st.info(f"🔍 Kérdés {i}: question_audio_no_ext = {question_audio_no_ext}")
-                            st.info(f"🔍 Kérdés {i}: matching_track = {matching_track is not None}")
                     
-                    # Ha nincs audio_file vagy nem talált track-et, akkor a find_matching_question-t használjuk
-                    if not matching_track:
-                        if i < 3:
-                            st.info(f"🔍 Kérdés {i}: find_matching_question hívás előtt")
-                        track_count = 0
-                        for track in category_info['tracks']:
-                            track_count += 1
-                            if track_count > 10:  # Maximum 10 track-et próbálunk
-                                if i < 3:
-                                    st.info(f"🔍 Kérdés {i}: find_matching_question timeout (10 track)")
-                                break
+                    # Song title meghatározása
+                    song_title = "Ismeretlen szám"
+                    if matching_track and 'name' in matching_track:
+                        song_title = matching_track['name']
+                    elif 'audio_file' in question:
+                        audio_file = question['audio_file']
+                        filename = os.path.basename(audio_file)
+                        filename_no_ext = os.path.splitext(filename)[0]
+                        song_title = filename_no_ext
+                    
+                    # Duration meghatározása
+                    duration_str = "N/A"
+                    if matching_track:
+                        duration_cache_key = f"duration_{matching_track['audio_path']}"
+                        if duration_cache_key in st.session_state:
+                            duration_str = st.session_state[duration_cache_key]
+                        else:
                             try:
-                                if find_matching_question(track['name'], [question]):
-                                    matching_track = track
-                                    if i < 3:
-                                        st.info(f"🔍 Kérdés {i}: find_matching_question talált track-et")
-                                    break
-                            except Exception as e:
-                                if i < 3:
-                                    st.error(f"❌ find_matching_question hiba: {str(e)}")
-                                continue
-                
-                # Debug: find_matching_question után
-                if i < 3:
-                    st.info(f"🔍 Kérdés {i}: find_matching_question után")
-                
-                # Debug: song_title meghatározás előtt
-                if i < 3:
-                    st.info(f"🔍 Kérdés {i}: song_title meghatározás előtt")
-                
-                # Kérdés szövegéből szám cím kinyerése
-                song_title = "Ismeretlen szám"
-                if i < 3:
-                    st.info(f"🔍 Kérdés {i}: song_title meghatározás kezdete")
-                    st.info(f"🔍 Kérdés {i}: song_title alapérték = {song_title}")
-                
-                # 1. Audio file mező alapján - ha van a kérdésben (nemzetközi számok)
-                if 'audio_file' in question:
-                    audio_file = question['audio_file']
-                    # Fájlnévből szám cím kinyerése
-                    import os
-                    filename = os.path.basename(audio_file)
-                    # Kiterjesztés eltávolítása
-                    filename = os.path.splitext(filename)[0]
-                    # Ha van " - " a fájlnévben, akkor az előadó - szám cím formátum
-                    if " - " in filename:
-                        song_title = filename.split(" - ", 1)[1].strip()
-                    # Komolyzene formátum: "szám_Előadó_Szám_címe" (pl. "10_Handel_Rinaldo")
-                    elif '_' in filename and selected_category == "komolyzene":
-                        parts = filename.split('_')
-                        if len(parts) >= 3 and parts[0].isdigit():
-                            # Az első rész a szám, a második az előadó, a harmadik és továbbiak a cím
-                            song_title = '_'.join(parts[2:]).replace('_', ' ')
-                        elif len(parts) > 1 and parts[0].isdigit():
-                            # Ha csak 2 rész van: "szám_Előadó"
-                            song_title = parts[1].replace('_', ' ')
-                        else:
-                            song_title = filename.replace('_', ' ')
-                    else:
-                        # Ha csak az előadó neve van a fájlnévben, próbáljuk meg a kérdés szövegéből
-                        # vagy más forrásból kinyerni a szám címét
-                        song_title = "Ismeretlen szám"
-                
-                # 2. "című dalban?" formátum - One Hit Wonders
-                elif "című dalban?" in question_text:
-                    import re
-                    song_match = re.search(r"'([^']+)'", question_text)
-                    if song_match:
-                        song_title = song_match.group(1)
-                
-                # 3. " - " formátum - régi formátum
-                elif " - " in question_text:
-                    song_title = question_text.split(" - ", 1)[1].strip()
-                
-                # 4. Audio fájl név alapján - ha van matching track
-                elif matching_track and 'audio_path' in matching_track:
-                    audio_path = matching_track['audio_path']
-                    # Fájlnévből szám cím kinyerése
-                    import os
-                    filename = os.path.basename(audio_path)
-                    # Kiterjesztés eltávolítása
-                    filename = os.path.splitext(filename)[0]
-                    
-                    # Komolyzene formátum: "szám_Előadó_Szám_címe" (pl. "10_Handel_Rinaldo")
-                    if '_' in filename:
-                        parts = filename.split('_')
-                        if len(parts) >= 3 and parts[0].isdigit():
-                            # Az első rész a szám, a második az előadó, a harmadik és továbbiak a cím
-                            song_title = '_'.join(parts[2:]).replace('_', ' ')
-                        elif len(parts) > 1 and parts[0].isdigit():
-                            # Ha csak 2 rész van: "szám_Előadó"
-                            song_title = parts[1].replace('_', ' ')
-                        else:
-                            song_title = filename.replace('_', ' ')
-                    else:
-                        song_title = filename.replace('_', ' ')
-                
-                # 5. Track név alapján - ha van matching track
-                elif matching_track and 'name' in matching_track:
-                    song_title = matching_track['name']
-                    if i < 3:
-                        st.info(f"🔍 Kérdés {i}: song_title = {song_title} (track name)")
-                
-                # 6. Spotify embed alapján - ha van a kérdésben
-                if song_title == "Ismeretlen szám" and 'spotify_embed' in question:
-                    spotify_url = question['spotify_embed']
-                    # Spotify URL-ből szám cím kinyerése
-                    if '/track/' in spotify_url:
-                        # Track URL - próbáljuk meg a track ID alapján
-                        song_title = "Spotify Track"
-                    elif '/artist/' in spotify_url:
-                        # Artist URL - próbáljuk meg az előadó neve alapján
-                        song_title = "Spotify Artist"
-                
-                # 7. Ha még mindig "Ismeretlen szám", próbáljuk meg a kérdés szövegéből kinyerni
-                if song_title == "Ismeretlen szám":
-                    # Kérdés szövegéből próbálunk valamit kinyerni
-                    cleaned_text = question_text.replace("Ki az előadó?", "").replace("Ki a zeneszerző?", "").replace("Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:", "").strip()
-                    if cleaned_text and len(cleaned_text) > 3:
-                        song_title = cleaned_text[:50] + "..." if len(cleaned_text) > 50 else cleaned_text
-                
-                # Debug: song_title végleges értéke
-                if i < 3:
-                    st.info(f"🔍 Kérdés {i}: VÉGLEGES song_title = {song_title}")
-                
-                # Audio fájl hosszának meghatározása - gyorsított verzió
-                duration_str = "N/A"
-                if matching_track:
-                    # Cache key a duration-hoz
-                    duration_cache_key = f"duration_{matching_track['audio_path']}"
-                    if duration_cache_key in st.session_state:
-                        duration_str = st.session_state[duration_cache_key]
-                    else:
-                        try:
-                            import subprocess
-                            duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
-                            duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=5)  # Rövidített timeout
-                            if duration_result.returncode == 0 and duration_result.stdout.strip():
-                                duration_seconds = float(duration_result.stdout.strip())
-                                duration_str = f"{int(duration_seconds // 60)}:{int(duration_seconds % 60):02d}"
-                                # Cache mentése
+                                import subprocess
+                                duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
+                                duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=3)
+                                if duration_result.returncode == 0 and duration_result.stdout.strip():
+                                    duration_seconds = float(duration_result.stdout.strip())
+                                    duration_str = f"{int(duration_seconds // 60)}:{int(duration_seconds % 60):02d}"
+                                    st.session_state[duration_cache_key] = duration_str
+                            except:
+                                duration_str = "N/A"
                                 st.session_state[duration_cache_key] = duration_str
-                        except:
-                            duration_str = "N/A"
-                            st.session_state[duration_cache_key] = duration_str
+                    
+                    # Sor hozzáadása
+                    table_data.append({
+                        "Előadó": artist,
+                        "Szám címe": song_title,
+                        "Hossz": duration_str,
+                        "Helyes válasz": correct_answer,
+                        "Opció1": options[0] if len(options) > 0 else "",
+                        "Opció2": options[1] if len(options) > 1 else "",
+                        "Opció3": options[2] if len(options) > 2 else "",
+                        "Opció4": options[3] if len(options) > 3 else "",
+                        "question_index": i,
+                        "question_text": question_text,
+                        "matching_track": matching_track
+                    })
+                    
+                    # Progress jelzés minden 10. kérdésnél
+                    if (i + 1) % 10 == 0:
+                        st.info(f"📊 Feldolgozott kérdések: {i + 1}/{len(questions)}")
                 
-                # Debug: table_data hossza előtt
-                if i < 3:
-                    st.info(f"🔍 table_data hossza előtt: {len(table_data)}")
-                
-                table_data.append({
-                    "Előadó": artist,
-                    "Szám címe": song_title,
-                    "Hossz": duration_str,
-                    "Helyes válasz": correct_answer,
-                    "Opció1": options[0] if len(options) > 0 else "",
-                    "Opció2": options[1] if len(options) > 1 else "",
-                    "Opció3": options[2] if len(options) > 2 else "",
-                    "Opció4": options[3] if len(options) > 3 else "",
-                    "question_index": i,
-                    "question_text": question_text,
-                    "matching_track": matching_track
-                })
-                
-                # Debug: table_data hossza után
-                if i < 3:
-                    st.info(f"🔍 table_data hossza után: {len(table_data)}")
-                
-                # Debug: első néhány sor hozzáadása
-                if i < 3:
-                    st.info(f"✅ Sor {i} hozzáadva: {artist} - {song_title}")
-                
-                processed_count += 1
-                if processed_count % 10 == 0:  # Minden 10. kérdésnél
-                    st.info(f"📊 Feldolgozott kérdések: {processed_count}/{len(questions)}")
-            
-            # Cache mentése
-            st.session_state[cache_key] = table_data
-            st.info(f"💾 Cache mentve: {len(table_data)} sor")
-            st.info(f"📊 Összesen feldolgozott kérdés: {processed_count}")
-            
-
+                # Cache mentése
+                st.session_state[cache_key] = table_data
+                st.info(f"💾 Cache mentve: {len(table_data)} sor")
+                st.success(f"✅ Táblázat létrehozva: {len(table_data)} sor")
             
             # Táblázat megjelenítése
             if table_data:
