@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-26 10:46:56
+# Generated on: 2025-08-29 14:53:26
 
 MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
     {
@@ -37,9 +37,6 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
             "Tankcsapda",
         ],
         "correct": 0,
-        "explanation": "Tudósok magyar punk zenekar",
-        "audio_file": "31_Tudósok.mp3",
-        "topic": "magyar_zenekarok_uj",
     },
     {
         "question": "Ki az előadó?",
