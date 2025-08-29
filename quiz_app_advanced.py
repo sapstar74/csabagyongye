@@ -1349,67 +1349,82 @@ def show_audio_track_management_page():
                             col1, col2, col3 = st.columns([1, 1, 1])
                             with col2:
                                 if st.button("💾 Mentés", key=f"save_edit_{i}", type="primary"):
-                                    # Kérdés frissítése
-                                    updated_question = {
-                                        "question": question_text,
-                                        "options": options,
-                                        "correct": options.index(correct_answer) if correct_answer in options else 0
-                                    }
-                                    
-                                    # Kérdés frissítése a listában
-                                    questions[question_index] = updated_question
-                                    
-                                    # Módosított kérdés jelölése
-                                    st.session_state.modified_questions.add(question_index)
-                                    
-                                    # Fájl mentése
-                                    if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
-                                        st.success("✅ Kérdés sikeresen mentve!")
+                                    try:
+                                        # Kérdés frissítése
+                                        updated_question = {
+                                            "question": question_text,
+                                            "options": options,
+                                            "correct": options.index(correct_answer) if correct_answer in options else 0
+                                        }
                                         
-                                        # Git műveletek
-                                        try:
-                                            import subprocess
-                                            subprocess.run(['git', 'add', question_file_path], check=True)
-                                            subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
-                                            subprocess.run(['git', 'push'], check=True)
-                                            st.success("✅ Változások GitHub-ra feltöltve!")
-                                            st.rerun()
-                                        except subprocess.CalledProcessError as e:
-                                            st.error(f"❌ Git hiba: {e}")
-                                    else:
-                                        st.error("❌ Hiba a mentés során!")
+                                        # További mezők megtartása
+                                        if 'audio_file' in current_question:
+                                            updated_question['audio_file'] = current_question['audio_file']
+                                        if 'explanation' in current_question:
+                                            updated_question['explanation'] = current_question['explanation']
+                                        if 'topic' in current_question:
+                                            updated_question['topic'] = current_question['topic']
+                                        
+                                        # Kérdés frissítése a listában
+                                        questions[question_index] = updated_question
+                                        
+                                        # Módosított kérdés jelölése
+                                        st.session_state.modified_questions.add(question_index)
+                                        
+                                        # Fájl mentése
+                                        if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
+                                            st.success("✅ Kérdés sikeresen mentve!")
+                                            
+                                            # Git műveletek
+                                            try:
+                                                import subprocess
+                                                subprocess.run(['git', 'add', question_file_path], check=True)
+                                                subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
+                                                subprocess.run(['git', 'push'], check=True)
+                                                st.success("✅ Változások GitHub-ra feltöltve!")
+                                                st.rerun()
+                                            except subprocess.CalledProcessError as e:
+                                                st.error(f"❌ Git hiba: {e}")
+                                        else:
+                                            st.error("❌ Hiba a fájl mentésekor!")
+                                    except Exception as e:
+                                        st.error(f"❌ Hiba a mentés során: {e}")
                 
                 else:
                     # Lista nézet - csak megjelenítés
                     st.markdown("**Válassz a fenti opciók közül a szerkesztéshez.**")
                 
                 # Összes változás mentése gomb
-                st.markdown("---")
-                st.markdown("### 💾 Összes változás mentése")
-                
-                col1, col2, col3 = st.columns([1, 2, 1])
-                with col2:
-                    if st.button("🚀 Összes változás mentése és Git Push", type="primary", use_container_width=True):
-                        # Fájl mentése
-                        if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
-                            st.success("✅ Kérdések sikeresen mentve!")
-                            
-                            # Git műveletek
+                if edit_mode == "✏️ Szerkesztés" and st.session_state.modified_questions:
+                    st.markdown("---")
+                    st.markdown("### 💾 Összes változás mentése")
+                    
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        if st.button("🚀 Összes változás mentése és Git Push", type="primary", use_container_width=True):
                             try:
-                                import subprocess
-                                subprocess.run(['git', 'add', question_file_path], check=True)
-                                subprocess.run(['git', 'commit', '-m', f'Update multiple questions in {selected_category}'], check=True)
-                                subprocess.run(['git', 'push'], check=True)
-                                st.success("✅ Összes változás GitHub-ra feltöltve!")
-                                
-                                # Módosított kérdések listájának törlése
-                                st.session_state.modified_questions.clear()
-                                
-                                st.rerun()
-                            except subprocess.CalledProcessError as e:
-                                st.error(f"❌ Git hiba: {e}")
-                        else:
-                            st.error("❌ Hiba a mentés során!")
+                                # Fájl mentése
+                                if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
+                                    st.success("✅ Kérdések sikeresen mentve!")
+                                    
+                                    # Git műveletek
+                                    try:
+                                        import subprocess
+                                        subprocess.run(['git', 'add', question_file_path], check=True)
+                                        subprocess.run(['git', 'commit', '-m', f'Update multiple questions in {selected_category}'], check=True)
+                                        subprocess.run(['git', 'push'], check=True)
+                                        st.success("✅ Összes változás GitHub-ra feltöltve!")
+                                        
+                                        # Módosított kérdések listájának törlése
+                                        st.session_state.modified_questions.clear()
+                                        
+                                        st.rerun()
+                                    except subprocess.CalledProcessError as e:
+                                        st.error(f"❌ Git hiba: {e}")
+                                else:
+                                    st.error("❌ Hiba a fájl mentésekor!")
+                            except Exception as e:
+                                st.error(f"❌ Hiba a mentés során: {e}")
 
 def show_github_sync_page():
     """GitHub szinkronizációs oldal megjelenítése"""
