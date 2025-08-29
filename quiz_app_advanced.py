@@ -1181,6 +1181,7 @@ def show_audio_track_management_page():
                 df = pd.DataFrame(table_data)
                 
                 # Sorszámok hozzáadása a fájlnévből
+                import os
                 row_numbers = []
                 filenames = []
                 
