@@ -1146,7 +1146,13 @@ def show_audio_track_management_page():
                     if not matching_track:
                         if i < 3:
                             st.info(f"🔍 Kérdés {i}: find_matching_question hívás előtt")
+                        track_count = 0
                         for track in category_info['tracks']:
+                            track_count += 1
+                            if track_count > 10:  # Maximum 10 track-et próbálunk
+                                if i < 3:
+                                    st.info(f"🔍 Kérdés {i}: find_matching_question timeout (10 track)")
+                                break
                             try:
                                 if find_matching_question(track['name'], [question]):
                                     matching_track = track
@@ -1157,6 +1163,10 @@ def show_audio_track_management_page():
                                 if i < 3:
                                     st.error(f"❌ find_matching_question hiba: {str(e)}")
                                 continue
+                
+                # Debug: find_matching_question után
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: find_matching_question után")
                 
                 # Debug: song_title meghatározás előtt
                 if i < 3:
