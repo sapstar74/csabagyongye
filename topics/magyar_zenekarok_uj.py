@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-29 16:00:25
+# Generated on: 2025-08-29 16:00:39
 
 QUESTIONS = [
     {
@@ -240,7 +240,7 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Bonanza Banzai",
+            "Bonanza Banzaiii",
             "P. Mobil",
             "Republic",
             "Omega",
