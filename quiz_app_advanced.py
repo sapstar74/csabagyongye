@@ -989,37 +989,7 @@ def find_matching_question(track_name, questions):
     
     return None
 
-def save_questions_to_file(file_path, questions):
-    """Kérdések mentése Python fájlba"""
-    try:
-        # Fájl tartalmának beolvasása
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # Új kérdések listájának létrehozása
-        questions_list = []
-        for q in questions:
-            options_str = ', '.join([f'"{opt}"' for opt in q["options"]])
-            question_dict = f'{{"question": "{q["question"]}", "options": [{options_str}], "correct": {q["correct"]}}}'
-            questions_list.append(question_dict)
-        
-        # Teljes lista string
-        questions_str = ',\n    '.join(questions_list)
-        
-        # Új tartalom létrehozása
-        new_content = f"""# Auto-generated questions file
-QUESTIONS = [
-    {questions_str}
-]"""
-        
-        # Fájl mentése
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(new_content)
-        
-        return True
-    except Exception as e:
-        st.error(f"Hiba a kérdések mentésekor: {e}")
-        return False
+
 
 def show_audio_track_management_page():
     """Audio track kezelési oldal megjelenítése"""
@@ -1182,6 +1152,7 @@ def show_audio_track_management_page():
                 
                 # Sorszámok hozzáadása a fájlnévből
                 import os
+                import os
                 row_numbers = []
                 filenames = []
                 
@@ -1324,6 +1295,9 @@ def show_audio_track_management_page():
                     else:
                         questions = []
                         st.error("❌ Nincs kérdésfájl!")
+                    
+                    # Kérdések betöltése szerkesztéshez
+                    questions = load_questions_from_file(question_file_path)
                     
                     # Szerkesztési űrlapok minden sorhoz
                     for i, row in enumerate(table_data):
