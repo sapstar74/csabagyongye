@@ -1317,6 +1317,14 @@ def show_audio_track_management_page():
                 if edit_mode == "✏️ Szerkesztés":
                     st.markdown("**Válassz egy sort a szerkesztéshez:**")
                     
+                    # Kérdések betöltése szerkesztéshez
+                    question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
+                    if question_file_path:
+                        questions = load_questions_from_file(question_file_path)
+                    else:
+                        questions = []
+                        st.error("❌ Nincs kérdésfájl!")
+                    
                     # Szerkesztési űrlapok minden sorhoz
                     for i, row in enumerate(table_data):
                         # Módosított kérdés jelölése
