@@ -1144,9 +1144,13 @@ def show_audio_track_management_page():
                     
                     # Ha nincs audio_file vagy nem talált track-et, akkor a find_matching_question-t használjuk
                     if not matching_track:
+                        if i < 3:
+                            st.info(f"🔍 Kérdés {i}: find_matching_question hívás előtt")
                         for track in category_info['tracks']:
                             if find_matching_question(track['name'], [question]):
                                 matching_track = track
+                                if i < 3:
+                                    st.info(f"🔍 Kérdés {i}: find_matching_question talált track-et")
                                 break
                 
 
@@ -1155,6 +1159,8 @@ def show_audio_track_management_page():
                 
                 # Kérdés szövegéből szám cím kinyerése
                 song_title = "Ismeretlen szám"
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: song_title meghatározás kezdete")
                 
                 # 1. Audio file mező alapján - ha van a kérdésben (nemzetközi számok)
                 if 'audio_file' in question:
