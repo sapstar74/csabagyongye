@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-08-29 14:53:26
+# Generated on: 2025-08-29 16:00:25
 
-MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
+QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -73,9 +73,6 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
             "Dalriada",
         ],
         "correct": 0,
-        "explanation": "Ossian magyar metal zenekar",
-        "audio_file": "60_Ossian.mp3",
-        "topic": "magyar_zenekarok_uj",
     },
     {
         "question": "Ki az előadó?",
@@ -86,9 +83,6 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
             "PBox",
         ],
         "correct": 0,
-        "explanation": "Magashegyi Underground magyar alternatív zenekar",
-        "audio_file": "61_Magashegyi_Underground.mp3",
-        "topic": "magyar_zenekarok_uj",
     },
     {
         "question": "Ki az előadó?",
@@ -99,9 +93,6 @@ MAGYAR_ZENEKAROK_QUESTIONS_UJ = [
             "Carson Coma",
         ],
         "correct": 0,
-        "explanation": "Biorobot magyar metal zenekar",
-        "audio_file": "58_Biorobot.mp3",
-        "topic": "magyar_zenekarok_uj",
     },
     {
         "question": "Ki az előadó?",
