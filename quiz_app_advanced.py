@@ -1152,7 +1152,6 @@ def show_audio_track_management_page():
                 
                 # Sorszámok hozzáadása a fájlnévből
                 import os
-                import os
                 row_numbers = []
                 filenames = []
                 
@@ -1295,9 +1294,6 @@ def show_audio_track_management_page():
                     else:
                         questions = []
                         st.error("❌ Nincs kérdésfájl!")
-                    
-                    # Kérdések betöltése szerkesztéshez
-                    questions = load_questions_from_file(question_file_path)
                     
                     # Szerkesztési űrlapok minden sorhoz
                     for i, row in enumerate(table_data):
