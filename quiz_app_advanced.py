@@ -1161,6 +1161,7 @@ def show_audio_track_management_page():
                 song_title = "Ismeretlen szám"
                 if i < 3:
                     st.info(f"🔍 Kérdés {i}: song_title meghatározás kezdete")
+                    st.info(f"🔍 Kérdés {i}: song_title alapérték = {song_title}")
                 
                 # 1. Audio file mező alapján - ha van a kérdésben (nemzetközi számok)
                 if 'audio_file' in question:
