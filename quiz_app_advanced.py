@@ -1147,15 +1147,20 @@ def show_audio_track_management_page():
                         if i < 3:
                             st.info(f"🔍 Kérdés {i}: find_matching_question hívás előtt")
                         for track in category_info['tracks']:
-                            if find_matching_question(track['name'], [question]):
-                                matching_track = track
+                            try:
+                                if find_matching_question(track['name'], [question]):
+                                    matching_track = track
+                                    if i < 3:
+                                        st.info(f"🔍 Kérdés {i}: find_matching_question talált track-et")
+                                    break
+                            except Exception as e:
                                 if i < 3:
-                                    st.info(f"🔍 Kérdés {i}: find_matching_question talált track-et")
-                                break
+                                    st.error(f"❌ find_matching_question hiba: {str(e)}")
+                                continue
                 
-
-                
-
+                # Debug: song_title meghatározás előtt
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: song_title meghatározás előtt")
                 
                 # Kérdés szövegéből szám cím kinyerése
                 song_title = "Ismeretlen szám"
