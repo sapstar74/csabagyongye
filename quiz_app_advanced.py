@@ -20,7 +20,7 @@ from topics.allatok_balanced import ALLATOK_QUESTIONS_BALANCED
 from topics.dramak import DRAMAK_QUESTIONS
 from topics.sport_logok import SPORT_LOGOK_QUESTIONS
 from topics.zaszlok_all_questions import ZASZLOK_QUESTIONS_ALL
-from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
+from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_UJ
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
@@ -4153,10 +4153,10 @@ def add_question_to_category(question, category):
     try:
         # Importálás a megfelelő kategóriából
         if category == "magyar_zenekarok":
-            from topics.magyar_zenekarok_uj import MAGYAR_ZENEKAROK_QUESTIONS_UJ
+            from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_UJ
             MAGYAR_ZENEKAROK_QUESTIONS_UJ.append(question)
             # Fájlba mentés
-            save_questions_to_file(MAGYAR_ZENEKAROK_QUESTIONS_UJ, "topics/magyar_zenekarok_uj.py", "MAGYAR_ZENEKAROK_QUESTIONS_UJ")
+            save_questions_to_file(MAGYAR_ZENEKAROK_QUESTIONS_UJ, "topics/magyar_zenekarok_uj.py", "QUESTIONS")
         elif category == "nemzetkozi_zenekarok":
             from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
             NEMZETKOZI_ZENEKAROK_QUESTIONS.append(question)
