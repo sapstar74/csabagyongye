@@ -1393,7 +1393,7 @@ def show_audio_track_management_page():
                                     st.session_state.modified_questions.add(question_index)
                                     
                                     # Fájl mentése
-                                    if save_questions_to_file(question_file_path, questions):
+                                    if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                         st.success("✅ Kérdés sikeresen mentve!")
                                         
                                         # Git műveletek
@@ -1421,7 +1421,7 @@ def show_audio_track_management_page():
                 with col2:
                     if st.button("🚀 Összes változás mentése és Git Push", type="primary", use_container_width=True):
                         # Fájl mentése
-                        if save_questions_to_file(question_file_path, questions):
+                        if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                             st.success("✅ Kérdések sikeresen mentve!")
                             
                             # Git műveletek
