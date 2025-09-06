@@ -1388,6 +1388,11 @@ def show_audio_track_management_page():
                                         if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                             st.success("✅ Kérdés sikeresen mentve!")
                                             
+                                            # Cache törlése a táblázat frissítéséhez
+                                            cache_key = f"audio_track_data_{selected_category}"
+                                            if cache_key in st.session_state:
+                                                del st.session_state[cache_key]
+                                            
                                             # Git műveletek
                                             try:
                                                 import subprocess
