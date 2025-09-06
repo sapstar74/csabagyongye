@@ -108,3 +108,5 @@ def simple_audio_track_management(selected_category):
     st.success(f"✅ Táblázat létrehozva: {len(table_data)} sor")
     
     return table_data
+
+

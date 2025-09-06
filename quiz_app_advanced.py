@@ -574,7 +574,7 @@ def start_quiz():
             topic_questions = QUIZ_DATA_BY_TOPIC[topic]
             print(f"[DEBUG] {topic} összes kérdés: {len(topic_questions)}")
             # Egyedi témakör slider használata
-            questions_count = st.session_state.get(f'final_{topic}_questions', 0)
+            questions_count = st.session_state.get(f'final_{topic}_questions', min(3, len(topic_questions)))
             # Ha nincs beállítva slider érték, használjuk az alapértelmezett értéket
             if questions_count == 0:
                 questions_count = min(3, len(topic_questions))
@@ -2745,29 +2745,17 @@ def show_results():
     with col1:
         st.markdown(f"""
         <div class="summary-box">
-            <h4>📊 Alap pontszám</h4>
-            <p><strong>{scoring_result['base_score']} pont</strong></p>
+            <h4>🔥 Maximális streak</h4>
+            <p><strong>{st.session_state.mode_manager.max_streak} kérdés</strong></p>
             
-            <h4>🎯 Nehézségi szorzó</h4>
-            <p><strong>{scoring_result['difficulty_multiplier']}x</strong></p>
-            
-            <h4>🎮 Mód bónusz</h4>
-            <p><strong>{scoring_result['mode_bonus']} pont</strong></p>
-            
-            <h4>🔥 Streak bónusz</h4>
-            <p><strong>{scoring_result['streak_bonus']} pont</strong></p>
+            <h4>⏱️ Átlagos válaszidő</h4>
+            <p><strong>{duration_seconds/total_questions:.1f} másodperc</strong></p>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
         st.markdown(f"""
         <div class="summary-box">
-            <h4>🔥 Maximális streak</h4>
-            <p><strong>{st.session_state.mode_manager.max_streak} kérdés</strong></p>
-            
-            <h4>⏱️ Átlagos válaszidő</h4>
-            <p><strong>{duration_seconds/total_questions:.1f} másodperc</strong></p>
-            
             <h4>🎮 Mód</h4>
             <p><strong>{st.session_state.mode_manager.current_mode.value.title()}</strong></p>
             
@@ -3641,7 +3629,11 @@ def show_youtube_search_tab():
         st.markdown("#### 📋 Keresési eredmények")
         
         for i, result in enumerate(st.session_state.youtube_search_results):
-            with st.expander(f"🎵 {result['title']} - {result['channel']}", expanded=False):
+            # Pontszám megjelenítése
+            score = result.get('score', 0)
+            score_emoji = "🏆" if score >= 10 else "⭐" if score >= 5 else "📌"
+            
+            with st.expander(f"{score_emoji} {result['title']} - {result['channel']} (Pontszám: {score})", expanded=(i == 0)):
                 col1, col2, col3 = st.columns([1, 2, 1])
                 
                 with col1:
@@ -3801,8 +3793,10 @@ def search_youtube_tracks(query):
         import json
         import re
         
-        # YouTube keresés közvetlenül a YouTube API nélkül
-        search_url = f"https://www.youtube.com/results?search_query={query.replace(' ', '+')}"
+        # YouTube keresés közvetlenül a YouTube API nélkül - pontosabb keresés
+        # Hozzáadunk "official" és "music" kulcsszavakat a jobb eredményekért
+        enhanced_query = f"{query} official music"
+        search_url = f"https://www.youtube.com/results?search_query={enhanced_query.replace(' ', '+')}"
         
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -3889,13 +3883,39 @@ def search_youtube_tracks(query):
                     
                     extract_videos(yt_data)
                     
-                    # Sponsored találatok kiszűrése
+                    # Sponsored találatok kiszűrése és jobb eredmények kiválasztása
                     processed_results = []
-                    for video in videos[:5]:  # Maximum 5 találat
-                        if 'sponsored' not in video.get('title', '').lower() and 'reklám' not in video.get('title', '').lower():
-                            processed_results.append(video)
+                    for video in videos[:10]:  # Több találat ellenőrzése
+                        title = video.get('title', '').lower()
+                        channel = video.get('channel', '').lower()
+                        
+                        # Sponsored és reklám találatok kiszűrése
+                        if 'sponsored' in title or 'reklám' in title:
+                            continue
+                        
+                        # Jobb eredmények prioritása
+                        score = 0
+                        
+                        # Official/VEVO csatornák prioritása
+                        if 'official' in title or 'vevo' in channel:
+                            score += 10
+                        
+                        # Music kulcsszó prioritása
+                        if 'music' in title or 'music' in channel:
+                            score += 5
+                        
+                        # Rövidebb címek prioritása (kevesebb "fehér zaj")
+                        if len(title) < 100:
+                            score += 3
+                        
+                        # Hozzáadjuk a pontszámot
+                        video['score'] = score
+                        processed_results.append(video)
                     
-                    return processed_results
+                    # Rendezés pontszám szerint (csökkenő)
+                    processed_results.sort(key=lambda x: x.get('score', 0), reverse=True)
+                    
+                    return processed_results[:5]  # Top 5 eredmény
                     
                 except json.JSONDecodeError:
                     st.error("Hiba a YouTube adatok feldolgozásakor")
@@ -3939,10 +3959,10 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         download_dir = Path(category_mapping.get(category, "audio_files"))
         download_dir.mkdir(parents=True, exist_ok=True)
         
-        # yt-dlp konfiguráció
+        # yt-dlp konfiguráció - jobb fájlnév generálás
         ydl_opts = {
             'format': 'bestaudio/best',
-            'outtmpl': str(download_dir / '%(title)s.%(ext)s'),
+            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),  # YouTube ID használata fájlnévként
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
@@ -3969,17 +3989,22 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 # Letöltés
                 ydl.download([url])
                 
-                # Fájlnév meghatározása
-                audio_file = ydl.prepare_filename(info)
-                audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+                # Fájlnév meghatározása - YouTube ID alapján
+                video_id = info.get('id', '')
+                if not video_id:
+                    st.error("❌ Nem sikerült lekérni a videó ID-t")
+                    return False
+                
+                # Fájlnév YouTube ID alapján
+                audio_file = str(download_dir / f"{video_id}.mp3")
                 
                 # Ellenőrizzük, hogy a fájl létezik-e
                 if not os.path.exists(audio_file):
                     # Próbáljuk meg megtalálni a fájlt a könyvtárban
                     import glob
-                    possible_files = glob.glob(str(download_dir / "*.mp3"))
+                    possible_files = glob.glob(str(download_dir / f"{video_id}.*"))
                     if possible_files:
-                        audio_file = possible_files[0]  # Az első MP3 fájlt használjuk
+                        audio_file = possible_files[0]  # A YouTube ID-vel kezdődő fájlt használjuk
                     else:
                         st.error("❌ A letöltés sikertelen - fájl nem található")
                         return False
@@ -4015,14 +4040,14 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 artist = track_info.get('artist', 'Unknown Artist')
                 title = track_info.get('title', 'Unknown Title')
                 
-                # Biztonságos fájlnév létrehozása
-                safe_artist = re.sub(r'[^\w\s-]', '', artist)
-                safe_title = re.sub(r'[^\w\s-]', '', title)
+                # Biztonságos fájlnév létrehozása - rövidebb és egyszerűbb
+                safe_artist = re.sub(r'[^\w\s-]', '', artist)[:20]  # Max 20 karakter
+                safe_title = re.sub(r'[^\w\s-]', '', title)[:30]   # Max 30 karakter
                 safe_artist = re.sub(r'[-\s]+', '_', safe_artist)
                 safe_title = re.sub(r'[-\s]+', '_', safe_title)
                 
-                # "Előadó - Szám cím" formátum
-                output_filename = f"{safe_artist} - {safe_title}.mp3"
+                # "Előadó_Szám" formátum (rövidebb)
+                output_filename = f"{safe_artist}_{safe_title}.mp3"
                 output_file = str(download_dir / output_filename)
                 
                 # FFmpeg paranccsal 2 perc kivágása - továbbfejlesztett verzió

@@ -32,6 +32,94 @@ from nemzetkozi_audio_mapping_updated import get_nemzetkozi_audio_path
 from quiz_analytics import QuizAnalytics
 from quiz_modes import QuizModeManager, QuizMode, DifficultyLevel, QuizModeUI, QuizScoring
 from auto_audio_player import auto_audio_player_simple
+import subprocess
+import json
+import glob
+
+def sync_with_github():
+    """GitHub-ról szinkronizálja az audiofájlokat és kérdéseket"""
+    try:
+        st.info("🔄 GitHub szinkronizálás indítása...")
+        
+        # 1. Git pull - legfrissebb változások letöltése
+        st.markdown("### 📥 1. Legfrissebb változások letöltése...")
+        pull_result = subprocess.run(
+            ['git', 'pull', 'origin', 'main'], 
+            capture_output=True, 
+            text=True, 
+            cwd=os.getcwd()
+        )
+        
+        if pull_result.returncode != 0:
+            st.error(f"❌ Git pull hiba: {pull_result.stderr}")
+            return False
+            
+        st.success("✅ Git pull sikeres!")
+        
+        # 2. Új audiofájlok keresése
+        st.markdown("### 🎵 2. Új audiofájlok keresése...")
+        
+        # Összes audio track összegyűjtése
+        all_tracks = get_all_audio_tracks()
+        audio_files = [track["audio_path"] for track in all_tracks]
+        
+        st.info(f"📊 {len(audio_files)} audiofájl található")
+        
+        # Kategóriánkénti statisztika
+        category_stats = {}
+        for track in all_tracks:
+            directory = track["directory"]
+            if directory not in category_stats:
+                category_stats[directory] = 0
+            category_stats[directory] += 1
+        
+        st.markdown("**📁 Kategóriánkénti eloszlás:**")
+        for directory, count in category_stats.items():
+            st.markdown(f"- {directory}: {count} track")
+        
+        # 3. Új kérdés fájlok keresése
+        st.markdown("### 📝 3. Új kérdés fájlok keresése...")
+        question_files = []
+        
+        # Keresés a topics könyvtárban
+        topics_patterns = [
+            "topics/*.py",
+            "topics/*_questions.py",
+            "topics/*_complete.py"
+        ]
+        
+        for pattern in topics_patterns:
+            files = glob.glob(pattern)
+            question_files.extend(files)
+        
+        st.info(f"📊 {len(question_files)} kérdés fájl található")
+        
+        # 4. Új tartalmak listázása
+        st.markdown("### 📋 4. Új tartalmak összefoglalása...")
+        
+        if audio_files:
+            st.markdown("**🎵 Új audiofájlok:**")
+            for file in audio_files:
+                st.markdown(f"- {os.path.basename(file)}")
+        
+        if question_files:
+            st.markdown("**📝 Kérdés fájlok:**")
+            for file in question_files:
+                st.markdown(f"- {os.path.basename(file)}")
+        
+        # 5. Alkalmazás újraindítása javaslat
+        st.markdown("### 🔄 5. Alkalmazás újraindítása...")
+        st.warning("⚠️ A szinkronizálás után javasolt az alkalmazás újraindítása a legfrissebb tartalmak betöltéséhez.")
+        
+        if st.button("🔄 Alkalmazás újraindítása", type="primary"):
+            st.rerun()
+        
+        st.success("✅ GitHub szinkronizálás sikeresen befejezve!")
+        return True
+        
+    except Exception as e:
+        st.error(f"❌ Szinkronizálási hiba: {e}")
+        return False
 
 def get_image_base64(image_path):
     """Kép konvertálása base64 formátumra"""
@@ -346,7 +434,12 @@ def get_audio_file_for_question(question, topic):
             except Exception as e:
                 pass
         elif "audio_file" in question and question["audio_file"]:
-            # Ha van audio_file mező, próbáljuk közvetlenül
+            # Ha van audio_file mező, próbáljuk közvetlenül az új mappából
+            audio_dir = Path(__file__).parent / "audio_files/magyar_zenekarok"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
+            # Fallback: régi mappa
             audio_dir = Path(__file__).parent / "audio_files_magyar_uj"
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
@@ -355,6 +448,12 @@ def get_audio_file_for_question(question, topic):
     elif topic == "nemzetkozi_zenekarok":
         # Nemzetközi zenekarok - audio_file vagy original_index alapú
         if "audio_file" in question and question["audio_file"]:
+            # ÚJ: próbáljuk az új mappából
+            audio_dir = Path(__file__).parent / "audio_files/nemzetkozi_zenekarok"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
+            # Fallback: régi mappa
             audio_dir = Path(__file__).parent / "audio_files"
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
@@ -399,6 +498,11 @@ def get_audio_file_for_question(question, topic):
                 pass
         elif "audio_file" in question:
             # Ha csak audio_file van, próbáljuk az új mappából
+            audio_dir = Path(__file__).parent / "audio_files/komolyzene"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
+            # Fallback: régi mappa
             audio_dir = Path(__file__).parent / "audio_files_komolyzene"
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
@@ -407,15 +511,26 @@ def get_audio_file_for_question(question, topic):
         # One Hit Wonders audio fájl kezelése
         if "original_index" in question:
             try:
-                # Audio fájl elérési útja az audio_files_one_hit_wonders mappából
+                # Audio fájl elérési útja az új mappából
                 index = int(question["original_index"])
-                audio_dir = Path(__file__).parent / "audio_files_one_hit_wonders"
+                audio_dir = Path(__file__).parent / "audio_files/one_hit_wonders"
                 # Fájlnév keresése az index alapján
                 for filename in os.listdir(audio_dir):
                     if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
                         audio_path = audio_dir / filename
                         if audio_path.exists():
                             # Audio fájl megtalálva
+                            return str(audio_path)
+            except Exception as e:
+                pass
+            # Fallback: régi mappa
+            try:
+                index = int(question["original_index"])
+                audio_dir = Path(__file__).parent / "audio_files_one_hit_wonders"
+                for filename in os.listdir(audio_dir):
+                    if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
+                        audio_path = audio_dir / filename
+                        if audio_path.exists():
                             return str(audio_path)
             except Exception as e:
                 pass
@@ -603,13 +718,15 @@ def main():
         st.markdown("## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
-            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása"],
+            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása", "GitHub Szinkronizálás", "Audio Track Kezelés"],
             format_func=lambda x: {
                 "Quiz": "🎯 Quiz",
                 "Spotify Playlist": "🎵 Spotify Playlist",
                 "Analytics": "📊 Analytics", 
                 "Beállítások": "⚙️ Beállítások",
-                "Audio hozzáadása": "🎵 Audio hozzáadása"
+                "Audio hozzáadása": "🎵 Audio hozzáadása",
+                "GitHub Szinkronizálás": "🔄 GitHub Szinkronizálás",
+                "Audio Track Kezelés": "🎵 Audio Track Kezelés"
             }[x]
         )
         
@@ -626,6 +743,10 @@ def main():
         show_spotify_playlist_main()
     elif page == "Audio hozzáadása":
         show_audio_addition_page()
+    elif page == "GitHub Szinkronizálás":
+        show_github_sync_page()
+    elif page == "Audio Track Kezelés":
+        show_audio_track_management_page()
 
 def show_quiz_page():
     """Quiz oldal megjelenítése"""
@@ -635,6 +756,906 @@ def show_quiz_page():
         show_quiz()
     elif st.session_state.quiz_state == 'results':
         show_results()
+
+def get_all_audio_tracks():
+    """Összes audio track összegyűjtése"""
+    all_tracks = []
+    
+    # Minden lehetséges audio könyvtár
+    audio_dirs = [
+        "audio_files",
+        "magyar_audio", 
+        "nemzetkozi_audio",
+        "komolyzene_audio",
+        "one_hit_wonders_audio"
+    ]
+    
+    # Minden lehetséges formátum
+    audio_extensions = ["*.mp3", "*.wav", "*.m4a", "*.flac", "*.ogg"]
+    
+    for audio_dir in audio_dirs:
+        if os.path.exists(audio_dir):
+            for ext in audio_extensions:
+                audio_files = glob.glob(f"{audio_dir}/{ext}")
+                for audio_file in audio_files:
+                    track_name = os.path.splitext(os.path.basename(audio_file))[0]
+                    
+                    # Duplikációk elkerülése
+                    if not any(track["name"] == track_name for track in all_tracks):
+                        all_tracks.append({
+                            "name": track_name,
+                            "audio_path": audio_file,
+                            "directory": audio_dir
+                        })
+    
+    return all_tracks
+
+def get_audio_tracks_by_category():
+    """Audio track-ek kategóriánként összegyűjtése"""
+    categories = {
+        "magyar_zenekarok": {
+            "title": "🎵 Magyar Zenekarok",
+            "audio_dirs": ["audio_files/magyar_zenekarok", "audio_files"],
+            "question_file": "topics/magyar_zenekarok_uj.py"
+        },
+        "nemzetkozi_zenekarok": {
+            "title": "🌍 Nemzetközi Zenekarok", 
+            "audio_dirs": ["audio_files/nemzetkozi_zenekarok", "audio_files"],
+            "question_file": "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py"
+        },
+        "komolyzene": {
+            "title": "🎼 Komolyzene",
+            "audio_dirs": ["audio_files/komolyzene", "audio_files"], 
+            "question_file": "topics/komolyzene_uj.py"
+        },
+        "one_hit_wonders": {
+            "title": "⭐ One Hit Wonders",
+            "audio_dirs": ["audio_files/one_hit_wonders", "audio_files"],
+            "question_file": "topics/one_hit_wonders.py"
+        }
+    }
+    
+    tracks_by_category = {}
+    
+    for category_key, category_info in categories.items():
+        tracks = []
+        audio_dirs = category_info["audio_dirs"]
+        question_file = category_info["question_file"]
+        
+        # Audiofájlok keresése minden könyvtárban
+        for audio_dir in audio_dirs:
+            if os.path.exists(audio_dir):
+                # MP3, WAV, M4A fájlok keresése
+                for ext in ["*.mp3", "*.wav", "*.m4a"]:
+                    audio_files = glob.glob(f"{audio_dir}/{ext}")
+                    
+                    for audio_file in audio_files:
+                        track_name = os.path.splitext(os.path.basename(audio_file))[0]
+                        
+                        # Duplikációk elkerülése
+                        if not any(track["name"] == track_name for track in tracks):
+                            tracks.append({
+                                "name": track_name,
+                                "audio_path": audio_file,
+                                "question_file": question_file
+                            })
+        
+        tracks_by_category[category_key] = {
+            "title": category_info["title"],
+            "tracks": tracks
+        }
+    
+    return tracks_by_category
+
+def load_questions_from_file(file_path):
+    """Kérdések betöltése Python fájlból"""
+    try:
+        if not os.path.exists(file_path):
+            return []
+        
+        # 1. Próbáljuk meg közvetlenül importálni a fájlt
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("questions_module", file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            
+            # Különböző kérdés változók keresése
+            question_vars = ['QUESTIONS', 'NEMZETKOZI_ZENEKAROK_QUESTIONS', 'ONE_HIT_WONDERS_QUESTIONS', 'MAGYAR_ZENEKAROK_QUESTIONS', 'MAGYAR_ZENEKAROK_QUESTIONS_UJ', 'KOMOLYZENE_QUESTIONS']
+            
+            for var_name in question_vars:
+                if hasattr(module, var_name):
+                    questions = []
+                    question_list = getattr(module, var_name)
+                    for q in question_list:
+                        if isinstance(q, dict) and 'question' in q and 'options' in q and 'correct' in q:
+                            question_data = {
+                                "question": q['question'],
+                                "options": q['options'],
+                                "correct": q['correct']
+                            }
+                            # További mezők hozzáadása, ha vannak
+                            if 'audio_file' in q:
+                                question_data['audio_file'] = q['audio_file']
+                            if 'spotify_embed' in q:
+                                question_data['spotify_embed'] = q['spotify_embed']
+                            if 'explanation' in q:
+                                question_data['explanation'] = q['explanation']
+                            if 'topic' in q:
+                                question_data['topic'] = q['topic']
+                            questions.append(question_data)
+                    if questions:
+                        return questions
+        except Exception as import_error:
+            st.debug(f"Import hiba: {import_error}")
+        
+        # 2. Ha az import nem sikerült, regex-szel próbáljuk
+        # Fájl tartalmának beolvasása
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Kérdések kinyerése regex-szel
+        import re
+        questions = []
+        
+        # Kérdés minták keresése - bővített minták
+        question_patterns = [
+            r'{\s*"question":\s*"([^"]+)",\s*"options":\s*\[([^\]]+)\],\s*"correct":\s*(\d+)\s*}',
+            r'{\s*"question":\s*"([^"]+)",\s*"options":\s*\[([^\]]+)\],\s*"correct_answer":\s*(\d+)\s*}',
+            r'{\s*"question":\s*"([^"]+)",\s*"options":\s*\[([^\]]+)\],\s*"correct":\s*(\d+)\s*,',
+            r'{\s*"question":\s*"([^"]+)",\s*"options":\s*\[([^\]]+)\],\s*"correct_answer":\s*(\d+)\s*,'
+        ]
+        
+        for pattern in question_patterns:
+            matches = re.findall(pattern, content, re.MULTILINE | re.DOTALL)
+            for match in matches:
+                question_text = match[0]
+                options_str = match[1]
+                correct = int(match[2])
+                
+                # Opciók feldolgozása
+                options = []
+                option_matches = re.findall(r'"([^"]+)"', options_str)
+                options = option_matches
+                
+                if len(options) >= 4:
+                    question_data = {
+                        "question": question_text,
+                        "options": options,
+                        "correct": correct
+                    }
+                    
+                    # További mezők keresése a kérdés környékén
+                    # Audio file keresése
+                    audio_match = re.search(r'"audio_file":\s*"([^"]+)"', content)
+                    if audio_match:
+                        question_data['audio_file'] = audio_match.group(1)
+                    
+                    # Spotify embed keresése
+                    spotify_match = re.search(r'"spotify_embed":\s*"([^"]+)"', content)
+                    if spotify_match:
+                        question_data['spotify_embed'] = spotify_match.group(1)
+                    
+                    questions.append(question_data)
+        
+        return questions
+    except Exception as e:
+        st.error(f"Hiba a kérdések betöltésekor: {e}")
+        return []
+
+def find_matching_question(track_name, questions):
+    """Kérdés keresése track név alapján"""
+    track_name_lower = track_name.lower()
+    
+    # 1. Audio file alapján keresés (legpontosabb)
+    for q in questions:
+        if 'audio_file' in q:
+            audio_file = q['audio_file'].lower()
+            # Kiterjesztés nélküli fájlnév összehasonlítása
+            audio_file_no_ext = os.path.splitext(audio_file)[0]
+            track_name_no_ext = os.path.splitext(track_name)[0]
+            
+            if audio_file_no_ext == track_name_no_ext:
+                return q
+            
+            # Ha a track név szám előtaggal van (pl. "37_Pokolgép"), 
+            # próbáljuk meg a szám nélküli verziót is
+            if '_' in track_name_no_ext and track_name_no_ext.split('_')[0].isdigit():
+                track_name_without_number = '_'.join(track_name_no_ext.split('_')[1:])
+                if audio_file_no_ext.endswith(track_name_without_number):
+                    return q
+    
+    # 2. Pontos egyezés keresése a kérdésben
+    for q in questions:
+        if track_name_lower in q['question'].lower() or q['question'].lower() in track_name_lower:
+            return q
+    
+    # 3. Ha nincs pontos egyezés, keresés a track nevének részei alapján
+    track_words = [word.strip() for word in track_name_lower.replace('-', ' ').replace('_', ' ').split() if len(word.strip()) > 2]
+    
+    for q in questions:
+        question_lower = q['question'].lower()
+        # Ellenőrizzük, hogy a track szavak közül hány szerepel a kérdésben
+        matching_words = sum(1 for word in track_words if word in question_lower)
+        if matching_words >= 2:  # Legalább 2 szó egyezik
+            return q
+    
+    # 4. Ha még mindig nincs találat, keresés az előadó neve alapján
+    if '-' in track_name_lower:
+        artist_name = track_name_lower.split('-')[0].strip()
+        for q in questions:
+            if artist_name in q['question'].lower():
+                return q
+    
+    return None
+
+def save_questions_to_file(file_path, questions):
+    """Kérdések mentése Python fájlba"""
+    try:
+        # Fájl tartalmának beolvasása
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Új kérdések listájának létrehozása
+        questions_list = []
+        for q in questions:
+            options_str = ', '.join([f'"{opt}"' for opt in q["options"]])
+            question_dict = f'{{"question": "{q["question"]}", "options": [{options_str}], "correct": {q["correct"]}}}'
+            questions_list.append(question_dict)
+        
+        # Teljes lista string
+        questions_str = ',\n    '.join(questions_list)
+        
+        # Új tartalom létrehozása
+        new_content = f"""# Auto-generated questions file
+QUESTIONS = [
+    {questions_str}
+]"""
+        
+        # Fájl mentése
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        
+        return True
+    except Exception as e:
+        st.error(f"Hiba a kérdések mentésekor: {e}")
+        return False
+
+def show_audio_track_management_page():
+    """Audio track kezelési oldal megjelenítése"""
+    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎵 Audio Track Kezelés</h2>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    ### 📋 Mit csinál ez a funkció?
+    
+    Ez a funkció lehetővé teszi, hogy:
+    - 📁 **Megtekintsd az összes audio track-et** táblázatos formában
+    - ✏️ **Szerkeszd a válaszopciókat** közvetlenül a táblázatban
+    - 💾 **Mentsd el a változásokat** lokálisan és GitHub-ra
+    - 🔄 **Frissítsd a kérdésbankot** automatikusan
+    
+    ---
+    """)
+    
+    # Cache törlés gomb
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🗑️ Cache törlése", type="secondary", use_container_width=True):
+            # Cache kulcsok törlése
+            cache_keys_to_delete = [key for key in st.session_state.keys() if key.startswith("audio_track_data_") or key.startswith("duration_")]
+            for key in cache_keys_to_delete:
+                del st.session_state[key]
+            st.success("✅ Cache törölve! Az oldal újratöltődik...")
+            st.rerun()
+    
+    # Track-ek betöltése kategóriánként
+    tracks_by_category = get_audio_tracks_by_category()
+    
+    # Kategória választó
+    category_options = {key: info["title"] for key, info in tracks_by_category.items()}
+    selected_category = st.selectbox(
+        "Válassz kategóriát:",
+        list(category_options.keys()),
+        format_func=lambda x: category_options[x]
+    )
+    
+    if selected_category:
+        category_info = tracks_by_category[selected_category]
+        st.markdown(f"### {category_info['title']}")
+        
+        if not category_info['tracks']:
+            st.info("📭 Nincsenek track-ek ebben a kategóriában.")
+        else:
+            st.markdown(f"📊 **{len(category_info['tracks'])} track található**")
+            
+
+            
+            # Cache key létrehozása
+            cache_key = f"audio_track_data_{selected_category}"
+            
+            # Ellenőrizzük, hogy van-e cache-ben
+            if cache_key in st.session_state:
+                table_data = st.session_state[cache_key]
+                st.info(f"⚡ Cache-ből betöltve: {len(table_data)} sor")
+            else:
+                st.info(f"🔄 Új adatok betöltése...")
+                # Kérdések betöltése - az első track-ből vesszük a kérdésfájl elérési útját
+                question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
+                if question_file_path:
+                    questions = load_questions_from_file(question_file_path)
+                    st.info(f"📚 Kérdések betöltve: {len(questions)} kérdés")
+                else:
+                    questions = []
+                    st.info("❌ Nincs kérdésfájl!")
+                
+                # Track név cache létrehozása gyorsabb kereséshez
+                import os
+                track_cache = {}
+                for track in category_info['tracks']:
+                    track_name_no_ext = os.path.splitext(track['name'])[0]
+                    track_cache[track_name_no_ext] = track
+                
+                st.info(f"🎵 Track cache létrehozva: {len(track_cache)} track")
+                st.info(f"🎵 Első 3 track: {list(track_cache.keys())[:3]}")
+                
+                # Táblázat adatok előkészítése a kérdésfájlokból
+                table_data = []
+                
+                # Kérdések alapján táblázat létrehozása
+                st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
+                processed_count = 0
+                for i, question in enumerate(questions):
+                    st.info(f"🔄 Ciklus iteráció {i} kezdete")
+                    
+                    # Debug: első néhány kérdés
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: {question.get('question', 'Nincs')[:50]}...")
+                        st.info(f"🔍 Kérdés {i}: audio_file = {question.get('audio_file', 'Nincs')}")
+                    
+                    # Debug: első kérdés részletes ellenőrzése
+                    if i == 0:
+                        st.info(f"🔍 Első kérdés teljes adatai: {question}")
+                    
+                    # Kérdés szövegéből előadó és szám cím kinyerése
+                    question_text = question['question']
+                
+                    # Helyes válasz az előadó
+                    artist = question['options'][question['correct']] if question['correct'] < len(question['options']) else "Ismeretlen"
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: artist = {artist}")
+                    
+                    # Helyes válasz
+                    correct_answer = question['options'][question['correct']] if question['correct'] < len(question['options']) else "N/A"
+                    
+                    # Opciók
+                    options = question['options'] + [""] * (4 - len(question['options']))  # 4 opcióra kiegészítés
+                    
+                    # Audio fájl keresése a track neve alapján - gyorsított verzió
+                    matching_track = None
+                    if 'audio_file' in question:
+                        question_audio_file = question['audio_file']
+                        question_audio_no_ext = os.path.splitext(question_audio_file)[0]
+                        matching_track = track_cache.get(question_audio_no_ext)
+                        
+                        # Debug: első néhány kérdés matching
+                        if i < 3:
+                            st.info(f"🔍 Kérdés {i}: question_audio_no_ext = {question_audio_no_ext}")
+                            st.info(f"🔍 Kérdés {i}: matching_track = {matching_track is not None}")
+                    
+                    # Ha nincs audio_file vagy nem talált track-et, akkor a find_matching_question-t használjuk
+                    if not matching_track:
+                        if i < 3:
+                            st.info(f"🔍 Kérdés {i}: find_matching_question hívás előtt")
+                        track_count = 0
+                        for track in category_info['tracks']:
+                            track_count += 1
+                            if track_count > 10:  # Maximum 10 track-et próbálunk
+                                if i < 3:
+                                    st.info(f"🔍 Kérdés {i}: find_matching_question timeout (10 track)")
+                                break
+                            try:
+                                if find_matching_question(track['name'], [question]):
+                                    matching_track = track
+                                    if i < 3:
+                                        st.info(f"🔍 Kérdés {i}: find_matching_question talált track-et")
+                                    break
+                            except Exception as e:
+                                if i < 3:
+                                    st.error(f"❌ find_matching_question hiba: {str(e)}")
+                                continue
+                
+                # Debug: find_matching_question után
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: find_matching_question után")
+                
+                # Debug: song_title meghatározás előtt
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: song_title meghatározás előtt")
+                
+                # Kérdés szövegéből szám cím kinyerése
+                song_title = "Ismeretlen szám"
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: song_title meghatározás kezdete")
+                    st.info(f"🔍 Kérdés {i}: song_title alapérték = {song_title}")
+                
+                # 1. Audio file mező alapján - ha van a kérdésben (nemzetközi számok)
+                if 'audio_file' in question:
+                    audio_file = question['audio_file']
+                    # Fájlnévből szám cím kinyerése
+                    import os
+                    filename = os.path.basename(audio_file)
+                    # Kiterjesztés eltávolítása
+                    filename = os.path.splitext(filename)[0]
+                    # Ha van " - " a fájlnévben, akkor az előadó - szám cím formátum
+                    if " - " in filename:
+                        song_title = filename.split(" - ", 1)[1].strip()
+                    # Komolyzene formátum: "szám_Előadó_Szám_címe" (pl. "10_Handel_Rinaldo")
+                    elif '_' in filename and selected_category == "komolyzene":
+                        parts = filename.split('_')
+                        if len(parts) >= 3 and parts[0].isdigit():
+                            # Az első rész a szám, a második az előadó, a harmadik és továbbiak a cím
+                            song_title = '_'.join(parts[2:]).replace('_', ' ')
+                        elif len(parts) > 1 and parts[0].isdigit():
+                            # Ha csak 2 rész van: "szám_Előadó"
+                            song_title = parts[1].replace('_', ' ')
+                        else:
+                            song_title = filename.replace('_', ' ')
+                    else:
+                        # Ha csak az előadó neve van a fájlnévben, próbáljuk meg a kérdés szövegéből
+                        # vagy más forrásból kinyerni a szám címét
+                        song_title = "Ismeretlen szám"
+                
+                # 2. "című dalban?" formátum - One Hit Wonders
+                elif "című dalban?" in question_text:
+                    import re
+                    song_match = re.search(r"'([^']+)'", question_text)
+                    if song_match:
+                        song_title = song_match.group(1)
+                
+                # 3. " - " formátum - régi formátum
+                elif " - " in question_text:
+                    song_title = question_text.split(" - ", 1)[1].strip()
+                
+                # 4. Audio fájl név alapján - ha van matching track
+                elif matching_track and 'audio_path' in matching_track:
+                    audio_path = matching_track['audio_path']
+                    # Fájlnévből szám cím kinyerése
+                    import os
+                    filename = os.path.basename(audio_path)
+                    # Kiterjesztés eltávolítása
+                    filename = os.path.splitext(filename)[0]
+                    
+                    # Komolyzene formátum: "szám_Előadó_Szám_címe" (pl. "10_Handel_Rinaldo")
+                    if '_' in filename:
+                        parts = filename.split('_')
+                        if len(parts) >= 3 and parts[0].isdigit():
+                            # Az első rész a szám, a második az előadó, a harmadik és továbbiak a cím
+                            song_title = '_'.join(parts[2:]).replace('_', ' ')
+                        elif len(parts) > 1 and parts[0].isdigit():
+                            # Ha csak 2 rész van: "szám_Előadó"
+                            song_title = parts[1].replace('_', ' ')
+                        else:
+                            song_title = filename.replace('_', ' ')
+                    else:
+                        song_title = filename.replace('_', ' ')
+                
+                # 5. Track név alapján - ha van matching track
+                elif matching_track and 'name' in matching_track:
+                    song_title = matching_track['name']
+                    if i < 3:
+                        st.info(f"🔍 Kérdés {i}: song_title = {song_title} (track name)")
+                
+                # 6. Spotify embed alapján - ha van a kérdésben
+                if song_title == "Ismeretlen szám" and 'spotify_embed' in question:
+                    spotify_url = question['spotify_embed']
+                    # Spotify URL-ből szám cím kinyerése
+                    if '/track/' in spotify_url:
+                        # Track URL - próbáljuk meg a track ID alapján
+                        song_title = "Spotify Track"
+                    elif '/artist/' in spotify_url:
+                        # Artist URL - próbáljuk meg az előadó neve alapján
+                        song_title = "Spotify Artist"
+                
+                # 7. Ha még mindig "Ismeretlen szám", próbáljuk meg a kérdés szövegéből kinyerni
+                if song_title == "Ismeretlen szám":
+                    # Kérdés szövegéből próbálunk valamit kinyerni
+                    cleaned_text = question_text.replace("Ki az előadó?", "").replace("Ki a zeneszerző?", "").replace("Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:", "").strip()
+                    if cleaned_text and len(cleaned_text) > 3:
+                        song_title = cleaned_text[:50] + "..." if len(cleaned_text) > 50 else cleaned_text
+                
+                # Debug: song_title végleges értéke
+                if i < 3:
+                    st.info(f"🔍 Kérdés {i}: VÉGLEGES song_title = {song_title}")
+                
+                # Audio fájl hosszának meghatározása - gyorsított verzió
+                duration_str = "N/A"
+                if matching_track:
+                    # Cache key a duration-hoz
+                    duration_cache_key = f"duration_{matching_track['audio_path']}"
+                    if duration_cache_key in st.session_state:
+                        duration_str = st.session_state[duration_cache_key]
+                    else:
+                        try:
+                            import subprocess
+                            duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
+                            duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=5)  # Rövidített timeout
+                            if duration_result.returncode == 0 and duration_result.stdout.strip():
+                                duration_seconds = float(duration_result.stdout.strip())
+                                duration_str = f"{int(duration_seconds // 60)}:{int(duration_seconds % 60):02d}"
+                                # Cache mentése
+                                st.session_state[duration_cache_key] = duration_str
+                        except:
+                            duration_str = "N/A"
+                            st.session_state[duration_cache_key] = duration_str
+                
+                # Debug: table_data hossza előtt
+                if i < 3:
+                    st.info(f"🔍 table_data hossza előtt: {len(table_data)}")
+                
+                table_data.append({
+                    "Előadó": artist,
+                    "Szám címe": song_title,
+                    "Hossz": duration_str,
+                    "Helyes válasz": correct_answer,
+                    "Opció1": options[0] if len(options) > 0 else "",
+                    "Opció2": options[1] if len(options) > 1 else "",
+                    "Opció3": options[2] if len(options) > 2 else "",
+                    "Opció4": options[3] if len(options) > 3 else "",
+                    "question_index": i,
+                    "question_text": question_text,
+                    "matching_track": matching_track
+                })
+                
+                # Debug: table_data hossza után
+                if i < 3:
+                    st.info(f"🔍 table_data hossza után: {len(table_data)}")
+                
+                # Debug: első néhány sor hozzáadása
+                if i < 3:
+                    st.info(f"✅ Sor {i} hozzáadva: {artist} - {song_title}")
+                
+                processed_count += 1
+                if processed_count % 10 == 0:  # Minden 10. kérdésnél
+                    st.info(f"📊 Feldolgozott kérdések: {processed_count}/{len(questions)}")
+            
+            # Cache mentése
+            st.session_state[cache_key] = table_data
+            st.info(f"💾 Cache mentve: {len(table_data)} sor")
+            st.info(f"📊 Összesen feldolgozott kérdés: {processed_count}")
+            
+
+            
+            # Táblázat megjelenítése
+            if table_data:
+                # DataFrame létrehozása
+                import pandas as pd
+                df = pd.DataFrame(table_data)
+                
+                # Sorszámok hozzáadása a fájlnévből
+                row_numbers = []
+                filenames = []
+                
+                for row in table_data:
+                    if row['matching_track'] and 'audio_path' in row['matching_track']:
+                        audio_path = row['matching_track']['audio_path']
+                        filename = os.path.basename(audio_path)
+                        filename_no_ext = os.path.splitext(filename)[0]
+                        filenames.append(filename)
+                        # Szám kinyerése a fájlnévből (pl. "41_Alvin_és_a_Mókusok" -> "41")
+                        if '_' in filename_no_ext and filename_no_ext.split('_')[0].isdigit():
+                            row_numbers.append(filename_no_ext.split('_')[0])
+                        else:
+                            row_numbers.append("N/A")
+                    else:
+                        filenames.append("N/A")
+                        row_numbers.append("N/A")
+                
+                # DataFrame létrehozása sorszámokkal és fájlnévvel
+                display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
+                display_df.insert(0, "Sorszám", row_numbers)
+                display_df.insert(1, "Fájlnév", filenames)
+                
+                # Stílusok hozzáadása
+                def style_dataframe(df):
+                    # CSS stílusok
+                    css = """
+                    <style>
+                    .dataframe {
+                        font-size: 12px !important;
+                    }
+                    .dataframe th {
+                        font-size: 12px !important;
+                        font-weight: bold !important;
+                    }
+                    .dataframe td {
+                        font-size: 12px !important;
+                    }
+                    .artist-column {
+                        font-weight: bold !important;
+                    }
+                    .song-title-column {
+                        font-weight: bold !important;
+                    }
+                    .correct-answer-column {
+                        font-size: 12px !important;
+                        color: #1f77b4 !important;
+                        font-weight: bold !important;
+                    }
+                    </style>
+                    """
+                    st.markdown(css, unsafe_allow_html=True)
+                    
+                    # DataFrame megjelenítése
+                    st.dataframe(
+                        df,
+                        use_container_width=True,
+                        hide_index=True,
+                        column_config={
+                            "Sorszám": st.column_config.TextColumn("Sorszám", width="small"),
+                            "Fájlnév": st.column_config.TextColumn("Fájlnév", width="medium"),
+                            "Előadó": st.column_config.TextColumn("Előadó", width="medium"),
+                            "Szám címe": st.column_config.TextColumn("Szám címe", width="large"),
+                            "Opció1": st.column_config.TextColumn("Opció1", width="medium"),
+                            "Opció2": st.column_config.TextColumn("Opció2", width="medium"),
+                            "Opció3": st.column_config.TextColumn("Opció3", width="medium"),
+                            "Opció4": st.column_config.TextColumn("Opció4", width="medium")
+                        }
+                    )
+                
+                # Stílusok alkalmazása a display_df-re
+                style_dataframe(display_df)
+                
+                # Egyszerű táblázat megjelenítés
+                
+                # Teljes táblázat megjelenítés
+                
+                # Sor kiválasztás a táblázatból
+                selected_row_index = st.selectbox(
+                    "Válassz egy sort:",
+                    options=[f"{i+1}. {row['Előadó']} - {row['Szám címe']}" for i, row in enumerate(table_data)],
+                    key="audio_row_selector"
+                )
+                
+                # Play gomb a kijelölt sorhoz
+                if selected_row_index:
+                    selected_index = int(selected_row_index.split('.')[0]) - 1
+                    selected_data = table_data[selected_index]
+                    
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        if st.button(f"🎵 Play {selected_data['Előadó']} - {selected_data['Szám címe']}", type="primary", use_container_width=True):
+                            if selected_data['matching_track'] and 'audio_path' in selected_data['matching_track']:
+                                audio_path = selected_data['matching_track']['audio_path']
+                                st.audio(audio_path, format='audio/mp3')
+                                st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                            else:
+                                st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                                # Debug információk
+                                st.info(f"🔍 Debug: Kérdés index: {selected_data.get('question_index', 'N/A')}")
+                                st.info(f"🔍 Debug: Matching track: {selected_data.get('matching_track', 'Nincs')}")
+                                if selected_data.get('matching_track'):
+                                    st.info(f"🔍 Debug: Track név: {selected_data['matching_track'].get('name', 'N/A')}")
+                                    st.info(f"🔍 Debug: Audio path: {selected_data['matching_track'].get('audio_path', 'Nincs')}")
+                                
+                                # Debug: összes track név listázása
+                                st.info("🔍 Debug: Összes track név:")
+                                for i, track in enumerate(category_info['tracks'][:10]):  # Csak az első 10
+                                    st.info(f"  {i}: {track['name']}")
+                
+                # DataFrame megjelenítés már megtörtént a style_dataframe függvényben
+                
+
+                
+                # Szerkesztési funkció - soronkénti szerkesztés
+                st.markdown("### ✏️ Szerkesztés")
+                
+                # Módosított kérdések követése
+                if 'modified_questions' not in st.session_state:
+                    st.session_state.modified_questions = set()
+                
+                # Szerkesztési mód választó
+                edit_mode = st.radio(
+                    "Szerkesztési mód:",
+                    ["📋 Lista nézet", "✏️ Szerkesztés"],
+                    horizontal=True
+                )
+                
+                # Módosított kérdések megjelenítése
+                if st.session_state.modified_questions:
+                    st.info(f"📝 **{len(st.session_state.modified_questions)} kérdés módosítva** - Ne felejtsd el menteni a változásokat!")
+                
+                if edit_mode == "✏️ Szerkesztés":
+                    st.markdown("**Válassz egy sort a szerkesztéshez:**")
+                    
+                    # Szerkesztési űrlapok minden sorhoz
+                    for i, row in enumerate(table_data):
+                        # Módosított kérdés jelölése
+                        is_modified = row['question_index'] in st.session_state.modified_questions
+                        expander_title = f"📝 {i+1}. {row['Előadó']} - {row['Szám címe']}"
+                        if is_modified:
+                            expander_title += " ✏️ (módosítva)"
+                        
+                        with st.expander(expander_title, expanded=False):
+                            question_index = row['question_index']
+                            current_question = questions[question_index]
+                            
+                            # Kérdés szerkesztése
+                            question_text = st.text_input(
+                                "Kérdés:",
+                                value=current_question['question'],
+                                key=f"question_edit_{i}"
+                            )
+                            
+                            # Opciók szerkesztése
+                            st.markdown("**Válaszopciók:**")
+                            col1, col2 = st.columns(2)
+                            
+                            options = []
+                            with col1:
+                                for j in range(2):
+                                    option = st.text_input(
+                                        f"Opció {j+1}:",
+                                        value=current_question['options'][j] if j < len(current_question['options']) else "",
+                                        key=f"option_edit_{i}_{j}"
+                                    )
+                                    options.append(option)
+                            
+                            with col2:
+                                for j in range(2, 4):
+                                    option = st.text_input(
+                                        f"Opció {j+1}:",
+                                        value=current_question['options'][j] if j < len(current_question['options']) else "",
+                                        key=f"option_edit_{i}_{j}"
+                                    )
+                                    options.append(option)
+                            
+                            # Helyes válasz kiválasztása
+                            correct_answer = st.selectbox(
+                                "Helyes válasz:",
+                                options=options,
+                                index=current_question['correct'] if current_question['correct'] < len(options) else 0,
+                                key=f"correct_edit_{i}"
+                            )
+                            
+                            # Mentés gomb
+                            col1, col2, col3 = st.columns([1, 1, 1])
+                            with col2:
+                                if st.button("💾 Mentés", key=f"save_edit_{i}", type="primary"):
+                                    # Kérdés frissítése
+                                    updated_question = {
+                                        "question": question_text,
+                                        "options": options,
+                                        "correct": options.index(correct_answer) if correct_answer in options else 0
+                                    }
+                                    
+                                    # Kérdés frissítése a listában
+                                    questions[question_index] = updated_question
+                                    
+                                    # Módosított kérdés jelölése
+                                    st.session_state.modified_questions.add(question_index)
+                                    
+                                    # Fájl mentése
+                                    if save_questions_to_file(question_file_path, questions):
+                                        st.success("✅ Kérdés sikeresen mentve!")
+                                        
+                                        # Git műveletek
+                                        try:
+                                            import subprocess
+                                            subprocess.run(['git', 'add', question_file_path], check=True)
+                                            subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
+                                            subprocess.run(['git', 'push'], check=True)
+                                            st.success("✅ Változások GitHub-ra feltöltve!")
+                                            st.rerun()
+                                        except subprocess.CalledProcessError as e:
+                                            st.error(f"❌ Git hiba: {e}")
+                                    else:
+                                        st.error("❌ Hiba a mentés során!")
+                
+                else:
+                    # Lista nézet - csak megjelenítés
+                    st.markdown("**Válassz a fenti opciók közül a szerkesztéshez.**")
+                
+                # Összes változás mentése gomb
+                st.markdown("---")
+                st.markdown("### 💾 Összes változás mentése")
+                
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    if st.button("🚀 Összes változás mentése és Git Push", type="primary", use_container_width=True):
+                        # Fájl mentése
+                        if save_questions_to_file(question_file_path, questions):
+                            st.success("✅ Kérdések sikeresen mentve!")
+                            
+                            # Git műveletek
+                            try:
+                                import subprocess
+                                subprocess.run(['git', 'add', question_file_path], check=True)
+                                subprocess.run(['git', 'commit', '-m', f'Update multiple questions in {selected_category}'], check=True)
+                                subprocess.run(['git', 'push'], check=True)
+                                st.success("✅ Összes változás GitHub-ra feltöltve!")
+                                
+                                # Módosított kérdések listájának törlése
+                                st.session_state.modified_questions.clear()
+                                
+                                st.rerun()
+                            except subprocess.CalledProcessError as e:
+                                st.error(f"❌ Git hiba: {e}")
+                        else:
+                            st.error("❌ Hiba a mentés során!")
+
+def show_github_sync_page():
+    """GitHub szinkronizációs oldal megjelenítése"""
+    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🔄 GitHub Szinkronizálás</h2>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    ### 📋 Mit csinál ez a funkció?
+    
+    Ez a funkció lehetővé teszi, hogy:
+    - 📥 **Letöltsd a legfrissebb változásokat** a GitHub-ról
+    - 🎵 **Frissítsd az audiofájlokat** - új trackek, amiket webes felhasználók töltöttek fel
+    - 📝 **Frissítsd a kérdéseket** - új kérdések, amiket webes felhasználók adtak hozzá
+    - 🔄 **Szinkronizáld a lokális adatbázist** a GitHub repository-val
+    
+    ### ⚠️ Fontos információk:
+    - A szinkronizálás **nem törli** a lokális fájlokat
+    - Csak **új tartalmakat** tölt le és frissít
+    - A szinkronizálás után **javasolt az alkalmazás újraindítása**
+    
+    ---
+    """)
+    
+    # Szinkronizálás gomb
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🔄 GitHub Szinkronizálás Indítása", type="primary", use_container_width=True):
+            sync_with_github()
+    
+    # Statisztikák megjelenítése
+    st.markdown("### 📊 Jelenlegi állapot")
+    
+    # Audiofájlok számolása
+    all_tracks = get_all_audio_tracks()
+    audio_count = len(all_tracks)
+    
+    # Kategóriánkénti statisztika
+    category_stats = {}
+    for track in all_tracks:
+        directory = track["directory"]
+        if directory not in category_stats:
+            category_stats[directory] = 0
+        category_stats[directory] += 1
+    
+    # Kérdés fájlok számolása
+    question_count = 0
+    topics_patterns = [
+        "topics/*.py",
+        "topics/*_questions.py",
+        "topics/*_complete.py"
+    ]
+    
+    for pattern in topics_patterns:
+        files = glob.glob(pattern)
+        question_count += len(files)
+    
+    # Metrikák megjelenítése
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("🎵 Audiofájlok", audio_count)
+    with col2:
+        st.metric("📝 Kérdés fájlok", question_count)
+    
+    # Kategóriánkénti statisztika
+    st.markdown("### 📊 Kategóriánkénti eloszlás")
+    for directory, count in category_stats.items():
+        st.markdown(f"**{directory}**: {count} track")
+    
+    # Utolsó szinkronizálás információ
+    st.markdown("### 📅 Utolsó szinkronizálás")
+    st.info("Az utolsó szinkronizálás időpontja: **Még nem történt szinkronizálás**")
+    
+    # Manuális frissítés gomb
+    if st.button("🔄 Frissítés", type="secondary"):
+        st.rerun()
 
 def show_search_page():
     """Keresési oldal megjelenítése"""
@@ -2792,7 +3813,24 @@ def show_youtube_search_tab():
                     st.markdown(f"**Hossz:** {result.get('duration', 'Ismeretlen')}")
                     st.markdown(f"**Nézők:** {result.get('views', 'Ismeretlen')}")
                 
-                with col3:
+                # Középre igazított paraméterezési konténer
+                st.markdown("""
+                <div style="
+                    text-align: center; 
+                    margin: 20px auto; 
+                    max-width: 600px; 
+                    padding: 20px; 
+                    background-color: #f8f9fa; 
+                    border-radius: 10px; 
+                    border: 2px solid #e9ecef;
+                ">
+                <h4 style="color: #495057; margin-bottom: 15px;">⚙️ Letöltési és integrálási beállítások</h4>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Középre igazított paraméterek
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
                     # Kategória választás
                     music_categories = {
                         "magyar_zenekarok": "🎵 Magyar",
@@ -2816,79 +3854,102 @@ def show_youtube_search_tab():
                     option_4 = st.text_input("4. opció:", value="The Weeknd", key=f"opt4_{i}")
                     
                     # Letöltés gomb
-                    if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary"):
-                        # Részletes letöltési folyamat középre igazítva
+                    if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary", use_container_width=True):
+                        # Középre igazított státuszjelentés konténer
                         st.markdown("""
-                        <div style="text-align: center;">
-                        <h3>📋 Letöltési és integrálási folyamat</h3>
+                        <div style="
+                            text-align: center; 
+                            margin: 20px auto; 
+                            max-width: 800px; 
+                            padding: 20px; 
+                            background-color: #f0f2f6; 
+                            border-radius: 10px; 
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                            font-size: 12px;
+                        ">
+                        <h3 style="color: #1f77b4; margin-bottom: 20px; font-size: 12px;">📋 Letöltési és integrálási folyamat</h3>
                         </div>
                         """, unsafe_allow_html=True)
                         
-                        # Középre igazított státuszjelentés
+                        # Középre igazított progress konténer
                         col1, col2, col3 = st.columns([1, 2, 1])
-                        
                         with col2:
-                                                status4.update(label="✅ Quiz kérdés sikeresen generálva!", state="complete")
-                                                
-                                                # 5. Lépés: Kategóriába integrálás
-                                                with st.status("📂 Kategóriába integrálás...", expanded=True) as status5:
-                                                    status5.update(label="✅ Sikeresen integrálva a kategóriába!", state="complete")
-                                                    
-                                                    # 6. Lépés: GitHub frissítés
-                                                    with st.status("🚀 GitHub frissítés...", expanded=True) as status6:
-                                                        try:
-                                                            # Git frissítés
-                                                            import subprocess
-                                                            import os
-                                                            
-                                                            # Git add
-                                                            result_add = subprocess.run(['git', 'add', '.'], 
-                                                                                      capture_output=True, text=True, cwd=os.getcwd())
-                                                            
-                                                            if result_add.returncode == 0:
-                                                                # Git commit
-                                                                commit_message = f"🎵 Új track hozzáadva: {result['title']} - {selected_category}"
-                                                                result_commit = subprocess.run(['git', 'commit', '-m', commit_message], 
-                                                                                              capture_output=True, text=True, cwd=os.getcwd())
-                                                                
-                                                                if result_commit.returncode == 0:
-                                                                    # Git push
-                                                                    result_push = subprocess.run(['git', 'push'], 
-                                                                                                capture_output=True, text=True, cwd=os.getcwd())
-                                                                    
-                                                                    if result_push.returncode == 0:
-                                                                        status6.update(label="✅ GitHub sikeresen frissítve!", state="complete")
-                                                                    else:
-                                                                        status6.update(label="⚠️ Git push hiba", state="error")
-                                                                else:
-                                                                    status6.update(label="⚠️ Git commit hiba", state="error")
-                                                            else:
-                                                                status6.update(label="⚠️ Git add hiba", state="error")
-                                                                
-                                                        except Exception as e:
-                                                            status6.update(label="⚠️ Git hiba", state="error")
-                                                    
-                                                    # Sikeres integráció pop-up üzenet
-                                                    st.balloons()  # Konfetti effekt
-                                                    st.success("🎉 **SIKERES INTEGRÁCIÓ!** 🎉")
-                                                    st.info(f"✅ **{result['title']}** sikeresen letöltve és integrálva a **{selected_category}** kategóriába!")
-                                                    st.info("🚀 GitHub is frissítve!")
-                                                    st.info("🎯 A track most már elérhető a quiz-ben!")
-                                                    
-                                                    # Eredmények törlése és újraindítás
-                                                    if 'youtube_search_results' in st.session_state:
-                                                        del st.session_state.youtube_search_results
-                                                    
-                                                    # Késleltetett újraindítás a pop-up megjelenítéséhez
-                                                    import time
-                                                    time.sleep(3)  # 3 másodperc várakozás
-                                                    st.rerun()
-                                else:
-                                    status.update(label="❌ Hiba a YouTube információk lekérése során!", state="error")
-                                    st.error("❌ Hiba a letöltés során")
-                            except Exception as e:
-                                status.update(label="❌ Hiba történt!", state="error")
-                                st.error(f"❌ Hiba: {e}")
+                            progress_bar = st.progress(0)
+                            
+                            # Státuszjelentés konténer
+                            status_container = st.container()
+                            
+                            with status_container:
+                                try:
+                                    # Egyedi opciók használata
+                                    custom_options = [option_1, option_2, option_3, option_4]
+                                    
+                                    # 1. Lépés: YouTube információk lekérése
+                                    st.markdown('<div style="font-size: 12px;">🔍 1. YouTube információk lekérése...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(16)
+                                    
+                                    # 2. Lépés: Audio letöltése
+                                    st.markdown('<div style="font-size: 12px;">📥 2. Audio fájl letöltése...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(33)
+                                    
+                                    # 3. Lépés: 2 perc kivágása
+                                    st.markdown('<div style="font-size: 12px;">✂️ 3. 2 perces rész kivágása...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(50)
+                                    
+                                    # 4. Lépés: Quiz kérdés generálása
+                                    st.markdown('<div style="font-size: 12px;">🎯 4. Quiz kérdés generálása...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(66)
+                                    
+                                    # 5. Lépés: Kategóriába integrálás
+                                    st.markdown('<div style="font-size: 12px;">📂 5. Kategóriába integrálás...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(83)
+                                    
+                                    # 6. Lépés: GitHub frissítés
+                                    st.markdown('<div style="font-size: 12px;">🚀 6. GitHub frissítés...</div>', unsafe_allow_html=True)
+                                    progress_bar.progress(100)
+                                    
+                                    # Track letöltése és integrálása
+                                    success = download_and_integrate_track(result, selected_category, custom_options)
+                                    
+                                    if success:
+                                        # Sikeres integráció üzenet
+                                        st.balloons()  # Konfetti effekt
+                                        st.markdown('<div style="font-size: 12px;">🎉 <strong>SIKERES INTEGRÁCIÓ!</strong> 🎉</div>', unsafe_allow_html=True)
+                                        st.markdown(f'<div style="font-size: 12px;">✅ <strong>{result["title"]}</strong> sikeresen letöltve és integrálva a <strong>{selected_category}</strong> kategóriába!</div>', unsafe_allow_html=True)
+                                        st.markdown('<div style="font-size: 12px;">🚀 GitHub is frissítve!</div>', unsafe_allow_html=True)
+                                        st.markdown('<div style="font-size: 12px;">🎯 A track most már elérhető a quiz-ben!</div>', unsafe_allow_html=True)
+                                        
+                                        # Eredmények törlése
+                                        if 'youtube_search_results' in st.session_state:
+                                            del st.session_state.youtube_search_results
+                                        
+                                        # Választási lehetőség az integrálás után
+                                        st.markdown("---")
+                                        st.markdown("### 🎯 Mit szeretnél csinálni most?")
+                                        
+                                        col1, col2 = st.columns(2)
+                                        
+                                        with col1:
+                                            if st.button("🎵 Új Audio Import", type="primary", use_container_width=True):
+                                                # Új import kezdése
+                                                if 'youtube_search_results' in st.session_state:
+                                                    del st.session_state.youtube_search_results
+                                                st.rerun()
+                                        
+                                        with col2:
+                                            if st.button("🎮 Quiz Kezdése", type="secondary", use_container_width=True):
+                                                # Szelekciós képernyőre navigálás (nehézségi szint és mód választás)
+                                                st.session_state.current_page = "Quiz Selection"
+                                                st.rerun()
+                                        
+                                        # Ne fusson tovább automatikusan
+                                        st.stop()
+                                    else:
+                                        st.markdown('<div style="font-size: 12px;">❌ Hiba történt a letöltés során!</div>', unsafe_allow_html=True)
+                                        
+                                except Exception as e:
+                                    st.markdown(f'<div style="font-size: 12px;">❌ Hiba: {e}</div>', unsafe_allow_html=True)
+
 
 def search_youtube_tracks(query):
     """YouTube keresés implementáció"""
@@ -3024,8 +4085,15 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             st.error(f"Track info nem dict típusú: {type(track_info)}")
             return False
         
-        # Letöltési könyvtár létrehozása
-        download_dir = Path("audio_files") / category
+        # Kategória alapján letöltési könyvtár meghatározása
+        category_mapping = {
+            "magyar_zenekarok": "audio_files/magyar_zenekarok",
+            "nemzetkozi_zenekarok": "audio_files/nemzetkozi_zenekarok", 
+            "komolyzene": "audio_files/komolyzene",
+            "one_hit_wonders": "audio_files/one_hit_wonders"
+        }
+        
+        download_dir = Path(category_mapping.get(category, "audio_files"))
         download_dir.mkdir(parents=True, exist_ok=True)
         
         # yt-dlp konfiguráció
@@ -3047,38 +4115,125 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             if not url:
                 st.error("Nincs érvényes URL a track_info-ban")
                 return False
+            
+            try:
+                # Információk lekérése
+                info = ydl.extract_info(url, download=False)
+                if not info:
+                    st.error("Nem sikerült lekérni a videó információit")
+                    return False
                 
-            info = ydl.extract_info(url, download=True)
-            audio_file = ydl.prepare_filename(info)
-            audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+                # Letöltés
+                ydl.download([url])
+                
+                # Fájlnév meghatározása
+                audio_file = ydl.prepare_filename(info)
+                audio_file = audio_file.replace('.webm', '.mp3').replace('.m4a', '.mp3')
+                
+                # Ellenőrizzük, hogy a fájl létezik-e
+                if not os.path.exists(audio_file):
+                    # Próbáljuk meg megtalálni a fájlt a könyvtárban
+                    import glob
+                    possible_files = glob.glob(str(download_dir / "*.mp3"))
+                    if possible_files:
+                        audio_file = possible_files[0]  # Az első MP3 fájlt használjuk
+                    else:
+                        st.error("❌ A letöltés sikertelen - fájl nem található")
+                        return False
+                
+                # Ellenőrizzük a fájl méretét
+                if os.path.getsize(audio_file) == 0:
+                    st.error("❌ A letöltött fájl üres")
+                    return False
+                    
+                st.success(f"✅ Sikeres letöltés: {track_info.get('title', 'Ismeretlen track')}")
+                
+            except Exception as e:
+                st.error(f"❌ Letöltési hiba: {str(e)}")
+                return False
             
             # 2 perces rész kivágása FFmpeg-gel
             try:
                 import subprocess
-                output_file = str(download_dir / f"{track_info.get('title', 'track')[:30]}_2min.mp3")
+                import re
+                import time
                 
-                # FFmpeg paranccsal 2 perc kivágása
-                cmd = [
-                    'ffmpeg', '-i', audio_file, 
-                    '-t', '120',  # 2 perc = 120 másodperc
-                    '-c', 'copy',  # Kódolás nélkül (gyors)
-                    '-y',  # Felülírás
-                    output_file
+                # Ellenőrizzük, hogy a fájl létezik-e és nem üres
+                if not os.path.exists(audio_file):
+                    st.error("❌ A letöltött fájl nem található!")
+                    return False
+                
+                if os.path.getsize(audio_file) == 0:
+                    st.error("❌ A letöltött fájl üres!")
+                    return False
+                
+                # Fájl létezik és nem üres, folytathatjuk a vágást
+                # Biztonságos fájlnév létrehozása - "Előadó - Szám cím" formátum
+                artist = track_info.get('artist', 'Unknown Artist')
+                title = track_info.get('title', 'Unknown Title')
+                
+                # Biztonságos fájlnév létrehozása
+                safe_artist = re.sub(r'[^\w\s-]', '', artist)
+                safe_title = re.sub(r'[^\w\s-]', '', title)
+                safe_artist = re.sub(r'[-\s]+', '_', safe_artist)
+                safe_title = re.sub(r'[-\s]+', '_', safe_title)
+                
+                # "Előadó - Szám cím" formátum
+                output_filename = f"{safe_artist} - {safe_title}.mp3"
+                output_file = str(download_dir / output_filename)
+                
+                # FFmpeg paranccsal 2 perc kivágása - továbbfejlesztett verzió
+                # Először ellenőrizzük a bemeneti fájl hosszát
+                probe_cmd = [
+                    'ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', 
+                    '-of', 'csv=p=0', audio_file
                 ]
                 
-                result = subprocess.run(cmd, capture_output=True, text=True)
+                probe_result = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=30)
                 
-                if result.returncode == 0:
-                    # Eredeti fájl törlése, csak a 2 perces marad
-                    import os
-                    if os.path.exists(audio_file):
-                        os.remove(audio_file)
-                    audio_file = output_file
+                if probe_result.returncode == 0 and probe_result.stdout.strip():
+                    try:
+                        duration = float(probe_result.stdout.strip())
+                        if duration < 120:
+                            # Ha a fájl rövidebb mint 2 perc, nem vágunk
+                            st.info(f"⚠️ A fájl rövidebb mint 2 perc ({duration:.1f}s), teljes fájl használata")
+                        else:
+                            # FFmpeg paranccsal 2 perc kivágása
+                            cmd = [
+                                'ffmpeg', '-i', audio_file, 
+                                '-t', '120',  # 2 perc = 120 másodperc
+                                '-acodec', 'libmp3lame',  # MP3 kódolás
+                                '-ab', '192k',  # 192 kbps bitrate
+                                '-ar', '44100',  # 44.1 kHz sample rate
+                                '-y',  # Felülírás
+                                output_file
+                            ]
+                            
+                            result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+                            
+                            if result.returncode == 0 and os.path.exists(output_file):
+                                # Ellenőrizzük a kimeneti fájl méretét
+                                if os.path.getsize(output_file) > 0:
+                                    # Eredeti fájl törlése, csak a 2 perces marad
+                                    if os.path.exists(audio_file):
+                                        os.remove(audio_file)
+                                    audio_file = output_file
+                                    st.success("✅ 2 perces rész sikeresen kivágva!")
+                                else:
+                                    st.warning("⚠️ A kivágott fájl üres, teljes fájl használata")
+                            else:
+                                st.warning(f"⚠️ FFmpeg hiba: {result.stderr[:200]}..., teljes fájl használata")
+                    except ValueError:
+                        st.warning("⚠️ Nem sikerült meghatározni a fájl hosszát, teljes fájl használata")
                 else:
-                    st.warning("FFmpeg hiba, teljes fájl használata")
+                    st.warning("⚠️ Nem sikerült elemezni a fájlt, teljes fájl használata")
                     
+            except subprocess.TimeoutExpired:
+                st.warning("⚠️ FFmpeg időtúllépés, teljes fájl használata")
+            except FileNotFoundError:
+                st.warning("⚠️ FFmpeg nem található, teljes fájl használata")
             except Exception as e:
-                st.warning(f"FFmpeg hiba: {e}, teljes fájl használata")
+                st.warning(f"⚠️ FFmpeg hiba: {str(e)[:100]}..., teljes fájl használata")
         
         # Quiz kérdés generálása
         question = generate_quiz_question(track_info, audio_file, category, custom_options)
@@ -3138,23 +4293,26 @@ def generate_quiz_question(track_info, audio_file, category, custom_options=None
             ]
         
         # Kérdés objektum
+        # Csak a fájlnevet tároljuk, nem a teljes elérési utat
+        audio_filename = os.path.basename(audio_file) if audio_file else None
         question = {
             'question': question_text,
             'options': options,
             'correct': 0,
             'explanation': f"{correct_answer} - {category.replace('_', ' ').title()}",
-            'audio_file': audio_file,
+            'audio_file': audio_filename,
             'topic': category
         }
         return question
     except Exception as e:
         # Fallback kérdés
+        audio_filename = os.path.basename(audio_file) if audio_file else None
         return {
             'question': 'Ki az előadó?',
             'options': ['Ismeretlen előadó', 'Előadó 1', 'Előadó 2', 'Szerkeszthető opció'],
             'correct': 0,
             'explanation': 'Ismeretlen dal',
-            'audio_file': audio_file,
+            'audio_file': audio_filename,
             'topic': category
         }
 
