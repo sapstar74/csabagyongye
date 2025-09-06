@@ -1093,7 +1093,11 @@ def show_audio_track_management_page():
                     
                     # Song title meghatározása
                     song_title = "Ismeretlen szám"
-                    if matching_track and 'name' in matching_track:
+                    
+                    # Először nézzük meg, hogy van-e mentett song_title
+                    if 'song_title' in question and question['song_title']:
+                        song_title = question['song_title']
+                    elif matching_track and 'name' in matching_track:
                         song_title = matching_track['name']
                     elif 'audio_file' in question:
                         audio_file = question['audio_file']
@@ -1314,6 +1318,14 @@ def show_audio_track_management_page():
                                 key=f"question_edit_{i}"
                             )
                             
+                            # Szám címe szerkesztése
+                            current_song_title = row['Szám címe']
+                            song_title = st.text_input(
+                                "Szám címe:",
+                                value=current_song_title,
+                                key=f"song_title_edit_{i}"
+                            )
+                            
                             # Opciók szerkesztése
                             st.markdown("**Válaszopciók:**")
                             col1, col2 = st.columns(2)
@@ -1354,7 +1366,8 @@ def show_audio_track_management_page():
                                         updated_question = {
                                             "question": question_text,
                                             "options": options,
-                                            "correct": options.index(correct_answer) if correct_answer in options else 0
+                                            "correct": options.index(correct_answer) if correct_answer in options else 0,
+                                            "song_title": song_title
                                         }
                                         
                                         # További mezők megtartása
