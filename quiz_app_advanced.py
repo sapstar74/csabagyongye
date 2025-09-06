@@ -21,7 +21,7 @@ from topics.dramak import DRAMAK_QUESTIONS
 from topics.sport_logok import SPORT_LOGOK_QUESTIONS
 from topics.zaszlok_all_questions import ZASZLOK_QUESTIONS_ALL
 from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_UJ
-from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
+from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
 from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
@@ -4213,7 +4213,7 @@ def add_question_to_category(question, category):
             # Fájlba mentés
             save_questions_to_file(MAGYAR_ZENEKAROK_QUESTIONS_UJ, "topics/magyar_zenekarok_uj.py", "QUESTIONS")
         elif category == "nemzetkozi_zenekarok":
-            from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import NEMZETKOZI_ZENEKAROK_QUESTIONS
+            from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
             NEMZETKOZI_ZENEKAROK_QUESTIONS.append(question)
             # Fájlba mentés
             save_questions_to_file(NEMZETKOZI_ZENEKAROK_QUESTIONS, "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py", "NEMZETKOZI_ZENEKAROK_QUESTIONS")
