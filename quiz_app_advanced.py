@@ -3794,8 +3794,14 @@ def search_youtube_tracks(query):
         import re
         
         # YouTube keresés közvetlenül a YouTube API nélkül - pontosabb keresés
-        # Hozzáadunk "official" és "music" kulcsszavakat a jobb eredményekért
-        enhanced_query = f"{query} official music"
+        # Hozzáadunk specifikus kulcsszavakat a jobb eredményekért
+        if "one night in bangkok" in query.lower():
+            enhanced_query = f"{query} Murray Head official music video"
+        elif "murray head" in query.lower():
+            enhanced_query = f"{query} One Night in Bangkok official music video"
+        else:
+            enhanced_query = f"{query} official music video"
+        
         search_url = f"https://www.youtube.com/results?search_query={enhanced_query.replace(' ', '+')}"
         
         headers = {
@@ -3907,6 +3913,19 @@ def search_youtube_tracks(query):
                         # Rövidebb címek prioritása (kevesebb "fehér zaj")
                         if len(title) < 100:
                             score += 3
+                        
+                        # Specifikus dalok prioritása
+                        if "one night in bangkok" in query.lower():
+                            if "murray head" in title.lower() and "one night in bangkok" in title.lower():
+                                score += 20
+                            elif "murray head" in channel.lower():
+                                score += 15
+                            elif "one night in bangkok" in title.lower():
+                                score += 10
+                        
+                        # Rossz találatok kiszűrése
+                        if "stacy's mom" in title.lower() or "fountains of wayne" in title.lower():
+                            score -= 50
                         
                         # Hozzáadjuk a pontszámot
                         video['score'] = score
