@@ -566,7 +566,6 @@ def start_quiz():
     all_questions = []
     total_selected_questions = 0
     invalid_questions = 0
-    debug_invalid = []
     
     # Minden témakör kezelése egyedi sliders alapján
     for topic in st.session_state.selected_topics:
@@ -592,13 +591,11 @@ def start_quiz():
                     if question.get("question_type") == "text_input":
                         if "correct_answer" not in question:
                             invalid_questions += 1
-                            debug_invalid.append((topic, idx, question))
                             continue
                     else:
                         # Többválasztós kérdések esetén options és correct mezők szükségesek
                         if "options" not in question or "correct" not in question:
                             invalid_questions += 1
-                            debug_invalid.append((topic, idx, question))
                             continue
                     question['topic'] = topic
                     
@@ -641,11 +638,6 @@ def start_quiz():
                         else:
                             question['original_index'] = idx
                     all_questions.append(question)
-    print(f"[DEBUG] Összes kiválasztott kérdés (szűrés előtt): {total_selected_questions}")
-    if invalid_questions > 0:
-        print(f"[DEBUG] {invalid_questions} érvénytelen kérdés kihagyva:")
-        for topic, idx, q in debug_invalid:
-            print(f"  - {topic} [{idx}]: {q.get('question', 'N/A')}")
     
     if not all_questions:
         st.error("Nem található érvényes kérdés a kiválasztott témakörökben!")
@@ -660,11 +652,10 @@ def start_quiz():
     if final_question_count > 0 and len(all_questions) > final_question_count:
         all_questions = all_questions[:final_question_count]
     
-    # Debug információ
     if final_question_count > 0:
-        st.info(f"Kiválasztott kérdések: {len(all_questions)} / {final_question_count} (összesen: {total_selected_questions})")
+        st.info(f"Kiválasztott kérdések: {len(all_questions)} / {final_question_count}")
     else:
-        st.info(f"Kiválasztott kérdések: {len(all_questions)} (összesen: {total_selected_questions})")
+        st.info(f"Kiválasztott kérdések: {len(all_questions)}")
     if invalid_questions > 0:
         st.warning(f"{invalid_questions} érvénytelen kérdés kihagyva")
     
@@ -887,7 +878,7 @@ def load_questions_from_file(file_path):
                     if questions:
                         return questions
         except Exception as import_error:
-            st.debug(f"Import hiba: {import_error}")
+            pass
         
         # 2. Ha az import nem sikerült, regex-szel próbáljuk
         # Fájl tartalmának beolvasása
@@ -1254,17 +1245,6 @@ def show_audio_track_management_page():
                                 st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
                             else:
                                 st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
-                                # Debug információk
-                                st.info(f"🔍 Debug: Kérdés index: {selected_data.get('question_index', 'N/A')}")
-                                st.info(f"🔍 Debug: Matching track: {selected_data.get('matching_track', 'Nincs')}")
-                                if selected_data.get('matching_track'):
-                                    st.info(f"🔍 Debug: Track név: {selected_data['matching_track'].get('name', 'N/A')}")
-                                    st.info(f"🔍 Debug: Audio path: {selected_data['matching_track'].get('audio_path', 'Nincs')}")
-                                
-                                # Debug: összes track név listázása
-                                st.info("🔍 Debug: Összes track név:")
-                                for i, track in enumerate(category_info['tracks'][:10]):  # Csak az első 10
-                                    st.info(f"  {i}: {track['name']}")
                 
                 # DataFrame megjelenítés már megtörtént a style_dataframe függvényben
                 
@@ -1398,6 +1378,10 @@ def show_audio_track_management_page():
                                             for key in cache_keys_to_delete:
                                                 del st.session_state[key]
                                             
+                                            # Módosított kérdések cache törlése
+                                            if 'modified_questions' in st.session_state:
+                                                del st.session_state['modified_questions']
+                                            
                                             # Git műveletek
                                             try:
                                                 import subprocess
@@ -1406,6 +1390,8 @@ def show_audio_track_management_page():
                                                 subprocess.run(['git', 'push'], check=True)
                                                 st.success("✅ Változások GitHub-ra feltöltve!")
                                                 st.info("🔄 Oldal frissítése...")
+                                                import time
+                                                time.sleep(0.5)  # Kis késleltetés a cache törléshez
                                                 st.rerun()
                                             except subprocess.CalledProcessError as e:
                                                 st.error(f"❌ Git hiba: {e}")
