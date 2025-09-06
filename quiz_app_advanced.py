@@ -1040,10 +1040,14 @@ def show_audio_track_management_page():
                 st.rerun()
             
             # Cache ellenőrzése
-            if cache_key in st.session_state:
+            force_refresh = st.session_state.get('force_refresh', False)
+            if cache_key in st.session_state and not force_refresh:
                 table_data = st.session_state[cache_key]
                 st.info(f"📊 Cache betöltve: {len(table_data)} sor")
             else:
+                if force_refresh:
+                    st.info("🔄 Kényszerített frissítés...")
+                    st.session_state['force_refresh'] = False
                 st.info("🔄 Új adatok betöltése...")
                 
                 # Kérdések betöltése
@@ -1368,19 +1372,20 @@ def show_audio_track_management_page():
                                         if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                             st.success("✅ Kérdés sikeresen mentve!")
                                             
-                                            # Cache törlése a táblázat frissítéséhez
-                                            cache_key = f"audio_track_data_{selected_category}"
-                                            if cache_key in st.session_state:
-                                                del st.session_state[cache_key]
+                                            # Teljes cache törlése a táblázat frissítéséhez
+                                            cache_keys_to_delete = []
+                                            for key in st.session_state.keys():
+                                                if (key.startswith("audio_track_data_") or 
+                                                    key.startswith("duration_") or 
+                                                    key.startswith("track_cache_") or
+                                                    key == "modified_questions"):
+                                                    cache_keys_to_delete.append(key)
                                             
-                                            # További cache kulcsok törlése
-                                            cache_keys_to_delete = [key for key in st.session_state.keys() if key.startswith("audio_track_data_") or key.startswith("duration_")]
                                             for key in cache_keys_to_delete:
                                                 del st.session_state[key]
                                             
-                                            # Módosított kérdések cache törlése
-                                            if 'modified_questions' in st.session_state:
-                                                del st.session_state['modified_questions']
+                                            # Cache invalidation flag beállítása
+                                            st.session_state['force_refresh'] = True
                                             
                                             # Git műveletek
                                             try:
