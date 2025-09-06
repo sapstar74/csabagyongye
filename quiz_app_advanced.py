@@ -1393,6 +1393,11 @@ def show_audio_track_management_page():
                                             if cache_key in st.session_state:
                                                 del st.session_state[cache_key]
                                             
+                                            # További cache kulcsok törlése
+                                            cache_keys_to_delete = [key for key in st.session_state.keys() if key.startswith("audio_track_data_") or key.startswith("duration_")]
+                                            for key in cache_keys_to_delete:
+                                                del st.session_state[key]
+                                            
                                             # Git műveletek
                                             try:
                                                 import subprocess
@@ -1400,6 +1405,7 @@ def show_audio_track_management_page():
                                                 subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
                                                 subprocess.run(['git', 'push'], check=True)
                                                 st.success("✅ Változások GitHub-ra feltöltve!")
+                                                st.info("🔄 Oldal frissítése...")
                                                 st.rerun()
                                             except subprocess.CalledProcessError as e:
                                                 st.error(f"❌ Git hiba: {e}")
