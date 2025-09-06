@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-08-26 10:41:10
+# Generated on: 2025-09-06 20:49:20
 
-NEMZETKOZI_ZENEKAROK_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -923,6 +923,19 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Alphaville - Nemzetkozi Zenekarok",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Depeche Mode",
+            "Tears for Fears",
+            "Spandau Ballet",
+            "New Order",
+        ],
+        "correct": 0,
+        "explanation": "Depeche Mode - Nemzetkozi Zenekarok",
+        "audio_file": "Unknown_Artist_Depeche_Mode_Policy_of_Truth.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
