@@ -1132,12 +1132,35 @@ def show_audio_track_management_page():
                     if 'song_title' in question and question['song_title']:
                         song_title = question['song_title']
                     elif matching_track and 'name' in matching_track:
-                        song_title = matching_track['name']
+                        # Ha a track name tartalmaz fájlnév részeket, tisztítsuk meg
+                        track_name = matching_track['name']
+                        if '_' in track_name and any(part.isdigit() for part in track_name.split('_')):
+                            # Ha van sorszám és előadó a névben, csak a szám címet vegyük ki
+                            parts = track_name.split('_')
+                            # Keressük meg az utolsó részt ami nem sorszám és nem előadó
+                            for j in range(len(parts)-1, -1, -1):
+                                if not parts[j].isdigit() and parts[j].lower() not in [artist.lower().replace(' ', '_'), 'unknown_artist']:
+                                    song_title = '_'.join(parts[j:]).replace('_', ' ')
+                                    break
+                            else:
+                                song_title = track_name.replace('_', ' ')
+                        else:
+                            song_title = track_name.replace('_', ' ')
                     elif 'audio_file' in question:
                         audio_file = question['audio_file']
                         filename = os.path.basename(audio_file)
                         filename_no_ext = os.path.splitext(filename)[0]
-                        song_title = filename_no_ext
+                        # Fájlnév tisztítása
+                        if '_' in filename_no_ext and any(part.isdigit() for part in filename_no_ext.split('_')):
+                            parts = filename_no_ext.split('_')
+                            for j in range(len(parts)-1, -1, -1):
+                                if not parts[j].isdigit() and parts[j].lower() not in [artist.lower().replace(' ', '_'), 'unknown_artist']:
+                                    song_title = '_'.join(parts[j:]).replace('_', ' ')
+                                    break
+                            else:
+                                song_title = filename_no_ext.replace('_', ' ')
+                        else:
+                            song_title = filename_no_ext.replace('_', ' ')
                     
                     # Duration meghatározása
                     duration_str = "N/A"
@@ -1443,10 +1466,10 @@ def show_audio_track_management_page():
                                                         # Szóközök megtartása, csak speciális karakterek eltávolítása
                                                         safe_song_title = safe_song_title.replace('  ', ' ')  # Dupla szóközök egyszerűsítése
                                                         
-                                                        # Új fájlnév: sorszám Előadó Szám címe.mp3
+                                                        # Új fájlnév: sorszám. Előadó - Szám címe.mp3
                                                         artist_safe = "".join(c for c in artist if c.isalnum() or c in (' ', '-')).rstrip()
                                                         artist_safe = artist_safe.replace('  ', ' ')  # Dupla szóközök egyszerűsítése
-                                                        new_filename = f"{i+1:02d} {artist_safe} {safe_song_title}.mp3"
+                                                        new_filename = f"{i+1:02d}. {artist_safe} - {safe_song_title}.mp3"
                                                         new_audio_path = os.path.join(os.path.dirname(old_audio_path), new_filename)
                                                         
                                                         # Fájl átnevezése
