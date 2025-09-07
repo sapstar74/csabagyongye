@@ -1034,6 +1034,7 @@ def show_audio_track_management_page():
             if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True, type=button_type):
                 selected_category = key
                 st.session_state.selected_category = key
+                st.rerun()
     
     # Ha van kiválasztott kategória a session state-ben, használjuk azt
     if selected_category is None:
