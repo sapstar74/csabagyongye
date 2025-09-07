@@ -1115,8 +1115,8 @@ def show_audio_track_management_page():
                 import os
                 track_cache = {}
                 for track in category_info['tracks']:
-                    track_name_no_ext = os.path.splitext(track['name'])[0]
-                    track_cache[track_name_no_ext] = track
+                    # A track['name'] már kiterjesztés nélküli, nem kell újra feldolgozni
+                    track_cache[track['name']] = track
                 
                 st.info(f"🎵 Track cache létrehozva: {len(track_cache)} track")
                 
