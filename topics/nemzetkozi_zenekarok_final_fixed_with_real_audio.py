@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 19:04:53
+# Generated on: 2025-09-07 22:24:33
 
 QUESTIONS = [
     {
@@ -923,6 +923,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Alphaville - Nemzetkozi Zenekarok",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "song_title": "Here We Go",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -936,7 +937,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Depeche Mode - Nemzetkozi Zenekarok",
         "audio_file": "72. Depeche Mode - Policy Of Truth.mp3",
-        "song_title": "Policy Of Truth",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
