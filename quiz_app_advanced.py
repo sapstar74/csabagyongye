@@ -1427,8 +1427,19 @@ def show_audio_track_management_page():
                                                     
                                                     if old_audio_path and os.path.exists(old_audio_path):
                                                         # Új fájlnév generálása a szám címéből
-                                                        # Biztonságos fájlnév létrehozása
-                                                        safe_song_title = "".join(c for c in song_title if c.isalnum() or c in (' ', '-', '_')).rstrip()
+                                                        # Biztonságos fájlnév létrehozása - csak a tiszta szám címet használjuk
+                                                        clean_song_title = song_title
+                                                        # Ha a song_title tartalmaz fájlnév részeket, tisztítsuk meg
+                                                        if '_' in clean_song_title and any(part.isdigit() for part in clean_song_title.split('_')):
+                                                            # Ha van sorszám és előadó a névben, csak a szám címet vegyük ki
+                                                            parts = clean_song_title.split('_')
+                                                            # Keressük meg az utolsó részt ami nem sorszám és nem előadó
+                                                            for j in range(len(parts)-1, -1, -1):
+                                                                if not parts[j].isdigit() and parts[j].lower() not in [artist.lower().replace(' ', '_'), 'unknown_artist']:
+                                                                    clean_song_title = '_'.join(parts[j:])
+                                                                    break
+                                                        
+                                                        safe_song_title = "".join(c for c in clean_song_title if c.isalnum() or c in (' ', '-', '_')).rstrip()
                                                         safe_song_title = safe_song_title.replace(' ', '_')
                                                         
                                                         # Új fájlnév: sorszám_Előadó_Szám_címe.mp3
