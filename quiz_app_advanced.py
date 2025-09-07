@@ -1026,9 +1026,32 @@ def show_audio_track_management_page():
     for i, (key, title) in enumerate(category_options.items()):
         col_index = i % 3
         with cols[col_index]:
-            # Ha ez a kiválasztott kategória, piros gombot használunk
-            button_type = "primary" if key == current_selected else "secondary"
-            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True, type=button_type):
+            # Szín meghatározása
+            is_selected = key == current_selected
+            button_color = "#ff4b4b" if is_selected else "#f0f2f6"
+            text_color = "white" if is_selected else "#262730"
+            
+            # Kattintható gomb HTML-lel
+            button_html = f"""
+            <div style="
+                background-color: {button_color};
+                color: {text_color};
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                cursor: pointer;
+                margin: 5px 0;
+                border: 2px solid {button_color};
+                font-weight: bold;
+            ">
+                📂 {title}
+            </div>
+            """
+            
+            st.markdown(button_html, unsafe_allow_html=True)
+            
+            # Gomb kattintás kezelése
+            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True):
                 selected_category = key
                 st.session_state.selected_category = key
     
