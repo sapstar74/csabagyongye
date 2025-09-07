@@ -1,7 +1,7 @@
 # Auto-generated questions file
 # Generated on: 2025-09-07 19:19:23
 
-QUESTIONS = [
+KOMOLYZENE_QUESTIONS = [
     {
         "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
         "options": [
