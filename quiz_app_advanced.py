@@ -1439,12 +1439,14 @@ def show_audio_track_management_page():
                                                                     clean_song_title = '_'.join(parts[j:])
                                                                     break
                                                         
-                                                        safe_song_title = "".join(c for c in clean_song_title if c.isalnum() or c in (' ', '-', '_')).rstrip()
-                                                        safe_song_title = safe_song_title.replace(' ', '_')
+                                                        safe_song_title = "".join(c for c in clean_song_title if c.isalnum() or c in (' ', '-')).rstrip()
+                                                        # Szóközök megtartása, csak speciális karakterek eltávolítása
+                                                        safe_song_title = safe_song_title.replace('  ', ' ')  # Dupla szóközök egyszerűsítése
                                                         
-                                                        # Új fájlnév: sorszám_Előadó_Szám_címe.mp3
-                                                        artist_safe = "".join(c for c in artist if c.isalnum() or c in (' ', '-', '_')).rstrip().replace(' ', '_')
-                                                        new_filename = f"{i+1:02d}_{artist_safe}_{safe_song_title}.mp3"
+                                                        # Új fájlnév: sorszám Előadó Szám címe.mp3
+                                                        artist_safe = "".join(c for c in artist if c.isalnum() or c in (' ', '-')).rstrip()
+                                                        artist_safe = artist_safe.replace('  ', ' ')  # Dupla szóközök egyszerűsítése
+                                                        new_filename = f"{i+1:02d} {artist_safe} {safe_song_title}.mp3"
                                                         new_audio_path = os.path.join(os.path.dirname(old_audio_path), new_filename)
                                                         
                                                         # Fájl átnevezése
