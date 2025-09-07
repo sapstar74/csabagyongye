@@ -1139,7 +1139,9 @@ def show_audio_track_management_page():
                     matching_track = None
                     if 'audio_file' in question:
                         question_audio_file = question['audio_file']
-                        question_audio_no_ext = os.path.splitext(question_audio_file)[0]
+                        # Ha teljes útvonal van, csak a fájlnév kiterjesztés nélküli részét vesszük
+                        question_audio_filename = os.path.basename(question_audio_file)
+                        question_audio_no_ext = os.path.splitext(question_audio_filename)[0]
                         matching_track = track_cache.get(question_audio_no_ext)
                     
                     # Song title meghatározása
