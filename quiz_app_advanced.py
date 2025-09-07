@@ -1034,6 +1034,19 @@ def show_audio_track_management_page():
             if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True, type=button_type):
                 selected_category = key
                 st.session_state.selected_category = key
+                
+                # Cache törlése kategória váltáskor
+                cache_keys_to_delete = []
+                for cache_key in st.session_state.keys():
+                    if (cache_key.startswith("simple_audio_data_") or 
+                        cache_key.startswith("audio_track_data_") or 
+                        cache_key.startswith("duration_") or 
+                        cache_key.startswith("track_cache_")):
+                        cache_keys_to_delete.append(cache_key)
+                
+                for cache_key in cache_keys_to_delete:
+                    del st.session_state[cache_key]
+                
                 st.rerun()
     
     # Ha van kiválasztott kategória a session state-ben, használjuk azt
