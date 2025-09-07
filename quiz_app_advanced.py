@@ -1480,8 +1480,10 @@ def show_audio_track_management_page():
                                                     old_audio_path = None
                                                     
                                                     # Régi fájl teljes útvonalának megkeresése
+                                                    old_audio_filename = os.path.basename(old_audio_file)
+                                                    old_audio_name = os.path.splitext(old_audio_filename)[0]
                                                     for track in category_info['tracks']:
-                                                        if track['name'] == os.path.splitext(old_audio_file)[0]:
+                                                        if track['name'] == old_audio_name:
                                                             old_audio_path = track['audio_path']
                                                             break
                                                     
