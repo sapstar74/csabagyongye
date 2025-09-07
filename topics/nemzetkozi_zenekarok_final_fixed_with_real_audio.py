@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:24:33
+# Generated on: 2025-09-07 22:28:52
 
 QUESTIONS = [
     {
@@ -918,7 +918,7 @@ QUESTIONS = [
             "Stakka Bo",
             "Ultravox",
             "New Order",
-            "A-ha",
+            "Yello",
         ],
         "correct": 0,
         "explanation": "Alphaville - Nemzetkozi Zenekarok",
