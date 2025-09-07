@@ -24,7 +24,7 @@ from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_U
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
-from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
+from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
@@ -4393,7 +4393,7 @@ def add_question_to_category(question, category):
             # Fájlba mentés
             save_questions_to_file(KOMPOLYZENE_QUESTIONS, "topics/komolyzene.py", "KOMPOLYZENE_QUESTIONS")
         elif category == "one_hit_wonders":
-            from topics.one_hit_wonders import ONE_HIT_WONDERS_QUESTIONS
+            from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
             ONE_HIT_WONDERS_QUESTIONS.append(question)
             # Fájlba mentés
             save_questions_to_file(ONE_HIT_WONDERS_QUESTIONS, "topics/one_hit_wonders.py", "ONE_HIT_WONDERS_QUESTIONS")
