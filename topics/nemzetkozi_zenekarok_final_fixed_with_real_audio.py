@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 12:33:31
+# Generated on: 2025-09-07 12:36:51
 
 QUESTIONS = [
     {
@@ -915,7 +915,7 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Alphaville",
+            "Stakka Bo",
             "Ultravox",
             "New Order",
             "A-ha",
