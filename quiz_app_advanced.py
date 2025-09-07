@@ -1152,12 +1152,20 @@ def show_audio_track_management_page():
                         # Ha a track name tartalmaz fájlnév részeket, tisztítsuk meg
                         track_name = matching_track['name']
                         
-                        # Új formátum kezelése: "72. Depeche Mode - Policy Of Truth"
+                        # Új formátum kezelése: "72. Depeche Mode - Policy Of Truth" vagy "45. Delibes - Delibes"
                         if '. ' in track_name and ' - ' in track_name:
                             # Formátum: "szám. Előadó - Szám címe"
                             parts = track_name.split(' - ', 1)
                             if len(parts) == 2:
                                 song_title = parts[1].strip()  # Csak a szám címet vesszük ki
+                                
+                                # Speciális eset: ha a szám címe ugyanaz, mint az előadó (pl. "45. Delibes - Delibes")
+                                # akkor csak az előadó nevet használjuk
+                                artist_part = parts[0].strip()
+                                if '. ' in artist_part:
+                                    artist_name = artist_part.split('. ', 1)[1].strip()
+                                    if song_title.lower() == artist_name.lower():
+                                        song_title = artist_name  # Csak az előadó nevet használjuk
                             else:
                                 song_title = track_name
                         # Régi formátum kezelése: "72_Depeche_Mode_Policy_Of_Truth"
