@@ -1043,15 +1043,15 @@ def show_audio_track_management_page():
                 margin: 5px 0;
                 border: 2px solid {button_color};
                 font-weight: bold;
-            ">
+            " onclick="window.location.href='?cat={key}'">
                 📂 {title}
             </div>
             """
             
             st.markdown(button_html, unsafe_allow_html=True)
             
-            # Gomb kattintás kezelése
-            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True):
+            # URL paraméter ellenőrzése
+            if st.query_params.get("cat") == key:
                 selected_category = key
                 st.session_state.selected_category = key
     
