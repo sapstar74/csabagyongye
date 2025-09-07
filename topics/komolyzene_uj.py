@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 19:41:54
+# Generated on: 2025-09-07 21:14:12
 
-KOMOLYZENE_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
         "options": [
@@ -572,7 +572,6 @@ KOMOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Rossini: YouTube klasszikus",
         "audio_file": "44. Rossini - Rossini.mp3",
-        "song_title": "Rossini",
         "topic": "komolyzene",
     },
     {
@@ -586,6 +585,7 @@ KOMOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Delibes: YouTube klasszikus",
         "audio_file": "45. Delibes - Delibes.mp3",
+        "song_title": "Delibes",
         "topic": "komolyzene",
     },
 ]
