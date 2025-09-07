@@ -1467,8 +1467,8 @@ def show_audio_track_management_page():
                                         if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                             st.success("✅ Kérdés sikeresen mentve!")
                                             
-                                            # Audio fájl átnevezése, ha a szám címe változott
-                                            if 'audio_file' in current_question and song_title != current_song_title:
+                                            # Audio fájl átnevezése, ha a szám címe változott VAGY ha a fájlnév nem illeszkedik a várható formátumra
+                                            if 'audio_file' in current_question and (song_title != current_song_title or not os.path.basename(current_question['audio_file']).startswith(f"{i+1:02d}.")):
                                                 try:
                                                     import os
                                                     import shutil
