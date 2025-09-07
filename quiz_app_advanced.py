@@ -1012,17 +1012,36 @@ def show_audio_track_management_page():
     # Track-ek betöltése kategóriánként
     tracks_by_category = get_audio_tracks_by_category()
     
-    # Kategória választó
+    # Kategória választó - kattintható gombokkal
+    st.markdown("### 📁 Kategória választás")
     category_options = {key: info["title"] for key, info in tracks_by_category.items()}
-    selected_category = st.selectbox(
-        "Válassz kategóriát:",
-        list(category_options.keys()),
-        format_func=lambda x: category_options[x]
-    )
+    
+    # Kategória gombok 3 oszlopban
+    cols = st.columns(3)
+    selected_category = None
+    
+    for i, (key, title) in enumerate(category_options.items()):
+        col_index = i % 3
+        with cols[col_index]:
+            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True):
+                selected_category = key
+                st.session_state.selected_category = key
+    
+    # Ha van kiválasztott kategória a session state-ben, használjuk azt
+    if selected_category is None:
+        selected_category = st.session_state.get('selected_category', list(category_options.keys())[0])
     
     if selected_category:
         category_info = tracks_by_category[selected_category]
         st.markdown(f"### {category_info['title']}")
+        
+        # Lista v. Szerkesztés választó közvetlenül a kategória alatt
+        edit_mode = st.radio(
+            "Nézet mód:",
+            ["📋 Lista nézet", "✏️ Szerkesztés"],
+            horizontal=True,
+            key="edit_mode_radio"
+        )
         
         if not category_info['tracks']:
             st.info("📭 Nincsenek track-ek ebben a kategóriában.")
@@ -1082,6 +1101,10 @@ def show_audio_track_management_page():
                 # EGYSZERŰ TÁBLÁZAT LÉTREHOZÁS
                 table_data = []
                 st.info(f"🔄 Táblázat létrehozása {len(questions)} kérdésből...")
+                
+                # Progress bar egyszerű százalékkal
+                progress_bar = st.progress(0)
+                progress_text = st.empty()
                 
                 for i, question in enumerate(questions):
                     # Alapvető adatok kinyerése
@@ -1145,9 +1168,10 @@ def show_audio_track_management_page():
                         "matching_track": matching_track
                     })
                     
-                    # Progress jelzés minden 10. kérdésnél
-                    if (i + 1) % 10 == 0:
-                        st.info(f"📊 Feldolgozott kérdések: {i + 1}/{len(questions)}")
+                    # Progress frissítése
+                    progress = (i + 1) / len(questions)
+                    progress_bar.progress(progress)
+                    progress_text.text(f"Feldolgozás: {int(progress * 100)}% ({i + 1}/{len(questions)})")
                 
                 # Cache mentése
                 st.session_state[cache_key] = table_data
@@ -1272,12 +1296,7 @@ def show_audio_track_management_page():
                 if 'modified_questions' not in st.session_state:
                     st.session_state.modified_questions = set()
                 
-                # Szerkesztési mód választó
-                edit_mode = st.radio(
-                    "Szerkesztési mód:",
-                    ["📋 Lista nézet", "✏️ Szerkesztés"],
-                    horizontal=True
-                )
+                # Szerkesztési mód már be van állítva fentebb
                 
                 # Módosított kérdések megjelenítése
                 if st.session_state.modified_questions:
