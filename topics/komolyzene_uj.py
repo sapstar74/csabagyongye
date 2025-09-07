@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:20:35
+# Generated on: 2025-09-07 22:23:10
 
 QUESTIONS = [
     {
@@ -545,8 +545,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi: Négy évszak (YouTube)",
-        "audio_file": "42. Vivaldi - Vivaldi.mp3",
-        "song_title": "Vivaldi",
+        "audio_file": "42. Vivaldi - Négy évszak - F-dúr hegedűverseny.mp3",
+        "song_title": "Négy évszak - F-dúr hegedűverseny",
         "topic": "komolyzene",
     },
     {
