@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-06 20:31:27
+# Generated on: 2025-09-07 23:32:18
 
-ONE_HIT_WONDERS_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó a 'Teenage Dirtbag' című dalban?",
         "options": [
@@ -772,6 +772,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
         "correct": 0,
         "explanation": "Murray Head - One Hit Wonders",
         "audio_file": "Unknown_Artist_Murray_Head_One_Night_In_Ban.mp3",
+        "song_title": "One Night In Bangkok",
         "topic": "one_hit_wonders",
     },
 ]
