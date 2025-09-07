@@ -6,7 +6,7 @@ Népszerű festmények és festők
 
 FESTMENY_QUESTIONS = [
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Mona Lisa" és válaszd ki a festő nevét:',
         'options': ['Pablo Picasso', 'Marc Chagall', 'John Constable', 'Leonardo da Vinci'],
         'correct': 3,
         'explanation': 'Mona Lisa - Leonardo da Vinci (1503-1519)',
@@ -14,7 +14,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Starry Night" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Leonardo da Vinci', 'Raphael', 'Sandro Botticelli'],
         'correct': 0,
         'explanation': 'The Starry Night - Vincent van Gogh (1889)',
@@ -22,7 +22,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Scream" és válaszd ki a festő nevét:',
         'options': ['Andy Warhol', 'Edvard Munch', 'Claude Monet', 'Johannes Vermeer'],
         'correct': 1,
         'explanation': 'The Scream - Edvard Munch (1893)',
@@ -30,7 +30,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Persistence of Memory" és válaszd ki a festő nevét:',
         'options': ['Claude Monet', "Georgia O'Keeffe", 'Frida Kahlo', 'Salvador Dalí'],
         'correct': 3,
         'explanation': 'The Persistence of Memory - Salvador Dalí (1931)',
@@ -38,7 +38,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Girl with a Pearl Earring" és válaszd ki a festő nevét:',
         'options': ['Pierre-Auguste Renoir', 'Raphael', 'Johannes Vermeer', 'Sandro Botticelli'],
         'correct': 2,
         'explanation': 'Girl with a Pearl Earring - Johannes Vermeer (1665)',
@@ -46,7 +46,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Birth of Venus" és válaszd ki a festő nevét:',
         'options': ['Eugène Delacroix', 'Sandro Botticelli', 'Wassily Kandinsky', 'Édouard Manet'],
         'correct': 1,
         'explanation': 'The Birth of Venus - Sandro Botticelli (1485)',
@@ -54,7 +54,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Guernica" és válaszd ki a festő nevét:',
         'options': ['Pablo Picasso', 'Hieronymus Bosch', 'Vincent van Gogh', 'Frida Kahlo'],
         'correct': 0,
         'explanation': 'Guernica - Pablo Picasso (1937)',
@@ -62,7 +62,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Night Watch" és válaszd ki a festő nevét:',
         'options': ['Rembrandt', 'Marc Chagall', 'Hieronymus Bosch', 'Georges Seurat'],
         'correct': 0,
         'explanation': 'The Night Watch - Rembrandt (1642)',
@@ -70,7 +70,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Water Lilies" és válaszd ki a festő nevét:',
         'options': ['Gustav Klimt', 'Claude Monet', 'Edvard Munch', 'John Constable'],
         'correct': 1,
         'explanation': 'Water Lilies - Claude Monet (1916)',
@@ -78,7 +78,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Kiss" és válaszd ki a festő nevét:',
         'options': ['Grant Wood', 'Jackson Pollock', 'Gustav Klimt', 'Rembrandt'],
         'correct': 2,
         'explanation': 'The Kiss - Gustav Klimt (1908)',
@@ -86,7 +86,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Self-Portrait with Bandaged Ear" és válaszd ki a festő nevét:',
         'options': ['Pierre-Auguste Renoir', 'John Constable', 'Vincent van Gogh', 'René Magritte'],
         'correct': 2,
         'explanation': 'Self-Portrait with Bandaged Ear - Vincent van Gogh (1889)',
@@ -94,7 +94,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Last Supper" és válaszd ki a festő nevét:',
         'options': ['Pablo Picasso', 'Raphael', 'Hieronymus Bosch', 'Leonardo da Vinci'],
         'correct': 3,
         'explanation': 'The Last Supper - Leonardo da Vinci (1495-1498)',
@@ -102,7 +102,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Garden of Earthly Delights" és válaszd ki a festő nevét:',
         'options': ['Rembrandt', 'Jackson Pollock', 'Hieronymus Bosch', 'René Magritte'],
         'correct': 2,
         'explanation': 'The Garden of Earthly Delights - Hieronymus Bosch (1503-1515)',
@@ -118,7 +118,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Arnolfini Portrait" és válaszd ki a festő nevét:',
         'options': ['Edvard Munch', 'Jan van Eyck', 'Sandro Botticelli', 'Eugène Delacroix'],
         'correct': 1,
         'explanation': 'The Arnolfini Portrait - Jan van Eyck (1434)',
@@ -126,7 +126,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Creation of Adam" és válaszd ki a festő nevét:',
         'options': ['Michelangelo', 'Pablo Picasso', 'Pierre-Auguste Renoir', 'Raphael'],
         'correct': 0,
         'explanation': 'The Creation of Adam - Michelangelo (1512)',
@@ -134,7 +134,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The School of Athens" és válaszd ki a festő nevét:',
         'options': ['Claude Monet', 'Michelangelo', 'Raphael', 'Auguste Rodin'],
         'correct': 2,
         'explanation': 'The School of Athens - Raphael (1509-1511)',
@@ -142,7 +142,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Impression, Sunrise" és válaszd ki a festő nevét:',
         'options': ['Claude Monet', 'Edgar Degas', 'Edvard Munch', 'Pierre-Auguste Renoir'],
         'correct': 0,
         'explanation': 'Impression, Sunrise - Claude Monet (1872)',
@@ -150,7 +150,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Son of Man" és válaszd ki a festő nevét:',
         'options': ['Edvard Munch', 'Katsushika Hokusai', 'Paul Cézanne', 'René Magritte'],
         'correct': 3,
         'explanation': 'The Son of Man - René Magritte (1964)',
@@ -158,7 +158,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "American Gothic" és válaszd ki a festő nevét:',
         'options': ['Johannes Vermeer', 'Grant Wood', 'Andy Warhol', 'Jan van Eyck'],
         'correct': 1,
         'explanation': 'American Gothic - Grant Wood (1930)',
@@ -166,7 +166,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Great Wave off Kanagawa" és válaszd ki a festő nevét:',
         'options': ['Frida Kahlo', 'Katsushika Hokusai', 'Rembrandt', 'Wassily Kandinsky'],
         'correct': 1,
         'explanation': 'The Great Wave off Kanagawa - Katsushika Hokusai (1831)',
@@ -174,7 +174,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Thinker" és válaszd ki a festő nevét:',
         'options': ['Edgar Degas', 'Johannes Vermeer', 'Auguste Rodin', 'Pablo Picasso'],
         'correct': 2,
         'explanation': 'The Thinker - Auguste Rodin (1904)',
@@ -182,7 +182,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Dance" és válaszd ki a festő nevét:',
         'options': ['Andy Warhol', 'Henri Matisse', 'Leonardo da Vinci', 'René Magritte'],
         'correct': 1,
         'explanation': 'The Dance - Henri Matisse (1910)',
@@ -190,7 +190,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Composition VII" és válaszd ki a festő nevét:',
         'options': ['Leonardo da Vinci', 'Georges Seurat', 'Wassily Kandinsky', 'Edvard Munch'],
         'correct': 2,
         'explanation': 'Composition VII - Wassily Kandinsky (1913)',
@@ -198,7 +198,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Two Fridas" és válaszd ki a festő nevét:',
         'options': ['Claude Monet', 'Henri Matisse', 'Raphael', 'Frida Kahlo'],
         'correct': 3,
         'explanation': 'The Two Fridas - Frida Kahlo (1939)',
@@ -214,7 +214,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Number 1 (Lavender Mist)" és válaszd ki a festő nevét:',
         'options': ['Johannes Vermeer', 'John Constable', 'Jackson Pollock', 'Pierre-Auguste Renoir'],
         'correct': 2,
         'explanation': 'Number 1 (Lavender Mist) - Jackson Pollock (1950)',
@@ -222,7 +222,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Card Players" és válaszd ki a festő nevét:',
         'options': ['Pablo Picasso', 'Auguste Rodin', 'Paul Cézanne', 'Leonardo da Vinci'],
         'correct': 2,
         'explanation': 'The Card Players - Paul Cézanne (1892)',
@@ -230,7 +230,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Luncheon on the Grass" és válaszd ki a festő nevét:',
         'options': ['Édouard Manet', 'Marc Chagall', 'Hieronymus Bosch', 'Michelangelo'],
         'correct': 0,
         'explanation': 'The Luncheon on the Grass - Édouard Manet (1863)',
@@ -238,7 +238,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Hay Wain" és válaszd ki a festő nevét:',
         'options': ['Pierre-Auguste Renoir', 'John Constable', 'Jackson Pollock', 'Johannes Vermeer'],
         'correct': 1,
         'explanation': 'The Hay Wain - John Constable (1821)',
@@ -255,7 +255,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Banquet of the Officers of the St George" és válaszd ki a festő nevét:',
         'options': ['Frans Hals', 'Rembrandt', 'Jan Steen', 'Gerard van Honthorst'],
         'correct': 0,
         'explanation': 'Banquet of the Officers of the St George - Frans Hals (1616)',
@@ -263,7 +263,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Bedroom in Arles" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
         'correct': 0,
         'explanation': 'Bedroom in Arles - Vincent van Gogh (1889)',
@@ -271,7 +271,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Charles I at the Hunt" és válaszd ki a festő nevét:',
         'options': ['Anthony van Dyck', 'Peter Paul Rubens', 'Frans Hals', 'Rembrandt'],
         'correct': 0,
         'explanation': 'Charles I at the Hunt - Anthony van Dyck (1635)',
@@ -287,7 +287,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "El Expolio" és válaszd ki a festő nevét:',
         'options': ['El Greco', 'Tintoretto', 'Titian', 'Veronese'],
         'correct': 0,
         'explanation': 'El Expolio - El Greco (1577)',
@@ -295,7 +295,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "El Tres de Mayo" és válaszd ki a festő nevét:',
         'options': ['Francisco Goya', 'Diego Velázquez', 'El Greco', 'Bartolomé Esteban Murillo'],
         'correct': 0,
         'explanation': 'El Tres de Mayo - Francisco Goya (1808)',
@@ -303,7 +303,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Feast in the House of Levi" és válaszd ki a festő nevét:',
         'options': ['Paolo Veronese', 'Tintoretto', 'Titian', 'Giorgione'],
         'correct': 0,
         'explanation': 'Feast in the House of Levi - Paolo Veronese (1573)',
@@ -311,7 +311,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Finding of the Body of St Mark" és válaszd ki a festő nevét:',
         'options': ['Jacopo Tintoretto', 'Titian', 'Veronese', 'Giorgione'],
         'correct': 0,
         'explanation': 'Finding of the Body of St Mark - Jacopo Tintoretto (1562)',
@@ -319,7 +319,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "French Portrait de Madame Duvaucey" és válaszd ki a festő nevét:',
         'options': ['Jean-Auguste-Dominique Ingres', 'Jacques-Louis David', 'Théodore Géricault', 'Eugène Delacroix'],
         'correct': 0,
         'explanation': 'French Portrait de Madame Duvaucey - Jean-Auguste-Dominique Ingres (1807)',
@@ -351,7 +351,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Paradise with the Creation and Fall of Man" és válaszd ki a festő nevét:',
         'options': ['Jan Brueghel the Elder', 'Pieter Brueghel the Elder', 'Pieter Brueghel the Younger', 'Jan Brueghel the Younger'],
         'correct': 0,
         'explanation': 'Paradise with the Creation and Fall of Man - Jan Brueghel the Elder (1615)',
@@ -367,7 +367,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Portraits of the Duke and Duchess of Urbino" és válaszd ki a festő nevét:',
         'options': ['Piero della Francesca', 'Masaccio', 'Fra Angelico', 'Sandro Botticelli'],
         'correct': 0,
         'explanation': 'Portraits of the Duke and Duchess of Urbino - Piero della Francesca (1473)',
@@ -375,7 +375,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Seaport with the Embarkation of the Queen of Sheba" és válaszd ki a festő nevét:',
         'options': ['Claude Lorrain', 'Nicolas Poussin', 'Gaspard Dughet', 'Salvator Rosa'],
         'correct': 0,
         'explanation': 'Seaport with the Embarkation of the Queen of Sheba - Claude Lorrain (1648)',
@@ -383,7 +383,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Self Portrait" és válaszd ki a festő nevét:',
         'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
         'correct': 0,
         'explanation': 'Self Portrait - Rembrandt (1659)',
@@ -391,7 +391,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Sorrow" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
         'correct': 0,
         'explanation': 'Sorrow - Vincent van Gogh (1882)',
@@ -399,7 +399,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Art of Painting" és válaszd ki a festő nevét:',
         'options': ['Johannes Vermeer', 'Pieter de Hooch', 'Gabriel Metsu', 'Gerard ter Borch'],
         'correct': 0,
         'explanation': 'The Art of Painting - Johannes Vermeer (1666)',
@@ -407,7 +407,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Calling of Saint Matthew" és válaszd ki a festő nevét:',
         'options': ['Caravaggio', 'Orazio Gentileschi', 'Artemisia Gentileschi', 'Carlo Saraceni'],
         'correct': 0,
         'explanation': 'The Calling of Saint Matthew - Caravaggio (1599)',
@@ -423,7 +423,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Holy Family" és válaszd ki a festő nevét:',
         'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
         'correct': 0,
         'explanation': 'The Holy Family - Rembrandt (2023)',
@@ -431,7 +431,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Lady with an Ermine" és válaszd ki a festő nevét:',
         'options': ['Leonardo da Vinci', 'Raphael', 'Sandro Botticelli', 'Piero della Francesca'],
         'correct': 0,
         'explanation': 'The Lady with an Ermine - Leonardo da Vinci (1490)',
@@ -439,7 +439,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Oath of the Horatii" és válaszd ki a festő nevét:',
         'options': ['Jacques-Louis David', 'Jean-Auguste-Dominique Ingres', 'Théodore Géricault', 'Eugène Delacroix'],
         'correct': 0,
         'explanation': 'The Oath of the Horatii - Jacques-Louis David (1784)',
@@ -447,7 +447,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Rape of the Daughters of Leucippus" és válaszd ki a festő nevét:',
         'options': ['Peter Paul Rubens', 'Anthony van Dyck', 'Frans Hals', 'Rembrandt'],
         'correct': 0,
         'explanation': 'The Rape of the Daughters of Leucippus - Peter Paul Rubens (1618)',
@@ -455,7 +455,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Wheat Field with Cypresses" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
         'correct': 0,
         'explanation': 'Wheat Field with Cypresses - Vincent van Gogh (1899)',
@@ -464,7 +464,7 @@ FESTMENY_QUESTIONS = [
     },
     # További új festmény kérdések
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Two Tahitian Women" és válaszd ki a festő nevét:',
         'options': ['Paul Gauguin', 'Vincent van Gogh', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
         'correct': 0,
         'explanation': 'Two Tahitian Women - Paul Gauguin (1899)',
@@ -472,7 +472,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Villa R" és válaszd ki a festő nevét:',
         'options': ['Paul Klee', 'Wassily Kandinsky', 'Franz Marc', 'August Macke'],
         'correct': 0,
         'explanation': 'Villa R - Paul Klee (1919)',
@@ -480,7 +480,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Woman with Black Cravat" és válaszd ki a festő nevét:',
         'options': ['Amedeo Modigliani', 'Pablo Picasso', 'Henri Matisse', 'Georges Braque'],
         'correct': 0,
         'explanation': 'Woman with Black Cravat - Amedeo Modigliani (1917)',
@@ -489,7 +489,7 @@ FESTMENY_QUESTIONS = [
     },
     # További hiányzó festmény kérdések
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Low Tide at Pourville, near Dieppe" és válaszd ki a festő nevét:',
         'options': ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'],
         'correct': 0,
         'explanation': 'Low Tide at Pourville, near Dieppe - Claude Monet (1882)',
@@ -497,7 +497,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "A Sunday on La Grande Jatte" és válaszd ki a festő nevét:',
         'options': ['Georges Seurat', 'Paul Signac', 'Camille Pissarro', 'Henri-Edmond Cross'],
         'correct': 0,
         'explanation': 'A Sunday on La Grande Jatte - Georges Seurat (1884)',
@@ -505,7 +505,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "At the Moulin Rouge" és válaszd ki a festő nevét:',
         'options': ['Henri de Toulouse-Lautrec', 'Edgar Degas', 'Pierre-Auguste Renoir', 'Édouard Manet'],
         'correct': 0,
         'explanation': 'At the Moulin Rouge - Henri de Toulouse-Lautrec (1892)',
@@ -513,7 +513,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Gabrielle with Jewellery" és válaszd ki a festő nevét:',
         'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
         'correct': 0,
         'explanation': 'Gabrielle with Jewellery - Pierre-Auguste Renoir (1910)',
@@ -529,7 +529,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Improvisation 26" és válaszd ki a festő nevét:',
         'options': ['Wassily Kandinsky', 'Franz Marc', 'August Macke', 'Paul Klee'],
         'correct': 0,
         'explanation': 'Improvisation 26 - Wassily Kandinsky (1912)',
@@ -537,7 +537,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "La Classe de Danse" és válaszd ki a festő nevét:',
         'options': ['Edgar Degas', 'Pierre-Auguste Renoir', 'Claude Monet', 'Édouard Manet'],
         'correct': 0,
         'explanation': 'La Classe de Danse - Edgar Degas (1871)',
@@ -545,7 +545,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "La Liseuse" és válaszd ki a festő nevét:',
         'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
         'correct': 0,
         'explanation': 'La Liseuse - Pierre-Auguste Renoir (1874)',
@@ -553,7 +553,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Lake Geneva as Seen from Chexbres" és válaszd ki a festő nevét:',
         'options': ['Ferdinand Hodler', 'Claude Monet', 'Camille Pissarro', 'Alfred Sisley'],
         'correct': 0,
         'explanation': 'Lake Geneva as Seen from Chexbres - Ferdinand Hodler (1905)',
@@ -561,7 +561,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "People by a Blue Lake" és válaszd ki a festő nevét:',
         'options': ['August Macke', 'Franz Marc', 'Wassily Kandinsky', 'Paul Klee'],
         'correct': 0,
         'explanation': 'People by a Blue Lake - August Macke (1913)',
@@ -569,7 +569,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Summer Evening in Murnau" és válaszd ki a festő nevét:',
         'options': ['Alexej von Jawlensky', 'Wassily Kandinsky', 'Franz Marc', 'Paul Klee'],
         'correct': 0,
         'explanation': 'Summer Evening in Murnau - Alexej von Jawlensky (1908)',
@@ -577,7 +577,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Girls on the Bridge" és válaszd ki a festő nevét:',
         'options': ['Edvard Munch', 'Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec'],
         'correct': 0,
         'explanation': 'The Girls on the Bridge - Edvard Munch (1905)',
@@ -585,7 +585,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Man with the Golden Helmet" és válaszd ki a festő nevét:',
         'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
         'correct': 0,
         'explanation': 'The Man with the Golden Helmet - Rembrandt (1650)',
@@ -593,7 +593,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Peaceable Kingdom" és válaszd ki a festő nevét:',
         'options': ['Edward Hicks', 'Thomas Cole', 'Asher Brown Durand', 'Frederic Edwin Church'],
         'correct': 0,
         'explanation': 'The Peaceable Kingdom - Edward Hicks (1833)',
@@ -601,7 +601,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Peasant Wedding" és válaszd ki a festő nevét:',
         'options': ['Pieter Bruegel the Elder', 'Jan Brueghel the Elder', 'Hieronymus Bosch', 'Jan van Eyck'],
         'correct': 0,
         'explanation': 'The Peasant Wedding - Pieter Bruegel the Elder (1568)',
@@ -609,7 +609,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Einschiffung Nach Kythera" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Henri Matisse', 'Salvador Dalí', 'Jean-Antoine Watteau'],
         'correct': 3,
         'explanation': 'Einschiffung Nach Kythera - Jean-Antoine Watteau (1719)',
@@ -617,7 +617,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "The Bridge At Narni" és válaszd ki a festő nevét:',
         'options': ['Francisco Goya', 'Gustav Klimt', 'Jeanbaptiste Camille Corot', 'Claude Monet'],
         'correct': 2,
         'explanation': 'The Bridge At Narni - Jeanbaptiste Camille Corot (1826)',
@@ -625,7 +625,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "De Molen Bij Wijk Bij Duurstede" és válaszd ki a festő nevét:',
         'options': ['Jacob Isaacksz van Ruisdael', 'Wassily Kandinsky', 'Frida Kahlo', 'Pablo Picasso'],
         'correct': 0,
         'explanation': 'De Molen Bij Wijk Bij Duurstede - Jacob Isaacksz van Ruisdael (1668)',
@@ -633,7 +633,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Schlummernde Venus" és válaszd ki a festő nevét:',
         'options': ['Johannes Vermeer', 'Giorgione', 'Claude Monet', 'Titian'],
         'correct': 1,
         'explanation': 'Schlummernde Venus - Giorgione (1508)',
@@ -641,7 +641,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Het Papegaaienlaantje" és válaszd ki a festő nevét:',
         'options': ['Wassily Kandinsky', 'El Greco', 'Max Liebermann', 'Rembrandt'],
         'correct': 2,
         'explanation': 'Het Papegaaienlaantje - Max Liebermann (1902)',
@@ -649,7 +649,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Giudizio Universale" és válaszd ki a festő nevét:',
         'options': ['Vincent van Gogh', 'Michelangelo', 'Claude Monet', 'Wassily Kandinsky'],
         'correct': 1,
         'explanation': 'Giudizio Universale - Michelangelo (1536)',
@@ -665,7 +665,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "A Langlois Hd Arles Mellett" és válaszd ki a festő nevét:',
         'options': ['Vincent Van Gogh', 'Pierre-Auguste Renoir', 'Rembrandt', 'Andy Warhol'],
         'correct': 0,
         'explanation': 'A Langlois Hd Arles Mellett - Vincent Van Gogh (1888)',
@@ -673,7 +673,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "La Bohémienne Endormie" és válaszd ki a festő nevét:',
         'options': ['Henri Matisse', 'Francisco Goya', 'Edvard Munch', 'Henri Rousseau'],
         'correct': 3,
         'explanation': 'La Bohémienne Endormie - Henri Rousseau (1897)',
@@ -681,7 +681,7 @@ FESTMENY_QUESTIONS = [
         'topic': 'festmények'
     },
     {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
+'question': 'Nézd meg ezt a festményt: "Pelzhndler Auf Dem Missouri" és válaszd ki a festő nevét:',
         'options': ['Jackson Pollock', 'George Caleb Bingham', 'Michelangelo', 'Salvador Dalí'],
         'correct': 1,
         'explanation': 'Pelzhndler Auf Dem Missouri - George Caleb Bingham (1845)',
