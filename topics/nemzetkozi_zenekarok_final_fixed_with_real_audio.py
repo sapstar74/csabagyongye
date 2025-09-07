@@ -858,6 +858,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Stakka Bo - Nemzetközi előadó",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "song_title": "Here We Go Again",
         "topic": "nemzetkozi_zenekarok",
     },
     {
