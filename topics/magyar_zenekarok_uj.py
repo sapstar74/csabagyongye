@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:11:29
+# Generated on: 2025-09-07 22:11:48
 
 QUESTIONS = [
     {
@@ -1262,7 +1262,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "30Y - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
-        "song_title": "4F-Club - Balatoni Láz",
+        "song_title": "Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
 ]
