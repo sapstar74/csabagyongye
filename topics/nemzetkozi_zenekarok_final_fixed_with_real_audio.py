@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:28:52
+# Generated on: 2025-09-07 22:33:53
 
 QUESTIONS = [
     {
@@ -858,7 +858,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Stakka Bo - Nemzetközi előadó",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
-        "song_title": "Here We Go Again",
         "topic": "nemzetkozi_zenekarok",
     },
     {
