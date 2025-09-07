@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 12:41:35
+# Generated on: 2025-09-07 12:50:31
 
 QUESTIONS = [
     {
@@ -935,7 +935,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Depeche Mode - Nemzetkozi Zenekarok",
-        "audio_file": "72_Depeche_Mode_Policy_Of_Truth.mp3",
+        "audio_file": "72 Depeche Mode Policy Of Truth.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
