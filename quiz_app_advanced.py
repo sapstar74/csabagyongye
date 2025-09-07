@@ -1047,6 +1047,17 @@ def show_audio_track_management_page():
             else:
                 if force_refresh:
                     st.info("🔄 Kényszerített frissítés...")
+                    # Összes kapcsolódó cache törlése
+                    cache_keys_to_delete = []
+                    for key in st.session_state.keys():
+                        if (key.startswith("audio_track_data_") or 
+                            key.startswith("duration_") or 
+                            key.startswith("track_cache_")):
+                            cache_keys_to_delete.append(key)
+                    
+                    for key in cache_keys_to_delete:
+                        del st.session_state[key]
+                    
                     st.session_state['force_refresh'] = False
                 st.info("🔄 Új adatok betöltése...")
                 
@@ -1382,7 +1393,8 @@ def show_audio_track_management_page():
                                                     cache_keys_to_delete.append(key)
                                             
                                             for key in cache_keys_to_delete:
-                                                del st.session_state[key]
+                                                if key in st.session_state:
+                                                    del st.session_state[key]
                                             
                                             # Cache invalidation flag beállítása
                                             st.session_state['force_refresh'] = True
