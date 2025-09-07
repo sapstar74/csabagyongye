@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:20:03
+# Generated on: 2025-09-07 22:20:35
 
 QUESTIONS = [
     {
@@ -545,7 +545,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi: Négy évszak (YouTube)",
-        "audio_file": "42_Vivaldi.mp3",
+        "audio_file": "42. Vivaldi - Vivaldi.mp3",
+        "song_title": "Vivaldi",
         "topic": "komolyzene",
     },
     {
@@ -585,7 +586,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Delibes: YouTube klasszikus",
         "audio_file": "45. Delibes - Sylvia - Pizzicato.mp3",
-        "song_title": "Sylvia - Pizzicato",
         "topic": "komolyzene",
     },
 ]
