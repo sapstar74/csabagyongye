@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:02:56
+# Generated on: 2025-09-07 22:03:23
 
 QUESTIONS = [
     {
@@ -558,7 +558,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mozart: YouTube klasszikus",
-        "audio_file": "43_Mozart.mp3",
+        "audio_file": "43. Mozart - Mozart.mp3",
+        "song_title": "Mozart",
         "topic": "komolyzene",
     },
     {
@@ -585,7 +586,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Delibes: YouTube klasszikus",
         "audio_file": "45. Delibes - Delibes.mp3",
-        "song_title": "Delibes",
         "topic": "komolyzene",
     },
 ]
