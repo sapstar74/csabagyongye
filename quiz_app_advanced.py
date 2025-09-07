@@ -1383,6 +1383,47 @@ def show_audio_track_management_page():
                                         if save_questions_to_file(questions, question_file_path, "QUESTIONS"):
                                             st.success("✅ Kérdés sikeresen mentve!")
                                             
+                                            # Audio fájl átnevezése, ha a szám címe változott
+                                            if 'audio_file' in current_question and song_title != current_song_title:
+                                                try:
+                                                    import os
+                                                    import shutil
+                                                    
+                                                    old_audio_file = current_question['audio_file']
+                                                    old_audio_path = None
+                                                    
+                                                    # Régi fájl teljes útvonalának megkeresése
+                                                    for track in category_info['tracks']:
+                                                        if track['name'] == os.path.splitext(old_audio_file)[0]:
+                                                            old_audio_path = track['audio_path']
+                                                            break
+                                                    
+                                                    if old_audio_path and os.path.exists(old_audio_path):
+                                                        # Új fájlnév generálása a szám címéből
+                                                        # Biztonságos fájlnév létrehozása
+                                                        safe_song_title = "".join(c for c in song_title if c.isalnum() or c in (' ', '-', '_')).rstrip()
+                                                        safe_song_title = safe_song_title.replace(' ', '_')
+                                                        
+                                                        # Új fájlnév: sorszám_Előadó_Szám_címe.mp3
+                                                        artist_safe = "".join(c for c in artist if c.isalnum() or c in (' ', '-', '_')).rstrip().replace(' ', '_')
+                                                        new_filename = f"{i+1:02d}_{artist_safe}_{safe_song_title}.mp3"
+                                                        new_audio_path = os.path.join(os.path.dirname(old_audio_path), new_filename)
+                                                        
+                                                        # Fájl átnevezése
+                                                        shutil.move(old_audio_path, new_audio_path)
+                                                        
+                                                        # Kérdésben az audio_file frissítése
+                                                        updated_question['audio_file'] = new_filename
+                                                        questions[question_index] = updated_question
+                                                        
+                                                        # Kérdés újramentése az új fájlnévvel
+                                                        save_questions_to_file(questions, question_file_path, "QUESTIONS")
+                                                        
+                                                        st.success(f"✅ Audio fájl átnevezve: {new_filename}")
+                                                        
+                                                except Exception as e:
+                                                    st.warning(f"⚠️ Fájl átnevezése sikertelen: {str(e)}")
+                                            
                                             # Teljes cache törlése a táblázat frissítéséhez
                                             cache_keys_to_delete = []
                                             for key in st.session_state.keys():
