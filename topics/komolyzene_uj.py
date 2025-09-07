@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:15:35
+# Generated on: 2025-09-07 22:20:03
 
 QUESTIONS = [
     {
@@ -584,8 +584,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Delibes: YouTube klasszikus",
-        "audio_file": "45. Delibes - Delibes.mp3",
-        "song_title": "Delibes",
+        "audio_file": "45. Delibes - Sylvia - Pizzicato.mp3",
+        "song_title": "Sylvia - Pizzicato",
         "topic": "komolyzene",
     },
 ]
