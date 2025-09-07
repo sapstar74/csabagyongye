@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:28:04
+# Generated on: 2025-09-07 23:29:46
 
 QUESTIONS = [
     {
@@ -883,7 +883,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Queen - Nemzetkozi Zenekarok",
-        "audio_file": "audio_files/nemzetkozi_zenekarok/Queen - '39 (Official Lyric Video).mp4",
+        "audio_file": "68. Queen - 39 Official Lyric Video.mp3",
+        "song_title": "'39 (Official Lyric Video)",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -897,7 +898,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Beatles - Nemzetkozi Zenekarok",
         "audio_file": "69. The Beatles - For No One.mp3",
-        "song_title": "For No One",
         "topic": "nemzetkozi_zenekarok",
     },
     {
