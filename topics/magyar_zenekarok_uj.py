@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-08-29 16:06:59
+# Generated on: 2025-09-07 22:11:29
 
 QUESTIONS = [
     {
@@ -1254,14 +1254,15 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "30Y",
-            "Kiscsillag",
-            "Kaukázus",
-            "Lovasi András",
+            "4F Club",
+            "Ámokfutók",
+            "Shyguys",
+            "Soho Party",
         ],
         "correct": 0,
         "explanation": "30Y - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
+        "song_title": "4F-Club - Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
 ]
