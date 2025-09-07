@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 16:56:28
+# Generated on: 2025-09-07 19:04:53
 
 QUESTIONS = [
     {
@@ -884,7 +884,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Queen - Nemzetkozi Zenekarok",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Queen - '39 (Official Lyric Video).mp4",
-        "song_title": "'39 (Official Lyric Video)",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -937,6 +936,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Depeche Mode - Nemzetkozi Zenekarok",
         "audio_file": "72. Depeche Mode - Policy Of Truth.mp3",
+        "song_title": "Policy Of Truth",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
