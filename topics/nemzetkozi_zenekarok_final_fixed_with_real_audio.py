@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:26:37
+# Generated on: 2025-09-07 23:28:04
 
 QUESTIONS = [
     {
@@ -896,7 +896,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "The Beatles - Nemzetkozi Zenekarok",
-        "audio_file": "audio_files/nemzetkozi_zenekarok/The Beatles - For No One.mp4",
+        "audio_file": "69. The Beatles - For No One.mp3",
+        "song_title": "For No One",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -910,7 +911,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Rolling Stones - Nemzetkozi Zenekarok",
         "audio_file": "70. The Rolling Stones - Paint It Black Official Lyric Video.mp3",
-        "song_title": "Paint It, Black (Official Lyric Video)",
         "topic": "nemzetkozi_zenekarok",
     },
     {
