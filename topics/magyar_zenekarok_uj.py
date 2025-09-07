@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:11:48
+# Generated on: 2025-09-07 23:38:21
 
 QUESTIONS = [
     {
@@ -286,7 +286,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Moriones magyar hip-hop előadó",
-        "audio_file": "43_Moriones.mp3",
+        "audio_file": "23. Moriones - Ez az ára.mp3",
+        "song_title": "Ez az ára",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -1262,7 +1263,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "30Y - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
-        "song_title": "Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
 ]
