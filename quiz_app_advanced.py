@@ -1020,16 +1020,21 @@ def show_audio_track_management_page():
     cols = st.columns(3)
     selected_category = None
     
+    # Először beállítjuk a kiválasztott kategóriát
+    current_selected = st.session_state.get('selected_category', list(category_options.keys())[0])
+    
     for i, (key, title) in enumerate(category_options.items()):
         col_index = i % 3
         with cols[col_index]:
-            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True):
+            # Ha ez a kiválasztott kategória, piros gombot használunk
+            button_type = "primary" if key == current_selected else "secondary"
+            if st.button(f"📂 {title}", key=f"cat_{key}", use_container_width=True, type=button_type):
                 selected_category = key
                 st.session_state.selected_category = key
     
     # Ha van kiválasztott kategória a session state-ben, használjuk azt
     if selected_category is None:
-        selected_category = st.session_state.get('selected_category', list(category_options.keys())[0])
+        selected_category = current_selected
     
     if selected_category:
         category_info = tracks_by_category[selected_category]
