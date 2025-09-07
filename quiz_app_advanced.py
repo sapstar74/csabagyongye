@@ -1408,6 +1408,9 @@ def show_audio_track_management_page():
                                                     import os
                                                     import shutil
                                                     
+                                                    # Előadó meghatározása a kérdésből
+                                                    artist = current_question['options'][current_question['correct']] if current_question['correct'] < len(current_question['options']) else "Unknown_Artist"
+                                                    
                                                     old_audio_file = current_question['audio_file']
                                                     old_audio_path = None
                                                     
