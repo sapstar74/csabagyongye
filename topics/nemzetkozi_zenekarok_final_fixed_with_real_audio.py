@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:25:45
+# Generated on: 2025-09-07 23:26:37
 
 QUESTIONS = [
     {
@@ -909,7 +909,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "The Rolling Stones - Nemzetkozi Zenekarok",
-        "audio_file": "audio_files/nemzetkozi_zenekarok/The Rolling Stones - Paint It, Black (Official Lyric Video).mp4",
+        "audio_file": "70. The Rolling Stones - Paint It Black Official Lyric Video.mp3",
+        "song_title": "Paint It, Black (Official Lyric Video)",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -923,7 +924,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Alphaville - Nemzetkozi Zenekarok",
         "audio_file": "71. Stakka Bo - Here We Go.mp3",
-        "song_title": "Here We Go",
         "topic": "nemzetkozi_zenekarok",
     },
     {
