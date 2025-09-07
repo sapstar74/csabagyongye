@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 13:27:09
+# Generated on: 2025-09-07 16:29:04
 
 QUESTIONS = [
     {
@@ -923,6 +923,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Alphaville - Nemzetkozi Zenekarok",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "song_title": "Here We Go",
         "topic": "nemzetkozi_zenekarok",
     },
     {
