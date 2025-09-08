@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:32:18
+# Generated on: 2025-09-08 16:21:58
 
-QUESTIONS = [
+ONE_HIT_WONDERS_QUESTIONS = [
     {
         "question": "Ki az előadó a 'Teenage Dirtbag' című dalban?",
         "options": [
@@ -773,6 +773,19 @@ QUESTIONS = [
         "explanation": "Murray Head - One Hit Wonders",
         "audio_file": "Unknown_Artist_Murray_Head_One_Night_In_Ban.mp3",
         "song_title": "One Night In Bangkok",
+        "topic": "one_hit_wonders",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Shiwaree",
+            "Urge Overkill",
+            "Dusty Springfield",
+            "Tanita Tikaram",
+        ],
+        "correct": 0,
+        "explanation": "Shiwaree - One Hit Wonders",
+        "audio_file": "Unknown_Artist_Shivaree_Goodnight_Moon_Offi.mp3",
         "topic": "one_hit_wonders",
     },
 ]

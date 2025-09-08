@@ -4264,9 +4264,9 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         download_dir = Path(category_mapping.get(category, "audio_files"))
         download_dir.mkdir(parents=True, exist_ok=True)
         
-        # yt-dlp konfiguráció - jobb fájlnév generálás
+        # yt-dlp konfiguráció - 403 Forbidden hiba javítása
         ydl_opts = {
-            'format': 'bestaudio/best',
+            'format': 'bestaudio[ext=m4a]/bestaudio/best',
             'outtmpl': str(download_dir / '%(id)s.%(ext)s'),  # YouTube ID használata fájlnévként
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
@@ -4275,6 +4275,19 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             }],
             'quiet': True,
             'no_warnings': True,
+            # 403 Forbidden hiba javítása
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            },
+            'extractor_retries': 3,
+            'fragment_retries': 3,
+            'retries': 3,
+            # Cookie és referer beállítások
+            'cookiefile': None,
+            'referer': 'https://www.youtube.com/',
+            # Proxy és timeout beállítások
+            'socket_timeout': 30,
+            'retry_sleep_functions': {'http': lambda n: min(4 ** n, 60)},
         }
         
         # Letöltés
