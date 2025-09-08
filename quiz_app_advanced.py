@@ -4321,6 +4321,9 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             'extractor_retries': 10,
             'fragment_retries': 10,
             'retries': 10,
+            # IPv4 kényszerítés macOS-en
+            'force_ipv4': True,
+            'source_address': '0.0.0.0',
         }
         
         # Letöltés

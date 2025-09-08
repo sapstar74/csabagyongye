@@ -408,6 +408,9 @@ class AudioDownloader:
                 # Rate limiting
                 'sleep_interval': 1,
                 'max_sleep_interval': 5,
+                # IPv4 kényszerítés macOS-en
+                'force_ipv4': True,
+                'source_address': '0.0.0.0',
             }
             
             if not YT_DLP_AVAILABLE:

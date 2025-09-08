@@ -89,6 +89,9 @@ class SpotifyAudioDownloader:
                 # Rate limiting
                 'sleep_interval': 1,
                 'max_sleep_interval': 5,
+                # IPv4 kényszerítés macOS-en
+                'force_ipv4': True,
+                'source_address': '0.0.0.0',
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([f"ytsearch:{search_query}"])
