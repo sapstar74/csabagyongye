@@ -982,9 +982,125 @@ def find_matching_question(track_name, questions):
 
 
 
+def check_github_sync_status():
+    """GitHub szinkronizáció állapotának ellenőrzése"""
+    try:
+        # Git status ellenőrzése
+        result = subprocess.run(['git', 'status', '--porcelain'], 
+                              capture_output=True, text=True, cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+        
+        if result.returncode != 0:
+            return {"error": "Git status hiba", "details": result.stderr}
+        
+        local_changes = result.stdout.strip()
+        
+        # Remote fetch
+        fetch_result = subprocess.run(['git', 'fetch', 'origin'], 
+                                    capture_output=True, text=True, cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+        
+        if fetch_result.returncode != 0:
+            return {"error": "Git fetch hiba", "details": fetch_result.stderr}
+        
+        # Remote és local branch összehasonlítása
+        diff_result = subprocess.run(['git', 'diff', 'HEAD', 'origin/main', '--name-only'], 
+                                   capture_output=True, text=True, cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+        
+        if diff_result.returncode != 0:
+            return {"error": "Git diff hiba", "details": diff_result.stderr}
+        
+        remote_changes = diff_result.stdout.strip()
+        
+        return {
+            "local_changes": local_changes,
+            "remote_changes": remote_changes,
+            "has_local_changes": bool(local_changes),
+            "has_remote_changes": bool(remote_changes)
+        }
+        
+    except Exception as e:
+        return {"error": "Szinkronizáció ellenőrzés hiba", "details": str(e)}
+
+
+def show_github_sync_dialog():
+    """GitHub szinkronizáció dialógus megjelenítése"""
+    st.markdown("### 🔄 GitHub Szinkronizáció")
+    
+    # Szinkronizáció állapot ellenőrzése
+    with st.spinner("GitHub állapot ellenőrzése..."):
+        sync_status = check_github_sync_status()
+    
+    if "error" in sync_status:
+        st.error(f"❌ Hiba a szinkronizáció ellenőrzése során: {sync_status['error']}")
+        if sync_status.get('details'):
+            st.code(sync_status['details'])
+        return False
+    
+    # Lokális változások megjelenítése
+    if sync_status["has_local_changes"]:
+        st.warning("⚠️ **Lokális változások vannak:**")
+        st.code(sync_status["local_changes"])
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("💾 Lokális változások mentése", type="primary"):
+                try:
+                    subprocess.run(['git', 'add', '.'], cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+                    subprocess.run(['git', 'commit', '-m', 'Auto-save before sync'], cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+                    subprocess.run(['git', 'push'], cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+                    st.success("✅ Lokális változások mentve!")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"❌ Hiba a mentés során: {e}")
+        
+        with col2:
+            if st.button("🗑️ Lokális változások eldobása", type="secondary"):
+                try:
+                    subprocess.run(['git', 'reset', '--hard', 'HEAD'], cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+                    st.success("✅ Lokális változások eldobva!")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"❌ Hiba az eldobás során: {e}")
+        
+        st.markdown("---")
+    
+    # Remote változások megjelenítése
+    if sync_status["has_remote_changes"]:
+        st.info("📥 **Új változások érkeztek a GitHub-ról:**")
+        st.code(sync_status["remote_changes"])
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("📥 Változások letöltése", type="primary"):
+                try:
+                    subprocess.run(['git', 'pull', 'origin', 'main'], cwd='/Users/zsigagabor/qr_decoder_project/pdf_analyzer_project')
+                    st.success("✅ Változások letöltve!")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"❌ Hiba a letöltés során: {e}")
+        
+        with col2:
+            if st.button("⏭️ Kihagyás", type="secondary"):
+                st.info("ℹ️ Változások kihagyva. Folytathatod a munkát.")
+        
+        st.markdown("---")
+    
+    # Ha nincs változás
+    if not sync_status["has_local_changes"] and not sync_status["has_remote_changes"]:
+        st.success("✅ **Minden szinkronizálva!** Nincs új változás.")
+        
+        if st.button("🔄 Frissítés ellenőrzése", type="secondary"):
+            st.rerun()
+    
+    return True
+
+
 def show_audio_track_management_page():
     """Audio track kezelési oldal megjelenítése"""
     st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎵 Audio Track Kezelés</h2>', unsafe_allow_html=True)
+    
+    # GitHub szinkronizáció megjelenítése
+    if not show_github_sync_dialog():
+        return
     
     st.markdown("""
     ### 📋 Mit csinál ez a funkció?
