@@ -355,7 +355,7 @@ class AudioDownloader:
             
             output_path = os.path.join(self.output_dir, filename)
             
-            # yt-dlp beállítások - 403 Forbidden hiba javítása
+            # yt-dlp beállítások - 403 Forbidden hiba javítása - alternatív megközelítés
             ydl_opts = {
                 'format': 'bestaudio[ext=m4a]/bestaudio/best',
                 'outtmpl': output_path,
@@ -366,19 +366,34 @@ class AudioDownloader:
                 }],
                 'quiet': True,
                 'no_warnings': True,
-                # 403 Forbidden hiba javítása
+                # 403 Forbidden hiba javítása - alternatív megközelítés
                 'http_headers': {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Accept-Language': 'en-us,en;q=0.5',
+                    'Accept-Encoding': 'gzip, deflate',
+                    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+                    'Connection': 'keep-alive',
                 },
-                'extractor_retries': 3,
-                'fragment_retries': 3,
-                'retries': 3,
+                'extractor_retries': 5,
+                'fragment_retries': 5,
+                'retries': 5,
                 # Cookie és referer beállítások
                 'cookiefile': None,
                 'referer': 'https://www.youtube.com/',
                 # Proxy és timeout beállítások
-                'socket_timeout': 30,
-                'retry_sleep_functions': {'http': lambda n: min(4 ** n, 60)},
+                'socket_timeout': 60,
+                'retry_sleep_functions': {'http': lambda n: min(2 ** n, 30)},
+                # Alternatív extractor használata
+                'extractor_args': {
+                    'youtube': {
+                        'skip': ['dash', 'hls'],
+                        'player_skip': ['configs'],
+                    }
+                },
+                # További beállítások
+                'no_check_certificate': True,
+                'prefer_insecure': True,
             }
             
             if not YT_DLP_AVAILABLE:
