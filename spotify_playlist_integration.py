@@ -397,9 +397,14 @@ class AudioDownloader:
                     'youtube': {
                         'skip': ['dash', 'hls', 'translated_subs'],
                         'player_skip': ['configs', 'webpage'],
-                        'player_client': ['android', 'web'],
+                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
+                        'comment_sort': ['top'],
+                        'max_comments': [0],
                     }
                 },
+                # Player response kinyerési problémák javítása
+                'player_skip': ['configs', 'webpage'],
+                'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                 # További beállítások
                 'no_check_certificate': True,
                 'prefer_insecure': True,
@@ -411,6 +416,15 @@ class AudioDownloader:
                 # IPv4 kényszerítés macOS-en
                 'force_ipv4': True,
                 'source_address': '0.0.0.0',
+                # Player response problémák további javítása
+                'extract_flat': False,
+                'writeinfojson': False,
+                'writethumbnail': False,
+                'writeautomaticsub': False,
+                'writesubtitles': False,
+                'ignoreerrors': False,
+                'no_color': True,
+                'simulate': False,
             }
             
             if not YT_DLP_AVAILABLE:
