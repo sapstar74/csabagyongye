@@ -355,7 +355,7 @@ class AudioDownloader:
             
             output_path = os.path.join(self.output_dir, filename)
             
-            # yt-dlp beállítások - 403 Forbidden hiba javítása - alternatív megközelítés
+            # yt-dlp beállítások - 403 Forbidden hiba javítása - teljesen új megközelítés
             ydl_opts = {
                 'format': 'bestaudio[ext=m4a]/bestaudio/best',
                 'outtmpl': output_path,
@@ -366,34 +366,48 @@ class AudioDownloader:
                 }],
                 'quiet': True,
                 'no_warnings': True,
-                # 403 Forbidden hiba javítása - alternatív megközelítés
+                # 403 Forbidden hiba javítása - teljesen új megközelítés
                 'http_headers': {
-                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language': 'en-us,en;q=0.5',
-                    'Accept-Encoding': 'gzip, deflate',
-                    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
-                    'Connection': 'keep-alive',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+                    'Sec-Ch-Ua-Mobile': '?0',
+                    'Sec-Ch-Ua-Platform': '"Windows"',
+                    'Sec-Fetch-Dest': 'document',
+                    'Sec-Fetch-Mode': 'navigate',
+                    'Sec-Fetch-Site': 'none',
+                    'Sec-Fetch-User': '?1',
+                    'Upgrade-Insecure-Requests': '1',
                 },
-                'extractor_retries': 5,
-                'fragment_retries': 5,
-                'retries': 5,
+                'extractor_retries': 10,
+                'fragment_retries': 10,
+                'retries': 10,
                 # Cookie és referer beállítások
                 'cookiefile': None,
                 'referer': 'https://www.youtube.com/',
                 # Proxy és timeout beállítások
-                'socket_timeout': 60,
-                'retry_sleep_functions': {'http': lambda n: min(2 ** n, 30)},
-                # Alternatív extractor használata
+                'socket_timeout': 120,
+                'retry_sleep_functions': {'http': lambda n: min(1.5 ** n, 60)},
+                # Teljesen új extractor beállítások
                 'extractor_args': {
                     'youtube': {
-                        'skip': ['dash', 'hls'],
-                        'player_skip': ['configs'],
+                        'skip': ['dash', 'hls', 'translated_subs'],
+                        'player_skip': ['configs', 'webpage'],
+                        'player_client': ['android', 'web'],
                     }
                 },
                 # További beállítások
                 'no_check_certificate': True,
                 'prefer_insecure': True,
+                'geo_bypass': True,
+                'geo_bypass_country': 'US',
+                # Rate limiting
+                'sleep_interval': 1,
+                'max_sleep_interval': 5,
             }
             
             if not YT_DLP_AVAILABLE:
