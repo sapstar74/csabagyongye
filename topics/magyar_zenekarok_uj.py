@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:23:28
+# Generated on: 2025-09-09 13:24:32
 
 QUESTIONS = [
     {
@@ -287,7 +287,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Moriones magyar hip-hop előadó",
         "audio_file": "23. Moriones - Ez az ára.mp3",
-        "song_title": "Ez az ára",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -1275,7 +1274,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "cserihanna - Magyar Zenekarok",
-        "audio_file": "Unknown_Artist_cserihanna_Akinek_én_sok_vag.mp3",
+        "audio_file": "99. cserihanna - Akinek én sok vagyok.mp3",
+        "song_title": "Akinek én sok vagyok",
         "topic": "magyar_zenekarok",
     },
 ]
