@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:29:15
+# Generated on: 2025-09-09 13:30:01
 
 QUESTIONS = [
     {
@@ -1228,7 +1228,7 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "P. Box",
+            "Radics Béla",
             "P. Mobile",
             "Beatrice",
             "Vikidál Gyula",
