@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:38:21
+# Generated on: 2025-09-09 13:23:28
 
 QUESTIONS = [
     {
@@ -1263,6 +1263,19 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "30Y - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "cserihanna",
+            "Odett",
+            "Parno Graszt",
+            "Palya Bea",
+        ],
+        "correct": 0,
+        "explanation": "cserihanna - Magyar Zenekarok",
+        "audio_file": "Unknown_Artist_cserihanna_Akinek_én_sok_vag.mp3",
         "topic": "magyar_zenekarok",
     },
 ]
