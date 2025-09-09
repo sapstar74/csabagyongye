@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:26:38
+# Generated on: 2025-09-09 13:28:02
 
 QUESTIONS = [
     {
@@ -1210,7 +1210,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "A Kutya Vacsorája - Magyar Zenekarok",
         "audio_file": "94. A Kutya Vacsorája - Ez a mese.mp3",
-        "song_title": "Ez a mese",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1223,7 +1222,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kaukázus - Magyar Zenekarok",
-        "audio_file": "audio_files/magyar_zenekarok/Kaukázus - Honvéd ⧸⧸ HIVATALOS SZÖVEGVIDEÓ.mp4",
+        "audio_file": "95. Kaukázus - Honvéd.mp3",
+        "song_title": "Honvéd",
         "topic": "magyar_zenekarok",
     },
     {
