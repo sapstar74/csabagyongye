@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:24:32
+# Generated on: 2025-09-09 13:26:38
 
 QUESTIONS = [
     {
@@ -1209,7 +1209,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "A Kutya Vacsorája - Magyar Zenekarok",
-        "audio_file": "audio_files/magyar_zenekarok/A Kutya Vacsorája： Ez a mese (OFFICIAL VIDEO).mp4",
+        "audio_file": "94. A Kutya Vacsorája - Ez a mese.mp3",
+        "song_title": "Ez a mese",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1275,7 +1276,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "cserihanna - Magyar Zenekarok",
         "audio_file": "99. cserihanna - Akinek én sok vagyok.mp3",
-        "song_title": "Akinek én sok vagyok",
         "topic": "magyar_zenekarok",
     },
 ]
