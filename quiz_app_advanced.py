@@ -4526,8 +4526,141 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             st.error(f"Keresés alapú letöltés is sikertelen: {str(e)}")
             success = False
     
+    # Próbálkozás 7: Teljesen más megközelítés - YouTube API közvetlen használata
+    if not success:
+        try:
+            st.info("🔄 Próbálkozás YouTube API közvetlen használatával...")
+            
+            # YouTube API kulcs nélküli keresés
+            import urllib.parse
+            import urllib.request
+            import json
+            
+            search_query = track_info.get('title', '') + ' ' + track_info.get('artist', '')
+            if search_query.strip():
+                # YouTube keresési URL
+                search_url = f"https://www.youtube.com/results?search_query={urllib.parse.quote(search_query)}"
+                st.info(f"🔍 YouTube keresés: {search_url}")
+                
+                # Próbáljuk meg a YouTube oldal tartalmát lekérni
+                req = urllib.request.Request(
+                    search_url,
+                    headers={
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                    }
+                )
+                
+                with urllib.request.urlopen(req, timeout=30) as response:
+                    html_content = response.read().decode('utf-8')
+                    
+                    # YouTube videó ID keresése a HTML-ben
+                    import re
+                    video_ids = re.findall(r'"videoId":"([^"]+)"', html_content)
+                    
+                    if video_ids:
+                        video_id = video_ids[0]  # Az első találatot használjuk
+                        youtube_url = f"https://www.youtube.com/watch?v={video_id}"
+                        st.info(f"📺 Talált videó: {youtube_url}")
+                        
+                        # Most próbáljuk meg letölteni ezt a videót
+                        direct_opts = {
+                            'format': 'bestaudio/best',
+                            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                            'postprocessors': [{
+                                'key': 'FFmpegExtractAudio',
+                                'preferredcodec': 'mp3',
+                                'preferredquality': '192',
+                            }],
+                            'noplaylist': True,
+                            'quiet': True,
+                            'no_warnings': True,
+                            'http_headers': {
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                            },
+                            'extractor_args': {
+                                'youtube': {
+                                    'player_client': ['android'],
+                                    'skip': ['dash', 'hls'],
+                                }
+                            },
+                            'geo_bypass': True,
+                            'geo_bypass_country': 'US',
+                            'socket_timeout': 30,
+                            'retries': 3,
+                        }
+                        
+                        with yt_dlp.YoutubeDL(direct_opts) as ydl:
+                            info = ydl.extract_info(youtube_url, download=False)
+                            if info:
+                                ydl.download([youtube_url])
+                                success = True
+                            else:
+                                success = False
+                    else:
+                        st.warning("⚠️ Nem találtam videó ID-t a keresési eredményekben")
+                        success = False
+            else:
+                success = False
+                
+        except Exception as e:
+            st.error(f"YouTube API közvetlen használat is sikertelen: {str(e)}")
+            success = False
+    
+    # Próbálkozás 8: youtube-dl használata (ha yt-dlp nem működik)
+    if not success:
+        try:
+            st.info("🔄 Próbálkozás youtube-dl-lel...")
+            
+            # youtube-dl telepítése ha nincs
+            try:
+                import youtube_dl
+            except ImportError:
+                st.info("📦 youtube-dl telepítése...")
+                import subprocess
+                subprocess.run(['pip3', 'install', 'youtube-dl'], check=True)
+                import youtube_dl
+            
+            # youtube-dl konfiguráció
+            ydl_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                },
+                'geo_bypass': True,
+                'geo_bypass_country': 'US',
+                'socket_timeout': 30,
+                'retries': 3,
+            }
+            
+            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+                    
+        except Exception as e:
+            st.error(f"youtube-dl használat is sikertelen: {str(e)}")
+            success = False
+    
     if not success:
         st.error("❌ Minden letöltési módszer sikertelen volt")
+        st.error("🔍 YouTube valószínűleg blokkolja a letöltéseket ezen a szerveren")
+        st.info("💡 Alternatív megoldások:")
+        st.info("1. Használj VPN-t a szerveren")
+        st.info("2. Próbáld meg másik időpontban")
+        st.info("3. Használj másik letöltő szolgáltatást")
+        st.info("4. Manuálisan töltsd le és töltsd fel a fájlokat")
         return False
     
     # Fájlnév meghatározása - YouTube ID alapján
