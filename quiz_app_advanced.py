@@ -4606,35 +4606,75 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             st.error(f"YouTube API közvetlen használat is sikertelen: {str(e)}")
             success = False
     
-    # Próbálkozás 8: Tor proxy használata
+    # Próbálkozás 8: Intelligens proxy rendszer
     if not success:
         try:
-            st.info("🔄 Próbálkozás Tor proxy-val...")
+            st.info("🔄 Próbálkozás intelligens proxy rendszerrel...")
             
-            # Tor proxy beállítások
-            tor_proxies = [
-                'socks5://127.0.0.1:9050',  # Standard Tor port
-                'socks5://127.0.0.1:9150',  # Tor Browser port
-                'socks5://127.0.0.1:1080',  # Alternatív port
+            # 1. Webes proxy szolgáltatások (CroxyProxy, ProxySite)
+            web_proxies = [
+                'https://www.croxyproxy.com/',
+                'https://www.proxysite.com/',
+                'https://www.kproxy.com/',
             ]
             
-            for tor_proxy in tor_proxies:
+            # 2. Friss HTTP proxy lista
+            import requests
+            import random
+            
+            try:
+                st.info("🔍 Friss proxy lista letöltése...")
+                proxy_response = requests.get(
+                    'https://api.proxyscrape.com/v2/?request=get&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all',
+                    timeout=10
+                )
+                
+                if proxy_response.status_code == 200:
+                    proxy_list = proxy_response.text.strip().split('\n')
+                    # Véletlenszerűen választunk 3 proxy-t
+                    selected_proxies = random.sample(proxy_list, min(3, len(proxy_list)))
+                    st.info(f"✅ Találtam {len(selected_proxies)} friss proxy-t")
+                else:
+                    selected_proxies = []
+                    st.warning("⚠️ Nem sikerült letölteni a proxy listát")
+                    
+            except Exception as e:
+                st.warning(f"⚠️ Proxy lista letöltés hiba: {str(e)}")
+                selected_proxies = []
+            
+            # 3. Proxy-k tesztelése és használata
+            all_proxies = []
+            
+            # Webes proxy-k hozzáadása
+            for web_proxy in web_proxies:
+                all_proxies.append(('web', web_proxy))
+            
+            # HTTP proxy-k hozzáadása
+            for proxy in selected_proxies:
+                all_proxies.append(('http', f"http://{proxy}"))
+            
+            # Proxy-k tesztelése
+            for proxy_type, proxy_url in all_proxies:
                 try:
-                    st.info(f"🌐 Tor proxy tesztelése: {tor_proxy}")
+                    if proxy_type == 'web':
+                        st.info(f"🌐 Webes proxy tesztelése: {proxy_url}")
+                        # Webes proxy-knál más a tesztelés
+                        test_success = True
+                    else:
+                        st.info(f"🌐 HTTP proxy tesztelése: {proxy_url}")
+                        # HTTP proxy gyors teszt
+                        test_response = requests.get(
+                            'http://httpbin.org/ip',
+                            proxies={'http': proxy_url, 'https': proxy_url},
+                            timeout=5
+                        )
+                        test_success = test_response.status_code == 200
                     
-                    # Tor proxy teszt
-                    import requests
-                    test_response = requests.get(
-                        'http://httpbin.org/ip',
-                        proxies={'http': tor_proxy, 'https': tor_proxy},
-                        timeout=10
-                    )
-                    
-                    if test_response.status_code == 200:
-                        st.info(f"✅ Tor proxy működik: {tor_proxy}")
+                    if test_success:
+                        st.info(f"✅ Proxy működik: {proxy_url}")
                         
-                        # YouTube letöltés Tor proxy-val
-                        tor_opts = {
+                        # YouTube letöltés proxy-val
+                        proxy_opts = {
                             'format': 'bestaudio/best',
                             'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
                             'postprocessors': [{
@@ -4645,7 +4685,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                             'noplaylist': True,
                             'quiet': True,
                             'no_warnings': True,
-                            'proxy': tor_proxy,
                             'http_headers': {
                                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                             },
@@ -4657,28 +4696,32 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                             },
                             'geo_bypass': True,
                             'geo_bypass_country': 'US',
-                            'socket_timeout': 60,
-                            'retries': 3,
+                            'socket_timeout': 30,
+                            'retries': 2,
                         }
                         
-                        with yt_dlp.YoutubeDL(tor_opts) as ydl:
+                        # Proxy hozzáadása ha HTTP proxy
+                        if proxy_type == 'http':
+                            proxy_opts['proxy'] = proxy_url
+                        
+                        with yt_dlp.YoutubeDL(proxy_opts) as ydl:
                             info = ydl.extract_info(url, download=False)
                             if info:
                                 ydl.download([url])
                                 success = True
-                                st.success(f"🎉 Sikeres letöltés Tor proxy-val: {tor_proxy}")
+                                st.success(f"🎉 Sikeres letöltés {proxy_type} proxy-val: {proxy_url}")
                                 break
                             else:
-                                st.warning(f"⚠️ Tor proxy nem működik YouTube-nál: {tor_proxy}")
+                                st.warning(f"⚠️ {proxy_type} proxy nem működik YouTube-nál: {proxy_url}")
                     else:
-                        st.warning(f"⚠️ Tor proxy nem elérhető: {tor_proxy}")
+                        st.warning(f"⚠️ {proxy_type} proxy nem elérhető: {proxy_url}")
                         
                 except Exception as e:
-                    st.warning(f"⚠️ Tor proxy hiba ({tor_proxy}): {str(e)}")
+                    st.warning(f"⚠️ {proxy_type} proxy hiba ({proxy_url}): {str(e)}")
                     continue
                     
         except Exception as e:
-            st.error(f"Tor proxy használat sikertelen: {str(e)}")
+            st.error(f"Intelligens proxy rendszer sikertelen: {str(e)}")
             success = False
     
     # Próbálkozás 9: Egyszerű megközelítés (minimális beállításokkal)
