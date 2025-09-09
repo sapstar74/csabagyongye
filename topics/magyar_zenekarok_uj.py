@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:30:01
+# Generated on: 2025-09-09 13:35:27
 
 QUESTIONS = [
     {
@@ -1276,6 +1276,19 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "cserihanna - Magyar Zenekarok",
         "audio_file": "99. cserihanna - Akinek én sok vagyok.mp3",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Sisi",
+            "Odet",
+            "cserihanna",
+            "Detto",
+        ],
+        "correct": 0,
+        "explanation": "Sisi - Magyar Zenekarok",
+        "audio_file": "Unknown_Artist_Sisi_Yalla_Official_Music_Vi.mp3",
         "topic": "magyar_zenekarok",
     },
 ]
