@@ -4606,227 +4606,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             st.error(f"YouTube API közvetlen használat is sikertelen: {str(e)}")
             success = False
     
-    # Próbálkozás 8: Proxy alkalmazások használata
-    if not success:
-        try:
-            st.info("🔄 Próbálkozás proxy alkalmazásokkal...")
-            
-            # Ingyenes proxy listák
-            proxy_list = [
-                # HTTP proxy-k
-                'http://8.210.83.33:80',
-                'http://47.74.152.29:8888',
-                'http://47.88.3.19:8080',
-                'http://47.91.56.120:8080',
-                'http://47.92.248.86:80',
-                'http://47.93.52.17:80',
-                'http://47.93.52.18:80',
-                'http://47.93.52.19:80',
-                'http://47.93.52.20:80',
-                'http://47.93.52.21:80',
-                # SOCKS proxy-k
-                'socks5://127.0.0.1:1080',
-                'socks5://127.0.0.1:1081',
-                'socks5://127.0.0.1:1082',
-                # Tor proxy
-                'socks5://127.0.0.1:9050',
-                'socks5://127.0.0.1:9150',
-            ]
-            
-            for i, proxy in enumerate(proxy_list):
-                try:
-                    st.info(f"🌐 Próbálkozás proxy-val: {proxy}")
-                    
-                    proxy_opts = {
-                        'format': 'bestaudio/best',
-                        'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                        'postprocessors': [{
-                            'key': 'FFmpegExtractAudio',
-                            'preferredcodec': 'mp3',
-                            'preferredquality': '192',
-                        }],
-                        'noplaylist': True,
-                        'quiet': True,
-                        'no_warnings': True,
-                        'proxy': proxy,
-                        'http_headers': {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                        },
-                        'extractor_args': {
-                            'youtube': {
-                                'player_client': ['android', 'web'],
-                                'skip': ['dash', 'hls'],
-                            }
-                        },
-                        'geo_bypass': True,
-                        'geo_bypass_country': 'US',
-                        'socket_timeout': 30,
-                        'retries': 2,
-                    }
-                    
-                    with yt_dlp.YoutubeDL(proxy_opts) as ydl:
-                        info = ydl.extract_info(url, download=False)
-                        if info:
-                            ydl.download([url])
-                            success = True
-                            st.success(f"✅ Sikeres letöltés proxy-val: {proxy}")
-                            break
-                        else:
-                            st.warning(f"⚠️ Proxy nem működik: {proxy}")
-                            
-                except Exception as e:
-                    st.warning(f"⚠️ Proxy hiba ({proxy}): {str(e)}")
-                    continue
-                    
-        except Exception as e:
-            st.error(f"Proxy alkalmazások használata sikertelen: {str(e)}")
-            success = False
-    
-    # Próbálkozás 9: youtube-dl használata (ha yt-dlp nem működik)
-    if not success:
-        try:
-            st.info("🔄 Próbálkozás youtube-dl-lel...")
-            
-            # youtube-dl telepítése ha nincs
-            try:
-                import youtube_dl
-            except ImportError:
-                st.info("📦 youtube-dl telepítése...")
-                import subprocess
-                subprocess.run(['pip3', 'install', 'youtube-dl'], check=True)
-                import youtube_dl
-            
-            # youtube-dl konfiguráció
-            ydl_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192',
-                }],
-                'noplaylist': True,
-                'quiet': True,
-                'no_warnings': True,
-                'http_headers': {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                },
-                'geo_bypass': True,
-                'geo_bypass_country': 'US',
-                'socket_timeout': 30,
-                'retries': 3,
-            }
-            
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
-                if info:
-                    ydl.download([url])
-                    success = True
-                else:
-                    success = False
-                    
-        except Exception as e:
-            st.error(f"youtube-dl használat is sikertelen: {str(e)}")
-            success = False
-    
-    # Próbálkozás 10: Dinamikus proxy keresés és használat
-    if not success:
-        try:
-            st.info("🔄 Próbálkozás dinamikus proxy kereséssel...")
-            
-            # Proxy keresés különböző forrásokból
-            import requests
-            import random
-            
-            # Proxy források
-            proxy_sources = [
-                'https://api.proxyscrape.com/v2/?request=get&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all',
-                'https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt',
-                'https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt',
-                'https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt',
-            ]
-            
-            working_proxies = []
-            
-            for source in proxy_sources:
-                try:
-                    st.info(f"🔍 Proxy keresés: {source}")
-                    response = requests.get(source, timeout=10)
-                    if response.status_code == 200:
-                        proxies = response.text.strip().split('\n')
-                        # Véletlenszerűen választunk 5 proxy-t
-                        selected_proxies = random.sample(proxies, min(5, len(proxies)))
-                        working_proxies.extend(selected_proxies)
-                        st.info(f"✅ Találtam {len(selected_proxies)} proxy-t")
-                except Exception as e:
-                    st.warning(f"⚠️ Proxy forrás hiba: {str(e)}")
-                    continue
-            
-            # Proxy-k tesztelése
-            for proxy in working_proxies:
-                try:
-                    proxy_url = f"http://{proxy}"
-                    st.info(f"🌐 Proxy tesztelése: {proxy_url}")
-                    
-                    # Gyors proxy teszt
-                    test_response = requests.get(
-                        'http://httpbin.org/ip',
-                        proxies={'http': proxy_url, 'https': proxy_url},
-                        timeout=5
-                    )
-                    
-                    if test_response.status_code == 200:
-                        st.info(f"✅ Proxy működik: {proxy_url}")
-                        
-                        # YouTube letöltés proxy-val
-                        proxy_opts = {
-                            'format': 'bestaudio/best',
-                            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                            'postprocessors': [{
-                                'key': 'FFmpegExtractAudio',
-                                'preferredcodec': 'mp3',
-                                'preferredquality': '192',
-                            }],
-                            'noplaylist': True,
-                            'quiet': True,
-                            'no_warnings': True,
-                            'proxy': proxy_url,
-                            'http_headers': {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                            },
-                            'extractor_args': {
-                                'youtube': {
-                                    'player_client': ['android', 'web'],
-                                    'skip': ['dash', 'hls'],
-                                }
-                            },
-                            'geo_bypass': True,
-                            'geo_bypass_country': 'US',
-                            'socket_timeout': 30,
-                            'retries': 2,
-                        }
-                        
-                        with yt_dlp.YoutubeDL(proxy_opts) as ydl:
-                            info = ydl.extract_info(url, download=False)
-                            if info:
-                                ydl.download([url])
-                                success = True
-                                st.success(f"🎉 Sikeres letöltés dinamikus proxy-val: {proxy_url}")
-                                break
-                            else:
-                                st.warning(f"⚠️ Proxy nem működik YouTube-nál: {proxy_url}")
-                    else:
-                        st.warning(f"⚠️ Proxy nem elérhető: {proxy_url}")
-                        
-                except Exception as e:
-                    st.warning(f"⚠️ Proxy hiba ({proxy}): {str(e)}")
-                    continue
-                    
-        except Exception as e:
-            st.error(f"Dinamikus proxy keresés sikertelen: {str(e)}")
-            success = False
-    
-    # Próbálkozás 11: Tor proxy használata
+    # Próbálkozás 8: Tor proxy használata
     if not success:
         try:
             st.info("🔄 Próbálkozás Tor proxy-val...")
@@ -4899,6 +4679,38 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     
         except Exception as e:
             st.error(f"Tor proxy használat sikertelen: {str(e)}")
+            success = False
+    
+    # Próbálkozás 9: Egyszerű megközelítés (minimális beállításokkal)
+    if not success:
+        try:
+            st.info("🔄 Próbálkozás egyszerű megközelítéssel...")
+            
+            # Minimális yt-dlp konfiguráció
+            simple_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
+            }
+            
+            with yt_dlp.YoutubeDL(simple_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                    st.success("✅ Sikeres letöltés egyszerű megközelítéssel")
+                else:
+                    success = False
+                    
+        except Exception as e:
+            st.error(f"Egyszerű megközelítés is sikertelen: {str(e)}")
             success = False
     
     if not success:
