@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:35:27
+# Generated on: 2025-09-09 18:18:24
 
 QUESTIONS = [
     {
@@ -1289,6 +1289,19 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Sisi - Magyar Zenekarok",
         "audio_file": "Unknown_Artist_Sisi_Yalla_Official_Music_Vi.mp3",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Erkel Ferenc",
+            "Bartók Béla",
+            "Mozart",
+            "Johann Strauss",
+        ],
+        "correct": 0,
+        "explanation": "Erkel Ferenc - Magyar Zenekarok",
+        "audio_file": "Unknown_Artist_Hunyadi_László_Palotás.mp3",
         "topic": "magyar_zenekarok",
     },
 ]
