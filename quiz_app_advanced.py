@@ -4386,6 +4386,146 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
             success = False
     
+    # Próbálkozás 4: VPN/Proxy beállításokkal (ha mindhárom sikertelen)
+    if not success:
+        try:
+            vpn_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
+                # VPN/Proxy beállítások
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.5',
+                    'Accept-Encoding': 'gzip, deflate',
+                    'Connection': 'keep-alive',
+                },
+                'geo_bypass': True,
+                'geo_bypass_country': 'US',
+                'geo_bypass_ip_block': '0.0.0.0/0',
+                'extractor_args': {
+                    'youtube': {
+                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
+                        'skip': ['dash', 'hls'],
+                    }
+                },
+                'socket_timeout': 30,
+                'retries': 5,
+                'fragment_retries': 5,
+            }
+            with yt_dlp.YoutubeDL(vpn_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+        except Exception as e:
+            st.error(f"VPN/Proxy konfiguráció is sikertelen: {str(e)}")
+            success = False
+    
+    # Próbálkozás 5: Teljesen más megközelítés - yt-dlp alternatív beállítások
+    if not success:
+        try:
+            alt_opts = {
+                'format': 'bestaudio[ext=m4a]/bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
+                # Alternatív beállítások
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                },
+                'extractor_args': {
+                    'youtube': {
+                        'player_client': ['tv_embedded', 'android', 'web'],
+                        'skip': ['dash', 'hls', 'translated_subs'],
+                        'player_skip': ['configs', 'webpage'],
+                    }
+                },
+                'geo_bypass': True,
+                'geo_bypass_country': 'US',
+                'socket_timeout': 60,
+                'retries': 3,
+                'fragment_retries': 3,
+                'no_check_certificate': True,
+                'prefer_insecure': True,
+            }
+            with yt_dlp.YoutubeDL(alt_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+        except Exception as e:
+            st.error(f"Alternatív konfiguráció is sikertelen: {str(e)}")
+            success = False
+    
+    # Próbálkozás 6: Teljesen más URL formátum - ytsearch használata
+    if not success:
+        try:
+            # YouTube URL helyett ytsearch használata
+            search_query = track_info.get('title', '') + ' ' + track_info.get('artist', '')
+            if search_query.strip():
+                search_url = f"ytsearch1:{search_query}"
+                st.info(f"🔍 Keresés: {search_query}")
+                
+                search_opts = {
+                    'format': 'bestaudio/best',
+                    'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                    'postprocessors': [{
+                        'key': 'FFmpegExtractAudio',
+                        'preferredcodec': 'mp3',
+                        'preferredquality': '192',
+                    }],
+                    'noplaylist': True,
+                    'quiet': True,
+                    'no_warnings': True,
+                    'http_headers': {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    },
+                    'extractor_args': {
+                        'youtube': {
+                            'player_client': ['android'],
+                            'skip': ['dash', 'hls'],
+                        }
+                    },
+                    'geo_bypass': True,
+                    'geo_bypass_country': 'US',
+                    'socket_timeout': 30,
+                    'retries': 3,
+                }
+                with yt_dlp.YoutubeDL(search_opts) as ydl:
+                    info = ydl.extract_info(search_url, download=False)
+                    if info and 'entries' in info and info['entries']:
+                        # Az első találatot használjuk
+                        first_result = info['entries'][0]
+                        ydl.download([first_result['webpage_url']])
+                        success = True
+                        info = first_result  # Az info változót frissítjük
+                    else:
+                        success = False
+            else:
+                success = False
+        except Exception as e:
+            st.error(f"Keresés alapú letöltés is sikertelen: {str(e)}")
+            success = False
+    
     if not success:
         st.error("❌ Minden letöltési módszer sikertelen volt")
         return False
