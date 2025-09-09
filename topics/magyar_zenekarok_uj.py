@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 13:28:02
+# Generated on: 2025-09-09 13:29:15
 
 QUESTIONS = [
     {
@@ -1223,7 +1223,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Kaukázus - Magyar Zenekarok",
         "audio_file": "95. Kaukázus - Honvéd.mp3",
-        "song_title": "Honvéd",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1236,7 +1235,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "P. Box - Magyar Zenekarok",
-        "audio_file": "audio_files/magyar_zenekarok/Radics Béla - Zöld csillag.mp4",
+        "audio_file": "96. P Box - Zöld csillag.mp3",
+        "song_title": "Zöld csillag",
         "topic": "magyar_zenekarok",
     },
     {
