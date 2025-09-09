@@ -4366,9 +4366,11 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             simple_opts = {
                 'format': 'bestaudio/best',
                 'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                'extractaudio': True,
-                'audioformat': 'mp3',
-                'audioquality': '192K',
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
                 'noplaylist': True,
                 'quiet': True,
                 'no_warnings': True,
@@ -4394,7 +4396,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         st.error("❌ Nem sikerült lekérni a videó ID-t")
         return False
     
-    # Fájlnév YouTube ID alapján
+    # Fájlnév YouTube ID alapján - először MP3-et próbáljuk
     audio_file = str(download_dir / f"{video_id}.mp3")
     
     # Ellenőrizzük, hogy a fájl létezik-e
@@ -4404,6 +4406,32 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         possible_files = glob.glob(str(download_dir / f"{video_id}.*"))
         if possible_files:
             audio_file = possible_files[0]  # A YouTube ID-vel kezdődő fájlt használjuk
+            st.info(f"📁 Talált fájl: {os.path.basename(audio_file)}")
+            
+            # Ha nem MP3, konvertáljuk MP3-ba
+            if not audio_file.endswith('.mp3'):
+                try:
+                    import subprocess
+                    mp3_file = str(download_dir / f"{video_id}.mp3")
+                    cmd = [
+                        'ffmpeg', '-i', audio_file, 
+                        '-acodec', 'libmp3lame', 
+                        '-ab', '192k', 
+                        '-ar', '44100', 
+                        '-y', 
+                        mp3_file
+                    ]
+                    result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+                    if result.returncode == 0 and os.path.exists(mp3_file):
+                        # Eredeti fájl törlése
+                        if os.path.exists(audio_file):
+                            os.remove(audio_file)
+                        audio_file = mp3_file
+                        st.success("✅ Fájl sikeresen konvertálva MP3-ba!")
+                    else:
+                        st.warning("⚠️ MP3 konvertálás sikertelen, eredeti fájl használata")
+                except Exception as e:
+                    st.warning(f"⚠️ MP3 konvertálás hiba: {str(e)}, eredeti fájl használata")
         else:
             st.error("❌ A letöltés sikertelen - fájl nem található")
             return False
@@ -4414,6 +4442,95 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         return False
     
     st.success(f"✅ Sikeres letöltés: {track_info.get('title', 'Ismeretlen track')}")
+    
+    # 2 perces rész kivágása FFmpeg-gel
+    try:
+        import subprocess
+        import re
+        
+        # Ellenőrizzük, hogy a fájl létezik-e és nem üres
+        if not os.path.exists(audio_file):
+            st.error("❌ A letöltött fájl nem található!")
+            return False
+        
+        if os.path.getsize(audio_file) == 0:
+            st.error("❌ A letöltött fájl üres!")
+            return False
+        
+        # Fájl létezik és nem üres, folytathatjuk a vágást
+        # Biztonságos fájlnév létrehozása - "Előadó - Szám cím" formátum
+        artist = track_info.get('artist', 'Unknown Artist')
+        title = track_info.get('title', 'Unknown Title')
+        
+        # Biztonságos fájlnév létrehozása - rövidebb és egyszerűbb
+        safe_artist = re.sub(r'[^\w\s-]', '', artist)[:20]  # Max 20 karakter
+        safe_title = re.sub(r'[^\w\s-]', '', title)[:30]   # Max 30 karakter
+        safe_artist = re.sub(r'[-\s]+', '_', safe_artist)
+        safe_title = re.sub(r'[-\s]+', '_', safe_title)
+        
+        # "Előadó_Szám" formátum (rövidebb)
+        output_filename = f"{safe_artist}_{safe_title}.mp3"
+        output_file = str(download_dir / output_filename)
+        
+        # FFmpeg paranccsal 2 perc kivágása - továbbfejlesztett verzió
+        # Először ellenőrizzük a bemeneti fájl hosszát
+        probe_cmd = [
+            'ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', 
+            '-of', 'csv=p=0', audio_file
+        ]
+        
+        probe_result = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=30)
+        
+        if probe_result.returncode == 0 and probe_result.stdout.strip():
+            try:
+                duration = float(probe_result.stdout.strip())
+                if duration < 120:
+                    # Ha a fájl rövidebb mint 2 perc, nem vágunk
+                    st.info(f"⚠️ A fájl rövidebb mint 2 perc ({duration:.1f}s), teljes fájl használata")
+                else:
+                    # FFmpeg paranccsal 2 perc kivágása
+                    cmd = [
+                        'ffmpeg', '-i', audio_file, 
+                        '-t', '120',  # 2 perc = 120 másodperc
+                        '-acodec', 'libmp3lame',  # MP3 kódolás
+                        '-ab', '192k',  # 192 kbps bitrate
+                        '-ar', '44100',  # 44.1 kHz sample rate
+                        '-y',  # Felülírás
+                        output_file
+                    ]
+                    
+                    result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+                    
+                    if result.returncode == 0 and os.path.exists(output_file):
+                        # Ellenőrizzük a kimeneti fájl méretét
+                        if os.path.getsize(output_file) > 0:
+                            # Eredeti fájl törlése, csak a 2 perces marad
+                            if os.path.exists(audio_file):
+                                os.remove(audio_file)
+                            audio_file = output_file
+                            st.success("✅ 2 perces rész sikeresen kivágva!")
+                        else:
+                            st.warning("⚠️ A kivágott fájl üres, teljes fájl használata")
+                    else:
+                        st.warning(f"⚠️ FFmpeg hiba: {result.stderr[:200]}..., teljes fájl használata")
+            except ValueError:
+                st.warning("⚠️ Nem sikerült meghatározni a fájl hosszát, teljes fájl használata")
+        else:
+            st.warning("⚠️ Nem sikerült elemezni a fájlt, teljes fájl használata")
+            
+    except subprocess.TimeoutExpired:
+        st.warning("⚠️ FFmpeg időtúllépés, teljes fájl használata")
+    except FileNotFoundError:
+        st.warning("⚠️ FFmpeg nem található, teljes fájl használata")
+    except Exception as e:
+        st.warning(f"⚠️ FFmpeg hiba: {str(e)[:100]}..., teljes fájl használata")
+    
+    # Quiz kérdés generálása
+    question = generate_quiz_question(track_info, audio_file, category, custom_options)
+    
+    # Kérdés hozzáadása a megfelelő kategóriához
+    add_question_to_category(question, category)
+    
     return True
 
 def generate_quiz_question(track_info, audio_file, category, custom_options=None):
