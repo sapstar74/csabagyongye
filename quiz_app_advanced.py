@@ -4239,251 +4239,182 @@ def search_youtube_tracks(query):
 def download_and_integrate_track(track_info, category, custom_options=None):
     """Track letöltése és integrálása"""
     try:
-        try:
-            import yt_dlp
-        except ImportError:
-            st.error("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
-            return False
-        
-        import os
-        from pathlib import Path
-        
-        # Ellenőrizzük, hogy track_info dict-e
-        if not isinstance(track_info, dict):
-            st.error(f"Track info nem dict típusú: {type(track_info)}")
-            return False
-        
-        # Kategória alapján letöltési könyvtár meghatározása
-        category_mapping = {
-            "magyar_zenekarok": "audio_files/magyar_zenekarok",
-            "nemzetkozi_zenekarok": "audio_files/nemzetkozi_zenekarok", 
-            "komolyzene": "audio_files/komolyzene",
-            "one_hit_wonders": "audio_files/one_hit_wonders"
-        }
-        
-        download_dir = Path(category_mapping.get(category, "audio_files"))
-        download_dir.mkdir(parents=True, exist_ok=True)
-        
-        # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
-        ydl_opts = {
-            'format': 'bestaudio[ext=m4a]/bestaudio/best',
-            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),  # YouTube ID használata fájlnévként
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-            }],
-            'quiet': True,
-            'no_warnings': True,
-            # 403 Forbidden hiba javítása - teljesen új megközelítés
-            'http_headers': {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache',
-                'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-                'Sec-Ch-Ua-Mobile': '?0',
-                'Sec-Ch-Ua-Platform': '"Windows"',
-                'Sec-Fetch-Dest': 'document',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-Site': 'none',
-                'Sec-Fetch-User': '?1',
-                'Upgrade-Insecure-Requests': '1',
-            },
-            'extractor_retries': 10,
-            'fragment_retries': 10,
-            'retries': 10,
-            # Cookie és referer beállítások
-            'cookiefile': None,
-            'referer': 'https://www.youtube.com/',
-            # Proxy és timeout beállítások
-            'socket_timeout': 120,
-            'retry_sleep_functions': {'http': lambda n: min(1.5 ** n, 60)},
-            # Teljesen új extractor beállítások
-            'extractor_args': {
-                'youtube': {
-                    'skip': ['dash', 'hls', 'translated_subs'],
-                    'player_skip': ['configs', 'webpage'],
-                    'player_client': ['android', 'web', 'ios', 'tv_embedded'],
-                    'comment_sort': ['top'],
-                    'max_comments': [0],
-                }
-            },
-            # Player response kinyerési problémák javítása
-            'player_skip': ['configs', 'webpage'],
-            'player_client': ['android', 'web', 'ios', 'tv_embedded'],
-            # További beállítások
-            'no_check_certificate': True,
-            'prefer_insecure': True,
-            'geo_bypass': True,
-            'geo_bypass_country': 'US',
-            # Rate limiting
-            'sleep_interval': 1,
-            'max_sleep_interval': 5,
-            # Alternative extractors
-            'extractor_retries': 10,
-            'fragment_retries': 10,
-            'retries': 10,
-            # IPv4 kényszerítés macOS-en
-            'force_ipv4': True,
-            'source_address': '0.0.0.0',
-            # Player response problémák további javítása
-            'extract_flat': False,
-            'writeinfojson': False,
-            'writethumbnail': False,
-            'writeautomaticsub': False,
-            'writesubtitles': False,
-            'ignoreerrors': False,
-            'no_color': True,
-            'simulate': False,
-        }
-        
-        # Letöltés
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            url = track_info.get('url', '')
-            if not url:
-                st.error("Nincs érvényes URL a track_info-ban")
-                return False
-            
-            try:
-                # Információk lekérése
-                info = ydl.extract_info(url, download=False)
-                if not info:
-                    st.error("Nem sikerült lekérni a videó információit")
-                    return False
-                
-                # Letöltés
-                ydl.download([url])
-                
-                # Fájlnév meghatározása - YouTube ID alapján
-                video_id = info.get('id', '')
-                if not video_id:
-                    st.error("❌ Nem sikerült lekérni a videó ID-t")
-                    return False
-                
-                # Fájlnév YouTube ID alapján
-                audio_file = str(download_dir / f"{video_id}.mp3")
-                
-                # Ellenőrizzük, hogy a fájl létezik-e
-                if not os.path.exists(audio_file):
-                    # Próbáljuk meg megtalálni a fájlt a könyvtárban
-                    import glob
-                    possible_files = glob.glob(str(download_dir / f"{video_id}.*"))
-                    if possible_files:
-                        audio_file = possible_files[0]  # A YouTube ID-vel kezdődő fájlt használjuk
-                    else:
-                        st.error("❌ A letöltés sikertelen - fájl nem található")
-                        return False
-                
-                # Ellenőrizzük a fájl méretét
-                if os.path.getsize(audio_file) == 0:
-                    st.error("❌ A letöltött fájl üres")
-                    return False
-                    
-                st.success(f"✅ Sikeres letöltés: {track_info.get('title', 'Ismeretlen track')}")
-                
-            except Exception as e:
-                st.error(f"❌ Letöltési hiba: {str(e)}")
-                return False
-            
-            # 2 perces rész kivágása FFmpeg-gel
-            try:
-                import subprocess
-                import re
-                import time
-                
-                # Ellenőrizzük, hogy a fájl létezik-e és nem üres
-                if not os.path.exists(audio_file):
-                    st.error("❌ A letöltött fájl nem található!")
-                    return False
-                
-                if os.path.getsize(audio_file) == 0:
-                    st.error("❌ A letöltött fájl üres!")
-                    return False
-                
-                # Fájl létezik és nem üres, folytathatjuk a vágást
-                # Biztonságos fájlnév létrehozása - "Előadó - Szám cím" formátum
-                artist = track_info.get('artist', 'Unknown Artist')
-                title = track_info.get('title', 'Unknown Title')
-                
-                # Biztonságos fájlnév létrehozása - rövidebb és egyszerűbb
-                safe_artist = re.sub(r'[^\w\s-]', '', artist)[:20]  # Max 20 karakter
-                safe_title = re.sub(r'[^\w\s-]', '', title)[:30]   # Max 30 karakter
-                safe_artist = re.sub(r'[-\s]+', '_', safe_artist)
-                safe_title = re.sub(r'[-\s]+', '_', safe_title)
-                
-                # "Előadó_Szám" formátum (rövidebb)
-                output_filename = f"{safe_artist}_{safe_title}.mp3"
-                output_file = str(download_dir / output_filename)
-                
-                # FFmpeg paranccsal 2 perc kivágása - továbbfejlesztett verzió
-                # Először ellenőrizzük a bemeneti fájl hosszát
-                probe_cmd = [
-                    'ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', 
-                    '-of', 'csv=p=0', audio_file
-                ]
-                
-                probe_result = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=30)
-                
-                if probe_result.returncode == 0 and probe_result.stdout.strip():
-                    try:
-                        duration = float(probe_result.stdout.strip())
-                        if duration < 120:
-                            # Ha a fájl rövidebb mint 2 perc, nem vágunk
-                            st.info(f"⚠️ A fájl rövidebb mint 2 perc ({duration:.1f}s), teljes fájl használata")
-                        else:
-                            # FFmpeg paranccsal 2 perc kivágása
-                            cmd = [
-                                'ffmpeg', '-i', audio_file, 
-                                '-t', '120',  # 2 perc = 120 másodperc
-                                '-acodec', 'libmp3lame',  # MP3 kódolás
-                                '-ab', '192k',  # 192 kbps bitrate
-                                '-ar', '44100',  # 44.1 kHz sample rate
-                                '-y',  # Felülírás
-                                output_file
-                            ]
-                            
-                            result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
-                            
-                            if result.returncode == 0 and os.path.exists(output_file):
-                                # Ellenőrizzük a kimeneti fájl méretét
-                                if os.path.getsize(output_file) > 0:
-                                    # Eredeti fájl törlése, csak a 2 perces marad
-                                    if os.path.exists(audio_file):
-                                        os.remove(audio_file)
-                                    audio_file = output_file
-                                    st.success("✅ 2 perces rész sikeresen kivágva!")
-                                else:
-                                    st.warning("⚠️ A kivágott fájl üres, teljes fájl használata")
-                            else:
-                                st.warning(f"⚠️ FFmpeg hiba: {result.stderr[:200]}..., teljes fájl használata")
-                    except ValueError:
-                        st.warning("⚠️ Nem sikerült meghatározni a fájl hosszát, teljes fájl használata")
-                else:
-                    st.warning("⚠️ Nem sikerült elemezni a fájlt, teljes fájl használata")
-                    
-            except subprocess.TimeoutExpired:
-                st.warning("⚠️ FFmpeg időtúllépés, teljes fájl használata")
-            except FileNotFoundError:
-                st.warning("⚠️ FFmpeg nem található, teljes fájl használata")
-            except Exception as e:
-                st.warning(f"⚠️ FFmpeg hiba: {str(e)[:100]}..., teljes fájl használata")
-        
-        # Quiz kérdés generálása
-        question = generate_quiz_question(track_info, audio_file, category, custom_options)
-        
-        # Kérdés hozzáadása a megfelelő kategóriához
-        add_question_to_category(question, category)
-        
-        return True
-    except Exception as e:
-        st.error(f"Letöltési hiba: {e}")
-        st.error(f"Hiba típusa: {type(e)}")
-        import traceback
-        st.error(f"Hiba részletei: {traceback.format_exc()}")
+        import yt_dlp
+    except ImportError:
+        st.error("❌ yt-dlp modul nincs telepítve! Telepítsd: pip install yt-dlp")
         return False
+    
+    import os
+    from pathlib import Path
+    
+    # Ellenőrizzük, hogy track_info dict-e
+    if not isinstance(track_info, dict):
+        st.error(f"Track info nem dict típusú: {type(track_info)}")
+        return False
+    
+    # Kategória alapján letöltési könyvtár meghatározása
+    category_mapping = {
+        "magyar_zenekarok": "audio_files/magyar_zenekarok",
+        "nemzetkozi_zenekarok": "audio_files/nemzetkozi_zenekarok", 
+        "komolyzene": "audio_files/komolyzene",
+        "one_hit_wonders": "audio_files/one_hit_wonders"
+    }
+    
+    download_dir = Path(category_mapping.get(category, "audio_files"))
+    download_dir.mkdir(parents=True, exist_ok=True)
+    
+    # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
+    ydl_opts = {
+        'format': 'bestaudio[ext=m4a]/bestaudio/best',
+        'outtmpl': str(download_dir / '%(id)s.%(ext)s'),  # YouTube ID használata fájlnévként
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'quiet': True,
+        'no_warnings': True,
+        # 403 Forbidden hiba javítása - teljesen új megközelítés
+        'http_headers': {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+            'Sec-Ch-Ua-Mobile': '?0',
+            'Sec-Ch-Ua-Platform': '"Windows"',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1',
+        },
+        'extractor_retries': 10,
+        'fragment_retries': 10,
+        'retries': 10,
+        # Cookie és referer beállítások
+        'cookiefile': None,
+        'referer': 'https://www.youtube.com/',
+        # Proxy és timeout beállítások
+        'socket_timeout': 120,
+        'retry_sleep_functions': {'http': lambda n: min(1.5 ** n, 60)},
+        # Egyszerűsített extractor beállítások
+        'extractor_args': {
+            'youtube': {
+                'player_client': ['android'],
+                'skip': ['dash', 'hls'],
+            }
+        },
+        # További beállítások
+        'no_check_certificate': True,
+        'prefer_insecure': True,
+        'geo_bypass': True,
+        'geo_bypass_country': 'US',
+        # Rate limiting
+        'sleep_interval': 1,
+        'max_sleep_interval': 5,
+        # Alternative extractors
+        'extractor_retries': 10,
+        'fragment_retries': 10,
+        'retries': 10,
+        # IPv4 kényszerítés macOS-en
+        'force_ipv4': True,
+        'source_address': '0.0.0.0',
+        # Egyszerű beállítások
+        'no_color': True,
+    }
+    
+    # Letöltés - több próbálkozás különböző konfigurációkkal
+    url = track_info.get('url', '')
+    if not url:
+        st.error("Nincs érvényes URL a track_info-ban")
+        return False
+    
+    # Próbálkozás 1: Android client
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(url, download=False)
+            if info:
+                ydl.download([url])
+                success = True
+            else:
+                success = False
+    except Exception as e:
+        st.warning(f"Android client sikertelen: {str(e)}")
+        success = False
+    
+    # Próbálkozás 2: Web client (ha az első sikertelen)
+    if not success:
+        try:
+            ydl_opts['extractor_args']['youtube']['player_client'] = ['web']
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+        except Exception as e:
+            st.warning(f"Web client sikertelen: {str(e)}")
+            success = False
+    
+    # Próbálkozás 3: Egyszerű konfiguráció (ha mindkettő sikertelen)
+    if not success:
+        try:
+            simple_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'extractaudio': True,
+                'audioformat': 'mp3',
+                'audioquality': '192K',
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
+            }
+            with yt_dlp.YoutubeDL(simple_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+        except Exception as e:
+            st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+            success = False
+    
+    if not success:
+        st.error("❌ Minden letöltési módszer sikertelen volt")
+        return False
+    
+    # Fájlnév meghatározása - YouTube ID alapján
+    video_id = info.get('id', '')
+    if not video_id:
+        st.error("❌ Nem sikerült lekérni a videó ID-t")
+        return False
+    
+    # Fájlnév YouTube ID alapján
+    audio_file = str(download_dir / f"{video_id}.mp3")
+    
+    # Ellenőrizzük, hogy a fájl létezik-e
+    if not os.path.exists(audio_file):
+        # Próbáljuk meg megtalálni a fájlt a könyvtárban
+        import glob
+        possible_files = glob.glob(str(download_dir / f"{video_id}.*"))
+        if possible_files:
+            audio_file = possible_files[0]  # A YouTube ID-vel kezdődő fájlt használjuk
+        else:
+            st.error("❌ A letöltés sikertelen - fájl nem található")
+            return False
+    
+    # Ellenőrizzük a fájl méretét
+    if os.path.getsize(audio_file) == 0:
+        st.error("❌ A letöltött fájl üres")
+        return False
+    
+    st.success(f"✅ Sikeres letöltés: {track_info.get('title', 'Ismeretlen track')}")
+    return True
 
 def generate_quiz_question(track_info, audio_file, category, custom_options=None):
     """Quiz kérdés generálása a track alapján"""
