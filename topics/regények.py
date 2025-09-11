@@ -586,7 +586,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Ahab kapitány hajszája a fehér bálnára (Moby Dick) játszódik, ahol egy történetmesélő (Ishmael) és egy harponos (Queequeg) szerepel?",
+        "question": "Melyik regényben Ahab kapitány hajszája a fehér bálnára játszódik, ahol egy történetmesélő (Ishmael) és egy harponos (Queequeg) szerepel?",
         "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A Nap is felkel"],
         "correct": 1,
         "explanation": "Moby Dick (Herman Melville) - a hajsza és a bosszú témáit vizsgálja.",
