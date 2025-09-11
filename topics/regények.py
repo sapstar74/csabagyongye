@@ -211,14 +211,14 @@ REGÉNYEK_QUESTIONS = [
 
     # 14. Madame Bovary (Gustave Flaubert)
     {
-        "question": "Melyik regény szereplői: Emma, Charles és Rodolphe?",
+        "question": "Melyik regény szereplői: egy nő, Charles és Rodolphe?",
         "options": ["A nyomorultak", "A három testőr", "Madame Bovary", "A vörös és a fekete"],
         "correct": 2,
         "explanation": "Madame Bovary (Gustave Flaubert) - Emma Bovary, Charles Bovary és Rodolphe Boulanger a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy orvos felesége (Emma Bovary) unja a vidéki életet, szerelmi kalandokba keveredik, de végül adósságba kerül és öngyilkos lesz?",
+        "question": "Melyik regényben egy orvos felesége unja a vidéki életet, szerelmi kalandokba keveredik, de végül adósságba kerül és öngyilkos lesz?",
         "options": ["A nyomorultak", "A három testőr", "Madame Bovary", "A vörös és a fekete"],
         "correct": 2,
         "explanation": "Madame Bovary (Gustave Flaubert) - a női elégedetlenség és a romantikus illúziók témáit vizsgálja.",
@@ -307,14 +307,14 @@ REGÉNYEK_QUESTIONS = [
 
     # 20. A kincskereső kisködmön (Móricz Zsigmond)
     {
-        "question": "Melyik regény szereplői: Kisködmön, Nagyapa és a kincskeresők?",
+        "question": "Melyik regény szereplői: egy fiú, Nagyapa és a kincskeresők?",
         "options": ["Az ember tragédiája", "A kőszívű ember fiai", "A Pál utcai fiúk", "A kincskereső kisködmön"],
         "correct": 3,
         "explanation": "A kincskereső kisködmön (Móricz Zsigmond) - Kisködmön, Nagyapa és a kincskeresők a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy fiú (Kisködmön) nagyapjával együtt kincskeresésbe indul, és a regény a kaland és a családi szeretet témáit vizsgálja?",
+        "question": "Melyik regényben egy fiú nagyapjával együtt kincskeresésbe indul, és a regény a kaland és a családi szeretet témáit vizsgálja?",
         "options": ["Az ember tragédiája", "A kőszívű ember fiai", "A Pál utcai fiúk", "A kincskereső kisködmön"],
         "correct": 3,
         "explanation": "A kincskereső kisködmön (Móricz Zsigmond) - a kaland és a családi szeretet témáit vizsgálja.",
@@ -387,14 +387,14 @@ REGÉNYEK_QUESTIONS = [
 
     # 25. Harry Potter (J.K. Rowling)
     {
-        "question": "Melyik regény szereplői: Harry, Hermione és Ron?",
+        "question": "Melyik regény szereplői: egy fiú, Hermione és Ron?",
         "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "Galaxis útikalauz stopposoknak"],
         "correct": 0,
         "explanation": "Harry Potter (J.K. Rowling) - Harry Potter, Hermione Granger és Ron Weasley a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy árva fiú (Harry Potter) megtudja, hogy varázsló, és a Roxfort Varázslóiskolában tanul, ahol barátokat szerez (Hermione, Ron) és harcol a gonosz varázslóval (Voldemort)?",
+        "question": "Melyik regényben egy árva fiú megtudja, hogy varázsló, és egy varázslóiskolában tanul, ahol barátokat szerez (Hermione, Ron) és harcol a gonosz varázslóval?",
         "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "Galaxis útikalauz stopposoknak"],
         "correct": 0,
         "explanation": "Harry Potter (J.K. Rowling) - a varázslat és a barátság témáit vizsgálja.",
@@ -580,14 +580,14 @@ REGÉNYEK_QUESTIONS = [
     # 37. Moby Dick (Herman Melville)
     {
         "question": "Melyik regény szereplői: Ahab, Ishmael és Queequeg?",
-        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A vadászok"],
+        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A Nap is felkel"],
         "correct": 1,
         "explanation": "Moby Dick (Herman Melville) - Ahab, Ishmael és Queequeg a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Ahab kapitány hajszája a fehér bálnára (Moby Dick) játszódik, ahol egy történetmesélő (Ishmael) és egy harponos (Queequeg) szerepel?",
-        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A vadászok"],
+        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A Nap is felkel"],
         "correct": 1,
         "explanation": "Moby Dick (Herman Melville) - a hajsza és a bosszú témáit vizsgálja.",
         "topic": "regények"
@@ -596,46 +596,46 @@ REGÉNYEK_QUESTIONS = [
     # 38. A bűnösök (John Steinbeck)
     {
         "question": "Melyik regény szereplői: Tom, Ma Joad és Jim?",
-        "options": ["Moby Dick", "A bűnösök", "A vadászok", "A harag és a düh"],
+        "options": ["Moby Dick", "A bűnösök", "A Nap is felkel", "A harag és a düh"],
         "correct": 1,
         "explanation": "A bűnösök (John Steinbeck) - Tom, Ma Joad és Jim a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Joad család útja Kaliforniába játszódik a nagy gazdasági válság idején, ahol Tom Joad, az anyja (Ma Joad) és egy volt lelkész (Jim Casy) szerepel?",
-        "options": ["Moby Dick", "A bűnösök", "A vadászok", "A harag és a düh"],
+        "options": ["Moby Dick", "A bűnösök", "A Nap is felkel", "A harag és a düh"],
         "correct": 1,
         "explanation": "A bűnösök (John Steinbeck) - a gazdasági válság és a családi összetartás témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 39. A vadászok (Ernest Hemingway)
+    # 39. A Nap is felkel (Ernest Hemingway)
     {
         "question": "Melyik regény szereplői: Jake, Brett és Robert?",
-        "options": ["A bűnösök", "A vadászok", "A harag és a düh", "A szívtelenek"],
+        "options": ["A bűnösök", "A Nap is felkel", "A harag és a düh", "A szívtelenek"],
         "correct": 1,
-        "explanation": "A vadászok (Ernest Hemingway) - Jake, Brett és Robert a főszereplők.",
+        "explanation": "A Nap is felkel (Ernest Hemingway) - Jake, Brett és Robert a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Jake Barnes és barátai Párizsban és Spanyolországban kalandjai játszódnak, ahol egy nő (Brett Ashley) és egy barát (Robert Cohn) szerepel?",
-        "options": ["A bűnösök", "A vadászok", "A harag és a düh", "A szívtelenek"],
+        "options": ["A bűnösök", "A Nap is felkel", "A harag és a düh", "A szívtelenek"],
         "correct": 1,
-        "explanation": "A vadászok (Ernest Hemingway) - a háború utáni generáció és a szerelem témáit vizsgálja.",
+        "explanation": "A Nap is felkel (Ernest Hemingway) - a háború utáni generáció és a szerelem témáit vizsgálja.",
         "topic": "regények"
     },
 
     # 40. A harag és a düh (William Faulkner)
     {
         "question": "Melyik regény szereplői: Quentin, Caddy és Jason?",
-        "options": ["A vadászok", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
+        "options": ["A Nap is felkel", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
         "correct": 1,
         "explanation": "A harag és a düh (William Faulkner) - Quentin, Caddy és Jason a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Compson család hanyatlása játszódik Mississippi-ben, ahol Quentin, a húga (Caddy) és a bátyja (Jason) szerepel?",
-        "options": ["A vadászok", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
+        "options": ["A Nap is felkel", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
         "correct": 1,
         "explanation": "A harag és a düh (William Faulkner) - a családi hanyatlás és a déli társadalom témáit vizsgálja.",
         "topic": "regények"
