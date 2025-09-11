@@ -479,5 +479,21 @@ REGÉNYEK_QUESTIONS = [
         "correct": 1,
         "explanation": "David Copperfield (Dickens) - az emberi fejlődés és a szerelem témáit vizsgálja.",
         "topic": "regények"
+    },
+
+    # 31. Rózsa neve (Umberto Eco)
+    {
+        "question": "Melyik regény szereplői: William, Adso és Jorge?",
+        "options": ["David Copperfield", "Rózsa neve", "A kék szoba", "Ulysses"],
+        "correct": 1,
+        "explanation": "Rózsa neve (Umberto Eco) - William, Adso és Jorge a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben középkori kolostorban rejtélyes gyilkosságok játszódnak, ahol egy szerzetes (William), a tanítványa (Adso) és egy vak szerzetes (Jorge) szerepel?",
+        "options": ["David Copperfield", "Rózsa neve", "A kék szoba", "Ulysses"],
+        "correct": 1,
+        "explanation": "Rózsa neve (Umberto Eco) - a tudás és a hit témáit vizsgálja.",
+        "topic": "regények"
     }
 ]
