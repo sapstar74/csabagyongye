@@ -458,7 +458,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy árva fiú (Oliver Twist) kalandjai játszódnak Londonban, ahol egy bűnöző vezető (Fagin) és egy prostituált (Nancy) szerepel?",
+        "question": "Melyik regényben egy árva fiú kalandjai játszódnak Londonban, ahol egy bűnöző vezető (Fagin) és egy prostituált (Nancy) szerepel?",
         "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - a gyerekmunkát és a társadalmi igazságtalanságot vizsgálja.",
@@ -474,7 +474,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben David Copperfield életútja játszódik gyerekkorától felnőttkorig, ahol egy gonosz karakter (Uriah Heep) és egy kedves lány (Agnes) szerepel?",
+        "question": "Melyik regényben egy fiú életútja játszódik gyerekkorától felnőttkorig, ahol egy gonosz karakter (Uriah Heep) és egy kedves lány (Agnes) szerepel?",
         "options": ["Oliver Twist", "David Copperfield", "A kék szoba", "Ulysses"],
         "correct": 1,
         "explanation": "David Copperfield (Dickens) - az emberi fejlődés és a szerelem témáit vizsgálja.",
@@ -810,7 +810,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Don Juan Tenorio szerelmi kalandjai játszódnak, ahol egy nő (Doña Inés) és az apja (Don Gonzalo) szerepel?",
+        "question": "Melyik regényben egy férfi szerelmi kalandjai játszódnak, ahol egy nő (Doña Inés) és az apja (Don Gonzalo) szerepel?",
         "options": ["A pápa", "Száz év magány", "Don Juan", "Az ember tragédiája"],
         "correct": 2,
         "explanation": "Don Juan (José Zorrilla) - a szerelem és a bűnbánat témáit vizsgálja.",
