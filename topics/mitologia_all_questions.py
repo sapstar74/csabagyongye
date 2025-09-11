@@ -538,6 +538,13 @@ MITOLOGIA_QUESTIONS_ALL = [
         "explanation": "A Valkürök feladata a hősi halott harcosok kiválasztása Valhallába.",
         "topic": "mitológia"
     },
+    {
+        "question": "Ki az északi mitológiában a szkald költészet és zene istene? (aki a költészet, zene és bölcsesség istene, Odin fia)",
+        "options": ["Odin", "Thor", "Bragi", "Loki"],
+                "correct": 2,
+        "explanation": "Bragi az északi mitológiában a szkald költészet és zene istene.",
+        "topic": "mitológia"
+    },
     # Kínai mitológia
     {
         "question": "Ki a kínai mitológiában a menny istene? (ti - a menny ura, aki a világot uralja)",
