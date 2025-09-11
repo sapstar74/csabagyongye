@@ -42,7 +42,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy férjnél (Anna Karenina) szerelmes lesz egy fiatal grófba (Vronszkij), de a társadalmi elítélés miatt végül öngyilkos lesz, miközben a regényben párhuzamosan egy másik szerelmi történet is játszódik?",
+        "question": "Melyik regényben egy férjnél szerelmes lesz egy fiatal grófba (Vronszkij), de a társadalmi elítélés miatt végül öngyilkos lesz, miközben a regényben párhuzamosan egy másik szerelmi történet is játszódik?",
         "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - a szerelmi szenvedély és a társadalmi elítélés témáit vizsgálja.",
@@ -890,7 +890,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Paul Atreides útja a Dűne bolygón játszódik, ahol az anyja (Lady Jessica) és egy gonosz (Baron Harkonnen) szerepel?",
+        "question": "Melyik regényben Paul Atreides útja egy sivatagos bolygón játszódik, ahol az anyja (Lady Jessica) és egy gonosz (Baron Harkonnen) szerepel?",
         "options": ["A Gyűrűk Ura", "Dűne", "Galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
         "correct": 1,
         "explanation": "Dűne (Frank Herbert) - a politika és a vallás témáit vizsgálja.",
