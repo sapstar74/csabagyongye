@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-09 18:18:24
+# Generated on: 2025-09-11 20:37:33
 
 QUESTIONS = [
     {
@@ -1236,7 +1236,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "P. Box - Magyar Zenekarok",
         "audio_file": "96. P Box - Zöld csillag.mp3",
-        "song_title": "Zöld csillag",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1249,7 +1248,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "P.Box - Magyar Zenekarok",
-        "audio_file": "audio_files/magyar_zenekarok/P.Box - A zöld a bibor és a fekete( HD ).mp4",
+        "audio_file": "97. PBox - A zöld a bibor és a fekete.mp3",
+        "song_title": "A zöld a bibor és a fekete",
         "topic": "magyar_zenekarok",
     },
     {
