@@ -382,6 +382,30 @@ if 'quiz_state' not in st.session_state:
     st.session_state.mode_manager = QuizModeManager()
     st.session_state.analytics = QuizAnalytics()
     st.session_state.question_start_time = None
+    st.session_state.font_size = 'normal'  # 'normal' vagy 'large'
+
+def get_font_style():
+    """Betűméret stílus visszaadása a jelenlegi beállítás alapján"""
+    font_size = st.session_state.get('font_size', 'normal')
+    
+    if font_size == 'large':
+        return {
+            'question': 'font-size: 1.8rem; line-height: 1.4;',
+            'option': 'font-size: 1.4rem; line-height: 1.3; padding: 12px;',
+            'explanation': 'font-size: 1.3rem; line-height: 1.4;',
+            'button': 'font-size: 1.2rem; padding: 12px 24px;',
+            'title': 'font-size: 2.2rem;',
+            'subtitle': 'font-size: 1.6rem;'
+        }
+    else:  # normal
+        return {
+            'question': 'font-size: 1.4rem; line-height: 1.3;',
+            'option': 'font-size: 1.1rem; line-height: 1.2; padding: 8px;',
+            'explanation': 'font-size: 1.1rem; line-height: 1.3;',
+            'button': 'font-size: 1rem; padding: 8px 16px;',
+            'title': 'font-size: 1.8rem;',
+            'subtitle': 'font-size: 1.3rem;'
+        }
 
 def reset_quiz():
     """Quiz állapot visszaállítása"""
@@ -702,11 +726,12 @@ def main():
     if 'music_total_questions' not in st.session_state:
         st.session_state.music_total_questions = st.session_state.get('default_music_questions', 10)
     
-    st.markdown('<h1 style="text-align: center; font-size: 3rem; color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
+    font_style = get_font_style()
+    st.markdown(f'<h1 style="text-align: center; {font_style["title"]} color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
     
     # Sidebar navigáció
     with st.sidebar:
-        st.markdown("## 🧭 Navigáció")
+        st.markdown(f"## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
             ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása", "GitHub Szinkronizálás", "Audio Track Kezelés"],
@@ -720,6 +745,26 @@ def main():
                 "Audio Track Kezelés": "🎵 Audio Track Kezelés"
             }[x]
         )
+        
+        # Betűméret váltó
+        st.markdown("---")
+        st.markdown(f"## 🔤 Betűméret")
+        font_size_options = {
+            "normal": "📝 Normál",
+            "large": "🔍 Nagy"
+        }
+        
+        current_font = st.session_state.get('font_size', 'normal')
+        new_font = st.selectbox(
+            "Válassz betűméretet:",
+            options=list(font_size_options.keys()),
+            format_func=lambda x: font_size_options[x],
+            index=list(font_size_options.keys()).index(current_font)
+        )
+        
+        if new_font != current_font:
+            st.session_state.font_size = new_font
+            st.rerun()
         
                 # Spotify playlist funkció eltávolítva a navigációs sávból
         # Most a középső képernyőn lesz elérhető
@@ -2300,6 +2345,7 @@ def show_quiz():
     
     with col1:
         if st.session_state.current_question > 0:
+            font_style = get_font_style()
             if st.button("⬅️ Előző", key=f"prev_{st.session_state.current_question}"):
                 st.session_state.current_question -= 1
                 st.rerun()
@@ -2407,11 +2453,12 @@ def show_quiz():
                    f"⏱️ Hátralévő idő: {time_remaining:.1f} másodperc</div>", unsafe_allow_html=True)
     
     # Kérdés megjelenítése
+    font_style = get_font_style()
     st.markdown('<div class="question-container">', unsafe_allow_html=True)
     
     # Kérdés szövege
     question_text = question.get("question", "Ismeretlen kérdés")
-    st.markdown(f"<div class='question-text'>{question_text}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='question-text' style='{font_style['question']}'>{question_text}</div>", unsafe_allow_html=True)
     
     # Audio, Spotify embed vagy kép megjelenítése
     audio_file = get_audio_file_for_question(question, topic)
@@ -2743,41 +2790,40 @@ def show_quiz():
         
         else:
             # Könnyű és Közepes mód: feleletválasztós
-            # CSS stílus a nagyobb betűmérethez
-            st.markdown("""
+            # CSS stílus a betűméret alapján
+            st.markdown(f"""
             <style>
-            .big-answer-button {
-                font-size: 24px !important;
-                padding: 20px !important;
+            .big-answer-button {{
+                {font_style['option']} !important;
                 margin: 10px 0 !important;
                 height: auto !important;
                 min-height: 60px !important;
-            }
-            .rotated-answer {
+            }}
+            .rotated-answer {{
                 transform: rotate(180deg);
                 display: inline-block;
-            }
+            }}
             /* Streamlit gombok nagyobbítása */
-            .stButton > button {
+            .stButton > button {{
                 font-size: 24px !important;
                 padding: 20px !important;
                 height: auto !important;
                 min-height: 60px !important;
                 line-height: 1.5 !important;
-            }
+            }}
             
             /* Dinamikus gomb stílusok */
-            .stButton > button[data-selected="correct"] {
+            .stButton > button[data-selected="correct"] {{
                 background-color: #28a745 !important;
                 color: white !important;
                 border: 3px solid #28a745 !important;
-            }
+            }}
             
-            .stButton > button[data-selected="incorrect"] {
+            .stButton > button[data-selected="incorrect"] {{
                 background-color: #dc3545 !important;
                 color: white !important;
                 border: 3px solid #dc3545 !important;
-            }
+            }}
             
 
             </style>
@@ -3073,17 +3119,19 @@ def show_results():
     # Részletes eredmények
     st.markdown("### 📋 Kérdésenkénti eredmények")
     
+    font_style = get_font_style()
+    
     for i, answer in enumerate(st.session_state.answers):
         is_correct = answer['is_correct']
         status = "✅" if is_correct else "❌"
         
         st.markdown(f"""
         <div class="summary-box">
-            <h4>{status} Kérdés {i+1}</h4>
-            <p><strong>Kérdés:</strong> {answer['question']}</p>
-            <p><strong>Válaszod:</strong> {answer['selected'] if isinstance(answer['selected'], str) else (answer['options'][answer['selected']] if answer['selected'] >= 0 else 'Idő lejárt')}</p>
-            <p><strong>Helyes válasz:</strong> {answer['correct'] if isinstance(answer['correct'], str) else answer['options'][answer['correct']]}</p>
-            <p><strong>Válaszidő:</strong> {answer['time_taken']:.1f} másodperc</p>
+            <h4 style="{font_style['subtitle']}">{status} Kérdés {i+1}</h4>
+            <p style="{font_style['explanation']}"><strong>Kérdés:</strong> {answer['question']}</p>
+            <p style="{font_style['explanation']}"><strong>Válaszod:</strong> {answer['selected'] if isinstance(answer['selected'], str) else (answer['options'][answer['selected']] if answer['selected'] >= 0 else 'Idő lejárt')}</p>
+            <p style="{font_style['explanation']}"><strong>Helyes válasz:</strong> {answer['correct'] if isinstance(answer['correct'], str) else answer['options'][answer['correct']]}</p>
+            <p style="{font_style['explanation']}"><strong>Válaszidő:</strong> {answer['time_taken']:.1f} másodperc</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -3099,23 +3147,24 @@ def show_analytics_page():
 
 def show_settings_page():
     """Beállítások oldal megjelenítése"""
-    st.markdown("## ⚙️ Beállítások")
+    font_style = get_font_style()
+    st.markdown(f"## ⚙️ Beállítások")
     
-    st.markdown("### 🎯 Quiz Beállítások")
+    st.markdown(f"### 🎯 Quiz Beállítások")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("#### Alapértelmezett beállítások")
+        st.markdown(f"#### Alapértelmezett beállítások")
         default_music_questions = st.number_input("Alapértelmezett zenei kérdések", 1, 20, st.session_state.get('default_music_questions', 10))
         default_other_questions = st.number_input("Alapértelmezett egyéb kérdések", 1, 100, st.session_state.get('default_other_questions', 40))
     
     with col2:
-        st.markdown("#### Időzítő beállítások")
+        st.markdown(f"#### Időzítő beállítások")
         default_timed_limit = st.number_input("Alapértelmezett időkorlát (másodperc)", 10, 60, st.session_state.get('default_timed_limit', 30))
         default_challenge_limit = st.number_input("Kihívás mód időkorlát (másodperc)", 10, 30, st.session_state.get('default_challenge_limit', 20))
     
-    st.markdown("### 🎵 Audio Beállítások")
+    st.markdown(f"### 🎵 Audio Beállítások")
     
     col1, col2 = st.columns(2)
     
@@ -3127,7 +3176,7 @@ def show_settings_page():
         audio_volume = st.slider("Alapértelmezett hangerő", 0, 100, st.session_state.get('audio_volume', 50))
         audio_quality = st.selectbox("Audio minőség", ["Alacsony", "Közepes", "Magas"], index=["Alacsony", "Közepes", "Magas"].index(st.session_state.get('audio_quality', "Közepes")))
     
-    st.markdown("### 📊 Analytics Beállítások")
+    st.markdown(f"### 📊 Analytics Beállítások")
     
     col1, col2 = st.columns(2)
     
