@@ -25,6 +25,7 @@ from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
 from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
+from topics.regények import REGÉNYEK_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
@@ -366,6 +367,7 @@ QUIZ_DATA_BY_TOPIC = {
     "zászlók": ZASZLOK_QUESTIONS_ALL,
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
+    "regények": REGÉNYEK_QUESTIONS,
 }
 
 # Initialize session state
@@ -430,6 +432,7 @@ def reset_quiz():
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "festmények": "🎨 Festmények",
+        "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok",
@@ -1881,6 +1884,7 @@ def show_topic_selection():
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "one_hit_wonders": "⭐ One Hit Wonders",
         "festmények": "🎨 Festmények",
+        "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok, művészek, híres emberek",
