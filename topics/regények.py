@@ -132,14 +132,14 @@ REGÉNYEK_QUESTIONS = [
     # 9. A nagy Gatsby (F. Scott Fitzgerald)
     {
         "question": "Melyik regény szereplői: Tom, Daisy és Nick?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - Jay Gatsby, Daisy Buchanan és Nick Carraway a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben a 1920-as években egy titokzatos milliomos (Gatsby) próbálja visszaszerezni régi szerelmét (Daisy), de a regény az amerikai álom és a társadalmi osztályok témáit vizsgálja?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - az amerikai álom és a társadalmi osztályok témáit vizsgálja.",
         "topic": "regények"
@@ -148,14 +148,14 @@ REGÉNYEK_QUESTIONS = [
     # 10. Huckleberry Finn (Mark Twain)
     {
         "question": "Melyik regény szereplői: Jim, Tom és Pap?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - Huckleberry Finn, Jim és Tom Sawyer a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy fiú (Huck Finn) és egy szökött rabszolga (Jim) együtt utaznak a Mississippi folyón, és a regény a rabszolgaság és a szabadság témáit vizsgálja?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - a rabszolgaság és a szabadság témáit vizsgálja.",
         "topic": "regények"
@@ -164,14 +164,14 @@ REGÉNYEK_QUESTIONS = [
     # 11. Aki a szélben sír (Margaret Mitchell)
     {
         "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 2,
         "explanation": "Aki a szélben sír (Margaret Mitchell) - Scarlett O'Hara, Rhett Butler és Ashley Wilkes a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben az amerikai polgárháború alatt és után egy déli lány (Scarlett O'Hara) küzdelmei játszódnak, aki szerelmes egy férfiba (Ashley), de végül egy másik férfival (Rhett Butler) házasodik?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "Elfújta a szél", "Moby Dick"],
         "correct": 2,
         "explanation": "Aki a szélben sír (Margaret Mitchell) - az amerikai polgárháború és a szerelem témáit vizsgálja.",
         "topic": "regények"
@@ -298,7 +298,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben két fiúcsapat harcol a Pál utcai telekért, ahol a Pál utcai fiúk vezetője Boka, és a legkisebb fiú (Nemecsek) hősi halált hal a csatában?",
+        "question": "Melyik regényben két fiúcsapat harcol egy telekért, ahol az egyik csapat vezetője Boka, és a legkisebb fiú (Nemecsek) hősi halált hal a csatában?",
         "options": ["Az ember tragédiája", "A kőszívű ember fiai", "A Pál utcai fiúk", "A kincskereső kisködmön"],
         "correct": 2,
         "explanation": "A Pál utcai fiúk (Molnár Ferenc) - a gyerekkori barátság és a hősiesség témáit vizsgálja.",
@@ -451,7 +451,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 29. Oliver Twist (Dickens)
     {
-        "question": "Melyik regény szereplői: Oliver, Fagin és Nancy?",
+        "question": "Melyik regény szereplői: Fagin, Nancy és Bill?",
         "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - Oliver Twist, Fagin és Nancy a főszereplők.",
@@ -532,14 +532,14 @@ REGÉNYEK_QUESTIONS = [
     # 34. Ulysses (James Joyce)
     {
         "question": "Melyik regény szereplői: Leopold, Molly és Stephen?",
-        "options": ["A kék szoba", "Ulysses", "A vadon szava", "A szél szárnyán"],
+        "options": ["A kék szoba", "Ulysses", "A vadon szava", "Elfújta a szél"],
         "correct": 1,
         "explanation": "Ulysses (James Joyce) - Leopold, Molly és Stephen a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Leopold Bloom egy napja játszódik Dublinban, ahol a felesége (Molly Bloom) és egy író (Stephen Dedalus) szerepel?",
-        "options": ["A kék szoba", "Ulysses", "A vadon szava", "A szél szárnyán"],
+        "options": ["A kék szoba", "Ulysses", "A vadon szava", "Elfújta a szél"],
         "correct": 1,
         "explanation": "Ulysses (James Joyce) - a modern regényírás és az emberi tudat témáit vizsgálja.",
         "topic": "regények"
@@ -548,30 +548,30 @@ REGÉNYEK_QUESTIONS = [
     # 35. A vadon szava (D.H. Lawrence)
     {
         "question": "Melyik regény szereplői: Lady Chatterley, Mellors és Sir Clifford?",
-        "options": ["Ulysses", "A vadon szava", "A szél szárnyán", "Moby Dick"],
+        "options": ["Ulysses", "A vadon szava", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
         "explanation": "A vadon szava (D.H. Lawrence) - Lady Chatterley, Mellors és Sir Clifford a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Lady Chatterley és a birtok őre (Mellors) szerelmi viszonya játszódik, miközben a Lady férje (Sir Clifford) balesetben megbénul?",
-        "options": ["Ulysses", "A vadon szava", "A szél szárnyán", "Moby Dick"],
+        "options": ["Ulysses", "A vadon szava", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
         "explanation": "A vadon szava (D.H. Lawrence) - a szexualitás és a társadalmi osztályok témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 36. A szél szárnyán (Margaret Mitchell)
+    # 36. Elfújta a szél (Margaret Mitchell)
     {
         "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
-        "options": ["A vadon szava", "A szél szárnyán", "Moby Dick", "A bűnösök"],
+        "options": ["A vadon szava", "Elfújta a szél", "Moby Dick", "A bűnösök"],
         "correct": 1,
         "explanation": "A szél szárnyán (Margaret Mitchell) - Scarlett, Rhett Butler és Ashley a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Scarlett O'Hara amerikai polgárháború alatt és után küzdelmei játszódnak, ahol egy férfi (Rhett Butler) és egy másik férfi (Ashley Wilkes) szerepel?",
-        "options": ["A vadon szava", "A szél szárnyán", "Moby Dick", "A bűnösök"],
+        "options": ["A vadon szava", "Elfújta a szél", "Moby Dick", "A bűnösök"],
         "correct": 1,
         "explanation": "A szél szárnyán (Margaret Mitchell) - az amerikai polgárháború és a szerelem témáit vizsgálja.",
         "topic": "regények"
@@ -580,14 +580,14 @@ REGÉNYEK_QUESTIONS = [
     # 37. Moby Dick (Herman Melville)
     {
         "question": "Melyik regény szereplői: Ahab, Ishmael és Queequeg?",
-        "options": ["A szél szárnyán", "Moby Dick", "A bűnösök", "A vadászok"],
+        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A vadászok"],
         "correct": 1,
         "explanation": "Moby Dick (Herman Melville) - Ahab, Ishmael és Queequeg a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Ahab kapitány hajszája a fehér bálnára (Moby Dick) játszódik, ahol egy történetmesélő (Ishmael) és egy harponos (Queequeg) szerepel?",
-        "options": ["A szél szárnyán", "Moby Dick", "A bűnösök", "A vadászok"],
+        "options": ["Elfújta a szél", "Moby Dick", "A bűnösök", "A vadászok"],
         "correct": 1,
         "explanation": "Moby Dick (Herman Melville) - a hajsza és a bosszú témáit vizsgálja.",
         "topic": "regények"
