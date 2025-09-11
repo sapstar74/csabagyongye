@@ -324,14 +324,14 @@ REGÉNYEK_QUESTIONS = [
     # 21. A napfogyatkozás (Haruki Murakami)
     {
         "question": "Melyik regény szereplői: Toru, Naoko és Midori?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 0,
         "explanation": "A napfogyatkozás (Haruki Murakami) - Toru Watanabe, Naoko és Midori a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy férfi (Toru Watanabe) emlékei barátjának haláláról és a barátjának szerelméről (Naoko) játszódnak, miközben egy új szerelmet (Midori) talál?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 0,
         "explanation": "A napfogyatkozás (Haruki Murakami) - a gyász, a szerelem és a emlékek témáit vizsgálja.",
         "topic": "regények"
@@ -340,14 +340,14 @@ REGÉNYEK_QUESTIONS = [
     # 22. A szürke ötven árnyalata (E.L. James)
     {
         "question": "Melyik regény szereplői: Anastasia, Christian Grey és Kate?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 1,
         "explanation": "A szürke ötven árnyalata (E.L. James) - Anastasia Steele, Christian Grey és Kate Kavanagh a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy egyetemi hallgató (Anastasia Steele) interjút készít egy üzletemberrel (Christian Grey), akibe beleszeret, de később kiderül, hogy a férfi speciális szexuális preferenciákkal rendelkezik?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 1,
         "explanation": "A szürke ötven árnyalata (E.L. James) - a szerelem és a szexuális identitás témáit vizsgálja.",
         "topic": "regények"
@@ -356,14 +356,14 @@ REGÉNYEK_QUESTIONS = [
     # 23. A hosszú út (Paulo Coelho)
     {
         "question": "Melyik regény szereplői: Santiago, Melchizedek és az Alquimista?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 2,
         "explanation": "A hosszú út (Paulo Coelho) - Santiago, Melchizedek és az Alquimista a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy pásztor (Santiago) álmot lát a kincsekről, és útjára indul, ahol egy király (Melchizedek) és egy alkimista segít neki megtalálni a személyes legendáját?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 2,
         "explanation": "A hosszú út (Paulo Coelho) - a személyes fejlődés és a sors témáit vizsgálja.",
         "topic": "regények"
@@ -372,14 +372,14 @@ REGÉNYEK_QUESTIONS = [
     # 24. A kód (Dan Brown)
     {
         "question": "Melyik regény szereplői: Robert, Sophie és Silas?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 3,
         "explanation": "A kód (Dan Brown) - Robert Langdon, Sophie Neveu és Silas a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy szimbológus (Robert Langdon) és egy kriptológus (Sophie Neveu) együtt dolgoznak egy rejtély megoldásán, miközben egy gyilkos (Silas) üldözi őket?",
-        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
         "correct": 3,
         "explanation": "A kód (Dan Brown) - a rejtélyek és a történelem témáit vizsgálja.",
         "topic": "regények"
@@ -721,19 +721,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 46. A srác (Thomas Mann)
+    # 46. A varázshegy (Thomas Mann)
     {
         "question": "Melyik regény szereplői: Hans, Clawdia és Settembrini?",
-        "options": ["A katedrális", "A srác", "A kastély", "A metamorfózis"],
+        "options": ["A katedrális", "A varázshegy", "A kastély", "A metamorfózis"],
         "correct": 1,
-        "explanation": "A srác (Thomas Mann) - Hans, Clawdia és Settembrini a főszereplők.",
+        "explanation": "A varázshegy (Thomas Mann) - Hans, Clawdia és Settembrini a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Hans Castorp hegyi szanatóriumban töltött idő játszódik, ahol egy nő (Clawdia Chauchat) és egy humanista (Settembrini) szerepel?",
-        "options": ["A katedrális", "A srác", "A kastély", "A metamorfózis"],
+        "options": ["A katedrális", "A varázshegy", "A kastély", "A metamorfózis"],
         "correct": 1,
-        "explanation": "A srác (Thomas Mann) - a betegség és a filozófia témáit vizsgálja.",
+        "explanation": "A varázshegy (Thomas Mann) - a betegség és a filozófia témáit vizsgálja.",
         "topic": "regények"
     },
 
