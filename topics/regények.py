@@ -495,5 +495,405 @@ REGÉNYEK_QUESTIONS = [
         "correct": 1,
         "explanation": "Rózsa neve (Umberto Eco) - a tudás és a hit témáit vizsgálja.",
         "topic": "regények"
+    },
+
+    # 32. Állatfarm (George Orwell)
+    {
+        "question": "Melyik regény szereplői: Napoleon, Boxer és Squealer?",
+        "options": ["Rózsa neve", "Állatfarm", "A kék szoba", "Ulysses"],
+        "correct": 1,
+        "explanation": "Állatfarm (George Orwell) - Napoleon, Boxer és Squealer a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben állatok lázadnak a gazdájuk ellen és saját társadalmat építenek, ahol Napoleon (disznó), Boxer (ló) és Squealer (disznó) szerepel?",
+        "options": ["Rózsa neve", "Állatfarm", "A kék szoba", "Ulysses"],
+        "correct": 1,
+        "explanation": "Állatfarm (George Orwell) - a forradalom és a diktatúra témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 33. A kék szoba (Virginia Woolf)
+    {
+        "question": "Melyik regény szereplői: Clarissa, Septimus és Peter?",
+        "options": ["Állatfarm", "A kék szoba", "Ulysses", "A vadon szava"],
+        "correct": 1,
+        "explanation": "A kék szoba (Virginia Woolf) - Clarissa, Septimus és Peter a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Mrs. Dalloway egy napja játszódik Londonban, ahol egy háborús veterán (Septimus) és a nő volt szerelme (Peter) szerepel?",
+        "options": ["Állatfarm", "A kék szoba", "Ulysses", "A vadon szava"],
+        "correct": 1,
+        "explanation": "A kék szoba (Virginia Woolf) - a belső monológ és az emberi tudat témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 34. Ulysses (James Joyce)
+    {
+        "question": "Melyik regény szereplői: Leopold, Molly és Stephen?",
+        "options": ["A kék szoba", "Ulysses", "A vadon szava", "A szél szárnyán"],
+        "correct": 1,
+        "explanation": "Ulysses (James Joyce) - Leopold, Molly és Stephen a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Leopold Bloom egy napja játszódik Dublinban, ahol a felesége (Molly Bloom) és egy író (Stephen Dedalus) szerepel?",
+        "options": ["A kék szoba", "Ulysses", "A vadon szava", "A szél szárnyán"],
+        "correct": 1,
+        "explanation": "Ulysses (James Joyce) - a modern regényírás és az emberi tudat témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 35. A vadon szava (D.H. Lawrence)
+    {
+        "question": "Melyik regény szereplői: Lady Chatterley, Mellors és Sir Clifford?",
+        "options": ["Ulysses", "A vadon szava", "A szél szárnyán", "Moby Dick"],
+        "correct": 1,
+        "explanation": "A vadon szava (D.H. Lawrence) - Lady Chatterley, Mellors és Sir Clifford a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Lady Chatterley és a birtok őre (Mellors) szerelmi viszonya játszódik, miközben a Lady férje (Sir Clifford) balesetben megbénul?",
+        "options": ["Ulysses", "A vadon szava", "A szél szárnyán", "Moby Dick"],
+        "correct": 1,
+        "explanation": "A vadon szava (D.H. Lawrence) - a szexualitás és a társadalmi osztályok témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 36. A szél szárnyán (Margaret Mitchell)
+    {
+        "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
+        "options": ["A vadon szava", "A szél szárnyán", "Moby Dick", "A bűnösök"],
+        "correct": 1,
+        "explanation": "A szél szárnyán (Margaret Mitchell) - Scarlett, Rhett Butler és Ashley a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Scarlett O'Hara amerikai polgárháború alatt és után küzdelmei játszódnak, ahol egy férfi (Rhett Butler) és egy másik férfi (Ashley Wilkes) szerepel?",
+        "options": ["A vadon szava", "A szél szárnyán", "Moby Dick", "A bűnösök"],
+        "correct": 1,
+        "explanation": "A szél szárnyán (Margaret Mitchell) - az amerikai polgárháború és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 37. Moby Dick (Herman Melville)
+    {
+        "question": "Melyik regény szereplői: Ahab, Ishmael és Queequeg?",
+        "options": ["A szél szárnyán", "Moby Dick", "A bűnösök", "A vadászok"],
+        "correct": 1,
+        "explanation": "Moby Dick (Herman Melville) - Ahab, Ishmael és Queequeg a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Ahab kapitány hajszája a fehér bálnára (Moby Dick) játszódik, ahol egy történetmesélő (Ishmael) és egy harponos (Queequeg) szerepel?",
+        "options": ["A szél szárnyán", "Moby Dick", "A bűnösök", "A vadászok"],
+        "correct": 1,
+        "explanation": "Moby Dick (Herman Melville) - a hajsza és a bosszú témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 38. A bűnösök (John Steinbeck)
+    {
+        "question": "Melyik regény szereplői: Tom, Ma Joad és Jim?",
+        "options": ["Moby Dick", "A bűnösök", "A vadászok", "A harag és a düh"],
+        "correct": 1,
+        "explanation": "A bűnösök (John Steinbeck) - Tom, Ma Joad és Jim a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Joad család útja Kaliforniába játszódik a nagy gazdasági válság idején, ahol Tom Joad, az anyja (Ma Joad) és egy volt lelkész (Jim Casy) szerepel?",
+        "options": ["Moby Dick", "A bűnösök", "A vadászok", "A harag és a düh"],
+        "correct": 1,
+        "explanation": "A bűnösök (John Steinbeck) - a gazdasági válság és a családi összetartás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 39. A vadászok (Ernest Hemingway)
+    {
+        "question": "Melyik regény szereplői: Jake, Brett és Robert?",
+        "options": ["A bűnösök", "A vadászok", "A harag és a düh", "A szívtelenek"],
+        "correct": 1,
+        "explanation": "A vadászok (Ernest Hemingway) - Jake, Brett és Robert a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Jake Barnes és barátai Párizsban és Spanyolországban kalandjai játszódnak, ahol egy nő (Brett Ashley) és egy barát (Robert Cohn) szerepel?",
+        "options": ["A bűnösök", "A vadászok", "A harag és a düh", "A szívtelenek"],
+        "correct": 1,
+        "explanation": "A vadászok (Ernest Hemingway) - a háború utáni generáció és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 40. A harag és a düh (William Faulkner)
+    {
+        "question": "Melyik regény szereplői: Quentin, Caddy és Jason?",
+        "options": ["A vadászok", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "A harag és a düh (William Faulkner) - Quentin, Caddy és Jason a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Compson család hanyatlása játszódik Mississippi-ben, ahol Quentin, a húga (Caddy) és a bátyja (Jason) szerepel?",
+        "options": ["A vadászok", "A harag és a düh", "A szívtelenek", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "A harag és a düh (William Faulkner) - a családi hanyatlás és a déli társadalom témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 41. A szívtelenek (Cormac McCarthy)
+    {
+        "question": "Melyik regény szereplői: Apa, Fiú és a Vándorok?",
+        "options": ["A harag és a düh", "A szívtelenek", "A vörös és a fekete", "A keresztanya"],
+        "correct": 1,
+        "explanation": "A szívtelenek (Cormac McCarthy) - Apa, Fiú és a Vándorok a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben apa és fia utazása játszódik poszt-apokaliptikus világban, ahol vándorok (gonosz karakterek) üldözik őket?",
+        "options": ["A harag és a düh", "A szívtelenek", "A vörös és a fekete", "A keresztanya"],
+        "correct": 1,
+        "explanation": "A szívtelenek (Cormac McCarthy) - a túlélés és a családi szeretet témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 42. A vörös és a fekete (Stendhal)
+    {
+        "question": "Melyik regény szereplői: Julien, Madame de Rênal és Mathilde?",
+        "options": ["A szívtelenek", "A vörös és a fekete", "A keresztanya", "A kis herceg"],
+        "correct": 1,
+        "explanation": "A vörös és a fekete (Stendhal) - Julien, Madame de Rênal és Mathilde a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Julien Sorel társadalmi felemelkedése játszódik, ahol egy nő (Madame de Rênal) és egy másik nő (Mathilde de la Mole) szerepel?",
+        "options": ["A szívtelenek", "A vörös és a fekete", "A keresztanya", "A kis herceg"],
+        "correct": 1,
+        "explanation": "A vörös és a fekete (Stendhal) - a társadalmi mobilitás és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 43. A keresztanya (Balzac)
+    {
+        "question": "Melyik regény szereplői: Goriot, Eugène és Vautrin?",
+        "options": ["A vörös és a fekete", "A keresztanya", "A kis herceg", "A katedrális"],
+        "correct": 1,
+        "explanation": "A keresztanya (Balzac) - Goriot, Eugène és Vautrin a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Goriot apja áldozatos szeretete lányaiért játszódik, ahol egy diák (Eugène de Rastignac) és egy bűnöző (Vautrin) szerepel?",
+        "options": ["A vörös és a fekete", "A keresztanya", "A kis herceg", "A katedrális"],
+        "correct": 1,
+        "explanation": "A keresztanya (Balzac) - az anyai szeretet és a társadalmi felemelkedés témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 44. A kis herceg (Antoine de Saint-Exupéry)
+    {
+        "question": "Melyik regény szereplői: Kis herceg, Pilóta és Rózsa?",
+        "options": ["A keresztanya", "A kis herceg", "A katedrális", "A srác"],
+        "correct": 1,
+        "explanation": "A kis herceg (Antoine de Saint-Exupéry) - Kis herceg, Pilóta és Rózsa a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben kis herceg utazása a bolygók között játszódik, ahol egy pilóta (történetmesélő) és egy rózsa (kis herceg szerelme) szerepel?",
+        "options": ["A keresztanya", "A kis herceg", "A katedrális", "A srác"],
+        "correct": 1,
+        "explanation": "A kis herceg (Antoine de Saint-Exupéry) - a gyerekség és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 45. A katedrális (Victor Hugo)
+    {
+        "question": "Melyik regény szereplői: Quasimodo, Esmeralda és Frollo?",
+        "options": ["A kis herceg", "A katedrális", "A srác", "A kastély"],
+        "correct": 1,
+        "explanation": "A katedrális (Victor Hugo) - Quasimodo, Esmeralda és Frollo a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Notre-Dame katedrális története játszódik, ahol egy harangozó (Quasimodo), egy cigány lány (Esmeralda) és egy esperes (Frollo) szerepel?",
+        "options": ["A kis herceg", "A katedrális", "A srác", "A kastély"],
+        "correct": 1,
+        "explanation": "A katedrális (Victor Hugo) - a szépség és a csúfság témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 46. A srác (Thomas Mann)
+    {
+        "question": "Melyik regény szereplői: Hans, Clawdia és Settembrini?",
+        "options": ["A katedrális", "A srác", "A kastély", "A metamorfózis"],
+        "correct": 1,
+        "explanation": "A srác (Thomas Mann) - Hans, Clawdia és Settembrini a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Hans Castorp hegyi szanatóriumban töltött idő játszódik, ahol egy nő (Clawdia Chauchat) és egy humanista (Settembrini) szerepel?",
+        "options": ["A katedrális", "A srác", "A kastély", "A metamorfózis"],
+        "correct": 1,
+        "explanation": "A srác (Thomas Mann) - a betegség és a filozófia témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 47. A kastély (Franz Kafka)
+    {
+        "question": "Melyik regény szereplői: K., Frieda és Klamm?",
+        "options": ["A srác", "A kastély", "A metamorfózis", "A név"],
+        "correct": 1,
+        "explanation": "A kastély (Franz Kafka) - K., Frieda és Klamm a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben K. földmérő küzdelme a kastély eléréséért játszódik, ahol egy nő (Frieda) és egy kastély tisztviselője (Klamm) szerepel?",
+        "options": ["A srác", "A kastély", "A metamorfózis", "A név"],
+        "correct": 1,
+        "explanation": "A kastély (Franz Kafka) - a bürokrácia és a reménytelenség témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 48. A metamorfózis (Franz Kafka)
+    {
+        "question": "Melyik regény szereplői: Gregor, Grete és a szülők?",
+        "options": ["A kastély", "A metamorfózis", "A név", "A pápa"],
+        "correct": 1,
+        "explanation": "A metamorfózis (Franz Kafka) - Gregor, Grete és a szülők a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Gregor Samsa egy reggel bogárrá változik, ahol a húga (Grete Samsa) és a szülei (Samsa szülők) szerepel?",
+        "options": ["A kastély", "A metamorfózis", "A név", "A pápa"],
+        "correct": 1,
+        "explanation": "A metamorfózis (Franz Kafka) - a különbözőség és a családi kapcsolatok témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 49. A név (Umberto Eco)
+    {
+        "question": "Melyik regény szereplői: William, Adso és Jorge?",
+        "options": ["A metamorfózis", "A név", "A pápa", "Száz év magány"],
+        "correct": 1,
+        "explanation": "A név (Umberto Eco) - William, Adso és Jorge a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben középkori kolostorban rejtélyes gyilkosságok játszódnak, ahol egy szerzetes (William), a tanítványa (Adso) és egy vak szerzetes (Jorge) szerepel?",
+        "options": ["A metamorfózis", "A név", "A pápa", "Száz év magány"],
+        "correct": 1,
+        "explanation": "A név (Umberto Eco) - a tudás és a hit témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 50. A pápa (Giovanni Boccaccio)
+    {
+        "question": "Melyik regény szereplői: Pampinea, Filomena és Dioneo?",
+        "options": ["A név", "A pápa", "Száz év magány", "Don Juan"],
+        "correct": 1,
+        "explanation": "A pápa (Giovanni Boccaccio) - Pampinea, Filomena és Dioneo a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben tíz fiatal menekül a pestis elől és meséket mondanak, ahol Pampinea (vezető), Filomena (mesélő) és Dioneo (mesélő) szerepel?",
+        "options": ["A név", "A pápa", "Száz év magány", "Don Juan"],
+        "correct": 1,
+        "explanation": "A pápa (Giovanni Boccaccio) - a pestis és a mesélés témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 51. Don Juan (José Zorrilla)
+    {
+        "question": "Melyik regény szereplői: Don Juan, Doña Inés és Don Gonzalo?",
+        "options": ["A pápa", "Száz év magány", "Don Juan", "Az ember tragédiája"],
+        "correct": 2,
+        "explanation": "Don Juan (José Zorrilla) - Don Juan, Doña Inés és Don Gonzalo a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Don Juan Tenorio szerelmi kalandjai játszódnak, ahol egy nő (Doña Inés) és az apja (Don Gonzalo) szerepel?",
+        "options": ["A pápa", "Száz év magány", "Don Juan", "Az ember tragédiája"],
+        "correct": 2,
+        "explanation": "Don Juan (José Zorrilla) - a szerelem és a bűnbánat témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 52. A büszkeség és balítélet (Jane Austen)
+    {
+        "question": "Melyik regény szereplői: Elizabeth, Mr. Darcy és Jane?",
+        "options": ["Don Juan", "A büszkeség és balítélet", "A viharos magasságok", "Dr. Zhivago"],
+        "correct": 1,
+        "explanation": "A büszkeség és balítélet (Jane Austen) - Elizabeth, Mr. Darcy és Jane a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Elizabeth Bennet és Mr. Darcy szerelmi története játszódik, ahol Elizabeth húga (Jane Bennet) szerepel?",
+        "options": ["Don Juan", "A büszkeség és balítélet", "A viharos magasságok", "Dr. Zhivago"],
+        "correct": 1,
+        "explanation": "A büszkeség és balítélet (Jane Austen) - a szerelem és a társadalmi osztályok témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 53. A viharos magasságok (Emily Brontë)
+    {
+        "question": "Melyik regény szereplői: Heathcliff, Catherine és Edgar?",
+        "options": ["A büszkeség és balítélet", "A viharos magasságok", "Dr. Zhivago", "A három testőr"],
+        "correct": 1,
+        "explanation": "A viharos magasságok (Emily Brontë) - Heathcliff, Catherine és Edgar a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Heathcliff és Catherine szenvedélyes szerelme játszódik, ahol Edgar Linton (Catherine férje) szerepel?",
+        "options": ["A büszkeség és balítélet", "A viharos magasságok", "Dr. Zhivago", "A három testőr"],
+        "correct": 1,
+        "explanation": "A viharos magasságok (Emily Brontë) - a szenvedélyes szerelem és a bosszú témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 54. Dr. Zhivago (Boris Pasternak)
+    {
+        "question": "Melyik regény szereplői: Jurij, Lara és Tonya?",
+        "options": ["A viharos magasságok", "Dr. Zhivago", "A három testőr", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "Dr. Zhivago (Boris Pasternak) - Jurij, Lara és Tonya a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Jurij Zhivago orvos és Lara szerelmi története játszódik, ahol Tonya (Zhivago felesége) szerepel?",
+        "options": ["A viharos magasságok", "Dr. Zhivago", "A három testőr", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "Dr. Zhivago (Boris Pasternak) - a forradalom és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 55. A Gyűrűk Ura (J.R.R. Tolkien)
+    {
+        "question": "Melyik regény szereplői: Frodo, Gandalf és Aragorn?",
+        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak"],
+        "correct": 1,
+        "explanation": "A Gyűrűk Ura (J.R.R. Tolkien) - Frodo, Gandalf és Aragorn a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Frodo útja a Gyűrű megsemmisítésére játszódik, ahol egy varázsló (Gandalf) és egy király (Aragorn) szerepel?",
+        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak"],
+        "correct": 1,
+        "explanation": "A Gyűrűk Ura (J.R.R. Tolkien) - a jó és a gonosz harca témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 56. Dűne (Frank Herbert)
+    {
+        "question": "Melyik regény szereplői: Paul, Lady Jessica és Baron Harkonnen?",
+        "options": ["A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
+        "correct": 1,
+        "explanation": "Dűne (Frank Herbert) - Paul, Lady Jessica és Baron Harkonnen a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Paul Atreides útja a Dűne bolygón játszódik, ahol az anyja (Lady Jessica) és egy gonosz (Baron Harkonnen) szerepel?",
+        "options": ["A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
+        "correct": 1,
+        "explanation": "Dűne (Frank Herbert) - a politika és a vallás témáit vizsgálja.",
+        "topic": "regények"
     }
 ]
