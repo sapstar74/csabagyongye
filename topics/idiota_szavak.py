@@ -223,7 +223,7 @@ IDIOTA_SZAVAK_QUESTIONS = [
     },
     {
         "question": """Hogy hívják a **május 6-i roma ünnepet a Balkánon**? Ez a roma kultúra egyik legfontosabb ünnepe, amely a tavasz érkezését és a természet újjászületését ünnepli. Az ünnep során a roma közösségek összegyűlnek, énekelnek, táncolnak és hagyományos ételeket készítenek.""",
-        "correct_answer": """Éderlezi""",
+        "correct_answer": """Éderlezi / Ederlezi""",
         "explanation": """A május 6-i roma ünnepet a Balkánon Éderlezi-nek hívják. Ez a roma kultúra egyik legfontosabb ünnepe, amely a tavasz érkezését és a természet újjászületését ünnepli. Az ünnep során a roma közösségek összegyűlnek, énekelnek, táncolnak és hagyományos ételeket készítenek.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
