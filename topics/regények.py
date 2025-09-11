@@ -84,14 +84,14 @@ REGÉNYEK_QUESTIONS = [
     # 6. Jane Eyre (Charlotte Brontë)
     {
         "question": "Melyik regény szereplői: Jane, Mr. Rochester és Bertha?",
-        "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
+        "options": ["Jane Eyre", "A viharos magasságok", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 0,
         "explanation": "Jane Eyre (Charlotte Brontë) - Jane Eyre, Mr. Rochester és Bertha Mason a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy árva lány (Jane Eyre) nevelőnőként dolgozik egy rejtélyes kastélyban, ahol beleszeret a gazdájába (Mr. Rochester), de később kiderül, hogy a férjnek van egy őrült felesége a padláson?",
-        "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
+        "options": ["Jane Eyre", "A viharos magasságok", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 0,
         "explanation": "Jane Eyre (Charlotte Brontë) - a női függetlenség és a szerelem témáit vizsgálja.",
         "topic": "regények"
@@ -100,14 +100,14 @@ REGÉNYEK_QUESTIONS = [
     # 7. Wuthering Heights (Emily Brontë)
     {
         "question": "Melyik regény szereplői: Heathcliff, Catherine és Edgar?",
-        "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
+        "options": ["Jane Eyre", "A viharos magasságok", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 1,
         "explanation": "Wuthering Heights (Emily Brontë) - Heathcliff, Catherine Earnshaw és Edgar Linton a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy árva fiú (Heathcliff) és egy lány (Catherine) szenvedélyes szerelme játszódik a yorkshire-i pusztaságon, de a lány másik férjhez megy, és a fiú bosszút esküszik mindkét család ellen?",
-        "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
+        "options": ["Jane Eyre", "A viharos magasságok", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 1,
         "explanation": "Wuthering Heights (Emily Brontë) - a szenvedélyes szerelem és a bosszú témáit vizsgálja.",
         "topic": "regények"
@@ -132,14 +132,14 @@ REGÉNYEK_QUESTIONS = [
     # 9. A nagy Gatsby (F. Scott Fitzgerald)
     {
         "question": "Melyik regény szereplői: Jay Gatsby, Daisy és Nick?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - Jay Gatsby, Daisy Buchanan és Nick Carraway a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben a 1920-as években egy titokzatos milliomos (Gatsby) próbálja visszaszerezni régi szerelmét (Daisy), de a regény az amerikai álom és a társadalmi osztályok témáit vizsgálja?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - az amerikai álom és a társadalmi osztályok témáit vizsgálja.",
         "topic": "regények"
@@ -148,14 +148,14 @@ REGÉNYEK_QUESTIONS = [
     # 10. Huckleberry Finn (Mark Twain)
     {
         "question": "Melyik regény szereplői: Huck, Jim és Tom?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - Huckleberry Finn, Jim és Tom Sawyer a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy fiú (Huck Finn) és egy szökött rabszolga (Jim) együtt utaznak a Mississippi folyón, és a regény a rabszolgaság és a szabadság témáit vizsgálja?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - a rabszolgaság és a szabadság témáit vizsgálja.",
         "topic": "regények"
@@ -164,14 +164,14 @@ REGÉNYEK_QUESTIONS = [
     # 11. Aki a szélben sír (Margaret Mitchell)
     {
         "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 2,
         "explanation": "Aki a szélben sír (Margaret Mitchell) - Scarlett O'Hara, Rhett Butler és Ashley Wilkes a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben az amerikai polgárháború alatt és után egy déli lány (Scarlett O'Hara) küzdelmei játszódnak, aki szerelmes egy férfiba (Ashley), de végül egy másik férfival (Rhett Butler) házasodik?",
-        "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
+        "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 2,
         "explanation": "Aki a szélben sír (Margaret Mitchell) - az amerikai polgárháború és a szerelem témáit vizsgálja.",
         "topic": "regények"
@@ -228,14 +228,14 @@ REGÉNYEK_QUESTIONS = [
     # 15. A varázsló tanítványa (Goethe)
     {
         "question": "Melyik regény szereplői: Faust, Mephistopheles és Margarete?",
-        "options": ["A varázsló tanítványa", "A srác", "A kastély", "A metamorfózis"],
+        "options": ["Faust", "A srác", "A kastély", "A metamorfózis"],
         "correct": 0,
         "explanation": "A varázsló tanítványa (Goethe) - Faust, Mephistopheles és Margarete a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy tudós (Faust) unatkozik az élettel, és egy ördöggel (Mephistopheles) szerződést köt, hogy fiatalosságot és szerelmet kapjon egy lányért (Margarete) cserébe a lelkéért?",
-        "options": ["A varázsló tanítványa", "A srác", "A kastély", "A metamorfózis"],
+        "options": ["Faust", "A srác", "A kastély", "A metamorfózis"],
         "correct": 0,
         "explanation": "A varázsló tanítványa (Goethe) - a tudás, a szerelem és a lelki üdvözülés témáit vizsgálja.",
         "topic": "regények"
@@ -244,14 +244,14 @@ REGÉNYEK_QUESTIONS = [
     # 16. Száz év magány (Gabriel García Márquez)
     {
         "question": "Melyik regény szereplői: José Arcadio, Úrsula és Aureliano?",
-        "options": ["Száz év magány", "Don Juan", "A név", "A pápa"],
+        "options": ["Száz év magány", "Don Juan", "Rózsa neve", "A pápa"],
         "correct": 0,
         "explanation": "Száz év magány (Gabriel García Márquez) - José Arcadio Buendía, Úrsula Iguarán és Aureliano Buendía a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben a Buendía család története játszódik a képzeletbeli Macondo városában, ahol a család hét nemzedéken keresztül él, és a regény a magány és a családi sors témáit vizsgálja?",
-        "options": ["Száz év magány", "Don Juan", "A név", "A pápa"],
+        "options": ["Száz év magány", "Don Juan", "Rózsa neve", "A pápa"],
         "correct": 0,
         "explanation": "Száz év magány (Gabriel García Márquez) - a magány és a családi sors témáit vizsgálja.",
         "topic": "regények"
@@ -324,14 +324,14 @@ REGÉNYEK_QUESTIONS = [
     # 21. A napfogyatkozás (Haruki Murakami)
     {
         "question": "Melyik regény szereplői: Toru, Naoko és Midori?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 0,
         "explanation": "A napfogyatkozás (Haruki Murakami) - Toru Watanabe, Naoko és Midori a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy férfi (Toru Watanabe) emlékei barátjának haláláról és a barátjának szerelméről (Naoko) játszódnak, miközben egy új szerelmet (Midori) talál?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 0,
         "explanation": "A napfogyatkozás (Haruki Murakami) - a gyász, a szerelem és a emlékek témáit vizsgálja.",
         "topic": "regények"
@@ -340,14 +340,14 @@ REGÉNYEK_QUESTIONS = [
     # 22. A szürke ötven árnyalata (E.L. James)
     {
         "question": "Melyik regény szereplői: Anastasia, Christian Grey és Kate?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 1,
         "explanation": "A szürke ötven árnyalata (E.L. James) - Anastasia Steele, Christian Grey és Kate Kavanagh a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy egyetemi hallgató (Anastasia Steele) interjút készít egy üzletemberrel (Christian Grey), akibe beleszeret, de később kiderül, hogy a férfi speciális szexuális preferenciákkal rendelkezik?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 1,
         "explanation": "A szürke ötven árnyalata (E.L. James) - a szerelem és a szexuális identitás témáit vizsgálja.",
         "topic": "regények"
@@ -356,14 +356,14 @@ REGÉNYEK_QUESTIONS = [
     # 23. A hosszú út (Paulo Coelho)
     {
         "question": "Melyik regény szereplői: Santiago, Melchizedek és az Alquimista?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 2,
         "explanation": "A hosszú út (Paulo Coelho) - Santiago, Melchizedek és az Alquimista a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy pásztor (Santiago) álmot lát a kincsekről, és útjára indul, ahol egy király (Melchizedek) és egy alkimista segít neki megtalálni a személyes legendáját?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 2,
         "explanation": "A hosszú út (Paulo Coelho) - a személyes fejlődés és a sors témáit vizsgálja.",
         "topic": "regények"
@@ -372,14 +372,14 @@ REGÉNYEK_QUESTIONS = [
     # 24. A kód (Dan Brown)
     {
         "question": "Melyik regény szereplői: Robert, Sophie és Silas?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 3,
         "explanation": "A kód (Dan Brown) - Robert Langdon, Sophie Neveu és Silas a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy szimbológus (Robert Langdon) és egy kriptológus (Sophie Neveu) együtt dolgoznak egy rejtély megoldásán, miközben egy gyilkos (Silas) üldözi őket?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
+        "options": ["A napfogyatkozás", "Ötven árnyalat", "A zarándok", "A Da Vinci-kód"],
         "correct": 3,
         "explanation": "A kód (Dan Brown) - a rejtélyek és a történelem témáit vizsgálja.",
         "topic": "regények"
@@ -388,14 +388,14 @@ REGÉNYEK_QUESTIONS = [
     # 25. Harry Potter (J.K. Rowling)
     {
         "question": "Melyik regény szereplői: Harry, Hermione és Ron?",
-        "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "A galaxis útikalauz stopposoknak"],
+        "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "Galaxis útikalauz stopposoknak"],
         "correct": 0,
         "explanation": "Harry Potter (J.K. Rowling) - Harry Potter, Hermione Granger és Ron Weasley a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy árva fiú (Harry Potter) megtudja, hogy varázsló, és a Roxfort Varázslóiskolában tanul, ahol barátokat szerez (Hermione, Ron) és harcol a gonosz varázslóval (Voldemort)?",
-        "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "A galaxis útikalauz stopposoknak"],
+        "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "Galaxis útikalauz stopposoknak"],
         "correct": 0,
         "explanation": "Harry Potter (J.K. Rowling) - a varázslat és a barátság témáit vizsgálja.",
         "topic": "regények"
@@ -740,14 +740,14 @@ REGÉNYEK_QUESTIONS = [
     # 47. A kastély (Franz Kafka)
     {
         "question": "Melyik regény szereplői: K., Frieda és Klamm?",
-        "options": ["A srác", "A kastély", "A metamorfózis", "A név"],
+        "options": ["A srác", "A kastély", "A metamorfózis", "Rózsa neve"],
         "correct": 1,
         "explanation": "A kastély (Franz Kafka) - K., Frieda és Klamm a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben K. földmérő küzdelme a kastély eléréséért játszódik, ahol egy nő (Frieda) és egy kastély tisztviselője (Klamm) szerepel?",
-        "options": ["A srác", "A kastély", "A metamorfózis", "A név"],
+        "options": ["A srác", "A kastély", "A metamorfózis", "Rózsa neve"],
         "correct": 1,
         "explanation": "A kastély (Franz Kafka) - a bürokrácia és a reménytelenség témáit vizsgálja.",
         "topic": "regények"
@@ -756,46 +756,46 @@ REGÉNYEK_QUESTIONS = [
     # 48. A metamorfózis (Franz Kafka)
     {
         "question": "Melyik regény szereplői: Gregor, Grete és a szülők?",
-        "options": ["A kastély", "A metamorfózis", "A név", "A pápa"],
+        "options": ["A kastély", "A metamorfózis", "Rózsa neve", "A pápa"],
         "correct": 1,
         "explanation": "A metamorfózis (Franz Kafka) - Gregor, Grete és a szülők a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Gregor Samsa egy reggel bogárrá változik, ahol a húga (Grete Samsa) és a szülei (Samsa szülők) szerepel?",
-        "options": ["A kastély", "A metamorfózis", "A név", "A pápa"],
+        "options": ["A kastély", "A metamorfózis", "Rózsa neve", "A pápa"],
         "correct": 1,
         "explanation": "A metamorfózis (Franz Kafka) - a különbözőség és a családi kapcsolatok témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 49. A név (Umberto Eco)
+    # 49. Rózsa neve (Umberto Eco) - duplikátum javítás
     {
         "question": "Melyik regény szereplői: William, Adso és Jorge?",
-        "options": ["A metamorfózis", "A név", "A pápa", "Száz év magány"],
+        "options": ["A metamorfózis", "Rózsa neve", "A pápa", "Száz év magány"],
         "correct": 1,
-        "explanation": "A név (Umberto Eco) - William, Adso és Jorge a főszereplők.",
+        "explanation": "Rózsa neve (Umberto Eco) - William, Adso és Jorge a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben középkori kolostorban rejtélyes gyilkosságok játszódnak, ahol egy szerzetes (William), a tanítványa (Adso) és egy vak szerzetes (Jorge) szerepel?",
-        "options": ["A metamorfózis", "A név", "A pápa", "Száz év magány"],
+        "options": ["A metamorfózis", "Rózsa neve", "A pápa", "Száz év magány"],
         "correct": 1,
-        "explanation": "A név (Umberto Eco) - a tudás és a hit témáit vizsgálja.",
+        "explanation": "Rózsa neve (Umberto Eco) - a tudás és a hit témáit vizsgálja.",
         "topic": "regények"
     },
 
     # 50. A pápa (Giovanni Boccaccio)
     {
         "question": "Melyik regény szereplői: Pampinea, Filomena és Dioneo?",
-        "options": ["A név", "A pápa", "Száz év magány", "Don Juan"],
+        "options": ["Rózsa neve", "A pápa", "Száz év magány", "Don Juan"],
         "correct": 1,
         "explanation": "A pápa (Giovanni Boccaccio) - Pampinea, Filomena és Dioneo a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben tíz fiatal menekül a pestis elől és meséket mondanak, ahol Pampinea (vezető), Filomena (mesélő) és Dioneo (mesélő) szerepel?",
-        "options": ["A név", "A pápa", "Száz év magány", "Don Juan"],
+        "options": ["Rózsa neve", "A pápa", "Száz év magány", "Don Juan"],
         "correct": 1,
         "explanation": "A pápa (Giovanni Boccaccio) - a pestis és a mesélés témáit vizsgálja.",
         "topic": "regények"
@@ -868,14 +868,14 @@ REGÉNYEK_QUESTIONS = [
     # 55. A Gyűrűk Ura (J.R.R. Tolkien)
     {
         "question": "Melyik regény szereplői: Frodo, Gandalf és Aragorn?",
-        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak"],
+        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "Galaxis útikalauz stopposoknak"],
         "correct": 1,
         "explanation": "A Gyűrűk Ura (J.R.R. Tolkien) - Frodo, Gandalf és Aragorn a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Frodo útja a Gyűrű megsemmisítésére játszódik, ahol egy varázsló (Gandalf) és egy király (Aragorn) szerepel?",
-        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak"],
+        "options": ["Dr. Zhivago", "A Gyűrűk Ura", "Dűne", "Galaxis útikalauz stopposoknak"],
         "correct": 1,
         "explanation": "A Gyűrűk Ura (J.R.R. Tolkien) - a jó és a gonosz harca témáit vizsgálja.",
         "topic": "regények"
@@ -884,14 +884,14 @@ REGÉNYEK_QUESTIONS = [
     # 56. Dűne (Frank Herbert)
     {
         "question": "Melyik regény szereplői: Paul, Lady Jessica és Baron Harkonnen?",
-        "options": ["A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
+        "options": ["A Gyűrűk Ura", "Dűne", "Galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
         "correct": 1,
         "explanation": "Dűne (Frank Herbert) - Paul, Lady Jessica és Baron Harkonnen a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Paul Atreides útja a Dűne bolygón játszódik, ahol az anyja (Lady Jessica) és egy gonosz (Baron Harkonnen) szerepel?",
-        "options": ["A Gyűrűk Ura", "Dűne", "A galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
+        "options": ["A Gyűrűk Ura", "Dűne", "Galaxis útikalauz stopposoknak", "A szolgálólány meséje"],
         "correct": 1,
         "explanation": "Dűne (Frank Herbert) - a politika és a vallás témáit vizsgálja.",
         "topic": "regények"
