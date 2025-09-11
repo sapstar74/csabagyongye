@@ -147,7 +147,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 10. Huckleberry Finn (Mark Twain)
     {
-        "question": "Melyik regény szereplői: Huck, Jim és Tom?",
+        "question": "Melyik regény szereplői: Jim, Tom és Pap?",
         "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - Huckleberry Finn, Jim és Tom Sawyer a főszereplők.",
