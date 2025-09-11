@@ -3,7 +3,7 @@
 REGÉNYEK_QUESTIONS = [
     # 1. A Karamazov testvérek (Dosztojevszkij)
     {
-        "question": "Melyik regény szereplői: Aljosa, Dmitrij, Ivan és Fjodor Karamazov?",
+        "question": "Melyik regény szereplői: Aljosa, Dmitrij, Ivan és Fjodor?",
         "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
         "correct": 0,
         "explanation": "A Karamazov testvérek (Dosztojevszkij) - Aljosa, Dmitrij, Ivan és Fjodor Karamazov a főszereplők.",
@@ -19,7 +19,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 2. Bűn és büntetés (Dosztojevszkij)
     {
-        "question": "Melyik regény szereplői: Raskolnyikov, Szonya Marmeladova és Porfirij Petrovics?",
+        "question": "Melyik regény szereplői: Raskolnyikov, Szonya és Porfirij?",
         "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
         "correct": 1,
         "explanation": "Bűn és büntetés (Dosztojevszkij) - Raskolnyikov, Szonya Marmeladova és Porfirij Petrovics a főszereplők.",
@@ -35,7 +35,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 3. Anna Karenina (Tolsztoj)
     {
-        "question": "Melyik regény szereplői: Anna Karenina, Vronszkij gróf és Karenin?",
+        "question": "Melyik regény szereplői: Anna, Vronszkij gróf és Karenin?",
         "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - Anna Karenina, Vronszkij gróf és Karenin a főszereplők.",
@@ -51,7 +51,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 4. Háború és béke (Tolsztoj)
     {
-        "question": "Melyik regény szereplői: Pierre Bezuhov, Andrej Bolkonszkij és Natasa Rosztova?",
+        "question": "Melyik regény szereplői: Pierre, Andrej és Natasa?",
         "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
         "correct": 1,
         "explanation": "Háború és béke (Tolsztoj) - Pierre Bezuhov, Andrej Bolkonszkij és Natasa Rosztova a főszereplők.",
@@ -83,7 +83,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 6. Jane Eyre (Charlotte Brontë)
     {
-        "question": "Melyik regény szereplői: Jane Eyre, Mr. Rochester és Bertha Mason?",
+        "question": "Melyik regény szereplői: Jane, Mr. Rochester és Bertha?",
         "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 0,
         "explanation": "Jane Eyre (Charlotte Brontë) - Jane Eyre, Mr. Rochester és Bertha Mason a főszereplők.",
@@ -99,7 +99,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 7. Wuthering Heights (Emily Brontë)
     {
-        "question": "Melyik regény szereplői: Heathcliff, Catherine Earnshaw és Edgar Linton?",
+        "question": "Melyik regény szereplői: Heathcliff, Catherine és Edgar?",
         "options": ["Jane Eyre", "Wuthering Heights", "A büszkeség és balítélet", "A viharos magasságok"],
         "correct": 1,
         "explanation": "Wuthering Heights (Emily Brontë) - Heathcliff, Catherine Earnshaw és Edgar Linton a főszereplők.",
@@ -115,7 +115,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 8. 1984 (George Orwell)
     {
-        "question": "Melyik regény szereplői: Winston Smith, Julia és Nagy Testvér?",
+        "question": "Melyik regény szereplői: Winston, Julia és Nagy Testvér?",
         "options": ["1984", "Állatfarm", "A kék szoba", "Ulysses"],
         "correct": 0,
         "explanation": "1984 (George Orwell) - Winston Smith, Julia és Nagy Testvér a főszereplők.",
@@ -131,7 +131,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 9. A nagy Gatsby (F. Scott Fitzgerald)
     {
-        "question": "Melyik regény szereplői: Jay Gatsby, Daisy Buchanan és Nick Carraway?",
+        "question": "Melyik regény szereplői: Jay Gatsby, Daisy és Nick?",
         "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - Jay Gatsby, Daisy Buchanan és Nick Carraway a főszereplők.",
@@ -147,7 +147,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 10. Huckleberry Finn (Mark Twain)
     {
-        "question": "Melyik regény szereplői: Huckleberry Finn, Jim és Tom Sawyer?",
+        "question": "Melyik regény szereplői: Huck, Jim és Tom?",
         "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
         "correct": 1,
         "explanation": "Huckleberry Finn (Mark Twain) - Huckleberry Finn, Jim és Tom Sawyer a főszereplők.",
@@ -163,7 +163,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 11. Aki a szélben sír (Margaret Mitchell)
     {
-        "question": "Melyik regény szereplői: Scarlett O'Hara, Rhett Butler és Ashley Wilkes?",
+        "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
         "options": ["A nagy Gatsby", "Huckleberry Finn", "Aki a szélben sír", "Moby Dick"],
         "correct": 2,
         "explanation": "Aki a szélben sír (Margaret Mitchell) - Scarlett O'Hara, Rhett Butler és Ashley Wilkes a főszereplők.",
@@ -211,7 +211,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 14. Madame Bovary (Gustave Flaubert)
     {
-        "question": "Melyik regény szereplői: Emma Bovary, Charles Bovary és Rodolphe Boulanger?",
+        "question": "Melyik regény szereplői: Emma, Charles és Rodolphe?",
         "options": ["A nyomorultak", "A három testőr", "Madame Bovary", "A vörös és a fekete"],
         "correct": 2,
         "explanation": "Madame Bovary (Gustave Flaubert) - Emma Bovary, Charles Bovary és Rodolphe Boulanger a főszereplők.",
@@ -243,7 +243,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 16. Száz év magány (Gabriel García Márquez)
     {
-        "question": "Melyik regény szereplői: José Arcadio Buendía, Úrsula Iguarán és Aureliano Buendía?",
+        "question": "Melyik regény szereplői: José Arcadio, Úrsula és Aureliano?",
         "options": ["Száz év magány", "Don Juan", "A név", "A pápa"],
         "correct": 0,
         "explanation": "Száz év magány (Gabriel García Márquez) - José Arcadio Buendía, Úrsula Iguarán és Aureliano Buendía a főszereplők.",
@@ -275,7 +275,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 18. A kőszívű ember fiai (Jókai)
     {
-        "question": "Melyik regény szereplői: Baradlay Jenő, Baradlay Richárd és Athalie?",
+        "question": "Melyik regény szereplői: Jenő, Richárd és Athalie?",
         "options": ["Az ember tragédiája", "A kőszívű ember fiai", "A Pál utcai fiúk", "A kincskereső kisködmön"],
         "correct": 1,
         "explanation": "A kőszívű ember fiai (Jókai) - Baradlay Jenő, Baradlay Richárd és Athalie a főszereplők.",
@@ -323,7 +323,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 21. A napfogyatkozás (Haruki Murakami)
     {
-        "question": "Melyik regény szereplői: Toru Watanabe, Naoko és Midori?",
+        "question": "Melyik regény szereplői: Toru, Naoko és Midori?",
         "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
         "correct": 0,
         "explanation": "A napfogyatkozás (Haruki Murakami) - Toru Watanabe, Naoko és Midori a főszereplők.",
@@ -339,7 +339,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 22. A szürke ötven árnyalata (E.L. James)
     {
-        "question": "Melyik regény szereplői: Anastasia Steele, Christian Grey és Kate Kavanagh?",
+        "question": "Melyik regény szereplői: Anastasia, Christian Grey és Kate?",
         "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
         "correct": 1,
         "explanation": "A szürke ötven árnyalata (E.L. James) - Anastasia Steele, Christian Grey és Kate Kavanagh a főszereplők.",
@@ -371,7 +371,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 24. A kód (Dan Brown)
     {
-        "question": "Melyik regény szereplői: Robert Langdon, Sophie Neveu és Silas?",
+        "question": "Melyik regény szereplői: Robert, Sophie és Silas?",
         "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A hosszú út", "A kód"],
         "correct": 3,
         "explanation": "A kód (Dan Brown) - Robert Langdon, Sophie Neveu és Silas a főszereplők.",
@@ -387,7 +387,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 25. Harry Potter (J.K. Rowling)
     {
-        "question": "Melyik regény szereplői: Harry Potter, Hermione Granger és Ron Weasley?",
+        "question": "Melyik regény szereplői: Harry, Hermione és Ron?",
         "options": ["Harry Potter", "Dűne", "A Gyűrűk Ura", "A galaxis útikalauz stopposoknak"],
         "correct": 0,
         "explanation": "Harry Potter (J.K. Rowling) - Harry Potter, Hermione Granger és Ron Weasley a főszereplők.",
@@ -403,7 +403,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 26. Az anya (Makszim Gorkij)
     {
-        "question": "Melyik regény szereplői: Pelageya Nilovna, Pavel Vlasov és Andrej Nakhodka?",
+        "question": "Melyik regény szereplői: Pelageya, Pavel és Andrej?",
         "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
         "correct": 0,
         "explanation": "Az anya (Makszim Gorkij) - Pelageya Nilovna, Pavel Vlasov és Andrej Nakhodka a főszereplők.",
@@ -419,7 +419,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 27. Az oroszok (Turgenev)
     {
-        "question": "Melyik regény szereplői: Arkadij Kirsanov, Bazarov és Anna Odincova?",
+        "question": "Melyik regény szereplői: Arkadij, Bazarov és Anna?",
         "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
         "correct": 1,
         "explanation": "Az oroszok (Turgenev) - Arkadij Kirsanov, Bazarov és Anna Odincova a főszereplők.",
@@ -435,7 +435,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 28. A holtak lelkei (Gogol)
     {
-        "question": "Melyik regény szereplői: Pavel Csicsikov, Manilov és Korobocska?",
+        "question": "Melyik regény szereplői: Pavel, Manilov és Korobocska?",
         "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
         "correct": 2,
         "explanation": "A holtak lelkei (Gogol) - Pavel Csicsikov, Manilov és Korobocska a főszereplők.",
@@ -451,7 +451,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 29. Oliver Twist (Dickens)
     {
-        "question": "Melyik regény szereplői: Oliver Twist, Fagin és Nancy?",
+        "question": "Melyik regény szereplői: Oliver, Fagin és Nancy?",
         "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - Oliver Twist, Fagin és Nancy a főszereplők.",
@@ -467,7 +467,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 30. David Copperfield (Dickens)
     {
-        "question": "Melyik regény szereplői: David Copperfield, Agnes Wickfield és Uriah Heep?",
+        "question": "Melyik regény szereplői: David, Agnes és Uriah?",
         "options": ["Oliver Twist", "David Copperfield", "A kék szoba", "Ulysses"],
         "correct": 1,
         "explanation": "David Copperfield (Dickens) - David Copperfield, Agnes Wickfield és Uriah Heep a főszereplők.",
