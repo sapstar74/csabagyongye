@@ -4,14 +4,14 @@ REGÉNYEK_QUESTIONS = [
     # 1. A Karamazov testvérek (Dosztojevszkij)
     {
         "question": "Melyik regény szereplői: Aljosa, Dmitrij, Ivan és Fjodor?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "Holt lelkek", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "A Karamazov testvérek (Dosztojevszkij) - Aljosa, Dmitrij, Ivan és Fjodor Karamazov a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben három testvér (Aljosa, Dmitrij, Ivan) apjuk (Fjodor) meggyilkolásával kapcsolatos bűnügyben vesz részt, és a regény a hit, a kétség és a bűn témáit vizsgálja?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "Holt lelkek", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "A Karamazov testvérek (Dosztojevszkij) - a hit, a kétség és a bűn témáit vizsgálja.",
         "topic": "regények"
@@ -20,14 +20,14 @@ REGÉNYEK_QUESTIONS = [
     # 2. Bűn és büntetés (Dosztojevszkij)
     {
         "question": "Melyik regény szereplői: Raskolnyikov, Szonya és Porfirij?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "Holt lelkek", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Bűn és büntetés (Dosztojevszkij) - Raskolnyikov, Szonya Marmeladova és Porfirij Petrovics a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy szegény diák (Raskolnyikov) meggyilkolja egy öreg uzsorásnőt, majd bűntudatában szenved, és egy prostituált (Szonya) segít neki megbánásban?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "Holt lelkek", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Bűn és büntetés (Dosztojevszkij) - a bűn és a büntetés pszichológiáját vizsgálja.",
         "topic": "regények"
@@ -36,14 +36,14 @@ REGÉNYEK_QUESTIONS = [
     # 3. Anna Karenina (Tolsztoj)
     {
         "question": "Melyik regény szereplői: Anna, Vronszkij gróf és Karenin?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["Anna Karenina", "Háború és béke", "Holt lelkek", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - Anna Karenina, Vronszkij gróf és Karenin a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy férjnél szerelmes lesz egy fiatal grófba (Vronszkij), de a társadalmi elítélés miatt végül öngyilkos lesz, miközben a regényben párhuzamosan egy másik szerelmi történet is játszódik?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["Anna Karenina", "Háború és béke", "Holt lelkek", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - a szerelmi szenvedély és a társadalmi elítélés témáit vizsgálja.",
         "topic": "regények"
@@ -52,14 +52,14 @@ REGÉNYEK_QUESTIONS = [
     # 4. Háború és béke (Tolsztoj)
     {
         "question": "Melyik regény szereplői: Pierre, Andrej és Natasa?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["Anna Karenina", "Háború és béke", "Holt lelkek", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Háború és béke (Tolsztoj) - Pierre Bezuhov, Andrej Bolkonszkij és Natasa Rosztova a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Napóleon háborúi alatt Oroszországban három nemesi család (Bezuhov, Bolkonszkij, Rosztov) sorsa játszódik, és a regény a háború és a béke, valamint az emberi sors témáit vizsgálja?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
+        "options": ["Anna Karenina", "Háború és béke", "Holt lelkek", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Háború és béke (Tolsztoj) - a Napóleoni háborúk idején játszódik Oroszországban.",
         "topic": "regények"
@@ -131,7 +131,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 9. A nagy Gatsby (F. Scott Fitzgerald)
     {
-        "question": "Melyik regény szereplői: Jay Gatsby, Daisy és Nick?",
+        "question": "Melyik regény szereplői: Tom, Daisy és Nick?",
         "options": ["A nagy Gatsby", "Huckleberry Finn", "A szél szárnyán", "Moby Dick"],
         "correct": 0,
         "explanation": "A nagy Gatsby (F. Scott Fitzgerald) - Jay Gatsby, Daisy Buchanan és Nick Carraway a főszereplők.",
@@ -353,19 +353,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 23. A hosszú út (Paulo Coelho)
+    # 23. Az alkimista (Paulo Coelho)
     {
         "question": "Melyik regény szereplői: Santiago, Melchizedek és az Alquimista?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "Az alkimista", "A Da Vinci-kód"],
         "correct": 2,
-        "explanation": "A hosszú út (Paulo Coelho) - Santiago, Melchizedek és az Alquimista a főszereplők.",
+        "explanation": "Az alkimista (Paulo Coelho) - Santiago, Melchizedek és az Alquimista a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy pásztor (Santiago) álmot lát a kincsekről, és útjára indul, ahol egy király (Melchizedek) és egy alkimista segít neki megtalálni a személyes legendáját?",
-        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "A zarándok", "A Da Vinci-kód"],
+        "options": ["A napfogyatkozás", "A szürke ötven árnyalata", "Az alkimista", "A Da Vinci-kód"],
         "correct": 2,
-        "explanation": "A hosszú út (Paulo Coelho) - a személyes fejlődés és a sors témáit vizsgálja.",
+        "explanation": "Az alkimista (Paulo Coelho) - a személyes fejlődés és a sors témáit vizsgálja.",
         "topic": "regények"
     },
 
@@ -404,14 +404,14 @@ REGÉNYEK_QUESTIONS = [
     # 26. Az anya (Makszim Gorkij)
     {
         "question": "Melyik regény szereplői: Pelageya, Pavel és Andrej?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 0,
         "explanation": "Az anya (Makszim Gorkij) - Pelageya Nilovna, Pavel Vlasov és Andrej Nakhodka a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy anya (Pelageya Nilovna) fia halála után forradalmi mozgalomba csatlakozik, és a regény a forradalom és az anyai szeretet témáit vizsgálja?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 0,
         "explanation": "Az anya (Makszim Gorkij) - a forradalom és az anyai szeretet témáit vizsgálja.",
         "topic": "regények"
@@ -420,46 +420,46 @@ REGÉNYEK_QUESTIONS = [
     # 27. Atyák és fiúk (Turgenev)
     {
         "question": "Melyik regény szereplői: Arkadij, Bazarov és Anna?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 1,
         "explanation": "Atyák és fiúk (Turgenev) - Arkadij Kirsanov, Bazarov és Anna Odincova a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy orosz nemesi család története játszódik a 19. században, ahol egy nihilista orvos (Bazarov) és egy szépséges özvegy (Anna Odincova) szerepel?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 1,
         "explanation": "Atyák és fiúk (Turgenev) - a nihilizmus és a társadalmi változás témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 28. A holtak lelkei (Gogol)
+    # 28. Holt lelkek (Gogol)
     {
         "question": "Melyik regény szereplői: Pavel, Manilov és Korobocska?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 2,
-        "explanation": "A holtak lelkei (Gogol) - Pavel Csicsikov, Manilov és Korobocska a főszereplők.",
+        "explanation": "Holt lelkek (Gogol) - Pavel Csicsikov, Manilov és Korobocska a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy földbirtokos (Csicsikov) 'halott lelkeket' vásárol, hogy megtévessze az adóhatóságot, és a regény az orosz társadalom kritikáját tartalmazza?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 2,
-        "explanation": "A holtak lelkei (Gogol) - az orosz társadalom kritikáját tartalmazza.",
+        "explanation": "Holt lelkek (Gogol) - az orosz társadalom kritikáját tartalmazza.",
         "topic": "regények"
     },
 
     # 29. Oliver Twist (Dickens)
     {
         "question": "Melyik regény szereplői: Oliver, Fagin és Nancy?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - Oliver Twist, Fagin és Nancy a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy árva fiú kalandjai játszódnak Londonban, ahol egy bűnöző vezető (Fagin) és egy prostituált (Nancy) szerepel?",
-        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "Holt lelkek", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - a gyerekmunkát és a társadalmi igazságtalanságot vizsgálja.",
         "topic": "regények"
@@ -641,19 +641,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 41. A szívtelenek (Cormac McCarthy)
+    # 41. Az út (Cormac McCarthy)
     {
         "question": "Melyik regény szereplői: Apa, Fiú és a Vándorok?",
-        "options": ["A harag és a düh", "A szívtelenek", "A vörös és a fekete", "A keresztanya"],
+        "options": ["A harag és a düh", "Az út", "A vörös és a fekete", "A keresztanya"],
         "correct": 1,
-        "explanation": "A szívtelenek (Cormac McCarthy) - Apa, Fiú és a Vándorok a főszereplők.",
+        "explanation": "Az út (Cormac McCarthy) - Apa, Fiú és a Vándorok a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben apa és fia utazása játszódik poszt-apokaliptikus világban, ahol vándorok (gonosz karakterek) üldözik őket?",
-        "options": ["A harag és a düh", "A szívtelenek", "A vörös és a fekete", "A keresztanya"],
+        "options": ["A harag és a düh", "Az út", "A vörös és a fekete", "A keresztanya"],
         "correct": 1,
-        "explanation": "A szívtelenek (Cormac McCarthy) - a túlélés és a családi szeretet témáit vizsgálja.",
+        "explanation": "Az út (Cormac McCarthy) - a túlélés és a családi szeretet témáit vizsgálja.",
         "topic": "regények"
     },
 
@@ -691,7 +691,7 @@ REGÉNYEK_QUESTIONS = [
 
     # 44. A kis herceg (Antoine de Saint-Exupéry)
     {
-        "question": "Melyik regény szereplői: Kis herceg, Pilóta és Rózsa?",
+        "question": "Melyik regény szereplői: kisróka, Pilóta és Rózsa?",
         "options": ["A keresztanya", "A kis herceg", "A katedrális", "A srác"],
         "correct": 1,
         "explanation": "A kis herceg (Antoine de Saint-Exupéry) - Kis herceg, Pilóta és Rózsa a főszereplők.",
@@ -705,19 +705,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 45. A katedrális (Victor Hugo)
+    # 45. Notre Dame-i toronyőr (Victor Hugo)
     {
         "question": "Melyik regény szereplői: Quasimodo, Esmeralda és Frollo?",
-        "options": ["A kis herceg", "A katedrális", "A srác", "A kastély"],
+        "options": ["A kis herceg", "Notre Dame-i toronyőr", "A srác", "A kastély"],
         "correct": 1,
-        "explanation": "A katedrális (Victor Hugo) - Quasimodo, Esmeralda és Frollo a főszereplők.",
+        "explanation": "Notre Dame-i toronyőr (Victor Hugo) - Quasimodo, Esmeralda és Frollo a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Notre-Dame katedrális története játszódik, ahol egy harangozó (Quasimodo), egy cigány lány (Esmeralda) és egy esperes (Frollo) szerepel?",
-        "options": ["A kis herceg", "A katedrális", "A srác", "A kastély"],
+        "question": "Melyik regényben egy katedrális története játszódik, ahol egy harangozó (Quasimodo), egy cigány lány (Esmeralda) és egy esperes (Frollo) szerepel?",
+        "options": ["A kis herceg", "Notre Dame-i toronyőr", "A srác", "A kastély"],
         "correct": 1,
-        "explanation": "A katedrális (Victor Hugo) - a szépség és a csúfság témáit vizsgálja.",
+        "explanation": "Notre Dame-i toronyőr (Victor Hugo) - a szépség és a csúfság témáit vizsgálja.",
         "topic": "regények"
     },
 
@@ -785,19 +785,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 50. A pápa (Giovanni Boccaccio)
+    # 50. Dekameron (Giovanni Boccaccio)
     {
         "question": "Melyik regény szereplői: Pampinea, Filomena és Dioneo?",
-        "options": ["Rózsa neve", "A pápa", "Száz év magány", "Don Juan"],
+        "options": ["Rózsa neve", "Dekameron", "Száz év magány", "Don Juan"],
         "correct": 1,
-        "explanation": "A pápa (Giovanni Boccaccio) - Pampinea, Filomena és Dioneo a főszereplők.",
+        "explanation": "Dekameron (Giovanni Boccaccio) - Pampinea, Filomena és Dioneo a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben tíz fiatal menekül a pestis elől és meséket mondanak, ahol Pampinea (vezető), Filomena (mesélő) és Dioneo (mesélő) szerepel?",
-        "options": ["Rózsa neve", "A pápa", "Száz év magány", "Don Juan"],
+        "options": ["Rózsa neve", "Dekameron", "Száz év magány", "Don Juan"],
         "correct": 1,
-        "explanation": "A pápa (Giovanni Boccaccio) - a pestis és a mesélés témáit vizsgálja.",
+        "explanation": "Dekameron (Giovanni Boccaccio) - a pestis és a mesélés témáit vizsgálja.",
         "topic": "regények"
     },
 
