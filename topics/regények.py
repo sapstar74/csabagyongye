@@ -4,14 +4,14 @@ REGÉNYEK_QUESTIONS = [
     # 1. A Karamazov testvérek (Dosztojevszkij)
     {
         "question": "Melyik regény szereplői: Aljosa, Dmitrij, Ivan és Fjodor?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "A Karamazov testvérek (Dosztojevszkij) - Aljosa, Dmitrij, Ivan és Fjodor Karamazov a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben három testvér (Aljosa, Dmitrij, Ivan) apjuk (Fjodor) meggyilkolásával kapcsolatos bűnügyben vesz részt, és a regény a hit, a kétség és a bűn témáit vizsgálja?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "A Karamazov testvérek (Dosztojevszkij) - a hit, a kétség és a bűn témáit vizsgálja.",
         "topic": "regények"
@@ -20,14 +20,14 @@ REGÉNYEK_QUESTIONS = [
     # 2. Bűn és büntetés (Dosztojevszkij)
     {
         "question": "Melyik regény szereplői: Raskolnyikov, Szonya és Porfirij?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Bűn és büntetés (Dosztojevszkij) - Raskolnyikov, Szonya Marmeladova és Porfirij Petrovics a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy szegény diák (Raskolnyikov) meggyilkolja egy öreg uzsorásnőt, majd bűntudatában szenved, és egy prostituált (Szonya) segít neki megbánásban?",
-        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Az oroszok"],
+        "options": ["A Karamazov testvérek", "Bűn és büntetés", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Bűn és büntetés (Dosztojevszkij) - a bűn és a büntetés pszichológiáját vizsgálja.",
         "topic": "regények"
@@ -36,14 +36,14 @@ REGÉNYEK_QUESTIONS = [
     # 3. Anna Karenina (Tolsztoj)
     {
         "question": "Melyik regény szereplői: Anna, Vronszkij gróf és Karenin?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
+        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - Anna Karenina, Vronszkij gróf és Karenin a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy férjnél (Anna Karenina) szerelmes lesz egy fiatal grófba (Vronszkij), de a társadalmi elítélés miatt végül öngyilkos lesz, miközben a regényben párhuzamosan egy másik szerelmi történet is játszódik?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
+        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 0,
         "explanation": "Anna Karenina (Tolsztoj) - a szerelmi szenvedély és a társadalmi elítélés témáit vizsgálja.",
         "topic": "regények"
@@ -52,14 +52,14 @@ REGÉNYEK_QUESTIONS = [
     # 4. Háború és béke (Tolsztoj)
     {
         "question": "Melyik regény szereplői: Pierre, Andrej és Natasa?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
+        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Háború és béke (Tolsztoj) - Pierre Bezuhov, Andrej Bolkonszkij és Natasa Rosztova a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Napóleon háborúi alatt Oroszországban három nemesi család (Bezuhov, Bolkonszkij, Rosztov) sorsa játszódik, és a regény a háború és a béke, valamint az emberi sors témáit vizsgálja?",
-        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Az oroszok"],
+        "options": ["Anna Karenina", "Háború és béke", "A holtak lelkei", "Atyák és fiúk"],
         "correct": 1,
         "explanation": "Háború és béke (Tolsztoj) - a Napóleoni háborúk idején játszódik Oroszországban.",
         "topic": "regények"
@@ -227,14 +227,14 @@ REGÉNYEK_QUESTIONS = [
 
     # 15. A varázsló tanítványa (Goethe)
     {
-        "question": "Melyik regény szereplői: Faust, Mephistopheles és Margarete?",
+        "question": "Melyik regény szereplői: egy tudós, Mephistopheles és Margarete?",
         "options": ["Faust", "A srác", "A kastély", "A metamorfózis"],
         "correct": 0,
         "explanation": "A varázsló tanítványa (Goethe) - Faust, Mephistopheles és Margarete a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben egy tudós (Faust) unatkozik az élettel, és egy ördöggel (Mephistopheles) szerződést köt, hogy fiatalosságot és szerelmet kapjon egy lányért (Margarete) cserébe a lelkéért?",
+        "question": "Melyik regényben egy tudós unatkozik az élettel, és egy ördöggel (Mephistopheles) szerződést köt, hogy fiatalosságot és szerelmet kapjon egy lányért (Margarete) cserébe a lelkéért?",
         "options": ["Faust", "A srác", "A kastély", "A metamorfózis"],
         "correct": 0,
         "explanation": "A varázsló tanítványa (Goethe) - a tudás, a szerelem és a lelki üdvözülés témáit vizsgálja.",
@@ -404,46 +404,46 @@ REGÉNYEK_QUESTIONS = [
     # 26. Az anya (Makszim Gorkij)
     {
         "question": "Melyik regény szereplői: Pelageya, Pavel és Andrej?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 0,
         "explanation": "Az anya (Makszim Gorkij) - Pelageya Nilovna, Pavel Vlasov és Andrej Nakhodka a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy anya (Pelageya Nilovna) fia halála után forradalmi mozgalomba csatlakozik, és a regény a forradalom és az anyai szeretet témáit vizsgálja?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 0,
         "explanation": "Az anya (Makszim Gorkij) - a forradalom és az anyai szeretet témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 27. Az oroszok (Turgenev)
+    # 27. Atyák és fiúk (Turgenev)
     {
         "question": "Melyik regény szereplői: Arkadij, Bazarov és Anna?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 1,
-        "explanation": "Az oroszok (Turgenev) - Arkadij Kirsanov, Bazarov és Anna Odincova a főszereplők.",
+        "explanation": "Atyák és fiúk (Turgenev) - Arkadij Kirsanov, Bazarov és Anna Odincova a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy orosz nemesi család története játszódik a 19. században, ahol egy nihilista orvos (Bazarov) és egy szépséges özvegy (Anna Odincova) szerepel?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 1,
-        "explanation": "Az oroszok (Turgenev) - a nihilizmus és a társadalmi változás témáit vizsgálja.",
+        "explanation": "Atyák és fiúk (Turgenev) - a nihilizmus és a társadalmi változás témáit vizsgálja.",
         "topic": "regények"
     },
 
     # 28. A holtak lelkei (Gogol)
     {
         "question": "Melyik regény szereplői: Pavel, Manilov és Korobocska?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 2,
         "explanation": "A holtak lelkei (Gogol) - Pavel Csicsikov, Manilov és Korobocska a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy földbirtokos (Csicsikov) 'halott lelkeket' vásárol, hogy megtévessze az adóhatóságot, és a regény az orosz társadalom kritikáját tartalmazza?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 2,
         "explanation": "A holtak lelkei (Gogol) - az orosz társadalom kritikáját tartalmazza.",
         "topic": "regények"
@@ -452,14 +452,14 @@ REGÉNYEK_QUESTIONS = [
     # 29. Oliver Twist (Dickens)
     {
         "question": "Melyik regény szereplői: Oliver, Fagin és Nancy?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - Oliver Twist, Fagin és Nancy a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben egy árva fiú kalandjai játszódnak Londonban, ahol egy bűnöző vezető (Fagin) és egy prostituált (Nancy) szerepel?",
-        "options": ["Az anya", "Az oroszok", "A holtak lelkei", "Oliver Twist"],
+        "options": ["Az anya", "Atyák és fiúk", "A holtak lelkei", "Oliver Twist"],
         "correct": 3,
         "explanation": "Oliver Twist (Dickens) - a gyerekmunkát és a társadalmi igazságtalanságot vizsgálja.",
         "topic": "regények"
@@ -858,7 +858,7 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Jurij Zhivago orvos és Lara szerelmi története játszódik, ahol Tonya (Zhivago felesége) szerepel?",
+        "question": "Melyik regényben egy orvos és Lara szerelmi története játszódik, ahol Tonya (az orvos felesége) szerepel?",
         "options": ["A viharos magasságok", "Dr. Zhivago", "A három testőr", "A vörös és a fekete"],
         "correct": 1,
         "explanation": "Dr. Zhivago (Boris Pasternak) - a forradalom és a szerelem témáit vizsgálja.",
