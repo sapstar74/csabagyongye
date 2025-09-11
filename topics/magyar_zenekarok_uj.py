@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-11 20:38:22
+# Generated on: 2025-09-11 20:39:48
 
 QUESTIONS = [
     {
@@ -585,7 +585,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "30Y magyar zenekar",
-        "audio_file": "68_30Y.mp3",
+        "audio_file": "46. 30Y - 30Y.mp3",
+        "song_title": "30Y",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -1197,7 +1198,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "4F Club - Magyar Zenekarok",
         "audio_file": "93. 4F Club - Balatoni Láz.mp3",
-        "song_title": "Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
     {
