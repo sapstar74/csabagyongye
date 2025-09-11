@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-11 20:37:33
+# Generated on: 2025-09-11 20:38:22
 
 QUESTIONS = [
     {
@@ -1196,7 +1196,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "4F Club - Magyar Zenekarok",
-        "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp4",
+        "audio_file": "93. 4F Club - Balatoni Láz.mp3",
+        "song_title": "Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1249,7 +1250,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "P.Box - Magyar Zenekarok",
         "audio_file": "97. PBox - A zöld a bibor és a fekete.mp3",
-        "song_title": "A zöld a bibor és a fekete",
         "topic": "magyar_zenekarok",
     },
     {
