@@ -673,19 +673,19 @@ REGÉNYEK_QUESTIONS = [
         "topic": "regények"
     },
 
-    # 43. A keresztanya (Balzac)
+    # 43. Goriot apó (Balzac)
     {
         "question": "Melyik regény szereplői: Goriot, Eugène és Vautrin?",
-        "options": ["A vörös és a fekete", "A keresztanya", "A kis herceg", "A katedrális"],
+        "options": ["A vörös és a fekete", "Goriot apó", "A kis herceg", "A katedrális"],
         "correct": 1,
-        "explanation": "A keresztanya (Balzac) - Goriot, Eugène és Vautrin a főszereplők.",
+        "explanation": "Goriot apó (Balzac) - Goriot, Eugène és Vautrin a főszereplők.",
         "topic": "regények"
     },
     {
-        "question": "Melyik regényben Goriot apja áldozatos szeretete lányaiért játszódik, ahol egy diák (Eugène de Rastignac) és egy bűnöző (Vautrin) szerepel?",
-        "options": ["A vörös és a fekete", "A keresztanya", "A kis herceg", "A katedrális"],
+        "question": "Melyik regényben egy apa áldozatos szeretete lányaiért játszódik, ahol egy diák (Eugène de Rastignac) és egy bűnöző (Vautrin) szerepel?",
+        "options": ["A vörös és a fekete", "Goriot apó", "A kis herceg", "A katedrális"],
         "correct": 1,
-        "explanation": "A keresztanya (Balzac) - az anyai szeretet és a társadalmi felemelkedés témáit vizsgálja.",
+        "explanation": "Goriot apó (Balzac) - az apai szeretet és a társadalmi felemelkedés témáit vizsgálja.",
         "topic": "regények"
     },
 
