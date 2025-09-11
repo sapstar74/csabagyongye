@@ -516,14 +516,14 @@ REGÉNYEK_QUESTIONS = [
     # 33. A kék szoba (Virginia Woolf)
     {
         "question": "Melyik regény szereplői: Clarissa, Septimus és Peter?",
-        "options": ["Állatfarm", "A kék szoba", "Ulysses", "A vadon szava"],
+        "options": ["Állatfarm", "A kék szoba", "Ulysses", "Lady Chatterley szeretője"],
         "correct": 1,
         "explanation": "A kék szoba (Virginia Woolf) - Clarissa, Septimus és Peter a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Mrs. Dalloway egy napja játszódik Londonban, ahol egy háborús veterán (Septimus) és a nő volt szerelme (Peter) szerepel?",
-        "options": ["Állatfarm", "A kék szoba", "Ulysses", "A vadon szava"],
+        "options": ["Állatfarm", "A kék szoba", "Ulysses", "Lady Chatterley szeretője"],
         "correct": 1,
         "explanation": "A kék szoba (Virginia Woolf) - a belső monológ és az emberi tudat témáit vizsgálja.",
         "topic": "regények"
@@ -532,46 +532,46 @@ REGÉNYEK_QUESTIONS = [
     # 34. Ulysses (James Joyce)
     {
         "question": "Melyik regény szereplői: Leopold, Molly és Stephen?",
-        "options": ["A kék szoba", "Ulysses", "A vadon szava", "Elfújta a szél"],
+        "options": ["A kék szoba", "Ulysses", "Lady Chatterley szeretője", "Elfújta a szél"],
         "correct": 1,
         "explanation": "Ulysses (James Joyce) - Leopold, Molly és Stephen a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Leopold Bloom egy napja játszódik Dublinban, ahol a felesége (Molly Bloom) és egy író (Stephen Dedalus) szerepel?",
-        "options": ["A kék szoba", "Ulysses", "A vadon szava", "Elfújta a szél"],
+        "options": ["A kék szoba", "Ulysses", "Lady Chatterley szeretője", "Elfújta a szél"],
         "correct": 1,
         "explanation": "Ulysses (James Joyce) - a modern regényírás és az emberi tudat témáit vizsgálja.",
         "topic": "regények"
     },
 
-    # 35. A vadon szava (D.H. Lawrence)
+    # 35. Lady Chatterley szeretője (D.H. Lawrence)
     {
         "question": "Melyik regény szereplői: Lady Chatterley, Mellors és Sir Clifford?",
-        "options": ["Ulysses", "A vadon szava", "Elfújta a szél", "Moby Dick"],
+        "options": ["Ulysses", "Lady Chatterley szeretője", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
-        "explanation": "A vadon szava (D.H. Lawrence) - Lady Chatterley, Mellors és Sir Clifford a főszereplők.",
+        "explanation": "Lady Chatterley szeretője (D.H. Lawrence) - Lady Chatterley, Mellors és Sir Clifford a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Lady Chatterley és a birtok őre (Mellors) szerelmi viszonya játszódik, miközben a Lady férje (Sir Clifford) balesetben megbénul?",
-        "options": ["Ulysses", "A vadon szava", "Elfújta a szél", "Moby Dick"],
+        "options": ["Ulysses", "Lady Chatterley szeretője", "Elfújta a szél", "Moby Dick"],
         "correct": 1,
-        "explanation": "A vadon szava (D.H. Lawrence) - a szexualitás és a társadalmi osztályok témáit vizsgálja.",
+        "explanation": "Lady Chatterley szeretője (D.H. Lawrence) - a szexualitás és a társadalmi osztályok témáit vizsgálja.",
         "topic": "regények"
     },
 
     # 36. Elfújta a szél (Margaret Mitchell)
     {
         "question": "Melyik regény szereplői: Scarlett, Rhett Butler és Ashley?",
-        "options": ["A vadon szava", "Elfújta a szél", "Moby Dick", "A bűnösök"],
+        "options": ["Lady Chatterley szeretője", "Elfújta a szél", "Moby Dick", "A bűnösök"],
         "correct": 1,
         "explanation": "A szél szárnyán (Margaret Mitchell) - Scarlett, Rhett Butler és Ashley a főszereplők.",
         "topic": "regények"
     },
     {
         "question": "Melyik regényben Scarlett O'Hara amerikai polgárháború alatt és után küzdelmei játszódnak, ahol egy férfi (Rhett Butler) és egy másik férfi (Ashley Wilkes) szerepel?",
-        "options": ["A vadon szava", "Elfújta a szél", "Moby Dick", "A bűnösök"],
+        "options": ["Lady Chatterley szeretője", "Elfújta a szél", "Moby Dick", "A bűnösök"],
         "correct": 1,
         "explanation": "A szél szárnyán (Margaret Mitchell) - az amerikai polgárháború és a szerelem témáit vizsgálja.",
         "topic": "regények"
