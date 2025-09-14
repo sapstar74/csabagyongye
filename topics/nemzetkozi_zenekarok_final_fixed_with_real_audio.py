@@ -848,7 +848,7 @@ QUESTIONS = [
         "topic": "nemzetkozi_zenekarok",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Here We Go' című dalban?",
         "options": [
             "Stakka Bo",
             "Boomfunk MC",
@@ -856,7 +856,7 @@ QUESTIONS = [
             "The KLF",
         ],
         "correct": 0,
-        "explanation": "Stakka Bo - Nemzetközi előadó",
+        "explanation": "'Here We Go' egy nemzetközi dal az előadótól: Stakka Bo",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
@@ -914,7 +914,7 @@ QUESTIONS = [
         "topic": "nemzetkozi_zenekarok",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Here We Go' című dalban?",
         "options": [
             "Stakka Bo",
             "Ultravox",
@@ -922,7 +922,7 @@ QUESTIONS = [
             "Yello",
         ],
         "correct": 0,
-        "explanation": "Alphaville - Nemzetkozi Zenekarok",
+        "explanation": "'Here We Go' egy nemzetközi dal az előadótól: Stakka Bo",
         "audio_file": "71. Stakka Bo - Here We Go.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
