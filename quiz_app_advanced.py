@@ -1877,7 +1877,12 @@ def show_topic_selection():
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
     with col2:
         players = ["Éva", "Ákos", "Orsika", "Mikcsi", "Ildi", "Szabi", "Hanna", "Villő", "Béla", "Gábor", "Emese", "Vendég"]
-        selected_player = st.selectbox("Válassz játékost:", players, key="selected_player")
+        # Az aktuális játékos kiválasztása a session state-ből
+        current_player = st.session_state.get("selected_player", "Vendég")
+        if current_player not in players:
+            current_player = "Vendég"
+        
+        selected_player = st.selectbox("Válassz játékost:", players, index=players.index(current_player))
         # A kiválasztott játékos mentése a session state-be
         st.session_state.selected_player = selected_player
     
