@@ -392,21 +392,21 @@ def get_font_style():
     
     if font_size == 'large':
         return {
-            'question': 'font-size: 1.8rem; line-height: 1.4;',
-            'option': 'font-size: 1.4rem; line-height: 1.3; padding: 12px;',
-            'explanation': 'font-size: 1.3rem; line-height: 1.4;',
-            'button': 'font-size: 1.2rem; padding: 12px 24px;',
-            'title': 'font-size: 2.2rem;',
-            'subtitle': 'font-size: 1.6rem;'
+            'question': 'font-size: 1.8rem !important; line-height: 1.4;',
+            'option': 'font-size: 1.4rem !important; line-height: 1.3; padding: 12px;',
+            'explanation': 'font-size: 1.3rem !important; line-height: 1.4;',
+            'button': 'font-size: 1.2rem !important; padding: 12px 24px;',
+            'title': 'font-size: 2.2rem !important;',
+            'subtitle': 'font-size: 1.6rem !important;'
         }
     else:  # normal
         return {
-            'question': 'font-size: 1.4rem; line-height: 1.3;',
-            'option': 'font-size: 1.1rem; line-height: 1.2; padding: 8px;',
-            'explanation': 'font-size: 1.1rem; line-height: 1.3;',
-            'button': 'font-size: 1rem; padding: 8px 16px;',
-            'title': 'font-size: 1.8rem;',
-            'subtitle': 'font-size: 1.3rem;'
+            'question': 'font-size: 1.4rem !important; line-height: 1.3;',
+            'option': 'font-size: 1.1rem !important; line-height: 1.2; padding: 8px;',
+            'explanation': 'font-size: 1.1rem !important; line-height: 1.3;',
+            'button': 'font-size: 1rem !important; padding: 8px 16px;',
+            'title': 'font-size: 1.8rem !important;',
+            'subtitle': 'font-size: 1.3rem !important;'
         }
 
 def reset_quiz():
@@ -561,6 +561,26 @@ def get_audio_file_for_question(question, topic):
                             return str(audio_path)
             except Exception as e:
                 pass
+        
+        # Fallback: dal cím alapján keresés
+        try:
+            import re
+            # Keresd meg a dal címét a kérdésben
+            question_text = question.get("question", "")
+            # Keresd meg a 'dal cím' mintát
+            match = re.search(r"'([^']+)'", question_text)
+            if match:
+                song_title = match.group(1)
+                # Keresd meg a megfelelő audio fájlt
+                audio_dir = Path(__file__).parent / "audio_files_one_hit_wonders"
+                for filename in os.listdir(audio_dir):
+                    if filename.endswith('.mp3') and song_title.lower() in filename.lower():
+                        audio_path = audio_dir / filename
+                        if audio_path.exists():
+                            return str(audio_path)
+        except Exception as e:
+            pass
+            
         # Spotify preview URL fallback
         if "spotify_preview_url" in question and question["spotify_preview_url"]:
             return question["spotify_preview_url"]
