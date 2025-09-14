@@ -2106,22 +2106,35 @@ def show_topic_selection():
     <style>
         /* Egységes gomb magasság */
         .stButton > button {
-            height: 50px !important;
+            height: 60px !important;
             margin-bottom: 8px !important;
-            font-size: 1.5em !important;
+            font-size: 1.8em !important;
             font-weight: bold !important;
+            padding: 15px !important;
         }
         
         /* Erősebb CSS szabály a gombok betűméretezéséhez */
         div[data-testid="stButton"] button {
-            font-size: 1.5em !important;
+            font-size: 1.8em !important;
             font-weight: bold !important;
+            height: 60px !important;
+            padding: 15px !important;
         }
         
         /* Még erősebb szabály */
         .stButton button[data-testid="baseButton-secondary"] {
-            font-size: 1.5em !important;
+            font-size: 1.8em !important;
             font-weight: bold !important;
+            height: 60px !important;
+            padding: 15px !important;
+        }
+        
+        /* Minden gomb típusra */
+        .stButton button[data-testid="baseButton-primary"] {
+            font-size: 1.8em !important;
+            font-weight: bold !important;
+            height: 60px !important;
+            padding: 15px !important;
         }
         /* Oszlopok egységes magasság */
         div[data-testid="column"] {
@@ -2192,7 +2205,9 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # Nagyobb betűkkel a gomb szövege
+                button_text = f"🎵 {topic_name}"
+                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2222,7 +2237,9 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # Nagyobb betűkkel a gomb szövege
+                button_text = f"📚 {topic_name}"
+                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2251,7 +2268,9 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # Nagyobb betűkkel a gomb szövege
+                button_text = f"📚 {topic_name}"
+                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
