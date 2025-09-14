@@ -745,7 +745,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Bitter Sweet Symphony' egy One Hit Wonder dal az előadótól: The Verve",
-        "audio_file": "audio_files/one_hit_wonders/The Verve - Bitter Sweet Symphony.mp4",
+        "audio_file": "audio_files/one_hit_wonders/The Verve - Bitter Sweet Symphony.mp3",
         "topic": "one_hit_wonders",
     },
     {
