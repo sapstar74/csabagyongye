@@ -2108,7 +2108,7 @@ def show_topic_selection():
         .stButton > button {
             height: 50px !important;
             margin-bottom: 8px !important;
-            font-size: 1.2em !important;
+            font-size: 1.5em !important;
             font-weight: bold !important;
         }
         /* Oszlopok egységes magasság */
