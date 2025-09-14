@@ -750,6 +750,8 @@ def main():
         st.session_state.other_total_questions = st.session_state.get('default_other_questions', 40)
     if 'music_total_questions' not in st.session_state:
         st.session_state.music_total_questions = st.session_state.get('default_music_questions', 10)
+    if 'selected_player' not in st.session_state:
+        st.session_state.selected_player = "Vendég"
     
     font_style = get_font_style()
     st.markdown(f'<h1 style="text-align: center; {font_style["title"]} color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
