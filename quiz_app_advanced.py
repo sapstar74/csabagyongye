@@ -2111,6 +2111,18 @@ def show_topic_selection():
             font-size: 1.5em !important;
             font-weight: bold !important;
         }
+        
+        /* Erősebb CSS szabály a gombok betűméretezéséhez */
+        div[data-testid="stButton"] button {
+            font-size: 1.5em !important;
+            font-weight: bold !important;
+        }
+        
+        /* Még erősebb szabály */
+        .stButton button[data-testid="baseButton-secondary"] {
+            font-size: 1.5em !important;
+            font-weight: bold !important;
+        }
         /* Oszlopok egységes magasság */
         div[data-testid="column"] {
             min-height: 600px !important;
