@@ -245,6 +245,12 @@ class QuizAnalytics:
             }
         
         return dict(list(weekly_averages.items())[-weeks:])
+    
+    def get_player_sessions(self, player_name):
+        """Játékos quiz session-jeinek lekérdezése"""
+        sessions = self.analytics_data["quiz_sessions"]
+        player_sessions = [s for s in sessions if s.get("player") == player_name]
+        return sorted(player_sessions, key=lambda x: x["timestamp"], reverse=True)
 
 def show_analytics_dashboard():
     """Analytics dashboard megjelenítése"""
@@ -302,8 +308,14 @@ def show_analytics_dashboard():
     if player_performance:
         st.markdown("### 👥 Játékos Teljesítmény")
         
+        # Játékos szűrés
+        if selected_filter_player != "Összes játékos":
+            filtered_players = {selected_filter_player: player_performance[selected_filter_player]}
+        else:
+            filtered_players = player_performance
+        
         player_data = []
-        for player, data in player_performance.items():
+        for player, data in filtered_players.items():
             player_data.append({
                 "Játékos": player,
                 "Átlagos Pontszám": round(data["average_score"], 2),
@@ -316,6 +328,42 @@ def show_analytics_dashboard():
         df_players = pd.DataFrame(player_data)
         df_players = df_players.sort_values("Átlagos Pontszám", ascending=False)
         st.dataframe(df_players, use_container_width=True)
+        
+        # Részletes játékos statisztikák
+        if selected_filter_player != "Összes játékos" and selected_filter_player in player_performance:
+            st.markdown(f"#### 📊 Részletes statisztikák: {selected_filter_player}")
+            
+            player_data = player_performance[selected_filter_player]
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.metric("📊 Összes Quiz", player_data["total_quizzes"])
+            with col2:
+                st.metric("🎯 Átlagos Pontszám", f"{player_data['average_score']:.1f}%")
+            with col3:
+                st.metric("🏆 Legjobb Pontszám", f"{player_data['best_score']:.1f}%")
+            with col4:
+                st.metric("📝 Összes Kérdés", player_data["total_questions"])
+            
+            # Játékos quiz előzmények
+            player_sessions = analytics.get_player_sessions(selected_filter_player)
+            if player_sessions:
+                st.markdown("#### 📈 Quiz Előzmények")
+                
+                session_data = []
+                for session in player_sessions[-10:]:  # Utolsó 10 quiz
+                    session_data.append({
+                        "Dátum": session["timestamp"][:10],
+                        "Pontszám": f"{session['score_percentage']:.1f}%",
+                        "Kérdések": session["total_questions"],
+                        "Helyes": session["correct_answers"],
+                        "Idő (perc)": round(session["duration_seconds"] / 60, 1),
+                        "Témakörök": ", ".join(session["topics"])
+                    })
+                
+                df_sessions = pd.DataFrame(session_data)
+                df_sessions = df_sessions.sort_values("Dátum", ascending=False)
+                st.dataframe(df_sessions, use_container_width=True)
     
     # Témakörök lebontása
     topic_breakdown = analytics.get_topic_breakdown()
@@ -376,6 +424,54 @@ def show_analytics_dashboard():
         
         df_weekly = pd.DataFrame(week_data)
         st.dataframe(df_weekly, use_container_width=True)
+    
+    # Játékosok összehasonlítása
+    if len(player_performance) > 1:
+        st.markdown("### 🏆 Játékosok Összehasonlítása")
+        
+        # Top 3 játékos kiemelése
+        top_players = sorted(player_performance.items(), key=lambda x: x[1]["average_score"], reverse=True)[:3]
+        
+        col1, col2, col3 = st.columns(3)
+        positions = ["🥇", "🥈", "🥉"]
+        
+        for i, (player, data) in enumerate(top_players):
+            with [col1, col2, col3][i]:
+                st.markdown(f"""
+                <div style="text-align: center; padding: 20px; border: 2px solid #f0f2f6; border-radius: 10px; background-color: #f8f9fa;">
+                    <h3>{positions[i]} {player}</h3>
+                    <p><strong>Átlag: {data['average_score']:.1f}%</strong></p>
+                    <p>Quizek: {data['total_quizzes']}</p>
+                    <p>Legjobb: {data['best_score']:.1f}%</p>
+                </div>
+                """, unsafe_allow_html=True)
+        
+        # Játékosok teljesítmény grafikon
+        if len(player_performance) > 1:
+            st.markdown("#### 📊 Játékosok Teljesítmény Grafikon")
+            
+            import matplotlib.pyplot as plt
+            import numpy as np
+            
+            players = list(player_performance.keys())
+            avg_scores = [player_performance[p]["average_score"] for p in players]
+            
+            fig, ax = plt.subplots(figsize=(10, 6))
+            bars = ax.bar(players, avg_scores, color=['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'][:len(players)])
+            
+            ax.set_ylabel('Átlagos Pontszám (%)')
+            ax.set_title('Játékosok Átlagos Teljesítménye')
+            ax.set_ylim(0, 100)
+            
+            # Értékek megjelenítése a sávokon
+            for bar, score in zip(bars, avg_scores):
+                height = bar.get_height()
+                ax.text(bar.get_x() + bar.get_width()/2., height + 1,
+                       f'{score:.1f}%', ha='center', va='bottom')
+            
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            st.pyplot(fig)
 
 if __name__ == "__main__":
     # Test the analytics
