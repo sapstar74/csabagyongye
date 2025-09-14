@@ -2209,40 +2209,46 @@ def show_topic_selection():
                 button_color = "#1f77b4" if is_selected else "#6c757d"
                 button_text_color = "white"
                 
-                # JavaScript-es megoldás a gomb kattintás kezelésére
+                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
                 button_html = f"""
                 <div style="margin-bottom: 15px;">
-                    <button onclick="
-                        // Streamlit session state frissítése
-                        const event = new CustomEvent('streamlit:setComponentValue', {{
-                            detail: {{key: 'html_btn_{topic_key}', value: true}}
-                        }});
-                        window.parent.dispatchEvent(event);
+                    <div style="
+                        width: 100%; 
+                        height: 80px; 
+                        background-color: {button_color}; 
+                        color: {button_text_color}; 
+                        border: 3px solid #333; 
+                        border-radius: 10px; 
+                        font-size: 2.2em; 
+                        font-weight: bold; 
+                        cursor: pointer;
+                        padding: 15px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
                     " 
-                            style="
-                                width: 100%; 
-                                height: 80px; 
-                                background-color: {button_color}; 
-                                color: {button_text_color}; 
-                                border: 3px solid #333; 
-                                border-radius: 10px; 
-                                font-size: 2.2em; 
-                                font-weight: bold; 
-                                cursor: pointer;
-                                padding: 15px;
-                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                                transition: all 0.3s ease;
-                            "
-                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
                     >
                         🎵 {topic_name}
-                    </button>
+                    </div>
                 </div>
                 """
                 st.markdown(button_html, unsafe_allow_html=True)
                 
-                # Invisible Streamlit button a funkcionalitáshoz
+                # Hidden Streamlit button a funkcionalitáshoz
+                st.markdown(f"""
+                <style>
+                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
+                        display: none !important;
+                    }}
+                </style>
+                """, unsafe_allow_html=True)
+                
                 if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
@@ -2277,40 +2283,46 @@ def show_topic_selection():
                 button_color = "#1f77b4" if is_selected else "#6c757d"
                 button_text_color = "white"
                 
-                # JavaScript-es megoldás a gomb kattintás kezelésére
+                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
                 button_html = f"""
                 <div style="margin-bottom: 15px;">
-                    <button onclick="
-                        // Streamlit session state frissítése
-                        const event = new CustomEvent('streamlit:setComponentValue', {{
-                            detail: {{key: 'html_btn_{topic_key}', value: true}}
-                        }});
-                        window.parent.dispatchEvent(event);
+                    <div style="
+                        width: 100%; 
+                        height: 80px; 
+                        background-color: {button_color}; 
+                        color: {button_text_color}; 
+                        border: 3px solid #333; 
+                        border-radius: 10px; 
+                        font-size: 2.2em; 
+                        font-weight: bold; 
+                        cursor: pointer;
+                        padding: 15px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
                     " 
-                            style="
-                                width: 100%; 
-                                height: 80px; 
-                                background-color: {button_color}; 
-                                color: {button_text_color}; 
-                                border: 3px solid #333; 
-                                border-radius: 10px; 
-                                font-size: 2.2em; 
-                                font-weight: bold; 
-                                cursor: pointer;
-                                padding: 15px;
-                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                                transition: all 0.3s ease;
-                            "
-                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
                     >
                         📚 {topic_name}
-                    </button>
+                    </div>
                 </div>
                 """
                 st.markdown(button_html, unsafe_allow_html=True)
                 
-                # Invisible Streamlit button a funkcionalitáshoz
+                # Hidden Streamlit button a funkcionalitáshoz
+                st.markdown(f"""
+                <style>
+                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
+                        display: none !important;
+                    }}
+                </style>
+                """, unsafe_allow_html=True)
+                
                 if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
@@ -2344,40 +2356,46 @@ def show_topic_selection():
                 button_color = "#1f77b4" if is_selected else "#6c757d"
                 button_text_color = "white"
                 
-                # JavaScript-es megoldás a gomb kattintás kezelésére
+                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
                 button_html = f"""
                 <div style="margin-bottom: 15px;">
-                    <button onclick="
-                        // Streamlit session state frissítése
-                        const event = new CustomEvent('streamlit:setComponentValue', {{
-                            detail: {{key: 'html_btn_{topic_key}', value: true}}
-                        }});
-                        window.parent.dispatchEvent(event);
+                    <div style="
+                        width: 100%; 
+                        height: 80px; 
+                        background-color: {button_color}; 
+                        color: {button_text_color}; 
+                        border: 3px solid #333; 
+                        border-radius: 10px; 
+                        font-size: 2.2em; 
+                        font-weight: bold; 
+                        cursor: pointer;
+                        padding: 15px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
                     " 
-                            style="
-                                width: 100%; 
-                                height: 80px; 
-                                background-color: {button_color}; 
-                                color: {button_text_color}; 
-                                border: 3px solid #333; 
-                                border-radius: 10px; 
-                                font-size: 2.2em; 
-                                font-weight: bold; 
-                                cursor: pointer;
-                                padding: 15px;
-                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                                transition: all 0.3s ease;
-                            "
-                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
                     >
                         📚 {topic_name}
-                    </button>
+                    </div>
                 </div>
                 """
                 st.markdown(button_html, unsafe_allow_html=True)
                 
-                # Invisible Streamlit button a funkcionalitáshoz
+                # Hidden Streamlit button a funkcionalitáshoz
+                st.markdown(f"""
+                <style>
+                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
+                        display: none !important;
+                    }}
+                </style>
+                """, unsafe_allow_html=True)
+                
                 if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
