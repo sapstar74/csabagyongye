@@ -323,6 +323,9 @@ def show_analytics_dashboard():
             end_date = None
     
     # Dátum szűrés alkalmazása
+    filter_start = None
+    filter_end = None
+    
     if date_filter != "Összes időszak":
         from datetime import datetime, timedelta
         now = datetime.now()
@@ -336,12 +339,6 @@ def show_analytics_dashboard():
         elif date_filter == "Egyéni" and start_date and end_date:
             filter_start = datetime.combine(start_date, datetime.min.time())
             filter_end = datetime.combine(end_date, datetime.max.time())
-        else:
-            filter_start = None
-            filter_end = None
-    else:
-        filter_start = None
-        filter_end = None
     
     # Játékos szűrés (dátum szűréssel)
     player_performance = analytics.get_player_performance(filter_start, filter_end)
