@@ -758,7 +758,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'One Night in Bangkok' egy One Hit Wonder dal az előadótól: Murray Head",
-        "audio_file": "09_Murray Head_One Night in Bangkok.mp3",
+        "audio_file": "audio_files/one_hit_wonders/09_Murray Head_One Night in Bangkok.mp3",
         "topic": "one_hit_wonders",
     },
     {
@@ -771,7 +771,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'One Night in Bangkok' egy One Hit Wonder dal az előadótól: Murray Head",
-        "audio_file": "Unknown_Artist_Murray_Head_One_Night_In_Ban.mp3",
+        "audio_file": "audio_files/one_hit_wonders/09_Murray Head_One Night in Bangkok.mp3",
         "topic": "one_hit_wonders",
     },
     {
@@ -784,7 +784,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Goodnight Moon' egy One Hit Wonder dal az előadótól: Shivaree",
-        "audio_file": "65. Shiwaree - Goodnight Moon.mp3",
+        "audio_file": "audio_files/one_hit_wonders/65. Shiwaree - Goodnight Moon.mp3",
         "song_title": "Goodnight Moon",
         "topic": "one_hit_wonders",
     },
