@@ -649,7 +649,7 @@ QUESTIONS = [
         ],
         "correct": 1,
         "explanation": "John Legend - Nemzetközi előadó",
-        "audio_file": "50_Pharell_Williams.mp3",
+        "audio_file": "50_Pharrel_Williams.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -857,7 +857,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Here We Go' egy nemzetközi dal az előadótól: Stakka Bo",
-        "audio_file": "audio_files/nemzetkozi_zenekarok/Stakka Bo - Here We Go.mp3",
+        "audio_file": "71. Stakka Bo - Here We Go.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -870,7 +870,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Like a Stone' egy nemzetközi dal az előadótól: Audioslave",
-        "audio_file": "audio_files/nemzetkozi_zenekarok/Audioslave - Like a Stone.mp3",
+        "audio_file": "Audioslave - Like a Stone.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
     {
