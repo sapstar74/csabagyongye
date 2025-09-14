@@ -201,9 +201,50 @@ class QuizAnalytics:
         """Idő szerinti lebontás"""
         return self.analytics_data["time_analysis"]
     
-    def get_player_performance(self):
-        """Játékos teljesítmény adatok"""
-        return self.analytics_data.get("player_performance", {})
+    def get_player_performance(self, filter_start=None, filter_end=None):
+        """Játékos teljesítmény adatok dátum szűréssel"""
+        if filter_start or filter_end:
+            # Dátum szűrés alkalmazása
+            sessions = self.analytics_data["quiz_sessions"]
+            from datetime import datetime
+            
+            filtered_sessions = []
+            for session in sessions:
+                session_date = datetime.fromisoformat(session["timestamp"])
+                if filter_start and session_date < filter_start:
+                    continue
+                if filter_end and session_date > filter_end:
+                    continue
+                filtered_sessions.append(session)
+            
+            # Játékos teljesítmény számítása a szűrt session-ekből
+            player_performance = {}
+            for session in filtered_sessions:
+                player = session.get("player", "Vendég")
+                if player not in player_performance:
+                    player_performance[player] = {
+                        "scores": [],
+                        "total_questions": 0
+                    }
+                
+                player_performance[player]["scores"].append(session["score_percentage"])
+                player_performance[player]["total_questions"] += session["total_questions"]
+            
+            # Statisztikák számítása
+            result = {}
+            for player, data in player_performance.items():
+                scores = data["scores"]
+                result[player] = {
+                    "average_score": sum(scores) / len(scores),
+                    "total_quizzes": len(scores),
+                    "best_score": max(scores),
+                    "worst_score": min(scores),
+                    "total_questions": data["total_questions"]
+                }
+            
+            return result
+        else:
+            return self.analytics_data.get("player_performance", {})
     
     def get_player_topic_performance(self):
         """Játékos témakör teljesítmény adatok"""
@@ -258,8 +299,52 @@ def show_analytics_dashboard():
     
     st.markdown("## 📊 Quiz Analytics Dashboard")
     
-    # Játékos szűrés
-    player_performance = analytics.get_player_performance()
+    # Időszakos szűrés
+    st.markdown("### 📅 Időszakos Szűrés")
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        date_filter = st.selectbox(
+            "Időszak:",
+            ["Összes időszak", "Utolsó 7 nap", "Utolsó 30 nap", "Utolsó 3 hónap", "Egyéni"],
+            key="date_filter"
+        )
+    
+    with col2:
+        if date_filter == "Egyéni":
+            start_date = st.date_input("Kezdő dátum:", key="start_date")
+        else:
+            start_date = None
+    
+    with col3:
+        if date_filter == "Egyéni":
+            end_date = st.date_input("Befejező dátum:", key="end_date")
+        else:
+            end_date = None
+    
+    # Dátum szűrés alkalmazása
+    if date_filter != "Összes időszak":
+        from datetime import datetime, timedelta
+        now = datetime.now()
+        
+        if date_filter == "Utolsó 7 nap":
+            filter_start = now - timedelta(days=7)
+        elif date_filter == "Utolsó 30 nap":
+            filter_start = now - timedelta(days=30)
+        elif date_filter == "Utolsó 3 hónap":
+            filter_start = now - timedelta(days=90)
+        elif date_filter == "Egyéni" and start_date and end_date:
+            filter_start = datetime.combine(start_date, datetime.min.time())
+            filter_end = datetime.combine(end_date, datetime.max.time())
+        else:
+            filter_start = None
+            filter_end = None
+    else:
+        filter_start = None
+        filter_end = None
+    
+    # Játékos szűrés (dátum szűréssel)
+    player_performance = analytics.get_player_performance(filter_start, filter_end)
     if player_performance:
         players = ["Összes játékos"] + list(player_performance.keys())
         selected_filter_player = st.selectbox("Szűrés játékos szerint:", players, key="analytics_filter_player")
@@ -425,11 +510,127 @@ def show_analytics_dashboard():
         df_weekly = pd.DataFrame(week_data)
         st.dataframe(df_weekly, use_container_width=True)
     
-    # Játékosok összehasonlítása
+    # Játékos összehasonlítás
     if len(player_performance) > 1:
         st.markdown("### 🏆 Játékosok Összehasonlítása")
         
+        # Játékos kiválasztás összehasonlításhoz
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            compare_player1 = st.selectbox(
+                "Első játékos:",
+                list(player_performance.keys()),
+                key="compare_player1"
+            )
+        
+        with col2:
+            compare_player2 = st.selectbox(
+                "Második játékos:",
+                [p for p in player_performance.keys() if p != compare_player1],
+                key="compare_player2"
+            )
+        
+        if compare_player1 and compare_player2 and compare_player1 != compare_player2:
+            st.markdown(f"#### ⚔️ {compare_player1} vs {compare_player2}")
+            
+            # Összehasonlítás adatok
+            player1_data = player_performance[compare_player1]
+            player2_data = player_performance[compare_player2]
+            
+            # Metrikák összehasonlítása
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.metric(
+                    "Átlagos Pontszám",
+                    f"{player1_data['average_score']:.1f}%",
+                    f"{player2_data['average_score']:.1f}%",
+                    delta_color="normal"
+                )
+            
+            with col2:
+                st.metric(
+                    "Összes Quiz",
+                    player1_data['total_quizzes'],
+                    player2_data['total_quizzes'],
+                    delta_color="normal"
+                )
+            
+            with col3:
+                st.metric(
+                    "Legjobb Pontszám",
+                    f"{player1_data['best_score']:.1f}%",
+                    f"{player2_data['best_score']:.1f}%",
+                    delta_color="normal"
+                )
+            
+            with col4:
+                st.metric(
+                    "Összes Kérdés",
+                    player1_data['total_questions'],
+                    player2_data['total_questions'],
+                    delta_color="normal"
+                )
+            
+            # Részletes összehasonlítás táblázat
+            comparison_data = {
+                "Metrika": ["Átlagos Pontszám", "Összes Quiz", "Legjobb Pontszám", "Legrosszabb Pontszám", "Összes Kérdés"],
+                compare_player1: [
+                    f"{player1_data['average_score']:.1f}%",
+                    player1_data['total_quizzes'],
+                    f"{player1_data['best_score']:.1f}%",
+                    f"{player1_data['worst_score']:.1f}%",
+                    player1_data['total_questions']
+                ],
+                compare_player2: [
+                    f"{player2_data['average_score']:.1f}%",
+                    player2_data['total_quizzes'],
+                    f"{player2_data['best_score']:.1f}%",
+                    f"{player2_data['worst_score']:.1f}%",
+                    player2_data['total_questions']
+                ]
+            }
+            
+            df_comparison = pd.DataFrame(comparison_data)
+            st.dataframe(df_comparison, use_container_width=True)
+            
+            # Összehasonlítás grafikon
+            st.markdown("#### 📊 Összehasonlítás Grafikon")
+            
+            import matplotlib.pyplot as plt
+            import numpy as np
+            
+            metrics = ["Átlagos Pontszám", "Legjobb Pontszám", "Legrosszabb Pontszám"]
+            player1_values = [player1_data['average_score'], player1_data['best_score'], player1_data['worst_score']]
+            player2_values = [player2_data['average_score'], player2_data['best_score'], player2_data['worst_score']]
+            
+            x = np.arange(len(metrics))
+            width = 0.35
+            
+            fig, ax = plt.subplots(figsize=(10, 6))
+            bars1 = ax.bar(x - width/2, player1_values, width, label=compare_player1, color='#FF6B6B')
+            bars2 = ax.bar(x + width/2, player2_values, width, label=compare_player2, color='#4ECDC4')
+            
+            ax.set_ylabel('Pontszám (%)')
+            ax.set_title(f'{compare_player1} vs {compare_player2} - Teljesítmény Összehasonlítás')
+            ax.set_xticks(x)
+            ax.set_xticklabels(metrics)
+            ax.legend()
+            ax.set_ylim(0, 100)
+            
+            # Értékek megjelenítése a sávokon
+            for bars in [bars1, bars2]:
+                for bar in bars:
+                    height = bar.get_height()
+                    ax.text(bar.get_x() + bar.get_width()/2., height + 1,
+                           f'{height:.1f}%', ha='center', va='bottom')
+            
+            plt.tight_layout()
+            st.pyplot(fig)
+        
         # Top 3 játékos kiemelése
+        st.markdown("#### 🏅 Top 3 Játékos")
         top_players = sorted(player_performance.items(), key=lambda x: x[1]["average_score"], reverse=True)[:3]
         
         col1, col2, col3 = st.columns(3)
