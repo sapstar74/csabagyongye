@@ -2205,9 +2205,45 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # Nagyobb betűkkel a gomb szövege
-                button_text = f"🎵 {topic_name}"
-                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
+                button_color = "#1f77b4" if is_selected else "#6c757d"
+                button_text_color = "white"
+                
+                # JavaScript-es megoldás a gomb kattintás kezelésére
+                button_html = f"""
+                <div style="margin-bottom: 15px;">
+                    <button onclick="
+                        // Streamlit session state frissítése
+                        const event = new CustomEvent('streamlit:setComponentValue', {{
+                            detail: {{key: 'html_btn_{topic_key}', value: true}}
+                        }});
+                        window.parent.dispatchEvent(event);
+                    " 
+                            style="
+                                width: 100%; 
+                                height: 80px; 
+                                background-color: {button_color}; 
+                                color: {button_text_color}; 
+                                border: 3px solid #333; 
+                                border-radius: 10px; 
+                                font-size: 2.2em; 
+                                font-weight: bold; 
+                                cursor: pointer;
+                                padding: 15px;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                                transition: all 0.3s ease;
+                            "
+                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    >
+                        🎵 {topic_name}
+                    </button>
+                </div>
+                """
+                st.markdown(button_html, unsafe_allow_html=True)
+                
+                # Invisible Streamlit button a funkcionalitáshoz
+                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2237,9 +2273,45 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # Nagyobb betűkkel a gomb szövege
-                button_text = f"📚 {topic_name}"
-                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
+                button_color = "#1f77b4" if is_selected else "#6c757d"
+                button_text_color = "white"
+                
+                # JavaScript-es megoldás a gomb kattintás kezelésére
+                button_html = f"""
+                <div style="margin-bottom: 15px;">
+                    <button onclick="
+                        // Streamlit session state frissítése
+                        const event = new CustomEvent('streamlit:setComponentValue', {{
+                            detail: {{key: 'html_btn_{topic_key}', value: true}}
+                        }});
+                        window.parent.dispatchEvent(event);
+                    " 
+                            style="
+                                width: 100%; 
+                                height: 80px; 
+                                background-color: {button_color}; 
+                                color: {button_text_color}; 
+                                border: 3px solid #333; 
+                                border-radius: 10px; 
+                                font-size: 2.2em; 
+                                font-weight: bold; 
+                                cursor: pointer;
+                                padding: 15px;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                                transition: all 0.3s ease;
+                            "
+                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    >
+                        📚 {topic_name}
+                    </button>
+                </div>
+                """
+                st.markdown(button_html, unsafe_allow_html=True)
+                
+                # Invisible Streamlit button a funkcionalitáshoz
+                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2268,9 +2340,45 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # Nagyobb betűkkel a gomb szövege
-                button_text = f"📚 {topic_name}"
-                if st.button(button_text, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
+                button_color = "#1f77b4" if is_selected else "#6c757d"
+                button_text_color = "white"
+                
+                # JavaScript-es megoldás a gomb kattintás kezelésére
+                button_html = f"""
+                <div style="margin-bottom: 15px;">
+                    <button onclick="
+                        // Streamlit session state frissítése
+                        const event = new CustomEvent('streamlit:setComponentValue', {{
+                            detail: {{key: 'html_btn_{topic_key}', value: true}}
+                        }});
+                        window.parent.dispatchEvent(event);
+                    " 
+                            style="
+                                width: 100%; 
+                                height: 80px; 
+                                background-color: {button_color}; 
+                                color: {button_text_color}; 
+                                border: 3px solid #333; 
+                                border-radius: 10px; 
+                                font-size: 2.2em; 
+                                font-weight: bold; 
+                                cursor: pointer;
+                                padding: 15px;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                                transition: all 0.3s ease;
+                            "
+                            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
+                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                    >
+                        📚 {topic_name}
+                    </button>
+                </div>
+                """
+                st.markdown(button_html, unsafe_allow_html=True)
+                
+                # Invisible Streamlit button a funkcionalitáshoz
+                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
