@@ -723,7 +723,7 @@ QUESTIONS = [
             "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Mr. Toot' című dalban?",
         "options": [
             "Ylvis",
             "Bastille",
@@ -731,7 +731,7 @@ QUESTIONS = [
             "Szerkeszthető opció",
         ],
         "correct": 0,
-        "explanation": "Ylvis - One Hit Wonder előadó",
+        "explanation": "'Mr. Toot' egy One Hit Wonder dal az előadótól: Ylvis",
         "audio_file": "audio_files/one_hit_wonders/Ylvis - Mr. Toot [Official music video HD].mp3",
         "topic": "one_hit_wonders",
     },
@@ -749,7 +749,7 @@ QUESTIONS = [
         "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó az 'One Night in Bangkok' című dalban?",
         "options": [
             "Murray Head",
             "Bananarama",
@@ -757,12 +757,12 @@ QUESTIONS = [
             "Bee Gees",
         ],
         "correct": 0,
-        "explanation": "Murray Head - One Hit Wonders",
+        "explanation": "'One Night in Bangkok' egy One Hit Wonder dal az előadótól: Murray Head",
         "audio_file": "09_Murray Head_One Night in Bangkok.mp3",
         "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó az 'One Night in Bangkok' című dalban?",
         "options": [
             "Murray Head",
             "Bananarama",
@@ -770,12 +770,12 @@ QUESTIONS = [
             "Fleetwood Mac",
         ],
         "correct": 0,
-        "explanation": "Murray Head - One Hit Wonders",
+        "explanation": "'One Night in Bangkok' egy One Hit Wonder dal az előadótól: Murray Head",
         "audio_file": "Unknown_Artist_Murray_Head_One_Night_In_Ban.mp3",
         "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Goodnight Moon' című dalban?",
         "options": [
             "Shivaree",
             "Urge Overkill",
@@ -783,7 +783,7 @@ QUESTIONS = [
             "Tanita Tikaram",
         ],
         "correct": 0,
-        "explanation": "Shiwaree - One Hit Wonders",
+        "explanation": "'Goodnight Moon' egy One Hit Wonder dal az előadótól: Shivaree",
         "audio_file": "65. Shiwaree - Goodnight Moon.mp3",
         "song_title": "Goodnight Moon",
         "topic": "one_hit_wonders",
