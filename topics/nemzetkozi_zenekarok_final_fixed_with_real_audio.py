@@ -861,7 +861,7 @@ QUESTIONS = [
         "topic": "nemzetkozi_zenekarok",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Like a Stone' című dalban?",
         "options": [
             "Audioslave",
             "Soundgarden",
@@ -869,7 +869,7 @@ QUESTIONS = [
             "Nirvana",
         ],
         "correct": 0,
-        "explanation": "Audioslave - Nemzetközi zenekar",
+        "explanation": "'Like a Stone' egy nemzetközi dal az előadótól: Audioslave",
         "audio_file": "audio_files/nemzetkozi_zenekarok/Audioslave - Like a Stone.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
