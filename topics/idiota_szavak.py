@@ -228,4 +228,11 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
+    {
+        "question": """A hegy, ahonnan Mózes megpillantotta a Kánaánt és ahol is Mózes meghalt.""",
+        "correct_answer": """Nébó hegy""",
+        "explanation": """A Nébó hegy (hebraiul: הַר נְבוֹ, Har Nevo) a Jordán folyótól keletre, a mai Jordánia területén található hegy. A Biblia szerint itt halt meg Mózes, miután megpillantotta a Kánaán földjét, ahová az Izraeliták be akartak vonulni. A hegy a Mózes 5. könyvében szerepel, ahol Mózes a hegy tetejéről láthatja a Kánaán földjét, de nem lépheti át a Jordán folyót.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
 ]
