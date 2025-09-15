@@ -235,4 +235,11 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
+    {
+        "question": """Melyik az a hagyományos, keményítőtartalmú étel Nyugat- és Közép-Afrikából, amelyet keményítőtartalmú hozzávalók, például manióka, jamszgyökér vagy főzőbanán főzésével, pürésítésével és sima, rugalmas tésztalabdává formálással készítenek? (F)""",
+        "correct_answer": """Fufu""",
+        "explanation": """A fufu egy hagyományos afrikai étel, amelyet Nyugat- és Közép-Afrikában készítenek. Keményítőtartalmú hozzávalókból (manióka, jamszgyökér, főzőbanán, taro vagy kukorica) készül. A hozzávalókat megfőzik, pürésítik, majd sima, rugalmas tésztalabdává formálják. A fufu általában szósszal vagy levesekkel együtt fogyasztják, és kézzel eszik. Ez az egyik legfontosabb alapétel sok afrikai országban.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
 ]
