@@ -242,4 +242,11 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
+    {
+        "question": """Melyik az a rendkívül egészséges, temérdek pozitív egészségügyi hatással rendelkező, a barna algák fajához tartozó alga fajta, melyet a világ számos országában fogyasztanak. Legnagyobb felhasználói a japánok, akik több mint másfél évezrede használják, és úgy tekintenek rá, mint az egészség és a hosszú élettartam zálogára.""",
+        "correct_answer": """Kombu""",
+        "explanation": """A kombu egy barna alga fajta (Laminaria japonica), amelyet a világ számos országában fogyasztanak, de leginkább Japánban. A japánok több mint 1500 éve használják, és az egészség és hosszú élettartam szimbólumának tekintik. A kombu rendkívül gazdag jódban, vitaminokban és ásványi anyagokban. Gyakran használják dashi (japán alaplé) készítésére, és számos pozitív egészségügyi hatással rendelkezik, köztük a pajzsmirigy működés javításával és az immunrendszer erősítésével.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
 ]
