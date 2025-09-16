@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 10:43:02
+# Generated on: 2025-09-16 14:22:21
 
 QUESTIONS = [
     {
@@ -883,7 +883,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Queen - Nemzetkozi Zenekarok",
-        "audio_file": "68. Queen - 39 Official Lyric Video.mp3",
+        "audio_file": "68. Queen - 39.mp3",
+        "song_title": "39",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -949,7 +950,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Yazoo - Nemzetkozi Zenekarok",
         "audio_file": "73. Yazoo - Dont Go.mp3",
-        "song_title": "Dont Go",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
