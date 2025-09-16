@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:23:50
+# Generated on: 2025-09-16 21:35:40
 
 QUESTIONS = [
     {
@@ -696,7 +696,6 @@ QUESTIONS = [
         ],
         "correct": 1,
         "explanation": "'Smooth Criminal' egy One Hit Wonder dal az előadótól: Alien Ant Farm",
-        "song_title": "Smooth Criminal",
         "topic": "one_hit_wonders",
     },
     {
@@ -721,6 +720,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Stolen Dance' egy One Hit Wonder dal az előadótól: Milky Chance",
+        "song_title": "Stolen Dance",
         "topic": "one_hit_wonders",
     },
     {
