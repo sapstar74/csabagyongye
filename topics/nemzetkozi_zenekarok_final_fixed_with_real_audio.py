@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 10:42:04
+# Generated on: 2025-09-16 10:43:02
 
 QUESTIONS = [
     {
@@ -948,8 +948,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Yazoo - Nemzetkozi Zenekarok",
-        "audio_file": "73. Yazoo - Unknown Artist Nouvelle Vague Dont Go Full.mp3",
-        "song_title": "Unknown Artist Nouvelle Vague Dont Go Full",
+        "audio_file": "73. Yazoo - Dont Go.mp3",
+        "song_title": "Dont Go",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
