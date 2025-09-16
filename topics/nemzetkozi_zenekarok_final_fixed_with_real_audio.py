@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 10:38:58
+# Generated on: 2025-09-16 10:42:04
 
-NEMZETKOZI_ZENEKAROK_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -884,7 +884,6 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Queen - Nemzetkozi Zenekarok",
         "audio_file": "68. Queen - 39 Official Lyric Video.mp3",
-        "song_title": "'39 (Official Lyric Video)",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -940,7 +939,7 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "topic": "nemzetkozi_zenekarok",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az eredeti előadó?",
         "options": [
             "Yazoo",
             "Nouvelle Vague",
@@ -949,10 +948,8 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Yazoo - Nemzetkozi Zenekarok",
-        "audio_file": "Unknown_Artist_Nouvelle_Vague_Dont_Go_Full.mp3",
+        "audio_file": "73. Yazoo - Unknown Artist Nouvelle Vague Dont Go Full.mp3",
+        "song_title": "Unknown Artist Nouvelle Vague Dont Go Full",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
-
-# Export alias for compatibility with imports expecting QUESTIONS
-QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
