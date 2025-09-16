@@ -249,4 +249,18 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
+    {
+        "question": """Egy horvát technológiai vállalat, amely egy azonos nevű népszerű sportstatisztikai és élő eredményalkalmazást fejleszt és tart karban. A 2010-ben indított alkalmazás körülbelül 20 sportág adatait szolgáltatja több ezer ligában világszerte. (S)""",
+        "correct_answer": """Sofascore""",
+        "explanation": """A Sofascore egy horvát technológiai vállalat és azonos nevű alkalmazás, amely élő eredményeket és sportstatisztikákat kínál közel 20 sportághoz, több ezer ligában világszerte. 2010-ben indult, és széles körben használják a sportkedvelők.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """Theodore John „Ted” Kaczynski amerikai anarchista, terrorista, aki levélbombáiról híresült el. Több egyetemnek és légitársaságnak küldött levélbombát a kései 1970-es évektől az 1990-es évek elejéig. Robbanószerkezetei három embert megöltek, 23-at megsebesítettek. (U)""",
+        "correct_answer": """Unabomber""",
+        "explanation": """Ted Kaczynski, ismertebb nevén Unabomber.\n\n![Ted Kaczynski](https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Ted_Kaczynski.jpg/220px-Ted_Kaczynski.jpg)""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
 ]
