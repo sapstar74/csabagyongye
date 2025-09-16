@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 23:29:46
+# Generated on: 2025-09-16 10:38:58
 
-QUESTIONS = [
+NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -939,4 +939,20 @@ QUESTIONS = [
         "audio_file": "72. Depeche Mode - Policy Of Truth.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Yazoo",
+            "Nouvelle Vague",
+            "Pink Martini",
+            "Bananarama",
+        ],
+        "correct": 0,
+        "explanation": "Yazoo - Nemzetkozi Zenekarok",
+        "audio_file": "Unknown_Artist_Nouvelle_Vague_Dont_Go_Full.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
+
+# Export alias for compatibility with imports expecting QUESTIONS
+QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
