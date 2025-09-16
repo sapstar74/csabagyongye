@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:19:12
+# Generated on: 2025-09-16 21:19:50
 
 QUESTIONS = [
     {
@@ -708,6 +708,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Lemon Tree' egy One Hit Wonder dal az előadótól: Fools Garden",
+        "song_title": "Lemon Tree",
         "topic": "one_hit_wonders",
     },
     {
@@ -720,7 +721,6 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Stolen Dance' egy One Hit Wonder dal az előadótól: Milky Chance",
-        "song_title": "Stolen Dance",
         "topic": "one_hit_wonders",
     },
     {
