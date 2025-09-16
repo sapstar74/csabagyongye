@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:18:34
+# Generated on: 2025-09-16 21:19:12
 
 QUESTIONS = [
     {
@@ -720,6 +720,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "'Stolen Dance' egy One Hit Wonder dal az előadótól: Milky Chance",
+        "song_title": "Stolen Dance",
         "topic": "one_hit_wonders",
     },
     {
@@ -733,7 +734,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "'Mr. Toot' egy One Hit Wonder dal az előadótól: Ylvis",
         "audio_file": "61. Ylvis - Mr Toot.mp3",
-        "song_title": "Mr. Toot",
         "topic": "one_hit_wonders",
     },
     {
