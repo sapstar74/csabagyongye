@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:01:03
+# Generated on: 2025-09-16 21:15:01
 
-ONE_HIT_WONDERS_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó a 'Teenage Dirtbag' című dalban?",
         "options": [
@@ -785,7 +785,6 @@ ONE_HIT_WONDERS_QUESTIONS = [
         "correct": 0,
         "explanation": "'Goodnight Moon' egy One Hit Wonder dal az előadótól: Shivaree",
         "audio_file": "audio_files/one_hit_wonders/65. Shiwaree - Goodnight Moon.mp3",
-        "song_title": "Goodnight Moon",
         "topic": "one_hit_wonders",
     },
     {
@@ -798,7 +797,8 @@ ONE_HIT_WONDERS_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "RamJam - One Hit Wonders",
-        "audio_file": "Unknown_Artist_Ram_Jam_Black_Betty_Official.mp3",
+        "audio_file": "66. RamJam - Black Betty.mp3",
+        "song_title": "Black Betty",
         "topic": "one_hit_wonders",
     },
 ]
