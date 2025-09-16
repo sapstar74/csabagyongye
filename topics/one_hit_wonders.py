@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:15:01
+# Generated on: 2025-09-16 21:18:34
 
 QUESTIONS = [
     {
@@ -728,11 +728,12 @@ QUESTIONS = [
             "Ylvis",
             "Bastille",
             "Imagine Dragons",
-            "Szerkeszthető opció",
+            "Bambee",
         ],
         "correct": 0,
         "explanation": "'Mr. Toot' egy One Hit Wonder dal az előadótól: Ylvis",
-        "audio_file": "audio_files/one_hit_wonders/Ylvis - Mr. Toot [Official music video HD].mp3",
+        "audio_file": "61. Ylvis - Mr Toot.mp3",
+        "song_title": "Mr. Toot",
         "topic": "one_hit_wonders",
     },
     {
@@ -798,7 +799,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "RamJam - One Hit Wonders",
         "audio_file": "66. RamJam - Black Betty.mp3",
-        "song_title": "Black Betty",
         "topic": "one_hit_wonders",
     },
 ]
