@@ -975,7 +975,7 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Naughty By Nature - Nemzetkozi Zenekarok",
-        "audio_file": "Unknown_Artist_Naughty_by_Nature_Hip_Hop_Ho.mp3",
+        "audio_file": "Naughty_by_Nature_Hip_Hop_Ho.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
 ]

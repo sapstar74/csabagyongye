@@ -37,5 +37,21 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Bach - Komolyzene",
         "topic": "komolyzene"
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Erkel Ferenc",
+            "Bartók Béla",
+            "Mozart",
+            "Johann Strauss",
+        ],
+        "correct": 0,
+        "explanation": "Erkel Ferenc - Komolyzene",
+        "audio_file": "Hunyadi_László_Palotás.mp3",
+        "topic": "komolyzene",
     }
 ]
+
+# Export alias for compatibility
+QUESTIONS = KOMPOLYZENE_QUESTIONS

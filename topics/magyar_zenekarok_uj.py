@@ -1287,20 +1287,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Sisi - Magyar Zenekarok",
-        "audio_file": "Unknown_Artist_Sisi_Yalla_Official_Music_Vi.mp3",
-        "topic": "magyar_zenekarok",
-    },
-    {
-        "question": "Ki az előadó?",
-        "options": [
-            "Erkel Ferenc",
-            "Bartók Béla",
-            "Mozart",
-            "Johann Strauss",
-        ],
-        "correct": 0,
-        "explanation": "Erkel Ferenc - Magyar Zenekarok",
-        "audio_file": "Unknown_Artist_Hunyadi_László_Palotás.mp3",
+        "audio_file": "Sisi_Yalla_Official_Music_Vi.mp3",
         "topic": "magyar_zenekarok",
     },
     {
