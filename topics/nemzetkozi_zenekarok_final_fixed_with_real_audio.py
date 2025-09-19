@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 19:56:08
+# Generated on: 2025-09-19 20:09:07
 
 NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
@@ -976,6 +976,19 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Naughty By Nature - Nemzetkozi Zenekarok",
         "audio_file": "Naughty_by_Nature_Hip_Hop_Ho.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Reel 2 Reel",
+            "Sir Mix a Lot",
+            "Strictly Rhythm",
+            "Technotronic",
+        ],
+        "correct": 0,
+        "explanation": "Reel 2 Reel - Nemzetkozi Zenekarok",
+        "audio_file": "Reel_2_Real_feat_The_Mad_Stunt.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
