@@ -588,4 +588,17 @@ QUESTIONS = [
         "audio_file": "45. Delibes - Sylvia - Pizzicato.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Erkel Ferenc",
+            "Bartók Béla",
+            "Mozart",
+            "Johann Strauss",
+        ],
+        "correct": 0,
+        "explanation": "Erkel Ferenc: Hunyadi László - Palotás",
+        "audio_file": "Hunyadi_László_Palotás.mp3",
+        "topic": "komolyzene",
+    },
 ]
