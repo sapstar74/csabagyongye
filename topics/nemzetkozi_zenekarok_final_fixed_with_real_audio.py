@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 20:09:07
+# Generated on: 2025-09-19 20:12:11
 
-NEMZETKOZI_ZENEKAROK_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -962,7 +962,6 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Cypress Hill - Nemzetkozi Zenekarok",
         "audio_file": "74. Cypress Hill - Dr Greenthumb.mp3",
-        "song_title": "Dr Greenthumb",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -988,10 +987,8 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Reel 2 Reel - Nemzetkozi Zenekarok",
-        "audio_file": "Reel_2_Real_feat_The_Mad_Stunt.mp3",
+        "audio_file": "76. Reel 2 Reel - I like to move it.mp3",
+        "song_title": "I like to move it",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
-
-# Export alias for compatibility
-QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
