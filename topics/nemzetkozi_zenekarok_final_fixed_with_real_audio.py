@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 20:16:24
+# Generated on: 2025-09-19 20:48:12
 
-NEMZETKOZI_ZENEKAROK_QUESTIONS = [
+QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -988,7 +988,6 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Reel 2 Reel - Nemzetkozi Zenekarok",
         "audio_file": "76. Reel 2 Reel - I like to move it.mp3",
-        "song_title": "I like to move it",
         "topic": "nemzetkozi_zenekarok",
     },
     {
@@ -1001,10 +1000,8 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Christina Aguilera - Nemzetkozi Zenekarok",
-        "audio_file": "Christina_Aguilera_Pero_Me_A.mp3",
+        "audio_file": "77. Christina Aguilera - Pero Me A.mp3",
+        "song_title": "Pero Me A",
         "topic": "nemzetkozi_zenekarok",
     },
 ]
-
-# Export alias for compatibility
-QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
