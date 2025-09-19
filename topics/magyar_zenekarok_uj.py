@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 20:00:27
+# Generated on: 2025-09-19 20:02:03
 
 QUESTIONS = [
     {
@@ -586,7 +586,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "30Y magyar zenekar",
         "audio_file": "46. 30Y - 30Y.mp3",
-        "song_title": "30Y",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -1314,7 +1313,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Irie Maffia - Magyar Zenekarok",
-        "audio_file": "Unknown_Artist_IRIE_MAFFIA_VOLT_EGY_ÁLMOM_O.mp3",
+        "audio_file": "102. Irie Maffia -  VOLT EGY ÁLMOM.mp3",
+        "song_title": " VOLT EGY ÁLMOM",
         "topic": "magyar_zenekarok",
     },
 ]
