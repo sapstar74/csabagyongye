@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 20:12:11
+# Generated on: 2025-09-19 20:16:24
 
-QUESTIONS = [
+NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -991,4 +991,20 @@ QUESTIONS = [
         "song_title": "I like to move it",
         "topic": "nemzetkozi_zenekarok",
     },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Christina Aguilera",
+            "Shakira",
+            "Jennifer Lopez",
+            "Nelly Furtado",
+        ],
+        "correct": 0,
+        "explanation": "Christina Aguilera - Nemzetkozi Zenekarok",
+        "audio_file": "Christina_Aguilera_Pero_Me_A.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
+
+# Export alias for compatibility
+QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
