@@ -263,4 +263,11 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
+    {
+        "question": """Milyen becenéven vált ismertté az ausztrál breaktáncos, aki részt vett a 2024-es párizsi olimpián?\n\nElőadását szokatlan padlómozgás és „rúgásos” stílus jellemezte, ami egyszerre váltott ki gúnyt és csodálatot a nézőkből. (R)""",
+        "correct_answer": """Raygun""",
+        "explanation": """Az ausztrál breaktáncos, aki a 2024-es párizsi olimpián vett részt, Raygun becenéven vált ismertté. Szokatlan padlómozgása és „rúgásos” stílusa egyszerre váltott ki gúnyt és csodálatot a nézőkből.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
 ]
