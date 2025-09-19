@@ -540,24 +540,13 @@ def get_audio_file_for_question(question, topic):
             try:
                 # Audio fájl elérési útja az új mappából
                 index = int(question["original_index"])
-                audio_dir = Path(__file__).parent / "audio_files/one_hit_wonders"
+                audio_dir = Path(__file__).parent / "audio_files"
                 # Fájlnév keresése az index alapján
                 for filename in os.listdir(audio_dir):
                     if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
                         audio_path = audio_dir / filename
                         if audio_path.exists():
                             # Audio fájl megtalálva
-                            return str(audio_path)
-            except Exception as e:
-                pass
-            # Fallback: régi mappa
-            try:
-                index = int(question["original_index"])
-                audio_dir = Path(__file__).parent / "audio_files_one_hit_wonders"
-                for filename in os.listdir(audio_dir):
-                    if filename.endswith('.mp3') and filename.startswith(f"{index:02d}_"):
-                        audio_path = audio_dir / filename
-                        if audio_path.exists():
                             return str(audio_path)
             except Exception as e:
                 pass
@@ -571,15 +560,14 @@ def get_audio_file_for_question(question, topic):
             match = re.search(r"'([^']+)'", question_text)
             if match:
                 song_title = match.group(1)
-                # Keresd meg a megfelelő audio fájlt mindkét mappában
-                for audio_dir_name in ["audio_files_one_hit_wonders", "audio_files/one_hit_wonders"]:
-                    audio_dir = Path(__file__).parent / audio_dir_name
-                    if audio_dir.exists():
-                        for filename in os.listdir(audio_dir):
-                            if filename.endswith('.mp3') and song_title.lower() in filename.lower():
-                                audio_path = audio_dir / filename
-                                if audio_path.exists():
-                                    return str(audio_path)
+                # Keresd meg a megfelelő audio fájlt a dedikált mappában
+                audio_dir = Path(__file__).parent / "audio_files"
+                if audio_dir.exists():
+                    for filename in os.listdir(audio_dir):
+                        if filename.endswith('.mp3') and song_title.lower() in filename.lower():
+                            audio_path = audio_dir / filename
+                            if audio_path.exists():
+                                return str(audio_path)
         except Exception as e:
             pass
             

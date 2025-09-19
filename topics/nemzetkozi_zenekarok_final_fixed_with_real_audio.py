@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 14:22:21
+# Generated on: 2025-09-19 19:46:43
 
-QUESTIONS = [
+NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -952,4 +952,20 @@ QUESTIONS = [
         "audio_file": "73. Yazoo - Dont Go.mp3",
         "topic": "nemzetkozi_zenekarok",
     },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Cypress Hill",
+            "Naughty By Nature",
+            "Public Enemy",
+            "Wu-Tang Clan",
+        ],
+        "correct": 0,
+        "explanation": "Cypress Hill - Nemzetkozi Zenekarok",
+        "audio_file": "Unknown_Artist_Cypress_Hill_Dr_Greenthumb_O.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
+
+# Export alias for compatibility
+QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
