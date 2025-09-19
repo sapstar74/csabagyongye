@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 20:02:03
+# Generated on: 2025-09-19 20:59:05
 
 QUESTIONS = [
     {
@@ -1262,6 +1262,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "30Y - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
+        "song_title": "Balatoni Láz",
         "topic": "magyar_zenekarok",
     },
     {
@@ -1301,7 +1302,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Irie Maffia - Magyar Zenekarok",
         "audio_file": "102. Irie Maffia -  VOLT EGY ÁLMOM.mp3",
-        "song_title": " VOLT EGY ÁLMOM",
         "topic": "magyar_zenekarok",
     },
 ]
