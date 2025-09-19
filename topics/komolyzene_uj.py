@@ -12,7 +12,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Dvorak: IX. Új világ szimfónia",
-        "audio_file": "1_Dvorak_New_World_Symphony.mp3",
+        "audio_file": "1. Dvorak - New World Symphony.mp3",
         "topic": "komolyzene",
     },
     {
@@ -25,7 +25,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Dvorak: Humoresque",
-        "audio_file": "2_Dvorak_Humoresque.mp3",
+        "audio_file": "2. Dvorak - Humoresque.mp3",
         "topic": "komolyzene",
     },
     {
@@ -38,7 +38,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Dvorak: 8. G-dúr szimfónia",
-        "audio_file": "3_Dvorak_Symphony_8.mp3",
+        "audio_file": "3. Dvorak - Symphony 8.mp3",
         "topic": "komolyzene",
     },
     {
@@ -51,7 +51,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Beethoven: V. Szimfónia - A sors szimfónia",
-        "audio_file": "4_Beethoven_Symphony_5.mp3",
+        "audio_file": "4. Beethoven - Symphony 5.mp3",
         "topic": "komolyzene",
     },
     {
@@ -64,7 +64,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Beethoven: Holdvilág szonáta - Mondscheinsonate",
-        "audio_file": "5_Beethoven_Moonlight_Sonata.mp3",
+        "audio_file": "5. Beethoven - Moonlight Sonata.mp3",
         "topic": "komolyzene",
     },
     {
@@ -77,7 +77,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Beethoven: Ode to Joy - 9. szimfónia",
-        "audio_file": "6_Beethoven_Ode_to_Joy.mp3",
+        "audio_file": "6. Beethoven - Ode to Joy.mp3",
         "topic": "komolyzene",
     },
     {
@@ -90,7 +90,7 @@ QUESTIONS = [
         ],
         "correct": 2,
         "explanation": "Csajkovszkij: Diótörő - Tánc a cukorkák hercegnőjéről",
-        "audio_file": "7_Tchaikovsky_Nutcracker.mp3",
+        "audio_file": "7. Tchaikovsky - Nutcracker.mp3",
         "topic": "komolyzene",
     },
     {
@@ -103,7 +103,7 @@ QUESTIONS = [
         ],
         "correct": 2,
         "explanation": "Csajkovszkij: Hattyúk tava - Swan Lake",
-        "audio_file": "8_Tchaikovsky_Swan_Lake.mp3",
+        "audio_file": "8. Tchaikovsky - Swan Lake.mp3",
         "topic": "komolyzene",
     },
     {
@@ -116,7 +116,7 @@ QUESTIONS = [
         ],
         "correct": 2,
         "explanation": "Csajkovszkij: 1. Zongoraverseny",
-        "audio_file": "9_Tchaikovsky_Piano_Concerto_1.mp3",
+        "audio_file": "9. Tchaikovsky - Piano Concerto 1.mp3",
         "topic": "komolyzene",
     },
     {
@@ -129,7 +129,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Handel: Rinaldo",
-        "audio_file": "10_Handel_Rinaldo.mp3",
+        "audio_file": "10. Handel - Rinaldo.mp3",
         "topic": "komolyzene",
     },
     {
@@ -142,7 +142,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Handel: IV. B-dúr menüett",
-        "audio_file": "11_Handel_Minuet_B_flat.mp3",
+        "audio_file": "11. Handel - Minuet B flat.mp3",
         "topic": "komolyzene",
     },
     {
@@ -155,7 +155,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Handel: Keyboard Suite in D minor",
-        "audio_file": "12_Handel_Keyboard_Suite_D_minor.mp3",
+        "audio_file": "12. Handel - Keyboard Suite D minor.mp3",
         "topic": "komolyzene",
     },
     {
@@ -168,7 +168,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Wagner: A Valkűrök bevonulása",
-        "audio_file": "13_Wagner_Ride_of_Valkyries.mp3",
+        "audio_file": "13. Wagner - Ride of Valkyries.mp3",
         "topic": "komolyzene",
     },
     {
@@ -181,7 +181,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Wagner: Lohengrin - Here comes the Bride",
-        "audio_file": "14_Wagner_Lohengrin_Wedding_March.mp3",
+        "audio_file": "14. Wagner - Lohengrin Wedding March.mp3",
         "topic": "komolyzene",
     },
     {
@@ -194,7 +194,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Schubert: Ave Maria",
-        "audio_file": "15_Schubert_Ave_Maria.mp3",
+        "audio_file": "15. Schubert - Ave Maria.mp3",
         "topic": "komolyzene",
     },
     {
@@ -207,7 +207,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Beethoven: Ode to Joy - 9. szimfónia",
-        "audio_file": "16_Beethoven_Ode_to_Joy_2.mp3",
+        "audio_file": "16. Beethoven - Ode to Joy 2.mp3",
         "topic": "komolyzene",
     },
     {
@@ -220,7 +220,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kodály Zoltán: Háry János",
-        "audio_file": "17_Kodaly_Hary_Janos.mp3",
+        "audio_file": "17. Kodaly - Hary Janos.mp3",
         "topic": "komolyzene",
     },
     {
@@ -233,7 +233,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kodály Zoltán: Kállai kettős",
-        "audio_file": "18_Kodaly_Kallai_Kettos.mp3",
+        "audio_file": "18. Kodaly - Kallai Kettos.mp3",
         "topic": "komolyzene",
     },
     {
@@ -246,7 +246,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kodály Zoltán: Adagio",
-        "audio_file": "19_Kodaly_Adagio.mp3",
+        "audio_file": "19. Kodaly - Adagio.mp3",
         "topic": "komolyzene",
     },
     {
@@ -259,7 +259,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Bartók: Kékszakállú herceg vára",
-        "audio_file": "20_Bartok_Bluebeard_Castle.mp3",
+        "audio_file": "20. Bartok - Bluebeard Castle.mp3",
         "topic": "komolyzene",
     },
     {
@@ -272,7 +272,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Bartók: Csodálatos mandarin",
-        "audio_file": "21_Bartok_Miraculous_Mandarin.mp3",
+        "audio_file": "21. Bartok - Miraculous Mandarin.mp3",
         "topic": "komolyzene",
     },
     {
@@ -285,7 +285,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Hacsaturján: Kartánc",
-        "audio_file": "22_Khachaturian_Sabre_Dance.mp3",
+        "audio_file": "22. Khachaturian - Sabre Dance.mp3",
         "topic": "komolyzene",
     },
     {
@@ -298,7 +298,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Hacsaturján: Spartacus / Onedin",
-        "audio_file": "23_Khachaturian_Spartacus.mp3",
+        "audio_file": "23. Khachaturian - Spartacus.mp3",
         "topic": "komolyzene",
     },
     {
@@ -311,7 +311,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Weiner Leó: Rókatánc",
-        "audio_file": "24_Weiner_Fox_Dance.mp3",
+        "audio_file": "24. Weiner - Fox Dance.mp3",
         "topic": "komolyzene",
     },
     {
@@ -324,7 +324,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Rimsky-Korsakov: Bumblebee",
-        "audio_file": "25_Rimsky_Korsakov_Flight_of_Bumblebee.mp3",
+        "audio_file": "25. Rimsky Korsakov - Flight of Bumblebee.mp3",
         "topic": "komolyzene",
     },
     {
@@ -337,7 +337,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mussorgsky: Éjszaka a hegyen",
-        "audio_file": "26_Mussorgsky_Night_on_Bald_Mountain.mp3",
+        "audio_file": "26. Mussorgsky - Night on Bald Mountain.mp3",
         "topic": "komolyzene",
     },
     {
@@ -350,7 +350,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Schubert: Pisztráng ötös",
-        "audio_file": "27_Schubert_Trout_Quintet.mp3",
+        "audio_file": "27. Schubert - Trout Quintet.mp3",
         "topic": "komolyzene",
     },
     {
@@ -363,7 +363,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Prokofjev: Péter és a farkas",
-        "audio_file": "28_Prokofiev_Peter_and_Wolf.mp3",
+        "audio_file": "28. Prokofiev - Peter and Wolf.mp3",
         "topic": "komolyzene",
     },
     {
@@ -376,7 +376,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Carl Orff: Carmina Burana",
-        "audio_file": "29_Carl_Orff_Carmina_Burana.mp3",
+        "audio_file": "29. Carl Orff - Carmina Burana.mp3",
         "topic": "komolyzene",
     },
     {
@@ -389,7 +389,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ravel: Bolero",
-        "audio_file": "30_Ravel_Bolero.mp3",
+        "audio_file": "30. Ravel - Bolero.mp3",
         "topic": "komolyzene",
     },
     {
@@ -402,7 +402,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Brandenburgi versenyek - 3. verseny",
-        "audio_file": "31_Bach_Brandenburg_Concerto_3.mp3",
+        "audio_file": "31. Bach - Brandenburg Concerto 3.mp3",
         "topic": "komolyzene",
     },
     {
@@ -415,7 +415,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Toccata és fúga d-moll",
-        "audio_file": "32_Bach_Toccata_Fugue_D_minor.mp3",
+        "audio_file": "32. Bach - Toccata Fugue D minor.mp3",
         "topic": "komolyzene",
     },
     {
@@ -428,7 +428,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Air on G-string",
-        "audio_file": "33_Bach_Air_on_G_String.mp3",
+        "audio_file": "33. Bach - Air on G String.mp3",
         "topic": "komolyzene",
     },
     {
@@ -441,7 +441,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Italian Concerto",
-        "audio_file": "34_Bach_Italian_Concerto.mp3",
+        "audio_file": "34. Bach - Italian Concerto.mp3",
         "topic": "komolyzene",
     },
     {
@@ -454,7 +454,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Jesu, Joy of Man",
-        "audio_file": "35_Bach_Jesu_Joy.mp3",
+        "audio_file": "35. Bach - Jesu Joy.mp3",
         "topic": "komolyzene",
     },
     {
@@ -467,7 +467,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Brandenburg Concerto No. 5",
-        "audio_file": "36_Bach_Brandenburg_Concerto_5.mp3",
+        "audio_file": "36. Bach - Brandenburg Concerto 5.mp3",
         "topic": "komolyzene",
     },
     {
@@ -480,7 +480,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: Vivace",
-        "audio_file": "37_Bach_Concerto_Two_Violins.mp3",
+        "audio_file": "37. Bach - Concerto Two Violins.mp3",
         "topic": "komolyzene",
     },
     {
@@ -493,7 +493,7 @@ QUESTIONS = [
         ],
         "correct": 3,
         "explanation": "Bach: G-dúr menüett",
-        "audio_file": "38_Bach_Minuet_G_major.mp3",
+        "audio_file": "38. Bach - Minuet G major.mp3",
         "topic": "komolyzene",
     },
     {
@@ -506,7 +506,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Charpentier: Te Deum Prelude",
-        "audio_file": "39_Charpentier_Te_Deum_Prelude.mp3",
+        "audio_file": "39. Charpentier - Te Deum Prelude.mp3",
         "topic": "komolyzene",
     },
     {
@@ -519,7 +519,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Delibes: Lakmé - Flower Duet",
-        "audio_file": "41_Delibes_Lakme_Flower_Duet.mp3",
+        "audio_file": "40. Delibes - Lakme Flower Duet.mp3",
         "topic": "komolyzene",
     },
     {
@@ -597,7 +597,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Erkel Ferenc: Hunyadi László - Palotás",
-        "audio_file": "47_Erkel_Ferenc_Hunyadi_László_Palotás.mp3",
+        "audio_file": "47. Erkel Ferenc - Hunyadi László Palotás.mp3",
         "topic": "komolyzene",
     },
     {
@@ -610,8 +610,21 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mozart: Rondo Alla Turca",
-        "audio_file": "47. Mozart - Rondo Turca.mp3",
+        "audio_file": "46. Mozart - Rondo Turca.mp3",
         "song_title": "Rondo Turca",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Edvard Grieg",
+            "Jean Sibelius",
+            "Carl Nielsen",
+            "Dmitri Shostakovich",
+        ],
+        "correct": 0,
+        "explanation": "Edvard Grieg: In the Hall of the Mountain King",
+        "audio_file": "48. Edvard Grieg - In the Hall of the Mountain King.mp3",
         "topic": "komolyzene",
     },
 ]
