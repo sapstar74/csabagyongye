@@ -627,4 +627,30 @@ QUESTIONS = [
         "audio_file": "48. Edvard Grieg - In the Hall of the Mountain King.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Johannes Brahms",
+            "Franz Schubert",
+            "Robert Schumann",
+            "Felix Mendelssohn",
+        ],
+        "correct": 0,
+        "explanation": "Johannes Brahms: Hungarian Dances No. 5",
+        "audio_file": "49. Brahms - Hungarian Dances No 5.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "George Gershwin",
+            "Aaron Copland",
+            "Leonard Bernstein",
+            "Igor Stravinsky",
+        ],
+        "correct": 0,
+        "explanation": "George Gershwin: Rhapsody in Blue",
+        "audio_file": "50. Gershwin - Rhapsody in Blue.mp3",
+        "topic": "komolyzene",
+    },
 ]

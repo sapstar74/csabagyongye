@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-16 21:35:40
+# Generated on: 2025-09-19 21:46:41
 
-QUESTIONS = [
+ONE_HIT_WONDERS_QUESTIONS = [
     {
         "question": "Ki az előadó a 'Teenage Dirtbag' című dalban?",
         "options": [
@@ -801,4 +801,20 @@ QUESTIONS = [
         "audio_file": "66. RamJam - Black Betty.mp3",
         "topic": "one_hit_wonders",
     },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Scott Joplin",
+            "Janis Joplin",
+            "George Gershwin",
+            "Oscar Petterson",
+        ],
+        "correct": 0,
+        "explanation": "Scott Joplin - One Hit Wonders",
+        "audio_file": "Unknown_Artist_Scott_Joplin_The_Entertainer.mp3",
+        "topic": "one_hit_wonders",
+    },
 ]
+
+# Export alias for compatibility
+QUESTIONS = ONE_HIT_WONDERS_QUESTIONS
