@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-11 20:39:48
+# Generated on: 2025-09-19 20:00:27
 
 QUESTIONS = [
     {
@@ -1302,6 +1302,19 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Erkel Ferenc - Magyar Zenekarok",
         "audio_file": "Unknown_Artist_Hunyadi_László_Palotás.mp3",
+        "topic": "magyar_zenekarok",
+    },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Irie Maffia",
+            "Hiperkarma",
+            "Magna Cum Laude",
+            "Punnany Massif",
+        ],
+        "correct": 0,
+        "explanation": "Irie Maffia - Magyar Zenekarok",
+        "audio_file": "Unknown_Artist_IRIE_MAFFIA_VOLT_EGY_ÁLMOM_O.mp3",
         "topic": "magyar_zenekarok",
     },
 ]

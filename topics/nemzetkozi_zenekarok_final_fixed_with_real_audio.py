@@ -1,7 +1,7 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 19:52:43
+# Generated on: 2025-09-19 19:56:08
 
-QUESTIONS = [
+NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
@@ -965,4 +965,20 @@ QUESTIONS = [
         "song_title": "Dr Greenthumb",
         "topic": "nemzetkozi_zenekarok",
     },
+    {
+        "question": "Ki az előadó?",
+        "options": [
+            "Naughty By Nature",
+            "Public Enemy",
+            "Cypress Hill",
+            "KRS-One",
+        ],
+        "correct": 0,
+        "explanation": "Naughty By Nature - Nemzetkozi Zenekarok",
+        "audio_file": "Unknown_Artist_Naughty_by_Nature_Hip_Hop_Ho.mp3",
+        "topic": "nemzetkozi_zenekarok",
+    },
 ]
+
+# Export alias for compatibility
+QUESTIONS = NEMZETKOZI_ZENEKAROK_QUESTIONS
