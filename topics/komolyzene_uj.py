@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-07 22:23:10
+# Generated on: 2025-09-19 21:20:57
 
 QUESTIONS = [
     {
@@ -546,7 +546,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Vivaldi: Négy évszak (YouTube)",
         "audio_file": "42. Vivaldi - Négy évszak - F-dúr hegedűverseny.mp3",
-        "song_title": "Négy évszak - F-dúr hegedűverseny",
         "topic": "komolyzene",
     },
     {
@@ -611,7 +610,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mozart: Rondo Alla Turca",
-        "audio_file": "46_Mozart_Rondo_Alla_Turca.mp3",
+        "audio_file": "47. Mozart - Rondo Turca.mp3",
+        "song_title": "Rondo Turca",
         "topic": "komolyzene",
     },
 ]
