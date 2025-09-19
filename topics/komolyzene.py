@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 21:35:18
+# Generated on: 2025-09-19 21:58:36
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -88,6 +88,45 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Brahms - Komolyzene",
         "audio_file": "Unknown_Artist_21_Hungarian_Dances_WoO_1_No_5.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Nigel Kennedy",
+            "Vanessa Mae",
+            "Itzhak Perlman",
+            "Joshua Bell",
+        ],
+        "correct": 0,
+        "explanation": "Nigel Kennedy - Komolyzene",
+        "audio_file": "Unknown_Artist_Csárdás_Orch_Kennedy.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Chopin",
+            "Liszt",
+            "Dvorak",
+            "Wagner",
+        ],
+        "correct": 0,
+        "explanation": "Chopin - Komolyzene",
+        "audio_file": "Unknown_Artist_Lola_Astanova_Fantaisie_Impr.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Debussy",
+            "Liszt",
+            "Chopin",
+            "Mozart",
+        ],
+        "correct": 0,
+        "explanation": "Debussy - Komolyzene",
+        "audio_file": "Unknown_Artist_Debussy_Clair_de_lune_Menahem.mp3",
         "topic": "komolyzene",
     },
 ]

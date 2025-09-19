@@ -24,6 +24,7 @@ from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_U
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
+from topics.magyar_festmenyek import QUESTIONS as MAGYAR_FESTMENYEK_QUESTIONS
 from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
 from topics.regények import REGÉNYEK_QUESTIONS
 from custom_audio_player import audio_player_with_download
@@ -367,6 +368,7 @@ QUIZ_DATA_BY_TOPIC = {
     "zászlók": ZASZLOK_QUESTIONS_ALL,
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
+    "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
     "regények": REGÉNYEK_QUESTIONS,
 }
 
@@ -432,6 +434,7 @@ def reset_quiz():
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "festmények": "🎨 Festmények",
+        "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
@@ -1903,6 +1906,7 @@ def show_topic_selection():
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "one_hit_wonders": "⭐ One Hit Wonders",
         "festmények": "🎨 Festmények",
+        "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
@@ -4534,7 +4538,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         # Egyszerűsített extractor beállítások
         'extractor_args': {
             'youtube': {
-                'player_client': ['android'],
                 'skip': ['dash', 'hls'],
             }
         },
@@ -4563,7 +4566,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         st.error("Nincs érvényes URL a track_info-ban")
         return False
     
-    # Próbálkozás 1: Android client
+    # Egyszerű letöltés
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
@@ -4573,25 +4576,10 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             else:
                 success = False
     except Exception as e:
-        st.warning(f"Android client sikertelen: {str(e)}")
+        st.warning(f"Letöltés sikertelen: {str(e)}")
         success = False
     
-    # Próbálkozás 2: Web client (ha az első sikertelen)
-    if not success:
-        try:
-            ydl_opts['extractor_args']['youtube']['player_client'] = ['web']
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
-                if info:
-                    ydl.download([url])
-                    success = True
-                else:
-                    success = False
-        except Exception as e:
-            st.warning(f"Web client sikertelen: {str(e)}")
-            success = False
-    
-    # Próbálkozás 3: Egyszerű konfiguráció (ha mindkettő sikertelen)
+    # Próbálkozás 2: Egyszerű konfiguráció (ha az első sikertelen)
     if not success:
         try:
             simple_opts = {
@@ -4644,7 +4632,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 'geo_bypass_ip_block': '0.0.0.0/0',
                 'extractor_args': {
                     'youtube': {
-                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                         'skip': ['dash', 'hls'],
                     }
                 },
@@ -4683,7 +4670,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 },
                 'extractor_args': {
                     'youtube': {
-                        'player_client': ['tv_embedded', 'android', 'web'],
                         'skip': ['dash', 'hls', 'translated_subs'],
                         'player_skip': ['configs', 'webpage'],
                     }
@@ -4732,7 +4718,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     },
                     'extractor_args': {
                         'youtube': {
-                            'player_client': ['android'],
                             'skip': ['dash', 'hls'],
                         }
                     },
@@ -4810,7 +4795,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                             },
                             'extractor_args': {
                                 'youtube': {
-                                    'player_client': ['android'],
                                     'skip': ['dash', 'hls'],
                                 }
                             },
@@ -4921,7 +4905,6 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                             },
                             'extractor_args': {
                                 'youtube': {
-                                    'player_client': ['android', 'web'],
                                     'skip': ['dash', 'hls'],
                                 }
                             },
