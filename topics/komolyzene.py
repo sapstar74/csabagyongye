@@ -1,18 +1,18 @@
-# Komolyzene kérdések
-# Generated on: 2025-01-25 16:55:00
+# Auto-generated questions file
+# Generated on: 2025-09-19 21:18:31
 
 KOMPOLYZENE_QUESTIONS = [
     {
         "question": "Ki a zeneszerző?",
         "options": [
             "Beethoven",
-            "Mozart", 
+            "Mozart",
             "Bach",
-            "Haydn"
+            "Haydn",
         ],
         "correct": 0,
         "explanation": "Beethoven - Komolyzene",
-        "topic": "komolyzene"
+        "topic": "komolyzene",
     },
     {
         "question": "Ki a zeneszerző?",
@@ -20,11 +20,11 @@ KOMPOLYZENE_QUESTIONS = [
             "Mozart",
             "Beethoven",
             "Bach",
-            "Chopin"
+            "Chopin",
         ],
         "correct": 0,
         "explanation": "Mozart - Komolyzene",
-        "topic": "komolyzene"
+        "topic": "komolyzene",
     },
     {
         "question": "Ki a zeneszerző?",
@@ -32,13 +32,36 @@ KOMPOLYZENE_QUESTIONS = [
             "Bach",
             "Beethoven",
             "Mozart",
-            "Handel"
+            "Handel",
         ],
         "correct": 0,
         "explanation": "Bach - Komolyzene",
-        "topic": "komolyzene"
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Mozart",
+            "Rossini",
+            "Brahms",
+            "Beethoven",
+        ],
+        "correct": 0,
+        "explanation": "Mozart - Komolyzene",
+        "audio_file": "Unknown_Artist_Rondo_Alla_Turca_Mozart.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Grieg",
+            "Dvorak",
+            "Prokofjev",
+            "Mussorgsky",
+        ],
+        "correct": 0,
+        "explanation": "Grieg - Komolyzene",
+        "audio_file": "Unknown_Artist_Edvard_Grieg_In_the_Hall_of_th.mp3",
+        "topic": "komolyzene",
     },
 ]
-
-# Export alias for compatibility
-QUESTIONS = KOMPOLYZENE_QUESTIONS

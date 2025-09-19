@@ -598,7 +598,20 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Erkel Ferenc: Hunyadi László - Palotás",
-        "audio_file": "Hunyadi_László_Palotás.mp3",
+        "audio_file": "47_Erkel_Ferenc_Hunyadi_László_Palotás.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Chopin",
+        ],
+        "correct": 0,
+        "explanation": "Mozart: Rondo Alla Turca",
+        "audio_file": "46_Mozart_Rondo_Alla_Turca.mp3",
         "topic": "komolyzene",
     },
 ]
