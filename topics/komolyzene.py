@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 21:18:31
+# Generated on: 2025-09-19 21:35:18
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -62,6 +62,32 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Grieg - Komolyzene",
         "audio_file": "Unknown_Artist_Edvard_Grieg_In_the_Hall_of_th.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Gershwin",
+            "Prokofjev",
+            "Kodály",
+            "Khachaturian",
+        ],
+        "correct": 0,
+        "explanation": "Gershwin - Komolyzene",
+        "audio_file": "Unknown_Artist_Rhapsody_in_Claret_Blue_Arr_K.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Brahms",
+            "Mozart",
+            "Rossini",
+            "Puccini",
+        ],
+        "correct": 0,
+        "explanation": "Brahms - Komolyzene",
+        "audio_file": "Unknown_Artist_21_Hungarian_Dances_WoO_1_No_5.mp3",
         "topic": "komolyzene",
     },
 ]
