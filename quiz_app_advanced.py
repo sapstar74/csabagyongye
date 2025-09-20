@@ -25,6 +25,7 @@ from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
 from topics.magyar_festmenyek import QUESTIONS as MAGYAR_FESTMENYEK_QUESTIONS
+from topics.magyar_festmenyek_uj import QUESTIONS as MAGYAR_FESTMENYEK_UJ_QUESTIONS
 from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
 from topics.regények import REGÉNYEK_QUESTIONS
 from custom_audio_player import audio_player_with_download
@@ -369,6 +370,7 @@ QUIZ_DATA_BY_TOPIC = {
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
+    "magyar_festmenyek_uj": MAGYAR_FESTMENYEK_UJ_QUESTIONS,
     "regények": REGÉNYEK_QUESTIONS,
 }
 
@@ -435,6 +437,7 @@ def reset_quiz():
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
+        "magyar_festmenyek_uj": "🇭🇺 Magyar festmények (valódi)",
         "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
@@ -1907,6 +1910,7 @@ def show_topic_selection():
         "one_hit_wonders": "⭐ One Hit Wonders",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
+        "magyar_festmenyek_uj": "🇭🇺 Magyar festmények (valódi)",
         "regények": "📚 Regények",
         "háborúk": "⚔️ Háborúk",
         "magyar_királyok": "👑 Magyar királyok",
@@ -2702,7 +2706,11 @@ def show_quiz():
         
         # Festmény képek útvonal javítása
         if not image_file.startswith("/"):
-            image_path = os.path.join("festmény_képek", image_file)
+            # Magyar festmények új kategória esetén külön mappa
+            if question.get("topic") == "magyar_festmenyek_uj":
+                image_path = os.path.join("magyar_festmény_képek", image_file)
+            else:
+                image_path = os.path.join("festmény_képek", image_file)
         else:
             image_path = image_file
         
