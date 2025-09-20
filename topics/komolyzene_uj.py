@@ -653,4 +653,43 @@ QUESTIONS = [
         "audio_file": "50. Gershwin - Rhapsody in Blue.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Johann Strauss II",
+            "Franz Liszt",
+            "Béla Bartók",
+            "Zoltán Kodály",
+        ],
+        "correct": 0,
+        "explanation": "Csárdás - Kennedy Orchestra",
+        "audio_file": "51. Csárdás - Kennedy Orchestra.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Claude Debussy",
+            "Maurice Ravel",
+            "Gabriel Fauré",
+            "Erik Satie",
+        ],
+        "correct": 0,
+        "explanation": "Claude Debussy: Clair de lune",
+        "audio_file": "52. Debussy - Clair de lune.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Frédéric Chopin",
+            "Franz Liszt",
+            "Robert Schumann",
+            "Johannes Brahms",
+        ],
+        "correct": 0,
+        "explanation": "Lola Astanova: Fantaisie Impromptu (Chopin)",
+        "audio_file": "53. Lola Astanova - Fantaisie Impromptu.mp3",
+        "topic": "komolyzene",
+    },
 ]
