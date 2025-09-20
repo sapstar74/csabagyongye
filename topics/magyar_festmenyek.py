@@ -25,7 +25,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Randevú, 1902 körül",
-        "image_file": "randevu---csontvary-kosztka-tivadar-1902.jpg",
+        "image_file": "csontvary-szerelmesek-talalkozasa-randevu-1902.jpg",
         "topic": "magyar_festmenyek",
     },
     {
