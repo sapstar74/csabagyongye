@@ -168,7 +168,7 @@ MAGYAR_FESTMENYEK_UJ_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: Az ópiumszippó álma",
-        "image_file": "Gulácsy Lajos - Az ópiumszippó álma.jpg",
+        "image_file": "Gulácsy Lajos - Az ópiumszívó álma.jpg",
         "topic": "magyar_festmenyek_uj",
     },
     {
