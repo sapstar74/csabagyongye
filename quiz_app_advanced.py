@@ -570,8 +570,8 @@ def get_audio_file_for_question(question, topic):
             match = re.search(r"'([^']+)'", question_text)
             if match:
                 song_title = match.group(1)
-                # Keresd meg a megfelelő audio fájlt a dedikált mappában
-                audio_dir = Path(__file__).parent / "audio_files"
+                # Keresd meg a megfelelő audio fájlt a One Hit Wonders almappában
+                audio_dir = Path(__file__).parent / "audio_files/one_hit_wonders"
                 if audio_dir.exists():
                     for filename in os.listdir(audio_dir):
                         if filename.endswith('.mp3') and song_title.lower() in filename.lower():
