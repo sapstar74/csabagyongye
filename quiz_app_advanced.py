@@ -2093,101 +2093,6 @@ def show_topic_selection():
     for i, topic in enumerate(selected_topics):
         fair_distribution[topic] = fair_share + (1 if i < remainder else 0)
 
-    # CSS a gombok egységes magasságához és játékos kiválasztó mezőhöz
-    st.markdown("""
-    <style>
-        /* Egységes gomb magasság */
-        .stButton > button {
-            height: 60px !important;
-            margin-bottom: 8px !important;
-            font-size: 1.8em !important;
-            font-weight: bold !important;
-            padding: 15px !important;
-        }
-        
-        /* Erősebb CSS szabály a gombok betűméretezéséhez */
-        div[data-testid="stButton"] button {
-            font-size: 1.8em !important;
-            font-weight: bold !important;
-            height: 60px !important;
-            padding: 15px !important;
-        }
-        
-        /* Még erősebb szabály */
-        .stButton button[data-testid="baseButton-secondary"] {
-            font-size: 1.8em !important;
-            font-weight: bold !important;
-            height: 60px !important;
-            padding: 15px !important;
-        }
-        
-        /* Minden gomb típusra */
-        .stButton button[data-testid="baseButton-primary"] {
-            font-size: 1.8em !important;
-            font-weight: bold !important;
-            height: 60px !important;
-            padding: 15px !important;
-        }
-        /* Oszlopok egységes magasság */
-        div[data-testid="column"] {
-            min-height: 600px !important;
-        }
-        /* Játékos kiválasztó mező stílus */
-        .stSelectbox > div > div {
-            font-size: 2em !important;
-            width: 25vw !important;
-        }
-        .stSelectbox > div > div > div {
-            font-size: 2em !important;
-        }
-        /* Kiválasztott érték betűmérete */
-        .stSelectbox > div > div > div > div {
-            font-size: 2em !important;
-        }
-        /* Legördülő lista elemek betűmérete */
-        .stSelectbox > div > div > div > div > div {
-            font-size: 2em !important;
-        }
-        /* Legördülő menü elemek */
-        .stSelectbox > div > div > div > div > div > div {
-            font-size: 2em !important;
-        }
-        /* Játékos kiválasztó mező specifikus stílus - csak a selected_player key-vel */
-        [data-testid="stSelectbox"]:has([data-baseweb="select"]:has([data-testid="selected_player"])) {
-            font-size: 2em !important;
-        }
-        [data-testid="stSelectbox"]:has([data-baseweb="select"]:has([data-testid="selected_player"])) * {
-            font-size: 2em !important;
-        }
-        /* Navigáció selectbox szélessége */
-        .stSelectbox {
-            width: 50% !important;
-        }
-        /* Minden más input mező normál méretű */
-        .stSelectbox:not(:has([data-testid="selected_player"])),
-        .stSlider,
-        .stNumberInput,
-        .stCheckbox {
-            font-size: 1em !important;
-        }
-        .stSelectbox:not(:has([data-testid="selected_player"])) *,
-        .stSlider *,
-        .stNumberInput *,
-        .stCheckbox * {
-            font-size: 1em !important;
-        }
-        /* Slider-ek specifikus stílus */
-        .stSlider > div > div > div {
-            font-size: 1em !important;
-        }
-        .stSlider > div > div > div > div {
-            font-size: 1em !important;
-        }
-        .stSlider > div > div > div > div > div {
-            font-size: 1em !important;
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
     with col1:
         st.markdown("### 🎵 Zenei témakörök")
@@ -2197,51 +2102,7 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
-                button_color = "#1f77b4" if is_selected else "#6c757d"
-                button_text_color = "white"
-                
-                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
-                button_html = f"""
-                <div style="margin-bottom: 15px;">
-                    <div style="
-                        width: 100%; 
-                        height: 80px; 
-                        background-color: {button_color}; 
-                        color: {button_text_color}; 
-                        border: 3px solid #333; 
-                        border-radius: 10px; 
-                        font-size: 2.2em; 
-                        font-weight: bold; 
-                        cursor: pointer;
-                        padding: 15px;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                        transition: all 0.3s ease;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                    " 
-                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
-                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
-                    >
-                        🎵 {topic_name}
-                    </div>
-                </div>
-                """
-                st.markdown(button_html, unsafe_allow_html=True)
-                
-                # Hidden Streamlit button a funkcionalitáshoz
-                st.markdown(f"""
-                <style>
-                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
-                        display: none !important;
-                    }}
-                </style>
-                """, unsafe_allow_html=True)
-                
-                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2271,51 +2132,7 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
-                button_color = "#1f77b4" if is_selected else "#6c757d"
-                button_text_color = "white"
-                
-                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
-                button_html = f"""
-                <div style="margin-bottom: 15px;">
-                    <div style="
-                        width: 100%; 
-                        height: 80px; 
-                        background-color: {button_color}; 
-                        color: {button_text_color}; 
-                        border: 3px solid #333; 
-                        border-radius: 10px; 
-                        font-size: 2.2em; 
-                        font-weight: bold; 
-                        cursor: pointer;
-                        padding: 15px;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                        transition: all 0.3s ease;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                    " 
-                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
-                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
-                    >
-                        📚 {topic_name}
-                    </div>
-                </div>
-                """
-                st.markdown(button_html, unsafe_allow_html=True)
-                
-                # Hidden Streamlit button a funkcionalitáshoz
-                st.markdown(f"""
-                <style>
-                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
-                        display: none !important;
-                    }}
-                </style>
-                """, unsafe_allow_html=True)
-                
-                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2344,51 +2161,7 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                # HTML gomb nagyobb betűkkel - teljesen független a Streamlit CSS-től
-                button_color = "#1f77b4" if is_selected else "#6c757d"
-                button_text_color = "white"
-                
-                # Egyszerű HTML gomb - csak vizuális, a kattintást a Streamlit gomb kezeli
-                button_html = f"""
-                <div style="margin-bottom: 15px;">
-                    <div style="
-                        width: 100%; 
-                        height: 80px; 
-                        background-color: {button_color}; 
-                        color: {button_text_color}; 
-                        border: 3px solid #333; 
-                        border-radius: 10px; 
-                        font-size: 2.2em; 
-                        font-weight: bold; 
-                        cursor: pointer;
-                        padding: 15px;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                        transition: all 0.3s ease;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                    " 
-                    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)';"
-                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
-                    onclick="document.querySelector('[data-testid=\\"stButton\\"] button[title=\\"Kattints ide: {topic_name}\\"]').click();"
-                    >
-                        📚 {topic_name}
-                    </div>
-                </div>
-                """
-                st.markdown(button_html, unsafe_allow_html=True)
-                
-                # Hidden Streamlit button a funkcionalitáshoz
-                st.markdown(f"""
-                <style>
-                    div[data-testid="stButton"]:has(button[title="Kattints ide: {topic_name}"]) {{
-                        display: none !important;
-                    }}
-                </style>
-                """, unsafe_allow_html=True)
-                
-                if st.button("", key=f"html_btn_{topic_key}", type=button_style, use_container_width=True, help=f"Kattints ide: {topic_name}"):
+                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)

@@ -375,8 +375,8 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
             "Bortnyik Sándor",
         ],
         "correct": 0,
-        "explanation": "Derkovits Gyula: Halálus",
-        "image_file": "Derkovits Gyula - Halálus.jpg",
+        "explanation": "Derkovits Gyula: Halárus",
+        "image_file": "Derkovits Gyula - Halárus.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -492,8 +492,8 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
             "Bortnyik Sándor",
         ],
         "correct": 0,
-        "explanation": "Korniss Dezső: Tücsköklakodalom",
-        "image_file": "Korniss Dezső - Tücsköklakodalom.jpg",
+        "explanation": "Korniss Dezső: Tücsöklakodalom",
+        "image_file": "Korniss Dezső - Tücsöklakodalom.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -551,14 +551,14 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
     {
         "question": "Nézd meg ezt a festményt: 'Lidó' és válaszd ki a festő nevét:",
         "options": [
-            "Mészőly Géza",
+            "Mészöly Géza",
             "Munkácsy Mihály",
             "Tihanyi Lajos",
             "Bortnyik Sándor",
         ],
         "correct": 0,
-        "explanation": "Mészőly Géza: Lidó",
-        "image_file": "Mészőly Géza - Lidó.jpg",
+        "explanation": "Mészöly Géza: Lidó",
+        "image_file": "Mészöly Géza - Lidó.jpg",
         "topic": "magyar_festmenyek",
     },
     {
