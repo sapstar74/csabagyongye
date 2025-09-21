@@ -12,7 +12,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Szerelmesek találkozása, 1902 körül",
-        "image_file": "2. Csontváry - Szerelmesek találkozása.jpg",
+        "image_file": "2. Csontváry - Szerelmesek találkozása.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -25,7 +25,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Traui látkép naplemente idején, 1899",
-        "image_file": "3. Csontváry_-_Traui_látkép_naplemente_idején.jpg",
+        "image_file": "3. Csontváry_-_Traui_látkép_naplemente_idején.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -38,7 +38,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Hídon átvonuló társaság, 1903-1905",
-        "image_file": "Csontváry - Hídon átvonuló társaság.jpg",
+        "image_file": "Csontváry - Hídon átvonuló társaság.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -51,7 +51,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Olasz halász, 1901 körül",
-        "image_file": "Csontváry - Olasz halász.jpg",
+        "image_file": "Csontváry - Olasz halász.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -64,7 +64,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csontváry Kosztka Tivadar: Önarckép, 1896-1902",
-        "image_file": "Csontváry - Önarckép.jpg",
+        "image_file": "Csontváry - Önarckép.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -129,7 +129,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Tihanyi Lajos: Önarckép",
-        "image_file": "Tihanyi Lajos - Önarckép.jpg",
+        "image_file": "Tihanyi Lajos - Önarckép.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -142,7 +142,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Bortnyik Sándor: Lámpagyújtó, 1921 - 170 millió forint",
-        "image_file": "Bortnyik Sándor - Lámpagyújtó.jpg",
+        "image_file": "Bortnyik Sándor - Lámpagyújtó.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -155,7 +155,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Bortnyik Sándor: Géplovag",
-        "image_file": "Bortnyik Sándor - Géplovag.jpg",
+        "image_file": "Bortnyik Sándor - Géplovag.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -168,7 +168,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Bortnyik Sándor: Zöld szamár",
-        "image_file": "Bortnyik Sándor - Zöld szamár.jpg",
+        "image_file": "Bortnyik Sándor - Zöld szamár.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -181,7 +181,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: A púpos vénkisasszony régi emlékeit meséli Herbertnek, 1911-1912",
-        "image_file": "Gulácsy Lajos - A púpos vénkisasszony régi emlékeit meséli herbertnek.jpg",
+        "image_file": "Gulácsy Lajos - A púpos vénkisasszony régi emlékeit meséli herbertnek.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -194,7 +194,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: A varázsló kertje, 1906",
-        "image_file": "Gulácsy Lajos - A varázsló kertje.jpg",
+        "image_file": "Gulácsy Lajos - A varázsló kertje.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -207,7 +207,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: Az ópiumszívó álma",
-        "image_file": "Gulácsy Lajos - Az ópiumszívó álma.jpg",
+        "image_file": "Gulácsy Lajos - Az ópiumszívó álma.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -220,7 +220,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: Dal a rózsáról, 1904",
-        "image_file": "Gulácsy Lajos - Dal a rózsáról.jpg",
+        "image_file": "Gulácsy Lajos - Dal a rózsáról.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -233,7 +233,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Gulácsy Lajos: Karosszékben ülő lány",
-        "image_file": "Gulácsy Lajos - Karosszékben ülő lány.jpg",
+        "image_file": "Gulácsy Lajos - Karosszékben ülő lány.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -246,7 +246,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Aba-Novák Vilmos: Olasz kikötő",
-        "image_file": "Aba-Novák Vilmos - Olasz kikötő.jpg",
+        "image_file": "Aba-Novák Vilmos - Olasz kikötő.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -259,7 +259,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Aba-Novák Vilmos: Önarckép",
-        "image_file": "Aba-Novák Vilmos - Önarckép.jpg",
+        "image_file": "Aba-Novák Vilmos - Önarckép.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -272,7 +272,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Aba-Novák Vilmos: Nagy vursli",
-        "image_file": "Aba-Novák Vilmos - Nagy vursli.jpg",
+        "image_file": "Aba-Novák Vilmos - Nagy vursli.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -285,7 +285,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Barcsay Jenő: Állvány ablak előtt",
-        "image_file": "Barcsay Jenő - Állvány ablak előtt.jpg",
+        "image_file": "Barcsay Jenő - Állvány ablak előtt.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -298,7 +298,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Batthyány Gyula: Éjjeli mulató",
-        "image_file": "Batthyány Gyula - Éjjeli mulató.jpg",
+        "image_file": "Batthyány Gyula - Éjjeli mulató.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -311,7 +311,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Batthyány Gyula: Lóverseny",
-        "image_file": "Batthyány Gyula - Lóverseny.jpg",
+        "image_file": "Batthyány Gyula - Lóverseny.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -324,7 +324,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csernus Tibor: Angyalföld",
-        "image_file": "Csernus Tibor - Angyalföld.jpg",
+        "image_file": "Csernus Tibor - Angyalföld.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -350,7 +350,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csók István: Szénagyűjtők",
-        "image_file": "Csók István - Szénagyűjtők.jpg",
+        "image_file": "Csók István - Szénagyűjtők.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -363,7 +363,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Czóbel Béla: A bergeni lelkész",
-        "image_file": "Czóbel Béla - A bergeni lelkész.jpg",
+        "image_file": "Czóbel Béla - A bergeni lelkész.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -376,7 +376,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Derkovits Gyula: Halárus",
-        "image_file": "Derkovits Gyula - Halárus.jpg",
+        "image_file": "Derkovits Gyula - Halárus.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -389,7 +389,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Egry József: Hálóvető",
-        "image_file": "Egry József - Hálóvető.jpg",
+        "image_file": "Egry József - Hálóvető.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -402,7 +402,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ferenczy Károly: Plakátumok előtt",
-        "image_file": "Ferenczy Károly - Plakátumok előtt.jpg",
+        "image_file": "Ferenczy Károly - Plakátumok előtt.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -415,7 +415,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Galimberti Sándor: Amszterdam",
-        "image_file": "Galimberti Sándor - Amszterdam.jpg",
+        "image_file": "Galimberti Sándor - Amszterdam.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -428,7 +428,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Iványi Grünwald Béla: Nagybányai táj II.",
-        "image_file": "Iványi Grünwald Béla - Nagybányai táj II..jpg",
+        "image_file": "Iványi Grünwald Béla - Nagybányai táj II..jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -441,7 +441,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kádár Béla: Udvarlás",
-        "image_file": "Kádár Béla - Udvarlás.jpg",
+        "image_file": "Kádár Béla - Udvarlás.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -454,7 +454,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kernstok Károly: Színes leányfej",
-        "image_file": "Kernstok Károly - Színes leányfej.jpg",
+        "image_file": "Kernstok Károly - Színes leányfej.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -467,7 +467,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Kondor Béla: Pléh Krisztus",
-        "image_file": "Kondor Béla - Pléh Krisztus.jpg",
+        "image_file": "Kondor Béla - Pléh Krisztus.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -480,7 +480,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Korniss Dezső: Mezei Vénusz",
-        "image_file": "Korniss Dezső - Mezei Vénusz.jpg",
+        "image_file": "Korniss Dezső - Mezei Vénusz.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -493,7 +493,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Korniss Dezső: Tücsöklakodalom",
-        "image_file": "Korniss Dezső - Tücsöklakodalom.jpg",
+        "image_file": "Korniss Dezső - Tücsöklakodalom.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -506,7 +506,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Lotz Károly: Fürdő után",
-        "image_file": "Lotz Károly - Fürdő után.jpg",
+        "image_file": "Lotz Károly - Fürdő után.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -519,7 +519,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Márffy Ödön: Fekvő akt",
-        "image_file": "Márffy Ödön - Fekvő akt.jpg",
+        "image_file": "Márffy Ödön - Fekvő akt.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -532,7 +532,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mednyánszky László: Ágyút húzó katonák a hegyek között",
-        "image_file": "Mednyánszky László - Ágyút húzó katonák a hegyek között.jpg",
+        "image_file": "Mednyánszky László - Ágyút húzó katonák a hegyek között.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -545,7 +545,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mednyánszky László: Olvadás",
-        "image_file": "Mednyánszky László - Olvadás.jpg",
+        "image_file": "Mednyánszky László - Olvadás.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -558,7 +558,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Mészöly Géza: Lidó",
-        "image_file": "Mészöly Géza - Lidó.jpg",
+        "image_file": "Mészöly Géza - Lidó.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -571,7 +571,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ország Lili: Cipők",
-        "image_file": "Ország Lili - Cipők.jpg",
+        "image_file": "Ország Lili - Cipők.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -584,7 +584,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Paizs Goebel Jenő: Élet",
-        "image_file": "Paizs Goebel Jenő - Élet.jpg",
+        "image_file": "Paizs Goebel Jenő - Élet.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -597,7 +597,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Perlrott-Csaba Vilmos: Verőfényes udvar Nagybányán",
-        "image_file": "Perlrott-Csaba Vilmos - Verőfényes udvar Nagybányán.jpg",
+        "image_file": "Perlrott-Csaba Vilmos - Verőfényes udvar Nagybányán.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -610,7 +610,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Rippl-Rónai József: Lajos és Ödön",
-        "image_file": "Rippl-Rónai József - Lajos és Ödön.jpg",
+        "image_file": "Rippl-Rónai József - Lajos és Ödön.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -623,7 +623,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Rippl-Rónai József: Párizsi enteriőr",
-        "image_file": "Rippl-Rónai József - Párizsi enteriőr.jpg",
+        "image_file": "Rippl-Rónai József - Párizsi enteriőr.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -636,7 +636,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Scheiber Hugó: Négy részes cirkusz",
-        "image_file": "Scheiber Hugó - Négy részes cirkusz.jpg",
+        "image_file": "Scheiber Hugó - Négy részes cirkusz.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -649,7 +649,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Scheiber Hugó: Villamoson",
-        "image_file": "Scheiber Hugó - Villamoson.jpg",
+        "image_file": "Scheiber Hugó - Villamoson.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -662,7 +662,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Schönberger Armanf: Ketten",
-        "image_file": "Schönberger Armanf - Ketten.jpg",
+        "image_file": "Schönberger Armanf - Ketten.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -675,7 +675,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Székely Bertalan: Japán nő",
-        "image_file": "Székely Bertalan - Japán nő.jpg",
+        "image_file": "Székely Bertalan - Japán nő.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -688,7 +688,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Szinyei Merse Pál: Léghajó",
-        "image_file": "Szinyei Merse Pál - Léghajó.jpg",
+        "image_file": "Szinyei Merse Pál - Léghajó.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -701,7 +701,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Szinyei-Merse Pál: Majális",
-        "image_file": "Szinyei-Merse Pál - Majális.jpg",
+        "image_file": "Szinyei-Merse Pál - Majális.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -714,7 +714,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Szobotka Imre: Férfi portré",
-        "image_file": "Szobotka Imre - Férfi portré.jpg",
+        "image_file": "Szobotka Imre - Férfi portré.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -727,7 +727,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Uitz Béla: Harc",
-        "image_file": "Uitz Béla - Harc.jpg",
+        "image_file": "Uitz Béla - Harc.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -740,7 +740,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vajda Lajos: Felmutató Ikonos Önarckép",
-        "image_file": "Vajda Lajos - Felmutató Ikonos Önarckép.jpg",
+        "image_file": "Vajda Lajos - Felmutató Ikonos Önarckép.jpg",
         "topic": "magyar_festmenyek",
     },
     {
@@ -753,7 +753,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vaszary János: Morfinista",
-        "image_file": "Vaszary János - Morfinista.jpg",
+        "image_file": "Vaszary János - Morfinista.jpg",
         "topic": "magyar_festmenyek",
     },
 ]
