@@ -2477,7 +2477,7 @@ def show_quiz():
         if not image_file.startswith("/"):
             # Magyar festmények esetén külön mappa
             if question.get("topic") == "magyar_festmenyek":
-                image_path = os.path.join("magyar_festmény_képek", image_file)
+                image_path = os.path.join("magyar_festmeny_kepek", image_file)
             else:
                 image_path = os.path.join("festmény_képek", image_file)
         else:
