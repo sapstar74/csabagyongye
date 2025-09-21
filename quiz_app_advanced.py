@@ -4,6 +4,13 @@ Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 """
 
 import streamlit as st
+
+# Cache clear - csak fejlesztéshez
+if st.button("🗑️ Clear Cache"):
+    st.cache_data.clear()
+    st.cache_resource.clear()
+    st.success("Cache cleared!")
+    st.rerun()
 import random
 import time
 from datetime import datetime
