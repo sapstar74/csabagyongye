@@ -77,7 +77,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Munkácsy Mihály: A baba látogatói, 1879 - 160 millió forint',
-        'image_file': 'Munkácsy - A baba látogatói.jpg',
+        'image_file': 'Munkácsy - A baba látogatói.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -90,7 +90,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Munkácsy Mihály: Alvó nagyapó, 1887 - 180 millió forint',
-        'image_file': 'Munkácsy - Alvó nagyapó.jpg',
+        'image_file': 'Munkácsy - Alvó nagyapó.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -103,7 +103,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Munkácsy Mihály: Poros út I., 1874 - 220 millió forint',
-        'image_file': 'Munkácsy- Poros út.jpg',
+        'image_file': 'Munkácsy- Poros út.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -116,7 +116,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Tihanyi Lajos: A Pont Saint-Michel Párizsban, 1908 - 220 millió forint',
-        'image_file': 'Tihanyi Lajos - A_Pont Saint-Michel Párizsban_(1908).jpg',
+        'image_file': 'Tihanyi Lajos - A_Pont Saint-Michel Párizsban_(1908).jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -246,7 +246,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Aba-Novák Vilmos: Olasz kikötő',
-        'image_file': 'Aba-Novák Vilmos - Olasz kikötő.jpg',
+        'image_file': 'Aba-Novák Vilmos - Olasz kikötő.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -259,7 +259,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Aba-Novák Vilmos: Önarckép',
-        'image_file': 'Aba-Novák Vilmos - Önarckép.jpg',
+        'image_file': 'Aba-Novák Vilmos - Önarckép.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -272,7 +272,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Aba-Novák Vilmos: Nagy vursli',
-        'image_file': 'Aba-Novák Vilmos - Nagy vursli.jpg',
+        'image_file': 'Aba-Novák Vilmos - Nagy vursli.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
@@ -623,7 +623,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         'correct': 0,
         'explanation': 'Rippl-Rónai József: Párizsi enteriőr',
-        'image_file': 'Rippl-Rónai József - Párizsi enteriőr.jpg',
+        'image_file': 'Rippl-Rónai József - Párizsi enteriőr.jpg',
         'topic': 'magyar_festmenyek',
     },
     {
