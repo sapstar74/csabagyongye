@@ -545,7 +545,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi: Négy évszak (YouTube)",
-        "audio_file": "42. Vivaldi - Negy evszak - F-dur hegeduverseny.mp3",
+        "audio_file": "42. Vivaldi - Four Seasons.mp3",
         "topic": "komolyzene",
     },
     {
