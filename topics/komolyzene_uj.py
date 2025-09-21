@@ -545,7 +545,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi: Négy évszak (YouTube)",
-        "audio_file": "42. Vivaldi - Négy évszak - F-dúr hegedűverseny.mp3",
+        "audio_file": "42. Vivaldi - Negy evszak - F-dur hegeduverseny.mp3",
         "topic": "komolyzene",
     },
     {
@@ -597,7 +597,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Erkel Ferenc: Hunyadi László - Palotás",
-        "audio_file": "47. Erkel Ferenc - Hunyadi László Palotás.mp3",
+        "audio_file": "47. Erkel Ferenc - Hunyadi Laszlo Palotas.mp3",
         "topic": "komolyzene",
     },
     {
@@ -624,7 +624,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Edvard Grieg: In the Hall of the Mountain King",
-        "audio_file": "48. Edvard Grieg - In the Hall of the Mountain King.mp3",
+        "audio_file": "48. Edvard Grieg - Mountain King.mp3",
         "topic": "komolyzene",
     },
     {
@@ -663,7 +663,7 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Csárdás - Kennedy Orchestra",
-        "audio_file": "51. Csárdás - Kennedy Orchestra.mp3",
+        "audio_file": "51. Csardas - Kennedy Orchestra.mp3",
         "topic": "komolyzene",
     },
     {
