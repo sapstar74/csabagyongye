@@ -574,7 +574,10 @@ def get_audio_file_for_question(question, topic):
                 audio_dir = Path(__file__).parent / "audio_files/one_hit_wonders"
                 if audio_dir.exists():
                     for filename in os.listdir(audio_dir):
-                        if filename.endswith('.mp3') and song_title.lower() in filename.lower():
+                        # Normalizáljuk a keresést: szóköz -> aláhúzás
+                        normalized_song_title = song_title.lower().replace(' ', '_')
+                        normalized_filename = filename.lower()
+                        if filename.endswith('.mp3') and (song_title.lower() in normalized_filename or normalized_song_title in normalized_filename):
                             audio_path = audio_dir / filename
                             if audio_path.exists():
                                 return str(audio_path)

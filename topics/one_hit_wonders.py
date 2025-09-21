@@ -802,7 +802,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
         "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'The Entertainer' című dalban?",
         "options": [
             "Scott Joplin",
             "Janis Joplin",
@@ -810,7 +810,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
             "Oscar Petterson",
         ],
         "correct": 0,
-        "explanation": "Scott Joplin - One Hit Wonders",
+        "explanation": "Scott Joplin - The Entertainer",
         "audio_file": "Unknown_Artist_Scott_Joplin_The_Entertainer.mp3",
         "topic": "one_hit_wonders",
     },
