@@ -2489,13 +2489,8 @@ def show_quiz():
                 # Nagyított kép megjelenítése - nagyobb mérethez igazított oszlopok
                 col1, col2, col3 = st.columns([1, 4, 1])
                 with col2:
-                    # Csak a festmény címét jelenítjük meg (festő név nélkül)
-                    caption = question.get("explanation", "")
-                    if " - " in caption:
-                        title_only = caption.split(" - ")[0]
-                        st.image(image_path, width=800, caption=title_only)
-                    else:
-                        st.image(image_path, width=800, caption=caption)
+                    # Kép megjelenítése felirat nélkül
+                    st.image(image_path, width=800)
                     
                     # Bezárás gomb
                     if st.button("❌ Kép bezárása", key=f"close_modal_{st.session_state.current_question}", type="primary", use_container_width=True):
@@ -2525,15 +2520,7 @@ def show_quiz():
                     </div>
                     """.format(get_image_base64(image_path)), unsafe_allow_html=True)
                     
-                    # Kép felirat - csak a festmény címe
-                    caption = question.get("explanation", "")
-                    if caption:
-                        # Csak a festmény címét jelenítjük meg (festő név nélkül)
-                        if " - " in caption:
-                            title_only = caption.split(" - ")[0]
-                            st.markdown(f'<div class="image-caption">{title_only}</div>', unsafe_allow_html=True)
-                        else:
-                            st.markdown(f'<div class="image-caption">{caption}</div>', unsafe_allow_html=True)
+                    # Kép felirat eltávolítva
                     
                     # Nagyítás gomb
                     if st.button("🔍 Kép nagyítása", key=f"zoom_{st.session_state.current_question}"):
