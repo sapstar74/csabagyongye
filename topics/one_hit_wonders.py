@@ -789,7 +789,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
         "topic": "one_hit_wonders",
     },
     {
-        "question": "Ki az előadó?",
+        "question": "Ki az előadó a 'Black Betty' című dalban?",
         "options": [
             "RamJam",
             "Jerry Lee Lewis",
@@ -797,7 +797,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
             "Little Richard",
         ],
         "correct": 0,
-        "explanation": "RamJam - One Hit Wonders",
+        "explanation": "RamJam - Black Betty",
         "audio_file": "66. RamJam - Black Betty.mp3",
         "topic": "one_hit_wonders",
     },
