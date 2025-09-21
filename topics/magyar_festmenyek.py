@@ -623,7 +623,7 @@ MAGYAR_FESTMENYEK_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Rippl-Rónai József: Párizsi enteriőr",
-        "image_file": "Rippl-Rónai József - Párizsi enteriőr.jpg",
+        "image_file": "Rippl-Rónai József - Párizsi enteriőr.jpg",
         "topic": "magyar_festmenyek",
     },
     {
