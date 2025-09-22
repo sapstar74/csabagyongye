@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-22 13:54:02
+# Generated on: 2025-09-22 13:54:56
 
 QUESTIONS = [
     {
@@ -715,7 +715,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Kodály Zoltán: Háry János – Toborzó",
         "audio_file": "55. Zoltán Kodály - Háry János - Toborzó.mp3",
-        "song_title": "Háry János - Toborzó",
         "topic": "komolyzene",
     },
     {
@@ -724,11 +723,12 @@ QUESTIONS = [
             "Johann Strauss II",
             "Johann Strauss I",
             "Franz Lehár",
-            "Josef Strauss",
+            "Haydn",
         ],
         "correct": 0,
         "explanation": "Johann Strauss II: Die Fledermaus (részlet)",
-        "audio_file": "Unknown_Artist_Johann_Strauss_II_Die_Fleder.mp3",
+        "audio_file": "56. Johann Strauss II - Die Fleder.mp3",
+        "song_title": "Die Fleder",
         "topic": "komolyzene",
     },
 ]
