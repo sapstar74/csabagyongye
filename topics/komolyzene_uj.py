@@ -705,4 +705,30 @@ QUESTIONS = [
         "song_title": "Clair de lune ",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Zoltán Kodály",
+            "Béla Bartók",
+            "Franz Liszt",
+            "Antonín Dvořák",
+        ],
+        "correct": 0,
+        "explanation": "Kodály Zoltán: Háry János – Toborzó",
+        "audio_file": "Unknown_Artist_Háry_János_Toborzó.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Johann Strauss II",
+            "Johann Strauss I",
+            "Franz Lehár",
+            "Josef Strauss",
+        ],
+        "correct": 0,
+        "explanation": "Johann Strauss II: Die Fledermaus (részlet)",
+        "audio_file": "Unknown_Artist_Johann_Strauss_II_Die_Fleder.mp3",
+        "topic": "komolyzene",
+    },
 ]
