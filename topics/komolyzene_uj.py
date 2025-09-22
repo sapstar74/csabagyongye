@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 21:20:57
+# Generated on: 2025-09-22 11:40:25
 
 QUESTIONS = [
     {
@@ -611,7 +611,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Mozart: Rondo Alla Turca",
         "audio_file": "46. Mozart - Rondo Turca.mp3",
-        "song_title": "Rondo Turca",
         "topic": "komolyzene",
     },
     {
@@ -702,7 +701,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Claude Debussy: Clair de lune (Menahem Pressler előadás)",
-        "audio_file": "Unknown_Artist_Debussy_Clair_de_lune_Menahem.mp3",
+        "audio_file": "54. Claude Debussy - Clair de lune.mp3",
+        "song_title": "Clair de lune ",
         "topic": "komolyzene",
     },
 ]
