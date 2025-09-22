@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-22 11:40:25
+# Generated on: 2025-09-22 13:54:02
 
 QUESTIONS = [
     {
@@ -702,7 +702,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Claude Debussy: Clair de lune (Menahem Pressler előadás)",
         "audio_file": "54. Claude Debussy - Clair de lune.mp3",
-        "song_title": "Clair de lune ",
         "topic": "komolyzene",
     },
     {
@@ -710,12 +709,13 @@ QUESTIONS = [
         "options": [
             "Zoltán Kodály",
             "Béla Bartók",
-            "Franz Liszt",
-            "Antonín Dvořák",
+            "Weiner Leó",
+            "Dohnány Ernő",
         ],
         "correct": 0,
         "explanation": "Kodály Zoltán: Háry János – Toborzó",
-        "audio_file": "Unknown_Artist_Háry_János_Toborzó.mp3",
+        "audio_file": "55. Zoltán Kodály - Háry János - Toborzó.mp3",
+        "song_title": "Háry János - Toborzó",
         "topic": "komolyzene",
     },
     {
