@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-19 21:58:36
+# Generated on: 2025-09-22 11:29:56
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -123,6 +123,19 @@ KOMPOLYZENE_QUESTIONS = [
             "Liszt",
             "Chopin",
             "Mozart",
+        ],
+        "correct": 0,
+        "explanation": "Debussy - Komolyzene",
+        "audio_file": "Unknown_Artist_Debussy_Clair_de_lune_Menahem.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Debussy",
+            "Mozart",
+            "Haydn",
+            "Liszt",
         ],
         "correct": 0,
         "explanation": "Debussy - Komolyzene",
