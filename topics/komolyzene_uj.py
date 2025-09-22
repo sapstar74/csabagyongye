@@ -692,4 +692,17 @@ QUESTIONS = [
         "audio_file": "53. Lola Astanova - Fantaisie Impromptu.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Claude Debussy",
+            "Maurice Ravel",
+            "Gabriel Fauré",
+            "Erik Satie",
+        ],
+        "correct": 0,
+        "explanation": "Claude Debussy: Clair de lune (Menahem Pressler előadás)",
+        "audio_file": "Unknown_Artist_Debussy_Clair_de_lune_Menahem.mp3",
+        "topic": "komolyzene",
+    },
 ]
