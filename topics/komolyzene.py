@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-22 13:27:56
+# Generated on: 2025-09-22 13:31:32
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -153,6 +153,19 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Kodály Zoltán - Komolyzene",
         "audio_file": "Unknown_Artist_Háry_János_Toborzó.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Johann Strauss II.",
+            "Offenbach",
+            "Handel",
+            "Liszt",
+        ],
+        "correct": 0,
+        "explanation": "Johann Strauss II. - Komolyzene",
+        "audio_file": "Unknown_Artist_Johann_Strauss_II_Die_Fleder.mp3",
         "topic": "komolyzene",
     },
 ]
