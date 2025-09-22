@@ -19,6 +19,86 @@ from pathlib import Path
 import base64
 from topics.foldrajz_complete import FOLDRAJZ_QUESTIONS_COMPLETE as FOLDRAJZ_QUESTIONS
 from topics.komolyzene_uj import QUESTIONS as KOMOLYZENE_QUESTIONS
+
+# --- Auto-sync: add missing Komolyzene questions from audio_files/komolyzene ---
+def _sync_komolyzene_questions() -> None:
+    try:
+        import os
+        from pathlib import Path
+
+        audio_dir = Path(__file__).parent / "audio_files/komolyzene"
+        if not audio_dir.exists():
+            return
+
+        existing_files = set(
+            q.get("audio_file")
+            for q in KOMOLYZENE_QUESTIONS
+            if isinstance(q, dict) and q.get("audio_file")
+        )
+
+        def parse_filename(filename: str):
+            name = filename
+            if name.lower().endswith(".mp3"):
+                name = name[:-4]
+            # Drop leading index like "NN. "
+            parts = name.split(". ", 1)
+            if len(parts) == 2 and parts[0].isdigit():
+                name = parts[1]
+            # Split composer and title by " - " if present
+            composer = None
+            title = name
+            if " - " in name:
+                composer, title = name.split(" - ", 1)
+            # Normalize underscores
+            composer = composer.replace("_", " ") if composer else None
+            title = title.replace("_", " ") if title else ""
+            return composer, title
+
+        added = 0
+        for fname in os.listdir(audio_dir):
+            if not fname.lower().endswith(".mp3"):
+                continue
+            if fname in existing_files:
+                continue
+
+            composer, title = parse_filename(fname)
+            options = [
+                composer or "Ismeretlen",
+                "Mozart",
+                "Beethoven",
+                "Bach",
+            ]
+            correct_index = 0
+            # Ensure unique options if composer is None or generic
+            if composer is None or composer in {"Ismeretlen", "Unknown", "Unknown Artist"}:
+                options[0] = "Mozart"
+                correct_index = 0
+                options[1] = "Beethoven"
+                options[2] = "Bach"
+                options[3] = "Haydn"
+
+            KOMOLYZENE_QUESTIONS.append(
+                {
+                    "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+                    "options": options,
+                    "correct": correct_index,
+                    "explanation": f"{(composer or 'Ismeretlen')}: {title}" if title else (composer or "Komolyzene"),
+                    "audio_file": fname,
+                    "topic": "komolyzene",
+                }
+            )
+            added += 1
+        if added:
+            # Optional: log to console for debug
+            try:
+                print(f"[AUTO-SYNC] Komolyzene: {added} új kérdés hozzáadva az audio fájlok alapján.")
+            except Exception:
+                pass
+    except Exception:
+        # Ne törje meg az appot, ha bármi gond van
+        pass
+
+_sync_komolyzene_questions()
 from topics.tudosok import TUDOSOK_QUESTIONS
 from topics.mitologia_all_questions import MITOLOGIA_QUESTIONS_ALL
 from topics.haboru_all_questions import HABORU_QUESTIONS_ALL
