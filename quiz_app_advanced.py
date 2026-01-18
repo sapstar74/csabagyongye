@@ -4572,9 +4572,27 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         st.error("Nincs érvényes URL a track_info-ban")
         return False
     
-    # Egyszerű letöltés
+    # Próbálkozás 1: Egyszerű konfiguráció
     try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        simple_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+            'noplaylist': True,
+            'quiet': True,
+            'no_warnings': True,
+            'extractor_args': {
+                'youtube': {
+                    'player_skip': ['configs', 'webpage'],
+                    'player_client': ['android', 'web', 'ios', 'tv_embedded'],
+                }
+            },
+        }
+        with yt_dlp.YoutubeDL(simple_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             if info:
                 ydl.download([url])
@@ -4582,32 +4600,14 @@ def download_and_integrate_track(track_info, category, custom_options=None):
             else:
                 success = False
     except Exception as e:
-        st.warning(f"Letöltés sikertelen: {str(e)}")
+        st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
         _yt_dlp_hint(str(e))
         success = False
     
-    # Próbálkozás 2: Egyszerű konfiguráció (ha az első sikertelen)
+    # Próbálkozás 2: Részletes konfiguráció (ha az első sikertelen)
     if not success:
         try:
-            simple_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192',
-                }],
-                'noplaylist': True,
-                'quiet': True,
-                'no_warnings': True,
-                'extractor_args': {
-                    'youtube': {
-                        'player_skip': ['configs', 'webpage'],
-                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
-                    }
-                },
-            }
-            with yt_dlp.YoutubeDL(simple_opts) as ydl:
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 if info:
                     ydl.download([url])
@@ -4615,7 +4615,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 else:
                     success = False
         except Exception as e:
-            st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+            st.warning(f"Letöltés sikertelen: {str(e)}")
             _yt_dlp_hint(str(e))
             success = False
     
