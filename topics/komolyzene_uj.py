@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 21:26:01
+# Generated on: 2026-01-18 21:30:10
 
 QUESTIONS = [
     {
@@ -754,11 +754,10 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist The Magic Flute Queen of the ",
         "audio_file": "58. Mozart - The Magic Flute.mp3",
-        "song_title": "The Magic Flute",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Lang Lang Mozart Sonata in C\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét!",
         "options": [
             "Mozart",
             "Beethoven",
@@ -767,7 +766,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Lang Lang Mozart Sonata in C ",
-        "audio_file": "Unknown_Artist_Lang_Lang_Mozart_Sonata_in_C_.mp3",
+        "audio_file": "59. Mozart -  Mozart Sonata in C major.mp3",
+        "song_title": " Mozart Sonata in C major",
         "topic": "komolyzene",
     },
 ]
