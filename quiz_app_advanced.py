@@ -1,4 +1,4 @@
-"""
+Módosítsuk ú"""
 🎯 Csabagyöngye Tréning Center 😄
 Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 """
@@ -744,6 +744,24 @@ def get_audio_file_for_question(question, topic):
             except Exception as e:
                 print(f"[DEBUG] Hiba az egyéb témakör original_index használatánál: {e}")
     return None
+
+def show_answer_popup(question, user_answer, correct_answer):
+    """Popup üzenet a válaszról, helyes válaszról és audio útvonalról"""
+    topic = question.get("topic")
+    audio_path = get_audio_file_for_question(question, topic) if topic else None
+    if audio_path:
+        abs_path = os.path.abspath(audio_path)
+        filename = os.path.basename(abs_path)
+        audio_info = f"{abs_path} ({filename})"
+    else:
+        audio_info = "N/A"
+
+    safe_user_answer = user_answer if user_answer else "N/A"
+    safe_correct_answer = correct_answer if correct_answer else "N/A"
+    st.toast(
+        f"Válaszod: {safe_user_answer} | Helyes válasz: {safe_correct_answer} | Audio: {audio_info}",
+        icon="🎯",
+    )
 
 def start_quiz():
     """Quiz indítása"""
@@ -2787,6 +2805,8 @@ def show_quiz():
                     if is_correct:
                         st.session_state.score += 1
                     
+                    show_answer_popup(question, user_answer, question.get('correct_answer', ''))
+
                     # Válasz mentése
                     st.session_state.question_answers[st.session_state.current_question] = user_answer
                     st.session_state.answers.append({
@@ -2827,6 +2847,9 @@ def show_quiz():
                         
                         if is_correct:
                             st.session_state.score += 1
+
+                        display_correct = question.get('correct_answer') or (options[new_correct_index] if 'options' in locals() else '')
+                        show_answer_popup(question, user_answer, display_correct)
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
@@ -2864,6 +2887,8 @@ def show_quiz():
                         
                         if is_correct:
                             st.session_state.score += 1
+
+                        show_answer_popup(question, user_answer, options[new_correct_index])
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
@@ -3006,6 +3031,9 @@ def handle_answer(selected_index, correct_index, options, question):
             return
     
     # Válasz mentése
+    selected_text = options[selected_index] if 0 <= selected_index < len(options) else ""
+    correct_text = options[correct_index] if 0 <= correct_index < len(options) else ""
+    show_answer_popup(question, selected_text, correct_text)
     st.session_state.question_answers[st.session_state.current_question] = selected_index
     st.session_state.answers.append({
         'question': question.get("question", "Ismeretlen kérdés"),
