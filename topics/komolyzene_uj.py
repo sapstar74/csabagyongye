@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 18:52:22
+# Generated on: 2026-01-18 21:26:01
 
 QUESTIONS = [
     {
@@ -741,11 +741,10 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Mozart Requiem Lacrimosa SO ",
         "audio_file": "57. Mozart - Requiem Lacrimosa SO.mp3",
-        "song_title": "Requiem Lacrimosa SO ",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist The Magic Flute Queen of the "",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét!",
         "options": [
             "Mozart",
             "Beethoven",
@@ -754,11 +753,12 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist The Magic Flute Queen of the ",
-        "audio_file": "Unknown_Artist_The_Magic_Flute_Queen_of_the_.mp3",
+        "audio_file": "58. Mozart - The Magic Flute.mp3",
+        "song_title": "The Magic Flute",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist Lang Lang Mozart Sonata in C "",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist Lang Lang Mozart Sonata in C"",
         "options": [
             "Mozart",
             "Beethoven",
