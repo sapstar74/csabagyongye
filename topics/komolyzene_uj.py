@@ -758,7 +758,7 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist Lang Lang Mozart Sonata in C"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Lang Lang Mozart Sonata in C\"",
         "options": [
             "Mozart",
             "Beethoven",
