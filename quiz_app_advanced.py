@@ -680,6 +680,11 @@ def get_audio_file_for_question(question, topic):
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
                 return str(audio_path)
+            # Fallback: újabb komolyzene mappa (audio_files_komolyzene_uj)
+            audio_dir = Path(__file__).parent / "audio_files_komolyzene_uj"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
             # Fallback: régi mappa
             audio_dir = Path(__file__).parent / "audio_files_komolyzene"
             audio_path = audio_dir / question["audio_file"]
