@@ -971,7 +971,7 @@ def main():
         st.markdown(f"## 🧭 Navigáció")
         page = st.selectbox(
             "Válassz oldalt:",
-            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása", "GitHub Szinkronizálás", "Audio Track Kezelés"],
+            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása", "GitHub Szinkronizálás", "Audio Track Kezelés", "Előadók szerinti lista"],
             format_func=lambda x: {
                 "Quiz": "🎯 Quiz",
                 "Spotify Playlist": "🎵 Spotify Playlist",
@@ -979,7 +979,8 @@ def main():
                 "Beállítások": "⚙️ Beállítások",
                 "Audio hozzáadása": "🎵 Audio hozzáadása",
                 "GitHub Szinkronizálás": "🔄 GitHub Szinkronizálás",
-                "Audio Track Kezelés": "🎵 Audio Track Kezelés"
+                "Audio Track Kezelés": "🎵 Audio Track Kezelés",
+                "Előadók szerinti lista": "🎼 Előadók szerinti lista"
             }[x]
         )
         
@@ -1020,6 +1021,8 @@ def main():
         show_github_sync_page()
     elif page == "Audio Track Kezelés":
         show_audio_track_management_page()
+    elif page == "Előadók szerinti lista":
+        show_artist_list_page()
 
 def show_quiz_page():
     """Quiz oldal megjelenítése"""
@@ -1119,6 +1122,64 @@ def get_audio_tracks_by_category():
         }
     
     return tracks_by_category
+
+def _parse_artist_and_title(track_name: str):
+    """Egyszerű előadó és cím kinyerés track névből"""
+    name = track_name.strip()
+    if ". " in name:
+        name = name.split(". ", 1)[1]
+    if " - " in name:
+        artist, title = name.split(" - ", 1)
+        return artist.strip(), title.strip()
+    if "_" in name:
+        parts = [p for p in name.split("_") if p]
+        if parts and parts[0].isdigit():
+            parts = parts[1:]
+        if len(parts) >= 2:
+            return parts[0].replace("_", " ").strip(), " ".join(parts[1:]).replace("_", " ").strip()
+    return "Ismeretlen", name
+
+def show_artist_list_page():
+    """Előadók szerinti lista önálló oldal"""
+    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎼 Előadók szerinti lista</h2>', unsafe_allow_html=True)
+    
+    tracks_by_category = get_audio_tracks_by_category()
+    music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
+    music_options = {k: v["title"] for k, v in tracks_by_category.items() if k in music_categories}
+    
+    if not music_options:
+        st.info("📭 Nincs elérhető zenei kategória.")
+        return
+    
+    selected_category = st.selectbox(
+        "Zenei kategória:",
+        options=list(music_options.keys()),
+        format_func=lambda x: music_options[x],
+        key="artist_list_category"
+    )
+    
+    category_info = tracks_by_category.get(selected_category, {})
+    tracks = category_info.get("tracks", [])
+    if not tracks:
+        st.info("📭 Nincsenek track-ek ebben a kategóriában.")
+        return
+    
+    artist_map = {}
+    for track in tracks:
+        artist, title = _parse_artist_and_title(track.get("name", ""))
+        filename = "N/A"
+        if track.get("audio_path"):
+            filename = os.path.basename(track["audio_path"])
+        artist_map.setdefault(artist, []).append((title, filename))
+    
+    st.markdown(f"### {category_info.get('title', selected_category)}")
+    st.markdown(f"📊 **{len(tracks)} track**, **{len(artist_map)} előadó**")
+    
+    for artist in sorted(artist_map.keys(), key=lambda x: x.lower()):
+        items = sorted(artist_map[artist], key=lambda x: x[0].lower())
+        with st.expander(f"{artist} ({len(items)})", expanded=False):
+            for title, filename in items:
+                st.markdown(f"- {title} ({filename})")
 
 def load_questions_from_file(file_path):
     """Kérdések betöltése Python fájlból"""
@@ -1651,24 +1712,6 @@ def show_audio_track_management_page():
                 import os
                 row_numbers = []
                 filenames = []
-                
-                # Előadók szerinti lista (lista nézetben)
-                if edit_mode == "📋 Lista nézet":
-                    st.markdown("### 🎼 Előadók szerinti lista")
-                    artist_map = {}
-                    for row in table_data:
-                        artist_name = row.get("Előadó", "Ismeretlen")
-                        song_title = row.get("Szám címe", "Ismeretlen")
-                        filename = "N/A"
-                        if row.get("matching_track") and "audio_path" in row["matching_track"]:
-                            filename = os.path.basename(row["matching_track"]["audio_path"])
-                        artist_map.setdefault(artist_name, []).append((song_title, filename))
-                    
-                    for artist_name in sorted(artist_map.keys(), key=lambda x: x.lower()):
-                        tracks = sorted(artist_map[artist_name], key=lambda x: x[0].lower())
-                        with st.expander(f"{artist_name} ({len(tracks)})", expanded=False):
-                            for song_title, filename in tracks:
-                                st.markdown(f"- {song_title} ({filename})")
                 
                 for row in table_data:
                     if row['matching_track'] and 'audio_path' in row['matching_track']:
@@ -4278,47 +4321,72 @@ def show_youtube_search_tab():
                                     st.markdown('<div style="font-size: 12px;">🚀 6. GitHub frissítés...</div>', unsafe_allow_html=True)
                                     progress_bar.progress(100)
                                     
-                                    # Track letöltése és integrálása
-                                    success = download_and_integrate_track(result, selected_category, custom_options)
+                                    # Track letöltése és integrálása (mentés előtt szerkesztéssel)
+                                    integration_result = download_and_integrate_track(
+                                        result, selected_category, custom_options, require_review=True
+                                    )
                                     
-                                    if success:
-                                        # Sikeres integráció üzenet
-                                        st.balloons()  # Konfetti effekt
-                                        st.markdown('<div style="font-size: 12px;">🎉 <strong>SIKERES INTEGRÁCIÓ!</strong> 🎉</div>', unsafe_allow_html=True)
-                                        st.markdown(f'<div style="font-size: 12px;">✅ <strong>{result["title"]}</strong> sikeresen letöltve és integrálva a <strong>{selected_category}</strong> kategóriába!</div>', unsafe_allow_html=True)
-                                        st.markdown('<div style="font-size: 12px;">🚀 GitHub is frissítve!</div>', unsafe_allow_html=True)
-                                        st.markdown('<div style="font-size: 12px;">🎯 A track most már elérhető a quiz-ben!</div>', unsafe_allow_html=True)
-                                        
-                                        # Eredmények törlése
-                                        if 'youtube_search_results' in st.session_state:
-                                            del st.session_state.youtube_search_results
-                                        
-                                        # Választási lehetőség az integrálás után
-                                        st.markdown("---")
-                                        st.markdown("### 🎯 Mit szeretnél csinálni most?")
-                                        
-                                        col1, col2 = st.columns(2)
-                                        
-                                        with col1:
-                                            if st.button("🎵 Új Audio Import", type="primary", use_container_width=True):
-                                                # Új import kezdése
-                                                if 'youtube_search_results' in st.session_state:
-                                                    del st.session_state.youtube_search_results
-                                                st.rerun()
-                                        
-                                        with col2:
-                                            if st.button("🎮 Quiz Kezdése", type="secondary", use_container_width=True):
-                                                # Szelekciós képernyőre navigálás (nehézségi szint és mód választás)
-                                                st.session_state.current_page = "Quiz Selection"
-                                                st.rerun()
-                                        
-                                        # Ne fusson tovább automatikusan
-                                        st.stop()
+                                    if integration_result and integration_result.get("success"):
+                                        st.success("✅ Letöltés kész. A mentés előtt még szerkesztheted a kérdést lent.")
+                                        st.session_state.pending_integration = integration_result
+                                        st.session_state.pending_integration["custom_options"] = custom_options
+                                        st.session_state.pending_integration["selected_category"] = selected_category
+                                        st.session_state.pending_integration["result_title"] = result.get("title", "Ismeretlen")
+                                        st.rerun()
                                     else:
                                         st.markdown('<div style="font-size: 12px;">❌ Hiba történt a letöltés során!</div>', unsafe_allow_html=True)
                                         
                                 except Exception as e:
                                     st.markdown(f'<div style="font-size: 12px;">❌ Hiba: {e}</div>', unsafe_allow_html=True)
+
+    # Mentés előtti szerkesztés (önálló blokk)
+    if "pending_integration" in st.session_state:
+        pending = st.session_state.pending_integration
+        question = pending.get("question", {})
+        category = pending.get("category")
+        result_title = pending.get("result_title", "Ismeretlen")
+        audio_file = question.get("audio_file", "N/A")
+        
+        st.markdown("---")
+        st.markdown("### ✏️ Mentés előtti szerkesztés")
+        st.info(f"Letöltött track: {result_title} | Kategória: {category} | Fájl: {audio_file}")
+        
+        question_text = st.text_input("Kérdés szövege:", value=question.get("question", ""))
+        explanation = st.text_input("Magyarázat:", value=question.get("explanation", ""))
+        
+        options = question.get("options", []) + [""] * (4 - len(question.get("options", [])))
+        option_1 = st.text_input("Opció 1 (helyes):", value=options[0] if len(options) > 0 else "")
+        option_2 = st.text_input("Opció 2:", value=options[1] if len(options) > 1 else "")
+        option_3 = st.text_input("Opció 3:", value=options[2] if len(options) > 2 else "")
+        option_4 = st.text_input("Opció 4:", value=options[3] if len(options) > 3 else "")
+        
+        updated_options = [option_1, option_2, option_3, option_4]
+        correct_answer = st.selectbox(
+            "Helyes válasz:",
+            options=updated_options,
+            index=0
+        )
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("💾 Mentés és integrálás", type="primary", use_container_width=True):
+                new_question = {
+                    "question": question_text,
+                    "options": updated_options,
+                    "correct": updated_options.index(correct_answer),
+                    "explanation": explanation,
+                    "audio_file": audio_file,
+                    "topic": category,
+                }
+                add_question_to_category(new_question, category)
+                st.success("✅ Kérdés mentve és integrálva.")
+                del st.session_state.pending_integration
+                st.rerun()
+        with col2:
+            if st.button("🗑️ Elvetés", type="secondary", use_container_width=True):
+                del st.session_state.pending_integration
+                st.info("ℹ️ Integráció elvetve.")
+                st.rerun()
 
 
 def search_youtube_tracks(query):
@@ -4485,7 +4553,7 @@ def search_youtube_tracks(query):
         st.error(f"YouTube keresési hiba: {e}")
         return []
 
-def download_and_integrate_track(track_info, category, custom_options=None):
+def download_and_integrate_track(track_info, category, custom_options=None, require_review=False):
     """Track letöltése és integrálása"""
     try:
         import yt_dlp
@@ -5153,6 +5221,15 @@ def download_and_integrate_track(track_info, category, custom_options=None):
     
     # Quiz kérdés generálása
     question = generate_quiz_question(track_info, audio_file, category, custom_options)
+    
+    if require_review:
+        return {
+            "success": True,
+            "question": question,
+            "category": category,
+            "audio_file": audio_file,
+            "track_info": track_info,
+        }
     
     # Kérdés hozzáadása a megfelelő kategóriához
     add_question_to_category(question, category)
