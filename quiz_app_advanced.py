@@ -1,4 +1,4 @@
-Módosítsuk ú"""
+"""
 🎯 Csabagyöngye Tréning Center 😄
 Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 """
@@ -746,7 +746,7 @@ def get_audio_file_for_question(question, topic):
     return None
 
 def show_answer_popup(question, user_answer, correct_answer):
-    """Popup üzenet a válaszról, helyes válaszról és audio útvonalról"""
+    """Tartós popup üzenet a válaszról, helyes válaszról és audio útvonalról"""
     topic = question.get("topic")
     audio_path = get_audio_file_for_question(question, topic) if topic else None
     if audio_path:
@@ -756,12 +756,57 @@ def show_answer_popup(question, user_answer, correct_answer):
     else:
         audio_info = "N/A"
 
-    safe_user_answer = user_answer if user_answer else "N/A"
-    safe_correct_answer = correct_answer if correct_answer else "N/A"
-    st.toast(
-        f"Válaszod: {safe_user_answer} | Helyes válasz: {safe_correct_answer} | Audio: {audio_info}",
-        icon="🎯",
+    st.session_state.answer_popup = {
+        "user_answer": user_answer if user_answer else "N/A",
+        "correct_answer": correct_answer if correct_answer else "N/A",
+        "audio_info": audio_info,
+    }
+
+def render_answer_popup():
+    """Popup megjelenítése, amíg a felhasználó be nem zárja"""
+    popup = st.session_state.get("answer_popup")
+    if not popup:
+        return
+
+    st.markdown(
+        """
+        <style>
+        .answer-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 90%;
+            width: 900px;
+            font-size: 16px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
     )
+
+    st.markdown(
+        f"""
+        <div class="answer-popup">
+            <strong>Válaszod:</strong> {popup["user_answer"]}
+            &nbsp;|&nbsp;
+            <strong>Helyes válasz:</strong> {popup["correct_answer"]}
+            <br/>
+            <strong>Audio:</strong> {popup["audio_info"]}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    if st.button("OK", key="close_answer_popup", use_container_width=True):
+        del st.session_state.answer_popup
+        st.rerun()
 
 def start_quiz():
     """Quiz indítása"""
@@ -2587,6 +2632,9 @@ def show_quiz():
     # Kérdés szövege
     question_text = question.get("question", "Ismeretlen kérdés")
     st.markdown(f"<div class='question-text' style='{font_style['question']}'>{question_text}</div>", unsafe_allow_html=True)
+
+    # Tartós popup megjelenítése (ha van)
+    render_answer_popup()
     
     # Audio, Spotify embed vagy kép megjelenítése
     audio_file = get_audio_file_for_question(question, topic)
