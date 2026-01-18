@@ -24,9 +24,12 @@ from topics.komolyzene_uj import QUESTIONS as KOMOLYZENE_QUESTIONS
 def _sync_komolyzene_questions() -> None:
     try:
         import os
+        import json
         from pathlib import Path
 
         audio_dir = Path(__file__).parent / "audio_files/komolyzene"
+        questions_file = Path(__file__).parent / "topics/komolyzene_uj.py"
+        
         if not audio_dir.exists():
             return
 
@@ -54,48 +57,106 @@ def _sync_komolyzene_questions() -> None:
             title = title.replace("_", " ") if title else ""
             return composer, title
 
+        def get_smart_options(composer: str, title: str):
+            """Intelligens opciók generálása a zeneszerző alapján"""
+            # Alapértelmezett opciók
+            common_composers = ["Mozart", "Beethoven", "Bach", "Haydn"]
+            
+            if composer and composer not in {"Ismeretlen", "Unknown", "Unknown Artist"}:
+                # Ha van zeneszerző, az legyen az első opció
+                options = [composer]
+                # Töltsük fel a többi opciót más zeneszerzőkkel
+                for c in common_composers:
+                    if c != composer and len(options) < 4:
+                        options.append(c)
+                # Ha nincs elég opció, adjunk hozzá még néhányat
+                more_composers = ["Chopin", "Tchaikovsky", "Vivaldi", "Handel", "Schubert"]
+                for c in more_composers:
+                    if c != composer and len(options) < 4:
+                        options.append(c)
+                return options, 0
+            else:
+                # Ha nincs zeneszerző, használjunk általános opciókat
+                return common_composers, 0
+
         added = 0
-        for fname in os.listdir(audio_dir):
+        new_questions = []
+        
+        for fname in sorted(os.listdir(audio_dir)):
             if not fname.lower().endswith(".mp3"):
                 continue
             if fname in existing_files:
                 continue
 
             composer, title = parse_filename(fname)
-            options = [
-                composer or "Ismeretlen",
-                "Mozart",
-                "Beethoven",
-                "Bach",
-            ]
-            correct_index = 0
-            # Ensure unique options if composer is None or generic
-            if composer is None or composer in {"Ismeretlen", "Unknown", "Unknown Artist"}:
-                options[0] = "Mozart"
-                correct_index = 0
-                options[1] = "Beethoven"
-                options[2] = "Bach"
-                options[3] = "Haydn"
-
-            KOMOLYZENE_QUESTIONS.append(
-                {
-                    "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
-                    "options": options,
-                    "correct": correct_index,
-                    "explanation": f"{(composer or 'Ismeretlen')}: {title}" if title else (composer or "Komolyzene"),
-                    "audio_file": fname,
-                    "topic": "komolyzene",
-                }
-            )
+            options, correct_index = get_smart_options(composer, title)
+            
+            # Kérdés szövegének generálása - ha van cím, szerepeljen benne
+            if title:
+                question_text = f'Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "{title}"'
+            else:
+                question_text = "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:"
+            
+            new_question = {
+                "question": question_text,
+                "options": options,
+                "correct": correct_index,
+                "explanation": f"{(composer or 'Ismeretlen')}: {title}" if title else (composer or "Komolyzene"),
+                "audio_file": fname,
+                "topic": "komolyzene",
+            }
+            
+            KOMOLYZENE_QUESTIONS.append(new_question)
+            new_questions.append(new_question)
             added += 1
-        if added:
-            # Optional: log to console for debug
+        
+        # Ha volt új kérdés, mentjük el a fájlba
+        if added > 0 and questions_file.exists():
             try:
-                print(f"[AUTO-SYNC] Komolyzene: {added} új kérdés hozzáadva az audio fájlok alapján.")
-            except Exception:
-                pass
-    except Exception:
+                # Beolvassuk a teljes kérdéslistát
+                all_questions = list(KOMOLYZENE_QUESTIONS)
+                
+                # Generáljuk a fájl tartalmát
+                content = f"""# Auto-generated questions file
+# Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+QUESTIONS = [
+"""
+                for q in all_questions:
+                    content += "    {\n"
+                    # Escape quotes in question text
+                    question_text = q["question"].replace('"', '\\"')
+                    content += f'        "question": "{question_text}",\n'
+                    content += '        "options": [\n'
+                    for option in q["options"]:
+                        content += f'            "{option}",\n'
+                    content += '        ],\n'
+                    content += f'        "correct": {q["correct"]},\n'
+                    if "explanation" in q:
+                        explanation_text = q["explanation"].replace('"', '\\"')
+                        content += f'        "explanation": "{explanation_text}",\n'
+                    if "audio_file" in q:
+                        content += f'        "audio_file": "{q["audio_file"]}",\n'
+                    if "song_title" in q:
+                        content += f'        "song_title": "{q["song_title"]}",\n'
+                    if "topic" in q:
+                        content += f'        "topic": "{q["topic"]}",\n'
+                    content += "    },\n"
+                
+                content += "]\n\n"
+                content += "# Export alias for compatibility\n"
+                content += "KOMOLYZENE_QUESTIONS = QUESTIONS\n"
+                
+                # Mentjük a fájlba
+                with open(questions_file, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                print(f"[AUTO-SYNC] Komolyzene: {added} új kérdés hozzáadva és elmentve a fájlba.")
+            except Exception as e:
+                print(f"[AUTO-SYNC] Hiba a fájl mentésekor: {e}")
+    except Exception as e:
         # Ne törje meg az appot, ha bármi gond van
+        print(f"[AUTO-SYNC] Hiba: {e}")
         pass
 
 _sync_komolyzene_questions()
@@ -4352,6 +4413,14 @@ def download_and_integrate_track(track_info, category, custom_options=None):
     download_dir = Path(category_mapping.get(category, "audio_files"))
     download_dir.mkdir(parents=True, exist_ok=True)
     
+    def _yt_dlp_hint(error_message: str) -> None:
+        if "Failed to extract any player response" in error_message:
+            version = getattr(yt_dlp, "__version__", "ismeretlen")
+            st.error(
+                "❌ YouTube player response hiba (yt-dlp). "
+                f"Frissítsd a yt-dlp-t: pip install -U yt-dlp (aktuális: {version})"
+            )
+
     # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
     ydl_opts = {
         'format': 'bestaudio[ext=m4a]/bestaudio/best',
@@ -4393,6 +4462,8 @@ def download_and_integrate_track(track_info, category, custom_options=None):
         'extractor_args': {
             'youtube': {
                 'skip': ['dash', 'hls'],
+                'player_skip': ['configs', 'webpage'],
+                'player_client': ['android', 'web', 'ios', 'tv_embedded'],
             }
         },
         # További beállítások
@@ -4431,6 +4502,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 success = False
     except Exception as e:
         st.warning(f"Letöltés sikertelen: {str(e)}")
+        _yt_dlp_hint(str(e))
         success = False
     
     # Próbálkozás 2: Egyszerű konfiguráció (ha az első sikertelen)
@@ -4447,6 +4519,12 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 'noplaylist': True,
                 'quiet': True,
                 'no_warnings': True,
+                'extractor_args': {
+                    'youtube': {
+                        'player_skip': ['configs', 'webpage'],
+                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
+                    }
+                },
             }
             with yt_dlp.YoutubeDL(simple_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
@@ -4457,6 +4535,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     success = False
         except Exception as e:
             st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+            _yt_dlp_hint(str(e))
             success = False
     
     # Próbálkozás 4: VPN/Proxy beállításokkal (ha mindhárom sikertelen)
@@ -4487,6 +4566,8 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                 'extractor_args': {
                     'youtube': {
                         'skip': ['dash', 'hls'],
+                        'player_skip': ['configs', 'webpage'],
+                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                     }
                 },
                 'socket_timeout': 30,
@@ -4502,6 +4583,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     success = False
         except Exception as e:
             st.error(f"VPN/Proxy konfiguráció is sikertelen: {str(e)}")
+            _yt_dlp_hint(str(e))
             success = False
     
     # Próbálkozás 5: Teljesen más megközelítés - yt-dlp alternatív beállítások
@@ -4526,6 +4608,7 @@ def download_and_integrate_track(track_info, category, custom_options=None):
                     'youtube': {
                         'skip': ['dash', 'hls', 'translated_subs'],
                         'player_skip': ['configs', 'webpage'],
+                        'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                     }
                 },
                 'geo_bypass': True,
