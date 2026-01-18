@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 21:30:10
+# Generated on: 2026-01-18 21:34:46
 
 QUESTIONS = [
     {
@@ -767,7 +767,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Lang Lang Mozart Sonata in C ",
         "audio_file": "59. Mozart -  Mozart Sonata in C major.mp3",
-        "song_title": " Mozart Sonata in C major",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét!",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Unknown Artist The Shawshank redemption Canzo",
+        "audio_file": "60. Mozart - Canzonetta sullaria.mp3",
+        "song_title": "Canzonetta sull'aria",
         "topic": "komolyzene",
     },
 ]
