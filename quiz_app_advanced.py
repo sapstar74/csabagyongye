@@ -1652,6 +1652,24 @@ def show_audio_track_management_page():
                 row_numbers = []
                 filenames = []
                 
+                # Előadók szerinti lista (lista nézetben)
+                if edit_mode == "📋 Lista nézet":
+                    st.markdown("### 🎼 Előadók szerinti lista")
+                    artist_map = {}
+                    for row in table_data:
+                        artist_name = row.get("Előadó", "Ismeretlen")
+                        song_title = row.get("Szám címe", "Ismeretlen")
+                        filename = "N/A"
+                        if row.get("matching_track") and "audio_path" in row["matching_track"]:
+                            filename = os.path.basename(row["matching_track"]["audio_path"])
+                        artist_map.setdefault(artist_name, []).append((song_title, filename))
+                    
+                    for artist_name in sorted(artist_map.keys(), key=lambda x: x.lower()):
+                        tracks = sorted(artist_map[artist_name], key=lambda x: x[0].lower())
+                        with st.expander(f"{artist_name} ({len(tracks)})", expanded=False):
+                            for song_title, filename in tracks:
+                                st.markdown(f"- {song_title} ({filename})")
+                
                 for row in table_data:
                     if row['matching_track'] and 'audio_path' in row['matching_track']:
                         audio_path = row['matching_track']['audio_path']
