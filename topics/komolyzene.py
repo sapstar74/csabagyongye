@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-22 13:31:32
+# Generated on: 2026-01-18 18:42:20
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -166,6 +166,45 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Johann Strauss II. - Komolyzene",
         "audio_file": "Unknown_Artist_Johann_Strauss_II_Die_Fleder.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Mozart",
+            "Bach",
+            "Beethoven",
+            "Handel",
+        ],
+        "correct": 0,
+        "explanation": "Mozart - Komolyzene",
+        "audio_file": "Unknown_Artist_Mozart_Requiem_Lacrimosa_SO_.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Mozart",
+            "Handel",
+            "Puccini",
+            "Beethoven",
+        ],
+        "correct": 0,
+        "explanation": "Mozart - Komolyzene",
+        "audio_file": "Unknown_Artist_The_Magic_Flute_Queen_of_the_.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Mozart",
+            "Bach",
+            "Handel",
+            "Schubert",
+        ],
+        "correct": 0,
+        "explanation": "Mozart - Komolyzene",
+        "audio_file": "Unknown_Artist_Lang_Lang_Mozart_Sonata_in_C_.mp3",
         "topic": "komolyzene",
     },
 ]

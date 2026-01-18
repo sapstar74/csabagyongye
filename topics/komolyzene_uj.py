@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2025-09-22 13:54:56
+# Generated on: 2026-01-18 18:45:35
 
 QUESTIONS = [
     {
@@ -731,4 +731,46 @@ QUESTIONS = [
         "song_title": "Die Fleder",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Mozart Requiem Lacrimosa SO \"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Unknown Artist Mozart Requiem Lacrimosa SO ",
+        "audio_file": "Unknown_Artist_Mozart_Requiem_Lacrimosa_SO_.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist The Magic Flute Queen of the \"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Unknown Artist The Magic Flute Queen of the ",
+        "audio_file": "Unknown_Artist_The_Magic_Flute_Queen_of_the_.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Lang Lang Mozart Sonata in C \"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Unknown Artist Lang Lang Mozart Sonata in C ",
+        "audio_file": "Unknown_Artist_Lang_Lang_Mozart_Sonata_in_C_.mp3",
+        "topic": "komolyzene",
+    },
 ]
+
+# Export alias for compatibility
+KOMOLYZENE_QUESTIONS = QUESTIONS
