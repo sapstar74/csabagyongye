@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 18:45:35
+# Generated on: 2026-01-18 18:52:22
 
 QUESTIONS = [
     {
@@ -728,11 +728,10 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Johann Strauss II: Die Fledermaus (részlet)",
         "audio_file": "56. Johann Strauss II - Die Fleder.mp3",
-        "song_title": "Die Fleder",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Mozart Requiem Lacrimosa SO \"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
         "options": [
             "Mozart",
             "Beethoven",
@@ -741,11 +740,12 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Mozart Requiem Lacrimosa SO ",
-        "audio_file": "Unknown_Artist_Mozart_Requiem_Lacrimosa_SO_.mp3",
+        "audio_file": "57. Mozart - Requiem Lacrimosa SO.mp3",
+        "song_title": "Requiem Lacrimosa SO ",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist The Magic Flute Queen of the \"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist The Magic Flute Queen of the "",
         "options": [
             "Mozart",
             "Beethoven",
@@ -758,7 +758,7 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Lang Lang Mozart Sonata in C \"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Unknown Artist Lang Lang Mozart Sonata in C "",
         "options": [
             "Mozart",
             "Beethoven",
@@ -771,6 +771,3 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
 ]
-
-# Export alias for compatibility
-KOMOLYZENE_QUESTIONS = QUESTIONS
