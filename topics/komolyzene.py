@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 18:42:20
+# Generated on: 2026-01-18 21:32:41
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -205,6 +205,19 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Mozart - Komolyzene",
         "audio_file": "Unknown_Artist_Lang_Lang_Mozart_Sonata_in_C_.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Mozart",
+            "Puccini",
+            "Donizetti",
+            "Johann Strauss II",
+        ],
+        "correct": 0,
+        "explanation": "Mozart - Canzonetta sull'aria",
+        "audio_file": "Unknown_Artist_The_Shawshank_redemption_Canzo.mp3",
         "topic": "komolyzene",
     },
 ]
