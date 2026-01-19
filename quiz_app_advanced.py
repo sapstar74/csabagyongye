@@ -1188,6 +1188,15 @@ def show_artist_list_page():
             for title, filename in items:
                 st.markdown(f"- {title} ({filename})")
 
+def _make_safe_filename(artist: str, title: str) -> str:
+    """Biztonságos fájlnév generálása az előadó és cím alapján"""
+    import re
+    safe_artist = re.sub(r'[^\w\s-]', '', artist).strip() or "Ismeretlen"
+    safe_title = re.sub(r'[^\w\s-]', '', title).strip() or "Ismeretlen"
+    safe_artist = re.sub(r'[-\s]+', '_', safe_artist)[:30]
+    safe_title = re.sub(r'[-\s]+', '_', safe_title)[:40]
+    return f"{safe_artist}_{safe_title}.mp3"
+
 def load_questions_from_file(file_path):
     """Kérdések betöltése Python fájlból"""
     try:
@@ -2927,7 +2936,7 @@ def show_quiz():
                         st.session_state.score += 1
                     
                     show_answer_popup(question, user_answer, question.get('correct_answer', ''))
-
+                    
                     # Válasz mentése
                     st.session_state.question_answers[st.session_state.current_question] = user_answer
                     st.session_state.answers.append({
@@ -4360,9 +4369,11 @@ def show_youtube_search_tab():
         
         question_text = st.text_input("Kérdés szövege:", value=question.get("question", ""))
         explanation = st.text_input("Magyarázat:", value=question.get("explanation", ""))
+        approved_artist = st.text_input("Előadó / Szerző:", value=question.get("options", [""])[0] if question.get("options") else "")
+        approved_title = st.text_input("Szám címe:", value=question.get("song_title", "") or question.get("audio_file", ""))
         
         options = question.get("options", []) + [""] * (4 - len(question.get("options", [])))
-        option_1 = st.text_input("Opció 1 (helyes):", value=options[0] if len(options) > 0 else "")
+        option_1 = st.text_input("Opció 1 (helyes):", value=approved_artist or (options[0] if len(options) > 0 else ""))
         option_2 = st.text_input("Opció 2:", value=options[1] if len(options) > 1 else "")
         option_3 = st.text_input("Opció 3:", value=options[2] if len(options) > 2 else "")
         option_4 = st.text_input("Opció 4:", value=options[3] if len(options) > 3 else "")
@@ -4377,12 +4388,25 @@ def show_youtube_search_tab():
         col1, col2 = st.columns(2)
         with col1:
             if st.button("💾 Mentés és integrálás", type="primary", use_container_width=True):
+                new_audio_file = audio_file
+                audio_source_path = pending.get("audio_file")
+                if audio_source_path and os.path.exists(audio_source_path):
+                    safe_name = _make_safe_filename(approved_artist, approved_title)
+                    new_path = os.path.join(os.path.dirname(audio_source_path), safe_name)
+                    try:
+                        if audio_source_path != new_path:
+                            os.replace(audio_source_path, new_path)
+                        new_audio_file = os.path.basename(new_path)
+                    except Exception as e:
+                        st.warning(f"⚠️ Fájlnév átnevezés sikertelen: {e}")
+
                 new_question = {
                     "question": question_text,
                     "options": updated_options,
                     "correct": updated_options.index(correct_answer),
-                    "explanation": explanation,
-                    "audio_file": audio_file,
+                    "explanation": explanation or f"{approved_artist} - {approved_title}",
+                    "audio_file": new_audio_file,
+                    "song_title": approved_title,
                     "topic": category,
                 }
                 add_question_to_category(new_question, category)
@@ -4393,7 +4417,7 @@ def show_youtube_search_tab():
             if st.button("🗑️ Elvetés", type="secondary", use_container_width=True):
                 del st.session_state.pending_integration
                 st.info("ℹ️ Integráció elvetve.")
-                st.rerun()
+                                                st.rerun()
 
 
 def search_youtube_tracks(query):
@@ -4594,7 +4618,7 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 "❌ YouTube player response hiba (yt-dlp). "
                 f"Frissítsd a yt-dlp-t: pip install -U yt-dlp (aktuális: {version})"
             )
-
+    
     # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
     ydl_opts = {
         'format': 'bestaudio[ext=m4a]/bestaudio/best',
@@ -4666,34 +4690,34 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         return False
     
     # Próbálkozás 1: Egyszerű konfiguráció
-    try:
-        simple_opts = {
-            'format': 'bestaudio/best',
-            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-            }],
-            'noplaylist': True,
-            'quiet': True,
-            'no_warnings': True,
+        try:
+            simple_opts = {
+                'format': 'bestaudio/best',
+                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192',
+                }],
+                'noplaylist': True,
+                'quiet': True,
+                'no_warnings': True,
             'extractor_args': {
                 'youtube': {
                     'player_skip': ['configs', 'webpage'],
                     'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                 }
             },
-        }
-        with yt_dlp.YoutubeDL(simple_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            if info:
-                ydl.download([url])
-                success = True
-            else:
-                success = False
-    except Exception as e:
-        st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+            }
+            with yt_dlp.YoutubeDL(simple_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                if info:
+                    ydl.download([url])
+                    success = True
+                else:
+                    success = False
+        except Exception as e:
+            st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
         _yt_dlp_hint(str(e))
         success = False
     
