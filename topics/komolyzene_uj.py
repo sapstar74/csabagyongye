@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-19 16:18:56
+# Generated on: 2026-01-19 16:24:53
 
 QUESTIONS = [
     {
@@ -806,11 +806,11 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
         "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
-        "song_title": "Tannhäuser",
+        "song_title": "Tannhäuser Music fragment D",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Wagner Tannhäuser Music fragment Dutch National\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Wagner Tannhäuser Music fragment Dutch National"",
         "options": [
             "Mozart",
             "Beethoven",
