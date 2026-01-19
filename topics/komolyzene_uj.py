@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-19 16:15:55
+# Generated on: 2026-01-19 16:18:56
 
 QUESTIONS = [
     {
@@ -793,13 +793,12 @@ QUESTIONS = [
         "correct": 2,
         "explanation": "Ismeretlen: 7-OndaxNqzM",
         "audio_file": "61. Mozart - Die Meistersinger von Nürnberg.mp3",
-        "song_title": "Die Meistersinger von Nürnberg",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Tannhäuser Music fragment D\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
         "options": [
-            "Mozart",
+            "Wagner",
             "Beethoven",
             "Bach",
             "Haydn",
@@ -807,10 +806,11 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
         "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
+        "song_title": "Tannhäuser",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Wagner Tannhäuser Music fragment Dutch National\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Wagner Tannhäuser Music fragment Dutch National"",
         "options": [
             "Mozart",
             "Beethoven",
@@ -823,6 +823,3 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
 ]
-
-# Export alias for compatibility
-KOMOLYZENE_QUESTIONS = QUESTIONS
