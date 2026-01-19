@@ -4369,8 +4369,14 @@ def show_youtube_search_tab():
         
         question_text = st.text_input("Kérdés szövege:", value=question.get("question", ""))
         explanation = st.text_input("Magyarázat:", value=question.get("explanation", ""))
-        approved_artist = st.text_input("Előadó / Szerző:", value=question.get("options", [""])[0] if question.get("options") else "")
-        approved_title = st.text_input("Szám címe:", value=question.get("song_title", "") or question.get("audio_file", ""))
+        fallback_artist = ""
+        if question.get("options"):
+            fallback_artist = question["options"][0]
+        else:
+            fallback_artist = pending.get("track_info", {}).get("channel", "")
+        fallback_title = question.get("song_title") or pending.get("track_info", {}).get("title", "") or result_title
+        approved_artist = st.text_input("Előadó / Szerző:", value=fallback_artist)
+        approved_title = st.text_input("Szám címe:", value=fallback_title)
         
         options = question.get("options", []) + [""] * (4 - len(question.get("options", [])))
         option_1 = st.text_input("Opció 1 (helyes):", value=approved_artist or (options[0] if len(options) > 0 else ""))
@@ -4388,10 +4394,10 @@ def show_youtube_search_tab():
         col1, col2 = st.columns(2)
         with col1:
             if st.button("💾 Mentés és integrálás", type="primary", use_container_width=True):
-                new_audio_file = audio_file
+                safe_name = _make_safe_filename(approved_artist, approved_title)
+                new_audio_file = safe_name
                 audio_source_path = pending.get("audio_file")
                 if audio_source_path and os.path.exists(audio_source_path):
-                    safe_name = _make_safe_filename(approved_artist, approved_title)
                     new_path = os.path.join(os.path.dirname(audio_source_path), safe_name)
                     try:
                         if audio_source_path != new_path:
@@ -4399,6 +4405,8 @@ def show_youtube_search_tab():
                         new_audio_file = os.path.basename(new_path)
                     except Exception as e:
                         st.warning(f"⚠️ Fájlnév átnevezés sikertelen: {e}")
+                else:
+                    st.warning("⚠️ Nem található letöltött fájl az átnevezéshez, csak a kérdésbe kerül be az új név.")
 
                 new_question = {
                     "question": question_text,
