@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 21:32:41
+# Generated on: 2026-01-19 16:15:55
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -218,6 +218,33 @@ KOMPOLYZENE_QUESTIONS = [
         "correct": 0,
         "explanation": "Mozart - Canzonetta sull'aria",
         "audio_file": "Unknown_Artist_The_Shawshank_redemption_Canzo.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Wagner",
+            "Beethoven",
+            "Mozart",
+            "Handel",
+        ],
+        "correct": 0,
+        "explanation": "Wagner - Die Meistersinger von Nürnberg",
+        "audio_file": "7-OndaxNqzM.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Wagner",
+            "Beethoven",
+            "Mozart",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Wagner - Tannhäuser",
+        "audio_file": "Wagner_Tannhäuser_Music_fragment_Dutch_National.mp3",
+        "song_title": "Tannhäuser: Music fragment  - Dutch National Opera",
         "topic": "komolyzene",
     },
 ]

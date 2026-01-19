@@ -4716,34 +4716,34 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     info = {}
     
     # Próbálkozás 1: Egyszerű konfiguráció
-        try:
-            simple_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192',
-                }],
-                'noplaylist': True,
-                'quiet': True,
-                'no_warnings': True,
+    try:
+        simple_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+            'noplaylist': True,
+            'quiet': True,
+            'no_warnings': True,
             'extractor_args': {
                 'youtube': {
                     'player_skip': ['configs', 'webpage'],
                     'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                 }
             },
-            }
-            with yt_dlp.YoutubeDL(simple_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
-                if info:
-                    ydl.download([url])
-                    success = True
-                else:
-                    success = False
-        except Exception as e:
-            st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+        }
+        with yt_dlp.YoutubeDL(simple_opts) as ydl:
+            info = ydl.extract_info(url, download=False)
+            if info:
+                ydl.download([url])
+                success = True
+            else:
+                success = False
+    except Exception as e:
+        st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
         _yt_dlp_hint(str(e))
         success = False
     
