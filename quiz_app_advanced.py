@@ -4284,6 +4284,8 @@ def show_youtube_search_tab():
                     
                     # Letöltés gomb
                     if st.button(f"📥 Letöltés és integrálás", key=f"download_{i}", type="primary", use_container_width=True):
+                        st.session_state.integration_status = "starting"
+                        st.session_state.integration_error = ""
                         # Középre igazított státuszjelentés konténer
                         st.markdown("""
                         <div style="
@@ -4310,6 +4312,7 @@ def show_youtube_search_tab():
                             
                             with status_container:
                                 try:
+                                    st.info("🔄 Integráció indult...")
                                     # Egyedi opciók használata
                                     custom_options = [option_1, option_2, option_3, option_4]
                                     
@@ -4341,18 +4344,26 @@ def show_youtube_search_tab():
                                     integration_result = download_and_integrate_track(
                                         result, selected_category, custom_options, require_review=True
                                     )
-                                    
-                                    if integration_result and integration_result.get("success"):
+
+                                    if isinstance(integration_result, dict) and integration_result.get("success"):
                                         st.success("✅ Letöltés kész. A mentés előtt még szerkesztheted a kérdést lent.")
                                         st.session_state.pending_integration = integration_result
                                         st.session_state.pending_integration["custom_options"] = custom_options
                                         st.session_state.pending_integration["selected_category"] = selected_category
                                         st.session_state.pending_integration["result_title"] = result.get("title", "Ismeretlen")
+                                        st.session_state.integration_status = "ready"
                                         st.rerun()
+                                    elif integration_result is True:
+                                        st.success("✅ Letöltés és integrálás befejezve.")
+                                        st.session_state.integration_status = "done"
                                     else:
-                                        st.markdown('<div style="font-size: 12px;">❌ Hiba történt a letöltés során!</div>', unsafe_allow_html=True)
+                                        st.session_state.integration_status = "error"
+                                        st.session_state.integration_error = "Nem jött vissza érvényes integrációs eredmény."
+                                        st.error("❌ Integráció nem adott vissza eredményt.")
                                         
                                 except Exception as e:
+                                    st.session_state.integration_status = "error"
+                                    st.session_state.integration_error = str(e)
                                     st.markdown(f'<div style="font-size: 12px;">❌ Hiba: {e}</div>', unsafe_allow_html=True)
 
     # Mentés előtti szerkesztés (önálló blokk)
@@ -4426,6 +4437,10 @@ def show_youtube_search_tab():
                 del st.session_state.pending_integration
                 st.info("ℹ️ Integráció elvetve.")
                 st.rerun()
+
+    # Diagnosztika
+    if st.session_state.get("integration_status") == "error":
+        st.warning(f"⚠️ Integrációs hiba: {st.session_state.get('integration_error', 'Ismeretlen hiba')}")
 
 
 def search_youtube_tracks(query):
@@ -4696,6 +4711,9 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     if not url:
         st.error("Nincs érvényes URL a track_info-ban")
         return False
+    
+    success = False
+    info = {}
     
     # Próbálkozás 1: Egyszerű konfiguráció
         try:
