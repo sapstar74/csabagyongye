@@ -810,7 +810,7 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: "Wagner Tannhäuser Music fragment Dutch National"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Wagner Tannhäuser Music fragment Dutch National\"",
         "options": [
             "Mozart",
             "Beethoven",
