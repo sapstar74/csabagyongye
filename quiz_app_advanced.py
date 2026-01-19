@@ -4417,7 +4417,7 @@ def show_youtube_search_tab():
             if st.button("🗑️ Elvetés", type="secondary", use_container_width=True):
                 del st.session_state.pending_integration
                 st.info("ℹ️ Integráció elvetve.")
-                                                st.rerun()
+                st.rerun()
 
 
 def search_youtube_tracks(query):
