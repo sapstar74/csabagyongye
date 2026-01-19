@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-18 21:34:46
+# Generated on: 2026-01-19 14:02:43
 
 QUESTIONS = [
     {
@@ -780,7 +780,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist The Shawshank redemption Canzo",
         "audio_file": "60. Mozart - Canzonetta sullaria.mp3",
-        "song_title": "Canzonetta sull'aria",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét!",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Wagner",
+            "Haydn",
+        ],
+        "correct": 2,
+        "explanation": "Ismeretlen: 7-OndaxNqzM",
+        "audio_file": "61. Mozart - Die Meistersinger von Nürnberg.mp3",
+        "song_title": "Die Meistersinger von Nürnberg",
         "topic": "komolyzene",
     },
 ]
