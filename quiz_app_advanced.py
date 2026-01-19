@@ -1140,8 +1140,8 @@ def _parse_artist_and_title(track_name: str):
     return "Ismeretlen", name
 
 def show_artist_list_page():
-    """Előadók szerinti lista önálló oldal"""
-    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎼 Előadók szerinti lista</h2>', unsafe_allow_html=True)
+    """Szerző szerinti lista önálló oldal"""
+    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎼 Szerző szerinti lista</h2>', unsafe_allow_html=True)
     
     tracks_by_category = get_audio_tracks_by_category()
     music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
@@ -1151,12 +1151,19 @@ def show_artist_list_page():
         st.info("📭 Nincs elérhető zenei kategória.")
         return
     
-    selected_category = st.selectbox(
-        "Zenei kategória:",
-        options=list(music_options.keys()),
-        format_func=lambda x: music_options[x],
-        key="artist_list_category"
-    )
+    st.markdown("### 🎵 Zenei kategória választás")
+    current_category = st.session_state.get("artist_list_category", list(music_options.keys())[0])
+    selected_category = None
+    cols = st.columns(2)
+    for i, (key, title) in enumerate(music_options.items()):
+        with cols[i % 2]:
+            button_type = "primary" if key == current_category else "secondary"
+            if st.button(title, key=f"artist_list_cat_{key}", type=button_type, use_container_width=True):
+                selected_category = key
+                st.session_state.artist_list_category = key
+                st.rerun()
+    if selected_category is None:
+        selected_category = current_category
     
     category_info = tracks_by_category.get(selected_category, {})
     tracks = category_info.get("tracks", [])
