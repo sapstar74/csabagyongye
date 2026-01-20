@@ -4374,7 +4374,7 @@ def show_youtube_search_tab():
         result_title = pending.get("result_title", "Ismeretlen")
         audio_file = question.get("audio_file", "N/A")
         
-                                        st.markdown("---")
+        st.markdown("---")
         st.markdown("### ✏️ Mentés előtti szerkesztés")
         st.info(f"Letöltött track: {result_title} | Kategória: {category} | Fájl: {audio_file}")
         
@@ -4403,7 +4403,7 @@ def show_youtube_search_tab():
         )
         
         col1, col2 = st.columns(2)
-                                        with col1:
+        with col1:
             if st.button("💾 Mentés és integrálás", type="primary", use_container_width=True):
                 safe_name = _make_safe_filename(approved_artist, approved_title)
                 new_audio_file = safe_name
@@ -4432,11 +4432,11 @@ def show_youtube_search_tab():
                 st.success("✅ Kérdés mentve és integrálva.")
                 del st.session_state.pending_integration
                 st.rerun()
-                                        with col2:
+        with col2:
             if st.button("🗑️ Elvetés", type="secondary", use_container_width=True):
                 del st.session_state.pending_integration
                 st.info("ℹ️ Integráció elvetve.")
-                                                st.rerun()
+                st.rerun()
                                         
     # Diagnosztika
     if st.session_state.get("integration_status") == "error":
@@ -4712,38 +4712,38 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         st.error("Nincs érvényes URL a track_info-ban")
         return False
     
-                success = False
+    success = False
     info = {}
     
     # Próbálkozás 1: Egyszerű konfiguráció
-        try:
-            simple_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192',
-                }],
-                'noplaylist': True,
-                'quiet': True,
-                'no_warnings': True,
+    try:
+        simple_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': str(download_dir / '%(id)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+            }],
+            'noplaylist': True,
+            'quiet': True,
+            'no_warnings': True,
             'extractor_args': {
                 'youtube': {
                     'player_skip': ['configs', 'webpage'],
                     'player_client': ['android', 'web', 'ios', 'tv_embedded'],
                 }
             },
-            }
-            with yt_dlp.YoutubeDL(simple_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
-                if info:
-                    ydl.download([url])
-                    success = True
-                else:
-                    success = False
-        except Exception as e:
-            st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
+        }
+        with yt_dlp.YoutubeDL(simple_opts) as ydl:
+            info = ydl.extract_info(url, download=False)
+            if info:
+                ydl.download([url])
+                success = True
+            else:
+                success = False
+    except Exception as e:
+        st.error(f"Egyszerű konfiguráció is sikertelen: {str(e)}")
         _yt_dlp_hint(str(e))
         success = False
     
