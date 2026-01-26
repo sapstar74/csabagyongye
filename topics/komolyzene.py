@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-19 16:15:55
+# Generated on: 2026-01-26 17:26:34
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -245,6 +245,20 @@ KOMPOLYZENE_QUESTIONS = [
         "explanation": "Wagner - Tannhäuser",
         "audio_file": "Wagner_Tannhäuser_Music_fragment_Dutch_National.mp3",
         "song_title": "Tannhäuser: Music fragment  - Dutch National Opera",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Dvorak",
+            "Beethoven",
+            "Wagner",
+            "Liszt",
+        ],
+        "correct": 0,
+        "explanation": "Dvorak - Komolyzene",
+        "audio_file": "Dvorak_Dvořák_Symphony_9_From_The_New_World_II_.mp3",
+        "song_title": "Dvořák: Symphony №9, \"From The New World\" - II - Largo",
         "topic": "komolyzene",
     },
 ]
