@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-20 11:32:45
+# Generated on: 2026-01-27 13:46:17
 
 QUESTIONS = [
     {
@@ -822,4 +822,20 @@ QUESTIONS = [
         "audio_file": "Wagner_Tannhäuser_Music_fragment_Dutch_National.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Dvorak Dvořák Symphony 9 From The New World II \"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Dvorak Dvořák Symphony 9 From The New World II ",
+        "audio_file": "Dvorak_Dvořák_Symphony_9_From_The_New_World_II_.mp3",
+        "topic": "komolyzene",
+    },
 ]
+
+# Export alias for compatibility
+KOMOLYZENE_QUESTIONS = QUESTIONS
