@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 15:03:29
+# Generated on: 2026-01-27 15:09:55
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -285,6 +285,20 @@ KOMPOLYZENE_QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Verdi ",
+        "audio_file": "Verdi_Verdis_Requiem_Dies_irae.mp3",
+        "song_title": "Verdi’s Requiem: “Dies irae”",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Verdi",
+            "Beethowen",
+            "Wagner",
+            "Mozart",
+        ],
+        "correct": 0,
+        "explanation": "Verdi’s Requiem: “Dies irae”",
         "audio_file": "Verdi_Verdis_Requiem_Dies_irae.mp3",
         "song_title": "Verdi’s Requiem: “Dies irae”",
         "topic": "komolyzene",

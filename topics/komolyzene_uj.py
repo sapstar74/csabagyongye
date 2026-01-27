@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 14:58:50
+# Generated on: 2026-01-27 15:10:03
 
 QUESTIONS = [
     {
@@ -819,6 +819,19 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Dvorak Symphony No 9 From the New World Mvmt 4",
         "audio_file": "Dvorak_Symphony_No_9_From_the_New_World_Mvmt_4.mp3",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Verdi Verdis Requiem Dies irae\"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Verdi Verdis Requiem Dies irae",
+        "audio_file": "Verdi_Verdis_Requiem_Dies_irae.mp3",
         "topic": "komolyzene",
     },
 ]
