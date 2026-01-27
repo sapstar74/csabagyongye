@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 14:34:21
+# Generated on: 2026-01-27 14:58:50
 
 QUESTIONS = [
     {
@@ -798,20 +798,6 @@ QUESTIONS = [
     {
         "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
         "options": [
-            "Wagner",
-            "Beethoven",
-            "Bach",
-            "Haydn",
-        ],
-        "correct": 0,
-        "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
-        "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
-        "song_title": "Tannhäuser Music fragment",
-        "topic": "komolyzene",
-    },
-    {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
-        "options": [
             "Mozart",
             "Beethoven",
             "Dvorak",
@@ -822,4 +808,20 @@ QUESTIONS = [
         "audio_file": "63. Mozart - Symphony 9 From The New World II.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Dvorak Symphony No 9 From the New World Mvmt 4\"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Dvorak Symphony No 9 From the New World Mvmt 4",
+        "audio_file": "Dvorak_Symphony_No_9_From_the_New_World_Mvmt_4.mp3",
+        "topic": "komolyzene",
+    },
 ]
+
+# Export alias for compatibility
+KOMOLYZENE_QUESTIONS = QUESTIONS

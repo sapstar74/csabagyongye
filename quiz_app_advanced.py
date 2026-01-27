@@ -2040,7 +2040,6 @@ def show_audio_track_management_page():
                                             
                                             # Git műveletek
                                             try:
-                                                import subprocess
                                                 subprocess.run(['git', 'add', question_file_path], check=True)
                                                 subprocess.run(['git', 'commit', '-m', f'Update question for {row["Előadó"]} - {row["Szám címe"]}'], check=True)
                                                 subprocess.run(['git', 'push'], check=True)
@@ -2153,7 +2152,6 @@ def show_audio_track_management_page():
                                     
                                     # Git műveletek
                                     try:
-                                        import subprocess
                                         subprocess.run(['git', 'add', question_file_path], check=True)
                                         subprocess.run(['git', 'commit', '-m', f'Update multiple questions in {selected_category}'], check=True)
                                         subprocess.run(['git', 'push'], check=True)
