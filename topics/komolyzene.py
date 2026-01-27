@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 14:54:17
+# Generated on: 2026-01-27 15:03:29
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -273,6 +273,20 @@ KOMPOLYZENE_QUESTIONS = [
         "explanation": "Dvorak ",
         "audio_file": "Dvorak_Symphony_No_9_From_the_New_World_Mvmt_4.mp3",
         "song_title": "Symphony No. 9 (From the New World) Mvmt 4",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Verdi",
+            "Wagner",
+            "Beethoven",
+            "Mozart",
+        ],
+        "correct": 0,
+        "explanation": "Verdi ",
+        "audio_file": "Verdi_Verdis_Requiem_Dies_irae.mp3",
+        "song_title": "Verdi’s Requiem: “Dies irae”",
         "topic": "komolyzene",
     },
 ]
