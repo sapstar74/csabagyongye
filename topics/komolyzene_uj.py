@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 15:10:03
+# Generated on: 2026-01-27 15:12:40
 
 QUESTIONS = [
     {
@@ -809,32 +809,30 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Dvorak Symphony No 9 From the New World Mvmt 4\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
         "options": [
-            "Mozart",
+            "Dvorak",
             "Beethoven",
-            "Bach",
-            "Haydn",
+            "Wagner",
+            "Mozart",
         ],
         "correct": 0,
         "explanation": "Ismeretlen: Dvorak Symphony No 9 From the New World Mvmt 4",
-        "audio_file": "Dvorak_Symphony_No_9_From_the_New_World_Mvmt_4.mp3",
+        "audio_file": "63. Mozart - Dvorak Symphony No 9 From the New World Mvmt 4.mp3",
+        "song_title": "\"Dvorak Symphony No 9 From the New World Mvmt 4\"",
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Verdi Verdis Requiem Dies irae\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
         "options": [
             "Mozart",
             "Beethoven",
-            "Bach",
-            "Haydn",
+            "Verdi",
+            "Wagner",
         ],
         "correct": 0,
         "explanation": "Ismeretlen: Verdi Verdis Requiem Dies irae",
-        "audio_file": "Verdi_Verdis_Requiem_Dies_irae.mp3",
+        "audio_file": "64. Mozart - Requiem Dies irae.mp3",
         "topic": "komolyzene",
     },
 ]
-
-# Export alias for compatibility
-KOMOLYZENE_QUESTIONS = QUESTIONS
