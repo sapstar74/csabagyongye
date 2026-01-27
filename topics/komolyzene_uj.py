@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 13:46:17
+# Generated on: 2026-01-27 13:49:18
 
 QUESTIONS = [
     {
@@ -806,7 +806,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
         "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
-        "song_title": "Tannhäuser Music fragment D",
+        "song_title": "Tannhäuser Music fragment",
         "topic": "komolyzene",
     },
     {
@@ -836,6 +836,3 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
 ]
-
-# Export alias for compatibility
-KOMOLYZENE_QUESTIONS = QUESTIONS
