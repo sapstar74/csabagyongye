@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 14:33:44
+# Generated on: 2026-01-27 14:34:21
 
 QUESTIONS = [
     {
@@ -806,6 +806,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
         "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
+        "song_title": "Tannhäuser Music fragment",
         "topic": "komolyzene",
     },
     {
@@ -819,7 +820,6 @@ QUESTIONS = [
         "correct": 2,
         "explanation": "Ismeretlen: Dvorak Dvořák Symphony 9 From The New World II ",
         "audio_file": "63. Mozart - Symphony 9 From The New World II.mp3",
-        "song_title": "Symphony 9 From The New World II",
         "topic": "komolyzene",
     },
 ]
