@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 13:51:34
+# Generated on: 2026-01-27 13:52:28
 
 QUESTIONS = [
     {
@@ -806,6 +806,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Unknown Artist Tannhäuser Music fragment D",
         "audio_file": "Unknown_Artist_Tannhäuser_Music_fragment_D.mp3",
+        "song_title": "Tannhäuser Music fragment ",
         "topic": "komolyzene",
     },
     {
@@ -819,7 +820,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Wagner Tannhäuser Music fragment Dutch National",
         "audio_file": "63. Mozart - Wagner Tannhäuser Music fragment Dutch National.mp3",
-        "song_title": "Wagner Tannhäuser Music fragment Dutch National",
         "topic": "komolyzene",
     },
     {
