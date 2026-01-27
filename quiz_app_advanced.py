@@ -1599,7 +1599,6 @@ def show_audio_track_management_page():
                     st.info("❌ Nincs kérdésfájl!")
                 
                 # Track cache létrehozása
-                import os
                 track_cache = {}
                 for track in category_info['tracks']:
                     # A track['name'] már kiterjesztés nélküli, nem kell újra feldolgozni
@@ -1738,7 +1737,6 @@ def show_audio_track_management_page():
                 df = pd.DataFrame(table_data)
                 
                 # Sorszámok hozzáadása a fájlnévből
-                import os
                 row_numbers = []
                 filenames = []
                 
@@ -1969,7 +1967,6 @@ def show_audio_track_management_page():
                                             # Audio fájl átnevezése, ha a szám címe változott VAGY ha a fájlnév nem illeszkedik a várható formátumra
                                             if 'audio_file' in current_question and (song_title != current_song_title or not os.path.basename(current_question['audio_file']).startswith(f"{i+1:02d}.")):
                                                 try:
-                                                    import os
                                                     import shutil
                                                     
                                                     # Előadó meghatározása a kérdésből
@@ -2058,6 +2055,84 @@ def show_audio_track_management_page():
                                             st.error("❌ Hiba a fájl mentésekor!")
                                     except Exception as e:
                                         st.error(f"❌ Hiba a mentés során: {e}")
+                            
+                            # Törlés funkció - track + kérdés + GitHub sync
+                            st.markdown("---")
+                            st.markdown("### 🗑️ Törlés")
+                            st.warning("⚠️ Ez a művelet visszavonhatatlan: a kérdés és az audio fájl is törlődik.")
+                            confirm_delete = st.checkbox(
+                                "Igen, törlöm ezt a tracket és a kérdést",
+                                key=f"confirm_delete_{i}"
+                            )
+                            
+                            if st.button("🗑️ Track + kérdés törlése és GitHub sync", key=f"delete_track_{i}", type="secondary"):
+                                if not confirm_delete:
+                                    st.warning("⚠️ A törléshez jelöld be a megerősítést.")
+                                else:
+                                    try:
+                                        if not question_file_path:
+                                            st.error("❌ Nincs kérdésfájl, törlés nem lehetséges.")
+                                        else:
+                                            # Audio fájl útvonal megkeresése
+                                            audio_path = None
+                                            if row.get("matching_track") and row["matching_track"].get("audio_path"):
+                                                audio_path = row["matching_track"]["audio_path"]
+                                            elif 'audio_file' in current_question and current_question['audio_file']:
+                                                audio_filename = os.path.basename(current_question['audio_file'])
+                                                audio_name = os.path.splitext(audio_filename)[0]
+                                                for track in category_info['tracks']:
+                                                    if track['name'] == audio_name:
+                                                        audio_path = track['audio_path']
+                                                        break
+                                                if audio_path is None and os.path.exists(current_question['audio_file']):
+                                                    audio_path = current_question['audio_file']
+                                            
+                                            # Kérdés törlése
+                                            updated_questions = [q for idx, q in enumerate(questions) if idx != question_index]
+                                            if save_questions_to_file(updated_questions, question_file_path, "QUESTIONS"):
+                                                # Audio fájl törlése, ha létezik
+                                                if audio_path and os.path.exists(audio_path):
+                                                    os.remove(audio_path)
+                                                    st.success(f"✅ Audio fájl törölve: {os.path.basename(audio_path)}")
+                                                else:
+                                                    st.warning("⚠️ Audio fájl nem található, csak a kérdés törölve.")
+                                                
+                                                # Git műveletek
+                                                try:
+                                                    subprocess.run(['git', 'add', '-A', question_file_path], check=True)
+                                                    if audio_path:
+                                                        subprocess.run(['git', 'add', '-A', audio_path], check=True)
+                                                    commit_msg = f'Delete track {row["Előadó"]} - {row["Szám címe"]}'
+                                                    subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
+                                                    subprocess.run(['git', 'push'], check=True)
+                                                    st.success("✅ Törlés GitHub-ra szinkronizálva!")
+                                                except subprocess.CalledProcessError as e:
+                                                    st.error(f"❌ Git hiba: {e}")
+                                                
+                                                # Cache törlése
+                                                cache_keys_to_delete = []
+                                                for key in st.session_state.keys():
+                                                    if (key.startswith("audio_track_data_") or 
+                                                        key.startswith("duration_") or 
+                                                        key.startswith("track_cache_") or
+                                                        key == "modified_questions"):
+                                                        cache_keys_to_delete.append(key)
+                                                
+                                                for key in cache_keys_to_delete:
+                                                    if key in st.session_state:
+                                                        del st.session_state[key]
+                                                
+                                                if cache_key in st.session_state:
+                                                    del st.session_state[cache_key]
+                                                if cache_meta_key in st.session_state:
+                                                    del st.session_state[cache_meta_key]
+                                                
+                                                st.session_state['force_refresh'] = True
+                                                st.rerun()
+                                            else:
+                                                st.error("❌ Hiba a kérdésfájl mentésekor!")
+                                    except Exception as e:
+                                        st.error(f"❌ Törlés sikertelen: {e}")
                 
                 else:
                     # Lista nézet - csak megjelenítés
