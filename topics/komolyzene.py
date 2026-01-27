@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-26 17:26:34
+# Generated on: 2026-01-27 14:54:17
 
 KOMPOLYZENE_QUESTIONS = [
     {
@@ -259,6 +259,20 @@ KOMPOLYZENE_QUESTIONS = [
         "explanation": "Dvorak - Komolyzene",
         "audio_file": "Dvorak_Dvořák_Symphony_9_From_The_New_World_II_.mp3",
         "song_title": "Dvořák: Symphony №9, \"From The New World\" - II - Largo",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Dvorak",
+            "Beethoven",
+            "Wagner",
+            "Liszt",
+        ],
+        "correct": 0,
+        "explanation": "Dvorak ",
+        "audio_file": "Dvorak_Symphony_No_9_From_the_New_World_Mvmt_4.mp3",
+        "song_title": "Symphony No. 9 (From the New World) Mvmt 4",
         "topic": "komolyzene",
     },
 ]
