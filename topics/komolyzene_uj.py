@@ -810,19 +810,6 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: ",
-        "options": [
-            "Mozart",
-            "Beethoven",
-            "Bach",
-            "Haydn",
-        ],
-        "correct": 0,
-        "explanation": "Ismeretlen: Wagner Tannhäuser Music fragment Dutch National",
-        "audio_file": "63. Mozart - Wagner Tannhäuser Music fragment Dutch National.mp3",
-        "topic": "komolyzene",
-    },
-    {
         "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Dvorak Dvořák Symphony 9 From The New World II \"",
         "options": [
             "Mozart",

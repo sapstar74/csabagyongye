@@ -1548,19 +1548,31 @@ def show_audio_track_management_page():
 
             # EGYSZERŰ CACHE RENDSZER
             cache_key = f"simple_audio_data_{selected_category}"
+            # Kérdésfájl útvonal és módosítási idő a cache érvényesítéséhez
+            question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
+            question_file_mtime = None
+            if question_file_path and os.path.exists(question_file_path):
+                question_file_mtime = os.path.getmtime(question_file_path)
+            cache_meta_key = f"{cache_key}_meta"
             
             # Cache törlése gomb
             if st.button("🗑️ Cache törlése"):
                 if cache_key in st.session_state:
                     del st.session_state[cache_key]
+                if cache_meta_key in st.session_state:
+                    del st.session_state[cache_meta_key]
                 st.rerun()
             
             # Cache ellenőrzése
             force_refresh = st.session_state.get('force_refresh', False)
-            if cache_key in st.session_state and not force_refresh:
+            cached_meta = st.session_state.get(cache_meta_key, {})
+            cache_is_valid = cached_meta.get("questions_mtime") == question_file_mtime
+            if cache_key in st.session_state and not force_refresh and cache_is_valid:
                 table_data = st.session_state[cache_key]
                 st.info(f"📊 Cache betöltve: {len(table_data)} sor")
             else:
+                if cache_key in st.session_state and not cache_is_valid and not force_refresh:
+                    st.info("🔄 Kérdésfájl változott, cache frissítése...")
                 if force_refresh:
                     st.info("🔄 Kényszerített frissítés...")
                     # Összes kapcsolódó cache törlése
@@ -1715,6 +1727,7 @@ def show_audio_track_management_page():
                 
                 # Cache mentése
                 st.session_state[cache_key] = table_data
+                st.session_state[cache_meta_key] = {"questions_mtime": question_file_mtime}
                 st.info(f"💾 Cache mentve: {len(table_data)} sor")
                 st.success(f"✅ Táblázat létrehozva: {len(table_data)} sor")
             
@@ -1846,12 +1859,20 @@ def show_audio_track_management_page():
                     st.markdown("**Válassz egy sort a szerkesztéshez:**")
                     
                     # Kérdések betöltése szerkesztéshez
-                    question_file_path = category_info['tracks'][0]['question_file'] if category_info['tracks'] else None
                     if question_file_path:
                         questions = load_questions_from_file(question_file_path)
                     else:
                         questions = []
                         st.error("❌ Nincs kérdésfájl!")
+                    
+                    if question_file_path and len(table_data) != len(questions):
+                        st.warning("⚠️ A kérdéslista megváltozott. Cache frissítés szükséges.")
+                        if cache_key in st.session_state:
+                            del st.session_state[cache_key]
+                        if cache_meta_key in st.session_state:
+                            del st.session_state[cache_meta_key]
+                        st.session_state['force_refresh'] = True
+                        st.rerun()
                     
                     # Szerkesztési űrlapok minden sorhoz
                     for i, row in enumerate(table_data):
@@ -1863,6 +1884,9 @@ def show_audio_track_management_page():
                         
                         with st.expander(expander_title, expanded=False):
                             question_index = row['question_index']
+                            if question_index < 0 or question_index >= len(questions):
+                                st.warning("⚠️ Hibás kérdésindex. Kérlek frissítsd a cache-t.")
+                                continue
                             current_question = questions[question_index]
                             
                             # Kérdés szerkesztése
