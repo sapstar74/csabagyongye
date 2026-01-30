@@ -16,6 +16,7 @@ import time
 from datetime import datetime
 import os
 from pathlib import Path
+from typing import Optional
 import base64
 from topics.foldrajz_complete import FOLDRAJZ_QUESTIONS_COMPLETE as FOLDRAJZ_QUESTIONS
 from topics.komolyzene_uj import QUESTIONS as KOMOLYZENE_QUESTIONS
@@ -269,6 +270,98 @@ def sync_with_github():
         
     except Exception as e:
         st.error(f"❌ Szinkronizálási hiba: {e}")
+        return False
+
+def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> bool:
+    """Teljes komolyzene Git sync (pull + add/commit/push)"""
+    try:
+        repo_root = Path(__file__).parent
+        if not (repo_root / ".git").exists():
+            st.error("❌ Git repo nem található, szinkronizálás nem lehetséges.")
+            return False
+
+        st.info("🔄 Komolyzene Git sync indítása...")
+
+        pull_result = subprocess.run(
+            ['git', 'pull', 'origin', 'main'],
+            capture_output=True,
+            text=True,
+            cwd=str(repo_root)
+        )
+        if pull_result.returncode != 0:
+            st.error(f"❌ Git pull hiba: {pull_result.stderr or pull_result.stdout}")
+            return False
+        st.success("✅ Git pull sikeres!")
+
+        sync_paths = []
+        if question_file_path:
+            sync_paths.append(question_file_path)
+        else:
+            sync_paths.append("topics/komolyzene_uj.py")
+
+        candidate_dirs = [
+            "audio_files/komolyzene",
+            "audio_files_komolyzene_uj",
+        ]
+        for path in candidate_dirs:
+            if (repo_root / path).exists():
+                sync_paths.append(path)
+
+        # Csak létező útvonalakat hagyunk meg
+        existing_paths = [p for p in dict.fromkeys(sync_paths) if (repo_root / p).exists()]
+        if not existing_paths:
+            st.warning("⚠️ Nincsenek komolyzene fájlok a szinkronhoz.")
+            return False
+
+        add_result = subprocess.run(
+            ['git', 'add', '-A', *existing_paths],
+            capture_output=True,
+            text=True,
+            cwd=str(repo_root)
+        )
+        if add_result.returncode != 0:
+            st.error(f"❌ Git add hiba: {add_result.stderr or add_result.stdout}")
+            return False
+
+        diff_result = subprocess.run(
+            ['git', 'diff', '--cached', '--name-only', '--', *existing_paths],
+            capture_output=True,
+            text=True,
+            cwd=str(repo_root)
+        )
+        if diff_result.returncode != 0:
+            st.error(f"❌ Git diff hiba: {diff_result.stderr or diff_result.stdout}")
+            return False
+
+        if not diff_result.stdout.strip():
+            st.info("ℹ️ Nincs komolyzene változás a szinkronhoz.")
+            return True
+
+        commit_msg = f"Komolyzene sync - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        commit_result = subprocess.run(
+            ['git', 'commit', '-m', commit_msg, '--', *existing_paths],
+            capture_output=True,
+            text=True,
+            cwd=str(repo_root)
+        )
+        if commit_result.returncode != 0:
+            st.error(f"❌ Git commit hiba: {commit_result.stderr or commit_result.stdout}")
+            return False
+
+        push_result = subprocess.run(
+            ['git', 'push'],
+            capture_output=True,
+            text=True,
+            cwd=str(repo_root)
+        )
+        if push_result.returncode != 0:
+            st.error(f"❌ Git push hiba: {push_result.stderr or push_result.stdout}")
+            return False
+
+        st.success("✅ Komolyzene Git sync sikeres!")
+        return True
+    except Exception as e:
+        st.error(f"❌ Komolyzene sync hiba: {e}")
         return False
 
 def get_image_base64(image_path):
@@ -674,22 +767,34 @@ def get_audio_file_for_question(question, topic):
                     return str(audio_path)
             except Exception as e:
                 pass
-        elif "audio_file" in question:
-            # Ha csak audio_file van, próbáljuk az új mappából
-            audio_dir = Path(__file__).parent / "audio_files/komolyzene"
-            audio_path = audio_dir / question["audio_file"]
-            if audio_path.exists():
-                return str(audio_path)
-            # Fallback: újabb komolyzene mappa (audio_files_komolyzene_uj)
-            audio_dir = Path(__file__).parent / "audio_files_komolyzene_uj"
-            audio_path = audio_dir / question["audio_file"]
-            if audio_path.exists():
-                return str(audio_path)
-            # Fallback: régi mappa
-            audio_dir = Path(__file__).parent / "audio_files_komolyzene"
-            audio_path = audio_dir / question["audio_file"]
-            if audio_path.exists():
-                return str(audio_path)
+        elif "audio_file" in question and question["audio_file"]:
+            audio_file = question["audio_file"]
+            audio_dirs = [
+                Path(__file__).parent / "audio_files/komolyzene",
+                Path(__file__).parent / "audio_files_komolyzene_uj",
+                Path(__file__).parent / "audio_files_komolyzene",
+            ]
+            # Direkt egyezés
+            for audio_dir in audio_dirs:
+                audio_path = audio_dir / audio_file
+                if audio_path.exists():
+                    return str(audio_path)
+            # Fallback: sorszám alapján keresés (pl. 43. -> 43_*)
+            try:
+                import re
+                match = re.match(r"^\s*(\d+)", audio_file)
+                if match:
+                    num = match.group(1)
+                    for audio_dir in audio_dirs:
+                        if not audio_dir.exists():
+                            continue
+                        for candidate in audio_dir.glob(f"{num}*"):
+                            if not candidate.is_file() or candidate.suffix.lower() != ".mp3":
+                                continue
+                            if re.match(fr"^{num}(\D|$)", candidate.name):
+                                return str(candidate)
+            except Exception:
+                pass
     elif topic == "one_hit_wonders":
         # One Hit Wonders audio fájl kezelése
         if "original_index" in question:
@@ -751,20 +856,10 @@ def get_audio_file_for_question(question, topic):
     return None
 
 def show_answer_popup(question, user_answer, correct_answer):
-    """Tartós popup üzenet a válaszról, helyes válaszról és audio útvonalról"""
-    topic = question.get("topic")
-    audio_path = get_audio_file_for_question(question, topic) if topic else None
-    if audio_path:
-        abs_path = os.path.abspath(audio_path)
-        filename = os.path.basename(abs_path)
-        audio_info = f"{abs_path} ({filename})"
-    else:
-        audio_info = "N/A"
-
+    """Tartós popup üzenet a válaszról és helyes válaszról"""
     st.session_state.answer_popup = {
         "user_answer": user_answer if user_answer else "N/A",
         "correct_answer": correct_answer if correct_answer else "N/A",
-        "audio_info": audio_info,
     }
 
 def render_answer_popup():
@@ -802,8 +897,6 @@ def render_answer_popup():
             <strong>Válaszod:</strong> {popup["user_answer"]}
             &nbsp;|&nbsp;
             <strong>Helyes válasz:</strong> {popup["correct_answer"]}
-            <br/>
-            <strong>Audio:</strong> {popup["audio_info"]}
         </div>
         """,
         unsafe_allow_html=True,
@@ -1531,6 +1624,13 @@ def show_audio_track_management_page():
     if selected_category:
         category_info = tracks_by_category[selected_category]
         st.markdown(f"### {category_info['title']}")
+        
+        if selected_category == "komolyzene":
+            komoly_question_file = category_info['tracks'][0]['question_file'] if category_info['tracks'] else "topics/komolyzene_uj.py"
+            st.markdown("### 🔄 Komolyzene Git sync")
+            st.caption("Teljes szinkron: git pull + komolyzene fájlok commit/push.")
+            if st.button("🔄 Teljes komolyzene Git sync", type="primary", use_container_width=True):
+                sync_komolyzene_with_github(komoly_question_file)
         
         # Lista v. Szerkesztés választó közvetlenül a kategória alatt
         edit_mode = st.radio(
