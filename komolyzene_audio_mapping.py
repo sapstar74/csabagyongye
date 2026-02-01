@@ -6,83 +6,83 @@ Komolyzenei audio fájlok mapping-je
 # Komolyzenei audio fájlok mapping-je - frissítve a valóságos fájlok alapján
 KOMOLYZENE_AUDIO_MAPPING = {
     # Dvorak
-    0: "Dvořák： 9. Sinfonie (»Aus der Neuen Welt«) ∙ hr-Sinfonieorchester ∙ Andrés Orozco-Estrada.mp3",
-    1: "2_Dvorak_Humoresque.mp3", 
-    2: "3_Dvorak_Symphony_8.mp3",
-    
+    0: "1. Dvorak - New World Symphony.mp3",
+    1: "2. Dvorak - Humoresque.mp3",
+    2: "3. Dvorak - Symphony 8.mp3",
+
     # Beethoven
-    3: "4_Beethoven_Symphony_5.mp3",
-    4: "5_Beethoven_Moonlight_Sonata.mp3",
-    5: "6_Beethoven_Ode_to_Joy.mp3",
-    15: "16_Beethoven_Ode_to_Joy_2.mp3",
-    
+    3: "4. Beethoven - Symphony 5.mp3",
+    4: "5. Beethoven - Moonlight Sonata.mp3",
+    5: "6. Beethoven - Ode to Joy.mp3",
+    15: "16. Beethoven - Ode to Joy 2.mp3",
+
     # Csajkovszkij
-    6: "7_Tchaikovsky_Nutcracker.mp3",
-    7: "8_Tchaikovsky_Swan_Lake.mp3", 
-    8: "9_Tchaikovsky_Piano_Concerto_1.mp3",
-    
+    6: "7. Tchaikovsky - Nutcracker.mp3",
+    7: "8. Tchaikovsky - Swan Lake.mp3",
+    8: "9. Tchaikovsky - Piano Concerto 1.mp3",
+
     # Handel
-    9: "10_Handel_Rinaldo.mp3",
-    10: "11_Handel_Minuet_B_flat.mp3",
-    11: "12_Handel_Keyboard_Suite_D_minor.mp3",
-    
+    9: "10. Handel - Rinaldo.mp3",
+    10: "11. Handel - Minuet B flat.mp3",
+    11: "12. Handel - Keyboard Suite D minor.mp3",
+
     # Wagner
-    12: "13_Wagner_Ride_of_Valkyries.mp3",
-    13: "14_Wagner_Lohengrin_Wedding_March.mp3",
-    
+    12: "13. Wagner - Ride of Valkyries.mp3",
+    13: "14. Wagner - Lohengrin Wedding March.mp3",
+
     # Schubert
-    14: "15_Schubert_Ave_Maria.mp3",
-    26: "27_Schubert_Trout_Quintet.mp3",
-    
+    14: "15. Schubert - Ave Maria.mp3",
+    26: "27. Schubert - Trout Quintet.mp3",
+
     # Kodály
-    16: "17_Kodaly_Hary_Janos.mp3",
-    17: "18_Kodaly_Kallai_Kettos.mp3",
-    18: "19_Kodaly_Adagio.mp3",
-    
+    16: "17. Kodaly - Hary Janos.mp3",
+    17: "18. Kodaly - Kallai Kettos.mp3",
+    18: "19. Kodaly - Adagio.mp3",
+
     # Bartók
-    19: "20_Bartok_Bluebeard_Castle.mp3",
-    20: "21_Bartok_Miraculous_Mandarin.mp3",
-    
+    19: "20. Bartok - Bluebeard Castle.mp3",
+    20: "21. Bartok - Miraculous Mandarin.mp3",
+
     # Hacsaturján
-    21: "22_Khachaturian_Sabre_Dance.mp3",
-    22: "23_Khachaturian_Spartacus.mp3",
-    
+    21: "22. Khachaturian - Sabre Dance.mp3",
+    22: "23. Khachaturian - Spartacus.mp3",
+
     # Weiner Leó
-    23: "24_Weiner_Fox_Dance.mp3",
-    
+    23: "24. Weiner - Fox Dance.mp3",
+
     # Rimsky-Korsakov
-    24: "25_Rimsky_Korsakov_Flight_of_Bumblebee.mp3",
-    
+    24: "25. Rimsky Korsakov - Flight of Bumblebee.mp3",
+
     # Mussorgsky
-    25: "26_Mussorgsky_Night_on_Bald_Mountain.mp3",
-    
+    25: "26. Mussorgsky - Night on Bald Mountain.mp3",
+
     # Prokofjev
-    27: "28_Prokofiev_Peter_and_Wolf.mp3",
-    
+    27: "28. Prokofiev - Peter and Wolf.mp3",
+
     # Carl Orff
-    28: "29_Carl_Orff_Carmina_Burana.mp3",
-    
+    28: "29. Carl Orff - Carmina Burana.mp3",
+
     # Ravel
-    29: "30_Ravel_Bolero.mp3",
-    
+    29: "30. Ravel - Bolero.mp3",
+
     # Bach
-    30: "31_Bach_Brandenburg_Concerto_3.mp3",
-    31: "32_Bach_Toccata_Fugue_D_minor.mp3",
-    32: "33_Bach_Air_on_G_String.mp3",
-    33: "34_Bach_Italian_Concerto.mp3",
-    34: "35_Bach_Jesu_Joy.mp3",
-    35: "36_Bach_Brandenburg_Concerto_5.mp3",
-    36: "37_Bach_Concerto_Two_Violins.mp3",
-    37: "38_Bach_Minuet_G_major.mp3",
-    
+    30: "31. Bach - Brandenburg Concerto 3.mp3",
+    31: "32. Bach - Toccata Fugue D minor.mp3",
+    32: "33. Bach - Air on G String.mp3",
+    33: "34. Bach - Italian Concerto.mp3",
+    34: "35. Bach - Jesu Joy.mp3",
+    35: "36. Bach - Brandenburg Concerto 5.mp3",
+    36: "37. Bach - Concerto Two Violins.mp3",
+    37: "38. Bach - Minuet G major.mp3",
+
     # Új komolyzenei kérdések
-    38: "39_Charpentier_Te_Deum_Prelude.mp3",
-    39: "41_Delibes_Lakme_Flower_Duet.mp3",  # Delibes (40-es kérdés)
-    40: "40_Offenbach.mp3",  # Offenbach (41-es kérdés)
-    41: "42_Vivaldi.mp3",
-    42: "43_Mozart.mp3",
-    43: "44_Rossini.mp3",
-    44: "45_Delibes.mp3",
+    38: "39. Charpentier - Te Deum Prelude.mp3",
+    39: "40. Delibes - Lakme Flower Duet.mp3",
+    40: "41. Offenbach - Offenbach.mp3",
+    41: "42. Vivaldi - Four Seasons.mp3",
+    42: "43. Mozart - Mozart.mp3",
+    43: "44. Rossini - Rossini.mp3",
+    44: "45. Delibes - Sylvia - Pizzicato.mp3",
 }
 
 # Komolyzenei zeneszerzők listája
@@ -98,22 +98,15 @@ def get_komolyzene_audio_filename(index):
     return KOMOLYZENE_AUDIO_MAPPING.get(index, None)
 
 def get_komolyzene_audio_path(index):
-    """Komolyzenei audio fájl teljes útvonalának lekérése (új mappa)"""
+    """Komolyzenei audio fájl teljes útvonalának lekérése"""
     from pathlib import Path
     filename = get_komolyzene_audio_filename(index)
     if filename:
-        # ÚJ: próbáljuk az új mappából
         audio_dir = Path(__file__).parent / "audio_files/komolyzene"
         audio_path = audio_dir / filename
         if audio_path.exists():
             return audio_path
-        # Fallback: régi mappák
-        audio_dir = Path(__file__).parent / "audio_files_komolyzene_uj"
-        audio_path = audio_dir / filename
-        if audio_path.exists():
-            return audio_path
-        audio_dir = Path(__file__).parent / "audio_files_komolyzene"
-        return audio_dir / filename
+        return audio_path
     return None
 
 if __name__ == "__main__":

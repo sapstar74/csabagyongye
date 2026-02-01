@@ -301,7 +301,6 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
 
         candidate_dirs = [
             "audio_files/komolyzene",
-            "audio_files_komolyzene_uj",
         ]
         for path in candidate_dirs:
             if (repo_root / path).exists():
@@ -756,6 +755,10 @@ def get_audio_file_for_question(question, topic):
             pass
     elif topic == "komolyzene":
         # Komolyzene: original_index alapú mapping használata
+        audio_dirs = [
+            Path(__file__).parent / "audio_files/komolyzene",
+        ]
+        audio_file = question.get("audio_file")
         if "original_index" in question:
             # ÚJ: komolyzene_audio_mapping.get_komolyzene_audio_path használata
             from komolyzene_audio_mapping import get_komolyzene_audio_path
@@ -767,13 +770,7 @@ def get_audio_file_for_question(question, topic):
                     return str(audio_path)
             except Exception as e:
                 pass
-        elif "audio_file" in question and question["audio_file"]:
-            audio_file = question["audio_file"]
-            audio_dirs = [
-                Path(__file__).parent / "audio_files/komolyzene",
-                Path(__file__).parent / "audio_files_komolyzene_uj",
-                Path(__file__).parent / "audio_files_komolyzene",
-            ]
+        if audio_file:
             # Direkt egyezés
             for audio_dir in audio_dirs:
                 audio_path = audio_dir / audio_file
@@ -795,6 +792,49 @@ def get_audio_file_for_question(question, topic):
                                 return str(candidate)
             except Exception:
                 pass
+        # Fallback: zeneszerző alapján (ha pontos fájlnév nincs)
+        try:
+            import re
+            composer_candidates = []
+            explanation = question.get("explanation")
+            if explanation and ":" in explanation:
+                composer_candidates.append(explanation.split(":", 1)[0])
+            if "options" in question and "correct" in question:
+                options = question.get("options") or []
+                correct_index = question.get("correct")
+                if isinstance(correct_index, int) and 0 <= correct_index < len(options):
+                    composer_candidates.append(options[correct_index])
+            if audio_file:
+                base = os.path.splitext(os.path.basename(audio_file))[0]
+                base = base.replace("Unknown Artist", "").replace("Unknown_Artist", "")
+                composer_candidates.append(base)
+
+            def _normalize_text(value: str) -> str:
+                cleaned = value.lower().replace("_", " ")
+                cleaned = re.sub(r"[^\w\s]", " ", cleaned, flags=re.UNICODE)
+                return re.sub(r"\s+", " ", cleaned).strip()
+
+            normalized_candidates = [_normalize_text(c) for c in composer_candidates if c]
+            if normalized_candidates:
+                matches = []
+                for audio_dir in audio_dirs:
+                    if not audio_dir.exists():
+                        continue
+                    for candidate in audio_dir.glob("*.mp3"):
+                        candidate_norm = _normalize_text(candidate.stem)
+                        if any(c and c in candidate_norm for c in normalized_candidates):
+                            matches.append(candidate)
+                if len(matches) == 1:
+                    return str(matches[0])
+                if audio_file:
+                    match = re.match(r"^\s*(\d+)", audio_file)
+                    if match:
+                        num = match.group(1)
+                        num_matches = [m for m in matches if re.match(fr"^{num}(\D|$)", m.name)]
+                        if len(num_matches) == 1:
+                            return str(num_matches[0])
+        except Exception:
+            pass
     elif topic == "one_hit_wonders":
         # One Hit Wonders audio fájl kezelése
         if "original_index" in question:
@@ -857,9 +897,18 @@ def get_audio_file_for_question(question, topic):
 
 def show_answer_popup(question, user_answer, correct_answer):
     """Tartós popup üzenet a válaszról és helyes válaszról"""
+    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"}
+    topic = question.get("topic") if isinstance(question, dict) else None
+    show_piece_title = bool(
+        topic in music_topics
+        or (isinstance(question, dict) and (question.get("audio_file") or question.get("spotify_embed")))
+    )
+    piece_title = _get_piece_title_for_question(question) if show_piece_title else None
+
     st.session_state.answer_popup = {
         "user_answer": user_answer if user_answer else "N/A",
         "correct_answer": correct_answer if correct_answer else "N/A",
+        "piece_title": piece_title,
     }
 
 def render_answer_popup():
@@ -891,12 +940,18 @@ def render_answer_popup():
         unsafe_allow_html=True,
     )
 
+    piece_line = ""
+    if "piece_title" in popup:
+        piece_value = popup["piece_title"] or "N/A"
+        piece_line = f"<br/><strong>Darab címe:</strong> {piece_value}"
+
     st.markdown(
         f"""
         <div class="answer-popup">
             <strong>Válaszod:</strong> {popup["user_answer"]}
             &nbsp;|&nbsp;
             <strong>Helyes válasz:</strong> {popup["correct_answer"]}
+            {piece_line}
         </div>
         """,
         unsafe_allow_html=True,
@@ -1231,6 +1286,37 @@ def _parse_artist_and_title(track_name: str):
         if len(parts) >= 2:
             return parts[0].replace("_", " ").strip(), " ".join(parts[1:]).replace("_", " ").strip()
     return "Ismeretlen", name
+
+def _get_piece_title_for_question(question: dict) -> Optional[str]:
+    """Darab címének becsült kinyerése a kérdésből"""
+    if not isinstance(question, dict):
+        return None
+    song_title = question.get("song_title")
+    if song_title:
+        return str(song_title).strip().strip('"')
+    explanation = question.get("explanation")
+    if explanation:
+        explanation = str(explanation).strip()
+        if ":" in explanation:
+            title = explanation.split(":", 1)[1].strip()
+            if title:
+                return title
+        if " - " in explanation:
+            title = explanation.split(" - ", 1)[1].strip()
+            if title:
+                return title
+    audio_file = question.get("audio_file")
+    if audio_file:
+        filename = os.path.splitext(os.path.basename(str(audio_file)))[0]
+        _, title = _parse_artist_and_title(filename)
+        if title and title != "Ismeretlen":
+            return title.strip()
+        cleaned = filename
+        if ". " in cleaned:
+            cleaned = cleaned.split(". ", 1)[1]
+        cleaned = cleaned.replace("_", " ").strip()
+        return cleaned or None
+    return None
 
 def show_artist_list_page():
     """Szerző szerinti lista önálló oldal"""
@@ -2910,7 +2996,9 @@ def show_quiz():
     
     # Kérdés szövege
     question_text = question.get("question", "Ismeretlen kérdés")
-    st.markdown(f"<div class='question-text' style='{font_style['question']}'>{question_text}</div>", unsafe_allow_html=True)
+    question_number = st.session_state.current_question + 1
+    display_question_text = f"{question_number}. {question_text}"
+    st.markdown(f"<div class='question-text' style='{font_style['question']}'>{display_question_text}</div>", unsafe_allow_html=True)
 
     # Tartós popup megjelenítése (ha van)
     render_answer_popup()
