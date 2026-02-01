@@ -819,7 +819,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Dvorak Symphony No 9 From the New World Mvmt 4",
         "audio_file": "63. Mozart - Dvorak Symphony No 9 From the New World Mvmt 4.mp3",
-        "song_title": ""Dvorak Symphony No 9 From the New World Mvmt 4"",
+        "song_title": "Dvorak Symphony No 9 From the New World Mvmt 4",
         "topic": "komolyzene",
     },
     {
@@ -836,15 +836,15 @@ QUESTIONS = [
         "topic": "komolyzene",
     },
     {
-        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Wagner Tristan und Isolde Pr\"",
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
         "options": [
+            "Wagner",
+            "Verdi",
             "Mozart",
             "Beethoven",
-            "Bach",
-            "Haydn",
         ],
         "correct": 0,
-        "explanation": "Ismeretlen: Unknown Artist Wagner Tristan und Isolde Pr",
+        "explanation": "Wagner: Tristan und Isolde (Prelude)",
         "audio_file": "Unknown_Artist_Wagner_Tristan_und_Isolde_Pr.mp3",
         "topic": "komolyzene",
     },
