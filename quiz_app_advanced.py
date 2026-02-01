@@ -1358,22 +1358,48 @@ def show_artist_list_page():
         st.info("📭 Nincsenek track-ek ebben a kategóriában.")
         return
     
+    if "artist_list_playing" not in st.session_state:
+        st.session_state.artist_list_playing = None
+
     artist_map = {}
     for track in tracks:
         artist, title = _parse_artist_and_title(track.get("name", ""))
-        filename = "N/A"
-        if track.get("audio_path"):
-            filename = os.path.basename(track["audio_path"])
-        artist_map.setdefault(artist, []).append((title, filename))
+        audio_path = track.get("audio_path")
+        filename = os.path.basename(audio_path) if audio_path else "N/A"
+        artist_map.setdefault(artist, []).append({
+            "title": title,
+            "filename": filename,
+            "audio_path": audio_path,
+        })
     
     st.markdown(f"### {category_info.get('title', selected_category)}")
     st.markdown(f"📊 **{len(tracks)} track**, **{len(artist_map)} előadó**")
     
     for artist in sorted(artist_map.keys(), key=lambda x: x.lower()):
-        items = sorted(artist_map[artist], key=lambda x: x[0].lower())
+        items = sorted(artist_map[artist], key=lambda x: x["title"].lower())
         with st.expander(f"{artist} ({len(items)})", expanded=False):
-            for title, filename in items:
-                st.markdown(f"- {title} ({filename})")
+            for idx, item in enumerate(items):
+                title = item["title"]
+                filename = item["filename"]
+                audio_path = item["audio_path"]
+                has_audio = bool(audio_path and os.path.exists(audio_path))
+
+                col1, col2 = st.columns([4, 1])
+                with col1:
+                    st.write(f"{title} ({filename})")
+                with col2:
+                    if not has_audio:
+                        st.button("▶️ Lejátszás", key=f"play_{selected_category}_{artist}_{idx}", disabled=True)
+                    else:
+                        if st.session_state.artist_list_playing == audio_path:
+                            if st.button("⏹ Stop", key=f"stop_{selected_category}_{artist}_{idx}"):
+                                st.session_state.artist_list_playing = None
+                        else:
+                            if st.button("▶️ Lejátszás", key=f"play_{selected_category}_{artist}_{idx}"):
+                                st.session_state.artist_list_playing = audio_path
+
+                if has_audio and st.session_state.artist_list_playing == audio_path:
+                    st.audio(audio_path, format="audio/mp3")
 
 def _make_safe_filename(artist: str, title: str) -> str:
     """Biztonságos fájlnév generálása az előadó és cím alapján"""
