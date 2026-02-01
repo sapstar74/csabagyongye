@@ -4730,6 +4730,7 @@ def show_youtube_search_tab():
                 safe_name = _make_safe_filename(approved_artist, approved_title)
                 new_audio_file = safe_name
                 audio_source_path = pending.get("audio_file")
+                new_path = audio_source_path
                 if audio_source_path and os.path.exists(audio_source_path):
                     new_path = os.path.join(os.path.dirname(audio_source_path), safe_name)
                     try:
@@ -4751,7 +4752,42 @@ def show_youtube_search_tab():
                     "topic": category,
                 }
                 add_question_to_category(new_question, category)
-                st.success("✅ Kérdés mentve és integrálva.")
+
+                # Cache frissítése
+                cache_keys_to_delete = []
+                for key in st.session_state.keys():
+                    if (key.startswith("audio_track_data_") or
+                        key.startswith("duration_") or
+                        key.startswith("track_cache_") or
+                        key == "modified_questions"):
+                        cache_keys_to_delete.append(key)
+                for key in cache_keys_to_delete:
+                    if key in st.session_state:
+                        del st.session_state[key]
+                st.session_state['force_refresh'] = True
+
+                # Git szinkronizáció (kérdés + audio)
+                question_file_by_category = {
+                    "magyar_zenekarok": "topics/magyar_zenekarok_uj.py",
+                    "nemzetkozi_zenekarok": "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py",
+                    "komolyzene": "topics/komolyzene_uj.py",
+                    "one_hit_wonders": "topics/one_hit_wonders.py",
+                }
+                question_file_path = question_file_by_category.get(category)
+                final_audio_path = new_path if new_path and os.path.exists(new_path) else None
+                try:
+                    if question_file_path:
+                        subprocess.run(['git', 'add', question_file_path], check=True)
+                    if final_audio_path:
+                        subprocess.run(['git', 'add', final_audio_path], check=True)
+                    commit_msg = f"Add track: {approved_artist} - {approved_title}"
+                    subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
+                    subprocess.run(['git', 'push'], check=True)
+                    st.success("✅ Kérdés mentve, cache frissítve és GitHub-ra feltöltve.")
+                except subprocess.CalledProcessError as e:
+                    st.warning(f"⚠️ Git szinkronizáció sikertelen: {e}")
+                    st.success("✅ Kérdés mentve és cache frissítve.")
+
                 del st.session_state.pending_integration
                 st.rerun()
         with col2:
@@ -5484,7 +5520,6 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
             # Ha nem MP3, konvertáljuk MP3-ba
             if not audio_file.endswith('.mp3'):
                 try:
-                    import subprocess
                     mp3_file = str(download_dir / f"{video_id}.mp3")
                     cmd = [
                         'ffmpeg', '-i', audio_file, 
@@ -5518,7 +5553,6 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     
     # 2 perces rész kivágása FFmpeg-gel
     try:
-        import subprocess
         import re
         
         # Ellenőrizzük, hogy a fájl létezik-e és nem üres
@@ -5748,6 +5782,10 @@ def save_questions_to_file(questions_list, file_path, variable_name):
             content += "    },\n"
         
         content += "]\n"
+        normalized_path = str(file_path).replace("\\", "/")
+        if normalized_path.endswith("topics/komolyzene_uj.py"):
+            content += "\n# Export alias for compatibility\n"
+            content += "KOMOLYZENE_QUESTIONS = QUESTIONS\n"
         
         # Fájlba írás
         with open(file_path, 'w', encoding='utf-8') as f:
