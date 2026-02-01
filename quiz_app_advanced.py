@@ -1913,7 +1913,6 @@ def show_audio_track_management_page():
                             duration_str = st.session_state[duration_cache_key]
                         else:
                             try:
-                                import subprocess
                                 duration_cmd = ['ffprobe', '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', matching_track['audio_path']]
                                 duration_result = subprocess.run(duration_cmd, capture_output=True, text=True, timeout=3)
                                 if duration_result.returncode == 0 and duration_result.stdout.strip():
