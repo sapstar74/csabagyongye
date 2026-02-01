@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:48:41
+# Generated on: 2026-02-01 21:53:26
 
 QUESTIONS = [
     {
@@ -899,6 +899,20 @@ QUESTIONS = [
         "explanation": "Verdi - Komolyzene",
         "audio_file": "Verdi_La_Traviata_Libiamo_ne_lieti_calici.mp3",
         "song_title": "La Traviata: “Libiamo, ne’ lieti calici”",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Verdi",
+            "Puccini",
+            "Donizetti",
+            "Rossini",
+        ],
+        "correct": 0,
+        "explanation": "Verdi - Komolyzene",
+        "audio_file": "Verdi_Triumphal_March_from_Aida.mp3",
+        "song_title": "Triumphal March from Aida",
         "topic": "komolyzene",
     },
 ]
