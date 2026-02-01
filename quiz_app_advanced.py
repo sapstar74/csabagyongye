@@ -5698,10 +5698,10 @@ def add_question_to_category(question, category):
             # Fájlba mentés
             save_questions_to_file(NEMZETKOZI_ZENEKAROK_QUESTIONS, "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py", "NEMZETKOZI_ZENEKAROK_QUESTIONS")
         elif category == "komolyzene":
-            from topics.komolyzene import KOMPOLYZENE_QUESTIONS
-            KOMPOLYZENE_QUESTIONS.append(question)
+            from topics.komolyzene_uj import QUESTIONS as KOMOLYZENE_QUESTIONS
+            KOMOLYZENE_QUESTIONS.append(question)
             # Fájlba mentés
-            save_questions_to_file(KOMPOLYZENE_QUESTIONS, "topics/komolyzene.py", "KOMPOLYZENE_QUESTIONS")
+            save_questions_to_file(KOMOLYZENE_QUESTIONS, "topics/komolyzene_uj.py", "QUESTIONS")
         elif category == "one_hit_wonders":
             from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
             ONE_HIT_WONDERS_QUESTIONS.append(question)

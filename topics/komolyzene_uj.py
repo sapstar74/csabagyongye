@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-01-27 15:12:40
+# Generated on: 2026-02-01 20:54:24
 
 QUESTIONS = [
     {
@@ -819,7 +819,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ismeretlen: Dvorak Symphony No 9 From the New World Mvmt 4",
         "audio_file": "63. Mozart - Dvorak Symphony No 9 From the New World Mvmt 4.mp3",
-        "song_title": "\"Dvorak Symphony No 9 From the New World Mvmt 4\"",
+        "song_title": ""Dvorak Symphony No 9 From the New World Mvmt 4"",
         "topic": "komolyzene",
     },
     {
@@ -835,4 +835,20 @@ QUESTIONS = [
         "audio_file": "64. Mozart - Requiem Dies irae.mp3",
         "topic": "komolyzene",
     },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét: \"Unknown Artist Wagner Tristan und Isolde Pr\"",
+        "options": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Haydn",
+        ],
+        "correct": 0,
+        "explanation": "Ismeretlen: Unknown Artist Wagner Tristan und Isolde Pr",
+        "audio_file": "Unknown_Artist_Wagner_Tristan_und_Isolde_Pr.mp3",
+        "topic": "komolyzene",
+    },
 ]
+
+# Export alias for compatibility
+KOMOLYZENE_QUESTIONS = QUESTIONS
