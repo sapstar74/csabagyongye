@@ -363,6 +363,7 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
         st.error(f"❌ Komolyzene sync hiba: {e}")
         return False
 
+@st.cache_data(ttl=3600, show_spinner=False)
 def get_image_base64(image_path):
     """Kép konvertálása base64 formátumra"""
     try:
@@ -934,6 +935,15 @@ def render_answer_popup():
             max-width: 90%;
             width: 900px;
             font-size: 16px;
+            pointer-events: none;
+            animation: answerPopupFadeOut 0.4s ease 3.5s forwards;
+        }
+
+        @keyframes answerPopupFadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
         </style>
         """,
@@ -956,10 +966,8 @@ def render_answer_popup():
         """,
         unsafe_allow_html=True,
     )
-
-    if st.button("OK", key="close_answer_popup", use_container_width=True):
-        del st.session_state.answer_popup
-        st.rerun()
+    # Egyszeri megjelenítés: a következő rerunban már nem jelenik meg
+    st.session_state.pop("answer_popup", None)
 
 def start_quiz():
     """Quiz indítása"""
@@ -3075,24 +3083,28 @@ def show_quiz():
                 with col2:
                     # Kép megjelenítése felirat nélkül
                     st.image(image_path, width=800)
+
+                    # Automatikus bezárás időzítő alapérték
+                    modal_time_key = f"modal_start_time_{st.session_state.current_question}"
+                    modal_started_at = st.session_state.get(modal_time_key)
+                    if not isinstance(modal_started_at, (int, float)):
+                        modal_started_at = time.time()
+                        st.session_state[modal_time_key] = modal_started_at
                     
                     # Bezárás gomb
                     if st.button("❌ Kép bezárása", key=f"close_modal_{st.session_state.current_question}", type="primary", use_container_width=True):
                         st.session_state.image_modal_states[st.session_state.current_question] = False
+                        st.session_state.pop(modal_time_key, None)
                         st.rerun()
                     
                     # Automatikus bezárás 30 másodperc után
                     st.info("💡 Tipp: A modal automatikusan bezáródik 30 másodperc múlva!")
                     
-                    # Automatikus bezárás időzítő
-                    modal_time_key = f"modal_start_time_{st.session_state.current_question}"
-                    if modal_time_key not in st.session_state:
-                        st.session_state[modal_time_key] = time.time()
-                    
-                    elapsed_time = time.time() - st.session_state[modal_time_key]
+                    elapsed_time = time.time() - modal_started_at
                     if elapsed_time > 30:  # 30 másodperc
-                        st.session_state.image_modal_states[st.session_state.current_question] = False
-                        st.session_state[modal_time_key] = None
+                        if st.session_state.image_modal_states.get(st.session_state.current_question, False):
+                            st.session_state.image_modal_states[st.session_state.current_question] = False
+                        st.session_state.pop(modal_time_key, None)
                         st.rerun()
             else:
                 # Eredeti kép megjelenítése - eredeti mérethez igazított oszlopok
