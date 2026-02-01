@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:41:01
+# Generated on: 2026-02-01 21:48:41
 
 QUESTIONS = [
     {
@@ -885,6 +885,20 @@ QUESTIONS = [
         "explanation": "Vivaldi - Komolyzene",
         "audio_file": "68. Vivaldi - Sinfonia in C Major I Allegro mo.mp3",
         "song_title": "Sinfonia in C Major I Allegro mo",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Verdi",
+            "Donizetti",
+            "Rossini",
+            "Puccini",
+        ],
+        "correct": 0,
+        "explanation": "Verdi - Komolyzene",
+        "audio_file": "Verdi_La_Traviata_Libiamo_ne_lieti_calici.mp3",
+        "song_title": "La Traviata: “Libiamo, ne’ lieti calici”",
         "topic": "komolyzene",
     },
 ]
