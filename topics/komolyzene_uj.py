@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:32:01
+# Generated on: 2026-02-01 21:33:17
 
 QUESTIONS = [
     {
@@ -858,7 +858,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Wagner: Lohengrin (Prelude)",
         "audio_file": "66. Wagner - Lohengrin Prelude.mp3",
-        "song_title": "Lohengrin Prelude",
         "topic": "komolyzene",
     },
     {
@@ -871,8 +870,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi - Komolyzene",
-        "audio_file": "Vivaldi_Wednesday_playing_cello_scene.mp3",
-        "song_title": "Wednesday playing cello (scene)",
+        "audio_file": "67. Vivaldi - Vivaldi Wednesday playing Winter cello scene.mp3",
+        "song_title": "Vivaldi Wednesday playing Winter (cello scene)",
         "topic": "komolyzene",
     },
 ]
