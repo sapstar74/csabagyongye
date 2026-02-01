@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:39:36
+# Generated on: 2026-02-01 21:40:38
 
 QUESTIONS = [
     {
@@ -871,7 +871,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Vivaldi - Komolyzene",
         "audio_file": "67. Vivaldi - Vivaldi Wednesday playing Winter cello scene.mp3",
-        "song_title": "Vivaldi Wednesday playing Winter (cello scene)",
         "topic": "komolyzene",
     },
     {
@@ -884,8 +883,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Vivaldi - Komolyzene",
-        "audio_file": "Vivaldi_Vivaldi_Sinfonia_in_C_Major_I_Allegro_mo.mp3",
-        "song_title": "Vivaldi - Sinfonia in C Major, I. Allegro molto",
+        "audio_file": "68. Vivaldi - Sinfonia in C Major I Allegro mo.mp3",
+        "song_title": "Sinfonia in C Major I Allegro mo",
         "topic": "komolyzene",
     },
 ]
