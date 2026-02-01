@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:04:36
+# Generated on: 2026-02-01 21:25:32
 
 QUESTIONS = [
     {
@@ -845,7 +845,23 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Wagner: Tristan und Isolde (Prelude)",
         "audio_file": "65. Wagner - Tristan und Isolde Prelude.mp3",
-        "song_title": "Tristan und Isolde Prelude",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:",
+        "options": [
+            "Wagner",
+            "Dvorak",
+            "Mozart",
+            "Beethoven",
+        ],
+        "correct": 0,
+        "explanation": "Wagner: Lohengrin (Prelude)",
+        "audio_file": "66. Wagner - Lohengrin Prelude.mp3",
+        "song_title": "Lohengrin Prelude",
         "topic": "komolyzene",
     },
 ]
+
+# Export alias for compatibility
+KOMOLYZENE_QUESTIONS = QUESTIONS
