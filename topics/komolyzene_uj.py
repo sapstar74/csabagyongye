@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-01 21:25:32
+# Generated on: 2026-02-01 21:32:01
 
 QUESTIONS = [
     {
@@ -859,6 +859,20 @@ QUESTIONS = [
         "explanation": "Wagner: Lohengrin (Prelude)",
         "audio_file": "66. Wagner - Lohengrin Prelude.mp3",
         "song_title": "Lohengrin Prelude",
+        "topic": "komolyzene",
+    },
+    {
+        "question": "Ki a zeneszerző?",
+        "options": [
+            "Vivaldi",
+            "Bach",
+            "Mozart",
+            "Handel",
+        ],
+        "correct": 0,
+        "explanation": "Vivaldi - Komolyzene",
+        "audio_file": "Vivaldi_Wednesday_playing_cello_scene.mp3",
+        "song_title": "Wednesday playing cello (scene)",
         "topic": "komolyzene",
     },
 ]
