@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:33:06
+# Generated on: 2026-02-03 15:34:21
 
 QUESTIONS = [
     {
@@ -538,14 +538,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Money Heist",
-            "Lost",
-            "Prison Break",
-            "True Detective",
+            "Dark",
+            "Lat of Us",
+            "Westworld",
+            "Black Mirror",
         ],
         "correct": 0,
         "explanation": "Dark : Season 1 - Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
-        "audio_file": "42. Dark Season 1 - Money Heist.mp3",
+        "audio_file": "42. Money Heist - Dark.mp3",
+        "song_title": "Dark",
         "topic": "sorozat_focimek",
     },
     {
@@ -559,7 +560,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Magnificent Music - Money Heist Soundtrack- Theme Song",
         "audio_file": "43. Magnificent Music - Money Heist.mp3",
-        "song_title": "Money Heist",
         "topic": "sorozat_focimek",
     },
     {
