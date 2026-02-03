@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 12:33:53
+# Generated on: 2026-02-03 12:35:01
 
 QUESTIONS = [
     {
@@ -13,20 +13,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "GameofThrones - Official Opening Credits: Game of Thrones",
         "audio_file": "01. GameofThrones - Game of Thrones.mp3",
-        "song_title": "Game of Thrones",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Stranger Things",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Black Mirror",
+            "Walking Dead",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "Stranger Things - Title Sequence | Netflix",
-        "audio_file": "-RcPZdihrp4.mp3",
+        "audio_file": "02. Stranger Things - Stranger Things.mp3",
+        "song_title": "Stranger Things",
         "topic": "sorozat_focimek",
     },
 ]
