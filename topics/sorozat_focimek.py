@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:19:05
+# Generated on: 2026-02-03 15:20:16
 
 QUESTIONS = [
     {
@@ -481,20 +481,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Seinfeld - Seinfeld - Opening Intro",
         "audio_file": "37. Seinfeld - Seinfeld.mp3",
-        "song_title": "Seinfeld",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Steven",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Simpsons",
+            "Beavis and Butthead",
+            "Family Guy",
+            "Garfield",
         ],
         "correct": 0,
         "explanation": "Steven - The Simpsons Opening Credits and Theme Song",
-        "audio_file": "aPzS3QYb868.mp3",
+        "audio_file": "38. Steven - The Simpsons.mp3",
+        "song_title": "The Simpsons",
         "topic": "sorozat_focimek",
     },
     {
