@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:11:38
+# Generated on: 2026-02-03 15:13:13
 
 QUESTIONS = [
     {
@@ -442,20 +442,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "GandalfTheWhite - prison break intro season 1",
         "audio_file": "34. GandalfTheWhite - Prison Break.mp3",
-        "song_title": "Prison Break",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "MidnightMarathon",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "How I Met Your Mother",
+            "Lincoln Lawyer",
+            "The Umbrella Academy",
+            "The Office",
         ],
         "correct": 0,
         "explanation": "MidnightMarathon - \"How I Met Your Mother\" Extended Theme Song",
-        "audio_file": "elZBsxX6SEs.mp3",
+        "audio_file": "35. MidnightMarathon - How I Met Your Mother.mp3",
+        "song_title": "How I Met Your Mother",
         "topic": "sorozat_focimek",
     },
     {
