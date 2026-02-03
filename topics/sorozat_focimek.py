@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 13:38:04
+# Generated on: 2026-02-03 13:39:06
 
 QUESTIONS = [
     {
@@ -91,20 +91,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Pratik Vaidya - Better Call Saul Theme by Little Barrie Full Original Song",
         "audio_file": "07. Pratik Vaidya - Better Call Saul.mp3",
-        "song_title": "Better Call Saul",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Emily Hinnekens",
-            "Game of Thrones",
+            "The X-files",
+            "Ozark",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "Black Mirror",
         ],
         "correct": 0,
         "explanation": "Emily Hinnekens - The X-Files Opening Credits",
-        "audio_file": "v4-GcS1UQyg.mp3",
+        "audio_file": "08. Emily Hinnekens - The X-files.mp3",
+        "song_title": "The X-files",
         "topic": "sorozat_focimek",
     },
     {
