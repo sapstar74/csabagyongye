@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:24:50
+# Generated on: 2026-02-03 15:26:00
 
 QUESTIONS = [
     {
@@ -533,20 +533,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Jeff Russo - The Umbrella Academy",
         "audio_file": "41. Jeff Russo - Jeff Russo The Umbrella Academy.mp3",
-        "song_title": "Jeff Russo The Umbrella Academy",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Dark : Season 1",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Money Heist",
+            "Lost",
+            "Prison Break",
+            "True Detective",
         ],
         "correct": 0,
         "explanation": "Dark : Season 1 - Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
-        "audio_file": "8c399HPb01s.mp3",
+        "audio_file": "42. Dark Season 1 - Money Heist.mp3",
+        "song_title": "Money Heist",
         "topic": "sorozat_focimek",
     },
     {
