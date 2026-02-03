@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:53:04
+# Generated on: 2026-02-03 15:11:38
 
 QUESTIONS = [
     {
@@ -429,21 +429,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "LOST - LOST - Opening Titles",
         "audio_file": "33. LOST - Lost.mp3",
-        "song_title": "Lost",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "GandalfTheWhite",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Prison Break",
+            "The Boys",
+            "Money Heist",
+            "Lost",
         ],
         "correct": 0,
         "explanation": "GandalfTheWhite - prison break intro season 1",
-        "audio_file": "LVFk2u6b5ZY.mp3",
-        "song_title": "prison break intro season 1",
+        "audio_file": "34. GandalfTheWhite - Prison Break.mp3",
+        "song_title": "Prison Break",
         "topic": "sorozat_focimek",
     },
     {
@@ -457,7 +456,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "MidnightMarathon - \"How I Met Your Mother\" Extended Theme Song",
         "audio_file": "elZBsxX6SEs.mp3",
-        "song_title": "\"How I Met Your Mother\" Extended Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -471,7 +469,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "SeriesFanatics - The Big Bang Theory Theme Song",
         "audio_file": "hQjF0-T45dQ.mp3",
-        "song_title": "The Big Bang Theory Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -485,7 +482,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Seinfeld - Seinfeld - Opening Intro",
         "audio_file": "1rzC5qrYZXs.mp3",
-        "song_title": "Seinfeld - Opening Intro",
         "topic": "sorozat_focimek",
     },
     {
@@ -499,7 +495,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Steven - The Simpsons Opening Credits and Theme Song",
         "audio_file": "aPzS3QYb868.mp3",
-        "song_title": "The Simpsons Opening Credits and Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -513,7 +508,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Season 17 - Season 17 (Intro) - SOUTH PARK",
         "audio_file": "Bdt0pz5C4Xc.mp3",
-        "song_title": "Season 17 (Intro) - SOUTH PARK",
         "topic": "sorozat_focimek",
     },
     {
@@ -527,7 +521,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Walking Dead Original Soundtrack - The Walking Dead Original Soundtrack  - Theme Song",
         "audio_file": "v5ISBJc1wFk.mp3",
-        "song_title": "The Walking Dead Original Soundtrack  - Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -541,7 +534,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Jeff Russo - The Umbrella Academy",
         "audio_file": "Jeff_Russo_The_Umbrella_Academy.mp3",
-        "song_title": "The Umbrella Academy",
         "topic": "sorozat_focimek",
     },
     {
@@ -555,7 +547,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Dark : Season 1 - Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
         "audio_file": "8c399HPb01s.mp3",
-        "song_title": "Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
         "topic": "sorozat_focimek",
     },
     {
@@ -569,7 +560,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Magnificent Music - Money Heist Soundtrack- Theme Song",
         "audio_file": "i12TpEQOBtE.mp3",
-        "song_title": "Money Heist Soundtrack- Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -583,7 +573,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ozark - Ozark – Title Sequence (Season 1)",
         "audio_file": "DJQxWhRIQE0.mp3",
-        "song_title": "Ozark – Title Sequence (Season 1)",
         "topic": "sorozat_focimek",
     },
     {
@@ -597,7 +586,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Expanse | Season 1 | Long Opening - The Expanse | Season 1 | Long Opening - Intro HD",
         "audio_file": "aoemQv0LYhk.mp3",
-        "song_title": "The Expanse | Season 1 | Long Opening - Intro HD",
         "topic": "sorozat_focimek",
     },
     {
@@ -611,7 +599,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Mikey - Firefly Opening Theme",
         "audio_file": "o-sp68GjYL0.mp3",
-        "song_title": "Firefly Opening Theme",
         "topic": "sorozat_focimek",
     },
     {
@@ -625,7 +612,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Fever Ray - Fever Ray - If I Had A Heart | The Vikings (Music from the TV Series)",
         "audio_file": "Fever_Ray_Fever_Ray_If_I_Had_A_Heart_.mp3",
-        "song_title": "Fever Ray - If I Had A Heart | The Vikings (Music from the TV Series)",
         "topic": "sorozat_focimek",
     },
     {
@@ -639,7 +625,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Good Place - The Good Place | Theme Song",
         "audio_file": "wDnGoucD9KY.mp3",
-        "song_title": "The Good Place | Theme Song",
         "topic": "sorozat_focimek",
     },
 ]
