@@ -1463,7 +1463,6 @@ def show_artist_list_page():
                             else:
                                 try:
                                     import tempfile
-                                    import os
                                     from pathlib import Path
 
                                     target_path = Path(audio_path)
