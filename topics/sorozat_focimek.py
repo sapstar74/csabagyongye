@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:34:38
+# Generated on: 2026-02-03 14:35:43
 
 QUESTIONS = [
     {
@@ -351,20 +351,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "True Detective - True Detective - Intro / Opening Song - Theme (The Handsome Family - Far From Any Road) + LYRICS",
         "audio_file": "27. True Detective - True Detective.mp3",
-        "song_title": "True Detective",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "SJ363",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Fargo",
+            "Peaky Blinders",
+            "Sherlock",
+            "The Boys",
         ],
         "correct": 0,
         "explanation": "SJ363 - Fargo Sountrack- Fargo, North Dakota",
-        "audio_file": "W4NCC0dUXks.mp3",
+        "audio_file": "28. SJ363 - Fargo.mp3",
+        "song_title": "Fargo",
         "topic": "sorozat_focimek",
     },
     {
