@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:20:14
+# Generated on: 2026-02-03 14:21:42
 
 QUESTIONS = [
     {
@@ -234,20 +234,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Smoking Skull - LOKI Opening Theme",
         "audio_file": "18. The Smoking Skull - The Smoking Skull.mp3",
-        "song_title": "The Smoking Skull",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Netflix's THE WITCHER",
+            "The Witcher",
             "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Vikings",
+            "The Mandalorian",
         ],
         "correct": 0,
         "explanation": "Netflix's THE WITCHER - Netflix's THE WITCHER (OST) - Geralt Of Rivia | Main Theme Song - FINAL TRAILER Music",
-        "audio_file": "WdS4Z5Kfjgw.mp3",
+        "audio_file": "19. Netflixs THE WITCHER - The Witcher.mp3",
+        "song_title": "The Witcher",
         "topic": "sorozat_focimek",
     },
     {
