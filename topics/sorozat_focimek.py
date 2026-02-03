@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:30:58
+# Generated on: 2026-02-03 14:32:47
 
 QUESTIONS = [
     {
@@ -325,20 +325,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Westworld S1 Official Soundtrack | Main Title Theme - Westworld S1 Official Soundtrack | Main Title Theme - Ramin Djawadi | WaterTower",
         "audio_file": "25. Westworld - Westworld S1 Official Soundtrack.mp3",
-        "song_title": "Westworld S1 Official Soundtrack",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Equinox",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Chernobyl",
+            "Westworld",
+            "The Walking Dead",
+            "The Expanse",
         ],
         "correct": 0,
         "explanation": "Equinox - HBO Chernobyl Opening Title",
-        "audio_file": "2uoTIcHgXC4.mp3",
+        "audio_file": "26. Equinox - Chernobyl.mp3",
+        "song_title": "Chernobyl",
         "topic": "sorozat_focimek",
     },
     {
