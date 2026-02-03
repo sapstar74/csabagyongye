@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:46:53
+# Generated on: 2026-02-03 15:48:55
 
 QUESTIONS = [
     {
@@ -546,7 +546,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Dark : Season 1 - Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
         "audio_file": "42. Money Heist - Dark.mp3",
-        "song_title": "Dark",
         "topic": "sorozat_focimek",
     },
     {
@@ -630,15 +629,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Jovin Lau",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Bridgerton",
+            "Sex Education",
+            "How to Sell Drugs Online",
+            "The Crown",
         ],
         "correct": 0,
         "explanation": "Jovin Lau - 1 Hour Bridgerton Intro Theme Song / Opening Credits #bridgerton #netflix",
-        "audio_file": "Jovin_Lau_1_Hour_Bridgerton_Intro_Theme_.mp3",
-        "song_title": "1 Hour Bridgerton Intro Theme Song / Opening Credits #bridgerton #netflix",
+        "audio_file": "49. Jovin Lau - Bridgerton.mp3",
+        "song_title": "Bridgerton",
         "topic": "sorozat_focimek",
     },
     {
@@ -652,7 +651,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Petrocelli theme - Petrocelli theme - the series intro and outro",
         "audio_file": "86fXst21PQg.mp3",
-        "song_title": "Petrocelli theme - the series intro and outro",
         "topic": "sorozat_focimek",
     },
     {
@@ -666,7 +664,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Homeland - Homeland - Main Title Theme [Soundtrack HD]",
         "audio_file": "1pmUovvlYbQ.mp3",
-        "song_title": "Homeland - Main Title Theme [Soundtrack HD]",
         "topic": "sorozat_focimek",
     },
     {
@@ -680,7 +677,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Lathan Luu - Mash theme song",
         "audio_file": "GIGYLBVjYZA.mp3",
-        "song_title": "Mash theme song",
         "topic": "sorozat_focimek",
     },
     {
@@ -694,7 +690,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Brooklyn Nine-nine - Brooklyn Nine-nine - Main Theme (Official Soundtrack)",
         "audio_file": "HVzVC8YdWs8.mp3",
-        "song_title": "Brooklyn Nine-nine - Main Theme (Official Soundtrack)",
         "topic": "sorozat_focimek",
     },
     {
@@ -708,7 +703,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Christopher Tyng - Topic - Suits Theme",
         "audio_file": "sc4ceQnzYs8.mp3",
-        "song_title": "Suits Theme",
         "topic": "sorozat_focimek",
     },
     {
@@ -722,7 +716,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "TV Themesongs - The Lincoln Lawyer Title Card",
         "audio_file": "KOyUnZ3VAmY.mp3",
-        "song_title": "The Lincoln Lawyer Title Card",
         "topic": "sorozat_focimek",
     },
     {
@@ -736,7 +729,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The A-Team TV Theme Tune - The A-Team TV Theme Tune | The A-Team",
         "audio_file": "UAO2JBjRRBk.mp3",
-        "song_title": "The A-Team TV Theme Tune | The A-Team",
         "topic": "sorozat_focimek",
     },
     {
@@ -750,7 +742,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "David Gideon - Classic TV Theme: The Streets of San Francisco",
         "audio_file": "David_Gideon_Classic_TV_Theme_The_Streets_o.mp3",
-        "song_title": "Classic TV Theme: The Streets of San Francisco",
         "topic": "sorozat_focimek",
     },
 ]
