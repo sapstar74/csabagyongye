@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:14:08
+# Generated on: 2026-02-03 14:15:36
 
 QUESTIONS = [
     {
@@ -182,20 +182,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "hrisince - Sherlock Intro Season 1",
         "audio_file": "14. hrisince - Sherlock.mp3",
-        "song_title": "Sherlock",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "All Doctor Who Title Sequences: 1963-2023",
-            "Game of Thrones",
+            "Doctor Who",
+            "Ozark",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "Dark",
         ],
         "correct": 0,
         "explanation": "All Doctor Who Title Sequences: 1963-2023 - All Doctor Who Title Sequences: 1963-2023 | Doctor Who",
-        "audio_file": "All_Doctor_Who_Title_All_Doctor_Who_Title_Sequences.mp3",
+        "audio_file": "15. All Doctor Who Title Sequences 1963-2023 - Doctor Who.mp3",
+        "song_title": "Doctor Who",
         "topic": "sorozat_focimek",
     },
     {
