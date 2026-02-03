@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:27:25
+# Generated on: 2026-02-03 14:28:52
 
 QUESTIONS = [
     {
@@ -299,20 +299,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "THE BOYS - THE BOYS - ANIMATED OPENING SEQUENCE | 4K",
         "audio_file": "23. THE BOYS - The Boys.mp3",
-        "song_title": "The Boys",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Succession Opening Credits Theme Song",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Succession",
+            "Suits",
+            "Mad Men",
+            "Seinfeld",
         ],
         "correct": 0,
         "explanation": "Succession Opening Credits Theme Song - Succession Opening Credits Theme Song | Succession | HBO",
-        "audio_file": "77PsqaWzwG0.mp3",
+        "audio_file": "24. Succession Opening Credits Theme Song - Succession Opening.mp3",
+        "song_title": "Succession Opening",
         "topic": "sorozat_focimek",
     },
     {
