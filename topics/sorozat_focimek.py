@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:48:55
+# Generated on: 2026-02-03 15:49:37
 
 QUESTIONS = [
     {
@@ -623,7 +623,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "The Good Place - The Good Place | Theme Song",
-        "audio_file": "wDnGoucD9KY.mp3",
+        "audio_file": "48. The Good Place - The Good Place.mp3",
+        "song_title": "The Good Place",
         "topic": "sorozat_focimek",
     },
     {
@@ -637,7 +638,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Jovin Lau - 1 Hour Bridgerton Intro Theme Song / Opening Credits #bridgerton #netflix",
         "audio_file": "49. Jovin Lau - Bridgerton.mp3",
-        "song_title": "Bridgerton",
         "topic": "sorozat_focimek",
     },
     {
