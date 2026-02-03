@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:21:42
+# Generated on: 2026-02-03 14:23:06
 
 QUESTIONS = [
     {
@@ -247,20 +247,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Netflix's THE WITCHER - Netflix's THE WITCHER (OST) - Geralt Of Rivia | Main Theme Song - FINAL TRAILER Music",
         "audio_file": "19. Netflixs THE WITCHER - The Witcher.mp3",
-        "song_title": "The Witcher",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Season 2 Opening Credits",
+            "House of Dragons",
             "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Witcher",
+            "Loki",
         ],
         "correct": 0,
         "explanation": "Season 2 Opening Credits - Season 2 Opening Credits | House of The Dragon | Season 2 | HBO",
-        "audio_file": "HIblsDVSq_k.mp3",
+        "audio_file": "20. Season 2 Opening Credits - House of Dragons.mp3",
+        "song_title": "House of Dragons",
         "topic": "sorozat_focimek",
     },
     {
