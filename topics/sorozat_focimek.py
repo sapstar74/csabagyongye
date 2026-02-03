@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:17:36
+# Generated on: 2026-02-03 14:20:14
 
 QUESTIONS = [
     {
@@ -221,20 +221,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Mandalorian - The Mandalorian  - Main Theme Ludwig Göransson",
         "audio_file": "17. The Mandalorian -  The Mandalorian Main Theme.mp3",
-        "song_title": " The Mandalorian Main Theme ",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The Smoking Skull",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Loki",
+            "Ozark",
+            "The Mandalorian",
+            "Black Mirror",
         ],
         "correct": 0,
         "explanation": "The Smoking Skull - LOKI Opening Theme",
-        "audio_file": "3QdLGiW4joY.mp3",
+        "audio_file": "18. The Smoking Skull - The Smoking Skull.mp3",
+        "song_title": "The Smoking Skull",
         "topic": "sorozat_focimek",
     },
     {
