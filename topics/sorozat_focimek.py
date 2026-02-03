@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:30:02
+# Generated on: 2026-02-03 15:31:22
 
 QUESTIONS = [
     {
@@ -577,14 +577,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The Expanse | Season 1 | Long Opening",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Expanse ",
+            "Ozark",
+            "The 3 Body Problem",
+            "Doctor Who",
         ],
         "correct": 0,
         "explanation": "The Expanse | Season 1 | Long Opening - The Expanse | Season 1 | Long Opening - Intro HD",
-        "audio_file": "aoemQv0LYhk.mp3",
+        "audio_file": "45. The Expanse Season 1 Long Opening - The Expanse Season 1 Long Opening.mp3",
+        "song_title": "The Expanse | Season 1 | Long Opening",
         "topic": "sorozat_focimek",
     },
     {
@@ -598,7 +599,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Mikey - Firefly Opening Theme",
         "audio_file": "46. Mikey - Firefly.mp3",
-        "song_title": "Firefly",
         "topic": "sorozat_focimek",
     },
     {
