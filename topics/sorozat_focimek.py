@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:20:35
+# Generated on: 2026-02-03 15:22:40
 
 QUESTIONS = [
     {
@@ -494,20 +494,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Steven - The Simpsons Opening Credits and Theme Song",
         "audio_file": "38. Steven - The Simpsons.mp3",
-        "song_title": "The Simpsons",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Season 17",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "South Park",
+            "The Simpsons",
+            "Family Guy",
+            "Rick and Morty",
         ],
         "correct": 0,
         "explanation": "Season 17 - Season 17 (Intro) - SOUTH PARK",
-        "audio_file": "Bdt0pz5C4Xc.mp3",
+        "audio_file": "39. Season 17 - South Park.mp3",
+        "song_title": "South Park",
         "topic": "sorozat_focimek",
     },
     {
