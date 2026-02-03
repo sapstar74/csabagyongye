@@ -5251,6 +5251,12 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
             )
         if "HTTP Error 403" in error_message or "403" in error_message:
             st.error("❌ YouTube 403 tiltás. Próbáld meg cookie fájllal (bejelentkezett böngészőből exportálva).")
+
+    def _looks_like_url(value) -> bool:
+        if not isinstance(value, str):
+            return False
+        lowered = value.lower()
+        return lowered.startswith("http") or "youtu" in lowered
     
     # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
     ydl_opts = {
@@ -5775,6 +5781,30 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
             if first_entry.get('webpage_url'):
                 url = first_entry['webpage_url']
 
+    # Track info normalizálás (YouTube cím alapján)
+    info_title = info.get('title') if isinstance(info, dict) else None
+    info_channel = None
+    if isinstance(info, dict):
+        info_channel = info.get('uploader') or info.get('channel')
+    if info_title:
+        if "raw_title" not in track_info:
+            track_info["raw_title"] = info_title
+        current_title = track_info.get("title")
+        if not current_title or _looks_like_url(current_title):
+            track_info["title"] = info_title
+            current_song_title = track_info.get("song_title")
+            if not current_song_title or _looks_like_url(current_song_title):
+                track_info["song_title"] = info_title
+    if info_channel and not track_info.get("channel"):
+        track_info["channel"] = info_channel
+    if info_title and not track_info.get("artist"):
+        parsed_artist, parsed_title = _parse_artist_title_from_youtube(info_title, info_channel)
+        track_info["artist"] = parsed_artist
+        if not track_info.get("song_title"):
+            track_info["song_title"] = parsed_title
+        if not track_info.get("title") or _looks_like_url(track_info.get("title")):
+            track_info["title"] = parsed_title
+
     # Fájlnév meghatározása - YouTube ID alapján
     video_id = info.get('id', '')
     if not video_id:
@@ -5908,22 +5938,7 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     except Exception as e:
         st.warning(f"⚠️ FFmpeg hiba: {str(e)[:100]}..., teljes fájl használata")
     
-    # Track info normalizálás (YouTube cím alapján)
-    info_title = info.get('title') if isinstance(info, dict) else None
-    info_channel = None
-    if isinstance(info, dict):
-        info_channel = info.get('uploader') or info.get('channel')
-    if info_title and "raw_title" not in track_info:
-        track_info["raw_title"] = info_title
-    if info_title and not track_info.get("title"):
-        track_info["title"] = info_title
-    if info_channel and not track_info.get("channel"):
-        track_info["channel"] = info_channel
-    if info_title and not track_info.get("artist"):
-        parsed_artist, parsed_title = _parse_artist_title_from_youtube(info_title, info_channel)
-        track_info["artist"] = parsed_artist
-        track_info["song_title"] = parsed_title
-        track_info["title"] = parsed_title
+    # Track info normalizálás (YouTube cím alapján) - már fent megtörtént
 
     # Quiz kérdés generálása
     question = generate_quiz_question(track_info, audio_file, category, custom_options)
