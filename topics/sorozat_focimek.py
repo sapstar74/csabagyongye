@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:49:37
+# Generated on: 2026-02-03 15:50:12
 
 QUESTIONS = [
     {
@@ -617,9 +617,9 @@ QUESTIONS = [
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "The Good Place",
-            "Game of Thrones",
+            "Brooklyn 99",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "How I Met Your Mother",
         ],
         "correct": 0,
         "explanation": "The Good Place - The Good Place | Theme Song",
