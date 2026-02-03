@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:23:58
+# Generated on: 2026-02-03 14:25:45
 
 QUESTIONS = [
     {
@@ -273,20 +273,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Last of Us - The Last of Us | Opening Credits | Max",
         "audio_file": "21. The Last of Us - The Last of Us.mp3",
-        "song_title": "The Last of Us",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Danny Elfman",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Wednesday",
+            "Sherlock",
+            "Dexter",
+            "Seinfeld",
         ],
         "correct": 0,
         "explanation": "Danny Elfman - Wednesday Main Titles",
-        "audio_file": "vhBHaz9SaLI.mp3",
+        "audio_file": "22. Danny Elfman - Wednesday.mp3",
+        "song_title": "Wednesday",
         "topic": "sorozat_focimek",
     },
     {
