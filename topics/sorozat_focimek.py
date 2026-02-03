@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:28:50
+# Generated on: 2026-02-03 15:30:02
 
 QUESTIONS = [
     {
@@ -590,14 +590,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Mikey",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Firefly",
+            "The Boys",
+            "Suits",
+            "Brooklyn 99",
         ],
         "correct": 0,
         "explanation": "Mikey - Firefly Opening Theme",
-        "audio_file": "o-sp68GjYL0.mp3",
+        "audio_file": "46. Mikey - Firefly.mp3",
+        "song_title": "Firefly",
         "topic": "sorozat_focimek",
     },
     {
@@ -611,7 +612,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Fever Ray - Fever Ray - If I Had A Heart | The Vikings (Music from the TV Series)",
         "audio_file": "47. Fever Ray - Vikings.mp3",
-        "song_title": "Vikings",
         "topic": "sorozat_focimek",
     },
     {
