@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:54:04
+# Generated on: 2026-02-03 15:55:08
 
 QUESTIONS = [
     {
@@ -676,20 +676,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Lathan Luu - Mash theme song",
         "audio_file": "52. Lathan Luu - MASH.mp3",
-        "song_title": "MASH",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Brooklyn Nine-nine",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Lincoln Lawyer",
+            "Suits",
+            "Dexter",
         ],
         "correct": 0,
         "explanation": "Brooklyn Nine-nine - Brooklyn Nine-nine - Main Theme (Official Soundtrack)",
-        "audio_file": "HVzVC8YdWs8.mp3",
+        "audio_file": "53. Brooklyn Nine-nine - Brooklyn 99.mp3",
+        "song_title": "Brooklyn 99",
         "topic": "sorozat_focimek",
     },
     {
