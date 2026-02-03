@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:58:54
+# Generated on: 2026-02-03 16:00:04
 
 QUESTIONS = [
     {
@@ -728,20 +728,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The A-Team TV Theme Tune - The A-Team TV Theme Tune | The A-Team",
         "audio_file": "56. The A-Team TV Theme Tune - The A-Team TV.mp3",
-        "song_title": "The A-Team TV",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "David Gideon",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "San Francisco utcáin",
+            "Petrocelli",
+            "Kojak",
+            "The A-Team",
         ],
         "correct": 0,
         "explanation": "David Gideon - Classic TV Theme: The Streets of San Francisco",
-        "audio_file": "David_Gideon_Classic_TV_Theme_The_Streets_o.mp3",
+        "audio_file": "57. David Gideon - San Francisco utcáin.mp3",
+        "song_title": "San Francisco utcáin",
         "topic": "sorozat_focimek",
     },
 ]
