@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:23:06
+# Generated on: 2026-02-03 14:23:58
 
 QUESTIONS = [
     {
@@ -260,7 +260,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Season 2 Opening Credits - Season 2 Opening Credits | House of The Dragon | Season 2 | HBO",
         "audio_file": "20. Season 2 Opening Credits - House of Dragons.mp3",
-        "song_title": "House of Dragons",
         "topic": "sorozat_focimek",
     },
     {
@@ -268,12 +267,13 @@ QUESTIONS = [
         "options": [
             "The Last of Us",
             "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Westworld",
+            "Ozark",
         ],
         "correct": 0,
         "explanation": "The Last of Us - The Last of Us | Opening Credits | Max",
-        "audio_file": "8SWhBsbxmpk.mp3",
+        "audio_file": "21. The Last of Us - The Last of Us.mp3",
+        "song_title": "The Last of Us",
         "topic": "sorozat_focimek",
     },
     {
