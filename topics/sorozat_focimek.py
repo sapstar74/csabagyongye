@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:35:43
+# Generated on: 2026-02-03 14:36:51
 
 QUESTIONS = [
     {
@@ -364,20 +364,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "SJ363 - Fargo Sountrack- Fargo, North Dakota",
         "audio_file": "28. SJ363 - Fargo.mp3",
-        "song_title": "Fargo",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Narcos",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Peaky Blinders",
+            "The Boys",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "Narcos - Narcos | Opening Credits [HD] | Netflix",
-        "audio_file": "PtJ6yAGjsIs.mp3",
+        "audio_file": "29. Narcos - Narcos.mp3",
+        "song_title": "Narcos",
         "topic": "sorozat_focimek",
     },
     {
