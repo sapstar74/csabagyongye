@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:30:35
+# Generated on: 2026-02-03 14:30:58
 
 QUESTIONS = [
     {
@@ -324,8 +324,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Westworld S1 Official Soundtrack | Main Title Theme - Westworld S1 Official Soundtrack | Main Title Theme - Ramin Djawadi | WaterTower",
-        "audio_file": "25. Westworld S1 Official Soundtrack Main Title Theme - Westworld S1 Official Soundtrack Main Title Theme.mp3",
-        "song_title": "Westworld S1 Official Soundtrack | Main Title Theme",
+        "audio_file": "25. Westworld - Westworld S1 Official Soundtrack.mp3",
+        "song_title": "Westworld S1 Official Soundtrack",
         "topic": "sorozat_focimek",
     },
     {
