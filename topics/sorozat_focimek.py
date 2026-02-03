@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:26:00
+# Generated on: 2026-02-03 15:26:41
 
 QUESTIONS = [
     {
@@ -546,7 +546,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Dark : Season 1 - Dark : Season 1 - Opening Credits / Intro (Netflix' Series)",
         "audio_file": "42. Dark Season 1 - Money Heist.mp3",
-        "song_title": "Money Heist",
         "topic": "sorozat_focimek",
     },
     {
@@ -566,13 +565,14 @@ QUESTIONS = [
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Ozark",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Narcos",
+            "Fargo",
+            "Loki",
         ],
         "correct": 0,
         "explanation": "Ozark - Ozark – Title Sequence (Season 1)",
-        "audio_file": "DJQxWhRIQE0.mp3",
+        "audio_file": "44. Ozark - Ozark.mp3",
+        "song_title": "Ozark",
         "topic": "sorozat_focimek",
     },
     {
