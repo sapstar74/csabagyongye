@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:52:35
+# Generated on: 2026-02-03 15:54:04
 
 QUESTIONS = [
     {
@@ -663,20 +663,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Homeland - Homeland - Main Title Theme [Soundtrack HD]",
         "audio_file": "51. Homeland - Homeland.mp3",
-        "song_title": "Homeland",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Lathan Luu",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "MASH",
+            "The Boys",
+            "Prison Break",
+            "The Walking Dead",
         ],
         "correct": 0,
         "explanation": "Lathan Luu - Mash theme song",
-        "audio_file": "GIGYLBVjYZA.mp3",
+        "audio_file": "52. Lathan Luu - MASH.mp3",
+        "song_title": "MASH",
         "topic": "sorozat_focimek",
     },
     {
