@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 13:39:06
+# Generated on: 2026-02-03 13:39:58
 
 QUESTIONS = [
     {
@@ -104,20 +104,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Emily Hinnekens - The X-Files Opening Credits",
         "audio_file": "08. Emily Hinnekens - The X-files.mp3",
-        "song_title": "The X-files",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "kasper933",
-            "Game of Thrones",
+            "Twin Peaks",
+            "Ozark",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "The 3 Body Problem",
         ],
         "correct": 0,
         "explanation": "kasper933 - Twin Peaks Intro",
-        "audio_file": "yFMaEIHIrGw.mp3",
+        "audio_file": "09. kasper933 - Twin Peaks.mp3",
+        "song_title": "Twin Peaks",
         "topic": "sorozat_focimek",
     },
     {
