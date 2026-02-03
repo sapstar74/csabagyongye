@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:26:41
+# Generated on: 2026-02-03 15:28:24
 
 QUESTIONS = [
     {
@@ -572,7 +572,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ozark - Ozark – Title Sequence (Season 1)",
         "audio_file": "44. Ozark - Ozark.mp3",
-        "song_title": "Ozark",
         "topic": "sorozat_focimek",
     },
     {
@@ -604,14 +603,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Fever Ray",
+            "Vikings",
             "Game of Thrones",
-            "Stranger Things",
+            "Outlander",
             "Szerkeszthető opció",
         ],
         "correct": 0,
         "explanation": "Fever Ray - Fever Ray - If I Had A Heart | The Vikings (Music from the TV Series)",
-        "audio_file": "Fever_Ray_Fever_Ray_If_I_Had_A_Heart_.mp3",
+        "audio_file": "47. Fever Ray - Vikings.mp3",
+        "song_title": "Vikings",
         "topic": "sorozat_focimek",
     },
     {
