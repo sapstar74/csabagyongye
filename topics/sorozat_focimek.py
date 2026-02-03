@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:32:47
+# Generated on: 2026-02-03 14:34:03
 
 QUESTIONS = [
     {
@@ -338,20 +338,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Equinox - HBO Chernobyl Opening Title",
         "audio_file": "26. Equinox - Chernobyl.mp3",
-        "song_title": "Chernobyl",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "True Detective",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Sherlock",
+            "Suits",
+            "Brooklyn Lawyer",
         ],
         "correct": 0,
         "explanation": "True Detective - True Detective - Intro / Opening Song - Theme (The Handsome Family - Far From Any Road) + LYRICS",
-        "audio_file": "p4zluA60hjs.mp3",
+        "audio_file": "27. True Detective - True Detective.mp3",
+        "song_title": "True Detective",
         "topic": "sorozat_focimek",
     },
     {
