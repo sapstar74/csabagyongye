@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 13:39:58
+# Generated on: 2026-02-03 13:41:14
 
 QUESTIONS = [
     {
@@ -117,20 +117,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "kasper933 - Twin Peaks Intro",
         "audio_file": "09. kasper933 - Twin Peaks.mp3",
-        "song_title": "Twin Peaks",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The Sopranos Opening Credits Theme Song",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Sopranos ",
+            "Brooklyn 99",
+            "Narcos",
+            "Fargo",
         ],
         "correct": 0,
         "explanation": "The Sopranos Opening Credits Theme Song - The Sopranos | HBO",
-        "audio_file": "mJpNmYeooQE.mp3",
+        "audio_file": "10. The Sopranos Opening Credits Theme Song - The Sopranos Opening Credits Theme Song.mp3",
+        "song_title": "The Sopranos Opening Credits Theme Song",
         "topic": "sorozat_focimek",
     },
 ]
