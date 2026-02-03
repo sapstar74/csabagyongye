@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:13:08
+# Generated on: 2026-02-03 14:14:08
 
 QUESTIONS = [
     {
@@ -169,20 +169,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Morning Routine' Title Sequence - Morning Routine' Title Sequence | Dexter | SHOWTIME",
         "audio_file": "13. Morning Routine Title Sequence - Morning Routine Title Sequence - Dexter.mp3",
-        "song_title": "Morning Routine' Title Sequence - Dexter",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "hrisince",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Sherlock",
+            "Breaking Bad",
+            "Dexter",
+            "Narcos",
         ],
         "correct": 0,
         "explanation": "hrisince - Sherlock Intro Season 1",
-        "audio_file": "Pk2FME6HVdA.mp3",
+        "audio_file": "14. hrisince - Sherlock.mp3",
+        "song_title": "Sherlock",
         "topic": "sorozat_focimek",
     },
     {
