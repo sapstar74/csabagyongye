@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:37:42
+# Generated on: 2026-02-03 14:39:39
 
 QUESTIONS = [
     {
@@ -390,20 +390,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Peaky Blinders Opening Title Sequence - Peaky Blinders Opening Title Sequence - Gold Open",
         "audio_file": "30. Peaky Blinders Opening Title Sequence - Peaky Blinders Opening Title Sequence.mp3",
-        "song_title": "Peaky Blinders Opening Title Sequence",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "BrokenHalo",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Outlander",
+            "Witcher",
+            "Vikings",
+            "Game Of Thrones",
         ],
         "correct": 0,
         "explanation": "BrokenHalo - Outlander Theme (Season 1)",
-        "audio_file": "vUt0y29exX0.mp3",
+        "audio_file": "31. BrokenHalo - Outlander.mp3",
+        "song_title": "Outlander",
         "topic": "sorozat_focimek",
     },
     {
