@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:25:45
+# Generated on: 2026-02-03 14:27:25
 
 QUESTIONS = [
     {
@@ -286,20 +286,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Danny Elfman - Wednesday Main Titles",
         "audio_file": "22. Danny Elfman - Wednesday.mp3",
-        "song_title": "Wednesday",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "THE BOYS",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Boys",
+            "Mandalorian",
+            "Loki",
+            "Prison Break",
         ],
         "correct": 0,
         "explanation": "THE BOYS - THE BOYS - ANIMATED OPENING SEQUENCE | 4K",
-        "audio_file": "UFQs01jmvn0.mp3",
+        "audio_file": "23. THE BOYS - The Boys.mp3",
+        "song_title": "The Boys",
         "topic": "sorozat_focimek",
     },
     {
