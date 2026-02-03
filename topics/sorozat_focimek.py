@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:06:31
+# Generated on: 2026-02-03 14:11:36
 
 QUESTIONS = [
     {
@@ -135,14 +135,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Joel Troughton",
+            "Mad Men",
             "Game of Thrones",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "The Wire",
         ],
         "correct": 0,
         "explanation": "Joel Troughton - Mad Men Opening Credits HD",
-        "audio_file": "NJ5-sdHP0YQ.mp3",
+        "audio_file": "11. Joel Troughton - Mad Men.mp3",
+        "song_title": "Mad Men",
         "topic": "sorozat_focimek",
     },
     {
@@ -156,7 +157,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "authwiretap - The Wire Intro Theme [Season 1]",
         "audio_file": "12. authwiretap - The Wire.mp3",
-        "song_title": "The Wire",
         "topic": "sorozat_focimek",
     },
     {
