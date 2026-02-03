@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:17:47
+# Generated on: 2026-02-03 15:19:05
 
 QUESTIONS = [
     {
@@ -468,20 +468,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "SeriesFanatics - The Big Bang Theory Theme Song",
         "audio_file": "36. SeriesFanatics - The Bing Bang Theory.mp3",
-        "song_title": "The Bing Bang Theory",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Seinfeld",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Suites",
+            "How I Met Your Mother",
+            "Brooklyn 99",
         ],
         "correct": 0,
         "explanation": "Seinfeld - Seinfeld - Opening Intro",
-        "audio_file": "1rzC5qrYZXs.mp3",
+        "audio_file": "37. Seinfeld - Seinfeld.mp3",
+        "song_title": "Seinfeld",
         "topic": "sorozat_focimek",
     },
     {
