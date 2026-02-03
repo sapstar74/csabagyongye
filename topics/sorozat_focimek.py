@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 13:59:08
+# Generated on: 2026-02-03 14:06:31
 
 QUESTIONS = [
     {
@@ -130,7 +130,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Sopranos Opening Credits Theme Song - The Sopranos | HBO",
         "audio_file": "10. The Sopranos Opening Credits Theme Song - The Sopranos Opening Credits Theme Song.mp3",
-        "song_title": "The Sopranos Opening Credits Theme Song",
         "topic": "sorozat_focimek",
     },
     {
@@ -144,21 +143,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Joel Troughton - Mad Men Opening Credits HD",
         "audio_file": "NJ5-sdHP0YQ.mp3",
-        "song_title": "Mad Men Opening Credits HD",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "authwiretap",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Wire",
+            "Fargo",
+            "Peaky Blinders",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "authwiretap - The Wire Intro Theme [Season 1]",
-        "audio_file": "TraSFcARVwM.mp3",
-        "song_title": "The Wire Intro Theme [Season 1]",
+        "audio_file": "12. authwiretap - The Wire.mp3",
+        "song_title": "The Wire",
         "topic": "sorozat_focimek",
     },
     {
@@ -172,7 +170,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Morning Routine' Title Sequence - Morning Routine' Title Sequence | Dexter | SHOWTIME",
         "audio_file": "ej8-Rqo-VT4.mp3",
-        "song_title": "Morning Routine' Title Sequence | Dexter | SHOWTIME",
         "topic": "sorozat_focimek",
     },
     {
@@ -186,7 +183,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "hrisince - Sherlock Intro Season 1",
         "audio_file": "Pk2FME6HVdA.mp3",
-        "song_title": "Sherlock Intro Season 1",
         "topic": "sorozat_focimek",
     },
     {
@@ -200,7 +196,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "All Doctor Who Title Sequences: 1963-2023 - All Doctor Who Title Sequences: 1963-2023 | Doctor Who",
         "audio_file": "All_Doctor_Who_Title_All_Doctor_Who_Title_Sequences.mp3",
-        "song_title": "All Doctor Who Title Sequences: 1963-2023 | Doctor Who",
         "topic": "sorozat_focimek",
     },
     {
@@ -214,7 +209,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Hans Zimmer - The Crown Main Title| The Crown: Season One (Soundtrack from the Netflix Original Series)",
         "audio_file": "EIEqXWHPf88.mp3",
-        "song_title": "The Crown Main Title| The Crown: Season One (Soundtrack from the Netflix Original Series)",
         "topic": "sorozat_focimek",
     },
     {
@@ -228,7 +222,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Mandalorian - The Mandalorian  - Main Theme Ludwig Göransson",
         "audio_file": "The_Mandalorian_The_Mandalorian_Main_Theme_.mp3",
-        "song_title": "The Mandalorian  - Main Theme Ludwig Göransson",
         "topic": "sorozat_focimek",
     },
     {
@@ -242,7 +235,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Smoking Skull - LOKI Opening Theme",
         "audio_file": "3QdLGiW4joY.mp3",
-        "song_title": "LOKI Opening Theme",
         "topic": "sorozat_focimek",
     },
     {
@@ -256,7 +248,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Netflix's THE WITCHER - Netflix's THE WITCHER (OST) - Geralt Of Rivia | Main Theme Song - FINAL TRAILER Music",
         "audio_file": "WdS4Z5Kfjgw.mp3",
-        "song_title": "Netflix's THE WITCHER (OST) - Geralt Of Rivia | Main Theme Song - FINAL TRAILER Music",
         "topic": "sorozat_focimek",
     },
     {
@@ -270,7 +261,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Season 2 Opening Credits - Season 2 Opening Credits | House of The Dragon | Season 2 | HBO",
         "audio_file": "HIblsDVSq_k.mp3",
-        "song_title": "Season 2 Opening Credits | House of The Dragon | Season 2 | HBO",
         "topic": "sorozat_focimek",
     },
     {
@@ -284,7 +274,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Last of Us - The Last of Us | Opening Credits | Max",
         "audio_file": "8SWhBsbxmpk.mp3",
-        "song_title": "The Last of Us | Opening Credits | Max",
         "topic": "sorozat_focimek",
     },
     {
@@ -298,7 +287,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Danny Elfman - Wednesday Main Titles",
         "audio_file": "vhBHaz9SaLI.mp3",
-        "song_title": "Wednesday Main Titles",
         "topic": "sorozat_focimek",
     },
     {
@@ -312,7 +300,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "THE BOYS - THE BOYS - ANIMATED OPENING SEQUENCE | 4K",
         "audio_file": "UFQs01jmvn0.mp3",
-        "song_title": "THE BOYS - ANIMATED OPENING SEQUENCE | 4K",
         "topic": "sorozat_focimek",
     },
     {
@@ -326,7 +313,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Succession Opening Credits Theme Song - Succession Opening Credits Theme Song | Succession | HBO",
         "audio_file": "77PsqaWzwG0.mp3",
-        "song_title": "Succession Opening Credits Theme Song | Succession | HBO",
         "topic": "sorozat_focimek",
     },
     {
@@ -340,7 +326,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Westworld S1 Official Soundtrack | Main Title Theme - Westworld S1 Official Soundtrack | Main Title Theme - Ramin Djawadi | WaterTower",
         "audio_file": "rYelEUVQ50g.mp3",
-        "song_title": "Westworld S1 Official Soundtrack | Main Title Theme - Ramin Djawadi | WaterTower",
         "topic": "sorozat_focimek",
     },
     {
@@ -354,7 +339,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Equinox - HBO Chernobyl Opening Title",
         "audio_file": "2uoTIcHgXC4.mp3",
-        "song_title": "HBO Chernobyl Opening Title",
         "topic": "sorozat_focimek",
     },
     {
@@ -368,7 +352,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "True Detective - True Detective - Intro / Opening Song - Theme (The Handsome Family - Far From Any Road) + LYRICS",
         "audio_file": "p4zluA60hjs.mp3",
-        "song_title": "True Detective - Intro / Opening Song - Theme (The Handsome Family - Far From Any Road) + LYRICS",
         "topic": "sorozat_focimek",
     },
     {
@@ -382,7 +365,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "SJ363 - Fargo Sountrack- Fargo, North Dakota",
         "audio_file": "W4NCC0dUXks.mp3",
-        "song_title": "Fargo Sountrack- Fargo, North Dakota",
         "topic": "sorozat_focimek",
     },
     {
@@ -396,7 +378,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Narcos - Narcos | Opening Credits [HD] | Netflix",
         "audio_file": "PtJ6yAGjsIs.mp3",
-        "song_title": "Narcos | Opening Credits [HD] | Netflix",
         "topic": "sorozat_focimek",
     },
     {
@@ -410,7 +391,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Peaky Blinders Opening Title Sequence - Peaky Blinders Opening Title Sequence - Gold Open",
         "audio_file": "Be56k1Ui2Yg.mp3",
-        "song_title": "Peaky Blinders Opening Title Sequence - Gold Open",
         "topic": "sorozat_focimek",
     },
     {
@@ -424,7 +404,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "BrokenHalo - Outlander Theme (Season 1)",
         "audio_file": "vUt0y29exX0.mp3",
-        "song_title": "Outlander Theme (Season 1)",
         "topic": "sorozat_focimek",
     },
     {
@@ -438,7 +417,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Enzo Cicero - Black Mirror -- Opening title sequence",
         "audio_file": "jXq23Tq9FeU.mp3",
-        "song_title": "Black Mirror -- Opening title sequence",
         "topic": "sorozat_focimek",
     },
     {
@@ -452,7 +430,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "LOST - LOST - Opening Titles",
         "audio_file": "9LDh8DefWpI.mp3",
-        "song_title": "LOST - Opening Titles",
         "topic": "sorozat_focimek",
     },
 ]
