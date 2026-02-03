@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 13:35:21
+# Generated on: 2026-02-03 13:38:04
 
 QUESTIONS = [
     {
@@ -78,20 +78,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Dave Porter - Topic - Breaking Bad Main Title Theme",
         "audio_file": "06. Breaking Bad - Breaking Bad.mp3",
-        "song_title": "Breaking Bad",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Pratik Vaidya",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Better Call Saul",
+            "Breaking Bad",
+            "Peaky Blinders",
+            "Fargo",
         ],
         "correct": 0,
         "explanation": "Pratik Vaidya - Better Call Saul Theme by Little Barrie Full Original Song",
-        "audio_file": "Unknown_Artist_Unknown_Title.mp3",
+        "audio_file": "07. Pratik Vaidya - Better Call Saul.mp3",
+        "song_title": "Better Call Saul",
         "topic": "sorozat_focimek",
     },
     {
