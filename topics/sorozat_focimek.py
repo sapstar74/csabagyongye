@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:50:12
+# Generated on: 2026-02-03 15:51:24
 
 QUESTIONS = [
     {
@@ -624,7 +624,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Good Place - The Good Place | Theme Song",
         "audio_file": "48. The Good Place - The Good Place.mp3",
-        "song_title": "The Good Place",
         "topic": "sorozat_focimek",
     },
     {
@@ -643,14 +642,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Petrocelli theme",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Petrocelli",
+            "Kojak",
+            "The A-Team",
+            "San Fransisco utcáin",
         ],
         "correct": 0,
         "explanation": "Petrocelli theme - Petrocelli theme - the series intro and outro",
-        "audio_file": "86fXst21PQg.mp3",
+        "audio_file": "50. Petrocelli theme - Petrocelli theme.mp3",
+        "song_title": "Petrocelli theme",
         "topic": "sorozat_focimek",
     },
     {
