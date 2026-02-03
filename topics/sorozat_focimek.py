@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:28:24
+# Generated on: 2026-02-03 15:28:50
 
 QUESTIONS = [
     {
@@ -606,7 +606,7 @@ QUESTIONS = [
             "Vikings",
             "Game of Thrones",
             "Outlander",
-            "Szerkeszthető opció",
+            "Sherlock",
         ],
         "correct": 0,
         "explanation": "Fever Ray - Fever Ray - If I Had A Heart | The Vikings (Music from the TV Series)",
