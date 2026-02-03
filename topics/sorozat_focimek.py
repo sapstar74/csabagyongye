@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:22:40
+# Generated on: 2026-02-03 15:23:45
 
 QUESTIONS = [
     {
@@ -507,20 +507,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Season 17 - Season 17 (Intro) - SOUTH PARK",
         "audio_file": "39. Season 17 - South Park.mp3",
-        "song_title": "South Park",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The Walking Dead Original Soundtrack",
-            "Game of Thrones",
+            "The Walking Dead",
+            "Westworld",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "The Last of Us",
         ],
         "correct": 0,
         "explanation": "The Walking Dead Original Soundtrack - The Walking Dead Original Soundtrack  - Theme Song",
-        "audio_file": "v5ISBJc1wFk.mp3",
+        "audio_file": "40. The Walking Dead Original Soundtrack - The Walking Dead Original Soundtrack.mp3",
+        "song_title": "The Walking Dead Original Soundtrack",
         "topic": "sorozat_focimek",
     },
     {
