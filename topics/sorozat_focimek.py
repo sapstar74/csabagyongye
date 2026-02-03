@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:39:39
+# Generated on: 2026-02-03 14:40:46
 
 QUESTIONS = [
     {
@@ -403,20 +403,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "BrokenHalo - Outlander Theme (Season 1)",
         "audio_file": "31. BrokenHalo - Outlander.mp3",
-        "song_title": "Outlander",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Enzo Cicero",
-            "Game of Thrones",
+            "Black Mirror",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "Ozark",
+            "8 Senses",
         ],
         "correct": 0,
         "explanation": "Enzo Cicero - Black Mirror -- Opening title sequence",
-        "audio_file": "jXq23Tq9FeU.mp3",
+        "audio_file": "32. Enzo Cicero - Black Mirror.mp3",
+        "song_title": "Black Mirror",
         "topic": "sorozat_focimek",
     },
     {
