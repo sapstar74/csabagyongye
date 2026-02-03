@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 12:46:08
+# Generated on: 2026-02-03 12:48:07
 
 QUESTIONS = [
     {
@@ -52,20 +52,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Office - Intro",
         "audio_file": "04. The Office - The Office.mp3",
-        "song_title": "The Office",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "AnissaRaquel",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Fresh Prince of Bel-Air",
+            "How I met your mother",
+            "The Sopranos",
+            "Friends",
         ],
         "correct": 0,
         "explanation": "AnissaRaquel - The Fresh Prince Of Bel Air Theme Song",
-        "audio_file": "1nCqRmx3Dnw.mp3",
+        "audio_file": "05. AnissaRaquel - The Fresh Prince of Bel-Air.mp3",
+        "song_title": "The Fresh Prince of Bel-Air",
         "topic": "sorozat_focimek",
     },
     {
