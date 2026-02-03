@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:13:13
+# Generated on: 2026-02-03 15:17:47
 
 QUESTIONS = [
     {
@@ -455,20 +455,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "MidnightMarathon - \"How I Met Your Mother\" Extended Theme Song",
         "audio_file": "35. MidnightMarathon - How I Met Your Mother.mp3",
-        "song_title": "How I Met Your Mother",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "SeriesFanatics",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Bing Bang Theory",
+            "The Umbrella Academy",
+            "Money Heist",
+            "The South Park",
         ],
         "correct": 0,
         "explanation": "SeriesFanatics - The Big Bang Theory Theme Song",
-        "audio_file": "hQjF0-T45dQ.mp3",
+        "audio_file": "36. SeriesFanatics - The Bing Bang Theory.mp3",
+        "song_title": "The Bing Bang Theory",
         "topic": "sorozat_focimek",
     },
     {
