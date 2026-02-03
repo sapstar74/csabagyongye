@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:31:38
+# Generated on: 2026-02-03 15:33:06
 
 QUESTIONS = [
     {
@@ -551,14 +551,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Magnificent Music",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Money Heisttttt",
+            "Lost",
+            "Prison Break",
+            "True Detective",
         ],
         "correct": 0,
         "explanation": "Magnificent Music - Money Heist Soundtrack- Theme Song",
-        "audio_file": "i12TpEQOBtE.mp3",
+        "audio_file": "43. Magnificent Music - Money Heist.mp3",
+        "song_title": "Money Heist",
         "topic": "sorozat_focimek",
     },
     {
@@ -585,7 +586,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Expanse | Season 1 | Long Opening - The Expanse | Season 1 | Long Opening - Intro HD",
         "audio_file": "45. The Expanse Season 1 Long Opening - The Expanse Season 1 Long Opening.mp3",
-        "song_title": "The Expanse Season 1 Long Opening",
         "topic": "sorozat_focimek",
     },
     {
