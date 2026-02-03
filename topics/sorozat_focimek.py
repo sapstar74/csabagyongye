@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:16:46
+# Generated on: 2026-02-03 14:17:36
 
 QUESTIONS = [
     {
@@ -208,7 +208,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Hans Zimmer - The Crown Main Title| The Crown: Season One (Soundtrack from the Netflix Original Series)",
         "audio_file": "16. Hans Zimmer - The Crown.mp3",
-        "song_title": "The Crown",
         "topic": "sorozat_focimek",
     },
     {
@@ -216,12 +215,13 @@ QUESTIONS = [
         "options": [
             "The Mandalorian",
             "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Dark",
+            "Loki",
         ],
         "correct": 0,
         "explanation": "The Mandalorian - The Mandalorian  - Main Theme Ludwig Göransson",
-        "audio_file": "The_Mandalorian_The_Mandalorian_Main_Theme_.mp3",
+        "audio_file": "17. The Mandalorian -  The Mandalorian Main Theme.mp3",
+        "song_title": " The Mandalorian Main Theme ",
         "topic": "sorozat_focimek",
     },
     {
