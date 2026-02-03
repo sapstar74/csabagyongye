@@ -175,6 +175,7 @@ from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
 from topics.festmenyek import FESTMENY_QUESTIONS
 from topics.magyar_festmenyek import QUESTIONS as MAGYAR_FESTMENYEK_QUESTIONS
 from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
+from topics.sorozat_focimek import QUESTIONS as SOROZAT_FOCIMEK_QUESTIONS
 from topics.regények import REGÉNYEK_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
@@ -599,6 +600,7 @@ QUIZ_DATA_BY_TOPIC = {
     "magyar_zenekarok": MAGYAR_ZENEKAROK_QUESTIONS_UJ,
     "nemzetkozi_zenekarok": NEMZETKOZI_ZENEKAROK_QUESTIONS,
     "one_hit_wonders": ONE_HIT_WONDERS_QUESTIONS,
+    "sorozat_focimek": SOROZAT_FOCIMEK_QUESTIONS,
     "háborúk": HABORU_QUESTIONS_ALL,
     "magyar_királyok": KIRALYOK_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
@@ -674,6 +676,7 @@ def reset_quiz():
         "komolyzene": "🎼 Komolyzene",
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
+        "sorozat_focimek": "📺 Sorozat főcímek",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -754,6 +757,18 @@ def get_audio_file_for_question(question, topic):
             else:
                 print(f"[DEBUG] Spotify embed található, de nincs original_index")
             pass
+    elif topic == "sorozat_focimek":
+        # Sorozat főcímek - audio_file alapú
+        if "audio_file" in question and question["audio_file"]:
+            audio_dir = Path(__file__).parent / "audio_files/sorozat_focimek"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
+            # Fallback: audio_files gyökér
+            audio_dir = Path(__file__).parent / "audio_files"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
     elif topic == "komolyzene":
         # Komolyzene: original_index alapú mapping használata
         audio_dirs = [
@@ -898,7 +913,7 @@ def get_audio_file_for_question(question, topic):
 
 def show_answer_popup(question, user_answer, correct_answer):
     """Tartós popup üzenet a válaszról és helyes válaszról"""
-    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"}
+    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"}
     topic = question.get("topic") if isinstance(question, dict) else None
     show_piece_title = bool(
         topic in music_topics
@@ -1196,6 +1211,7 @@ def get_all_audio_tracks():
     # Minden lehetséges audio könyvtár
     audio_dirs = [
         "audio_files",
+        "audio_files/sorozat_focimek",
         "magyar_audio", 
         "nemzetkozi_audio",
         "komolyzene_audio",
@@ -1244,6 +1260,11 @@ def get_audio_tracks_by_category():
             "title": "⭐ One Hit Wonders",
             "audio_dirs": ["audio_files/one_hit_wonders", "audio_files"],
             "question_file": "topics/one_hit_wonders.py"
+        },
+        "sorozat_focimek": {
+            "title": "📺 Sorozat főcímek",
+            "audio_dirs": ["audio_files/sorozat_focimek", "audio_files"],
+            "question_file": "topics/sorozat_focimek.py"
         }
     }
     
@@ -1295,6 +1316,27 @@ def _parse_artist_and_title(track_name: str):
             return parts[0].replace("_", " ").strip(), " ".join(parts[1:]).replace("_", " ").strip()
     return "Ismeretlen", name
 
+def _parse_artist_title_from_youtube(youtube_title: str, channel: Optional[str] = None):
+    """YouTube cím alapján előadó és cím kinyerése"""
+    import re
+    if not youtube_title:
+        return channel or "Ismeretlen", "Ismeretlen cím"
+
+    title = str(youtube_title).strip()
+    # Felesleges zárójelek eltávolítása (pl. Official, HD)
+    title = re.sub(r"\s*\[[^\]]*\]\s*", " ", title)
+    title = re.sub(r"\s*\([^)]*\)\s*", " ", title)
+    title = re.sub(r"\s+", " ", title).strip()
+
+    for sep in [" - ", " – ", " — ", " | "]:
+        if sep in title:
+            artist, song = title.split(sep, 1)
+            return artist.strip() or (channel or "Ismeretlen"), song.strip() or title
+
+    if channel:
+        return channel.strip(), title
+    return "Ismeretlen", title
+
 def _get_piece_title_for_question(question: dict) -> Optional[str]:
     """Darab címének becsült kinyerése a kérdésből"""
     if not isinstance(question, dict):
@@ -1331,7 +1373,7 @@ def show_artist_list_page():
     st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎼 Szerző szerinti lista</h2>', unsafe_allow_html=True)
     
     tracks_by_category = get_audio_tracks_by_category()
-    music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
+    music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
     music_options = {k: v["title"] for k, v in tracks_by_category.items() if k in music_categories}
     
     if not music_options:
@@ -1400,6 +1442,65 @@ def show_artist_list_page():
 
                 if has_audio and st.session_state.artist_list_playing == audio_path:
                     st.audio(audio_path, format="audio/mp3")
+
+                if has_audio:
+                    with st.expander("🔧 Audio módosítás", expanded=False):
+                        st.caption("A feltöltött fájl felülírja az eredeti tracket (név változatlan).")
+                        uploaded_file = st.file_uploader(
+                            "Új MP3 feltöltése",
+                            type=["mp3"],
+                            key=f"upload_{selected_category}_{artist}_{idx}",
+                        )
+                        confirm_replace = st.checkbox(
+                            "Igen, felülírom az eredeti fájlt",
+                            key=f"confirm_replace_{selected_category}_{artist}_{idx}",
+                        )
+                        if st.button("💾 Csere mentése", key=f"replace_{selected_category}_{artist}_{idx}"):
+                            if uploaded_file is None:
+                                st.warning("⚠️ Előbb válassz ki egy MP3 fájlt!")
+                            elif not confirm_replace:
+                                st.warning("⚠️ Jelöld be a megerősítést a felülíráshoz!")
+                            else:
+                                try:
+                                    import tempfile
+                                    import os
+                                    from pathlib import Path
+
+                                    target_path = Path(audio_path)
+                                    with tempfile.NamedTemporaryFile(delete=False, dir=str(target_path.parent), suffix=target_path.suffix) as tmp:
+                                        tmp.write(uploaded_file.getbuffer())
+                                        tmp_path = tmp.name
+                                    os.replace(tmp_path, target_path)
+
+                                    # Cache frissítése
+                                    cache_keys_to_delete = []
+                                    for key in st.session_state.keys():
+                                        if (key.startswith("audio_track_data_") or
+                                            key.startswith("duration_") or
+                                            key.startswith("track_cache_")):
+                                            cache_keys_to_delete.append(key)
+                                    for key in cache_keys_to_delete:
+                                        if key in st.session_state:
+                                            del st.session_state[key]
+                                    st.session_state['force_refresh'] = True
+
+                                    # Git szinkronizáció
+                                    try:
+                                        subprocess.run(['git', 'add', str(target_path)], check=True)
+                                        commit_msg = f"Replace audio: {artist} - {title}"
+                                        subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
+                                        subprocess.run(['git', 'push'], check=True)
+                                        st.success("✅ Audio cserélve és GitHub-ra feltöltve.")
+                                    except subprocess.CalledProcessError as e:
+                                        st.warning(f"⚠️ Git szinkronizáció sikertelen: {e}")
+                                        st.success("✅ Audio cserélve, de Git sync nem futott le.")
+
+                                    # Lejátszás reset
+                                    if st.session_state.artist_list_playing == str(target_path):
+                                        st.session_state.artist_list_playing = None
+                                    st.rerun()
+                                except Exception as e:
+                                    st.error(f"❌ Audio csere hiba: {e}")
 
 def _make_safe_filename(artist: str, title: str) -> str:
     """Biztonságos fájlnév generálása az előadó és cím alapján"""
@@ -2517,6 +2618,7 @@ def show_topic_selection():
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
         "one_hit_wonders": "⭐ One Hit Wonders",
+        "sorozat_focimek": "📺 Sorozat főcímek",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -2551,8 +2653,8 @@ def show_topic_selection():
             st.session_state.selected_topics = list(topics.keys())
             
             # Zenei és egyéb témakörök szétválasztása
-            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t or t == "one_hit_wonders"]
-            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t and t != "one_hit_wonders"]
+            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
+            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t and t not in {"one_hit_wonders", "sorozat_focimek"}]
             
             # Kérdések elosztása a zenei témakörök között
             if music_topics:
@@ -2595,7 +2697,7 @@ def show_topic_selection():
     with col2:
         if st.button("🎵 Random zenei témakörök kiválasztása", type="secondary", use_container_width=True):
             # Zenei témakörök kiválasztása
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
             num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
             selected_music_topics = random.sample(music_topics, num_music_topics)
             
@@ -2640,7 +2742,7 @@ def show_topic_selection():
     with col3:
         if st.button("🎲 Random témakörök kiválasztása (zene nélkül)", type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
             available_topics = [topic for topic in topics.keys() if topic not in music_topics]
             num_topics = random.randint(5, min(8, len(available_topics)))  # 5-8 témakör között
             selected_random_topics = random.sample(available_topics, num_topics)
@@ -2709,7 +2811,7 @@ def show_topic_selection():
     with col1:
         st.markdown("### 🎵 Zenei témakörök")
         for topic_key, topic_name in topics.items():
-            if "zene" in topic_key or "zenekar" in topic_key or topic_key == "one_hit_wonders":
+            if "zene" in topic_key or "zenekar" in topic_key or topic_key in {"one_hit_wonders", "sorozat_focimek"}:
                 # Kattintható gomb a checkbox helyett
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
@@ -2737,7 +2839,7 @@ def show_topic_selection():
     
     with col2:
         st.markdown("### 📚 Egyéb témakörök")
-        other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0] and t[0] != "one_hit_wonders"]
+        other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0] and t[0] not in {"one_hit_wonders", "sorozat_focimek"}]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
                 # Kattintható gomb a checkbox helyett
@@ -2798,8 +2900,8 @@ def show_topic_selection():
     if st.session_state.selected_topics:
         st.markdown("### ⚙️ Kérdésszámok beállítása")
         
-        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t == "one_hit_wonders"]
-        other_topics = [t for t in st.session_state.selected_topics if "zene" not in t and "zenekar" not in t and t != "one_hit_wonders"]
+        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
+        other_topics = [t for t in st.session_state.selected_topics if "zene" not in t and "zenekar" not in t and t not in {"one_hit_wonders", "sorozat_focimek"}]
         
         if music_topics:
             st.markdown("#### 🎵 Zenei kérdések beállításai")
@@ -3038,7 +3140,7 @@ def show_quiz():
     
     # Audio, Spotify embed vagy kép megjelenítése
     audio_file = get_audio_file_for_question(question, topic)
-    if topic == "nemzetkozi_zenekarok" or topic == "magyar_zenekarok" or topic == "one_hit_wonders":
+    if topic in {"nemzetkozi_zenekarok", "magyar_zenekarok", "one_hit_wonders", "sorozat_focimek"}:
         # Minden zenei kérdésnél megpróbáljuk megjeleníteni az audio playert
         if audio_file and os.path.exists(audio_file):
             try:
@@ -3793,17 +3895,163 @@ def show_audio_addition_page():
     # Két fő opció
     option = st.radio(
         "Válassz hozzáadási módszert:",
-        ["A) Track hozzáadása YouTube kereséssel", "B) Spotify playlist alapú keresés"],
+        [
+            "A) Track hozzáadása YouTube kereséssel",
+            "B) Spotify playlist alapú keresés",
+            "C) Tömeges feltöltés yt-link alapján",
+        ],
         format_func=lambda x: {
             "A) Track hozzáadása YouTube kereséssel": "🎵 A) YouTube Keresés",
-            "B) Spotify playlist alapú keresés": "🎵 B) Spotify Playlist"
+            "B) Spotify playlist alapú keresés": "🎵 B) Spotify Playlist",
+            "C) Tömeges feltöltés yt-link alapján": "📥 C) Tömeges YouTube linkek",
         }[x]
     )
     
     if option == "A) Track hozzáadása YouTube kereséssel":
         show_youtube_search_tab()
-    else:
+    elif option == "B) Spotify playlist alapú keresés":
         show_spotify_playlist_tab()
+    else:
+        show_bulk_youtube_upload_tab()
+
+def show_bulk_youtube_upload_tab():
+    """Tömeges YouTube link integrálás"""
+    st.markdown("### 📥 Tömeges feltöltés yt-link alapján")
+    st.caption("Minden link ugyanabba a kategóriába kerül. 1 sor = 1 link.")
+
+    music_categories = {
+        "komolyzene": "🎼 Komolyzene",
+        "magyar_zenekarok": "🎵 Magyar",
+        "nemzetkozi_zenekarok": "🌍 Nemzetközi",
+        "one_hit_wonders": "⭐ One Hit Wonders",
+        "sorozat_focimek": "📺 Sorozat főcímek",
+    }
+    category_options = ["— Válassz kategóriát —"] + list(music_categories.keys())
+    selected_category = st.selectbox(
+        "Kategória (kötelező):",
+        category_options,
+        format_func=lambda x: music_categories.get(x, x),
+        index=0,
+        key="bulk_category_select",
+    )
+    if selected_category == "— Válassz kategóriát —":
+        selected_category = None
+
+    links_text = st.text_area(
+        "YouTube linkek",
+        placeholder="https://www.youtube.com/watch?v=...\nhttps://youtu.be/...",
+        height=200,
+        key="bulk_links_text",
+    )
+
+    cookies_file = st.file_uploader(
+        "Cookies.txt (opcionális, 403 tiltás ellen)",
+        type=["txt"],
+        key="bulk_cookies_file",
+        help="Netscape formátumú cookie fájl. Bejelentkezett böngészőből exportálható.",
+    )
+
+    if st.button("🚀 Tömeges integrálás", type="primary"):
+        if not selected_category:
+            st.warning("⚠️ Válassz kötelező kategóriát!")
+            return
+        links = [line.strip() for line in links_text.splitlines() if line.strip()]
+        links = [ln for ln in links if "youtu" in ln]
+        links = list(dict.fromkeys(links))
+        if not links:
+            st.warning("⚠️ Adj meg legalább egy érvényes YouTube linket!")
+            return
+
+        cookies_path = None
+        if cookies_file is not None:
+            import tempfile
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".txt") as tmp:
+                tmp.write(cookies_file.getbuffer())
+                cookies_path = tmp.name
+
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+
+        successes = []
+        failures = []
+        added_audio_paths = []
+
+        for idx, link in enumerate(links):
+            status_text.info(f"🔄 Feldolgozás: {idx + 1}/{len(links)}")
+            normalized_link = link
+            if "youtube.com/results?search_query=" in link:
+                import urllib.parse
+                parsed = urllib.parse.urlparse(link)
+                query = urllib.parse.parse_qs(parsed.query).get("search_query", [""])[0]
+                if query:
+                    normalized_link = f"ytsearch1:{query}"
+            track_info = {"url": normalized_link}
+            result = download_and_integrate_track(
+                track_info,
+                selected_category,
+                custom_options=None,
+                require_review=False,
+                clip_seconds=180,
+                return_metadata=True,
+                cookies_path=cookies_path,
+            )
+            if isinstance(result, dict) and result.get("success"):
+                successes.append(link)
+                if result.get("audio_file"):
+                    added_audio_paths.append(result["audio_file"])
+            else:
+                failures.append(link)
+            progress_bar.progress((idx + 1) / len(links))
+
+        # Cache frissítés
+        cache_keys_to_delete = []
+        for key in st.session_state.keys():
+            if (key.startswith("audio_track_data_") or
+                key.startswith("duration_") or
+                key.startswith("track_cache_") or
+                key == "modified_questions"):
+                cache_keys_to_delete.append(key)
+        for key in cache_keys_to_delete:
+            if key in st.session_state:
+                del st.session_state[key]
+        st.session_state['force_refresh'] = True
+
+        # Git sync (kérdés + audio)
+        if successes:
+            question_file_by_category = {
+                "magyar_zenekarok": "topics/magyar_zenekarok_uj.py",
+                "nemzetkozi_zenekarok": "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py",
+                "komolyzene": "topics/komolyzene_uj.py",
+                "one_hit_wonders": "topics/one_hit_wonders.py",
+                "sorozat_focimek": "topics/sorozat_focimek.py",
+            }
+            question_file_path = question_file_by_category.get(selected_category)
+            try:
+                if question_file_path:
+                    subprocess.run(['git', 'add', question_file_path], check=True)
+                for audio_path in added_audio_paths:
+                    if audio_path:
+                        subprocess.run(['git', 'add', audio_path], check=True)
+                commit_msg = f"Bulk add tracks ({selected_category})"
+                subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
+                subprocess.run(['git', 'push'], check=True)
+                st.success("✅ Tömeges integráció kész, GitHub szinkronizálva.")
+            except subprocess.CalledProcessError as e:
+                st.warning(f"⚠️ Git szinkronizáció sikertelen: {e}")
+                st.success("✅ Tömeges integráció kész, cache frissítve.")
+
+        if cookies_path:
+            try:
+                import os
+                os.remove(cookies_path)
+            except Exception:
+                pass
+
+        if failures:
+            st.warning(f"⚠️ Sikertelen linkek: {len(failures)}")
+            st.code("\n".join(failures))
+        else:
+            st.success(f"✅ Feldolgozva: {len(successes)} link")
 
 def show_spotify_playlist_main():
     """Spotify playlist fő képernyő"""
@@ -4587,7 +4835,8 @@ def show_youtube_search_tab():
                         "magyar_zenekarok": "🎵 Magyar",
                         "nemzetkozi_zenekarok": "🌍 Nemzetközi", 
                         "komolyzene": "🎼 Komolyzene",
-                        "one_hit_wonders": "⭐ One Hit Wonders"
+                        "one_hit_wonders": "⭐ One Hit Wonders",
+                        "sorozat_focimek": "📺 Sorozat főcímek",
                     }
                     
                     selected_category = st.selectbox(
@@ -4772,6 +5021,7 @@ def show_youtube_search_tab():
                     "nemzetkozi_zenekarok": "topics/nemzetkozi_zenekarok_final_fixed_with_real_audio.py",
                     "komolyzene": "topics/komolyzene_uj.py",
                     "one_hit_wonders": "topics/one_hit_wonders.py",
+                    "sorozat_focimek": "topics/sorozat_focimek.py",
                 }
                 question_file_path = question_file_by_category.get(category)
                 final_audio_path = new_path if new_path and os.path.exists(new_path) else None
@@ -4965,7 +5215,7 @@ def search_youtube_tracks(query):
         st.error(f"YouTube keresési hiba: {e}")
         return []
 
-def download_and_integrate_track(track_info, category, custom_options=None, require_review=False):
+def download_and_integrate_track(track_info, category, custom_options=None, require_review=False, clip_seconds=120, return_metadata=False, cookies_path=None):
     """Track letöltése és integrálása"""
     try:
         import yt_dlp
@@ -4986,7 +5236,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         "magyar_zenekarok": "audio_files/magyar_zenekarok",
         "nemzetkozi_zenekarok": "audio_files/nemzetkozi_zenekarok", 
         "komolyzene": "audio_files/komolyzene",
-        "one_hit_wonders": "audio_files/one_hit_wonders"
+        "one_hit_wonders": "audio_files/one_hit_wonders",
+        "sorozat_focimek": "audio_files/sorozat_focimek",
     }
     
     download_dir = Path(category_mapping.get(category, "audio_files"))
@@ -4999,6 +5250,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 "❌ YouTube player response hiba (yt-dlp). "
                 f"Frissítsd a yt-dlp-t: pip install -U yt-dlp (aktuális: {version})"
             )
+        if "HTTP Error 403" in error_message or "403" in error_message:
+            st.error("❌ YouTube 403 tiltás. Próbáld meg cookie fájllal (bejelentkezett böngészőből exportálva).")
     
     # yt-dlp konfiguráció - 403 Forbidden hiba javítása - teljesen új megközelítés
     ydl_opts = {
@@ -5063,6 +5316,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         # Egyszerű beállítások
         'no_color': True,
     }
+    if cookies_path:
+        ydl_opts['cookiefile'] = cookies_path
     
     # Letöltés - több próbálkozás különböző konfigurációkkal
     url = track_info.get('url', '')
@@ -5093,6 +5348,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 }
             },
         }
+        if cookies_path:
+            simple_opts['cookiefile'] = cookies_path
         with yt_dlp.YoutubeDL(simple_opts) as ydl:
             info = ydl.extract_info(url, download=False)
             if info:
@@ -5156,6 +5413,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 'retries': 5,
                 'fragment_retries': 5,
             }
+            if cookies_path:
+                vpn_opts['cookiefile'] = cookies_path
             with yt_dlp.YoutubeDL(vpn_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 if info:
@@ -5201,6 +5460,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 'no_check_certificate': True,
                 'prefer_insecure': True,
             }
+            if cookies_path:
+                alt_opts['cookiefile'] = cookies_path
             with yt_dlp.YoutubeDL(alt_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 if info:
@@ -5245,6 +5506,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                     'socket_timeout': 30,
                     'retries': 3,
                 }
+                if cookies_path:
+                    search_opts['cookiefile'] = cookies_path
                 with yt_dlp.YoutubeDL(search_opts) as ydl:
                     info = ydl.extract_info(search_url, download=False)
                     if info and 'entries' in info and info['entries']:
@@ -5322,6 +5585,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                             'socket_timeout': 30,
                             'retries': 3,
                         }
+                        if cookies_path:
+                            direct_opts['cookiefile'] = cookies_path
                         
                         with yt_dlp.YoutubeDL(direct_opts) as ydl:
                             info = ydl.extract_info(youtube_url, download=False)
@@ -5432,6 +5697,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                             'socket_timeout': 30,
                             'retries': 2,
                         }
+                        if cookies_path:
+                            proxy_opts['cookiefile'] = cookies_path
                         
                         # Proxy hozzáadása ha HTTP proxy
                         if proxy_type == 'http':
@@ -5475,6 +5742,8 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                 'quiet': True,
                 'no_warnings': True,
             }
+            if cookies_path:
+                simple_opts['cookiefile'] = cookies_path
             
             with yt_dlp.YoutubeDL(simple_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
@@ -5499,6 +5768,14 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         st.info("4. Manuálisan töltsd le és töltsd fel a fájlokat")
         return False
     
+    # Ha keresési találatlistát kaptunk, az első elem legyen az info
+    if isinstance(info, dict) and info.get('entries'):
+        first_entry = next((e for e in info.get('entries', []) if e), None)
+        if first_entry:
+            info = first_entry
+            if first_entry.get('webpage_url'):
+                url = first_entry['webpage_url']
+
     # Fájlnév meghatározása - YouTube ID alapján
     video_id = info.get('id', '')
     if not video_id:
@@ -5551,7 +5828,7 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     
     st.success(f"✅ Sikeres letöltés: {track_info.get('title', 'Ismeretlen track')}")
     
-    # 2 perces rész kivágása FFmpeg-gel
+    # 3 perces (vagy beállított) rész kivágása FFmpeg-gel
     try:
         import re
         
@@ -5591,14 +5868,14 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
         if probe_result.returncode == 0 and probe_result.stdout.strip():
             try:
                 duration = float(probe_result.stdout.strip())
-                if duration < 120:
-                    # Ha a fájl rövidebb mint 2 perc, nem vágunk
-                    st.info(f"⚠️ A fájl rövidebb mint 2 perc ({duration:.1f}s), teljes fájl használata")
+                if duration < clip_seconds:
+                    # Ha a fájl rövidebb mint a kívánt vágás, nem vágunk
+                    st.info(f"⚠️ A fájl rövidebb mint {clip_seconds} mp ({duration:.1f}s), teljes fájl használata")
                 else:
-                    # FFmpeg paranccsal 2 perc kivágása
+                    # FFmpeg paranccsal kivágás
                     cmd = [
                         'ffmpeg', '-i', audio_file, 
-                        '-t', '120',  # 2 perc = 120 másodperc
+                        '-t', str(clip_seconds),  # vágás hossza másodpercben
                         '-acodec', 'libmp3lame',  # MP3 kódolás
                         '-ab', '192k',  # 192 kbps bitrate
                         '-ar', '44100',  # 44.1 kHz sample rate
@@ -5615,7 +5892,7 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
                             if os.path.exists(audio_file):
                                 os.remove(audio_file)
                             audio_file = output_file
-                            st.success("✅ 2 perces rész sikeresen kivágva!")
+                            st.success(f"✅ {clip_seconds} mp rész sikeresen kivágva!")
                         else:
                             st.warning("⚠️ A kivágott fájl üres, teljes fájl használata")
                     else:
@@ -5632,6 +5909,23 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     except Exception as e:
         st.warning(f"⚠️ FFmpeg hiba: {str(e)[:100]}..., teljes fájl használata")
     
+    # Track info normalizálás (YouTube cím alapján)
+    info_title = info.get('title') if isinstance(info, dict) else None
+    info_channel = None
+    if isinstance(info, dict):
+        info_channel = info.get('uploader') or info.get('channel')
+    if info_title and "raw_title" not in track_info:
+        track_info["raw_title"] = info_title
+    if info_title and not track_info.get("title"):
+        track_info["title"] = info_title
+    if info_channel and not track_info.get("channel"):
+        track_info["channel"] = info_channel
+    if info_title and not track_info.get("artist"):
+        parsed_artist, parsed_title = _parse_artist_title_from_youtube(info_title, info_channel)
+        track_info["artist"] = parsed_artist
+        track_info["song_title"] = parsed_title
+        track_info["title"] = parsed_title
+
     # Quiz kérdés generálása
     question = generate_quiz_question(track_info, audio_file, category, custom_options)
     
@@ -5646,7 +5940,15 @@ def download_and_integrate_track(track_info, category, custom_options=None, requ
     
     # Kérdés hozzáadása a megfelelő kategóriához
     add_question_to_category(question, category)
-    
+
+    if return_metadata:
+        return {
+            "success": True,
+            "question": question,
+            "category": category,
+            "audio_file": audio_file,
+            "track_info": track_info,
+        }
     return True
 
 def generate_quiz_question(track_info, audio_file, category, custom_options=None):
@@ -5657,12 +5959,14 @@ def generate_quiz_question(track_info, audio_file, category, custom_options=None
             track_info = {}
         
         # Biztonságos adatkinyerés
-        title = track_info.get('title', 'Ismeretlen cím')
-        channel = track_info.get('channel', 'Ismeretlen előadó')
+        title = track_info.get('song_title') or track_info.get('title', 'Ismeretlen cím')
+        artist = track_info.get('artist') or track_info.get('channel', 'Ismeretlen előadó')
         
         # Kategória alapú kérdés
         if category == "komolyzene":
             question_text = "Ki a zeneszerző?"
+        elif category == "sorozat_focimek":
+            question_text = "Melyik sorozat főcímdala ez?"
         else:
             question_text = "Ki az előadó?"
         
@@ -5673,9 +5977,15 @@ def generate_quiz_question(track_info, audio_file, category, custom_options=None
             correct_answer = options[0]  # Első opció a helyes válasz
         else:
             # Alapértelmezett opciók
-            correct_answer = channel
+            if category == "sorozat_focimek":
+                series_name = artist if artist and artist != "Ismeretlen előadó" else title
+                correct_answer = series_name
+            else:
+                correct_answer = artist
             if category == "komolyzene":
                 similar_options = ["Beethoven", "Mozart", "Bach"]
+            elif category == "sorozat_focimek":
+                similar_options = ["Game of Thrones", "Stranger Things", "Friends"]
             elif category == "magyar_zenekarok":
                 similar_options = ["Kispál és a Borz", "Elefánt", "Quimby"]
             elif category == "nemzetkozi_zenekarok":
@@ -5695,14 +6005,17 @@ def generate_quiz_question(track_info, audio_file, category, custom_options=None
         # Kérdés objektum
         # Csak a fájlnevet tároljuk, nem a teljes elérési utat
         audio_filename = os.path.basename(audio_file) if audio_file else None
+        explanation_text = f"{artist} - {title}" if artist or title else f"{correct_answer} - {category.replace('_', ' ').title()}"
         question = {
             'question': question_text,
             'options': options,
             'correct': 0,
-            'explanation': f"{correct_answer} - {category.replace('_', ' ').title()}",
+            'explanation': explanation_text,
             'audio_file': audio_filename,
             'topic': category
         }
+        if title:
+            question['song_title'] = title
         return question
     except Exception as e:
         # Fallback kérdés
@@ -5740,6 +6053,11 @@ def add_question_to_category(question, category):
             ONE_HIT_WONDERS_QUESTIONS.append(question)
             # Fájlba mentés
             save_questions_to_file(ONE_HIT_WONDERS_QUESTIONS, "topics/one_hit_wonders.py", "ONE_HIT_WONDERS_QUESTIONS")
+        elif category == "sorozat_focimek":
+            from topics.sorozat_focimek import QUESTIONS as SOROZAT_FOCIMEK_QUESTIONS
+            SOROZAT_FOCIMEK_QUESTIONS.append(question)
+            # Fájlba mentés
+            save_questions_to_file(SOROZAT_FOCIMEK_QUESTIONS, "topics/sorozat_focimek.py", "QUESTIONS")
         
         # Sikeres hozzáadás
         pass
@@ -5786,6 +6104,9 @@ def save_questions_to_file(questions_list, file_path, variable_name):
         if normalized_path.endswith("topics/komolyzene_uj.py"):
             content += "\n# Export alias for compatibility\n"
             content += "KOMOLYZENE_QUESTIONS = QUESTIONS\n"
+        if normalized_path.endswith("topics/sorozat_focimek.py"):
+            content += "\n# Export alias for compatibility\n"
+            content += "SOROZAT_FOCIMEK_QUESTIONS = QUESTIONS\n"
         
         # Fájlba írás
         with open(file_path, 'w', encoding='utf-8') as f:
