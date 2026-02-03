@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:57:28
+# Generated on: 2026-02-03 15:58:54
 
 QUESTIONS = [
     {
@@ -715,20 +715,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "TV Themesongs - The Lincoln Lawyer Title Card",
         "audio_file": "55. TV Themesongs - Lincoln Lawyer.mp3",
-        "song_title": "Lincoln Lawyer",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The A-Team TV Theme Tune",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The A-Team TV",
+            "Kojak",
+            "Petrocelli",
+            "San Francisco utcáin",
         ],
         "correct": 0,
         "explanation": "The A-Team TV Theme Tune - The A-Team TV Theme Tune | The A-Team",
-        "audio_file": "UAO2JBjRRBk.mp3",
+        "audio_file": "56. The A-Team TV Theme Tune - The A-Team TV.mp3",
+        "song_title": "The A-Team TV",
         "topic": "sorozat_focimek",
     },
     {
