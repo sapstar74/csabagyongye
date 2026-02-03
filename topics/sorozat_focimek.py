@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:11:36
+# Generated on: 2026-02-03 14:13:08
 
 QUESTIONS = [
     {
@@ -143,7 +143,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Joel Troughton - Mad Men Opening Credits HD",
         "audio_file": "11. Joel Troughton - Mad Men.mp3",
-        "song_title": "Mad Men",
         "topic": "sorozat_focimek",
     },
     {
@@ -162,14 +161,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Morning Routine' Title Sequence",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Dexter",
+            "True Detective",
+            "Sherlock Holmes",
+            "The Sopranos",
         ],
         "correct": 0,
         "explanation": "Morning Routine' Title Sequence - Morning Routine' Title Sequence | Dexter | SHOWTIME",
-        "audio_file": "ej8-Rqo-VT4.mp3",
+        "audio_file": "13. Morning Routine Title Sequence - Morning Routine Title Sequence - Dexter.mp3",
+        "song_title": "Morning Routine' Title Sequence - Dexter",
         "topic": "sorozat_focimek",
     },
     {
