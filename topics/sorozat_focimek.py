@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:56:23
+# Generated on: 2026-02-03 15:57:28
 
 QUESTIONS = [
     {
@@ -702,20 +702,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Christopher Tyng - Topic - Suits Theme",
         "audio_file": "54. Christopher Tyng - Topic - Suits.mp3",
-        "song_title": "Suits",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "TV Themesongs",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Lincoln Lawyer",
+            "Suits",
+            "Brooklyn 99",
+            "Seinfeld",
         ],
         "correct": 0,
         "explanation": "TV Themesongs - The Lincoln Lawyer Title Card",
-        "audio_file": "KOyUnZ3VAmY.mp3",
+        "audio_file": "55. TV Themesongs - Lincoln Lawyer.mp3",
+        "song_title": "Lincoln Lawyer",
         "topic": "sorozat_focimek",
     },
     {
