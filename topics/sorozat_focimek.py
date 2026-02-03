@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 12:48:07
+# Generated on: 2026-02-03 13:00:16
 
 QUESTIONS = [
     {
@@ -65,20 +65,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "AnissaRaquel - The Fresh Prince Of Bel Air Theme Song",
         "audio_file": "05. AnissaRaquel - The Fresh Prince of Bel-Air.mp3",
-        "song_title": "The Fresh Prince of Bel-Air",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Dave Porter - Topic",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Breaking Bad",
+            "Money Heist",
+            "Narcos",
+            "Fargo",
         ],
         "correct": 0,
         "explanation": "Dave Porter - Topic - Breaking Bad Main Title Theme",
-        "audio_file": "ilfYnhXD-bE.mp3",
+        "audio_file": "06. Dave Porter - Topic - Breaking Bad.mp3",
+        "song_title": "Breaking Bad",
         "topic": "sorozat_focimek",
     },
     {
