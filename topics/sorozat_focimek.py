@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:23:45
+# Generated on: 2026-02-03 15:24:50
 
 QUESTIONS = [
     {
@@ -520,20 +520,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Walking Dead Original Soundtrack - The Walking Dead Original Soundtrack  - Theme Song",
         "audio_file": "40. The Walking Dead Original Soundtrack - The Walking Dead Original Soundtrack.mp3",
-        "song_title": "The Walking Dead Original Soundtrack",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Jeff Russo",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Umbrella Academy",
+            "Suites",
+            "Mad Men",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "Jeff Russo - The Umbrella Academy",
-        "audio_file": "Jeff_Russo_The_Umbrella_Academy.mp3",
+        "audio_file": "41. Jeff Russo - Jeff Russo The Umbrella Academy.mp3",
+        "song_title": "Jeff Russo The Umbrella Academy",
         "topic": "sorozat_focimek",
     },
     {
