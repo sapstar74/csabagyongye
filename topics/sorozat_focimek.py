@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:36:51
+# Generated on: 2026-02-03 14:37:42
 
 QUESTIONS = [
     {
@@ -377,20 +377,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Narcos - Narcos | Opening Credits [HD] | Netflix",
         "audio_file": "29. Narcos - Narcos.mp3",
-        "song_title": "Narcos",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Peaky Blinders Opening Title Sequence",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Peaky Blinders",
+            "Fargo",
+            "Narcos",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "Peaky Blinders Opening Title Sequence - Peaky Blinders Opening Title Sequence - Gold Open",
-        "audio_file": "Be56k1Ui2Yg.mp3",
+        "audio_file": "30. Peaky Blinders Opening Title Sequence - Peaky Blinders Opening Title Sequence.mp3",
+        "song_title": "Peaky Blinders Opening Title Sequence",
         "topic": "sorozat_focimek",
     },
     {
