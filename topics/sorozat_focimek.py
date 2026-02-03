@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:15:36
+# Generated on: 2026-02-03 14:16:46
 
 QUESTIONS = [
     {
@@ -195,20 +195,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "All Doctor Who Title Sequences: 1963-2023 - All Doctor Who Title Sequences: 1963-2023 | Doctor Who",
         "audio_file": "15. All Doctor Who Title Sequences 1963-2023 - Doctor Who.mp3",
-        "song_title": "Doctor Who",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Hans Zimmer",
+            "The Crown",
             "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Westworld",
+            "The Good Place",
         ],
         "correct": 0,
         "explanation": "Hans Zimmer - The Crown Main Title| The Crown: Season One (Soundtrack from the Netflix Original Series)",
-        "audio_file": "EIEqXWHPf88.mp3",
+        "audio_file": "16. Hans Zimmer - The Crown.mp3",
+        "song_title": "The Crown",
         "topic": "sorozat_focimek",
     },
     {
