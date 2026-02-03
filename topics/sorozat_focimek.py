@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:31:22
+# Generated on: 2026-02-03 15:31:38
 
 QUESTIONS = [
     {
@@ -585,7 +585,7 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Expanse | Season 1 | Long Opening - The Expanse | Season 1 | Long Opening - Intro HD",
         "audio_file": "45. The Expanse Season 1 Long Opening - The Expanse Season 1 Long Opening.mp3",
-        "song_title": "The Expanse | Season 1 | Long Opening",
+        "song_title": "The Expanse Season 1 Long Opening",
         "topic": "sorozat_focimek",
     },
     {
