@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:40:46
+# Generated on: 2026-02-03 14:41:41
 
 QUESTIONS = [
     {
@@ -416,20 +416,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Enzo Cicero - Black Mirror -- Opening title sequence",
         "audio_file": "32. Enzo Cicero - Black Mirror.mp3",
-        "song_title": "Black Mirror",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "LOST",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Lost",
+            "The Boys",
+            "Last of Us",
+            "Westworld",
         ],
         "correct": 0,
         "explanation": "LOST - LOST - Opening Titles",
-        "audio_file": "9LDh8DefWpI.mp3",
+        "audio_file": "33. LOST - Lost.mp3",
+        "song_title": "Lost",
         "topic": "sorozat_focimek",
     },
 ]
