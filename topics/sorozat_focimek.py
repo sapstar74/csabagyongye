@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 14:28:52
+# Generated on: 2026-02-03 14:30:35
 
 QUESTIONS = [
     {
@@ -312,20 +312,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Succession Opening Credits Theme Song - Succession Opening Credits Theme Song | Succession | HBO",
         "audio_file": "24. Succession Opening Credits Theme Song - Succession Opening.mp3",
-        "song_title": "Succession Opening",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Westworld S1 Official Soundtrack | Main Title Theme",
-            "Game of Thrones",
+            "Westworld",
+            "Ozark",
             "Stranger Things",
-            "Szerkeszthető opció",
+            "The 3 Body Problems",
         ],
         "correct": 0,
         "explanation": "Westworld S1 Official Soundtrack | Main Title Theme - Westworld S1 Official Soundtrack | Main Title Theme - Ramin Djawadi | WaterTower",
-        "audio_file": "rYelEUVQ50g.mp3",
+        "audio_file": "25. Westworld S1 Official Soundtrack Main Title Theme - Westworld S1 Official Soundtrack Main Title Theme.mp3",
+        "song_title": "Westworld S1 Official Soundtrack | Main Title Theme",
         "topic": "sorozat_focimek",
     },
     {
