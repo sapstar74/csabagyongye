@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:51:24
+# Generated on: 2026-02-03 15:52:35
 
 QUESTIONS = [
     {
@@ -650,20 +650,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Petrocelli theme - Petrocelli theme - the series intro and outro",
         "audio_file": "50. Petrocelli theme - Petrocelli theme.mp3",
-        "song_title": "Petrocelli theme",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Homeland",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The Diplomat",
+            "Better Call Saul",
+            "Breaking Bad",
         ],
         "correct": 0,
         "explanation": "Homeland - Homeland - Main Title Theme [Soundtrack HD]",
-        "audio_file": "1pmUovvlYbQ.mp3",
+        "audio_file": "51. Homeland - Homeland.mp3",
+        "song_title": "Homeland",
         "topic": "sorozat_focimek",
     },
     {
