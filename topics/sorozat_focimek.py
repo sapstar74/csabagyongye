@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 12:45:20
+# Generated on: 2026-02-03 12:46:08
 
 QUESTIONS = [
     {
@@ -39,20 +39,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Friends - 'I'll Be There For You'",
         "audio_file": "03. Friends - Friends.mp3",
-        "song_title": "Friends",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "The Office",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Fargo",
+            "Breakin Bad",
+            "Friends",
         ],
         "correct": 0,
         "explanation": "The Office - Intro",
-        "audio_file": "4iisysmwB_k.mp3",
+        "audio_file": "04. The Office - The Office.mp3",
+        "song_title": "The Office",
         "topic": "sorozat_focimek",
     },
     {
