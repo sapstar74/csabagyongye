@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-03 15:55:08
+# Generated on: 2026-02-03 15:56:23
 
 QUESTIONS = [
     {
@@ -689,20 +689,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Brooklyn Nine-nine - Brooklyn Nine-nine - Main Theme (Official Soundtrack)",
         "audio_file": "53. Brooklyn Nine-nine - Brooklyn 99.mp3",
-        "song_title": "Brooklyn 99",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Christopher Tyng - Topic",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Suits",
+            "Lincoln Lawyer",
+            "Brooklyn 99",
+            "Seinfeld",
         ],
         "correct": 0,
         "explanation": "Christopher Tyng - Topic - Suits Theme",
-        "audio_file": "sc4ceQnzYs8.mp3",
+        "audio_file": "54. Christopher Tyng - Topic - Suits.mp3",
+        "song_title": "Suits",
         "topic": "sorozat_focimek",
     },
     {
