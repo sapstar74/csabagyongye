@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 11:56:31
+# Generated on: 2026-02-06 11:59:16
 
 QUESTIONS = [
     {
@@ -746,14 +746,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Plick Kick",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Squid Game",
+            "Ozark",
+            "Sense 8",
+            "Doctor Who",
         ],
         "correct": 0,
         "explanation": "Plick Kick - Squid Game Theme",
-        "audio_file": "YaZbrXAs5Wg.mp3",
+        "audio_file": "58. Plick Kick - Squid Game.mp3",
+        "song_title": "Squid Game",
         "topic": "sorozat_focimek",
     },
     {
@@ -819,7 +820,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "LUPIN THE 3rd PART 6 - LUPIN THE 3rd PART 6 | Official Opening Theme: \"THEME FROM LUPIN III 2021\"",
         "audio_file": "63. LUPIN THE 3rd PART 6 - Lupin.mp3",
-        "song_title": "Lupin",
         "topic": "sorozat_focimek",
     },
     {
