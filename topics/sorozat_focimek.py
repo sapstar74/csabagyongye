@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:00:59
+# Generated on: 2026-02-06 12:03:55
 
 QUESTIONS = [
     {
@@ -767,20 +767,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "TheRLWS - All 3 House M.D openers/themes/intros (American, Singaporean and European)",
         "audio_file": "59. TheRLWS - House.mp3",
-        "song_title": "House",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "TheAileeJ",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "ER",
+            "House",
+            "Grey's Anathomy",
+            "Good Doctor",
         ],
         "correct": 0,
         "explanation": "TheAileeJ - ER Opening Theme",
-        "audio_file": "TjCnHJ8wIuM.mp3",
+        "audio_file": "60. TheAileeJ - ER.mp3",
+        "song_title": "ER",
         "topic": "sorozat_focimek",
     },
     {
