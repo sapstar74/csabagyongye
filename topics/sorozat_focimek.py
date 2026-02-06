@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:02:11
+# Generated on: 2026-02-06 13:04:23
 
 QUESTIONS = [
     {
@@ -884,20 +884,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Grey's Anatomy - Grey's Anatomy - Intro (Season 1) [1080p HD]",
         "audio_file": "68. Greys Anatomy - Greys Anatomy.mp3",
-        "song_title": "Grey's Anatomy",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The White Lotus Opening Credits Theme Song",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The White Lotus ",
+            "Big Little Lies",
+            "Suits",
+            "The Crown",
         ],
         "correct": 0,
         "explanation": "The White Lotus Opening Credits Theme Song - The White Lotus Opening Credits Theme Song | The White Lotus | HBO",
-        "audio_file": "l2wj6lJtg_8.mp3",
+        "audio_file": "69. The White Lotus Opening Credits Theme Song - The White Lotus Opening Credits Theme Song.mp3",
+        "song_title": "The White Lotus Opening Credits Theme Song",
         "topic": "sorozat_focimek",
     },
     {
