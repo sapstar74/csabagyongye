@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 11:53:36
+# Generated on: 2026-02-06 11:56:31
 
 QUESTIONS = [
     {
@@ -811,14 +811,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "LUPIN THE 3rd PART 6",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Lupin",
+            "Lidia Poet",
+            "Sherlock",
+            "Enola Gay",
         ],
         "correct": 0,
         "explanation": "LUPIN THE 3rd PART 6 - LUPIN THE 3rd PART 6 | Official Opening Theme: \"THEME FROM LUPIN III 2021\"",
-        "audio_file": "HVWdnEklf00.mp3",
+        "audio_file": "63. LUPIN THE 3rd PART 6 - Lupin.mp3",
+        "song_title": "Lupin",
         "topic": "sorozat_focimek",
     },
     {
@@ -1053,7 +1054,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Beverly Hills, 90210 - Beverly Hills, 90210 - Intro [HQ]",
         "audio_file": "81. Beverly Hills 90210 - Beverly Hills 90210.mp3",
-        "song_title": "Beverly Hills, 90210",
         "topic": "sorozat_focimek",
     },
     {
