@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:35:55
+# Generated on: 2026-02-06 13:38:07
 
 QUESTIONS = [
     {
@@ -1040,20 +1040,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Futurama - Futurama (1999-2013) - Intro",
         "audio_file": "80. Futurama - Futurama.mp3",
-        "song_title": "Futurama",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Beverly Hills, 90210",
-            "How I Met Your Mother",
-            "Firefly",
+            "Gossip Girl",
+            "Orange County",
             "Buffy the Vampire Slayer",
         ],
         "correct": 0,
         "explanation": "Beverly Hills, 90210 - Beverly Hills, 90210 - Intro [HQ]",
         "audio_file": "81. Beverly Hills 90210 - Beverly Hills 90210.mp3",
+        "song_title": "Beverly Hills 90210",
         "topic": "sorozat_focimek",
     },
     {
