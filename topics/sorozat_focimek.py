@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:21:26
+# Generated on: 2026-02-06 13:27:34
 
 QUESTIONS = [
     {
@@ -988,20 +988,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "NCIS Season 1 - NCIS Season 1 - Opening Credits (Titles)",
         "audio_file": "76. NCIS Season 1 - NCIS.mp3",
-        "song_title": "NCIS",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "megsmeetsworld",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Gilmore Girls",
+            "Sex And The City",
+            "Desperate Housewives",
+            "Big Little Lies",
         ],
         "correct": 0,
         "explanation": "megsmeetsworld - Where You Lead (full theme song from \"Gilmore Girls\") lyrics",
-        "audio_file": "megsmeetsworld_Where_You_Lead_full_theme_song.mp3",
+        "audio_file": "77. megsmeetsworld - Gilmore Girls.mp3",
+        "song_title": "Gilmore Girls",
         "topic": "sorozat_focimek",
     },
     {
