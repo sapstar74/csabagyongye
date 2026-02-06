@@ -8,6 +8,9 @@ import time
 from datetime import datetime, timedelta
 from enum import Enum
 import streamlit as st
+from i18n import init_i18n
+
+init_i18n()
 
 class QuizMode(Enum):
     """Quiz módok enum"""

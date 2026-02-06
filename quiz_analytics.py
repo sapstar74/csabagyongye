@@ -9,6 +9,9 @@ from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 import pandas as pd
 import streamlit as st
+from i18n import init_i18n
+
+init_i18n()
 
 class QuizAnalytics:
     def __init__(self, data_file="quiz_analytics.json"):

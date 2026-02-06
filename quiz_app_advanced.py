@@ -5,12 +5,37 @@ Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 
 import streamlit as st
 
-# Cache clear - csak fejlesztéshez
-if st.button("🗑️ Clear Cache"):
-    st.cache_data.clear()
-    st.cache_resource.clear()
-    st.success("Cache cleared!")
-    st.rerun()
+from i18n import init_i18n, render_language_selector, t, translate_text
+
+init_i18n()
+
+
+def _normalize_answer_text(value: str) -> str:
+    return value.lower().strip() if isinstance(value, str) else ""
+
+
+def _is_text_answer_correct(user_answer: str, correct_answer: str) -> bool:
+    user_clean = _normalize_answer_text(user_answer)
+    if not user_clean:
+        return False
+    variants = {correct_answer}
+    translated_correct = translate_text(correct_answer) if correct_answer else ""
+    if translated_correct and translated_correct != correct_answer:
+        variants.add(translated_correct)
+
+    for variant in variants:
+        variant_clean = _normalize_answer_text(variant)
+        if not variant_clean:
+            continue
+        if user_clean == variant_clean:
+            return True
+        variant_keywords = [keyword for keyword in variant_clean.split() if len(keyword) > 3]
+        user_keywords = [keyword for keyword in user_clean.split() if len(keyword) > 3]
+        if any(keyword in user_clean for keyword in variant_keywords):
+            return True
+        if any(keyword in variant_clean for keyword in user_keywords):
+            return True
+    return False
 import random
 import time
 from datetime import datetime
@@ -191,10 +216,10 @@ import glob
 def sync_with_github():
     """GitHub-ról szinkronizálja az audiofájlokat és kérdéseket"""
     try:
-        st.info("🔄 GitHub szinkronizálás indítása...")
+        st.info(t("🔄 GitHub szinkronizálás indítása..."))
         
         # 1. Git pull - legfrissebb változások letöltése
-        st.markdown("### 📥 1. Legfrissebb változások letöltése...")
+        st.markdown(t("### 📥 1. Legfrissebb változások letöltése..."))
         pull_result = subprocess.run(
             ['git', 'pull', 'origin', 'main'], 
             capture_output=True, 
@@ -203,19 +228,19 @@ def sync_with_github():
         )
         
         if pull_result.returncode != 0:
-            st.error(f"❌ Git pull hiba: {pull_result.stderr}")
+            st.error(t("❌ Git pull hiba: {error}", error=pull_result.stderr))
             return False
             
-        st.success("✅ Git pull sikeres!")
+        st.success(t("✅ Git pull sikeres!"))
         
         # 2. Új audiofájlok keresése
-        st.markdown("### 🎵 2. Új audiofájlok keresése...")
+        st.markdown(t("### 🎵 2. Új audiofájlok keresése..."))
         
         # Összes audio track összegyűjtése
         all_tracks = get_all_audio_tracks()
         audio_files = [track["audio_path"] for track in all_tracks]
         
-        st.info(f"📊 {len(audio_files)} audiofájl található")
+        st.info(t("📊 {count} audiofájl található", count=len(audio_files)))
         
         # Kategóriánkénti statisztika
         category_stats = {}
@@ -225,12 +250,12 @@ def sync_with_github():
                 category_stats[directory] = 0
             category_stats[directory] += 1
         
-        st.markdown("**📁 Kategóriánkénti eloszlás:**")
+        st.markdown(t("**📁 Kategóriánkénti eloszlás:**"))
         for directory, count in category_stats.items():
-            st.markdown(f"- {directory}: {count} track")
+            st.markdown(t("- {directory}: {count} track", directory=directory, count=count))
         
         # 3. Új kérdés fájlok keresése
-        st.markdown("### 📝 3. Új kérdés fájlok keresése...")
+        st.markdown(t("### 📝 3. Új kérdés fájlok keresése..."))
         question_files = []
         
         # Keresés a topics könyvtárban
@@ -244,33 +269,33 @@ def sync_with_github():
             files = glob.glob(pattern)
             question_files.extend(files)
         
-        st.info(f"📊 {len(question_files)} kérdés fájl található")
+        st.info(t("📊 {count} kérdés fájl található", count=len(question_files)))
         
         # 4. Új tartalmak listázása
-        st.markdown("### 📋 4. Új tartalmak összefoglalása...")
+        st.markdown(t("### 📋 4. Új tartalmak összefoglalása..."))
         
         if audio_files:
-            st.markdown("**🎵 Új audiofájlok:**")
+            st.markdown(t("**🎵 Új audiofájlok:**"))
             for file in audio_files:
-                st.markdown(f"- {os.path.basename(file)}")
+                st.markdown(t("- {filename}", filename=os.path.basename(file)))
         
         if question_files:
-            st.markdown("**📝 Kérdés fájlok:**")
+            st.markdown(t("**📝 Kérdés fájlok:**"))
             for file in question_files:
-                st.markdown(f"- {os.path.basename(file)}")
+                st.markdown(t("- {filename}", filename=os.path.basename(file)))
         
         # 5. Alkalmazás újraindítása javaslat
-        st.markdown("### 🔄 5. Alkalmazás újraindítása...")
-        st.warning("⚠️ A szinkronizálás után javasolt az alkalmazás újraindítása a legfrissebb tartalmak betöltéséhez.")
+        st.markdown(t("### 🔄 5. Alkalmazás újraindítása..."))
+        st.warning(t("⚠️ A szinkronizálás után javasolt az alkalmazás újraindítása a legfrissebb tartalmak betöltéséhez."))
         
-        if st.button("🔄 Alkalmazás újraindítása", type="primary"):
+        if st.button(t("🔄 Alkalmazás újraindítása"), type="primary"):
             st.rerun()
         
-        st.success("✅ GitHub szinkronizálás sikeresen befejezve!")
+        st.success(t("✅ GitHub szinkronizálás sikeresen befejezve!"))
         return True
         
     except Exception as e:
-        st.error(f"❌ Szinkronizálási hiba: {e}")
+        st.error(t("❌ Szinkronizálási hiba: {error}", error=e))
         return False
 
 def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> bool:
@@ -278,10 +303,10 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
     try:
         repo_root = Path(__file__).parent
         if not (repo_root / ".git").exists():
-            st.error("❌ Git repo nem található, szinkronizálás nem lehetséges.")
+            st.error(t("❌ Git repo nem található, szinkronizálás nem lehetséges."))
             return False
 
-        st.info("🔄 Komolyzene Git sync indítása...")
+        st.info(t("🔄 Komolyzene Git sync indítása..."))
 
         pull_result = subprocess.run(
             ['git', 'pull', 'origin', 'main'],
@@ -290,9 +315,9 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
             cwd=str(repo_root)
         )
         if pull_result.returncode != 0:
-            st.error(f"❌ Git pull hiba: {pull_result.stderr or pull_result.stdout}")
+            st.error(t("❌ Git pull hiba: {error}", error=pull_result.stderr or pull_result.stdout))
             return False
-        st.success("✅ Git pull sikeres!")
+        st.success(t("✅ Git pull sikeres!"))
 
         sync_paths = []
         if question_file_path:
@@ -310,7 +335,7 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
         # Csak létező útvonalakat hagyunk meg
         existing_paths = [p for p in dict.fromkeys(sync_paths) if (repo_root / p).exists()]
         if not existing_paths:
-            st.warning("⚠️ Nincsenek komolyzene fájlok a szinkronhoz.")
+            st.warning(t("⚠️ Nincsenek komolyzene fájlok a szinkronhoz."))
             return False
 
         add_result = subprocess.run(
@@ -320,7 +345,7 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
             cwd=str(repo_root)
         )
         if add_result.returncode != 0:
-            st.error(f"❌ Git add hiba: {add_result.stderr or add_result.stdout}")
+            st.error(t("❌ Git add hiba: {error}", error=add_result.stderr or add_result.stdout))
             return False
 
         diff_result = subprocess.run(
@@ -330,11 +355,11 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
             cwd=str(repo_root)
         )
         if diff_result.returncode != 0:
-            st.error(f"❌ Git diff hiba: {diff_result.stderr or diff_result.stdout}")
+            st.error(t("❌ Git diff hiba: {error}", error=diff_result.stderr or diff_result.stdout))
             return False
 
         if not diff_result.stdout.strip():
-            st.info("ℹ️ Nincs komolyzene változás a szinkronhoz.")
+            st.info(t("ℹ️ Nincs komolyzene változás a szinkronhoz."))
             return True
 
         commit_msg = f"Komolyzene sync - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
@@ -345,7 +370,7 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
             cwd=str(repo_root)
         )
         if commit_result.returncode != 0:
-            st.error(f"❌ Git commit hiba: {commit_result.stderr or commit_result.stdout}")
+            st.error(t("❌ Git commit hiba: {error}", error=commit_result.stderr or commit_result.stdout))
             return False
 
         push_result = subprocess.run(
@@ -355,13 +380,13 @@ def sync_komolyzene_with_github(question_file_path: Optional[str] = None) -> boo
             cwd=str(repo_root)
         )
         if push_result.returncode != 0:
-            st.error(f"❌ Git push hiba: {push_result.stderr or push_result.stdout}")
+            st.error(t("❌ Git push hiba: {error}", error=push_result.stderr or push_result.stdout))
             return False
 
-        st.success("✅ Komolyzene Git sync sikeres!")
+        st.success(t("✅ Komolyzene Git sync sikeres!"))
         return True
     except Exception as e:
-        st.error(f"❌ Komolyzene sync hiba: {e}")
+        st.error(t("❌ Komolyzene sync hiba: {error}", error=e))
         return False
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -372,12 +397,12 @@ def get_image_base64(image_path):
             encoded_string = base64.b64encode(image_file.read()).decode()
         return encoded_string
     except Exception as e:
-        st.error(f"Hiba a kép betöltése során: {e}")
+        st.error(t("Hiba a kép betöltése során: {error}", error=e))
         return ""
 
 # Page config
 st.set_page_config(
-    page_title="Csabagyöngye Tréning Center",
+    page_title=t("Csabagyöngye Tréning Center"),
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -920,10 +945,12 @@ def show_answer_popup(question, user_answer, correct_answer):
         or (isinstance(question, dict) and (question.get("audio_file") or question.get("spotify_embed")))
     )
     piece_title = _get_piece_title_for_question(question) if show_piece_title else None
+    if piece_title:
+        piece_title = translate_text(piece_title)
 
     st.session_state.answer_popup = {
-        "user_answer": user_answer if user_answer else "N/A",
-        "correct_answer": correct_answer if correct_answer else "N/A",
+        "user_answer": user_answer if user_answer else t("N/A"),
+        "correct_answer": correct_answer if correct_answer else t("N/A"),
         "piece_title": piece_title,
     }
 
@@ -967,15 +994,18 @@ def render_answer_popup():
 
     piece_line = ""
     if "piece_title" in popup:
-        piece_value = popup["piece_title"] or "N/A"
-        piece_line = f"<br/><strong>Darab címe:</strong> {piece_value}"
+        piece_value = popup["piece_title"] or t("N/A")
+        piece_line = f"<br/><strong>{t('Darab címe:')}</strong> {piece_value}"
+
+    user_answer_label = t("Válaszod:")
+    correct_answer_label = t("Helyes válasz:")
 
     st.markdown(
         f"""
         <div class="answer-popup">
-            <strong>Válaszod:</strong> {popup["user_answer"]}
+            <strong>{user_answer_label}</strong> {popup["user_answer"]}
             &nbsp;|&nbsp;
-            <strong>Helyes válasz:</strong> {popup["correct_answer"]}
+            <strong>{correct_answer_label}</strong> {popup["correct_answer"]}
             {piece_line}
         </div>
         """,
@@ -987,7 +1017,7 @@ def render_answer_popup():
 def start_quiz():
     """Quiz indítása"""
     if not st.session_state.selected_topics:
-        st.error("Kérlek válassz ki legalább egy témaköröt!")
+        st.error(t("Kérlek válassz ki legalább egy témaköröt!"))
         return
     
     # Végleges kérdésszám használata - ha nincs beállítva, akkor 0 (a tényleges kérdések számától függ)
@@ -1070,9 +1100,14 @@ def start_quiz():
                     all_questions.append(question)
     
     if not all_questions:
-        st.error("Nem található érvényes kérdés a kiválasztott témakörökben!")
+        st.error(t("Nem található érvényes kérdés a kiválasztott témakörökben!"))
         if invalid_questions > 0:
-            st.warning(f"{invalid_questions} érvénytelen kérdés kihagyva (hiányzó adatok)")
+            st.warning(
+                t(
+                    "{count} érvénytelen kérdés kihagyva (hiányzó adatok)",
+                    count=invalid_questions,
+                )
+            )
         return
     
     # Kérdések keverése
@@ -1083,11 +1118,17 @@ def start_quiz():
         all_questions = all_questions[:final_question_count]
     
     if final_question_count > 0:
-        st.info(f"Kiválasztott kérdések: {len(all_questions)} / {final_question_count}")
+        st.info(
+            t(
+                "Kiválasztott kérdések: {selected} / {limit}",
+                selected=len(all_questions),
+                limit=final_question_count,
+            )
+        )
     else:
-        st.info(f"Kiválasztott kérdések: {len(all_questions)}")
+        st.info(t("Kiválasztott kérdések: {selected}", selected=len(all_questions)))
     if invalid_questions > 0:
-        st.warning(f"{invalid_questions} érvénytelen kérdés kihagyva")
+        st.warning(t("{count} érvénytelen kérdés kihagyva", count=invalid_questions))
     
     st.session_state.quiz_questions = all_questions
     st.session_state.current_question = 0
@@ -1135,29 +1176,36 @@ def main():
         st.session_state.selected_player = "Vendég"
     
     font_style = get_font_style()
-    st.markdown(f'<h1 style="text-align: center; {font_style["title"]} color: #1f77b4; margin-bottom: 2rem;">🎯 Csabagyöngye Tréning Center 😄</h1>', unsafe_allow_html=True)
+    header_col_left, header_col_right = st.columns([6, 1])
+    with header_col_right:
+        render_language_selector()
+    st.markdown(
+        f'<h1 style="text-align: center; {font_style["title"]} color: #1f77b4; margin-bottom: 2rem;">{t("🎯 Csabagyöngye Tréning Center 😄")}</h1>',
+        unsafe_allow_html=True,
+    )
     
     # Sidebar navigáció
     with st.sidebar:
-        st.markdown(f"## 🧭 Navigáció")
+        st.markdown(t("## 🧭 Navigáció"))
+        page_labels = {
+            "Quiz": "🎯 Quiz",
+            "Spotify Playlist": "🎵 Spotify Playlist",
+            "Analytics": "📊 Analytics",
+            "Beállítások": "⚙️ Beállítások",
+            "Audio hozzáadása": "🎵 Audio hozzáadása",
+            "GitHub Szinkronizálás": "🔄 GitHub Szinkronizálás",
+            "Audio Track Kezelés": "🎵 Audio Track Kezelés",
+            "Előadók szerinti lista": "🎼 Előadók szerinti lista",
+        }
         page = st.selectbox(
-            "Válassz oldalt:",
-            ["Quiz", "Spotify Playlist", "Analytics", "Beállítások", "Audio hozzáadása", "GitHub Szinkronizálás", "Audio Track Kezelés", "Előadók szerinti lista"],
-            format_func=lambda x: {
-                "Quiz": "🎯 Quiz",
-                "Spotify Playlist": "🎵 Spotify Playlist",
-                "Analytics": "📊 Analytics", 
-                "Beállítások": "⚙️ Beállítások",
-                "Audio hozzáadása": "🎵 Audio hozzáadása",
-                "GitHub Szinkronizálás": "🔄 GitHub Szinkronizálás",
-                "Audio Track Kezelés": "🎵 Audio Track Kezelés",
-                "Előadók szerinti lista": "🎼 Előadók szerinti lista"
-            }[x]
+            t("Válassz oldalt:"),
+            list(page_labels.keys()),
+            format_func=lambda x: t(page_labels[x]),
         )
         
         # Betűméret váltó
         st.markdown("---")
-        st.markdown(f"## 🔤 Betűméret")
+        st.markdown(t("## 🔤 Betűméret"))
         font_size_options = {
             "normal": "📝 Normál",
             "large": "🔍 Nagy"
@@ -1165,14 +1213,21 @@ def main():
         
         current_font = st.session_state.get('font_size', 'normal')
         new_font = st.selectbox(
-            "Válassz betűméretet:",
+            t("Válassz betűméretet:"),
             options=list(font_size_options.keys()),
-            format_func=lambda x: font_size_options[x],
+            format_func=lambda x: t(font_size_options[x]),
             index=list(font_size_options.keys()).index(current_font)
         )
         
         if new_font != current_font:
             st.session_state.font_size = new_font
+            st.rerun()
+
+        st.markdown("---")
+        if st.button(t("🗑️ Cache törlése")):
+            st.cache_data.clear()
+            st.cache_resource.clear()
+            st.success(t("Cache törölve!"))
             st.rerun()
         
                 # Spotify playlist funkció eltávolítva a navigációs sávból
@@ -1370,24 +1425,27 @@ def _get_piece_title_for_question(question: dict) -> Optional[str]:
 
 def show_artist_list_page():
     """Szerző szerinti lista önálló oldal"""
-    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎼 Szerző szerinti lista</h2>', unsafe_allow_html=True)
+    st.markdown(
+        f'<h2 style="text-align: center; color: #1f77b4;">{t("🎼 Szerző szerinti lista")}</h2>',
+        unsafe_allow_html=True,
+    )
     
     tracks_by_category = get_audio_tracks_by_category()
     music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
     music_options = {k: v["title"] for k, v in tracks_by_category.items() if k in music_categories}
     
     if not music_options:
-        st.info("📭 Nincs elérhető zenei kategória.")
+        st.info(t("📭 Nincs elérhető zenei kategória."))
         return
     
-    st.markdown("### 🎵 Zenei kategória választás")
+    st.markdown(t("### 🎵 Zenei kategória választás"))
     current_category = st.session_state.get("artist_list_category", list(music_options.keys())[0])
     selected_category = None
     cols = st.columns(2)
     for i, (key, title) in enumerate(music_options.items()):
         with cols[i % 2]:
             button_type = "primary" if key == current_category else "secondary"
-            if st.button(title, key=f"artist_list_cat_{key}", type=button_type, use_container_width=True):
+            if st.button(t(title), key=f"artist_list_cat_{key}", type=button_type, use_container_width=True):
                 selected_category = key
                 st.session_state.artist_list_category = key
                 st.rerun()
@@ -1397,7 +1455,7 @@ def show_artist_list_page():
     category_info = tracks_by_category.get(selected_category, {})
     tracks = category_info.get("tracks", [])
     if not tracks:
-        st.info("📭 Nincsenek track-ek ebben a kategóriában.")
+        st.info(t("📭 Nincsenek track-ek ebben a kategóriában."))
         return
     
     if "artist_list_playing" not in st.session_state:
@@ -1414,12 +1472,18 @@ def show_artist_list_page():
             "audio_path": audio_path,
         })
     
-    st.markdown(f"### {category_info.get('title', selected_category)}")
-    st.markdown(f"📊 **{len(tracks)} track**, **{len(artist_map)} előadó**")
+    st.markdown(t("### {category}", category=t(category_info.get("title", selected_category))))
+    st.markdown(
+        t(
+            "📊 **{track_count} track**, **{artist_count} előadó**",
+            track_count=len(tracks),
+            artist_count=len(artist_map),
+        )
+    )
     
     for artist in sorted(artist_map.keys(), key=lambda x: x.lower()):
         items = sorted(artist_map[artist], key=lambda x: x["title"].lower())
-        with st.expander(f"{artist} ({len(items)})", expanded=False):
+        with st.expander(t("{artist} ({count})", artist=artist, count=len(items)), expanded=False):
             for idx, item in enumerate(items):
                 title = item["title"]
                 filename = item["filename"]
@@ -1428,38 +1492,38 @@ def show_artist_list_page():
 
                 col1, col2 = st.columns([4, 1])
                 with col1:
-                    st.write(f"{title} ({filename})")
+                    st.write(t("{title} ({filename})", title=title, filename=filename))
                 with col2:
                     if not has_audio:
-                        st.button("▶️ Lejátszás", key=f"play_{selected_category}_{artist}_{idx}", disabled=True)
+                        st.button(t("▶️ Lejátszás"), key=f"play_{selected_category}_{artist}_{idx}", disabled=True)
                     else:
                         if st.session_state.artist_list_playing == audio_path:
-                            if st.button("⏹ Stop", key=f"stop_{selected_category}_{artist}_{idx}"):
+                            if st.button(t("⏹ Stop"), key=f"stop_{selected_category}_{artist}_{idx}"):
                                 st.session_state.artist_list_playing = None
                         else:
-                            if st.button("▶️ Lejátszás", key=f"play_{selected_category}_{artist}_{idx}"):
+                            if st.button(t("▶️ Lejátszás"), key=f"play_{selected_category}_{artist}_{idx}"):
                                 st.session_state.artist_list_playing = audio_path
 
                 if has_audio and st.session_state.artist_list_playing == audio_path:
                     st.audio(audio_path, format="audio/mp3")
 
                 if has_audio:
-                    with st.expander("🔧 Audio módosítás", expanded=False):
-                        st.caption("A feltöltött fájl felülírja az eredeti tracket (név változatlan).")
+                    with st.expander(t("🔧 Audio módosítás"), expanded=False):
+                        st.caption(t("A feltöltött fájl felülírja az eredeti tracket (név változatlan)."))
                         uploaded_file = st.file_uploader(
-                            "Új MP3 feltöltése",
+                            t("Új MP3 feltöltése"),
                             type=["mp3"],
                             key=f"upload_{selected_category}_{artist}_{idx}",
                         )
                         confirm_replace = st.checkbox(
-                            "Igen, felülírom az eredeti fájlt",
+                            t("Igen, felülírom az eredeti fájlt"),
                             key=f"confirm_replace_{selected_category}_{artist}_{idx}",
                         )
-                        if st.button("💾 Csere mentése", key=f"replace_{selected_category}_{artist}_{idx}"):
+                        if st.button(t("💾 Csere mentése"), key=f"replace_{selected_category}_{artist}_{idx}"):
                             if uploaded_file is None:
-                                st.warning("⚠️ Előbb válassz ki egy MP3 fájlt!")
+                                st.warning(t("⚠️ Előbb válassz ki egy MP3 fájlt!"))
                             elif not confirm_replace:
-                                st.warning("⚠️ Jelöld be a megerősítést a felülíráshoz!")
+                                st.warning(t("⚠️ Jelöld be a megerősítést a felülíráshoz!"))
                             else:
                                 try:
                                     import tempfile
@@ -1489,17 +1553,17 @@ def show_artist_list_page():
                                         commit_msg = f"Replace audio: {artist} - {title}"
                                         subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
                                         subprocess.run(['git', 'push'], check=True)
-                                        st.success("✅ Audio cserélve és GitHub-ra feltöltve.")
+                                        st.success(t("✅ Audio cserélve és GitHub-ra feltöltve."))
                                     except subprocess.CalledProcessError as e:
-                                        st.warning(f"⚠️ Git szinkronizáció sikertelen: {e}")
-                                        st.success("✅ Audio cserélve, de Git sync nem futott le.")
+                                        st.warning(t("⚠️ Git szinkronizáció sikertelen: {error}", error=e))
+                                        st.success(t("✅ Audio cserélve, de Git sync nem futott le."))
 
                                     # Lejátszás reset
                                     if st.session_state.artist_list_playing == str(target_path):
                                         st.session_state.artist_list_playing = None
                                     st.rerun()
                                 except Exception as e:
-                                    st.error(f"❌ Audio csere hiba: {e}")
+                                    st.error(t("❌ Audio csere hiba: {error}", error=e))
 
 def _make_safe_filename(artist: str, title: str) -> str:
     """Biztonságos fájlnév generálása az előadó és cím alapján"""
@@ -2567,14 +2631,14 @@ def show_search_page():
         from search_functionality import display_search_interface
         display_search_interface()
     except ImportError as e:
-        st.error(f"Hiba a keresési funkció betöltésekor: {e}")
-        st.info("A keresési funkció nem érhető el. Ellenőrizd a search_functionality.py fájlt.")
+        st.error(t("Hiba a keresési funkció betöltésekor: {error}", error=e))
+        st.info(t("A keresési funkció nem érhető el. Ellenőrizd a search_functionality.py fájlt."))
 
 def show_topic_selection():
     """Témakör kiválasztás"""
     
     # Felhasználó kiválasztás
-    st.markdown("### 👤 Játékos Kiválasztás")
+    st.markdown(t("### 👤 Játékos Kiválasztás"))
     
     # Játékos kiválasztó mező középre igazítva
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
@@ -2585,7 +2649,12 @@ def show_topic_selection():
         if current_player not in players:
             current_player = "Vendég"
         
-        selected_player = st.selectbox("Válassz játékost:", players, index=players.index(current_player))
+        selected_player = st.selectbox(
+            t("Válassz játékost:"),
+            players,
+            index=players.index(current_player),
+            format_func=lambda name: t(name),
+        )
         # A kiválasztott játékos mentése a session state-be
         st.session_state.selected_player = selected_player
     
@@ -2633,21 +2702,33 @@ def show_topic_selection():
     }
     
     # Randomizáló funkció
-    st.markdown("### 🎲 Randomizáló Funkció")
+    st.markdown(t("### 🎲 Randomizáló Funkció"))
     
     # Kérdésszám beállítás csúszkával
     col1, col2 = st.columns(2)
     with col1:
-        random_question_count = st.slider("Randomizáláshoz használandó kérdésszám", 10, 100, st.session_state.get('default_other_questions', 40), key="random_question_count")
+        random_question_count = st.slider(
+            t("Randomizáláshoz használandó kérdésszám"),
+            10,
+            100,
+            st.session_state.get('default_other_questions', 40),
+            key="random_question_count",
+        )
     
     with col2:
-        random_music_question_count = st.slider("Zenei randomizáláshoz használandó kérdésszám", 5, 50, st.session_state.get('default_music_questions', 10), key="random_music_question_count")
+        random_music_question_count = st.slider(
+            t("Zenei randomizáláshoz használandó kérdésszám"),
+            5,
+            50,
+            st.session_state.get('default_music_questions', 10),
+            key="random_music_question_count",
+        )
     
     # Randomizáló gombok egy sorban
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("🎯 Teljes kvíz létrehozása", type="primary", use_container_width=True):
+        if st.button(t("🎯 Teljes kvíz létrehozása"), type="primary", use_container_width=True):
             # Összes témakör kiválasztása
             st.session_state.selected_topics = list(topics.keys())
             
@@ -2690,11 +2771,17 @@ def show_topic_selection():
             total_other_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in other_topics)
             st.session_state['other_total_questions'] = total_other_questions
             
-            st.success(f"✅ Teljes kvíz létrehozva! {len(topics)} témakör kiválasztva, összesen {total_music_questions + total_other_questions} kérdés!")
+            st.success(
+                t(
+                    "✅ Teljes kvíz létrehozva! {topic_count} témakör kiválasztva, összesen {question_count} kérdés!",
+                    topic_count=len(topics),
+                    question_count=total_music_questions + total_other_questions,
+                )
+            )
             st.rerun()
         
     with col2:
-        if st.button("🎵 Random zenei témakörök kiválasztása", type="secondary", use_container_width=True):
+        if st.button(t("🎵 Random zenei témakörök kiválasztása"), type="secondary", use_container_width=True):
             # Zenei témakörök kiválasztása
             music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
             num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
@@ -2735,11 +2822,17 @@ def show_topic_selection():
             # Alapértelmezett értékek beállítása
             st.session_state['music_total_questions'] = random_music_question_count
             
-            st.success(f"✅ {num_music_topics} zenei témakör kiválasztva + meglévő nem-zenei témakörök megtartva, {random_music_question_count} kérdés elosztva!")
+            st.success(
+                t(
+                    "✅ {topic_count} zenei témakör kiválasztva + meglévő nem-zenei témakörök megtartva, {question_count} kérdés elosztva!",
+                    topic_count=num_music_topics,
+                    question_count=random_music_question_count,
+                )
+            )
             st.rerun()
         
     with col3:
-        if st.button("🎲 Random témakörök kiválasztása (zene nélkül)", type="secondary", use_container_width=True):
+        if st.button(t("🎲 Random témakörök kiválasztása (zene nélkül)"), type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
             music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"]
             available_topics = [topic for topic in topics.keys() if topic not in music_topics]
@@ -2782,7 +2875,13 @@ def show_topic_selection():
             st.session_state['other_total_questions'] = random_question_count
             st.session_state['music_total_questions'] = random_music_question_count
             
-            st.success(f"✅ {num_topics} témakör kiválasztva (zene nélkül) + meglévő zenei témakörök megtartva, {random_question_count} kérdés elosztva!")
+            st.success(
+                t(
+                    "✅ {topic_count} témakör kiválasztva (zene nélkül) + meglévő zenei témakörök megtartva, {question_count} kérdés elosztva!",
+                    topic_count=num_topics,
+                    question_count=random_question_count,
+                )
+            )
             st.rerun()
     
     with col2:
@@ -2808,14 +2907,14 @@ def show_topic_selection():
 
 
     with col1:
-        st.markdown("### 🎵 Zenei témakörök")
+        st.markdown(t("### 🎵 Zenei témakörök"))
         for topic_key, topic_name in topics.items():
             if "zene" in topic_key or "zenekar" in topic_key or topic_key in {"one_hit_wonders", "sorozat_focimek"}:
                 # Kattintható gomb a checkbox helyett
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2829,7 +2928,7 @@ def show_topic_selection():
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
                     final_topic_questions = st.slider(
-                        f"{topic_name} kérdések száma",
+                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
@@ -2837,7 +2936,7 @@ def show_topic_selection():
                     )
     
     with col2:
-        st.markdown("### 📚 Egyéb témakörök")
+        st.markdown(t("### 📚 Egyéb témakörök"))
         other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0] and t[0] not in {"one_hit_wonders", "sorozat_focimek"}]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
@@ -2845,7 +2944,7 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2859,7 +2958,7 @@ def show_topic_selection():
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
                     final_topic_questions = st.slider(
-                        f"{topic_name} kérdések száma",
+                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
@@ -2874,7 +2973,7 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(topic_name, key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
                         st.session_state.selected_topics.remove(topic_key)
@@ -2888,7 +2987,7 @@ def show_topic_selection():
                     # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
                     final_topic_questions = st.slider(
-                        f"{topic_name} kérdések száma",
+                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
@@ -2897,13 +2996,13 @@ def show_topic_selection():
     
     # Kérdésszámok beállítása
     if st.session_state.selected_topics:
-        st.markdown("### ⚙️ Kérdésszámok beállítása")
+        st.markdown(t("### ⚙️ Kérdésszámok beállítása"))
         
         music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
         other_topics = [t for t in st.session_state.selected_topics if "zene" not in t and "zenekar" not in t and t not in {"one_hit_wonders", "sorozat_focimek"}]
         
         if music_topics:
-            st.markdown("#### 🎵 Zenei kérdések beállításai")
+            st.markdown(t("#### 🎵 Zenei kérdések beállításai"))
             # Összes zenei kérdés számának kiszámítása
             total_music_questions = sum(len(QUIZ_DATA_BY_TOPIC.get(topic, [])) for topic in music_topics)
             
@@ -2912,45 +3011,75 @@ def show_topic_selection():
             
             col1, col2 = st.columns(2)
             with col1:
-                music_total_questions = st.slider("Összes zenei kérdés száma", 1, total_music_questions, st.session_state.get('default_music_questions', current_music_total), key="music_total_questions")
+                music_total_questions = st.slider(
+                    t("Összes zenei kérdés száma"),
+                    1,
+                    total_music_questions,
+                    st.session_state.get('default_music_questions', current_music_total),
+                    key="music_total_questions",
+                )
             with col2:
-                music_auto_distribute = st.checkbox("Automatikus elosztás a zenei témakörök között", True, key="music_auto_distribute")
+                music_auto_distribute = st.checkbox(
+                    t("Automatikus elosztás a zenei témakörök között"),
+                    True,
+                    key="music_auto_distribute",
+                )
             
             if not music_auto_distribute:
-                st.markdown("##### Manuális elosztás:")
+                st.markdown(t("##### Manuális elosztás:"))
                 for topic in music_topics:
                     topic_name = topics.get(topic, topic)
                     if topic == "magyar_zenekarok":
                         max_questions = len(MAGYAR_AUDIO_MAPPING_UJ)
                     else:
                         max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                    questions_count = st.slider(f"{topic_name} kérdések száma", 0, max_questions, key=f"{topic}_questions")
+                    questions_count = st.slider(
+                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
+                        0,
+                        max_questions,
+                        key=f"{topic}_questions",
+                    )
         
         if other_topics:
-            st.markdown("#### 📚 Egyéb témakörök kérdésszámai")
+            st.markdown(t("#### 📚 Egyéb témakörök kérdésszámai"))
             
             # Automatikus elosztás egyéb témakörök között
             col1, col2 = st.columns(2)
             with col1:
-                other_total_questions = st.slider("Összes egyéb kérdés száma", 1, 200, st.session_state.get('default_other_questions', 40), key="other_total_questions")
+                other_total_questions = st.slider(
+                    t("Összes egyéb kérdés száma"),
+                    1,
+                    200,
+                    st.session_state.get('default_other_questions', 40),
+                    key="other_total_questions",
+                )
             
             with col2:
-                other_auto_distribute = st.checkbox("Automatikus elosztás az egyéb témakörök között", True, key="other_auto_distribute")
+                other_auto_distribute = st.checkbox(
+                    t("Automatikus elosztás az egyéb témakörök között"),
+                    True,
+                    key="other_auto_distribute",
+                )
             
             if not other_auto_distribute:
-                st.markdown("##### Manuális elosztás:")
+                st.markdown(t("##### Manuális elosztás:"))
                 cols = st.columns(3)
                 for i, topic in enumerate(other_topics):
                     topic_name = topics.get(topic, topic)
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
                     with cols[i % 3]:
-                        questions_count = st.slider(f"{topic_name} kérdések száma", 0, max_questions, key=f"{topic}_questions")
+                        questions_count = st.slider(
+                            t("{topic_name} kérdések száma", topic_name=t(topic_name)),
+                            0,
+                            max_questions,
+                            key=f"{topic}_questions",
+                        )
         
 
     
     # Quiz indítása
     if st.session_state.selected_topics:
-        st.markdown("### 🎯 Végleges Kérdésszám Beállítása")
+        st.markdown(t("### 🎯 Végleges Kérdésszám Beállítása"))
         
         # Összes elérhető kérdés számának kiszámítása
         total_available_questions = 0
@@ -2977,16 +3106,16 @@ def show_topic_selection():
         # Információk megjelenítése
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.info(f"🎵 Zenei kérdések: {music_questions}")
+            st.info(t("🎵 Zenei kérdések: {count}", count=music_questions))
         with col2:
-            st.info(f"📚 Egyéb kérdések: {other_questions}")
+            st.info(t("📚 Egyéb kérdések: {count}", count=other_questions))
         with col3:
-            st.info(f"📊 Összes elérhető: {total_available_questions}")
+            st.info(t("📊 Összes elérhető: {count}", count=total_available_questions))
         with col4:
-            st.success(f"🎯 Végleges kérdésszám: {final_question_count}")
+            st.success(t("🎯 Végleges kérdésszám: {count}", count=final_question_count))
         
         # Quiz indítás gomb
-        if st.button("🚀 Quiz indítása", type="primary", use_container_width=True):
+        if st.button(t("🚀 Quiz indítása"), type="primary", use_container_width=True):
             # Végleges kérdésszám beállítása mindig a jelenlegi értékre
             st.session_state.final_question_count = final_question_count
             start_quiz()
@@ -3003,7 +3132,12 @@ def show_quiz():
     
     # Extra biztonsági ellenőrzés - ha a kérdés érvénytelen, ugorjunk a következőre
     if question.get("question_type") != "text_input" and ("options" not in question or "correct" not in question):
-        st.warning(f"Érvénytelen kérdés kihagyva: {question.get('question', 'Ismeretlen')}")
+        st.warning(
+            t(
+                "Érvénytelen kérdés kihagyva: {question}",
+                question=question.get("question") or t("Ismeretlen"),
+            )
+        )
         st.session_state.current_question += 1
         if st.session_state.current_question >= len(st.session_state.quiz_questions):
             st.session_state.quiz_state = 'results'
@@ -3018,7 +3152,7 @@ def show_quiz():
     with col1:
         if st.session_state.current_question > 0:
             font_style = get_font_style()
-            if st.button("⬅️ Előző", key=f"prev_{st.session_state.current_question}"):
+            if st.button(t("⬅️ Előző"), key=f"prev_{st.session_state.current_question}"):
                 st.session_state.current_question -= 1
                 st.rerun()
     
@@ -3028,22 +3162,30 @@ def show_quiz():
     
     with col3:
         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
-            if st.button("Következő ➡️", key=f"next_{st.session_state.current_question}"):
+            if st.button(t("Következő ➡️"), key=f"next_{st.session_state.current_question}"):
                 st.session_state.current_question += 1
                 st.rerun()
     
     # Progress bar
     progress = (st.session_state.current_question + 1) / len(st.session_state.quiz_questions)
-    st.progress(progress, text=f"Haladás: {st.session_state.current_question + 1}/{len(st.session_state.quiz_questions)}")
+    st.progress(
+        progress,
+        text=t(
+            "Haladás: {current}/{total}",
+            current=st.session_state.current_question + 1,
+            total=len(st.session_state.quiz_questions),
+        ),
+    )
     
     # Pontszám és kérdés sorszám külön mezőkben, 50-50% szélesség
     col1, col2 = st.columns(2)
     
     with col1:
         # Pontszám mező
+        score_label = t("🎯 PONTSZÁM")
         st.markdown(f"""
         <div style='text-align: center; padding: 15px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); border-radius: 15px; border: 3px solid #d32f2f; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
-            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>🎯 PONTSZÁM</div>
+            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>{score_label}</div>
             <div style='font-size: 32px; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.score}</div>
             <div style='font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 5px;'>{(st.session_state.score / len(st.session_state.quiz_questions) * 100):.1f}%</div>
         </div>
@@ -3051,9 +3193,10 @@ def show_quiz():
     
     with col2:
         # Kérdés sorszám mező
+        question_label = t("📝 KÉRDÉS")
         st.markdown(f"""
         <div style='text-align: center; padding: 15px; background: linear-gradient(135deg, #4CAF50, #45a049); border-radius: 15px; border: 3px solid #2E7D32; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
-            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>📝 KÉRDÉS</div>
+            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>{question_label}</div>
             <div style='font-size: 32px; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.current_question + 1}</div>
             <div style='font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 5px;'>/ {len(st.session_state.quiz_questions)}</div>
         </div>
@@ -3063,14 +3206,14 @@ def show_quiz():
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("Százalék", f"{(st.session_state.score / len(st.session_state.quiz_questions) * 100):.1f}%")
+        st.metric(t("Százalék"), f"{(st.session_state.score / len(st.session_state.quiz_questions) * 100):.1f}%")
     
     with col2:
         # Jelenlegi streak és legmagasabb streak együtt
         current_streak = st.session_state.mode_manager.streak
         max_streak = st.session_state.mode_manager.max_streak
         streak_text = f"{current_streak} ({max_streak})"
-        st.metric("Streak", streak_text)
+        st.metric(t("Streak"), streak_text)
     
     with col3:
         # Mód és nehézségi szint együtt megjelenítése
@@ -3084,7 +3227,7 @@ def show_quiz():
             "practice": "gyakorlás",
             "challenge": "kihívás"
         }
-        mode_name = mode_names.get(mode_text, mode_text)
+        mode_name = t(mode_names.get(mode_text, mode_text))
         
         # Nehézségi szint ikonok - string értékekkel
         difficulty_icons = {
@@ -3101,15 +3244,19 @@ def show_quiz():
             "medium": "közepes", 
             "hard": "nehéz"
         }
-        difficulty_name = difficulty_names.get(current_difficulty_value, "Ismeretlen")
+        difficulty_name = t(difficulty_names.get(current_difficulty_value, "Ismeretlen"))
         
         # Mód és nehézségi szint együtt
         combined_text = f"{mode_name} {difficulty_icon} {difficulty_name}"
-        st.metric("Mód", combined_text)
+        st.metric(t("Mód"), combined_text)
         
         # Életek megjelenítése külön sorban, ha van
         if st.session_state.mode_manager.lives is not None:
-            st.markdown(f"<div style='text-align: center; font-size: 14px; color: #666; margin-top: -10px;'>Életek: {st.session_state.mode_manager.lives}</div>", unsafe_allow_html=True)
+            lives_text = t("Életek: {count}", count=st.session_state.mode_manager.lives)
+            st.markdown(
+                f"<div style='text-align: center; font-size: 14px; color: #666; margin-top: -10px;'>{lives_text}</div>",
+                unsafe_allow_html=True,
+            )
     
     # Időzítő (ha van)
     if st.session_state.mode_manager.time_limit:
@@ -3121,17 +3268,20 @@ def show_quiz():
             return
         
         # Időzítő megjelenítése
-        st.markdown(f"<div style='text-align: center; font-size: 16px; color: {'red' if time_remaining < 10 else 'orange' if time_remaining < 30 else 'green'};'>"
-                   f"⏱️ Hátralévő idő: {time_remaining:.1f} másodperc</div>", unsafe_allow_html=True)
+        timer_text = t("⏱️ Hátralévő idő: {seconds} másodperc", seconds=f"{time_remaining:.1f}")
+        st.markdown(
+            f"<div style='text-align: center; font-size: 16px; color: {'red' if time_remaining < 10 else 'orange' if time_remaining < 30 else 'green'};'>{timer_text}</div>",
+            unsafe_allow_html=True,
+        )
     
     # Kérdés megjelenítése
     font_style = get_font_style()
     st.markdown('<div class="question-container">', unsafe_allow_html=True)
     
     # Kérdés szövege
-    question_text = question.get("question", "Ismeretlen kérdés")
+    question_text = question.get("question") or t("Ismeretlen kérdés")
     question_number = st.session_state.current_question + 1
-    display_question_text = f"{question_number}. {question_text}"
+    display_question_text = f"{question_number}. {translate_text(question_text)}"
     st.markdown(f"<div class='question-text' style='{font_style['question']}'>{display_question_text}</div>", unsafe_allow_html=True)
 
     # Tartós popup megjelenítése (ha van)
@@ -3147,9 +3297,9 @@ def show_quiz():
                 
                 st.audio(abs_path, format="audio/mp3")
             except Exception as e:
-                st.error(f"Audio fájl lejátszási hiba: {e}")
+                st.error(t("Audio fájl lejátszási hiba: {error}", error=e))
         else:
-            st.warning("Audio fájl nem található")
+            st.warning(t("Audio fájl nem található"))
     else:
         # Eredeti logika más témakörökre
         if "audio_file" in question and question["audio_file"]:
@@ -3158,9 +3308,9 @@ def show_quiz():
                     abs_path = os.path.abspath(audio_file)
                     st.audio(abs_path, format="audio/mp3")
                 except Exception as e:
-                    st.error(f"Audio fájl lejátszási hiba: {e}")
+                    st.error(t("Audio fájl lejátszási hiba: {error}", error=e))
             else:
-                st.warning("Audio fájl nem található")
+                st.warning(t("Audio fájl nem található"))
     
 
     
@@ -3185,7 +3335,7 @@ def show_quiz():
             with col2:
                 st.image(logo_path, width=400)
         else:
-            st.warning(f"Logó fájl nem található: {logo_path}")
+            st.warning(t("Logó fájl nem található: {path}", path=logo_path))
     
     # Festmény kép megjelenítése
     elif "image_file" in question and question["image_file"]:
@@ -3218,13 +3368,13 @@ def show_quiz():
                         st.session_state[modal_time_key] = modal_started_at
                     
                     # Bezárás gomb
-                    if st.button("❌ Kép bezárása", key=f"close_modal_{st.session_state.current_question}", type="primary", use_container_width=True):
+                    if st.button(t("❌ Kép bezárása"), key=f"close_modal_{st.session_state.current_question}", type="primary", use_container_width=True):
                         st.session_state.image_modal_states[st.session_state.current_question] = False
                         st.session_state.pop(modal_time_key, None)
                         st.rerun()
                     
                     # Automatikus bezárás 30 másodperc után
-                    st.info("💡 Tipp: A modal automatikusan bezáródik 30 másodperc múlva!")
+                    st.info(t("💡 Tipp: A modal automatikusan bezáródik 30 másodperc múlva!"))
                     
                     elapsed_time = time.time() - modal_started_at
                     if elapsed_time > 30:  # 30 másodperc
@@ -3245,11 +3395,11 @@ def show_quiz():
                     # Kép felirat eltávolítva
                     
                     # Nagyítás gomb
-                    if st.button("🔍 Kép nagyítása", key=f"zoom_{st.session_state.current_question}"):
+                    if st.button(t("🔍 Kép nagyítása"), key=f"zoom_{st.session_state.current_question}"):
                         st.session_state.image_modal_states[st.session_state.current_question] = True
                         st.rerun()
         else:
-            st.warning(f"Festmény kép nem található: {image_path}")
+            st.warning(t("Festmény kép nem található: {path}", path=image_path))
     
     # Session state inicializálása
     if 'question_answers' not in st.session_state:
@@ -3274,12 +3424,21 @@ def show_quiz():
                 correct_answer = options[correct_index]
                 random.shuffle(options)
                 new_correct_index = options.index(correct_answer)
+                display_options = [translate_text(option) for option in options]
                 st.session_state.question_options[st.session_state.current_question] = {
                     'options': options,
+                    'display_options': display_options,
+                    'lang': st.session_state.get("language", "hu"),
                     'correct_index': new_correct_index
                 }
             except (KeyError, IndexError, ValueError, TypeError) as e:
-                st.error(f"Hibás kérdés adatok: {e}. Kérdés: {question.get('question', 'Ismeretlen')}")
+                st.error(
+                    t(
+                        "Hibás kérdés adatok: {error}. Kérdés: {question}",
+                        error=e,
+                        question=question.get("question") or t("Ismeretlen"),
+                    )
+                )
                 # Automatikusan folytatjuk a következő kérdéssel
                 st.session_state.current_question += 1
                 if st.session_state.current_question >= len(st.session_state.quiz_questions):
@@ -3291,7 +3450,7 @@ def show_quiz():
         
         # Extra biztonsági ellenőrzés az options_data elérése előtt
         if st.session_state.current_question not in st.session_state.question_options:
-            st.error("Hibás kérdés adatok - automatikus folytatás")
+            st.error(t("Hibás kérdés adatok - automatikus folytatás"))
             st.session_state.current_question += 1
             if st.session_state.current_question >= len(st.session_state.quiz_questions):
                 st.session_state.quiz_state = 'results'
@@ -3302,6 +3461,12 @@ def show_quiz():
         
         options_data = st.session_state.question_options[st.session_state.current_question]
         options = options_data['options']
+        current_lang = st.session_state.get("language", "hu")
+        if options_data.get('lang') != current_lang:
+            options_data['display_options'] = [translate_text(option) for option in options]
+            options_data['lang'] = current_lang
+            st.session_state.question_options[st.session_state.current_question] = options_data
+        display_options = options_data.get('display_options', options)
         new_correct_index = options_data['correct_index']
     
     # Válasz megjelenítése
@@ -3311,7 +3476,7 @@ def show_quiz():
     if selected_answer is not None:
         if question_type == "text_input":
             # Text input kérdések esetén a válasz szöveges
-            is_correct = selected_answer.lower().strip() == question.get("correct_answer", "").lower().strip()
+            is_correct = _is_text_answer_correct(selected_answer, question.get("correct_answer", ""))
         else:
             # Többválasztós kérdések esetén index alapú
             is_correct = selected_answer == new_correct_index
@@ -3325,7 +3490,7 @@ def show_quiz():
                             <div style=\"position: fixed; bottom: 40px; right: 20px; z-index: 1000;\">
                 <div class=\"rotated-answer\">
                     <button style=\"background-color: #28a745; color: white; border: none; border-radius: 8px; padding: 10px 15px; font-size: 16px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\">
-                        {options[new_correct_index]}
+                        {display_options[new_correct_index]}
                     </button>
                 </div>
             </div>
@@ -3338,32 +3503,26 @@ def show_quiz():
         # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
         if question_type == "text_input":
             # Text input kérdések mindig szöveges bevitellel
-            st.markdown("### 💬 Írd be a válaszod:")
+            st.markdown(t("### 💬 Írd be a válaszod:"))
             
             # Idióta szavak kérdéseknél a correct_answer mezőt használjuk
-            correct_answer = question.get("correct_answer", "").lower().strip()
-            user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
+            correct_answer_raw = question.get("correct_answer", "")
+            user_answer = st.text_input(t("Válasz:"), key=f"text_input_{st.session_state.current_question}")
             
-            if st.button("✅ Válasz beküldése", key=f"submit_{st.session_state.current_question}", use_container_width=True):
+            if st.button(t("✅ Válasz beküldése"), key=f"submit_{st.session_state.current_question}", use_container_width=True):
                 if user_answer:
                     # Válasz ellenőrzése (case-insensitive) - részleges egyezés is elfogadható
-                    user_answer_clean = user_answer.lower().strip()
-                    correct_answer_clean = correct_answer.lower().strip()
-                    
-                    # Teljes egyezés vagy részleges egyezés (ha a felhasználó válasza tartalmazza a helyes válasz kulcsszavait)
-                    is_correct = (user_answer_clean == correct_answer_clean or 
-                                any(keyword in user_answer_clean for keyword in correct_answer_clean.split() if len(keyword) > 3) or
-                                any(keyword in correct_answer_clean for keyword in user_answer_clean.split() if len(keyword) > 3))
+                    is_correct = _is_text_answer_correct(user_answer, correct_answer_raw)
                     
                     if is_correct:
                         st.session_state.score += 1
                     
-                    show_answer_popup(question, user_answer, question.get('correct_answer', ''))
+                    show_answer_popup(question, user_answer, translate_text(correct_answer_raw or ""))
                     
                     # Válasz mentése
                     st.session_state.question_answers[st.session_state.current_question] = user_answer
                     st.session_state.answers.append({
-                        'question': question.get("question", "Ismeretlen kérdés"),
+                        'question': question.get("question", t("Ismeretlen kérdés")),
                         'selected': user_answer,
                         'correct': question.get('correct_answer', ''),
                         'options': [],
@@ -3382,32 +3541,31 @@ def show_quiz():
                         st.session_state.quiz_state = 'results'
                     st.rerun()
                 else:
-                    st.warning("Kérlek, írj be egy választ!")
+                    st.warning(t("Kérlek, írj be egy választ!"))
         elif difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia" and 'options' in locals() and 'new_correct_index' in locals():
             # Nehéz mód: feleletválasztós kérdések szöveges bevitellel
-            st.markdown("### 💬 Írd be a válaszod:")
+            st.markdown(t("### 💬 Írd be a válaszod:"))
             
             # Nehéz mód kérdéseknél az options alapján
             if 'options' in locals() and 'new_correct_index' in locals():
-                correct_answer = question.get("correct_answer", "").lower().strip()
-                user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
+                correct_answer_raw = question.get("correct_answer") or options[new_correct_index]
+                user_answer = st.text_input(t("Válasz:"), key=f"text_input_{st.session_state.current_question}")
                 
-                if st.button("✅ Válasz beküldése", key=f"submit_{st.session_state.current_question}", use_container_width=True):
+                if st.button(t("✅ Válasz beküldése"), key=f"submit_{st.session_state.current_question}", use_container_width=True):
                     if user_answer:
                         # Válasz ellenőrzése (case-insensitive)
-                        user_answer_clean = user_answer.lower().strip()
-                        is_correct = user_answer_clean == correct_answer
+                        is_correct = _is_text_answer_correct(user_answer, correct_answer_raw)
                         
                         if is_correct:
                             st.session_state.score += 1
 
-                        display_correct = question.get('correct_answer') or (options[new_correct_index] if 'options' in locals() else '')
+                        display_correct = translate_text(correct_answer_raw or "")
                         show_answer_popup(question, user_answer, display_correct)
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
                         st.session_state.answers.append({
-                            'question': question.get("question", "Ismeretlen kérdés"),
+                            'question': question.get("question", t("Ismeretlen kérdés")),
                             'selected': user_answer,
                             'correct': question.get('correct_answer', ''),
                             'options': [],
@@ -3426,27 +3584,26 @@ def show_quiz():
                             st.session_state.quiz_state = 'results'
                         st.rerun()
                     else:
-                        st.warning("Kérlek, írj be egy választ!")
+                        st.warning(t("Kérlek, írj be egy választ!"))
             else:
                 # Nehéz mód: feleletválasztós kérdések szöveges bevitellel
-                user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
+                user_answer = st.text_input(t("Válasz:"), key=f"text_input_{st.session_state.current_question}")
                 
-                if st.button("✅ Válasz beküldése", key=f"submit_{st.session_state.current_question}", use_container_width=True):
+                if st.button(t("✅ Válasz beküldése"), key=f"submit_{st.session_state.current_question}", use_container_width=True):
                     if user_answer:
                         # Válasz ellenőrzése (case-insensitive)
-                        correct_answer = options[new_correct_index].lower().strip()
-                        user_answer_clean = user_answer.lower().strip()
-                        is_correct = user_answer_clean == correct_answer
+                        correct_answer_raw = options[new_correct_index]
+                        is_correct = _is_text_answer_correct(user_answer, correct_answer_raw)
                         
                         if is_correct:
                             st.session_state.score += 1
 
-                        show_answer_popup(question, user_answer, options[new_correct_index])
+                        show_answer_popup(question, user_answer, translate_text(correct_answer_raw))
                         
                         # Válasz mentése
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
                         st.session_state.answers.append({
-                            'question': question.get("question", "Ismeretlen kérdés"),
+                            'question': question.get("question", t("Ismeretlen kérdés")),
                             'selected': user_answer,
                             'correct': options[new_correct_index],
                             'options': options,
@@ -3465,7 +3622,7 @@ def show_quiz():
                             st.session_state.quiz_state = 'results'
                         st.rerun()
                     else:
-                        st.warning("Kérlek, írj be egy választ!")
+                        st.warning(t("Kérlek, írj be egy választ!"))
         
         else:
             # Könnyű és Közepes mód: feleletválasztós
@@ -3520,19 +3677,19 @@ def show_quiz():
             # Első sor: 2 válaszlehetőség
             with col1:
                 for i in range(0, min(2, len(options))):
-                    option = options[i]
+                    option = display_options[i]
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
-                               use_container_width=True, help="Válaszlehetőség"):
-                        handle_answer(i, new_correct_index, options, question)
+                               use_container_width=True, help=t("Válaszlehetőség")):
+                        handle_answer(i, new_correct_index, options, question, display_options)
             
             with col2:
                 for i in range(2, min(4, len(options))):
-                    option = options[i]
+                    option = display_options[i]
                     
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
-                               use_container_width=True, help="Válaszlehetőség"):
-                        handle_answer(i, new_correct_index, options, question)
+                               use_container_width=True, help=t("Válaszlehetőség")):
+                        handle_answer(i, new_correct_index, options, question, display_options)
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
             if difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
@@ -3540,7 +3697,7 @@ def show_quiz():
                 <div style="position: fixed; bottom: 40px; right: 20px; z-index: 1000;">
                     <div class="rotated-answer">
                         <button style="background-color: #28a745; color: white; border: none; border-radius: 8px; padding: 10px 15px; font-size: 16px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                            {options[new_correct_index]}
+                            {display_options[new_correct_index]}
                         </button>
                     </div>
                 </div>
@@ -3549,22 +3706,22 @@ def show_quiz():
 
             
             # Automatikus válasz beküldés (opcionális)
-            if st.button("😊 Jó napom van!", key=f"auto_answer_{st.session_state.current_question}", use_container_width=True):
+            if st.button(t("😊 Jó napom van!"), key=f"auto_answer_{st.session_state.current_question}", use_container_width=True):
                 # Véletlenszerű válasz kiválasztása
                 random_answer = random.randint(0, len(options) - 1)
-                handle_answer(random_answer, new_correct_index, options, question)
+                handle_answer(random_answer, new_correct_index, options, question, display_options)
     
     # Kvíz újraindítás gomb minden kérdéshez (a válaszlehetőségek után)
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("🔄 Kvíz újraindítása", key=f"restart_{st.session_state.current_question}", use_container_width=True):
+        if st.button(t("🔄 Kvíz újraindítása"), key=f"restart_{st.session_state.current_question}", use_container_width=True):
             reset_quiz()
             st.rerun()
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-def handle_answer(selected_index, correct_index, options, question):
+def handle_answer(selected_index, correct_index, options, question, display_options=None):
     """Válasz kezelése"""
     is_correct = selected_index == correct_index
     
@@ -3584,12 +3741,13 @@ def handle_answer(selected_index, correct_index, options, question):
             return
     
     # Válasz mentése
-    selected_text = options[selected_index] if 0 <= selected_index < len(options) else ""
-    correct_text = options[correct_index] if 0 <= correct_index < len(options) else ""
+    display_options = display_options or options
+    selected_text = display_options[selected_index] if 0 <= selected_index < len(display_options) else ""
+    correct_text = display_options[correct_index] if 0 <= correct_index < len(display_options) else ""
     show_answer_popup(question, selected_text, correct_text)
     st.session_state.question_answers[st.session_state.current_question] = selected_index
     st.session_state.answers.append({
-        'question': question.get("question", "Ismeretlen kérdés"),
+        'question': question.get("question", t("Ismeretlen kérdés")),
         'selected': selected_index,
         'correct': correct_index,
         'options': options,
@@ -3614,7 +3772,7 @@ def handle_time_up():
         # Ha nincs options_data, automatikusan rossz válasz
         st.session_state.question_answers[st.session_state.current_question] = -1
         st.session_state.answers.append({
-            'question': question.get("question", "Ismeretlen kérdés"),
+            'question': question.get("question", t("Ismeretlen kérdés")),
             'selected': -1,
             'correct': -1,
             'options': [],
@@ -3655,7 +3813,7 @@ def handle_time_up():
 
 def show_results():
     """Eredmények megjelenítése"""
-    st.title("🏆 Quiz Eredmények")
+    st.title(t("🏆 Quiz Eredmények"))
     st.markdown("---")
     
     # Eredmények számítása
@@ -3703,84 +3861,104 @@ def show_results():
     try:
         st.session_state.analytics.record_quiz_session(quiz_data)
     except Exception as e:
-        st.warning(f"Analytics rögzítés sikertelen: {e}")
+        st.warning(t("Analytics rögzítés sikertelen: {error}", error=e))
     
     # Eredmények megjelenítése - jobb formázással
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.metric(
-            label="📊 Alap Pontszám",
+            label=t("📊 Alap Pontszám"),
             value=f"{correct_answers}/{total_questions}",
             delta=f"{percentage:.1f}%"
         )
     
     with col2:
         st.metric(
-            label="⏱️ Idő",
-            value=f"{minutes} perc {seconds} mp"
+            label=t("⏱️ Idő"),
+            value=t("{minutes} perc {seconds} mp", minutes=minutes, seconds=seconds),
         )
     
     with col3:
         st.metric(
-            label="🏆 Végső Pontszám",
+            label=t("🏆 Végső Pontszám"),
             value=scoring_result['final_score'],
-            delta=f"Szorzó: {scoring_result['difficulty_multiplier']}x"
+            delta=t("Szorzó: {multiplier}x", multiplier=scoring_result['difficulty_multiplier']),
         )
     
     with col4:
         # Értékelés
         if scoring_result['final_score'] >= 90:
-            grade = "🏅 Kiváló"
+            grade = t("🏅 Kiváló")
             grade_color = "success"
         elif scoring_result['final_score'] >= 80:
-            grade = "🥈 Jó"
+            grade = t("🥈 Jó")
             grade_color = "success"
         elif scoring_result['final_score'] >= 70:
-            grade = "🥉 Közepes"
+            grade = t("🥉 Közepes")
             grade_color = "warning"
         elif scoring_result['final_score'] >= 60:
-            grade = "📝 Megfelelő"
+            grade = t("📝 Megfelelő")
             grade_color = "warning"
         else:
-            grade = "❌ Elégtelen"
+            grade = t("❌ Elégtelen")
             grade_color = "error"
         
         st.metric(
-            label="📈 Értékelés",
+            label=t("📈 Értékelés"),
             value=grade
         )
     
     # Részletes pontszámítás
-    st.markdown("### 📋 Részletes Pontszámítás")
+    st.markdown(t("### 📋 Részletes Pontszámítás"))
     
     col1, col2 = st.columns(2)
     
     with col1:
+        max_streak_label = t("🔥 Maximális streak")
+        max_streak_value = t("{count} kérdés", count=st.session_state.mode_manager.max_streak)
+        avg_time_label = t("⏱️ Átlagos válaszidő")
+        avg_time_value = t("{seconds} másodperc", seconds=f"{duration_seconds/total_questions:.1f}")
         st.markdown(f"""
         <div class="summary-box">
-            <h4>🔥 Maximális streak</h4>
-            <p><strong>{st.session_state.mode_manager.max_streak} kérdés</strong></p>
+            <h4>{max_streak_label}</h4>
+            <p><strong>{max_streak_value}</strong></p>
             
-            <h4>⏱️ Átlagos válaszidő</h4>
-            <p><strong>{duration_seconds/total_questions:.1f} másodperc</strong></p>
+            <h4>{avg_time_label}</h4>
+            <p><strong>{avg_time_value}</strong></p>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
+        mode_label = t("🎮 Mód")
+        difficulty_label = t("🎯 Nehézség")
+        mode_names = {
+            "normal": "normál",
+            "timed": "időzített",
+            "survival": "túlélés",
+            "practice": "gyakorlás",
+            "challenge": "kihívás",
+        }
+        difficulty_names = {
+            "easy": "könnyű",
+            "medium": "közepes",
+            "hard": "nehéz",
+        }
+        mode_display = t(mode_names.get(st.session_state.mode_manager.current_mode.value, st.session_state.mode_manager.current_mode.value))
+        difficulty_display = t(difficulty_names.get(st.session_state.mode_manager.current_difficulty.value, st.session_state.mode_manager.current_difficulty.value))
         st.markdown(f"""
         <div class="summary-box">
-            <h4>🎮 Mód</h4>
-            <p><strong>{st.session_state.mode_manager.current_mode.value.title()}</strong></p>
+            <h4>{mode_label}</h4>
+            <p><strong>{mode_display}</strong></p>
             
-            <h4>🎯 Nehézség</h4>
-            <p><strong>{st.session_state.mode_manager.current_difficulty.value.title()}</strong></p>
+            <h4>{difficulty_label}</h4>
+            <p><strong>{difficulty_display}</strong></p>
         </div>
         """, unsafe_allow_html=True)
     
     # Játékos statisztika
     player_name = st.session_state.get("selected_player", "Vendég")
-    st.markdown(f"### 👤 Játékos: {player_name}")
+    st.markdown(t("### 👤 Játékos: {player}", player=t(player_name)))
     
     # Játékos teljesítmény lekérdezése
     if 'analytics' in st.session_state:
@@ -3790,35 +3968,77 @@ def show_results():
             col1, col2, col3, col4 = st.columns(4)
             
             with col1:
-                st.metric("📊 Összes Quiz", player_data["total_quizzes"])
+                st.metric(t("📊 Összes Quiz"), player_data["total_quizzes"])
             with col2:
-                st.metric("🎯 Átlagos Pontszám", f"{player_data['average_score']:.1f}%")
+                st.metric(t("🎯 Átlagos Pontszám"), f"{player_data['average_score']:.1f}%")
             with col3:
-                st.metric("🏆 Legjobb Pontszám", f"{player_data['best_score']:.1f}%")
+                st.metric(t("🏆 Legjobb Pontszám"), f"{player_data['best_score']:.1f}%")
             with col4:
-                st.metric("📝 Összes Kérdés", player_data["total_questions"])
+                st.metric(t("📝 Összes Kérdés"), player_data["total_questions"])
     
     # Részletes eredmények
-    st.markdown("### 📋 Kérdésenkénti eredmények")
+    st.markdown(t("### 📋 Kérdésenkénti eredmények"))
     
     font_style = get_font_style()
     
+    question_label = t("Kérdés:")
+    your_answer_label = t("Válaszod:")
+    correct_answer_label = t("Helyes válasz:")
+    answer_time_label = t("Válaszidő:")
+    time_up_text = t("Idő lejárt")
+    quiz_questions = st.session_state.get("quiz_questions", [])
+    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"}
+
     for i, answer in enumerate(st.session_state.answers):
         is_correct = answer['is_correct']
         status = "✅" if is_correct else "❌"
+        question_heading = t("{status} Kérdés {index}", status=status, index=i + 1)
+        display_question = translate_text(answer.get('question', ''))
+        selected_answer = (
+            answer['selected']
+            if isinstance(answer['selected'], str)
+            else (translate_text(answer['options'][answer['selected']]) if answer['selected'] >= 0 else time_up_text)
+        )
+        correct_answer = (
+            translate_text(answer['correct'])
+            if isinstance(answer['correct'], str)
+            else translate_text(answer['options'][answer['correct']])
+        )
+        answer_time = t("{seconds} másodperc", seconds=f"{answer['time_taken']:.1f}")
         
         st.markdown(f"""
         <div class="summary-box">
-            <h4 style="{font_style['subtitle']}">{status} Kérdés {i+1}</h4>
-            <p style="{font_style['explanation']}"><strong>Kérdés:</strong> {answer['question']}</p>
-            <p style="{font_style['explanation']}"><strong>Válaszod:</strong> {answer['selected'] if isinstance(answer['selected'], str) else (answer['options'][answer['selected']] if answer['selected'] >= 0 else 'Idő lejárt')}</p>
-            <p style="{font_style['explanation']}"><strong>Helyes válasz:</strong> {answer['correct'] if isinstance(answer['correct'], str) else answer['options'][answer['correct']]}</p>
-            <p style="{font_style['explanation']}"><strong>Válaszidő:</strong> {answer['time_taken']:.1f} másodperc</p>
+            <h4 style="{font_style['subtitle']}">{question_heading}</h4>
+            <p style="{font_style['explanation']}"><strong>{question_label}</strong> {display_question}</p>
+            <p style="{font_style['explanation']}"><strong>{your_answer_label}</strong> {selected_answer}</p>
+            <p style="{font_style['explanation']}"><strong>{correct_answer_label}</strong> {correct_answer}</p>
+            <p style="{font_style['explanation']}"><strong>{answer_time_label}</strong> {answer_time}</p>
         </div>
         """, unsafe_allow_html=True)
+
+        if not is_correct and i < len(quiz_questions):
+            question_data = quiz_questions[i]
+            if isinstance(question_data, dict):
+                topic = question_data.get("topic")
+                has_audio = (
+                    topic in music_topics
+                    or question_data.get("audio_file")
+                    or question_data.get("spotify_preview_url")
+                    or question_data.get("spotify_embed")
+                )
+                if has_audio:
+                    with st.expander(t("🎵 Track újra lejátszása"), expanded=False):
+                        audio_path = get_audio_file_for_question(question_data, topic)
+                        if audio_path:
+                            if isinstance(audio_path, str) and os.path.exists(audio_path):
+                                st.audio(audio_path, format="audio/mp3")
+                            else:
+                                st.audio(audio_path)
+                        else:
+                            st.info(t("Nincs elérhető audio ehhez a kérdéshez."))
     
     # Új quiz indítása
-    if st.button("🔄 Új quiz indítása", type="primary", use_container_width=True):
+    if st.button(t("🔄 Új quiz indítása"), type="primary", use_container_width=True):
         reset_quiz()
         st.rerun()
 
@@ -3830,48 +4050,79 @@ def show_analytics_page():
 def show_settings_page():
     """Beállítások oldal megjelenítése"""
     font_style = get_font_style()
-    st.markdown(f"## ⚙️ Beállítások")
+    st.markdown(t("## ⚙️ Beállítások"))
     
-    st.markdown(f"### 🎯 Quiz Beállítások")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown(f"#### Alapértelmezett beállítások")
-        default_music_questions = st.number_input("Alapértelmezett zenei kérdések", 1, 20, st.session_state.get('default_music_questions', 10))
-        default_other_questions = st.number_input("Alapértelmezett egyéb kérdések", 1, 100, st.session_state.get('default_other_questions', 40))
-    
-    with col2:
-        st.markdown(f"#### Időzítő beállítások")
-        default_timed_limit = st.number_input("Alapértelmezett időkorlát (másodperc)", 10, 60, st.session_state.get('default_timed_limit', 30))
-        default_challenge_limit = st.number_input("Kihívás mód időkorlát (másodperc)", 10, 30, st.session_state.get('default_challenge_limit', 20))
-    
-    st.markdown(f"### 🎵 Audio Beállítások")
+    st.markdown(t("### 🎯 Quiz Beállítások"))
     
     col1, col2 = st.columns(2)
     
     with col1:
-        auto_play_audio = st.checkbox("Automatikus audio lejátszás", st.session_state.get('auto_play_audio', False))
-        show_audio_filename = st.checkbox("Audio fájlnév megjelenítése", st.session_state.get('show_audio_filename', True))
+        st.markdown(t("#### Alapértelmezett beállítások"))
+        default_music_questions = st.number_input(
+            t("Alapértelmezett zenei kérdések"),
+            1,
+            20,
+            st.session_state.get('default_music_questions', 10),
+        )
+        default_other_questions = st.number_input(
+            t("Alapértelmezett egyéb kérdések"),
+            1,
+            100,
+            st.session_state.get('default_other_questions', 40),
+        )
     
     with col2:
-        audio_volume = st.slider("Alapértelmezett hangerő", 0, 100, st.session_state.get('audio_volume', 50))
-        audio_quality = st.selectbox("Audio minőség", ["Alacsony", "Közepes", "Magas"], index=["Alacsony", "Közepes", "Magas"].index(st.session_state.get('audio_quality', "Közepes")))
+        st.markdown(t("#### Időzítő beállítások"))
+        default_timed_limit = st.number_input(
+            t("Alapértelmezett időkorlát (másodperc)"),
+            10,
+            60,
+            st.session_state.get('default_timed_limit', 30),
+        )
+        default_challenge_limit = st.number_input(
+            t("Kihívás mód időkorlát (másodperc)"),
+            10,
+            30,
+            st.session_state.get('default_challenge_limit', 20),
+        )
     
-    st.markdown(f"### 📊 Analytics Beállítások")
+    st.markdown(t("### 🎵 Audio Beállítások"))
     
     col1, col2 = st.columns(2)
     
     with col1:
-        track_performance = st.checkbox("Teljesítmény követése", st.session_state.get('track_performance', True))
-        save_detailed_results = st.checkbox("Részletes eredmények mentése", st.session_state.get('save_detailed_results', True))
+        auto_play_audio = st.checkbox(t("Automatikus audio lejátszás"), st.session_state.get('auto_play_audio', False))
+        show_audio_filename = st.checkbox(t("Audio fájlnév megjelenítése"), st.session_state.get('show_audio_filename', True))
     
     with col2:
-        analytics_retention_days = st.number_input("Analytics adatok megőrzése (nap)", 30, 365, st.session_state.get('analytics_retention_days', 90))
-        export_analytics = st.checkbox("Analytics exportálása", st.session_state.get('export_analytics', False))
+        audio_volume = st.slider(t("Alapértelmezett hangerő"), 0, 100, st.session_state.get('audio_volume', 50))
+        audio_quality_options = ["Alacsony", "Közepes", "Magas"]
+        audio_quality = st.selectbox(
+            t("Audio minőség"),
+            audio_quality_options,
+            index=audio_quality_options.index(st.session_state.get('audio_quality', "Közepes")),
+            format_func=lambda option: t(option),
+        )
+    
+    st.markdown(t("### 📊 Analytics Beállítások"))
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        track_performance = st.checkbox(t("Teljesítmény követése"), st.session_state.get('track_performance', True))
+        save_detailed_results = st.checkbox(t("Részletes eredmények mentése"), st.session_state.get('save_detailed_results', True))
+    
+    with col2:
+        analytics_retention_days = st.number_input(
+            t("Analytics adatok megőrzése (nap)"),
+            30,
+            365,
+            st.session_state.get('analytics_retention_days', 90),
+        )
+        export_analytics = st.checkbox(t("Analytics exportálása"), st.session_state.get('export_analytics', False))
     
     # Beállítások mentése
-    if st.button("💾 Beállítások mentése", type="primary"):
+    if st.button(t("💾 Beállítások mentése"), type="primary"):
         # Beállítások mentése session state-be
         st.session_state.default_music_questions = default_music_questions
         st.session_state.default_other_questions = default_other_questions
@@ -3885,25 +4136,25 @@ def show_settings_page():
         st.session_state.save_detailed_results = save_detailed_results
         st.session_state.analytics_retention_days = analytics_retention_days
         st.session_state.export_analytics = export_analytics
-        st.success("Beállítások mentve!")
+        st.success(t("Beállítások mentve!"))
 
 def show_audio_addition_page():
     """Audio hozzáadása oldal megjelenítése"""
-    st.markdown("## 🎵 Audio Hozzáadása")
+    st.markdown(t("## 🎵 Audio Hozzáadása"))
     
     # Két fő opció
     option = st.radio(
-        "Válassz hozzáadási módszert:",
+        t("Válassz hozzáadási módszert:"),
         [
             "A) Track hozzáadása YouTube kereséssel",
             "B) Spotify playlist alapú keresés",
             "C) Tömeges feltöltés yt-link alapján",
         ],
-        format_func=lambda x: {
+        format_func=lambda x: t({
             "A) Track hozzáadása YouTube kereséssel": "🎵 A) YouTube Keresés",
             "B) Spotify playlist alapú keresés": "🎵 B) Spotify Playlist",
             "C) Tömeges feltöltés yt-link alapján": "📥 C) Tömeges YouTube linkek",
-        }[x]
+        }[x]),
     )
     
     if option == "A) Track hozzáadása YouTube kereséssel":
@@ -3915,8 +4166,8 @@ def show_audio_addition_page():
 
 def show_bulk_youtube_upload_tab():
     """Tömeges YouTube link integrálás"""
-    st.markdown("### 📥 Tömeges feltöltés yt-link alapján")
-    st.caption("Minden link ugyanabba a kategóriába kerül. 1 sor = 1 link.")
+    st.markdown(t("### 📥 Tömeges feltöltés yt-link alapján"))
+    st.caption(t("Minden link ugyanabba a kategóriába kerül. 1 sor = 1 link."))
 
     music_categories = {
         "komolyzene": "🎼 Komolyzene",
@@ -3927,9 +4178,9 @@ def show_bulk_youtube_upload_tab():
     }
     category_options = ["— Válassz kategóriát —"] + list(music_categories.keys())
     selected_category = st.selectbox(
-        "Kategória (kötelező):",
+        t("Kategória (kötelező):"),
         category_options,
-        format_func=lambda x: music_categories.get(x, x),
+        format_func=lambda x: t(music_categories.get(x, x)),
         index=0,
         key="bulk_category_select",
     )
@@ -3937,28 +4188,28 @@ def show_bulk_youtube_upload_tab():
         selected_category = None
 
     links_text = st.text_area(
-        "YouTube linkek",
-        placeholder="https://www.youtube.com/watch?v=...\nhttps://youtu.be/...",
+        t("YouTube linkek"),
+        placeholder=t("https://www.youtube.com/watch?v=...\nhttps://youtu.be/..."),
         height=200,
         key="bulk_links_text",
     )
 
     cookies_file = st.file_uploader(
-        "Cookies.txt (opcionális, 403 tiltás ellen)",
+        t("Cookies.txt (opcionális, 403 tiltás ellen)"),
         type=["txt"],
         key="bulk_cookies_file",
-        help="Netscape formátumú cookie fájl. Bejelentkezett böngészőből exportálható.",
+        help=t("Netscape formátumú cookie fájl. Bejelentkezett böngészőből exportálható."),
     )
 
-    if st.button("🚀 Tömeges integrálás", type="primary"):
+    if st.button(t("🚀 Tömeges integrálás"), type="primary"):
         if not selected_category:
-            st.warning("⚠️ Válassz kötelező kategóriát!")
+            st.warning(t("⚠️ Válassz kötelező kategóriát!"))
             return
         links = [line.strip() for line in links_text.splitlines() if line.strip()]
         links = [ln for ln in links if "youtu" in ln]
         links = list(dict.fromkeys(links))
         if not links:
-            st.warning("⚠️ Adj meg legalább egy érvényes YouTube linket!")
+            st.warning(t("⚠️ Adj meg legalább egy érvényes YouTube linket!"))
             return
 
         cookies_path = None
@@ -3976,7 +4227,9 @@ def show_bulk_youtube_upload_tab():
         added_audio_paths = []
 
         for idx, link in enumerate(links):
-            status_text.info(f"🔄 Feldolgozás: {idx + 1}/{len(links)}")
+            status_text.info(
+                t("🔄 Feldolgozás: {current}/{total}", current=idx + 1, total=len(links))
+            )
             normalized_link = link
             if "youtube.com/results?search_query=" in link:
                 import urllib.parse
@@ -4034,10 +4287,10 @@ def show_bulk_youtube_upload_tab():
                 commit_msg = f"Bulk add tracks ({selected_category})"
                 subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
                 subprocess.run(['git', 'push'], check=True)
-                st.success("✅ Tömeges integráció kész, GitHub szinkronizálva.")
+                st.success(t("✅ Tömeges integráció kész, GitHub szinkronizálva."))
             except subprocess.CalledProcessError as e:
-                st.warning(f"⚠️ Git szinkronizáció sikertelen: {e}")
-                st.success("✅ Tömeges integráció kész, cache frissítve.")
+                st.warning(t("⚠️ Git szinkronizáció sikertelen: {error}", error=e))
+                st.success(t("✅ Tömeges integráció kész, cache frissítve."))
 
         if cookies_path:
             try:
@@ -4047,10 +4300,10 @@ def show_bulk_youtube_upload_tab():
                 pass
 
         if failures:
-            st.warning(f"⚠️ Sikertelen linkek: {len(failures)}")
+            st.warning(t("⚠️ Sikertelen linkek: {count}", count=len(failures)))
             st.code("\n".join(failures))
         else:
-            st.success(f"✅ Feldolgozva: {len(successes)} link")
+            st.success(t("✅ Feldolgozva: {count} link", count=len(successes)))
 
 def show_spotify_playlist_main():
     """Spotify playlist fő képernyő"""
