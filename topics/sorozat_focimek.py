@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:10:13
+# Generated on: 2026-02-06 13:13:53
 
 QUESTIONS = [
     {
@@ -936,20 +936,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Lazlo Bane - Scrubs Theme Song “Superman” Lazlo Bane Official Video Remastered HD",
         "audio_file": "72. Lazlo Bane - Lazlo Bane - Scrubs Theme Song.mp3",
-        "song_title": "Lazlo Bane - Scrubs Theme Song",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Veronique Laurent",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Big Little Lies",
+            "Sex And The City",
+            "Vampire Diaries",
+            "Gilmore Girls",
         ],
         "correct": 0,
         "explanation": "Veronique Laurent - \"Big Little Lies\" Opening Titles",
-        "audio_file": "T50K64QjaA8.mp3",
+        "audio_file": "73. Veronique Laurent - Big Little Lies.mp3",
+        "song_title": "Big Little Lies",
         "topic": "sorozat_focimek",
     },
     {
