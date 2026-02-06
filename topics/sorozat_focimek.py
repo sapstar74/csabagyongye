@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:31:39
+# Generated on: 2026-02-06 13:35:55
 
 QUESTIONS = [
     {
@@ -1027,20 +1027,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "OpeningThemeSongs - Two And A Half Men Opening Theme Song",
         "audio_file": "79. OpeningThemeSongs - Two And A Half Men.mp3",
-        "song_title": "Two And A Half Men",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Futurama",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Euphoria",
+            "Family Guy",
+            "Rick And Morty",
         ],
         "correct": 0,
         "explanation": "Futurama - Futurama (1999-2013) - Intro",
-        "audio_file": "6F1QNfmiqHc.mp3",
+        "audio_file": "80. Futurama - Futurama.mp3",
+        "song_title": "Futurama",
         "topic": "sorozat_focimek",
     },
     {
