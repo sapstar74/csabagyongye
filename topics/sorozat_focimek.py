@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:38:07
+# Generated on: 2026-02-06 13:54:57
 
 QUESTIONS = [
     {
@@ -1053,20 +1053,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Beverly Hills, 90210 - Beverly Hills, 90210 - Intro [HQ]",
         "audio_file": "81. Beverly Hills 90210 - Beverly Hills 90210.mp3",
-        "song_title": "Beverly Hills 90210",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "MacGyver",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "The A-Team",
+            "Knight Rider",
+            "Baywatch",
         ],
         "correct": 0,
         "explanation": "MacGyver - MacGyver - Intro [HQ]",
-        "audio_file": "yOEe1uzurKo.mp3",
+        "audio_file": "82. MacGyver - MacGyver.mp3",
+        "song_title": "MacGyver",
         "topic": "sorozat_focimek",
     },
 ]
