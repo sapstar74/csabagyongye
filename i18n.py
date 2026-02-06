@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from typing import Optional
 
 import requests
 import streamlit as st
@@ -202,6 +203,10 @@ _EN_TRANSLATIONS = {
     "🎮 Mód": "🎮 Mode",
     "🎯 Nehézség": "🎯 Difficulty",
     "### 👤 Játékos: {player}": "### 👤 Player: {player}",
+    "### 👤 Játékos név megadása": "### 👤 Enter player name",
+    "Add meg a neved:": "Enter your name:",
+    "A játékos név megadása kötelező.": "Player name is required.",
+    "Add meg a neved a quiz indításához.": "Enter your name to start the quiz.",
     "📊 Összes Quiz": "📊 Total Quizzes",
     "🎯 Átlagos Pontszám": "🎯 Average Score",
     "🏆 Legjobb Pontszám": "🏆 Best Score",
@@ -470,6 +475,12 @@ _EN_TRANSLATIONS = {
     "### ✏️ Mentés előtti szerkesztés": "### ✏️ Edit before saving",
     "Kérdés szövege:": "Question text:",
     "Magyarázat:": "Explanation:",
+    "### 🌐 IP használat": "### 🌐 IP usage",
+    "IP cím": "IP address",
+    "Játékos": "Player",
+    "Használatok": "Sessions",
+    "Utoljára": "Last seen",
+    "Nincs IP adat.": "No IP data.",
     "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:": "Listen to this piece and choose its composer:",
     "Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét!": "Listen to this piece and choose its composer!",
     "Ki a zeneszerző?": "Who is the composer?",
@@ -584,7 +595,7 @@ def _should_auto_translate(text: str) -> bool:
     return any(hint in lowered for hint in _HUNGARIAN_HINTS)
 
 
-def _google_translate_hu_to_en(text: str) -> str | None:
+def _google_translate_hu_to_en(text: str) -> Optional[str]:
     try:
         response = requests.get(
             "https://translate.googleapis.com/translate_a/single",
@@ -680,7 +691,7 @@ def init_i18n() -> None:
     st.tabs = wrap_tabs(st.tabs)
 
 
-def render_language_selector(label: str | None = None) -> str:
+def render_language_selector(label: Optional[str] = None) -> str:
     label_text = label or t("Nyelv")
     current = get_language()
     options = list(LANG_OPTIONS.keys())

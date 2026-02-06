@@ -4,6 +4,7 @@ Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 """
 
 import streamlit as st
+from typing import Optional
 
 from i18n import init_i18n, render_language_selector, t, translate_text
 
@@ -36,12 +37,58 @@ def _is_text_answer_correct(user_answer: str, correct_answer: str) -> bool:
         if any(keyword in variant_clean for keyword in user_keywords):
             return True
     return False
+
+
+def _extract_ip_from_headers(headers) -> Optional[str]:
+    if not headers:
+        return None
+    try:
+        header_get = headers.get
+    except AttributeError:
+        try:
+            header_get = dict(headers).get
+        except Exception:
+            return None
+    for key in ("X-Forwarded-For", "X-Real-IP", "CF-Connecting-IP", "True-Client-IP"):
+        value = header_get(key)
+        if value:
+            return value.split(",")[0].strip()
+    return None
+
+
+def get_client_ip() -> str:
+    """Best-effort client IP lookup (may be unavailable in some envs)."""
+    # Streamlit context headers (if available)
+    try:
+        if hasattr(st, "context") and getattr(st.context, "headers", None):
+            ip = _extract_ip_from_headers(st.context.headers)
+            if ip:
+                return ip
+    except Exception:
+        pass
+
+    # Script run context (internal API)
+    try:
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+        ctx = get_script_run_ctx()
+        request = getattr(ctx, "request", None) if ctx else None
+        if request is not None:
+            ip = _extract_ip_from_headers(getattr(request, "headers", None))
+            if ip:
+                return ip
+            remote_ip = getattr(request, "remote_ip", None)
+            if remote_ip:
+                return remote_ip
+    except Exception:
+        pass
+
+    return "Ismeretlen"
 import random
 import time
 from datetime import datetime
 import os
 from pathlib import Path
-from typing import Optional
 import base64
 from topics.foldrajz_complete import FOLDRAJZ_QUESTIONS_COMPLETE as FOLDRAJZ_QUESTIONS
 from topics.komolyzene_uj import QUESTIONS as KOMOLYZENE_QUESTIONS
@@ -1020,6 +1067,12 @@ def start_quiz():
         st.error(t("Kérlek válassz ki legalább egy témaköröt!"))
         return
     
+    player_name = st.session_state.get("selected_player", "").strip()
+    if not player_name:
+        st.error(t("Add meg a neved a quiz indításához."))
+        return
+    st.session_state.selected_player = player_name
+    
     # Végleges kérdésszám használata - ha nincs beállítva, akkor 0 (a tényleges kérdések számától függ)
     final_question_count = st.session_state.get('final_question_count', 0)
     
@@ -1173,7 +1226,7 @@ def main():
     if 'music_total_questions' not in st.session_state:
         st.session_state.music_total_questions = st.session_state.get('default_music_questions', 10)
     if 'selected_player' not in st.session_state:
-        st.session_state.selected_player = "Vendég"
+        st.session_state.selected_player = ""
     
     font_style = get_font_style()
     header_col_left, header_col_right = st.columns([6, 1])
@@ -2638,25 +2691,17 @@ def show_topic_selection():
     """Témakör kiválasztás"""
     
     # Felhasználó kiválasztás
-    st.markdown(t("### 👤 Játékos Kiválasztás"))
+    st.markdown(t("### 👤 Játékos név megadása"))
     
-    # Játékos kiválasztó mező középre igazítva
-    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
-    with col2:
-        players = ["Éva", "Ákos", "Orsika", "Mikcsi", "Ildi", "Szabi", "Hanna", "Villő", "Béla", "Gábor", "Emese", "Vendég"]
-        # Az aktuális játékos kiválasztása a session state-ből
-        current_player = st.session_state.get("selected_player", "Vendég")
-        if current_player not in players:
-            current_player = "Vendég"
-        
-        selected_player = st.selectbox(
-            t("Válassz játékost:"),
-            players,
-            index=players.index(current_player),
-            format_func=lambda name: t(name),
-        )
-        # A kiválasztott játékos mentése a session state-be
-        st.session_state.selected_player = selected_player
+    player_input = st.text_input(
+        t("Add meg a neved:"),
+        value=st.session_state.get("selected_player", ""),
+        key="player_name_input",
+    )
+    player_name = player_input.strip()
+    st.session_state.selected_player = player_name
+    if not player_name:
+        st.warning(t("A játékos név megadása kötelező."))
     
     # Quiz mód kiválasztás
     selected_mode, selected_difficulty = QuizModeUI.show_mode_selection()
@@ -3844,8 +3889,10 @@ def show_results():
     )
     
     # Analytics rögzítése
+    player_name = st.session_state.get("selected_player", "").strip() or "Ismeretlen"
     quiz_data = {
-        "player": st.session_state.get("selected_player", "Vendég"),
+        "player": player_name,
+        "client_ip": get_client_ip(),
         "topics": st.session_state.selected_topics,
         "total_questions": total_questions,
         "correct_answers": correct_answers,
@@ -3957,7 +4004,7 @@ def show_results():
         """, unsafe_allow_html=True)
     
     # Játékos statisztika
-    player_name = st.session_state.get("selected_player", "Vendég")
+    player_name = st.session_state.get("selected_player", "").strip() or "Ismeretlen"
     st.markdown(t("### 👤 Játékos: {player}", player=t(player_name)))
     
     # Játékos teljesítmény lekérdezése

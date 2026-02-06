@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 import pandas as pd
 import streamlit as st
-from i18n import init_i18n
+from i18n import init_i18n, t
 
 init_i18n()
 
@@ -52,7 +52,8 @@ class QuizAnalytics:
         """Quiz session rögzítése"""
         session = {
             "timestamp": datetime.now().isoformat(),
-            "player": quiz_data.get("player", "Vendég"),
+            "player": quiz_data.get("player", "Ismeretlen"),
+            "client_ip": quiz_data.get("client_ip", "Ismeretlen"),
             "topics": quiz_data.get("topics", []),
             "total_questions": quiz_data.get("total_questions", 0),
             "correct_answers": quiz_data.get("correct_answers", 0),
@@ -97,7 +98,7 @@ class QuizAnalytics:
         player_topic_performance = defaultdict(lambda: defaultdict(list))
         
         for session in sessions:
-            player = session.get("player", "Vendég")
+            player = session.get("player", "Ismeretlen")
             player_performance[player].append(session["score_percentage"])
             
             for topic in session["topics"]:
@@ -223,7 +224,7 @@ class QuizAnalytics:
             # Játékos teljesítmény számítása a szűrt session-ekből
             player_performance = {}
             for session in filtered_sessions:
-                player = session.get("player", "Vendég")
+                player = session.get("player", "Ismeretlen")
                 if player not in player_performance:
                     player_performance[player] = {
                         "scores": [],
@@ -295,6 +296,29 @@ class QuizAnalytics:
         sessions = self.analytics_data["quiz_sessions"]
         player_sessions = [s for s in sessions if s.get("player") == player_name]
         return sorted(player_sessions, key=lambda x: x["timestamp"], reverse=True)
+
+    def get_ip_usage(self):
+        """IP és játékos statisztikák"""
+        sessions = self.analytics_data.get("quiz_sessions", [])
+        usage = {}
+
+        for session in sessions:
+            ip = session.get("client_ip") or "Ismeretlen"
+            player = session.get("player", "Vendég")
+            key = (ip, player)
+            if key not in usage:
+                usage[key] = {
+                    "ip": ip,
+                    "player": player,
+                    "sessions": 0,
+                    "last_seen": session.get("timestamp"),
+                }
+            usage[key]["sessions"] += 1
+            timestamp = session.get("timestamp")
+            if timestamp and (usage[key]["last_seen"] is None or timestamp > usage[key]["last_seen"]):
+                usage[key]["last_seen"] = timestamp
+
+        return sorted(usage.values(), key=lambda item: item["sessions"], reverse=True)
 
 def show_analytics_dashboard():
     """Analytics dashboard megjelenítése"""
@@ -509,6 +533,25 @@ def show_analytics_dashboard():
         
         df_weekly = pd.DataFrame(week_data)
         st.dataframe(df_weekly, use_container_width=True)
+
+    # IP használat
+    st.markdown(t("### 🌐 IP használat"))
+    ip_usage = analytics.get_ip_usage()
+    if ip_usage:
+        df_ip = pd.DataFrame(ip_usage)
+        df_ip.rename(
+            columns={
+                "ip": t("IP cím"),
+                "player": t("Játékos"),
+                "sessions": t("Használatok"),
+                "last_seen": t("Utoljára"),
+            },
+            inplace=True,
+        )
+        df_ip[t("Játékos")] = df_ip[t("Játékos")].map(t)
+        st.dataframe(df_ip, use_container_width=True)
+    else:
+        st.info(t("Nincs IP adat."))
     
     # Játékos összehasonlítás
     if len(player_performance) > 1:
