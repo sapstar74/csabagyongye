@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:27:34
+# Generated on: 2026-02-06 13:29:29
 
 QUESTIONS = [
     {
@@ -1001,20 +1001,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "megsmeetsworld - Where You Lead (full theme song from \"Gilmore Girls\") lyrics",
         "audio_file": "77. megsmeetsworld - Gilmore Girls.mp3",
-        "song_title": "Gilmore Girls",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "24 Opening and Closing Theme 2001",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "24",
+            "NCIS",
+            "CSI",
+            "Criminal Minds",
         ],
         "correct": 0,
         "explanation": "24 Opening and Closing Theme 2001 - 24 Opening and Closing Theme 2001 - 2014 HD Surround",
-        "audio_file": "24_Opening_and_Closi_24_Opening_and_Closing_Theme_2.mp3",
+        "audio_file": "78. 24 Opening and Closing Theme 2001 - 24.mp3",
+        "song_title": "24",
         "topic": "sorozat_focimek",
     },
     {
