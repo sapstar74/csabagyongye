@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:56:04
+# Generated on: 2026-02-06 12:58:20
 
 QUESTIONS = [
     {
@@ -845,20 +845,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The Osmonds - The Osmonds - Having A Party (Sex Education S02x06 Soundtrack)",
         "audio_file": "65. The Osmonds - Sex Education.mp3",
-        "song_title": "Sex Education",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Labrinth",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Euphoria",
+            "Sex Education",
+            "Sex And The City",
+            "Vampire Diaries",
         ],
         "correct": 0,
         "explanation": "Labrinth - Labrinth – Forever (Official Audio) | euphoria (Original Score from the HBO Series)",
-        "audio_file": "Labrinth_Labrinth_Forever_Official_Aud.mp3",
+        "audio_file": "66. Labrinth - Euphoria.mp3",
+        "song_title": "Euphoria",
         "topic": "sorozat_focimek",
     },
     {
