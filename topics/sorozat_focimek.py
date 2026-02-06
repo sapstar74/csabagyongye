@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:06:36
+# Generated on: 2026-02-06 13:08:13
 
 QUESTIONS = [
     {
@@ -910,20 +910,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Caterina Cingolani - Desperate Housewives // opening credits",
         "audio_file": "70. Caterina Cingolani - Desperate Housewives.mp3",
-        "song_title": "Desperate Housewives",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "‘Yellowstone’ Official Theme Music Composed by Brian Tyler",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Yellowstone",
+            "Westworld",
+            "Outlander",
+            "True Detective",
         ],
         "correct": 0,
         "explanation": "‘Yellowstone’ Official Theme Music Composed by Brian Tyler - ‘Yellowstone’ Official Theme Music Composed by Brian Tyler | Paramount Network",
-        "audio_file": "nIxPn7xWA_k.mp3",
+        "audio_file": "71. Yellowstone Official Theme Music Composed by Brian Tyler - Yellowstone Official Theme Music Composed by Brian Tyler.mp3",
+        "song_title": "‘Yellowstone’ Official Theme Music Composed by Brian Tyler",
         "topic": "sorozat_focimek",
     },
     {
