@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:19:19
+# Generated on: 2026-02-06 13:20:55
 
 QUESTIONS = [
     {
@@ -975,20 +975,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Dav0tion - Californication Opening Credits Season 1",
         "audio_file": "75. Dav0tion - Californication.mp3",
-        "song_title": "Californication",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "NCIS Season 1",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "NCIS",
+            "CSI",
+            "Criminal Minds",
+            "Dexter",
         ],
         "correct": 0,
         "explanation": "NCIS Season 1 - NCIS Season 1 - Opening Credits (Titles)",
-        "audio_file": "Osv0l1a0Msc.mp3",
+        "audio_file": "76. NCIS Season 1 - NCIS.mp3",
+        "song_title": "NCIS",
         "topic": "sorozat_focimek",
     },
     {
