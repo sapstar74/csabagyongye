@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:08:13
+# Generated on: 2026-02-06 13:10:13
 
 QUESTIONS = [
     {
@@ -923,20 +923,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "‘Yellowstone’ Official Theme Music Composed by Brian Tyler - ‘Yellowstone’ Official Theme Music Composed by Brian Tyler | Paramount Network",
         "audio_file": "71. Yellowstone Official Theme Music Composed by Brian Tyler - Yellowstone Official Theme Music Composed by Brian Tyler.mp3",
-        "song_title": "‘Yellowstone’ Official Theme Music Composed by Brian Tyler",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Lazlo Bane",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Scrubs",
+            "House",
+            "Good Doctor",
+            "Brooklyn 99",
         ],
         "correct": 0,
         "explanation": "Lazlo Bane - Scrubs Theme Song “Superman” Lazlo Bane Official Video Remastered HD",
-        "audio_file": "Lazlo_Bane_Scrubs_Theme_Song_Superman_Laz.mp3",
+        "audio_file": "72. Lazlo Bane - Lazlo Bane - Scrubs Theme Song.mp3",
+        "song_title": "Lazlo Bane - Scrubs Theme Song",
         "topic": "sorozat_focimek",
     },
     {
