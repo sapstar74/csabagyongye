@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:48:02
+# Generated on: 2026-02-06 12:48:51
 
 QUESTIONS = [
     {
@@ -793,20 +793,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Supernatural - Supernatural - Carry On Wayward Son (Music Video)",
         "audio_file": "61. Supernatural - Supernatural.mp3",
-        "song_title": "Supernatural",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Ted Lasso | Ted Lasso Theme",
+            "Ted Lasso",
             "Game of Thrones",
             "Stranger Things",
             "Szerkeszthető opció",
         ],
         "correct": 0,
         "explanation": "Ted Lasso | Ted Lasso Theme - Ted Lasso | Ted Lasso Theme - Marcus Mumford & Tom Howe | WaterTower",
-        "audio_file": "AIcis7S-byg.mp3",
+        "audio_file": "62. Ted Lasso Ted Lasso Theme - Ted Lasso Theme.mp3",
+        "song_title": "Ted Lasso Theme",
         "topic": "sorozat_focimek",
     },
     {
