@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:29:29
+# Generated on: 2026-02-06 13:31:39
 
 QUESTIONS = [
     {
@@ -1014,20 +1014,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "24 Opening and Closing Theme 2001 - 24 Opening and Closing Theme 2001 - 2014 HD Surround",
         "audio_file": "78. 24 Opening and Closing Theme 2001 - 24.mp3",
-        "song_title": "24",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "OpeningThemeSongs",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Two And A Half Men",
+            "Ted Lasso",
+            "Californication",
+            "Lincoln Lawyer",
         ],
         "correct": 0,
         "explanation": "OpeningThemeSongs - Two And A Half Men Opening Theme Song",
-        "audio_file": "bl5q4AIGGZQ.mp3",
+        "audio_file": "79. OpeningThemeSongs - Two And A Half Men.mp3",
+        "song_title": "Two And A Half Men",
         "topic": "sorozat_focimek",
     },
     {
