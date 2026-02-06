@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:04:23
+# Generated on: 2026-02-06 13:06:36
 
 QUESTIONS = [
     {
@@ -897,20 +897,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "The White Lotus Opening Credits Theme Song - The White Lotus Opening Credits Theme Song | The White Lotus | HBO",
         "audio_file": "69. The White Lotus Opening Credits Theme Song - The White Lotus Opening Credits Theme Song.mp3",
-        "song_title": "The White Lotus Opening Credits Theme Song",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Caterina Cingolani",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Desperate Housewives",
+            "Sex And The City",
+            "How I Met Your Mother",
+            "Mad Men",
         ],
         "correct": 0,
         "explanation": "Caterina Cingolani - Desperate Housewives // opening credits",
-        "audio_file": "vcCT_4Umufc.mp3",
+        "audio_file": "70. Caterina Cingolani - Desperate Housewives.mp3",
+        "song_title": "Desperate Housewives",
         "topic": "sorozat_focimek",
     },
     {
