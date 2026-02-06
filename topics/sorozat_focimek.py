@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:50:41
+# Generated on: 2026-02-06 12:52:47
 
 QUESTIONS = [
     {
@@ -806,7 +806,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ted Lasso | Ted Lasso Theme - Ted Lasso | Ted Lasso Theme - Marcus Mumford & Tom Howe | WaterTower",
         "audio_file": "62. Ted Lasso Ted Lasso Theme - Ted Lasso Theme.mp3",
-        "song_title": "Ted Lasso Theme",
         "topic": "sorozat_focimek",
     },
     {
@@ -825,14 +824,15 @@ QUESTIONS = [
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Ella Rose",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Sex And The City",
+            "Ted Lasso",
+            "Gilmore Girls",
+            "Big Little Lies",
         ],
         "correct": 0,
         "explanation": "Ella Rose - Sex and the City Opening Credits",
-        "audio_file": "X453aKQgob4.mp3",
+        "audio_file": "64. Ella Rose - Sex And The City.mp3",
+        "song_title": "Sex And The City",
         "topic": "sorozat_focimek",
     },
     {
