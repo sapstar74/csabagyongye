@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:58:20
+# Generated on: 2026-02-06 13:00:16
 
 QUESTIONS = [
     {
@@ -858,20 +858,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Labrinth - Labrinth – Forever (Official Audio) | euphoria (Original Score from the HBO Series)",
         "audio_file": "66. Labrinth - Euphoria.mp3",
-        "song_title": "Euphoria",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "VampireDiariesCWTV",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Vampire Diaries",
+            "Sex And The City",
+            "Buffy The Vampire Slayer",
+            "Gilmore Girls",
         ],
         "correct": 0,
         "explanation": "VampireDiariesCWTV - The Vampire Diaries (Season 1) Opening Theme",
-        "audio_file": "iu9VHrJWL6w.mp3",
+        "audio_file": "67. VampireDiariesCWTV - Vampire Diaries.mp3",
+        "song_title": "Vampire Diaries",
         "topic": "sorozat_focimek",
     },
     {
