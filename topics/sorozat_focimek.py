@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:52:47
+# Generated on: 2026-02-06 12:56:04
 
 QUESTIONS = [
     {
@@ -832,20 +832,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Ella Rose - Sex and the City Opening Credits",
         "audio_file": "64. Ella Rose - Sex And The City.mp3",
-        "song_title": "Sex And The City",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "The Osmonds",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Sex Education",
+            "Euphoria",
+            "Vampire Diaries",
+            "Sex And The City",
         ],
         "correct": 0,
         "explanation": "The Osmonds - The Osmonds - Having A Party (Sex Education S02x06 Soundtrack)",
-        "audio_file": "The_Osmonds_The_Osmonds_Having_A_Party_S.mp3",
+        "audio_file": "65. The Osmonds - Sex Education.mp3",
+        "song_title": "Sex Education",
         "topic": "sorozat_focimek",
     },
     {
