@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:05:30
+# Generated on: 2026-02-06 12:48:02
 
 QUESTIONS = [
     {
@@ -786,9 +786,9 @@ QUESTIONS = [
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Supernatural",
-            "3 Body Problems",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Loki",
+            "Ozark",
+            "The Mandalorian",
         ],
         "correct": 0,
         "explanation": "Supernatural - Supernatural - Carry On Wayward Son (Music Video)",
