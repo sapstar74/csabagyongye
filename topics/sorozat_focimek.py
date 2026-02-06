@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:17:04
+# Generated on: 2026-02-06 13:19:19
 
 QUESTIONS = [
     {
@@ -962,20 +962,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Atnv33 - Criminal Minds Theme Song",
         "audio_file": "74. Atnv33 - Criminal Minds.mp3",
-        "song_title": "Criminal Minds",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Dav0tion",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Californication",
+            "House",
+            "Euphoria",
+            "Big Little Lies",
         ],
         "correct": 0,
         "explanation": "Dav0tion - Californication Opening Credits Season 1",
-        "audio_file": "A6RVX-3wNnY.mp3",
+        "audio_file": "75. Dav0tion - Californication.mp3",
+        "song_title": "Californication",
         "topic": "sorozat_focimek",
     },
     {
