@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:03:55
+# Generated on: 2026-02-06 12:05:30
 
 QUESTIONS = [
     {
@@ -780,20 +780,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "TheAileeJ - ER Opening Theme",
         "audio_file": "60. TheAileeJ - ER.mp3",
-        "song_title": "ER",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Supernatural",
-            "Game of Thrones",
+            "3 Body Problems",
             "Stranger Things",
             "Szerkeszthető opció",
         ],
         "correct": 0,
         "explanation": "Supernatural - Supernatural - Carry On Wayward Son (Music Video)",
-        "audio_file": "WZU516GI3Ac.mp3",
+        "audio_file": "61. Supernatural - Supernatural.mp3",
+        "song_title": "Supernatural",
         "topic": "sorozat_focimek",
     },
     {
