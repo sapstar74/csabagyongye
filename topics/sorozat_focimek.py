@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:13:53
+# Generated on: 2026-02-06 13:17:04
 
 QUESTIONS = [
     {
@@ -949,20 +949,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Veronique Laurent - \"Big Little Lies\" Opening Titles",
         "audio_file": "73. Veronique Laurent - Big Little Lies.mp3",
-        "song_title": "Big Little Lies",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "Atnv33",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "Criminal Minds",
+            "NCIS",
+            "The Boys",
+            "Vikings",
         ],
         "correct": 0,
         "explanation": "Atnv33 - Criminal Minds Theme Song",
-        "audio_file": "JS70MFXbYEc.mp3",
+        "audio_file": "74. Atnv33 - Criminal Minds.mp3",
+        "song_title": "Criminal Minds",
         "topic": "sorozat_focimek",
     },
     {
