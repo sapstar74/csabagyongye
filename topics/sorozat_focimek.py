@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 12:48:51
+# Generated on: 2026-02-06 12:50:41
 
 QUESTIONS = [
     {
@@ -799,9 +799,9 @@ QUESTIONS = [
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Ted Lasso",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "How I Met Your Mother",
+            "The Good Place",
+            "The Queen's Gambit",
         ],
         "correct": 0,
         "explanation": "Ted Lasso | Ted Lasso Theme - Ted Lasso | Ted Lasso Theme - Marcus Mumford & Tom Howe | WaterTower",
