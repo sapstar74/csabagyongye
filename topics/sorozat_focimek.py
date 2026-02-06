@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 11:59:16
+# Generated on: 2026-02-06 12:00:59
 
 QUESTIONS = [
     {
@@ -754,20 +754,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Plick Kick - Squid Game Theme",
         "audio_file": "58. Plick Kick - Squid Game.mp3",
-        "song_title": "Squid Game",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
-            "TheRLWS",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "House",
+            "Grey's Anathomy",
+            "ER",
+            "Good Doctor",
         ],
         "correct": 0,
         "explanation": "TheRLWS - All 3 House M.D openers/themes/intros (American, Singaporean and European)",
-        "audio_file": "x5i5ERDE_2E.mp3",
+        "audio_file": "59. TheRLWS - House.mp3",
+        "song_title": "House",
         "topic": "sorozat_focimek",
     },
     {
