@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-06 13:00:16
+# Generated on: 2026-02-06 13:02:11
 
 QUESTIONS = [
     {
@@ -871,20 +871,20 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "VampireDiariesCWTV - The Vampire Diaries (Season 1) Opening Theme",
         "audio_file": "67. VampireDiariesCWTV - Vampire Diaries.mp3",
-        "song_title": "Vampire Diaries",
         "topic": "sorozat_focimek",
     },
     {
         "question": "Melyik sorozat főcímdala ez?",
         "options": [
             "Grey's Anatomy",
-            "Game of Thrones",
-            "Stranger Things",
-            "Szerkeszthető opció",
+            "House",
+            "The Good Doctor",
+            "ER",
         ],
         "correct": 0,
         "explanation": "Grey's Anatomy - Grey's Anatomy - Intro (Season 1) [1080p HD]",
-        "audio_file": "GKyvMFkuCog.mp3",
+        "audio_file": "68. Greys Anatomy - Greys Anatomy.mp3",
+        "song_title": "Grey's Anatomy",
         "topic": "sorozat_focimek",
     },
     {
