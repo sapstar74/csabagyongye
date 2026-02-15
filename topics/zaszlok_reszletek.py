@@ -127,6 +127,9 @@ COUNTRY_CODE_TO_NAME = {
     "IO": "British Indian Ocean Territory", "JE": "Jersey", "KY": "Cayman Islands",
     "MO": "Macao", "MQ": "Martinique", "MS": "Montserrat",
     "FO": "Faroe Islands", "FK": "Falkland Islands",
+    "AI": "Anguilla", "AS": "American Samoa", "AW": "Aruba", "AX": "Åland Islands",
+    "BL": "Saint Barthélemy", "BM": "Bermuda", "BQ": "Bonaire, Sint Eustatius and Saba",
+    "CK": "Cook Islands", "CW": "Curaçao", "CX": "Christmas Island", "EH": "Western Sahara",
 }
 
 QUESTION_HU = "Melyik ország zászlajából származik a részlet?"
