@@ -119,7 +119,14 @@ COUNTRY_CODE_TO_NAME = {
     "SJ": "Svalbard and Jan Mayen", "SX": "Sint Maarten",
     "TC": "Turks and Caicos Islands", "TF": "French Southern Territories",
     "TK": "Tokelau", "VA": "Vatican City", "VG": "British Virgin Islands",
+    "NC": "New Caledonia", "NF": "Norfolk Island", "NU": "Niue",
+    "PF": "French Polynesia", "PM": "Saint Pierre and Miquelon", "PN": "Pitcairn Islands",
     "VI": "U.S. Virgin Islands", "WF": "Wallis and Futuna", "YT": "Mayotte",
+    "GG": "Guernsey", "GI": "Gibraltar", "GP": "Guadeloupe", "GS": "South Georgia and the South Sandwich Islands",
+    "GU": "Guam", "HK": "Hong Kong", "HM": "Heard Island and McDonald Islands",
+    "IO": "British Indian Ocean Territory", "JE": "Jersey", "KY": "Cayman Islands",
+    "MO": "Macao", "MQ": "Martinique", "MS": "Montserrat",
+    "FO": "Faroe Islands", "FK": "Falkland Islands",
 }
 
 QUESTION_HU = "Melyik ország zászlajából származik a részlet?"
