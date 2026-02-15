@@ -21,12 +21,12 @@ import streamlit.components.v1 as components
 
 # Mappa struktúra
 FLAGS_DIR = Path("zaszlo_kepek")
-CROPS_DIR = Path("zaszlo_reszletek")
+CROPS_DIR = Path("data") / "flags" / "crop"
 DATA_DIR = Path("zaszlo_data")
 
 # Mappák létrehozása
 FLAGS_DIR.mkdir(exist_ok=True)
-CROPS_DIR.mkdir(exist_ok=True)
+CROPS_DIR.mkdir(parents=True, exist_ok=True)
 DATA_DIR.mkdir(exist_ok=True)
 
 # Konstansok

@@ -241,6 +241,7 @@ from topics.allatok_balanced import ALLATOK_QUESTIONS_BALANCED
 from topics.dramak import DRAMAK_QUESTIONS
 from topics.sport_logok import SPORT_LOGOK_QUESTIONS
 from topics.zaszlok_all_questions import ZASZLOK_QUESTIONS_ALL
+from topics.zaszlok_reszletek import ZASZLOK_RESZLETEK_QUESTIONS
 from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_UJ
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
@@ -681,6 +682,7 @@ QUIZ_DATA_BY_TOPIC = {
     "drámák": DRAMAK_QUESTIONS,
     "sport_logók": SPORT_LOGOK_QUESTIONS,
     "zászlók": ZASZLOK_QUESTIONS_ALL,
+    "zaszlok_reszletek": ZASZLOK_RESZLETEK_QUESTIONS,
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
@@ -760,6 +762,7 @@ def reset_quiz():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
+        "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
     }
     
@@ -2743,6 +2746,7 @@ def show_topic_selection():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
+        "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
     }
     
@@ -3364,14 +3368,10 @@ def show_quiz():
         logo_path = question["logo_path"]
         
         # Zászló képek útvonal javítása
+        current_dir = os.path.dirname(os.path.abspath(__file__))
         if logo_path.startswith("data/flags/"):
-            # Streamlit Cloud és lokális környezet kompatibilitás
-            # Először próbáljuk meg a jelenlegi munkakönyvtárból (Streamlit Cloud)
-            if os.path.exists(logo_path):
-                pass  # Már jó az útvonal
-            else:
-                # Ha nem található, próbáljuk meg a quiz_app_advanced.py fájl helyétől
-                current_dir = os.path.dirname(os.path.abspath(__file__))
+            # Zászlók és zászló részletek (data/flags/, data/flags/crop/)
+            if not os.path.exists(logo_path):
                 logo_path = os.path.join(current_dir, logo_path)
         
         if os.path.exists(logo_path):
