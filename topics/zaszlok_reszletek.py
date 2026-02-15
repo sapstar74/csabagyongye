@@ -114,6 +114,12 @@ COUNTRY_CODE_TO_NAME = {
     "US": "United States", "UY": "Uruguay", "UZ": "Uzbekistan", "VC": "Saint Vincent and the Grenadines",
     "VE": "Venezuela", "VN": "Vietnam", "VU": "Vanuatu", "WS": "Samoa", "YE": "Yemen",
     "ZA": "South Africa", "ZM": "Zambia", "ZW": "Zimbabwe",
+    # További területek (crop mappa szinkronizáláshoz)
+    "PR": "Puerto Rico", "RE": "Réunion", "SH": "Saint Helena",
+    "SJ": "Svalbard and Jan Mayen", "SX": "Sint Maarten",
+    "TC": "Turks and Caicos Islands", "TF": "French Southern Territories",
+    "TK": "Tokelau", "VA": "Vatican City", "VG": "British Virgin Islands",
+    "VI": "U.S. Virgin Islands", "WF": "Wallis and Futuna", "YT": "Mayotte",
 }
 
 QUESTION_HU = "Melyik ország zászlajából származik a részlet?"
