@@ -460,9 +460,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Angol parasztlázadás?",
         "options": [
             "1381",
-            "1331-1331",
-            "1431-1431",
-            "1481-1481",
+            "1331",
+            "1431",
+            "1281",
         ],
                 "correct": 0,
         "explanation": "A Angol parasztlázadás 1381 között zajlott.",
@@ -484,9 +484,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Nikápolyi csata?",
         "options": [
             "1396",
-            "1346-1346",
-            "1446-1446",
-            "1496-1496",
+            "1346",
+            "1446",
+            "1296",
         ],
                 "correct": 0,
         "explanation": "A Nikápolyi csata 1396 között zajlott.",
@@ -577,7 +577,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1494-1498)?",
+        "question": "Mikor zajlott a Itáliai háború – VIII. Károly hadjárata (1494-1498)?",
         "options": [
             "1494-1498",
             "1444-1448",
@@ -585,11 +585,11 @@ HABORU_QUESTIONS_ALL = [
             "1594-1598",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1494-1498) 1494-1498 között zajlott.",
+        "explanation": "A Itáliai háború – VIII. Károly hadjárata (1494-1498) 1494-1498 között zajlott.",
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1494-1498) során?",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború – VIII. Károly hadjárata (1494-1498) során?",
         "options": [
             "Franciaország vs Velencei Liga",
             "Velencei Liga vs Franciaország",
@@ -597,7 +597,7 @@ HABORU_QUESTIONS_ALL = [
             "Spanyolország vs Velencei Liga",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1494-1498) során Franciaország vs Velencei Liga harcoltak egymással.",
+        "explanation": "A Itáliai háború – VIII. Károly hadjárata (1494-1498) során Franciaország vs Velencei Liga harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -637,7 +637,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1521-1526)?",
+        "question": "Mikor zajlott a Itáliai háború – IV. itáliai háború / Pavia háború (1521-1526)?",
         "options": [
             "1521-1526",
             "1471-1476",
@@ -645,11 +645,11 @@ HABORU_QUESTIONS_ALL = [
             "1621-1626",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1521-1526) 1521-1526 között zajlott.",
+        "explanation": "A Itáliai háború – IV. itáliai háború (1521-1526) 1521-1526 között zajlott.",
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1521-1526) során?",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború – IV. itáliai háború (1521-1526) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -657,7 +657,7 @@ HABORU_QUESTIONS_ALL = [
             "Pápai Állam vs Firenze",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1521-1526) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+        "explanation": "A Itáliai háború – IV. itáliai háború (1521-1526) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -685,7 +685,7 @@ HABORU_QUESTIONS_ALL = [
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1536-1538)?",
+        "question": "Mikor zajlott a Itáliai háború – V. itáliai háború / III. Ferenc háborúja (1536-1538)?",
         "options": [
             "1536-1538",
             "1486-1488",
@@ -693,11 +693,11 @@ HABORU_QUESTIONS_ALL = [
             "1636-1638",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1536-1538) 1536-1538 között zajlott.",
+        "explanation": "A Itáliai háború – V. itáliai háború (1536-1538) 1536-1538 között zajlott.",
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1536-1538) során?",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború – V. itáliai háború (1536-1538) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -705,11 +705,11 @@ HABORU_QUESTIONS_ALL = [
             "Spanyolország vs Velence",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1536-1538) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+        "explanation": "A Itáliai háború – V. itáliai háború (1536-1538) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1542-1546)?",
+        "question": "Mikor zajlott a Itáliai háború – VI. itáliai háború (1542-1546)?",
         "options": [
             "1542-1546",
             "1492-1496",
@@ -717,11 +717,11 @@ HABORU_QUESTIONS_ALL = [
             "1642-1646",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1542-1546) 1542-1546 között zajlott.",
+        "explanation": "A Itáliai háború – VI. itáliai háború (1542-1546) 1542-1546 között zajlott.",
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1542-1546) során?",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború – VI. itáliai háború (1542-1546) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -729,11 +729,11 @@ HABORU_QUESTIONS_ALL = [
             "Habsburgok vs Oszmán Birodalom",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1542-1546) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+        "explanation": "A Itáliai háború – VI. itáliai háború (1542-1546) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
-        "question": "Mikor zajlott a Itáliai háború (1551-1559)?",
+        "question": "Mikor zajlott a Itáliai háború – VII. itáliai háború / Utolsó (1551-1559)?",
         "options": [
             "1551-1559",
             "1501-1509",
@@ -741,11 +741,11 @@ HABORU_QUESTIONS_ALL = [
             "1651-1659",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1551-1559) 1551-1559 között zajlott.",
+        "explanation": "A Itáliai háború – VII. itáliai háború (utolsó) (1551-1559) 1551-1559 között zajlott.",
         "topic": "háborúk"
     },
     {
-        "question": "Kik voltak a szembenálló felek a Itáliai háború (1551-1559) során?",
+        "question": "Kik voltak a szembenálló felek a Itáliai háború – VII. itáliai háború (1551-1559) során?",
         "options": [
             "Franciaország vs Német-római Birodalom",
             "Német-római Birodalom vs Franciaország",
@@ -753,7 +753,7 @@ HABORU_QUESTIONS_ALL = [
             "Pápai Állam vs Firenze",
         ],
                 "correct": 0,
-        "explanation": "A Itáliai háború (1551-1559) során Franciaország vs Német-római Birodalom harcoltak egymással.",
+        "explanation": "A Itáliai háború – VII. itáliai háború (1551-1559) során Franciaország vs Német-római Birodalom harcoltak egymással.",
         "topic": "háborúk"
     },
     {
@@ -1288,9 +1288,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Spanyol–amerikai háború?",
         "options": [
             "1898",
-            "1848-1848",
-            "1948-1948",
-            "1998-1998",
+            "1848",
+            "1948",
+            "1798",
         ],
                 "correct": 0,
         "explanation": "A Spanyol–amerikai háború 1898 között zajlott.",
@@ -1314,7 +1314,7 @@ HABORU_QUESTIONS_ALL = [
             "1880-1902",
             "1830-1852",
             "1930-1952",
-            "1980-2002",
+            "1780-1802",
         ],
                 "correct": 0,
         "explanation": "A Búr háborúk 1880-1902 között zajlott.",
@@ -1338,7 +1338,7 @@ HABORU_QUESTIONS_ALL = [
             "1904-1905",
             "1854-1855",
             "1954-1955",
-            "2004-2005",
+            "1804-1805",
         ],
                 "correct": 0,
         "explanation": "A Orosz–japán háború 1904-1905 között zajlott.",
@@ -1410,7 +1410,7 @@ HABORU_QUESTIONS_ALL = [
             "1917-1923",
             "1867-1873",
             "1967-1973",
-            "2017-2023",
+            "1827-1833",
         ],
                 "correct": 0,
         "explanation": "A Orosz polgárháború 1917-1923 között zajlott.",
@@ -1434,7 +1434,7 @@ HABORU_QUESTIONS_ALL = [
             "1919-1923",
             "1869-1873",
             "1969-1973",
-            "2019-2023",
+            "1829-1833",
         ],
                 "correct": 0,
         "explanation": "A Török függetlenségi háború 1919-1923 között zajlott.",
@@ -1505,8 +1505,8 @@ HABORU_QUESTIONS_ALL = [
         "options": [
             "1950-1953",
             "1900-1903",
-            "2000-2003",
-            "2050-2053",
+            "1940-1943",
+            "1930-1933",
         ],
                 "correct": 0,
         "explanation": "A Koreai háború 1950-1953 között zajlott.",
@@ -1529,8 +1529,8 @@ HABORU_QUESTIONS_ALL = [
         "options": [
             "1955-1975",
             "1905-1925",
-            "2005-2025",
-            "2055-2075",
+            "1945-1955",
+            "1935-1945",
         ],
                 "correct": 0,
         "explanation": "A Vietnámi háború 1955-1975 között zajlott.",
@@ -1552,9 +1552,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Szikiai háború?",
         "options": [
             "1967",
-            "1917-1917",
-            "2017-2017",
-            "2067-2067",
+            "1917",
+            "1957",
+            "1947",
         ],
                 "correct": 0,
         "explanation": "A Szikiai háború 1967 között zajlott.",
@@ -1576,9 +1576,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Jom Kippur háború?",
         "options": [
             "1973",
-            "1923-1923",
-            "2023-2023",
-            "2073-2073",
+            "1923",
+            "1963",
+            "1953",
         ],
                 "correct": 0,
         "explanation": "A Jom Kippur háború 1973 között zajlott.",
@@ -1600,9 +1600,9 @@ HABORU_QUESTIONS_ALL = [
         "question": "Mikor zajlott a Falkland-háború?",
         "options": [
             "1982",
-            "1932-1932",
-            "2032-2032",
-            "2082-2082",
+            "1932",
+            "1972",
+            "1962",
         ],
                 "correct": 0,
         "explanation": "A Falkland-háború 1982 között zajlott.",
@@ -1625,8 +1625,8 @@ HABORU_QUESTIONS_ALL = [
         "options": [
             "1990-1991",
             "1940-1941",
-            "2040-2041",
-            "2090-2091",
+            "1980-1981",
+            "1970-1971",
         ],
                 "correct": 0,
         "explanation": "A Öbölháború 1990-1991 között zajlott.",
@@ -1649,8 +1649,8 @@ HABORU_QUESTIONS_ALL = [
         "options": [
             "1991-2001",
             "1941-1951",
-            "2041-2051",
-            "2091-2101",
+            "1981-1991",
+            "1971-1981",
         ],
                 "correct": 0,
         "explanation": "A Jugoszláv háborúk 1991-2001 között zajlott.",
@@ -1659,13 +1659,13 @@ HABORU_QUESTIONS_ALL = [
     {
         "question": "Mikor zajlott a Afganisztáni háború?",
         "options": [
-            "2001-2021",
+            "2001-2020",
             "1951-1971",
-            "2051-2071",
-            "2101-2121",
+            "1971-1991",
+            "1991-2011",
         ],
                 "correct": 0,
-        "explanation": "A Afganisztáni háború 2001-2021 között zajlott.",
+        "explanation": "A Afganisztáni háború 2001-2021 között zajlott (a koalíció kivonulása 2021-ben).",
         "topic": "háborúk"
     },
     {
@@ -1685,8 +1685,8 @@ HABORU_QUESTIONS_ALL = [
         "options": [
             "2003-2011",
             "1953-1961",
-            "2053-2061",
-            "2103-2111",
+            "1963-1971",
+            "1983-1991",
         ],
                 "correct": 0,
         "explanation": "A Iraki háború 2003-2011 között zajlott.",
