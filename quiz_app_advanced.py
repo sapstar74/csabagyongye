@@ -1179,8 +1179,20 @@ def start_quiz():
             )
         return
     
-    # Kérdések keverése
-    random.shuffle(all_questions)
+    # Zenei kérdések csoportosítása: egymás után, a sor ~60%-ánál kezdődjenek
+    _MUSIC_TOPICS = {"komolyzene", "magyar_zenekarok", "magyar_zenekarok_uj", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"}
+    music_questions = [q for q in all_questions if q.get("topic") in _MUSIC_TOPICS]
+    other_questions = [q for q in all_questions if q.get("topic") not in _MUSIC_TOPICS]
+    
+    if music_questions and other_questions:
+        random.shuffle(music_questions)
+        random.shuffle(other_questions)
+        total = len(music_questions) + len(other_questions)
+        insert_at = int(0.6 * total)  # ~60%-nál kezdődjenek a zenei kérdések
+        insert_at = min(insert_at, len(other_questions))
+        all_questions = other_questions[:insert_at] + music_questions + other_questions[insert_at:]
+    else:
+        random.shuffle(all_questions)
     
     # Végleges kérdésszám alkalmazása - csak akkor, ha több kérdés van, mint amit kértünk
     if final_question_count > 0 and len(all_questions) > final_question_count:
