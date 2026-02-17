@@ -250,6 +250,7 @@ from topics.magyar_festmenyek import QUESTIONS as MAGYAR_FESTMENYEK_QUESTIONS
 from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
 from topics.sorozat_focimek import QUESTIONS as SOROZAT_FOCIMEK_QUESTIONS
 from topics.regények import REGÉNYEK_QUESTIONS
+from topics.labdarugo_palyafutas import LABDARUGO_PALYAFUTAS_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
@@ -499,6 +500,16 @@ st.markdown("""
         margin-bottom: 1.5rem;
         color: #87CEEB;
     }
+    /* Pályafutás táblázat stílusa */
+    div[data-testid="stMarkdown"] table {
+        font-size: 0.95rem;
+        margin: 1rem 0;
+        border-collapse: collapse;
+    }
+    div[data-testid="stMarkdown"] table th, div[data-testid="stMarkdown"] table td {
+        padding: 0.5rem 1rem;
+        border: 1px solid #e0e0e0;
+    }
     .option-button {
         width: 100%;
         text-align: left;
@@ -687,6 +698,7 @@ QUIZ_DATA_BY_TOPIC = {
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
     "regények": REGÉNYEK_QUESTIONS,
+    "labdarugo_palyafutas": LABDARUGO_PALYAFUTAS_QUESTIONS,
 }
 
 # Initialize session state
@@ -764,6 +776,7 @@ def reset_quiz():
         "zászlók": "🏁 Zászlók",
         "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
+        "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
     }
     
     for topic_key in topics.keys():
@@ -2748,6 +2761,7 @@ def show_topic_selection():
         "zászlók": "🏁 Zászlók",
         "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
+        "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
     }
     
     # Randomizáló funkció
@@ -3331,7 +3345,11 @@ def show_quiz():
     question_text = question.get("question") or t("Ismeretlen kérdés")
     question_number = st.session_state.current_question + 1
     display_question_text = f"{question_number}. {translate_text(question_text)}"
-    st.markdown(f"<div class='question-text' style='{font_style['question']}'>{display_question_text}</div>", unsafe_allow_html=True)
+    # Táblázatos kérdések (pl. labdarúgó pályafutás) markdown-ként jelenítjük meg a táblázat megjelenítéséhez
+    if "|" in question_text and "---" in question_text:
+        st.markdown(display_question_text)
+    else:
+        st.markdown(f"<div class='question-text' style='{font_style['question']}'>{display_question_text}</div>", unsafe_allow_html=True)
 
     # Tartós popup megjelenítése (ha van)
     render_answer_popup()
