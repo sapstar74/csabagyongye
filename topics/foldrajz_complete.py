@@ -523,5 +523,12 @@ FOLDRAJZ_QUESTIONS_COMPLETE = [
         "correct": 0,
         "explanation": "A Takla-Makán egy sivatag Kínában, a Selyemút mentén.",
         "topic": "földrajz"
+    },
+    {
+        "question": "Melyik szigetcsoport legészakibb tagja a Stromboli vulkán szigete?",
+        "options": ["Lipari-szigetek", "Egadi-szigetek", "Kikládok", "Dodekanészosz"],
+        "correct": 0,
+        "explanation": "A Stromboli a Lipari-szigetek (Eolie-szigetek) legészakibb tagja, Szicília északi partjánál.",
+        "topic": "földrajz"
     }
 ] 
