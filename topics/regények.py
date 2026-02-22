@@ -895,5 +895,501 @@ REGÉNYEK_QUESTIONS = [
         "correct": 1,
         "explanation": "Dűne (Frank Herbert) - a politika és a vallás témáit vizsgálja.",
         "topic": "regények"
+    },
+
+    # 57. A huszonkettes csapdája (Joseph Heller)
+    {
+        "question": "Melyik regény szereplői: Yossarian, Milo Minderbinder és Cathcart ezredes?",
+        "options": ["A Nap is felkel", "A huszonkettes csapdája", "Meztelenek és holtak", "Most és mindörökké"],
+        "correct": 1,
+        "explanation": "A huszonkettes csapdája (Joseph Heller) - Yossarian, Milo Minderbinder és Cathcart ezredes a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy bombázótiszt (Yossarian) a második világháborúban próbálja kikerülni a harci bevetéseket, és a regény a háború abszurditását szatirikusan mutatja be?",
+        "options": ["A Nap is felkel", "A huszonkettes csapdája", "Meztelenek és holtak", "Most és mindörökké"],
+        "correct": 1,
+        "explanation": "A huszonkettes csapdája (Joseph Heller) - a háború abszurditása és a bürokrácia témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 58. Két nap az élet (Alekszandr Szolzsenyicin)
+    {
+        "question": "Melyik regény szereplői: Ivan Denisovics, Tyurin és Aljosa?",
+        "options": ["A huszonkettes csapdája", "Két nap az élet", "Meztelenek és holtak", "Dr. Zhivago"],
+        "correct": 1,
+        "explanation": "Két nap az élet (Alekszandr Szolzsenyicin) - Ivan Denisovics Sukov, Tyurin és Aljosa a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy szovjet munkatábor foglya (Ivan Denisovics) egy napját követjük nyomon, és a regény a sztálini táborok valóságát mutatja be?",
+        "options": ["A huszonkettes csapdája", "Két nap az élet", "Meztelenek és holtak", "Az anya"],
+        "correct": 1,
+        "explanation": "Két nap az élet (Alekszandr Szolzsenyicin) - a szovjet munkatáborok és a túlélés témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 59. Meztelenek és holtak (Norman Mailer)
+    {
+        "question": "Melyik regény szereplői: Croft őrmester, Hearn hadnagy és Cummings tábornok?",
+        "options": ["A huszonkettes csapdája", "Két nap az élet", "Meztelenek és holtak", "Most és mindörökké"],
+        "correct": 2,
+        "explanation": "Meztelenek és holtak (Norman Mailer) - Croft őrmester, Hearn hadnagy és Cummings tábornok a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben amerikai katonák egy csendes-óceáni sziget meghódításában vesznek részt a második világháborúban, és a regény a hatalom és a háború brutális valóságát vizsgálja?",
+        "options": ["A huszonkettes csapdája", "A bűnösök", "Meztelenek és holtak", "Most és mindörökké"],
+        "correct": 2,
+        "explanation": "Meztelenek és holtak (Norman Mailer) - a háború brutális valósága és a hatalom témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 60. Most és mindörökké (Erich Maria Remarque)
+    {
+        "question": "Melyik regény szereplői: Ernst Graeber és Elisabeth?",
+        "options": ["A huszonkettes csapdája", "Nyugaton a helyzet változatlan", "Most és mindörökké", "Meztelenek és holtak"],
+        "correct": 2,
+        "explanation": "Most és mindörökké (Erich Maria Remarque) - Ernst Graeber és Elisabeth a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy német katona (Ernst Graeber) szabadságon találkozik Elisabeth-tel, és rövid idejük van a szerelemre a második világháború pusztítása közepette?",
+        "options": ["Nyugaton a helyzet változatlan", "A Nap is felkel", "Most és mindörökké", "Dr. Zhivago"],
+        "correct": 2,
+        "explanation": "Most és mindörökké (Erich Maria Remarque) - a háború és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 61. Ivanhoe (Sir Walter Scott)
+    {
+        "question": "Melyik regény szereplői: Ivanhoe, Rowena és Rebecca?",
+        "options": ["A három testőr", "Ivanhoe", "Az utolsó mohikán", "Notre Dame-i toronyőr"],
+        "correct": 1,
+        "explanation": "Ivanhoe (Sir Walter Scott) - Ivanhoe, Rowena és Rebecca a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Rikárd Oroszlánszív uralkodása alatt egy lovag (Ivanhoe) kalandjai játszódnak, és a regény a normann–szász ellentétet és a keresztes lovagokat ábrázolja?",
+        "options": ["A három testőr", "Ivanhoe", "Robin Hood", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "Ivanhoe (Sir Walter Scott) - a középkori lovagság és a nemzeti identitás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 62. Az utolsó mohikán (James Fenimore Cooper)
+    {
+        "question": "Melyik regény szereplői: Natty Bumppo, Uncas és Chingachgook?",
+        "options": ["Ivanhoe", "Az utolsó mohikán", "Huckleberry Finn", "Moby Dick"],
+        "correct": 1,
+        "explanation": "Az utolsó mohikán (James Fenimore Cooper) - Natty Bumppo (Bőrharisnya), Uncas és Chingachgook a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben a francia–indiai háború idején két lányt kell kimenteni az indiánok fogságából, és Bőrharisnya (Natty Bumppo) vezeti a mentőexpedíciót?",
+        "options": ["Ivanhoe", "Az utolsó mohikán", "Huckleberry Finn", "A bűnösök"],
+        "correct": 1,
+        "explanation": "Az utolsó mohikán (James Fenimore Cooper) - az amerikai frontier és az indiánok témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 63. Az Usher-ház vége (Edgar Allan Poe)
+    {
+        "question": "Melyik regény szereplői: Roderick Usher, Madeline és a narrátor?",
+        "options": ["Az utolsó mohikán", "Az Usher-ház vége", "Dorian Gray arcképe", "A skarlát betű"],
+        "correct": 1,
+        "explanation": "Az Usher-ház vége (Edgar Allan Poe) - Roderick Usher, Madeline Usher és a narrátor a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben a narrátor meglátogatja barátját (Roderick Usher) a pusztuló Usher-házban, ahol Roderick ikertestvére (Madeline) látszólag halottan kel fel a sírjából?",
+        "options": ["Dorian Gray arcképe", "Az Usher-ház vége", "A skarlát betű", "A metamorfózis"],
+        "correct": 1,
+        "explanation": "Az Usher-ház vége (Edgar Allan Poe) - a gótikus horror és a családi átok témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 64. Hiúság vására (William Makepeace Thackeray)
+    {
+        "question": "Melyik regény szereplői: Becky Sharp, Amelia Sedley és Rawdon Crawley?",
+        "options": ["Jane Eyre", "Hiúság vására", "Kisasszonyok", "A büszkeség és balítélet"],
+        "correct": 1,
+        "explanation": "Hiúság vására (William Makepeace Thackeray) - Becky Sharp, Amelia Sedley és Rawdon Crawley a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Becky Sharp és Amelia Sedley élete párhuzamosan játszódik a napóleoni háborúk idején, és a regény a társadalmi karrierizmus és a hiúság témáit vizsgálja?",
+        "options": ["Jane Eyre", "Hiúság vására", "Madame Bovary", "A büszkeség és balítélet"],
+        "correct": 1,
+        "explanation": "Hiúság vására (William Makepeace Thackeray) - a társadalmi felemelkedés és a hiúság témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 65. A skarlát betű (Nathaniel Hawthorne)
+    {
+        "question": "Melyik regény szereplői: Hester Prynne, Arthur Dimmesdale és Roger Chillingworth?",
+        "options": ["Hiúság vására", "A skarlát betű", "Kisasszonyok", "Dorian Gray arcképe"],
+        "correct": 1,
+        "explanation": "A skarlát betű (Nathaniel Hawthorne) - Hester Prynne, Arthur Dimmesdale és Roger Chillingworth a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy nőt (Hester Prynne) a gyűlölt „A” betűvel büntetnek a puritán Massachusetts-ben, mert lánya törvénytelen születésű?",
+        "options": ["Madame Bovary", "A skarlát betű", "Jane Eyre", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "A skarlát betű (Nathaniel Hawthorne) - a bűn, a bűnbánat és a társadalmi elítélés témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 66. Kisasszonyok (Louisa May Alcott)
+    {
+        "question": "Melyik regény szereplői: Jo, Meg, Beth és Amy March?",
+        "options": ["Jane Eyre", "Kisasszonyok", "A büszkeség és balítélet", "Hiúság vására"],
+        "correct": 1,
+        "explanation": "Kisasszonyok (Louisa May Alcott) - Jo, Meg, Beth és Amy March a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben a March család négy lányának (Jo, Meg, Beth, Amy) élete játszódik az amerikai polgárháború idején, és a regény a női önállósodás témáit vizsgálja?",
+        "options": ["Jane Eyre", "Kisasszonyok", "Madame Bovary", "A büszkeség és balítélet"],
+        "correct": 1,
+        "explanation": "Kisasszonyok (Louisa May Alcott) - a családi szeretet és a női önállósodás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 67. Dorian Gray arcképe (Oscar Wilde)
+    {
+        "question": "Melyik regény szereplői: Dorian Gray, Lord Henry és Basil Hallward?",
+        "options": ["Az Usher-ház vége", "Dorian Gray arcképe", "A skarlát betű", "Dr. Jekyll és Mr. Hyde"],
+        "correct": 1,
+        "explanation": "Dorian Gray arcképe (Oscar Wilde) - Dorian Gray, Lord Henry Wotton és Basil Hallward a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy fiatal férfi (Dorian Gray) arcképe öregedik helyette, miközben ő örök ifjúságát élvezi, és a regény a szépség és a erkölcstelenség témáit vizsgálja?",
+        "options": ["Az Usher-ház vége", "Dorian Gray arcképe", "A metamorfózis", "Dr. Jekyll és Mr. Hyde"],
+        "correct": 1,
+        "explanation": "Dorian Gray arcképe (Oscar Wilde) - a szépség, a művészet és a erkölcstelenség témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 68. Éhség (Knut Hamsun)
+    {
+        "question": "Melyik regény szereplői: egy éhező író, Ylajali és a bérlőnő?",
+        "options": ["Dorian Gray arcképe", "Éhség", "A metamorfózis", "Az út"],
+        "correct": 1,
+        "explanation": "Éhség (Knut Hamsun) - a névtelen narrátor (éhező író), Ylajali és a bérlőnő a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy éhező író küzdelmei játszódnak Kristianiában (Oslóban), ahol a fizikai éhség és a mentális megpróbáltatások szélsőséges állapotát ábrázolja a regény?",
+        "options": ["A metamorfózis", "Éhség", "Az út", "A kastély"],
+        "correct": 1,
+        "explanation": "Éhség (Knut Hamsun) - a szegénység, a művészet és a mentális instabilitás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 69. A pusztai farkas (Hermann Hesse)
+    {
+        "question": "Melyik regény szereplői: Harry Haller, Hermine és Pablo?",
+        "options": ["Éhség", "A pusztai farkas", "Dorian Gray arcképe", "A varázshegy"],
+        "correct": 1,
+        "explanation": "A pusztai farkas (Hermann Hesse) - Harry Haller, Hermine és Pablo a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Harry Haller (a „pusztai farkas”) küzdelme a polgári élet és a művészeti lét között játszódik, és a regény a lelki válság és a személyiség sokrétűségét vizsgálja?",
+        "options": ["A varázshegy", "A pusztai farkas", "A metamorfózis", "Siddhartha"],
+        "correct": 1,
+        "explanation": "A pusztai farkas (Hermann Hesse) - a lelki válság és a személyiség sokrétűsége témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 70. Orlando (Virginia Woolf)
+    {
+        "question": "Melyik regény szereplői: Orlando, Sasha és Shelmerdine?",
+        "options": ["A kék szoba", "Orlando", "Dorian Gray arcképe", "Lady Chatterley szeretője"],
+        "correct": 1,
+        "explanation": "Orlando (Virginia Woolf) - Orlando, Sasha és Shelmerdine a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy főhős több évszázadon át él, és férfiként indulva nővé változik, miközben a regény a nemi identitás és az idő témáit vizsgálja?",
+        "options": ["A kék szoba", "Orlando", "Dorian Gray arcképe", "A metamorfózis"],
+        "correct": 1,
+        "explanation": "Orlando (Virginia Woolf) - a nemi identitás, az idő és a művészet témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 71. Búcsú a fegyverektől (Ernest Hemingway)
+    {
+        "question": "Melyik regény szereplői: Frederic Henry, Catherine Barkley és Rinaldi?",
+        "options": ["A Nap is felkel", "Búcsú a fegyverektől", "Akiért a harang szól", "Az öreg halász és a tenger"],
+        "correct": 1,
+        "explanation": "Búcsú a fegyverektől (Ernest Hemingway) - Frederic Henry, Catherine Barkley és Rinaldi a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy amerikai mentőtiszt (Frederic Henry) és egy angol nővér (Catherine Barkley) szerelme játszódik az első világháború olasz frontján?",
+        "options": ["A Nap is felkel", "Búcsú a fegyverektől", "Akiért a harang szól", "Most és mindörökké"],
+        "correct": 1,
+        "explanation": "Búcsú a fegyverektől (Ernest Hemingway) - a háború és a szerelem témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 72. Egerek és emberek (John Steinbeck)
+    {
+        "question": "Melyik regény szereplői: George, Lennie és Candy?",
+        "options": ["A bűnösök", "Egerek és emberek", "A Nap is felkel", "Az út"],
+        "correct": 1,
+        "explanation": "Egerek és emberek (John Steinbeck) - George Milton, Lennie Small és Candy a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben George és Lennie (egy erős, de gyengeelméjű férfi) álma saját farmot vásárolni a nagy gazdasági válság idején tragikus véghez jut?",
+        "options": ["A bűnösök", "Egerek és emberek", "Az út", "A harag és a düh"],
+        "correct": 1,
+        "explanation": "Egerek és emberek (John Steinbeck) - a barátság, az álmok és a szegénység témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 73. Akiért a harang szól (Ernest Hemingway)
+    {
+        "question": "Melyik regény szereplői: Robert Jordan, Maria és Pablo?",
+        "options": ["Búcsú a fegyverektől", "Akiért a harang szól", "Az öreg halász és a tenger", "Meztelenek és holtak"],
+        "correct": 1,
+        "explanation": "Akiért a harang szól (Ernest Hemingway) - Robert Jordan, Maria és Pablo a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy amerikai robbantóspecialista (Robert Jordan) a spanyol polgárháborúban hiddal akarja felrobbantani, és szerelmes lesz Mariába?",
+        "options": ["Búcsú a fegyverektől", "Akiért a harang szól", "Most és mindörökké", "A huszonkettes csapdája"],
+        "correct": 1,
+        "explanation": "Akiért a harang szól (Ernest Hemingway) - a spanyol polgárháború és a hűség témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 74. A gyertyák csonkig égnek (Márai Sándor)
+    {
+        "question": "Melyik regény szereplői: Henrik, Konrád és Krisztina?",
+        "options": ["A kőszívű ember fiai", "A gyertyák csonkig égnek", "A Pál utcai fiúk", "Az ember tragédiája"],
+        "correct": 1,
+        "explanation": "A gyertyák csonkig égnek (Márai Sándor) - Henrik, Konrád és Krisztina a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben két régi barát (Henrik és Konrád) 41 év után találkozik, és a múlt titka (a feleség hűtlensége) kerül napvilágra?",
+        "options": ["A kőszívű ember fiai", "A gyertyák csonkig égnek", "A Pál utcai fiúk", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "A gyertyák csonkig égnek (Márai Sándor) - a barátság, a hűtlenség és a múlt témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 75. Én, a robot (Isaac Asimov)
+    {
+        "question": "Melyik regény szereplői: Susan Calvin, Powell és Donovan?",
+        "options": ["Dűne", "Én, a robot", "Alapítvány", "1984"],
+        "correct": 1,
+        "explanation": "Én, a robot (Isaac Asimov) - Susan Calvin, Powell és Donovan a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben robotpszichológus (Susan Calvin) és technikusok (Powell, Donovan) robotokkal kapcsolatos eseteket mesélnek el, és a három robotikai törvény kerül bemutatásra?",
+        "options": ["Alapítvány", "Én, a robot", "1984", "Dűne"],
+        "correct": 1,
+        "explanation": "Én, a robot (Isaac Asimov) - a robotika és az ember–gép kapcsolat témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 76. Zabhegyező (J. D. Salinger)
+    {
+        "question": "Melyik regény szereplői: Holden Caulfield, Phoebe és Stradlater?",
+        "options": ["Egerek és emberek", "Zabhegyező", "A Nap is felkel", "A nagy Gatsby"],
+        "correct": 1,
+        "explanation": "Zabhegyező (J. D. Salinger) - Holden Caulfield, Phoebe és Stradlater a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy kiszakadt tinédzser (Holden Caulfield) New Yorkban kóborol, és a regény a fiatalok elidegenedését és a „álszentség” elleni lázadást ábrázolja?",
+        "options": ["Egerek és emberek", "Zabhegyező", "A Nap is felkel", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "Zabhegyező (J. D. Salinger) - a fiatalok elidegenedése és a társadalmi álszentség témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 77. Alapítvány (Isaac Asimov)
+    {
+        "question": "Melyik regény szereplői: Hari Seldon, Salvor Hardin és Hober Mallow?",
+        "options": ["Én, a robot", "Alapítvány", "Dűne", "1984"],
+        "correct": 1,
+        "explanation": "Alapítvány (Isaac Asimov) - Hari Seldon, Salvor Hardin és Hober Mallow a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Hari Seldon pszichohistoryja megjósolja a Galaktikus Birodalom összeomlását, és az Alapítvány próbálja megőrizni a civilizációt?",
+        "options": ["Én, a robot", "Alapítvány", "Dűne", "A Gyűrűk Ura"],
+        "correct": 1,
+        "explanation": "Alapítvány (Isaac Asimov) - a történelem, a tudomány és a civilizáció témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 78. Az öreg halász és a tenger (Ernest Hemingway)
+    {
+        "question": "Melyik regény szereplői: Santiago, Manolin és a marlin?",
+        "options": ["Akiért a harang szól", "Az öreg halász és a tenger", "Moby Dick", "Búcsú a fegyverektől"],
+        "correct": 1,
+        "explanation": "Az öreg halász és a tenger (Ernest Hemingway) - Santiago, Manolin és a marlin a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy öreg kubai halász (Santiago) 84 nap sikertelen halászat után óriási marlint fog, és a regény a kitartás és a méltóság témáit vizsgálja?",
+        "options": ["Moby Dick", "Az öreg halász és a tenger", "A bűnösök", "Akiért a harang szól"],
+        "correct": 1,
+        "explanation": "Az öreg halász és a tenger (Ernest Hemingway) - a kitartás, a méltóság és a természet témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 79. Álom luxuskivitelben (Truman Capote)
+    {
+        "question": "Melyik regény szereplői: Holly Golightly, a narrátor és Paul?",
+        "options": ["A nagy Gatsby", "Álom luxuskivitelben", "Zabhegyező", "A Nap is felkel"],
+        "correct": 1,
+        "explanation": "Álom luxuskivitelben (Truman Capote) - Holly Golightly, a narrátor és Paul a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy titokzatos fiatal nő (Holly Golightly) New Yorkban él, a Tiffany előtt reggelizik, és a regény a szabadság és az álmok illúzióját vizsgálja?",
+        "options": ["A nagy Gatsby", "Álom luxuskivitelben", "Zabhegyező", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "Álom luxuskivitelben (Truman Capote) - a szabadság és az álmok illúziója témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 80. Ne bántsátok a feketerigót! (Harper Lee)
+    {
+        "question": "Melyik regény szereplői: Scout, Atticus Finch és Boo Radley?",
+        "options": ["Kisasszonyok", "Ne bántsátok a feketerigót!", "A skarlát betű", "Zabhegyező"],
+        "correct": 1,
+        "explanation": "Ne bántsátok a feketerigót! (Harper Lee) - Scout, Atticus Finch és Boo Radley a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy ügyvéd (Atticus Finch) védi egy hamisan vádolt fekete férfit az amerikai Dél déli városában, miközben lánya (Scout) szemszögéből láthatjuk a történteket?",
+        "options": ["A skarlát betű", "Ne bántsátok a feketerigót!", "A bűnösök", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "Ne bántsátok a feketerigót! (Harper Lee) - a rasszizmus, az igazság és a gyerekkor témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 81. Gépnarancs (Anthony Burgess)
+    {
+        "question": "Melyik regény szereplői: Alex, a Droogok és Mr. Alexander?",
+        "options": ["1984", "Gépnarancs", "Zabhegyező", "Állatfarm"],
+        "correct": 1,
+        "explanation": "Gépnarancs (Anthony Burgess) - Alex, a Droogok és Mr. Alexander a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy erőszakos tinédzser (Alex) és bandája a jövőbeli Angliában terrorizál, majd agymosásnak vetik alá, és a regény a szabad akarat és az erőszak témáit vizsgálja?",
+        "options": ["1984", "Gépnarancs", "Állatfarm", "A szolgálólány meséje"],
+        "correct": 1,
+        "explanation": "Gépnarancs (Anthony Burgess) - a szabad akarat, az erőszak és a rehabilitáció témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 82. Az üvegbura (Sylvia Plath)
+    {
+        "question": "Melyik regény szereplői: Esther Greenwood, Buddy Willard és Doreen?",
+        "options": ["Zabhegyező", "Az üvegbura", "Álom luxuskivitelben", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "Az üvegbura (Sylvia Plath) - Esther Greenwood, Buddy Willard és Doreen a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy fiatal nő (Esther Greenwood) New Yorkban tölt nyarat egy magazinnal, de depressziója és mentális válsága egyre mélyül, és a regény a női identitás és a társadalmi nyomás témáit vizsgálja?",
+        "options": ["Zabhegyező", "Az üvegbura", "Álom luxuskivitelben", "Kisasszonyok"],
+        "correct": 1,
+        "explanation": "Az üvegbura (Sylvia Plath) - a női identitás, a depresszió és a társadalmi nyomás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 83. Galaxis útikalauz stopposoknak (Douglas Adams)
+    {
+        "question": "Melyik regény szereplői: Arthur Dent, Ford Prefect és Zaphod Beeblebrox?",
+        "options": ["Dűne", "Galaxis útikalauz stopposoknak", "Alapítvány", "A Gyűrűk Ura"],
+        "correct": 1,
+        "explanation": "Galaxis útikalauz stopposoknak (Douglas Adams) - Arthur Dent, Ford Prefect és Zaphod Beeblebrox a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Arthur Dent a Föld pusztulása előtt menekül meg barátjával (Ford Prefect), és a Galaxis útikalauz stopposoknak segítségével kalandokba keveredik?",
+        "options": ["A Gyűrűk Ura", "Galaxis útikalauz stopposoknak", "Dűne", "Alapítvány"],
+        "correct": 1,
+        "explanation": "Galaxis útikalauz stopposoknak (Douglas Adams) - sci-fi szatíra, az abszurd és a létezés témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 84. A parfüm (Patrick Süskind)
+    {
+        "question": "Melyik regény szereplői: Jean-Baptiste Grenouille, Giuseppe Baldini és Laure?",
+        "options": ["Dorian Gray arcképe", "A parfüm", "Az Usher-ház vége", "Az üvegbura"],
+        "correct": 1,
+        "explanation": "A parfüm (Patrick Süskind) - Jean-Baptiste Grenouille, Giuseppe Baldini és Laure a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy szagérzékeny gyilkos (Jean-Baptiste Grenouille) a tökéletes parfüm megalkotásáért gyilkosságokat követ el, és a regény a szag és a szépség témáit vizsgálja?",
+        "options": ["Dorian Gray arcképe", "A parfüm", "Az Usher-ház vége", "Gépnarancs"],
+        "correct": 1,
+        "explanation": "A parfüm (Patrick Süskind) - a szag, a szépség és a beteges vágy témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 85. A szolgálólány meséje (Margaret Atwood)
+    {
+        "question": "Melyik regény szereplői: Offred, a Parancsnok és Serena Joy?",
+        "options": ["1984", "A szolgálólány meséje", "Gépnarancs", "Állatfarm"],
+        "correct": 1,
+        "explanation": "A szolgálólány meséje (Margaret Atwood) - Offred, a Parancsnok és Serena Joy a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben egy teokratikus diktatúrában a termékeny nőket szolgálólányként használják, és Offred a regény narrátora a Gilead nevű államában?",
+        "options": ["1984", "A szolgálólány meséje", "Gépnarancs", "Állatfarm"],
+        "correct": 1,
+        "explanation": "A szolgálólány meséje (Margaret Atwood) - a női jogok, a totalitarizmus és a reprodukció témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 86. Szerelem a kolera idején (Gabriel García Márquez)
+    {
+        "question": "Melyik regény szereplői: Florentino Ariza, Fermina Daza és Juvenal Urbino?",
+        "options": ["Száz év magány", "Szerelem a kolera idején", "A parfüm", "Rózsa neve"],
+        "correct": 1,
+        "explanation": "Szerelem a kolera idején (Gabriel García Márquez) - Florentino Ariza, Fermina Daza és Juvenal Urbino a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben Florentino Ariza 50 évig vár Fermina Dazára, miután az férjhez ment egy orvoshoz (Juvenal Urbino), és a regény a kitartó szerelem témáit vizsgálja?",
+        "options": ["Száz év magány", "Szerelem a kolera idején", "Dr. Zhivago", "A vörös és a fekete"],
+        "correct": 1,
+        "explanation": "Szerelem a kolera idején (Gabriel García Márquez) - a szerelem, az idő és a kitartás témáit vizsgálja.",
+        "topic": "regények"
+    },
+
+    # 87. A Foucault-inga (Umberto Eco)
+    {
+        "question": "Melyik regény szereplői: Casaubon, Belbo és Diotallevi?",
+        "options": ["Rózsa neve", "A Foucault-inga", "A parfüm", "A Da Vinci-kód"],
+        "correct": 1,
+        "explanation": "A Foucault-inga (Umberto Eco) - Casaubon, Belbo és Diotallevi a főszereplők.",
+        "topic": "regények"
+    },
+    {
+        "question": "Melyik regényben három kiadói szerkesztő (Casaubon, Belbo, Diotallevi) kitalál egy összeesküvés-elméletet a templomosokról, és a regény a tudás, a szélsőség és az önámítás témáit vizsgálja?",
+        "options": ["Rózsa neve", "A Foucault-inga", "A Da Vinci-kód", "A parfüm"],
+        "correct": 1,
+        "explanation": "A Foucault-inga (Umberto Eco) - a tudás, az összeesküvés-elméletek és az önámítás témáit vizsgálja.",
+        "topic": "regények"
     }
 ]

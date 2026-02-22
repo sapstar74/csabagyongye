@@ -527,10 +527,16 @@ _HUNGARIAN_HINTS = {
 
 
 def get_language() -> str:
-    lang = st.session_state.get("language")
+    try:
+        lang = st.session_state.get("language")
+    except Exception:
+        return "hu"
     if lang not in LANG_OPTIONS:
         lang = "hu"
-        st.session_state["language"] = lang
+        try:
+            st.session_state["language"] = lang
+        except Exception:
+            pass
     return lang
 
 
@@ -542,14 +548,24 @@ def set_language(lang: str) -> None:
 
 
 def t(text: str, **kwargs) -> str:
-    lang = get_language()
-    template = TRANSLATIONS.get(lang, {}).get(text, text)
-    if kwargs:
-        try:
-            return template.format(**kwargs)
-        except (KeyError, ValueError):
-            return template
-    return template
+    if not isinstance(text, str):
+        return str(text) if text is not None else ""
+    try:
+        lang = get_language()
+        trans = TRANSLATIONS.get(lang)
+        if trans is None:
+            trans = {}
+        template = trans.get(text, text)
+        if not isinstance(template, str):
+            template = text
+        if kwargs:
+            try:
+                return template.format(**kwargs)
+            except (KeyError, ValueError):
+                return template
+        return template
+    except Exception:
+        return text
 
 
 def translate_text(text: str) -> str:

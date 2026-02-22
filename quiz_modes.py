@@ -126,7 +126,8 @@ class QuizModeUI:
         if 'selected_difficulty' not in st.session_state:
             st.session_state.selected_difficulty = "közepes"
         
-        # Módok kategória
+        # Módok kategória (wrapper a CSS célzásához)
+        st.markdown('<div id="mode-difficulty-area" class="mode-difficulty-selection"></div>', unsafe_allow_html=True)
         st.markdown("### 📋 Módok")
         
         mode_options = {
@@ -203,6 +204,44 @@ class QuizModeUI:
                 "features": ["Szöveges bevitel", "Pontos válasz szükséges", "Legnehezebb mód"]
             }
         }
+        
+        # Dinamikus CSS: kiválasztott Mód/Nehézség gomb = szürke háttér, fekete betű (nth-child alapján)
+        mode_list = list(mode_options.keys())
+        diff_list = list(difficulty_options.keys())
+        sel_mode_idx = mode_list.index(st.session_state.selected_mode) + 1 if st.session_state.selected_mode in mode_list else 1
+        sel_diff_idx = diff_list.index(st.session_state.selected_difficulty) + 1 if st.session_state.selected_difficulty in diff_list else 1
+        st.markdown(f"""
+        <style>
+        /* Mód és Nehézség: minden gomb alapértelmezetten világosszürke */
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+        #mode-difficulty-area ~ [data-testid="stHorizontalBlock"] .stButton > button {{
+            background-color: #f5f5f4 !important;
+            color: #1a1a1a !important;
+            border: 2px solid #d6d3d1 !important;
+        }}
+        /* Mód gombok: 1. horizontal block, kiválasztott oszlop – szürke háttér, fekete betű */
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(1) > div:nth-child({sel_mode_idx}) .stButton > button,
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(1) > [data-testid="stVerticalBlock"]:nth-child({sel_mode_idx}) .stButton > button,
+        #mode-difficulty-area ~ [data-testid="stHorizontalBlock"]:first-of-type > div:nth-child({sel_mode_idx}) .stButton > button {{
+            background-color: #9ca3af !important;
+            color: #000000 !important;
+        }}
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(1) > div:nth-child({sel_mode_idx}) .stButton > button p,
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(1) > div:nth-child({sel_mode_idx}) .stButton > button span {{
+            color: #000000 !important;
+        }}
+        /* Nehézség gombok: 2. horizontal block, kiválasztott oszlop */
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(2) > div:nth-child({sel_diff_idx}) .stButton > button,
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(2) > [data-testid="stVerticalBlock"]:nth-child({sel_diff_idx}) .stButton > button {{
+            background-color: #9ca3af !important;
+            color: #000000 !important;
+        }}
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(2) > div:nth-child({sel_diff_idx}) .stButton > button p,
+        [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"]:nth-of-type(2) > div:nth-child({sel_diff_idx}) .stButton > button span {{
+            color: #000000 !important;
+        }}
+        </style>
+        """, unsafe_allow_html=True)
         
         # Nehézség gombok (mint a témaköröknél)
         difficulty_cols = st.columns(len(difficulty_options))

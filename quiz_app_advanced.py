@@ -251,6 +251,15 @@ from topics.one_hit_wonders import QUESTIONS as ONE_HIT_WONDERS_QUESTIONS
 from topics.sorozat_focimek import QUESTIONS as SOROZAT_FOCIMEK_QUESTIONS
 from topics.regények import REGÉNYEK_QUESTIONS
 from topics.labdarugo_palyafutas import LABDARUGO_PALYAFUTAS_QUESTIONS
+from topics.vallas_egyhaztortenet import VALLAS_EGYHAZTORTENET_QUESTIONS
+from topics.muveszet import MUVESZET_QUESTIONS
+from topics.termeszettudomany import TERMESZETTUDOMANY_QUESTIONS
+from topics.irodalom import IRODALOM_QUESTIONS
+from topics.politika import POLITIKA_QUESTIONS
+from topics.vilagtortenelm import VILAGTORTENELM_QUESTIONS
+from topics.magyar_tortenelm import MAGYAR_TORTENELM_QUESTIONS
+from topics.biologia import BIOLOGIA_QUESTIONS
+from topics.sport import SPORT_QUESTIONS
 from custom_audio_player import audio_player_with_download
 from youtube_audio_mapping import get_youtube_audio_filename_cached, get_youtube_audio_info
 from magyar_audio_mapping_uj import MAGYAR_AUDIO_MAPPING_UJ, get_magyar_audio_uj_path
@@ -457,74 +466,396 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Theme init (Light/Dark) – a CSS előtt kell
+if "theme" not in st.session_state:
+    st.session_state.theme = "light"
+
+# Custom CSS – design system: színpaletta, tipográfia, 8px grid + Light/Dark
+_theme = st.session_state.get("theme", "light")
+_LIGHT_OVERRIDES = """
+    :root {
+        --color-bg: #ffffff;
+        --color-card: #ffffff;
+        --color-border: #e7e5e4;
+        --color-text: #1a1a1a;
+        --color-muted: #44403c;
+        --color-sidebar: #f5f5f4;
+    }
+    .stApp, [data-testid="stAppViewContainer"], .main .block-container {
+        background-color: #ffffff !important;
+    }
+    [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+        background-color: #f5f5f4 !important;
+    }
+    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] .stRadio label, [data-testid="stSidebar"] .stRadio div,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] div {
+        color: #1a1a1a !important;
+    }
+    [data-testid="stSidebar"] .stRadio > div,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] > div {
+        background-color: transparent !important;
+    }
+    [data-testid="stSidebar"] .stRadio label p,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label p,
+    [data-testid="stSidebar"] .stRadio label span,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label span,
+    [data-testid="stSidebar"] .stRadio label *,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label * {
+        color: #1a1a1a !important;
+    }
+    .main .block-container p, .main .block-container span, .main .block-container div,
+    div[data-testid="stMarkdown"] p, .stMarkdown p, .stMarkdown span,
+    h1, h2, h3, h4, .main-header, .question-text {
+        color: #1a1a1a !important;
+    }
+"""
+_DARK_OVERRIDES = """
+    :root {
+        --color-bg: #1a1a1a;
+        --color-card: #2d2d2d;
+        --color-border: #404040;
+        --color-text: #fafaf9;
+        --color-muted: #a8a29e;
+        --color-sidebar: #171717;
+    }
+    .stApp, [data-testid="stAppViewContainer"], .main .block-container {
+        background-color: #1a1a1a !important;
+    }
+    [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+        background-color: #171717 !important;
+    }
+    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label {
+        color: #fafaf9 !important;
+    }
+    .main-header, .question-text, .summary-box p, .summary-box strong,
+    div[data-testid="stMarkdown"] p, .stMarkdown p {
+        color: #fafaf9 !important;
+    }
+    .summary-box h3, .summary-box h4 { color: #94a3b8 !important; }
+    .topic-button, .option-button { background: #ffffff !important; border-color: #404040 !important; color: #1a1a1a !important; }
+    .topic-button:hover, .option-button:hover { background: #e7e5e4 !important; }
+    /* Mód és Nehézség gombok sötét módban: világos háttér, látható */
+    [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+    #mode-difficulty-area ~ [data-testid="stHorizontalBlock"] .stButton > button {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+        border: 2px solid #d6d3d1 !important;
+    }
+    /* Quiz beállítás csúszkák: értékek piros sötét módban is */
+    div[data-testid="stSlider"] [data-testid="stThumbValue"],
+    div[data-testid="stSlider"] span,
+    div[data-testid="stSlider"] > div > div:last-child {
+        color: #dc2626 !important;
+    }
+    /* Quiz válaszopciók: fehér háttér, sötét betű sötét módban is */
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+    #quiz-answer-options ~ div .stButton > button {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button p,
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button span,
+    #quiz-answer-options ~ div .stButton > button p,
+    #quiz-answer-options ~ div .stButton > button span {
+        color: #1a1a1a !important;
+    }
+    /* Quiz Százalék, Mód, Streak: fekete felirat és érték sötét módban is (világos háttér) */
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"],
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] *,
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] * {
+        color: #1a1a1a !important;
+    }
+    .score-display { background: #2d2d2d !important; color: #fafaf9 !important; border-color: #404040 !important; }
+    h1, h2, h3, h4 { color: #fafaf9 !important; }
+    /* Végleges Kérdésszám Beállítása sötét módban: világos háttér, sötét szöveg */
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h3,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h4,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h5,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] p,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] label,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] span,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"],
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"] *,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stSlider"] label,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * [data-testid="stCheckbox"] label {
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"] {
+        background-color: #f5f5f4 !important;
+        border-color: #d6d3d1 !important;
+    }
+    /* Végleges Kérdésszám Beállítása: gombok olvasható szöveg sötét módban */
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stButton"] > button {
+        color: #1a1a1a !important;
+        background-color: #f5f5f4 !important;
+        border: 2px solid #d6d3d1 !important;
+    }
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button p,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button span {
+        color: #1a1a1a !important;
+    }
+"""
+_THEME_CSS = _LIGHT_OVERRIDES if _theme == "light" else _DARK_OVERRIDES
+
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* === SZÍNPALETTA === */
+    :root {
+        /* Elsődleges márkaszín (grafitszürke/mélykék) */
+        --brand-primary: #2c3e50;
+        /* Akcentus (eredmények, kiemelések) */
+        --brand-accent: #0d9488;
+        /* Neutrális árnyalatok */
+        --neutral-50: #fafaf9;
+        --neutral-100: #f5f5f4;
+        --neutral-200: #e7e5e4;
+        --neutral-300: #d6d3d1;
+        --neutral-400: #a8a29e;
+        --neutral-500: #78716c;
+        --neutral-600: #57534e;
+        --neutral-700: #44403c;
+        --neutral-800: #292524;
+        /* Sémaváltozók */
+        --color-bg: var(--neutral-50);
+        --color-card: #ffffff;
+        --color-border: var(--neutral-200);
+        --color-text: var(--neutral-800);
+        --color-muted: var(--neutral-500);
+        --color-success: #0f766e;
+        --color-error: #b91c1c;
+        /* Komponens: 8–12px radius, diszkrét árnyékok */
+        --radius-sm: 8px;
+        --radius-md: 10px;
+        --radius-lg: 12px;
+        --shadow-sm: 0 1px 3px rgba(44, 62, 80, 0.06);
+        --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.08);
+        --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.1);
+        /* 8px spacing grid */
+        --space-1: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-5: 40px;
+    }
+    
+    /* === TIPOGRAFIA: Inter, max 2 betűcsalád === */
+    .main-header, .question-text, .summary-box, .topic-button, .option-button,
+    div[data-testid="stMarkdown"], .stMarkdown {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    }
     .main-header {
-        font-size: 3rem;
-        font-weight: bold;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
         text-align: center;
-        color: #1f77b4;
-        margin-bottom: 2rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-    .topic-button {
-        background-color: #f0f2f6;
-        border: 2px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 1rem;
-        margin: 0.5rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .topic-button:hover {
-        background-color: #e0e0e0;
-        border-color: #1f77b4;
-    }
-    .topic-button.selected {
-        background-color: #1f77b4;
-        color: white;
-        border-color: #1f77b4;
-    }
-    .quiz-container {
-        background-color: white;
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        margin: 1rem 0;
+        color: var(--brand-primary);
+        margin-bottom: var(--space-3);
+        padding-bottom: var(--space-2);
+        border-bottom: 1px solid var(--color-border);
     }
     .question-text {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 1.5rem;
-        color: #87CEEB;
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: var(--space-3);
+        color: var(--color-text);
+        letter-spacing: -0.01em;
     }
-    /* Pályafutás táblázat stílusa */
+    
+    /* === KOMPONENSEK: egységes radius, árnyékok === */
+    .topic-button {
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-2) var(--space-3);
+        margin: var(--space-1);
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+    }
+    .topic-button:hover {
+        background: var(--neutral-100);
+        border-color: var(--brand-accent);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+    .topic-button.selected {
+        background: #f5f5f4 !important;
+        color: #1a1a1a !important;
+        border-color: var(--brand-accent);
+        box-shadow: var(--shadow-md);
+    }
+    .quiz-container {
+        background: var(--color-card);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4);
+        box-shadow: var(--shadow-sm);
+        margin: var(--space-3) 0;
+        border: 1px solid var(--color-border);
+    }
     div[data-testid="stMarkdown"] table {
-        font-size: 0.95rem;
-        margin: 1rem 0;
+        font-size: 0.9375rem;
+        margin: var(--space-2) 0;
         border-collapse: collapse;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
     }
     div[data-testid="stMarkdown"] table th, div[data-testid="stMarkdown"] table td {
-        padding: 0.5rem 1rem;
-        border: 1px solid #e0e0e0;
+        padding: var(--space-1) var(--space-2);
+        border: 1px solid var(--color-border);
     }
     .option-button {
         width: 100%;
         text-align: left;
-        padding: 1rem;
-        margin: 0.5rem 0;
+        padding: var(--space-2) var(--space-3);
+        margin: var(--space-1) 0;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        background: var(--color-card);
+        transition: all 0.2s ease;
     }
-    /* Egységes gomb magasság és igazítás */
-    .stButton > button {
-        height: 60px !important;
+    /* Minden gomb: fehér háttér, vastag keret, árnyék */
+    .stButton > button,
+    div[data-testid="stButton"] > button {
+        height: 48px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        margin-bottom: 10px !important;
+        margin-bottom: var(--space-2) !important;
+        border-radius: var(--radius-lg) !important;
+        font-weight: 500 !important;
+        font-family: 'Inter', sans-serif !important;
+        transition: all 0.2s ease !important;
+        border: 2px solid #d6d3d1 !important;
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
     }
-    /* Témakör oszlopok egységes magasság */
+    .stButton > button:hover,
+    div[data-testid="stButton"] > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+    }
+    .stButton > button p, .stButton > button span,
+    div[data-testid="stButton"] > button p, div[data-testid="stButton"] > button span {
+        color: #1a1a1a !important;
+    }
+    /* Quiz válaszopciók: fehér háttér, sötét betű mindig */
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] div[data-testid="stButton"] > button,
+    #quiz-answer-options ~ div .stButton > button,
+    #quiz-answer-options ~ div div[data-testid="stButton"] > button {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border-color: #d6d3d1 !important;
+    }
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button:hover,
+    #quiz-answer-options ~ div .stButton > button:hover {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button p,
+    [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button span,
+    #quiz-answer-options ~ div .stButton > button p,
+    #quiz-answer-options ~ div .stButton > button span {
+        color: #1a1a1a !important;
+    }
+    /* Quiz Százalék, Mód, Streak metrikák: fekete felirat és érték */
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"],
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] label,
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] div,
+    [data-testid="stMarkdown"]:has(#quiz-metrics-row) ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] span,
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] label,
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] div,
+    #quiz-metrics-row ~ [data-testid="stHorizontalBlock"] [data-testid="metric-container"] span {
+        color: #1a1a1a !important;
+    }
+    /* Végleges Kérdésszám, Témakörök, Mód, Nehézség: olvasható szöveg (világos háttér, sötét szöveg) */
+    .quiz-settings-section .stButton > button,
+    .quiz-settings-section div[data-testid="stButton"] > button {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+        border: 2px solid #d6d3d1 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    }
+    .quiz-settings-section .stButton > button p,
+    .quiz-settings-section .stButton > button span,
+    .quiz-settings-section div[data-testid="stButton"] > button p,
+    .quiz-settings-section div[data-testid="stButton"] > button span {
+        color: #1a1a1a !important;
+    }
+    /* Quiz beállítás csúszkák: értékek (min/max/aktuális) piros színű (láthatóság) */
+    div[data-testid="stSlider"] [data-testid="stThumbValue"],
+    div[data-testid="stSlider"] [data-testid="stThumbValue"] *,
+    div[data-testid="stSlider"] > div > div:last-child,
+    div[data-testid="stSlider"] > div > div:last-child *,
+    div[data-testid="stSlider"] span {
+        color: #dc2626 !important;
+    }
+    /* Mód és Nehézség gombok: alapértelmezett világosszürke, kiválasztott szürke háttér + fekete betű – dinamikus CSS a quiz_modes.py-ban */
+    [data-testid="stMarkdown"]:has(#mode-difficulty-area) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+    #mode-difficulty-area ~ [data-testid="stHorizontalBlock"] .stButton > button {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+        border: 2px solid #d6d3d1 !important;
+    }
+    /* Legördülő menük, selectbox, radio: világos háttér, sötét szöveg – nem fekete */
+    .stSelectbox > div, .stSelectbox div[data-baseweb="select"],
+    div[data-testid="stSelectbox"] > div,
+    [data-baseweb="select"] {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+    }
+    .stSelectbox > div > div, .stSelectbox input,
+    div[data-testid="stSelectbox"] input,
+    [data-baseweb="select"] input {
+        background-color: #f5f5f4 !important;
+        color: #1a1a1a !important;
+    }
+    .stSelectbox label, div[data-testid="stSelectbox"] label {
+        color: #1a1a1a !important;
+    }
+    .stRadio > div, div[data-testid="stRadio"] > div {
+        background-color: transparent !important;
+    }
+    .stRadio label, div[data-testid="stRadio"] label {
+        color: #1a1a1a !important;
+    }
+    /* Játékos név megadása és egyéb szövegmezők: fehér háttér */
+    .stTextInput > div > div,
+    .stTextInput input,
+    div[data-testid="stTextInput"] > div > div,
+    div[data-testid="stTextInput"] input,
+    div[data-baseweb="base-input"],
+    div[data-baseweb="base-input"] input {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+    .stTextInput input, div[data-testid="stTextInput"] input {
+        border: 2px solid #e7e5e4 !important;
+    }
+    .stTextInput label, div[data-testid="stTextInput"] label {
+        color: #1a1a1a !important;
+    }
     .topic-column {
         min-height: 400px;
         display: flex;
@@ -533,107 +864,107 @@ st.markdown("""
     .topic-column > div {
         flex: 1;
     }
-        border: 2px solid #e0e0e0;
-        border-radius: 10px;
-        background-color: transparent;
-        transition: all 0.3s ease;
-    }
     .option-button:hover {
-        background-color: #e9ecef;
-        border-color: #1f77b4;
+        background: var(--neutral-100);
+        border-color: var(--brand-accent);
+        box-shadow: var(--shadow-sm);
     }
     .option-button.selected {
-        background-color: #1f77b4;
-        color: white;
-        border-color: #1f77b4;
+        background: #f5f5f4 !important;
+        color: #1a1a1a !important;
+        border-color: var(--brand-accent);
     }
     .option-button.correct {
-        background-color: #28a745;
+        background: var(--color-success);
         color: white;
-        border-color: #28a745;
+        border-color: transparent;
     }
     .option-button.incorrect {
-        background-color: #dc3545;
+        background: var(--color-error);
         color: white;
-        border-color: #dc3545;
+        border-color: transparent;
     }
     .score-display {
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1rem;
+        font-weight: 500;
         text-align: center;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        margin: 1rem 0;
-        color: #333;
+        padding: var(--space-2) var(--space-3);
+        background: var(--neutral-100);
+        border-radius: var(--radius-lg);
+        margin: var(--space-2) 0;
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
     }
     .summary-box {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-left: 4px solid #1f77b4;
-        color: #333;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: var(--neutral-100);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3);
+        margin: var(--space-2) 0;
+        border-left: 4px solid var(--brand-accent);
+        color: var(--color-text);
+        box-shadow: var(--shadow-sm);
     }
     .summary-box h3, .summary-box h4 {
-        color: #1f77b4;
-        margin-bottom: 0.75rem;
-        font-size: 1.1rem;
+        color: var(--brand-primary);
+        margin-bottom: var(--space-1);
+        font-size: 1rem;
         font-weight: 600;
     }
     .summary-box p {
-        color: #333;
-        margin: 0.5rem 0;
-        font-size: 1rem;
-        line-height: 1.4;
+        color: var(--color-muted);
+        margin: var(--space-1) 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
     }
     .summary-box strong {
-        color: #1f77b4;
+        color: var(--brand-primary);
         font-weight: 600;
     }
     .mode-info {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 1rem 0;
+        background: #f5f5f4;
+        color: #1a1a1a;
+        border: 1px solid #e7e5e4;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-lg);
+        margin: var(--space-2) 0;
+        box-shadow: var(--shadow-sm);
     }
     .timer-warning {
-        background-color: #ffc107;
-        color: #333;
-        padding: 0.5rem;
-        border-radius: 5px;
+        background: #fef3c7;
+        color: var(--neutral-700);
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-md);
         text-align: center;
-        font-weight: bold;
+        font-weight: 600;
     }
     .timer-danger {
-        background-color: #dc3545;
+        background: var(--color-error);
         color: white;
-        padding: 0.5rem;
-        border-radius: 5px;
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-md);
         text-align: center;
-        font-weight: bold;
+        font-weight: 600;
     }
     .image-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 2rem 0;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin: var(--space-3) 0;
+        padding: var(--space-3);
+        background: var(--neutral-100);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--color-border);
     }
     .image-container img {
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: transform 0.3s ease;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        transition: transform 0.2s ease;
     }
     .image-container img:hover {
-        transform: scale(1.05);
+        transform: scale(1.01);
     }
     .image-modal {
         position: fixed;
@@ -647,58 +978,116 @@ st.markdown("""
         align-items: center;
         z-index: 1000;
         cursor: pointer;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
     }
     .modal-buttons {
         position: fixed;
-        top: 20px;
+        top: var(--space-3);
         left: 50%;
         transform: translateX(-50%);
         z-index: 1001;
-        background-color: rgba(255,255,255,0.9);
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        background: var(--color-card);
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--color-border);
     }
     .image-modal img {
         max-width: 90%;
         max-height: 90%;
         object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
     }
     .image-caption {
         text-align: center;
         font-style: italic;
-        color: #666;
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
+        color: var(--color-muted);
+        margin-top: var(--space-1);
+        font-size: 0.875rem;
     }
+    div[data-testid="stAlert"] {
+        border-radius: var(--radius-lg) !important;
+        border: 1px solid var(--neutral-300) !important;
+        box-shadow: var(--shadow-sm) !important;
+    }
+    /* Végleges Kérdésszám Beállítása blokk: olvasható szöveg (címek, info/success, slider címkék, checkbox) */
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h3,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h4,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] h5,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] p,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] label,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stMarkdown"] span,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"],
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"] *,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stSlider"] label,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stCheckbox"] label,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * [data-testid="stCheckbox"] label {
+        color: #1a1a1a !important;
+    }
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ [data-testid="stHorizontalBlock"] [data-testid="stAlert"] {
+        background-color: #f5f5f4 !important;
+        border-color: #d6d3d1 !important;
+    }
+    /* Végleges Kérdésszám Beállítása: gombok olvasható szöveg (világos háttér, sötét betű) */
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stButton"] > button {
+        color: #1a1a1a !important;
+        background-color: #f5f5f4 !important;
+        border: 2px solid #d6d3d1 !important;
+    }
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button p,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * .stButton > button span,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stButton"] > button p,
+    [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stButton"] > button span {
+        color: #1a1a1a !important;
+    }
+    /* Címsor hierarchia */
+    h1, h2, h3, h4 {
+        font-family: 'Inter', sans-serif !important;
+        color: var(--brand-primary) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.02em !important;
+    }
+    h1 { font-size: 1.75rem !important; line-height: 1.3 !important; }
+    h2 { font-size: 1.375rem !important; line-height: 1.4 !important; }
+    h3 { font-size: 1.125rem !important; line-height: 1.5 !important; }
+    __THEME_OVERRIDES__
 </style>
-""", unsafe_allow_html=True)
+""".replace("__THEME_OVERRIDES__", _THEME_CSS), unsafe_allow_html=True)
+
+# Összevont témakörök: Magyar királyok+Magyar történelem, Zászlók+Zászló részletek, Háborúk+Világtörténelem, Földrajz+Természettudomány
+MAGYAR_TORTENELM_OSSZES = list(KIRALYOK_QUESTIONS) + list(MAGYAR_TORTENELM_QUESTIONS)
+ZASZLOK_OSSZES = list(ZASZLOK_QUESTIONS_ALL) + list(ZASZLOK_RESZLETEK_QUESTIONS)
+VILAGTORTENELM_OSSZES = list(HABORU_QUESTIONS_ALL) + list(VILAGTORTENELM_QUESTIONS)
+TERMESZETTUDOMANY_OSSZES = list(FOLDRAJZ_QUESTIONS) + list(TERMESZETTUDOMANY_QUESTIONS)
 
 # Quiz adatok témakörök szerint csoportosítva
 QUIZ_DATA_BY_TOPIC = {
-    "földrajz": FOLDRAJZ_QUESTIONS,
     "komolyzene": KOMOLYZENE_QUESTIONS,
     "magyar_zenekarok": MAGYAR_ZENEKAROK_QUESTIONS_UJ,
     "nemzetkozi_zenekarok": NEMZETKOZI_ZENEKAROK_QUESTIONS,
     "one_hit_wonders": ONE_HIT_WONDERS_QUESTIONS,
     "sorozat_focimek": SOROZAT_FOCIMEK_QUESTIONS,
-    "háborúk": HABORU_QUESTIONS_ALL,
-    "magyar_királyok": KIRALYOK_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
     "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,
-    "drámák": DRAMAK_QUESTIONS,
     "sport_logók": SPORT_LOGOK_QUESTIONS,
-    "zászlók": ZASZLOK_QUESTIONS_ALL,
-    "zaszlok_reszletek": ZASZLOK_RESZLETEK_QUESTIONS,
+    "zászlók": ZASZLOK_OSSZES,
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
     "regények": REGÉNYEK_QUESTIONS,
     "labdarugo_palyafutas": LABDARUGO_PALYAFUTAS_QUESTIONS,
+    "vallás és egyháztörténet": VALLAS_EGYHAZTORTENET_QUESTIONS,
+    "művészet": MUVESZET_QUESTIONS,
+    "természettudomány": TERMESZETTUDOMANY_OSSZES,
+    "irodalom": list(IRODALOM_QUESTIONS) + list(DRAMAK_QUESTIONS),
+    "politika": POLITIKA_QUESTIONS,
+    "világtörténelem": VILAGTORTENELM_OSSZES,
+    "magyar történelem": MAGYAR_TORTENELM_OSSZES,
+    "biológia": BIOLOGIA_QUESTIONS,
+    "sport": SPORT_QUESTIONS,
 }
 
 # Initialize session state
@@ -743,6 +1132,7 @@ def get_font_style():
 def reset_quiz():
     """Quiz állapot visszaállítása"""
     st.session_state.quiz_state = 'selection'
+    st.session_state.pop('_show_answer_feedback', None)
     st.session_state.selected_topics = []
     st.session_state.current_question = 0
     st.session_state.score = 0
@@ -758,7 +1148,6 @@ def reset_quiz():
     
     # Checkbox állapotok törlése
     topics = {
-        "földrajz": "🌍 Földrajz",
         "komolyzene": "🎼 Komolyzene",
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
@@ -766,17 +1155,22 @@ def reset_quiz():
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
-        "háborúk": "⚔️ Háborúk",
-        "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok",
         "mitológia": "🏛️ Mitológia",
         "állatok": "🐾 Állatok",
-        "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
-        "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
         "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
+        "vallás és egyháztörténet": "⛪ Vallás és egyháztörténet",
+        "művészet": "🎨 Művészet",
+        "természettudomány": "🔬 Természettudomány",
+        "irodalom": "📖 Irodalom",
+        "politika": "🏛️ Politika",
+        "világtörténelem": "🌐 Világtörténelem",
+        "magyar történelem": "🇭🇺 Magyar történelem",
+        "biológia": "🧬 Biológia",
+        "sport": "🏅 Sport",
     }
     
     for topic_key in topics.keys():
@@ -999,7 +1393,7 @@ def get_audio_file_for_question(question, topic):
                 print(f"[DEBUG] Hiba az egyéb témakör original_index használatánál: {e}")
     return None
 
-def show_answer_popup(question, user_answer, correct_answer):
+def show_answer_popup(question, user_answer, correct_answer, is_correct=True):
     """Tartós popup üzenet a válaszról és helyes válaszról"""
     music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"}
     topic = question.get("topic") if isinstance(question, dict) else None
@@ -1015,40 +1409,40 @@ def show_answer_popup(question, user_answer, correct_answer):
         "user_answer": user_answer if user_answer else t("N/A"),
         "correct_answer": correct_answer if correct_answer else t("N/A"),
         "piece_title": piece_title,
+        "is_correct": is_correct,
     }
 
 def render_answer_popup():
-    """Popup megjelenítése, amíg a felhasználó be nem zárja"""
+    """Popup megjelenítése, amíg a felhasználó be nem zárja. Hibás válasz esetén mindig figyelemfelhívó üzenet."""
     popup = st.session_state.get("answer_popup")
     if not popup:
         return
+
+    is_correct = popup.get("is_correct", True)
 
     st.markdown(
         """
         <style>
         .answer-popup {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1f2937;
-            color: #ffffff;
-            padding: 16px 20px;
+            padding: 16px 24px;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-            z-index: 10000;
-            max-width: 90%;
-            width: 900px;
-            font-size: 16px;
-            pointer-events: none;
-            animation: answerPopupFadeOut 0.4s ease 3.5s forwards;
+            margin: 16px 0;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            animation: answerPopupFadeOut 0.4s ease 5s forwards;
         }
-
+        .answer-popup.correct {
+            background: #0f766e;
+            color: #ffffff;
+            border: 1px solid #0d9488;
+        }
+        .answer-popup.incorrect {
+            background: #b91c1c;
+            color: #ffffff;
+            border: 1px solid #991b1b;
+        }
         @keyframes answerPopupFadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+            to { opacity: 0; visibility: hidden; pointer-events: none; }
         }
         </style>
         """,
@@ -1056,16 +1450,17 @@ def render_answer_popup():
     )
 
     piece_line = ""
-    if "piece_title" in popup:
+    if "piece_title" in popup and popup.get("piece_title"):
         piece_value = popup["piece_title"] or t("N/A")
         piece_line = f"<br/><strong>{t('Darab címe:')}</strong> {piece_value}"
 
     user_answer_label = t("Válaszod:")
     correct_answer_label = t("Helyes válasz:")
+    popup_class = "answer-popup incorrect" if not is_correct else "answer-popup correct"
 
     st.markdown(
         f"""
-        <div class="answer-popup">
+        <div class="{popup_class}">
             <strong>{user_answer_label}</strong> {popup["user_answer"]}
             &nbsp;|&nbsp;
             <strong>{correct_answer_label}</strong> {popup["correct_answer"]}
@@ -1074,7 +1469,7 @@ def render_answer_popup():
         """,
         unsafe_allow_html=True,
     )
-    # Egyszeri megjelenítés: a következő rerunban már nem jelenik meg
+    # Egyszeri megjelenítés: a következő kérdésnél már nem jelenik meg (5 mp után CSS animációval eltűnik)
     st.session_state.pop("answer_popup", None)
 
 def start_quiz():
@@ -1083,10 +1478,11 @@ def start_quiz():
         st.error(t("Kérlek válassz ki legalább egy témaköröt!"))
         return
     
-    player_name = st.session_state.get("selected_player", "").strip()
-    if not player_name:
-        st.error(t("Add meg a neved a quiz indításához."))
-        return
+    # Játékos név: opcionális, ha üres marad "Ismeretlen" lesz
+    player_name = (
+        st.session_state.get("player_name_input", "").strip()
+        or st.session_state.get("selected_player", "").strip()
+    )
     st.session_state.selected_player = player_name
     
     # Végleges kérdésszám használata - ha nincs beállítva, akkor 0 (a tényleges kérdések számától függ)
@@ -1097,17 +1493,21 @@ def start_quiz():
     invalid_questions = 0
     
     # Minden témakör kezelése egyedi sliders alapján
+    pending_counts = st.session_state.get('_pending_question_counts', {})
     for topic in st.session_state.selected_topics:
         if topic in QUIZ_DATA_BY_TOPIC:
             topic_questions = QUIZ_DATA_BY_TOPIC[topic]
-            print(f"[DEBUG] {topic} összes kérdés: {len(topic_questions)}")
-            # Egyedi témakör slider használata
-            questions_count = st.session_state.get(f'final_{topic}_questions', min(3, len(topic_questions)))
+            default_count = min(3, len(topic_questions))
+            # Először _pending_question_counts (gomb kattintáskor), majd widget kulcsok
+            questions_count = pending_counts.get(topic)
+            if questions_count is None:
+                questions_count = st.session_state.get(f'final_{topic}_questions')
+            if questions_count is None:
+                questions_count = st.session_state.get(f'{topic}_questions', default_count)
             # Ha nincs beállítva slider érték, használjuk az alapértelmezett értéket
             if questions_count == 0:
                 questions_count = min(3, len(topic_questions))
             questions_count = min(questions_count, len(topic_questions))
-            print(f"[DEBUG] {topic} kiválasztott kérdésszám: {questions_count}")
             
             if questions_count > 0:
                 total_selected_questions += questions_count
@@ -1218,6 +1618,7 @@ def start_quiz():
     st.session_state.quiz_state = 'quiz'
     st.session_state.quiz_start_time = datetime.now()
     st.session_state.question_start_time = datetime.now()
+    st.session_state.pop('_pending_question_counts', None)  # Widget kulcsok ütközés elkerülése
     st.rerun()
 
 def main():
@@ -1261,12 +1662,27 @@ def main():
     with header_col_right:
         render_language_selector()
     st.markdown(
-        f'<h1 style="text-align: center; {font_style["title"]} color: #1f77b4; margin-bottom: 2rem;">{t("🎯 Csabagyöngye Tréning Center 😄")}</h1>',
+        f'<h1 style="text-align: center; {font_style["title"]} color: #2c3e50; margin-bottom: 2rem; font-family: Inter, sans-serif;">{t("🎯 Csabagyöngye Tréning Center 😄")}</h1>',
         unsafe_allow_html=True,
     )
     
     # Sidebar navigáció
     with st.sidebar:
+        st.markdown(t("## 🌓 Megjelenés"))
+        theme_options = {"light": "☀️ Light", "dark": "🌙 Dark"}
+        current_theme = st.session_state.get("theme", "light")
+        new_theme = st.radio(
+            t("Téma"),
+            options=list(theme_options.keys()),
+            format_func=lambda x: theme_options[x],
+            index=list(theme_options.keys()).index(current_theme),
+            key="theme_radio",
+            label_visibility="collapsed",
+        )
+        if new_theme != current_theme:
+            st.session_state.theme = new_theme
+            st.rerun()
+        st.markdown("---")
         st.markdown(t("## 🧭 Navigáció"))
         page_labels = {
             "Quiz": "🎯 Quiz",
@@ -1507,7 +1923,7 @@ def _get_piece_title_for_question(question: dict) -> Optional[str]:
 def show_artist_list_page():
     """Szerző szerinti lista önálló oldal"""
     st.markdown(
-        f'<h2 style="text-align: center; color: #1f77b4;">{t("🎼 Szerző szerinti lista")}</h2>',
+        f'<h2 style="text-align: center; color: #2c3e50; font-family: Inter, sans-serif;">{t("🎼 Szerző szerinti lista")}</h2>',
         unsafe_allow_html=True,
     )
     
@@ -1913,7 +2329,7 @@ def show_github_sync_dialog():
 
 def show_audio_track_management_page():
     """Audio track kezelési oldal megjelenítése"""
-    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🎵 Audio Track Kezelés</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align: center; color: #2c3e50; font-family: Inter, sans-serif;">🎵 Audio Track Kezelés</h2>', unsafe_allow_html=True)
     
     # GitHub szinkronizáció megjelenítése
     if not show_github_sync_dialog():
@@ -2247,7 +2663,7 @@ def show_audio_track_management_page():
                     }
                     .correct-answer-column {
                         font-size: 12px !important;
-                        color: #1f77b4 !important;
+                        color: #2c3e50 !important;
                         font-weight: bold !important;
                     }
                     </style>
@@ -2634,7 +3050,7 @@ def show_audio_track_management_page():
 
 def show_github_sync_page():
     """GitHub szinkronizációs oldal megjelenítése"""
-    st.markdown('<h2 style="text-align: center; color: #1f77b4;">🔄 GitHub Szinkronizálás</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align: center; color: #2c3e50; font-family: Inter, sans-serif;">🔄 GitHub Szinkronizálás</h2>', unsafe_allow_html=True)
     
     st.markdown("""
     ### 📋 Mit csinál ez a funkció?
@@ -2717,19 +3133,19 @@ def show_search_page():
 
 def show_topic_selection():
     """Témakör kiválasztás"""
+    st.markdown('<div class="quiz-settings-section">', unsafe_allow_html=True)
     
     # Felhasználó kiválasztás
     st.markdown(t("### 👤 Játékos név megadása"))
     
     player_input = st.text_input(
-        t("Add meg a neved:"),
+        t("Add meg a neved (opcionális):"),
         value=st.session_state.get("selected_player", ""),
         key="player_name_input",
+        placeholder=t("Üresen hagyható"),
     )
     player_name = player_input.strip()
     st.session_state.selected_player = player_name
-    if not player_name:
-        st.warning(t("A játékos név megadása kötelező."))
     
     # Quiz mód kiválasztás
     selected_mode, selected_difficulty = QuizModeUI.show_mode_selection()
@@ -2754,7 +3170,6 @@ def show_topic_selection():
     
     # Témakörök definiálása
     topics = {
-        "földrajz": "🌍 Földrajz",
         "komolyzene": "🎼 Komolyzene",
         "magyar_zenekarok": "🎵 Magyar könnyűzene",
         "nemzetkozi_zenekarok": "🌍 Nemzetközi zenekarok",
@@ -2763,17 +3178,22 @@ def show_topic_selection():
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
-        "háborúk": "⚔️ Háborúk",
-        "magyar_királyok": "👑 Magyar királyok",
         "tudósok": "🔬 Tudósok, művészek, híres emberek",
         "mitológia": "🏛️ Mitológia",
         "állatok": "🐾 Állatok",
-        "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
-        "zaszlok_reszletek": "🔍 Zászlók részlete",
         "idióta_szavak": "🤪 Idióta szavak",
         "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
+        "vallás és egyháztörténet": "⛪ Vallás és egyháztörténet",
+        "művészet": "🎨 Művészet",
+        "természettudomány": "🔬 Természettudomány",
+        "irodalom": "📖 Irodalom",
+        "politika": "🏛️ Politika",
+        "világtörténelem": "🌐 Világtörténelem",
+        "magyar történelem": "🇭🇺 Magyar történelem",
+        "biológia": "🧬 Biológia",
+        "sport": "🏅 Sport",
     }
     
     # Randomizáló funkció
@@ -2808,8 +3228,8 @@ def show_topic_selection():
             st.session_state.selected_topics = list(topics.keys())
             
             # Zenei és egyéb témakörök szétválasztása
-            music_topics = [t for t in topics.keys() if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
-            other_topics = [t for t in topics.keys() if "zene" not in t and "zenekar" not in t and t not in {"one_hit_wonders", "sorozat_focimek"}]
+            music_topics = [tk for tk in topics.keys() if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
+            other_topics = [tk for tk in topics.keys() if "zene" not in tk and "zenekar" not in tk and tk not in {"one_hit_wonders", "sorozat_focimek"}]
             
             # Kérdések elosztása a zenei témakörök között
             if music_topics:
@@ -3012,7 +3432,7 @@ def show_topic_selection():
     
     with col2:
         st.markdown(t("### 📚 Egyéb témakörök"))
-        other_topics_list = [t for t in topics.items() if "zene" not in t[0] and "zenekar" not in t[0] and t[0] not in {"one_hit_wonders", "sorozat_focimek"}]
+        other_topics_list = [item for item in topics.items() if "zene" not in item[0] and "zenekar" not in item[0] and item[0] not in {"one_hit_wonders", "sorozat_focimek"}]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
                 # Kattintható gomb a checkbox helyett
@@ -3071,17 +3491,18 @@ def show_topic_selection():
     
     # Kérdésszámok beállítása
     if st.session_state.selected_topics:
+        st.markdown('<div id="final-question-settings"></div>', unsafe_allow_html=True)
         st.markdown(t("### ⚙️ Kérdésszámok beállítása"))
         
-        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
-        other_topics = [t for t in st.session_state.selected_topics if "zene" not in t and "zenekar" not in t and t not in {"one_hit_wonders", "sorozat_focimek"}]
+        music_topics = [tk for tk in st.session_state.selected_topics if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
+        other_topics = [tk for tk in st.session_state.selected_topics if "zene" not in tk and "zenekar" not in tk and tk not in {"one_hit_wonders", "sorozat_focimek"}]
         
         if music_topics:
             st.markdown(t("#### 🎵 Zenei kérdések beállításai"))
             # Összes zenei kérdés számának kiszámítása
             total_music_questions = sum(len(QUIZ_DATA_BY_TOPIC.get(topic, [])) for topic in music_topics)
             
-            # Jelenlegi zenei kérdések összege az egyedi sliders alapján
+            # Jelenlegi zenei kérdések összege a témakör oszlop csúszkák alapján
             current_music_total = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
             
             col1, col2 = st.columns(2)
@@ -3090,7 +3511,7 @@ def show_topic_selection():
                     t("Összes zenei kérdés száma"),
                     1,
                     total_music_questions,
-                    st.session_state.get('default_music_questions', current_music_total),
+                    st.session_state.get('default_music_questions', current_music_total) if current_music_total > 0 else st.session_state.get('music_total_questions', 10),
                     key="music_total_questions",
                 )
             with col2:
@@ -3154,7 +3575,7 @@ def show_topic_selection():
     
     # Quiz indítása
     if st.session_state.selected_topics:
-        st.markdown(t("### 🎯 Végleges Kérdésszám Beállítása"))
+        st.markdown(f'<h3 style="color:#1a1a1a;font-family:Inter,sans-serif;">{t("🎯 Végleges Kérdésszám Beállítása")}</h3>', unsafe_allow_html=True)
         
         # Összes elérhető kérdés számának kiszámítása
         total_available_questions = 0
@@ -3169,31 +3590,122 @@ def show_topic_selection():
                 other_questions += topic_questions
             total_available_questions += topic_questions
         
-        # Jelenlegi beállított kérdésszámok összegzése az egyedi sliders alapján
+        # Jelenlegi beállított kérdésszámok: MINDKÉT forrás figyelembe vétele
+        # 1) Témakör oszlop csúszkák (final_{topic}_questions) - minden témakör gombja alatt
+        # 2) Kérdésszámok beállítása: music_total_questions, other_total_questions, {topic}_questions
+        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
+        other_topics = [t for t in st.session_state.selected_topics if t not in music_topics]
         current_total = 0
-        for topic in st.session_state.selected_topics:
-            topic_questions = st.session_state.get(f'final_{topic}_questions', 0)
-            current_total += topic_questions
-        
-        # Végleges kérdésszám automatikusan a csúszkák összege (nem módosítható)
+        if music_topics:
+            if st.session_state.get('music_auto_distribute', True):
+                # Auto: témakör oszlop csúszkák összege VAGY Összes zenei csúszka (ha témakörök összege 0)
+                music_from_topics = sum(st.session_state.get(f'final_{t}_questions', 0) for t in music_topics)
+                current_total += music_from_topics if music_from_topics > 0 else st.session_state.get('music_total_questions', 10)
+            else:
+                for topic in music_topics:
+                    max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                    q = st.session_state.get(f'{topic}_questions', st.session_state.get(f'final_{topic}_questions', min(3, max_q)))
+                    current_total += q
+        if other_topics:
+            if st.session_state.get('other_auto_distribute', True):
+                # Auto: témakör oszlop csúszkák összege VAGY Összes egyéb csúszka
+                other_from_topics = sum(st.session_state.get(f'final_{t}_questions', 0) for t in other_topics)
+                current_total += other_from_topics if other_from_topics > 0 else st.session_state.get('other_total_questions', 40)
+            else:
+                for topic in other_topics:
+                    max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                    q = st.session_state.get(f'{topic}_questions', st.session_state.get(f'final_{topic}_questions', min(3, max_q)))
+                    current_total += q
+        if current_total == 0:
+            for topic in st.session_state.selected_topics:
+                max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                if max_available > 0:
+                    current_total += min(3, max_available)
         final_question_count = current_total
         
-        # Információk megjelenítése
-        col1, col2, col3, col4 = st.columns(4)
-        with col1:
-            st.info(t("🎵 Zenei kérdések: {count}", count=music_questions))
-        with col2:
-            st.info(t("📚 Egyéb kérdések: {count}", count=other_questions))
-        with col3:
-            st.info(t("📊 Összes elérhető: {count}", count=total_available_questions))
-        with col4:
-            st.success(t("🎯 Végleges kérdésszám: {count}", count=final_question_count))
+        # Kiválasztott zenei és egyéb kérdésszámok (slider értékek alapján)
+        music_selected = 0
+        other_selected = 0
+        if music_topics:
+            if st.session_state.get('music_auto_distribute', True):
+                music_selected = st.session_state.get('music_total_questions', 10)
+            else:
+                music_selected = sum(st.session_state.get(f'{t}_questions', st.session_state.get(f'final_{t}_questions', 0)) for t in music_topics)
+        if other_topics:
+            if st.session_state.get('other_auto_distribute', True):
+                other_selected = st.session_state.get('other_total_questions', 40)
+            else:
+                other_selected = sum(st.session_state.get(f'{t}_questions', st.session_state.get(f'final_{t}_questions', 0)) for t in other_topics)
         
-        # Quiz indítás gomb
-        if st.button(t("🚀 Quiz indítása"), type="primary", use_container_width=True):
-            # Végleges kérdésszám beállítása mindig a jelenlegi értékre
-            st.session_state.final_question_count = final_question_count
-            start_quiz()
+        # Információk megjelenítése (inline stílus: mindig olvasható sötét szöveg)
+        col1, col2, col3, col4 = st.columns(4)
+        box_style = "padding:16px;border-radius:12px;margin:8px 0;font-size:1rem;background:#e0f2fe;color:#1a1a1a;border:1px solid #7dd3fc;"
+        success_style = "padding:16px;border-radius:12px;margin:8px 0;font-size:1rem;background:#d1fae5;color:#1a1a1a;border:1px solid #34d399;"
+        with col1:
+            st.markdown(f'<div style="{box_style}"><strong>🎵 Zenei:</strong> {music_selected} / {music_questions}</div>', unsafe_allow_html=True)
+        with col2:
+            st.markdown(f'<div style="{box_style}"><strong>📚 Egyéb:</strong> {other_selected} / {other_questions}</div>', unsafe_allow_html=True)
+        with col3:
+            st.markdown(f'<div style="{box_style}"><strong>📊 Összes elérhető:</strong> {total_available_questions}</div>', unsafe_allow_html=True)
+        with col4:
+            st.markdown(f'<div style="{success_style}"><strong>🎯 Végleges:</strong> {final_question_count}</div>', unsafe_allow_html=True)
+        
+        # Frissítés gomb + Quiz indítás (Streamlit automatikusan frissít slider változásnál, de manuális frissítés is lehetséges)
+        btn_col1, btn_col2, btn_col3 = st.columns([1, 2, 1])
+        with btn_col1:
+            if st.button(t("🔄 Frissítés"), key="refresh_final_count", use_container_width=True):
+                st.rerun()
+        with btn_col2:
+            if st.button(t("🚀 Quiz indítása"), type="primary", use_container_width=True):
+                # Kérdésszámok összegyűjtése _pending_question_counts-ba (widget kulcsok nem módosíthatók)
+                pending = {}
+                music_topics = [tk for tk in st.session_state.selected_topics if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
+                other_topics = [tk for tk in st.session_state.selected_topics if tk not in music_topics]
+                if music_topics:
+                    if st.session_state.get('music_auto_distribute', True):
+                        total = st.session_state.get('music_total_questions', 10)
+                        per_topic = total // len(music_topics)
+                        remainder = total % len(music_topics)
+                        extra = random.sample(music_topics, remainder) if remainder else []
+                        for topic in music_topics:
+                            max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                            q = min(per_topic + (1 if topic in extra else 0), max_q)
+                            pending[topic] = q
+                    else:
+                        for topic in music_topics:
+                            max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                            if f'{topic}_questions' in st.session_state:
+                                q = st.session_state[f'{topic}_questions']
+                            elif f'final_{topic}_questions' in st.session_state:
+                                q = st.session_state[f'final_{topic}_questions']
+                            else:
+                                q = min(3, max_q)
+                            pending[topic] = min(q, max_q) if max_q > 0 else 0
+                if other_topics:
+                    if st.session_state.get('other_auto_distribute', True):
+                        total = st.session_state.get('other_total_questions', 40)
+                        per_topic = total // len(other_topics)
+                        remainder = total % len(other_topics)
+                        extra = random.sample(other_topics, remainder) if remainder else []
+                        for topic in other_topics:
+                            max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                            q = min(per_topic + (1 if topic in extra else 0), max_q)
+                            pending[topic] = q
+                    else:
+                        for topic in other_topics:
+                            max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                            if f'{topic}_questions' in st.session_state:
+                                q = st.session_state[f'{topic}_questions']
+                            elif f'final_{topic}_questions' in st.session_state:
+                                q = st.session_state[f'final_{topic}_questions']
+                            else:
+                                q = min(3, max_q)
+                            pending[topic] = min(q, max_q) if max_q > 0 else 0
+                st.session_state['_pending_question_counts'] = pending
+                st.session_state.final_question_count = final_question_count
+                start_quiz()
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 def show_quiz():
     """Quiz megjelenítése"""
@@ -3256,28 +3768,29 @@ def show_quiz():
     col1, col2 = st.columns(2)
     
     with col1:
-        # Pontszám mező
+        # Pontszám mező (akcentus szín – eredmények)
         score_label = t("🎯 PONTSZÁM")
         st.markdown(f"""
-        <div style='text-align: center; padding: 15px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); border-radius: 15px; border: 3px solid #d32f2f; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
-            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>{score_label}</div>
-            <div style='font-size: 32px; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.score}</div>
-            <div style='font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 5px;'>{(st.session_state.score / len(st.session_state.quiz_questions) * 100):.1f}%</div>
+        <div style='text-align: center; padding: 16px; background: #ffffff; color: #1a1a1a; border-radius: 12px; border: 1px solid #e7e5e4; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-family: Inter, sans-serif;'>
+            <div style='font-size: 14px; color: #44403c; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.02em;'>{score_label}</div>
+            <div style='font-size: 28px; color: #1a1a1a; font-weight: 700; letter-spacing: -0.02em;'>{st.session_state.score}</div>
+            <div style='font-size: 13px; color: #44403c; margin-top: 8px;'>{(st.session_state.score / len(st.session_state.quiz_questions) * 100):.1f}%</div>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
-        # Kérdés sorszám mező
+        # Kérdés sorszám mező (elsődleges szín)
         question_label = t("📝 KÉRDÉS")
         st.markdown(f"""
-        <div style='text-align: center; padding: 15px; background: linear-gradient(135deg, #4CAF50, #45a049); border-radius: 15px; border: 3px solid #2E7D32; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);'>
-            <div style='font-size: 16px; color: white; font-weight: bold; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);'>{question_label}</div>
-            <div style='font-size: 32px; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.current_question + 1}</div>
-            <div style='font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 5px;'>/ {len(st.session_state.quiz_questions)}</div>
+        <div style='text-align: center; padding: 16px; background: #ffffff; color: #1a1a1a; border-radius: 12px; border: 1px solid #e7e5e4; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-family: Inter, sans-serif;'>
+            <div style='font-size: 14px; color: #44403c; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.02em;'>{question_label}</div>
+            <div style='font-size: 28px; color: #1a1a1a; font-weight: 700; letter-spacing: -0.02em;'>{st.session_state.current_question + 1}</div>
+            <div style='font-size: 13px; color: #44403c; margin-top: 8px;'>/ {len(st.session_state.quiz_questions)}</div>
         </div>
         """, unsafe_allow_html=True)
     
-    # Egyéb metrikák megjelenítése
+    # Egyéb metrikák megjelenítése (Százalék, Mód, Streak – fekete felirat és érték)
+    st.markdown('<div id="quiz-metrics-row"></div>', unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -3329,7 +3842,7 @@ def show_quiz():
         if st.session_state.mode_manager.lives is not None:
             lives_text = t("Életek: {count}", count=st.session_state.mode_manager.lives)
             st.markdown(
-                f"<div style='text-align: center; font-size: 14px; color: #666; margin-top: -10px;'>{lives_text}</div>",
+                f"<div style='text-align: center; font-size: 14px; color: #78716c; margin-top: -10px; font-family: Inter, sans-serif;'>{lives_text}</div>",
                 unsafe_allow_html=True,
             )
     
@@ -3345,7 +3858,7 @@ def show_quiz():
         # Időzítő megjelenítése
         timer_text = t("⏱️ Hátralévő idő: {seconds} másodperc", seconds=f"{time_remaining:.1f}")
         st.markdown(
-            f"<div style='text-align: center; font-size: 16px; color: {'red' if time_remaining < 10 else 'orange' if time_remaining < 30 else 'green'};'>{timer_text}</div>",
+            f"<div style='text-align: center; font-size: 16px; color: {'#b91c1c' if time_remaining < 10 else '#b45309' if time_remaining < 30 else '#0f766e'}; font-family: Inter, sans-serif; font-weight: 500;'>{timer_text}</div>",
             unsafe_allow_html=True,
         )
     
@@ -3555,12 +4068,45 @@ def show_quiz():
         else:
             # Többválasztós kérdések esetén index alapú
             is_correct = selected_answer == new_correct_index
-        # --- Helyes válasz gomb (Könnyű módban) ---
         difficulty = st.session_state.mode_manager.current_difficulty
-        if question_type == "text_input":
-            # Text input kérdések esetén nincs helyes válasz gomb
+        # Többválasztós: visszajelzés (zöld/piros), 2 mp után automatikus továbblépés
+        if question_type != "text_input" and st.session_state.get('_show_answer_feedback') and 'options' in locals():
+            st.markdown('<div id="quiz-answer-options">', unsafe_allow_html=True)
+            sel = selected_answer
+            col1, col2 = st.columns(2)
+            with col1:
+                for i in range(0, min(2, len(options))):
+                    opt = display_options[i]
+                    if i == sel:
+                        bg = "#22c55e" if is_correct else "#dc2626"
+                        st.markdown(f'<div style="background:{bg};color:white;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+                    elif not is_correct and i == new_correct_index:
+                        st.markdown(f'<div style="background:#22c55e;color:white;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+                    else:
+                        st.markdown(f'<div style="background:#f5f5f4;color:#1a1a1a;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+            with col2:
+                for i in range(2, min(4, len(options))):
+                    opt = display_options[i]
+                    if i == sel:
+                        bg = "#22c55e" if is_correct else "#dc2626"
+                        st.markdown(f'<div style="background:{bg};color:white;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+                    elif not is_correct and i == new_correct_index:
+                        st.markdown(f'<div style="background:#22c55e;color:white;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+                    else:
+                        st.markdown(f'<div style="background:#f5f5f4;color:#1a1a1a;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+            time.sleep(2)
+            st.session_state.pop('_show_answer_feedback', None)
+            if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
+                st.session_state.current_question += 1
+                st.session_state.question_start_time = datetime.now()
+            else:
+                st.session_state.quiz_state = 'results'
+            st.rerun()
+        elif question_type == "text_input":
             pass
         elif difficulty == DifficultyLevel.EASY and new_correct_index < len(options):
+            # Helyes válasz gomb (Könnyű módban, ha nincs feedback megjelenítés)
             st.markdown(f"""
                             <div style=\"position: fixed; bottom: 40px; right: 20px; z-index: 1000;\">
                 <div class=\"rotated-answer\">
@@ -3592,9 +4138,7 @@ def show_quiz():
                     if is_correct:
                         st.session_state.score += 1
                     
-                    show_answer_popup(question, user_answer, translate_text(correct_answer_raw or ""))
-                    
-                    # Válasz mentése
+                    # Válasz mentése (popup nélkül)
                     st.session_state.question_answers[st.session_state.current_question] = user_answer
                     st.session_state.answers.append({
                         'question': question.get("question", t("Ismeretlen kérdés")),
@@ -3608,7 +4152,8 @@ def show_quiz():
                     # Streak frissítése
                     st.session_state.mode_manager.update_streak(is_correct)
                     
-                    # Következő kérdés
+                    # 2 mp várakozás, majd továbblépés
+                    time.sleep(2)
                     if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                         st.session_state.current_question += 1
                         st.session_state.question_start_time = datetime.now()
@@ -3634,10 +4179,7 @@ def show_quiz():
                         if is_correct:
                             st.session_state.score += 1
 
-                        display_correct = translate_text(correct_answer_raw or "")
-                        show_answer_popup(question, user_answer, display_correct)
-                        
-                        # Válasz mentése
+                        # Válasz mentése (popup nélkül)
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
                         st.session_state.answers.append({
                             'question': question.get("question", t("Ismeretlen kérdés")),
@@ -3651,7 +4193,8 @@ def show_quiz():
                         # Streak frissítése
                         st.session_state.mode_manager.update_streak(is_correct)
                         
-                        # Következő kérdés
+                        # 2 mp várakozás, majd továbblépés
+                        time.sleep(2)
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
@@ -3673,9 +4216,7 @@ def show_quiz():
                         if is_correct:
                             st.session_state.score += 1
 
-                        show_answer_popup(question, user_answer, translate_text(correct_answer_raw))
-                        
-                        # Válasz mentése
+                        # Válasz mentése (popup nélkül)
                         st.session_state.question_answers[st.session_state.current_question] = user_answer
                         st.session_state.answers.append({
                             'question': question.get("question", t("Ismeretlen kérdés")),
@@ -3689,7 +4230,8 @@ def show_quiz():
                         # Streak frissítése
                         st.session_state.mode_manager.update_streak(is_correct)
                         
-                        # Következő kérdés
+                        # 2 mp várakozás, majd továbblépés
+                        time.sleep(2)
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
@@ -3714,28 +4256,33 @@ def show_quiz():
                 transform: rotate(180deg);
                 display: inline-block;
             }}
-            /* Streamlit gombok nagyobbítása */
-            .stButton > button {{
+            /* Válaszopció gombok: fehér háttér, sötét szöveg – Streamlit DOM: marker után jönnek a gombok */
+            [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button,
+            [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] div[data-testid="stButton"] > button,
+            #quiz-answer-options ~ div .stButton > button,
+            #quiz-answer-options ~ div div[data-testid="stButton"] > button {{
+                background-color: #ffffff !important;
+                background: #ffffff !important;
+                color: #1a1a1a !important;
+                border: 2px solid #d6d3d1 !important;
                 font-size: 24px !important;
                 padding: 20px !important;
                 height: auto !important;
                 min-height: 60px !important;
                 line-height: 1.5 !important;
             }}
-            
-            /* Dinamikus gomb stílusok */
-            .stButton > button[data-selected="correct"] {{
-                background-color: #28a745 !important;
-                color: white !important;
-                border: 3px solid #28a745 !important;
+            [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button:hover,
+            #quiz-answer-options ~ div .stButton > button:hover {{
+                background-color: #f5f5f4 !important;
+                background: #f5f5f4 !important;
+                color: #1a1a1a !important;
             }}
-            
-            .stButton > button[data-selected="incorrect"] {{
-                background-color: #dc3545 !important;
-                color: white !important;
-                border: 3px solid #dc3545 !important;
+            [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button p,
+            [data-testid="stMarkdown"]:has(#quiz-answer-options) ~ [data-testid="stHorizontalBlock"] .stButton > button span,
+            #quiz-answer-options ~ div .stButton > button p,
+            #quiz-answer-options ~ div .stButton > button span {{
+                color: #1a1a1a !important;
             }}
-            
 
             </style>
             """, unsafe_allow_html=True)
@@ -3746,24 +4293,20 @@ def show_quiz():
                 
 
             
-            # Válaszlehetőségek elrendezése
+            # Válaszlehetőségek elrendezése (fehér háttér, sötét szöveg)
+            st.markdown('<div id="quiz-answer-options"></div>', unsafe_allow_html=True)
             col1, col2 = st.columns(2)
-            
-            # Első sor: 2 válaszlehetőség
             with col1:
                 for i in range(0, min(2, len(options))):
                     option = display_options[i]
-                    
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
-                               use_container_width=True, help=t("Válaszlehetőség")):
+                               type="secondary", use_container_width=True, help=t("Válaszlehetőség")):
                         handle_answer(i, new_correct_index, options, question, display_options)
-            
             with col2:
                 for i in range(2, min(4, len(options))):
                     option = display_options[i]
-                    
                     if st.button(option, key=f"option_{st.session_state.current_question}_{i}", 
-                               use_container_width=True, help=t("Válaszlehetőség")):
+                               type="secondary", use_container_width=True, help=t("Válaszlehetőség")):
                         handle_answer(i, new_correct_index, options, question, display_options)
             
             # Helyes válasz megjelenítése (csak Könnyű módban)
@@ -3815,11 +4358,8 @@ def handle_answer(selected_index, correct_index, options, question, display_opti
             st.rerun()
             return
     
-    # Válasz mentése
+    # Válasz mentése (popup nélkül)
     display_options = display_options or options
-    selected_text = display_options[selected_index] if 0 <= selected_index < len(display_options) else ""
-    correct_text = display_options[correct_index] if 0 <= correct_index < len(display_options) else ""
-    show_answer_popup(question, selected_text, correct_text)
     st.session_state.question_answers[st.session_state.current_question] = selected_index
     st.session_state.answers.append({
         'question': question.get("question", t("Ismeretlen kérdés")),
@@ -3830,12 +4370,8 @@ def handle_answer(selected_index, correct_index, options, question, display_opti
         'time_taken': (datetime.now() - st.session_state.question_start_time).total_seconds()
     })
     
-    # Következő kérdésre lépés
-    if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
-        st.session_state.current_question += 1
-        st.session_state.question_start_time = datetime.now()
-    else:
-        st.session_state.quiz_state = 'results'
+    # Visszajelzés megjelenítése (zöld/piros gomb), majd Következő gombbal lépünk
+    st.session_state['_show_answer_feedback'] = True
     st.rerun()
 
 def handle_time_up():
@@ -3845,6 +4381,8 @@ def handle_time_up():
     # Ellenőrizzük, hogy van-e options_data
     if st.session_state.current_question not in st.session_state.question_options:
         # Ha nincs options_data, automatikusan rossz válasz
+        opts = question.get("options", [])
+        corr = question.get("correct", 0)
         st.session_state.question_answers[st.session_state.current_question] = -1
         st.session_state.answers.append({
             'question': question.get("question", t("Ismeretlen kérdés")),
@@ -3856,8 +4394,10 @@ def handle_time_up():
         })
     else:
         options_data = st.session_state.question_options[st.session_state.current_question]
-        
-        # Automatikusan rossz válasz
+        correct_index = options_data['correct_index']
+        options = options_data.get('options', [])
+        display_options = options_data.get('display_options', options)
+        # Automatikusan rossz válasz (popup nélkül)
         st.session_state.question_answers[st.session_state.current_question] = -1
         st.session_state.answers.append({
             'question': question["question"],
@@ -4613,7 +5153,7 @@ def show_spotify_playlist_main():
                         # Letöltési állapot megjelenítése
                         if track.get('downloaded', False):
                             st.markdown(
-                                f"<div style='color: green; font-weight: bold;'>✅ Letöltve</div>", 
+                                f"<div style='color: #0f766e; font-weight: 600; font-family: Inter, sans-serif;'>✅ Letöltve</div>", 
                                 unsafe_allow_html=True
                             )
 
@@ -4855,7 +5395,7 @@ def show_spotify_playlist_tab():
                             # Ha nincs kép, csak egy üres hely
                             st.markdown(f"""
                             <div style="text-align: center; margin: 10px 0; width: 150px; height: 150px; border: 2px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
-                                <span style="color: #666; font-size: 12px;">Nincs kép</span>
+                                <span style="color: #78716c; font-size: 12px;">Nincs kép</span>
                             </div>
                             """, unsafe_allow_html=True)
                         
@@ -4940,7 +5480,7 @@ def show_spotify_playlist_tab():
                             # Ha nincs kép, csak egy üres hely
                             st.markdown(f"""
                             <div style="text-align: center; margin: 10px 0; width: 150px; height: 150px; border: 2px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
-                                <span style="color: #666; font-size: 12px;">Nincs kép</span>
+                                <span style="color: #78716c; font-size: 12px;">Nincs kép</span>
                             </div>
                             """, unsafe_allow_html=True)
                         
@@ -5198,7 +5738,7 @@ def show_youtube_search_tab():
                             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
                             font-size: 12px;
                         ">
-                        <h3 style="color: #1f77b4; margin-bottom: 20px; font-size: 12px;">📋 Letöltési és integrálási folyamat</h3>
+                        <h3 style="color: #2c3e50; margin-bottom: 20px; font-size: 12px;">📋 Letöltési és integrálási folyamat</h3>
                         </div>
                         """, unsafe_allow_html=True)
                         
