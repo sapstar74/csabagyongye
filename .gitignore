@@ -120,6 +120,9 @@ Thumbs.db
 # Audio backup folders (csak ezeket zárjuk ki)
 audio_files_backup/
 
+# Backup folder (2GB+ audio, nem verziókezelés alá)
+backup/
+
 # Temporary files
 *.tmp
 *.temp
