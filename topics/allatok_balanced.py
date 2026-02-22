@@ -1,324 +1,57 @@
 # Kiegyensúlyozott állat kérdések a quiz alkalmazáshoz
 # Különböző állatok a "Hasznos haszontalanságok" PDF-ből - EGYENSÚLYOS LISTA
 
+_TOPIC = 'állatok'
+
+
+def _q(question, correct, options, explanation, topic=_TOPIC):
+    """Segédfüggvény: kompakt kérdés létrehozása."""
+    return {"question": question, "options": options, "correct": correct, "explanation": explanation, "topic": topic}
+
+
 ALLATOK_QUESTIONS_BALANCED = [
-    # Különleges állatok (PDF-ben szereplő)
-    {
-        "question": "Mi az okapi rokonsági foka?",
-        "options": ["Zsiráf rokona", "Zebra rokona", "Antilop rokona", "Ló rokona"],
-        "correct": 0,
-        "explanation": "Az okapi afrikai állat, amely a zsiráf rokona.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol él a tüskés ördög?",
-        "options": ["Afrika", "Ázsia", "Dél-Amerika", "Ausztrália"],
-        "correct": 3,
-        "explanation": "A tüskés ördög egy ausztrál hüllő.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a kacsafarkú szender?",
-        "options": ["Madár", "Emlős", "Hüllő", "Rovar lepke-szender"],
-        "correct": 3,
-        "explanation": "A kacsafarkú szender egy rovar lepke-szender.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Milyen állat az axolotl?",
-        "options": ["Hüllő", "Hal", "Kétéltű", "Emlős"],
-        "correct": 2,
-        "explanation": "Az axolotl egy kétéltű állat.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a binturong másik neve?",
-        "options": ["Pálmasodró cibetmacska", "Himalájai macska", "Erdei macska", "Vaddisznó"],
-        "correct": 0,
-        "explanation": "A binturong más néven pálmasodró cibetmacska.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol élt a tarpán?",
-        "options": ["Afrika", "Amerika", "Eurázsia", "Ausztrália"],
-        "correct": 2,
-        "explanation": "A tarpán egy eurázsiai vadló volt.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol található a csillagorrú vakond?",
-        "options": ["USA", "Kanada", "Mexikó", "Grönland"],
-        "correct": 0,
-        "explanation": "A csillagorrú vakond az USA-ban található.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a quokka teljes neve?",
-        "options": ["Rövid farkú oposszum", "Kis válú medve", "Kurtafarkú kenguru", "Törpe antilop"],
-        "correct": 2,
-        "explanation": "A quokka kurtafarkú kenguru.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol él a takin?",
-        "options": ["Alpok", "Andok", "Kaukázus", "Himalája"],
-        "correct": 3,
-        "explanation": "A takin egy himalájai antilop.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol található az ocelot?",
-        "options": ["Észak-Amerika", "Afrika", "Ázsia", "Dél-Amerika"],
-        "correct": 3,
-        "explanation": "Az ocelot Dél-Amerikában található.",
-        "topic": "állatok"
-    },
-    
-    # További különleges állatok a PDF-ből
-    {
-        "question": "Mi a fossa másik neve?",
-        "options": ["Madagaszkári macska", "Afrikai macska", "Ázsiai macska", "Európai macska"],
-        "correct": 0,
-        "explanation": "A fossa Madagaszkár legnagyobb ragadozója, a macskafélék rokona.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol él a fossa?",
-        "options": ["Afrika", "Madagaszkár", "Ázsia", "Ausztrália"],
-        "correct": 1,
-        "explanation": "A fossa Madagaszkáron él, a sziget legnagyobb ragadozója.",
-        "topic": "állatok"
-    },
-    
-    # Új állatok a PDF-ből
-    {
-        "question": "Hol él a saiga?",
-        "options": ["Mongólia", "Kína", "Kazahsztán", "Oroszország"],
-        "correct": 0,
-        "explanation": "A saiga egy mongol antilop, a sivatagi területeken él.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a kakapo?",
-        "options": ["Papagáj", "Kakadu", "Ara", "Lóri"],
-        "correct": 0,
-        "explanation": "A kakapo egy papagájfaj, Új-Zéland endemikus madara.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Milyen állat a gila gyík?",
-        "options": ["Kígyó", "Gyík", "Teknős", "Krokodil"],
-        "correct": 1,
-        "explanation": "A gila gyík egy mérgező gyíkfaj.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a tardigrad?",
-        "options": ["Rovar", "Csillagállat", "Tengeri állat", "Férgecske"],
-        "correct": 1,
-        "explanation": "A tardigrad egy csillagállat, rendkívül ellenálló mikroorganizmus.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol él a jerboa?",
-        "options": ["Sivatagban", "Erdőben", "Hegyekben", "Tengerparton"],
-        "correct": 0,
-        "explanation": "A jerboa egy sivatagi rágcsáló, hosszú ugrólábakkal.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a hoatzin?",
-        "options": ["Dél-amerikai madár", "Afrikai madár", "Ázsiai madár", "Európai madár"],
-        "correct": 0,
-        "explanation": "A hoatzin egy dél-amerikai madár, egyedi megjelenéssel.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a pangolin?",
-        "options": ["Pikkelyes hangyász", "Tüskés hangyász", "Páncélos hangyász", "Sima hangyász"],
-        "correct": 0,
-        "explanation": "A pangolin egy pikkelyes hangyász, a pikkelyek védik.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Hol él a keelut?",
-        "options": ["Délkelet-Ázsia", "Észak-Ázsia", "Nyugat-Ázsia", "Közép-Ázsia"],
-        "correct": 0,
-        "explanation": "A keelut egy délkelet-ázsiai kutya fajta.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a takahe?",
-        "options": ["Új-zélandi madár", "Ausztrál madár", "Fidzsi madár", "Salamon madár"],
-        "correct": 0,
-        "explanation": "A takahe egy új-zélandi madár, ritka faj.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a tuatara?",
-        "options": ["Új-zélandi hüllő", "Ausztrál hüllő", "Fidzsi hüllő", "Salamon hüllő"],
-        "correct": 0,
-        "explanation": "A tuatara egy új-zélandi hüllő, ősi faj.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a solifuage?",
-        "options": ["Pók", "Skorpió", "Atka", "Rovar"],
-        "correct": 0,
-        "explanation": "A solifuage egy pókfaj, a sivatagi területeken él.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a colugo?",
-        "options": ["Repülőmókus", "Repülőnyúl", "Repülőmacska", "Repülőkutya"],
-        "correct": 0,
-        "explanation": "A colugo egy repülőmókus, siklórepüléssel mozog.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a weta?",
-        "options": ["Új-zélandi rovar", "Ausztrál rovar", "Fidzsi rovar", "Salamon rovar"],
-        "correct": 0,
-        "explanation": "A weta egy új-zélandi rovar, nagy méretű.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a markhor?",
-        "options": ["Vadkecske", "Vadjuh", "Vadkutya", "Vadmacska"],
-        "correct": 0,
-        "explanation": "A markhor egy vadkecske, csavart szarvakkal.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a zyzzyx?",
-        "options": ["Tengeri csiga", "Földi csiga", "Édesvízi csiga", "Szárazföldi csiga"],
-        "correct": 0,
-        "explanation": "A zyzzyx egy tengeri csiga, az alfabetikus sorrendben az utolsó.",
-        "topic": "állatok"
-    },
-    
-    # Állatcsoportok és jellemzők
-    {
-        "question": "Melyik állat nem emlős?",
-        "options": ["Okapi", "Quokka", "Takin", "Kakapo"],
-        "correct": 3,
-        "explanation": "A kakapo egy madár, a többi emlős.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem hüllő?",
-        "options": ["Tüskés ördög", "Gila gyík", "Tuatara", "Tardigrad"],
-        "correct": 3,
-        "explanation": "A tardigrad egy csillagállat, a többi hüllő.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem madár?",
-        "options": ["Kakapo", "Takahe", "Hoatzin", "Jerboa"],
-        "correct": 3,
-        "explanation": "A jerboa egy rágcsáló, a többi madár.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem rovar?",
-        "options": ["Kacsafarkú szender", "Weta", "Tardigrad", "Solifuage"],
-        "correct": 2,
-        "explanation": "A tardigrad egy csillagállat, a többi rovar.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem kétéltű?",
-        "options": ["Axolotl", "Békák", "Gőte", "Tardigrad"],
-        "correct": 3,
-        "explanation": "A tardigrad egy csillagállat, a többi kétéltű.",
-        "topic": "állatok"
-    },
-    
-    # Élőhelyek
-    {
-        "question": "Melyik állat nem Ausztráliában él?",
-        "options": ["Tüskés ördög", "Quokka", "Takin", "Weta"],
-        "correct": 2,
-        "explanation": "A takin a Himalájában él, a többi Ausztráliában.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem Madagaszkáron él?",
-        "options": ["Fossa", "Lemúrok", "Takin", "Madagaszkári madarak"],
-        "correct": 2,
-        "explanation": "A takin a Himalájában él, a többi Madagaszkáron.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem Új-Zélandon él?",
-        "options": ["Takahe", "Tuatara", "Weta", "Takin"],
-        "correct": 3,
-        "explanation": "A takin a Himalájában él, a többi Új-Zélandon.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem Dél-Amerikában él?",
-        "options": ["Ocelot", "Hoatzin", "Takin", "Axolotl"],
-        "correct": 2,
-        "explanation": "A takin a Himalájában él, a többi Dél-Amerikában.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem Afrikában él?",
-        "options": ["Okapi", "Tüskés ördög", "Takin", "Fossa"],
-        "correct": 2,
-        "explanation": "A takin a Himalájában él, a többi Afrikában.",
-        "topic": "állatok"
-    },
-    
-    # Viselkedés és jellemzők
-    {
-        "question": "Melyik állat nem ragadozó?",
-        "options": ["Fossa", "Ocelot", "Takin", "Markhor"],
-        "correct": 2,
-        "explanation": "A takin növényevő antilop, a többi ragadozó.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem növényevő?",
-        "options": ["Okapi", "Takin", "Quokka", "Fossa"],
-        "correct": 3,
-        "explanation": "A fossa ragadozó, a többi növényevő.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem magányos?",
-        "options": ["Fossa", "Ocelot", "Takin", "Jerboa"],
-        "correct": 2,
-        "explanation": "A takin csordában él, a többi magányos.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem éjszakai?",
-        "options": ["Fossa", "Ocelot", "Jerboa", "Takin"],
-        "correct": 3,
-        "explanation": "A takin nappali aktív, a többi éjszakai.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Melyik állat nem veszélyeztetett?",
-        "options": ["Kakapo", "Takahe", "Tuatara", "Tardigrad"],
-        "correct": 3,
-        "explanation": "A tardigrad nem veszélyeztetett, a többi igen.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a zorilla másik neve?",
-        "options": ["Csíkos görény", "Fekete görény", "Európai görény", "Amerikai görény"],
-        "correct": 0,
-        "explanation": "A zorilla más néven csíkos görény, Afrikában élő ragadozó.",
-        "topic": "állatok"
-    },
-    {
-        "question": "Mi a burunduk?",
-        "options": ["Sibériai csíkos mókus", "Kínai mókus", "Japán mókus", "Mongol mókus"],
-        "correct": 0,
-        "explanation": "A burunduk egy sibériai csíkos mókus, amely a tűlevelű erdőkben él és a föld alatt is mozog.",
-        "topic": "állatok"
-    }
-] 
+    _q('Mi az okapi rokonsági foka?', 0, ['Zsiráf rokona', 'Zebra rokona', 'Antilop rokona', 'Ló rokona'], 'Az okapi afrikai állat, amely a zsiráf rokona.'),
+    _q('Hol él a tüskés ördög?', 3, ['Afrika', 'Ázsia', 'Dél-Amerika', 'Ausztrália'], 'A tüskés ördög egy ausztrál hüllő.'),
+    _q('Mi a kacsafarkú szender?', 3, ['Madár', 'Emlős', 'Hüllő', 'Rovar lepke-szender'], 'A kacsafarkú szender egy rovar lepke-szender.'),
+    _q('Milyen állat az axolotl?', 2, ['Hüllő', 'Hal', 'Kétéltű', 'Emlős'], 'Az axolotl egy kétéltű állat.'),
+    _q('Mi a binturong másik neve?', 0, ['Pálmasodró cibetmacska', 'Himalájai macska', 'Erdei macska', 'Vaddisznó'], 'A binturong más néven pálmasodró cibetmacska.'),
+    _q('Hol élt a tarpán?', 2, ['Afrika', 'Amerika', 'Eurázsia', 'Ausztrália'], 'A tarpán egy eurázsiai vadló volt.'),
+    _q('Hol található a csillagorrú vakond?', 0, ['USA', 'Kanada', 'Mexikó', 'Grönland'], 'A csillagorrú vakond az USA-ban található.'),
+    _q('Mi a quokka teljes neve?', 2, ['Rövid farkú oposszum', 'Kis válú medve', 'Kurtafarkú kenguru', 'Törpe antilop'], 'A quokka kurtafarkú kenguru.'),
+    _q('Hol él a takin?', 3, ['Alpok', 'Andok', 'Kaukázus', 'Himalája'], 'A takin egy himalájai antilop.'),
+    _q('Hol található az ocelot?', 3, ['Észak-Amerika', 'Afrika', 'Ázsia', 'Dél-Amerika'], 'Az ocelot Dél-Amerikában található.'),
+    _q('Mi a fossa másik neve?', 0, ['Madagaszkári macska', 'Afrikai macska', 'Ázsiai macska', 'Európai macska'], 'A fossa Madagaszkár legnagyobb ragadozója, a macskafélék rokona.'),
+    _q('Hol él a fossa?', 1, ['Afrika', 'Madagaszkár', 'Ázsia', 'Ausztrália'], 'A fossa Madagaszkáron él, a sziget legnagyobb ragadozója.'),
+    _q('Hol él a saiga?', 0, ['Mongólia', 'Kína', 'Kazahsztán', 'Oroszország'], 'A saiga egy mongol antilop, a sivatagi területeken él.'),
+    _q('Mi a kakapo?', 0, ['Papagáj', 'Kakadu', 'Ara', 'Lóri'], 'A kakapo egy papagájfaj, Új-Zéland endemikus madara.'),
+    _q('Milyen állat a gila gyík?', 1, ['Kígyó', 'Gyík', 'Teknős', 'Krokodil'], 'A gila gyík egy mérgező gyíkfaj.'),
+    _q('Mi a tardigrad?', 1, ['Rovar', 'Csillagállat', 'Tengeri állat', 'Férgecske'], 'A tardigrad egy csillagállat, rendkívül ellenálló mikroorganizmus.'),
+    _q('Hol él a jerboa?', 0, ['Sivatagban', 'Erdőben', 'Hegyekben', 'Tengerparton'], 'A jerboa egy sivatagi rágcsáló, hosszú ugrólábakkal.'),
+    _q('Mi a hoatzin?', 0, ['Dél-amerikai madár', 'Afrikai madár', 'Ázsiai madár', 'Európai madár'], 'A hoatzin egy dél-amerikai madár, egyedi megjelenéssel.'),
+    _q('Mi a pangolin?', 0, ['Pikkelyes hangyász', 'Tüskés hangyász', 'Páncélos hangyász', 'Sima hangyász'], 'A pangolin egy pikkelyes hangyász, a pikkelyek védik.'),
+    _q('Hol él a keelut?', 0, ['Délkelet-Ázsia', 'Észak-Ázsia', 'Nyugat-Ázsia', 'Közép-Ázsia'], 'A keelut egy délkelet-ázsiai kutya fajta.'),
+    _q('Mi a takahe?', 0, ['Új-zélandi madár', 'Ausztrál madár', 'Fidzsi madár', 'Salamon madár'], 'A takahe egy új-zélandi madár, ritka faj.'),
+    _q('Mi a tuatara?', 0, ['Új-zélandi hüllő', 'Ausztrál hüllő', 'Fidzsi hüllő', 'Salamon hüllő'], 'A tuatara egy új-zélandi hüllő, ősi faj.'),
+    _q('Mi a solifuage?', 0, ['Pók', 'Skorpió', 'Atka', 'Rovar'], 'A solifuage egy pókfaj, a sivatagi területeken él.'),
+    _q('Mi a colugo?', 0, ['Repülőmókus', 'Repülőnyúl', 'Repülőmacska', 'Repülőkutya'], 'A colugo egy repülőmókus, siklórepüléssel mozog.'),
+    _q('Mi a weta?', 0, ['Új-zélandi rovar', 'Ausztrál rovar', 'Fidzsi rovar', 'Salamon rovar'], 'A weta egy új-zélandi rovar, nagy méretű.'),
+    _q('Mi a markhor?', 0, ['Vadkecske', 'Vadjuh', 'Vadkutya', 'Vadmacska'], 'A markhor egy vadkecske, csavart szarvakkal.'),
+    _q('Mi a zyzzyx?', 0, ['Tengeri csiga', 'Földi csiga', 'Édesvízi csiga', 'Szárazföldi csiga'], 'A zyzzyx egy tengeri csiga, az alfabetikus sorrendben az utolsó.'),
+    _q('Melyik állat nem emlős?', 3, ['Okapi', 'Quokka', 'Takin', 'Kakapo'], 'A kakapo egy madár, a többi emlős.'),
+    _q('Melyik állat nem hüllő?', 3, ['Tüskés ördög', 'Gila gyík', 'Tuatara', 'Tardigrad'], 'A tardigrad egy csillagállat, a többi hüllő.'),
+    _q('Melyik állat nem madár?', 3, ['Kakapo', 'Takahe', 'Hoatzin', 'Jerboa'], 'A jerboa egy rágcsáló, a többi madár.'),
+    _q('Melyik állat nem rovar?', 2, ['Kacsafarkú szender', 'Weta', 'Tardigrad', 'Solifuage'], 'A tardigrad egy csillagállat, a többi rovar.'),
+    _q('Melyik állat nem kétéltű?', 3, ['Axolotl', 'Békák', 'Gőte', 'Tardigrad'], 'A tardigrad egy csillagállat, a többi kétéltű.'),
+    _q('Melyik állat nem Ausztráliában él?', 2, ['Tüskés ördög', 'Quokka', 'Takin', 'Weta'], 'A takin a Himalájában él, a többi Ausztráliában.'),
+    _q('Melyik állat nem Madagaszkáron él?', 2, ['Fossa', 'Lemúrok', 'Takin', 'Madagaszkári madarak'], 'A takin a Himalájában él, a többi Madagaszkáron.'),
+    _q('Melyik állat nem Új-Zélandon él?', 3, ['Takahe', 'Tuatara', 'Weta', 'Takin'], 'A takin a Himalájában él, a többi Új-Zélandon.'),
+    _q('Melyik állat nem Dél-Amerikában él?', 2, ['Ocelot', 'Hoatzin', 'Takin', 'Axolotl'], 'A takin a Himalájában él, a többi Dél-Amerikában.'),
+    _q('Melyik állat nem Afrikában él?', 2, ['Okapi', 'Tüskés ördög', 'Takin', 'Fossa'], 'A takin a Himalájában él, a többi Afrikában.'),
+    _q('Melyik állat nem ragadozó?', 2, ['Fossa', 'Ocelot', 'Takin', 'Markhor'], 'A takin növényevő antilop, a többi ragadozó.'),
+    _q('Melyik állat nem növényevő?', 3, ['Okapi', 'Takin', 'Quokka', 'Fossa'], 'A fossa ragadozó, a többi növényevő.'),
+    _q('Melyik állat nem magányos?', 2, ['Fossa', 'Ocelot', 'Takin', 'Jerboa'], 'A takin csordában él, a többi magányos.'),
+    _q('Melyik állat nem éjszakai?', 3, ['Fossa', 'Ocelot', 'Jerboa', 'Takin'], 'A takin nappali aktív, a többi éjszakai.'),
+    _q('Melyik állat nem veszélyeztetett?', 3, ['Kakapo', 'Takahe', 'Tuatara', 'Tardigrad'], 'A tardigrad nem veszélyeztetett, a többi igen.'),
+    _q('Mi a zorilla másik neve?', 0, ['Csíkos görény', 'Fekete görény', 'Európai görény', 'Amerikai görény'], 'A zorilla más néven csíkos görény, Afrikában élő ragadozó.'),
+    _q('Mi a burunduk?', 0, ['Sibériai csíkos mókus', 'Kínai mókus', 'Japán mókus', 'Mongol mókus'], 'A burunduk egy sibériai csíkos mókus, amely a tűlevelű erdőkben él és a föld alatt is mozog.'),
+]

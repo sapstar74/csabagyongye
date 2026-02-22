@@ -1,704 +1,118 @@
 # Teljes mitológiai kérdések a quiz alkalmazáshoz
 # Görög, római és északi mitológiai istenek és történetek - TELJES LISTA (100+ kérdés)
 
-MITOLOGIA_QUESTIONS_ALL = [
-    # Görög mitológia - Fő istenek
-    {
-        "question": "Ki a görög mitológiában a nap, jóslás, költészet és zene istene? (a legszebb isten, aranyhajú, lantjával gyógyítja a lelket)",
-        "options": ["Arész", "Apollón", "Hermész", "Héphaisztosz"],
-                "correct": 1,
-        "explanation": "Apollón a nap, jóslás, költészet és zene istene, a legszebb isten.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a főisten? (az istenek királya, aki villámokkal uralkodik)",
-        "options": ["Zeusz", "Poszeidón", "Hadész", "Apollón"],
-                "correct": 0,
-        "explanation": "Zeusz a görög mitológiában a főisten, az istenek királya.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a tenger istene? (aki tridentjével uralja a tengereket)",
-        "options": ["Zeusz", "Poszeidón", "Hadész", "Apollón"],
-                "correct": 1,
-        "explanation": "Poszeidón a görög mitológiában a tenger istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában az alvilág istene? (aki a halottak lelkét uralja)",
-        "options": ["Zeusz", "Poszeidón", "Hadész", "Apollón"],
-                "correct": 2,
-        "explanation": "Hadész a görög mitológiában az alvilág istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a házasság istennője? (Zeus felesége, a nők védőistennője)",
-        "options": ["Héra", "Aphrodité", "Athéné", "Artemisz"],
-                "correct": 0,
-        "explanation": "Héra a görög mitológiában a házasság istennője, Zeus felesége.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a bölcsesség és háború istennője? (aki teljes fegyverzetben született Zeus fejéből)",
-        "options": ["Héra", "Aphrodité", "Athéné", "Artemisz"],
-                "correct": 2,
-        "explanation": "Athéné a görög mitológiában a bölcsesség és háború istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a szerelem és szépség istennője? (aki a tenger habjaiból született)",
-        "options": ["Héra", "Aphrodité", "Athéné", "Artemisz"],
-                "correct": 1,
-        "explanation": "Aphrodité a görög mitológiában a szerelem és szépség istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a vadászat istennője? (a vadász istennő, ikerhúga Apollónnak)",
-        "options": ["Héra", "Aphrodité", "Athéné", "Artemisz"],
-                "correct": 3,
-        "explanation": "Artemisz a görög mitológiában a vadászat istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a háború istene? (a kegyetlen, vérszomjas isten)",
-        "options": ["Apollón", "Arész", "Hermész", "Héphaisztosz"],
-                "correct": 1,
-        "explanation": "Arész a görög mitológiában a háború istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a tűz és kovácsmesterség istene? (a sánta isten, aki fegyvereket kovácsolt)",
-        "options": ["Apollón", "Arész", "Hermész", "Héphaisztosz"],
-                "correct": 3,
-        "explanation": "Héphaisztosz a görög mitológiában a tűz és kovácsmesterség istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a kereskedelem és utazás istene? (az istenek hírnöke, szárnyas cipőt visel)",
-        "options": ["Apollón", "Arész", "Hermész", "Héphaisztosz"],
-                "correct": 2,
-        "explanation": "Hermész a görög mitológiában a kereskedelem és utazás istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a termékenység istennője? (a gabona és földművelés istennője)",
-        "options": ["Héra", "Démétér", "Hesztia", "Hébé"],
-                "correct": 1,
-        "explanation": "Démétér a görög mitológiában a termékenység istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a bor és ünnepek istene? (a mámor és a színház istene)",
-        "options": ["Apollón", "Hermész", "Dionüszosz", "Arész"],
-                "correct": 2,
-        "explanation": "Dionüszosz a görög mitológiában a bor és ünnepek istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a szerelem és vágy istene? (Aphrodité fia, szerelemnyilait lő)",
-        "options": ["Apollón", "Hermész", "Erosz", "Arész"],
-                "correct": 2,
-        "explanation": "Erosz a görög mitológiában a szerelem és vágy istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a bosszú istennője? (aki mindenkit sújt, akit túlzott büszkeség jellemez)",
-        "options": ["Athéné", "Némeszisz", "Artemisz", "Héra"],
-                "correct": 1,
-        "explanation": "Némeszisz a görög mitológiában a bosszú istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a halál megszemélyesítője? (az alvilág egyik istene)",
-        "options": ["Hadész", "Kharón", "Thanatosz", "Orpheusz"],
-                "correct": 2,
-        "explanation": "Thanatosz a görög mitológiában a halál megszemélyesítője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában az ifjúság istennője? (Zeus és Héra lánya, az istenek pohárnoka)",
-        "options": ["Artemisz", "Hébé", "Irisz", "Hesztia"],
-                "correct": 1,
-        "explanation": "Hébé a görög mitológiában az ifjúság istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a szivárvány istennője? (Héra szolgálatában áll, az istenek hírnöke)",
-        "options": ["Artemisz", "Hébé", "Irisz", "Hesztia"],
-                "correct": 2,
-        "explanation": "Irisz a görög mitológiában a szivárvány istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában az otthon és tűzhely istennője? (a család és otthon védőistennője)",
-        "options": ["Héra", "Hesztia", "Démétér", "Hébé"],
-                "correct": 1,
-        "explanation": "Hesztia a görög mitológiában az otthon és tűzhely istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a természet és pásztorok istene? (aki kecskelábú és kecskeszarvú)",
-        "options": ["Hermész", "Apollón", "Pán", "Dionüszosz"],
-                "correct": 2,
-        "explanation": "Pán a görög mitológiában a természet és pásztorok istene.",
-        "topic": "mitológia"
-    },
-    # Görög mitológia - Hősök és halandók
-    {
-        "question": "Ki volt Orpheusz felesége? (akit a kígyócsípés után elvesztett, és az alvilágból próbált visszahozni)",
-        "options": ["Eurüdiké", "Artemisz", "Aphrodité", "Thetisz"],
-                "correct": 0,
-        "explanation": "Eurüdiké volt Orpheusz felesége, akit a kígyócsípés után elvesztett.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki Akhilleusz anyja? (tengeri istennő, aki fiát a Stüx folyóba mártotta, hogy halhatatlanná tegye)",
-        "options": ["Héra", "Aphrodité", "Thetisz", "Artemisz"],
-                "correct": 2,
-        "explanation": "Thetisz tengeri istennő Akhilleusz anyja.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az alvilág révésze? (aki a halottak lelkét viszi át a Stüx folyón, pénzért)",
-        "options": ["Hadész", "Orpheusz", "Hermész", "Kharón"],
-                "correct": 3,
-        "explanation": "Kharón az alvilág révésze, aki a halottak lelkét viszi át a Stüx folyón.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi okozta a trójai háborút? (amit Párisznak adott, hogy a legszebb nőt megkapja)",
-        "options": ["Héra bosszúja", "Zeus haragja", "Athéné bosszúja", "Aphrodité aranyalmája"],
-                "correct": 3,
-        "explanation": "Aphrodité aranyalmája okozta a trójai háborút.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a szépség megtestesítője? (kivételes szépségű ifjú, akit Aphrodité és Perszephoné is szeretett)",
-        "options": ["Apollón", "Adonisz", "Narkisszosz", "Orpheusz"],
-                "correct": 1,
-        "explanation": "Adonisz a görög mitológiában a szépség megtestesítője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a legendás zenész és költő? (aki lement az alvilágba, hogy visszahozza feleségét)",
-        "options": ["Apollón", "Orpheusz", "Hermész", "Dionüszosz"],
-                "correct": 1,
-        "explanation": "Orpheusz a görög mitológiában a legendás zenész és költő.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki Akhilleusz apja? (halandó hős, aki Thetisz tengeri istennőt vette feleségül)",
-        "options": ["Zeusz", "Poszeidón", "Péleusz", "Hermész"],
-                "correct": 2,
-        "explanation": "Péleusz Akhilleusz apja, halandó hős.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a trójai háború kirobbantója? (trójai királyfi, aki választotta Aphroditét a szépségversenyen)",
-        "options": ["Hektór", "Párisz", "Agamemnón", "Odüsszeusz"],
-                "correct": 1,
-        "explanation": "Párisz a trójai háború kirobbantója.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki Trója legnagyobb harcosa? (Priamosz fia, akit Akhilleusz ölt meg)",
-        "options": ["Párisz", "Hektór", "Aineiasz", "Agamemnón"],
-                "correct": 1,
-        "explanation": "Hektór Trója legnagyobb harcosa.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a tűz ellopója? (titán, aki ellopta a tüzet az istenektől és az embereknek adta)",
-        "options": ["Héphaisztosz", "Prométheusz", "Hermész", "Apollón"],
-                "correct": 1,
-        "explanation": "Prométheusz a görög mitológiában a tűz ellopója.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az első nő a görög mitológiában? (Zeus ajándéka az embereknek, aki kinyitotta a tiltott szelencét)",
-        "options": ["Héra", "Pandóra", "Eurüdiké", "Thetisz"],
-                "correct": 1,
-        "explanation": "Pandóra az első nő a görög mitológiában.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a szépséges ifjú, aki beleszeretett saját tükörképébe? (belőle lett a nárciszvirág)",
-        "options": ["Adonisz", "Narkisszosz", "Apollón", "Orpheusz"],
-                "correct": 1,
-        "explanation": "Narkisszosz a görög mitológiában a szépséges ifjú.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a ravasz király, aki kijátszotta a halált? (büntetésül örökké gördítenie kell egy követ a hegyre)",
-        "options": ["Tantalosz", "Sziszüphosz", "Prométheusz", "Orpheusz"],
-                "correct": 1,
-        "explanation": "Sziszüphosz a görög mitológiában a ravasz király.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a görög mitológiában a király, akit örök éhség és szomjúság gyötör? (a víz és gyümölcs mindig elérhetetlen marad számára)",
-        "options": ["Tantalosz", "Sziszüphosz", "Prométheusz", "Orpheusz"],
-                "correct": 1,
-        "explanation": "Tantalosz a görög mitológiában a király, akit örök éhség gyötör.",
-        "topic": "mitológia"
-    },
-    # Római mitológia
-    {
-        "question": "Ki a római mitológiában a főisten? (az ég és mennydörgés ura, Zeus megfelelője)",
-        "options": ["Mars", "Jupiter", "Neptunusz", "Apollo"],
-                "correct": 1,
-        "explanation": "Jupiter a római mitológiában a főisten, Zeus megfelelője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a házasság istennője? (Jupiter felesége, a nők és szülés védőistennője)",
-        "options": ["Venus", "Minerva", "Juno", "Diana"],
-                "correct": 2,
-        "explanation": "Juno a római mitológiában a házasság istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a tenger istene? (aki tridentjével uralja a tengereket, Poszeidón megfelelője)",
-        "options": ["Jupiter", "Mars", "Neptunusz", "Pluto"],
-                "correct": 2,
-        "explanation": "Neptunusz a római mitológiában a tenger istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a háború istene? (a római hadsereg védőistene, aki a mezők és termékenység istene is)",
-        "options": ["Jupiter", "Mars", "Neptunusz", "Pluto"],
-                "correct": 1,
-        "explanation": "Mars a római mitológiában a háború istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a bölcsesség istennője? (a bölcsesség és háború istennője, Athéné megfelelője)",
-        "options": ["Juno", "Minerva", "Venus", "Diana"],
-                "correct": 1,
-        "explanation": "Minerva a római mitológiában a bölcsesség istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a szerelem istennője? (a szépség és szerelem istennője, Aphrodité megfelelője)",
-        "options": ["Juno", "Minerva", "Venus", "Diana"],
-                "correct": 2,
-        "explanation": "Venus a római mitológiában a szerelem istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a nap istene? (a nap, zene, jóslás és orvoslás istene, görög eredetű)",
-        "options": ["Jupiter", "Mars", "Apollo", "Neptunusz"],
-                "correct": 2,
-        "explanation": "Apollo a római mitológiában a nap istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a vadászat istennője? (a vadászat és szűziesség istennője, Artemisz megfelelője)",
-        "options": ["Juno", "Minerva", "Venus", "Diana"],
-                "correct": 3,
-        "explanation": "Diana a római mitológiában a vadászat istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a kereskedelem istene? (az istenek hírnöke, Hermész megfelelője)",
-        "options": ["Apollo", "Mars", "Mercurius", "Vulcanus"],
-                "correct": 1,
-        "explanation": "Mercurius a római mitológiában a kereskedelem istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a tűz istene? (a kovácsmesterség istene, Héphaisztosz megfelelője)",
-        "options": ["Mars", "Apollo", "Mercurius", "Vulcanus"],
-                "correct": 1,
-        "explanation": "Vulcanus a római mitológiában a tűz istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában az otthon istennője? (otthon és tűzhely istennője, Hesztia megfelelője)",
-        "options": ["Juno", "Vesta", "Ceres", "Diana"],
-                "correct": 1,
-        "explanation": "Vesta a római mitológiában az otthon istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a földművelés istennője? (földművelés és termékenység istennője, Démétér megfelelője)",
-        "options": ["Juno", "Vesta", "Ceres", "Diana"],
-                "correct": 1,
-        "explanation": "Ceres a római mitológiában a földművelés istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a bor istene? (bor, mámor és ünnepség istene, Dionüszosz megfelelője)",
-        "options": ["Apollo", "Mercurius", "Bacchus", "Vulcanus"],
-                "correct": 1,
-        "explanation": "Bacchus a római mitológiában a bor istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában Róma legendás alapítója? (trójai hős, Róma legendás alapítója)",
-        "options": ["Romulus", "Remus", "Aeneas", "Numitor"],
-                "correct": 2,
-        "explanation": "Aeneas a római mitológiában Róma legendás alapítója.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában Róma egyik alapítója? (Remus testvére, Róma egyik alapítója)",
-        "options": ["Romulus", "Remus", "Aeneas", "Numitor"],
-                "correct": 2,
-        "explanation": "Romulus a római mitológiában Róma egyik alapítója.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a természet istene? (természet, erdők és pásztorok istene, Pán megfelelője)",
-        "options": ["Silvanus", "Faunus", "Mercurius", "Apollo"],
-                "correct": 1,
-        "explanation": "Faunus a római mitológiában a természet istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a római mitológiában a szerencse istennője? (szerencse és végzet istennője)",
-        "options": ["Venus", "Fortuna", "Vesta", "Diana"],
-                "correct": 1,
-        "explanation": "Fortuna a római mitológiában a szerencse istennője.",
-        "topic": "mitológia"
-    },
-    # Északi mitológia
-    {
-        "question": "Ki az északi mitológiában a menny istene? (az istenek atyja, aki egy szemét feláldozta a bölcsességért)",
-        "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 1,
-        "explanation": "Odin az északi mitológiában a menny istene, az istenek atyja.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a mennydörgés istene? (aki Mjölnir kalapácsával harcol, Odin fia)",
-        "options": ["Odin", "Thor", "Loki", "Freyr"],
-                "correct": 1,
-        "explanation": "Thor az északi mitológiában a mennydörgés istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a csalárdság istene? (a trükkös isten, aki gyakran bajt okoz az isteneknek)",
-        "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 2,
-        "explanation": "Loki az északi mitológiában a csalárdság istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a szerelem istennője? (a szerelem és szépség istennője, aki a Valkürök vezetője)",
-        "options": ["Frigg", "Freya", "Sif", "Hel"],
-                "correct": 1,
-        "explanation": "Freya az északi mitológiában a szerelem istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a termékenység istene? (a termékenység és béke istene, Freya testvére)",
-        "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 3,
-        "explanation": "Freyr az északi mitológiában a termékenység istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a házasság istennője? (Odin felesége, a házasság és anyaság istennője)",
-        "options": ["Freya", "Frigg", "Sif", "Hel"],
-                "correct": 1,
-        "explanation": "Frigg az északi mitológiában a házasság istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a termékenység istennője? (Thor felesége, aranyhajú istennő)",
-        "options": ["Freya", "Frigg", "Sif", "Hel"],
-                "correct": 2,
-        "explanation": "Sif az északi mitológiában a termékenység istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a halál istennője? (a halottak istennője, Loki lánya, aki az alvilágban uralkodik)",
-        "options": ["Freya", "Frigg", "Sif", "Hel"],
-                "correct": 3,
-        "explanation": "Hel az északi mitológiában a halál istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a világfa neve? (a három világot összekötő óriási kőrisfa)",
-        "options": ["Bifröst", "Yggdrasil", "Valhalla", "Asgard"],
-                "correct": 1,
-        "explanation": "Yggdrasil az északi mitológiában a világfa.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a mennyország neve? (az istenek otthona, ahol Odin uralkodik)",
-        "options": ["Valhalla", "Asgard", "Midgard", "Helheim"],
-                "correct": 1,
-        "explanation": "Asgard az északi mitológiában a mennyország.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a harcosok mennyországának neve? (ahol a hősi halott harcosok élnek)",
-        "options": ["Asgard", "Valhalla", "Midgard", "Helheim"],
-                "correct": 1,
-        "explanation": "Valhalla az északi mitológiában a harcosok mennyországa.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a szivárványhíd neve? (a menny és a föld közötti híd)",
-        "options": ["Bifröst", "Yggdrasil", "Valhalla", "Asgard"],
-                "correct": 0,
-        "explanation": "Bifröst az északi mitológiában a szivárványhíd.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában az emberek világának neve? (a középső világ, ahol az emberek élnek)",
-        "options": ["Asgard", "Valhalla", "Midgard", "Helheim"],
-                "correct": 2,
-        "explanation": "Midgard az északi mitológiában az emberek világa.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában az alvilág neve? (a halottak világa, ahol Hel uralkodik)",
-        "options": ["Asgard", "Valhalla", "Midgard", "Helheim"],
-                "correct": 3,
-        "explanation": "Helheim az északi mitológiában az alvilág.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában Thor kalapácsának neve? (a mennydörgés és villámok fegyvere)",
-        "options": ["Gungnir", "Mjölnir", "Sleipnir", "Bifröst"],
-                "correct": 1,
-        "explanation": "Mjölnir az északi mitológiában Thor kalapácsának neve.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában Odin lándzsájának neve? (a soha nem tévedő lándzsa)",
-        "options": ["Gungnir", "Mjölnir", "Sleipnir", "Bifröst"],
-                "correct": 0,
-        "explanation": "Gungnir az északi mitológiában Odin lándzsájának neve.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a háború istene? (aki egy kezét feláldozta a farkas Fenrir megkötéséért)",
-        "options": ["Thor", "Odin", "Tyr", "Freyr"],
-                "correct": 2,
-        "explanation": "Tyr az északi mitológiában a háború istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a tenger istene? (a tengerek és halászat istene, Freya és Freyr apja)",
-        "options": ["Thor", "Odin", "Njord", "Freyr"],
-                "correct": 2,
-        "explanation": "Njord az északi mitológiában a tenger istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a történetek istennője? (a történetek és bölcsesség istennője)",
-        "options": ["Freya", "Frigg", "Saga", "Sif"],
-                "correct": 2,
-        "explanation": "Saga az északi mitológiában a történetek istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a világ végének neve? (az istenek és a világ pusztulása)",
-        "options": ["Helheim", "Valhalla", "Ragnarök", "Yggdrasil"],
-                "correct": 2,
-        "explanation": "Ragnarök az északi mitológiában a világ végének neve.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a hatalmas farkas? (Loki fia, aki a Ragnarök során Odint elnyeli)",
-        "options": ["Jormungandr", "Fenrir", "Sleipnir", "Hel"],
-                "correct": 1,
-        "explanation": "Fenrir az északi mitológiában a hatalmas farkas.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában Odin lovának neve? (nyolclábú ló, Loki fia)",
-        "options": ["Sleipnir", "Fenrir", "Jormungandr", "Hel"],
-                "correct": 0,
-        "explanation": "Sleipnir az északi mitológiában Odin lovának neve.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a világkígyó? (Loki fia, aki a világot öleli körül)",
-        "options": ["Jormungandr", "Fenrir", "Sleipnir", "Hel"],
-                "correct": 0,
-        "explanation": "Jormungandr az északi mitológiában a világkígyó.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a hollók istene? (Odin hollói, a gondolat és az emlékezet)",
-        "options": ["Thor", "Odin", "Loki", "Freyr"],
-                "correct": 1,
-        "explanation": "Huginn és Muninn az északi mitológiában Odin hollói.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Mi az északi mitológiában a Valkürök feladata? (A hősi halott harcosokat kiválasztják Valhallába)",
-        "options": ["Az istenek védelme", "A harcosok kiválasztása", "A halottak kísérése", "A háborúk vezetése"],
-                "correct": 1,
-        "explanation": "A Valkürök feladata a hősi halott harcosok kiválasztása Valhallába.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki az északi mitológiában a szkald költészet és zene istene? (aki a költészet, zene és bölcsesség istene, Odin fia)",
-        "options": ["Odin", "Thor", "Bragi", "Loki"],
-                "correct": 2,
-        "explanation": "Bragi az északi mitológiában a szkald költészet és zene istene.",
-        "topic": "mitológia"
-    },
-    # Kínai mitológia
-    {
-        "question": "Ki a kínai mitológiában a menny istene? (ti - a menny ura, aki a világot uralja)",
-        "options": ["Jü-ti", "Jade Császár", "Pangu", "Nuwa"],
-                "correct": 0,
-        "explanation": "Jü-ti a kínai mitológiában a menny istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a világ teremtője? (aki a káoszból létrehozta a világot)",
-        "options": ["Jü-ti", "Jade Császár", "Pangu", "Nuwa"],
-                "correct": 2,
-        "explanation": "Pangu a kínai mitológiában a világ teremtője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában az emberiség teremtője? (aki agyagból formálta az embereket)",
-        "options": ["Jü-ti", "Jade Császár", "Pangu", "Nuwa"],
-                "correct": 3,
-        "explanation": "Nuwa a kínai mitológiában az emberiség teremtője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a hold istennője? (e - aki a holdban él és a halhatatlanság elixírjét őrzi)",
-        "options": ["Csang-e", "Hszien-nü", "Kuan-jin", "Ma-cu"],
-                "correct": 0,
-        "explanation": "Csang-e a kínai mitológiában a hold istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a kegyesség istennője? (jin - a kegyesség és irgalom istennője)",
-        "options": ["Csang-e", "Hszien-nü", "Kuan-jin", "Ma-cu"],
-                "correct": 2,
-        "explanation": "Kuan-jin a kínai mitológiában a kegyesség istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a tenger istennője? (cu - a tenger és hajózás védelmezője)",
-        "options": ["Csang-e", "Hszien-nü", "Kuan-jin", "Ma-cu"],
-                "correct": 3,
-        "explanation": "Ma-cu a kínai mitológiában a tenger istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a háború istene? (jü - a hűség és bátorság istene)",
-        "options": ["Kuan-jü", "Csang Fej", "Li Tien", "Vang Mu"],
-                "correct": 0,
-        "explanation": "Kuan-jü a kínai mitológiában a háború istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a gazdagság istene? (a gazdagság és szerencse istene)",
-        "options": ["Kuan-jü", "Csaj Seng", "Li Tien", "Vang Mu"],
-                "correct": 1,
-        "explanation": "Csaj Seng a kínai mitológiában a gazdagság istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a tűz istene? (a tűz és kovácsmesterség istene)",
-        "options": ["Kuan-jü", "Csaj Seng", "Li Tien", "Vang Mu"],
-                "correct": 2,
-        "explanation": "Li Tien a kínai mitológiában a tűz istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a kínai mitológiában a halhatatlanság istennője? (a halhatatlanság és gyógyítás istennője)",
-        "options": ["Kuan-jü", "Csaj Seng", "Li Tien", "Vang Mu"],
-                "correct": 3,
-        "explanation": "Vang Mu a kínai mitológiában a halhatatlanság istennője.",
-        "topic": "mitológia"
-    },
-    # Japán mitológia
-    {
-        "question": "Ki a japán mitológiában a nap istennője? (a nap istennője, a japán császár család ősanyja)",
-        "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 0,
-        "explanation": "Amateraszu a japán mitológiában a nap istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a vihar istene? (a vihar és tenger istene, Amateraszu testvére)",
-        "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 1,
-        "explanation": "Suszanoo a japán mitológiában a vihar istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a hold istene? (a hold istene, Amateraszu és Suszanoo testvére)",
-        "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 2,
-        "explanation": "Cukujomi a japán mitológiában a hold istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a rizs istennője? (a rizs, termékenység és rókák istennője)",
-        "options": ["Amateraszu", "Suszanoo", "Cukujomi", "Inari"],
-                "correct": 3,
-        "explanation": "Inari a japán mitológiában a rizs istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a harcos isten? (a harcosok és íjászat istene)",
-        "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 0,
-        "explanation": "Hacsiman a japán mitológiában a harcos isten.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a szerencse istennője? (a szerencse, művészetek és bölcsesség istennője)",
-        "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 1,
-        "explanation": "Benzaiten a japán mitológiában a szerencse istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a háború istene? (a háború és védelmező isten)",
-        "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 2,
-        "explanation": "Bisamon a japán mitológiában a háború istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a gazdagság istene? (a gazdagság és termékenység istene)",
-        "options": ["Hacsiman", "Benzaiten", "Bisamon", "Daiszoku"],
-                "correct": 3,
-        "explanation": "Daiszoku a japán mitológiában a gazdagság istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a halál istennője? (a halál és föld alatti világ istennője)",
-        "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 0,
-        "explanation": "Izanami a japán mitológiában a halál istennője.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a teremtés istene? (aki Izanamival együtt teremtette a japán szigeteket)",
-        "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 1,
-        "explanation": "Izanagi a japán mitológiában a teremtés istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a tűz istene? (a tűz istene, akinek születése Izanami halálát okozta)",
-        "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 2,
-        "explanation": "Kagucucsi a japán mitológiában a tűz istene.",
-        "topic": "mitológia"
-    },
-    {
-        "question": "Ki a japán mitológiában a halhatatlanság istene? (a halhatatlanság és megváltás istene)",
-        "options": ["Izanami", "Izanagi", "Kagucucsi", "Amida"],
-                "correct": 3,
-        "explanation": "Amida a japán mitológiában a halhatatlanság istene.",
-        "topic": "mitológia"
+_TOPIC = "mitológia"
+
+
+def _q(question, correct, options, explanation, topic=_TOPIC):
+    """Segédfüggvény: kompakt kérdés létrehozása."""
+    return {
+        "question": question,
+        "options": options,
+        "correct": correct,
+        "explanation": explanation,
+        "topic": topic,
     }
+
+
+MITOLOGIA_QUESTIONS_ALL = [
+    _q('Ki a görög mitológiában a nap, jóslás, költészet és zene istene? (a legszebb isten, aranyhajú, lantjával gyógyítja a lelket)', 1, ['Arész', 'Apollón', 'Hermész', 'Héphaisztosz'], 'Apollón a nap, jóslás, költészet és zene istene, a legszebb isten.', 'mitológia'),
+    _q('Ki a görög mitológiában a főisten? (az istenek királya, aki villámokkal uralkodik)', 0, ['Zeusz', 'Poszeidón', 'Hadész', 'Apollón'], 'Zeusz a görög mitológiában a főisten, az istenek királya.', 'mitológia'),
+    _q('Ki a görög mitológiában a tenger istene? (aki tridentjével uralja a tengereket)', 1, ['Zeusz', 'Poszeidón', 'Hadész', 'Apollón'], 'Poszeidón a görög mitológiában a tenger istene.', 'mitológia'),
+    _q('Ki a görög mitológiában az alvilág istene? (aki a halottak lelkét uralja)', 2, ['Zeusz', 'Poszeidón', 'Hadész', 'Apollón'], 'Hadész a görög mitológiában az alvilág istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a házasság istennője? (Zeus felesége, a nők védőistennője)', 0, ['Héra', 'Aphrodité', 'Athéné', 'Artemisz'], 'Héra a görög mitológiában a házasság istennője, Zeus felesége.', 'mitológia'),
+    _q('Ki a görög mitológiában a bölcsesség és háború istennője? (aki teljes fegyverzetben született Zeus fejéből)', 2, ['Héra', 'Aphrodité', 'Athéné', 'Artemisz'], 'Athéné a görög mitológiában a bölcsesség és háború istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a szerelem és szépség istennője? (aki a tenger habjaiból született)', 1, ['Héra', 'Aphrodité', 'Athéné', 'Artemisz'], 'Aphrodité a görög mitológiában a szerelem és szépség istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a vadászat istennője? (a vadász istennő, ikerhúga Apollónnak)', 3, ['Héra', 'Aphrodité', 'Athéné', 'Artemisz'], 'Artemisz a görög mitológiában a vadászat istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a háború istene? (a kegyetlen, vérszomjas isten)', 1, ['Apollón', 'Arész', 'Hermész', 'Héphaisztosz'], 'Arész a görög mitológiában a háború istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a tűz és kovácsmesterség istene? (a sánta isten, aki fegyvereket kovácsolt)', 3, ['Apollón', 'Arész', 'Hermész', 'Héphaisztosz'], 'Héphaisztosz a görög mitológiában a tűz és kovácsmesterség istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a kereskedelem és utazás istene? (az istenek hírnöke, szárnyas cipőt visel)', 2, ['Apollón', 'Arész', 'Hermész', 'Héphaisztosz'], 'Hermész a görög mitológiában a kereskedelem és utazás istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a termékenység istennője? (a gabona és földművelés istennője)', 1, ['Héra', 'Démétér', 'Hesztia', 'Hébé'], 'Démétér a görög mitológiában a termékenység istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a bor és ünnepek istene? (a mámor és a színház istene)', 2, ['Apollón', 'Hermész', 'Dionüszosz', 'Arész'], 'Dionüszosz a görög mitológiában a bor és ünnepek istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a szerelem és vágy istene? (Aphrodité fia, szerelemnyilait lő)', 2, ['Apollón', 'Hermész', 'Erosz', 'Arész'], 'Erosz a görög mitológiában a szerelem és vágy istene.', 'mitológia'),
+    _q('Ki a görög mitológiában a bosszú istennője? (aki mindenkit sújt, akit túlzott büszkeség jellemez)', 1, ['Athéné', 'Némeszisz', 'Artemisz', 'Héra'], 'Némeszisz a görög mitológiában a bosszú istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a halál megszemélyesítője? (az alvilág egyik istene)', 2, ['Hadész', 'Kharón', 'Thanatosz', 'Orpheusz'], 'Thanatosz a görög mitológiában a halál megszemélyesítője.', 'mitológia'),
+    _q('Ki a görög mitológiában az ifjúság istennője? (Zeus és Héra lánya, az istenek pohárnoka)', 1, ['Artemisz', 'Hébé', 'Irisz', 'Hesztia'], 'Hébé a görög mitológiában az ifjúság istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a szivárvány istennője? (Héra szolgálatában áll, az istenek hírnöke)', 2, ['Artemisz', 'Hébé', 'Irisz', 'Hesztia'], 'Irisz a görög mitológiában a szivárvány istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában az otthon és tűzhely istennője? (a család és otthon védőistennője)', 1, ['Héra', 'Hesztia', 'Démétér', 'Hébé'], 'Hesztia a görög mitológiában az otthon és tűzhely istennője.', 'mitológia'),
+    _q('Ki a görög mitológiában a természet és pásztorok istene? (aki kecskelábú és kecskeszarvú)', 2, ['Hermész', 'Apollón', 'Pán', 'Dionüszosz'], 'Pán a görög mitológiában a természet és pásztorok istene.', 'mitológia'),
+    _q('Ki volt Orpheusz felesége? (akit a kígyócsípés után elvesztett, és az alvilágból próbált visszahozni)', 0, ['Eurüdiké', 'Artemisz', 'Aphrodité', 'Thetisz'], 'Eurüdiké volt Orpheusz felesége, akit a kígyócsípés után elvesztett.', 'mitológia'),
+    _q('Ki Akhilleusz anyja? (tengeri istennő, aki fiát a Stüx folyóba mártotta, hogy halhatatlanná tegye)', 2, ['Héra', 'Aphrodité', 'Thetisz', 'Artemisz'], 'Thetisz tengeri istennő Akhilleusz anyja.', 'mitológia'),
+    _q('Ki az alvilág révésze? (aki a halottak lelkét viszi át a Stüx folyón, pénzért)', 3, ['Hadész', 'Orpheusz', 'Hermész', 'Kharón'], 'Kharón az alvilág révésze, aki a halottak lelkét viszi át a Stüx folyón.', 'mitológia'),
+    _q('Mi okozta a trójai háborút? (amit Párisznak adott, hogy a legszebb nőt megkapja)', 3, ['Héra bosszúja', 'Zeus haragja', 'Athéné bosszúja', 'Aphrodité aranyalmája'], 'Aphrodité aranyalmája okozta a trójai háborút.', 'mitológia'),
+    _q('Ki a görög mitológiában a szépség megtestesítője? (kivételes szépségű ifjú, akit Aphrodité és Perszephoné is szeretett)', 1, ['Apollón', 'Adonisz', 'Narkisszosz', 'Orpheusz'], 'Adonisz a görög mitológiában a szépség megtestesítője.', 'mitológia'),
+    _q('Ki a görög mitológiában a legendás zenész és költő? (aki lement az alvilágba, hogy visszahozza feleségét)', 1, ['Apollón', 'Orpheusz', 'Hermész', 'Dionüszosz'], 'Orpheusz a görög mitológiában a legendás zenész és költő.', 'mitológia'),
+    _q('Ki Akhilleusz apja? (halandó hős, aki Thetisz tengeri istennőt vette feleségül)', 2, ['Zeusz', 'Poszeidón', 'Péleusz', 'Hermész'], 'Péleusz Akhilleusz apja, halandó hős.', 'mitológia'),
+    _q('Ki a trójai háború kirobbantója? (trójai királyfi, aki választotta Aphroditét a szépségversenyen)', 1, ['Hektór', 'Párisz', 'Agamemnón', 'Odüsszeusz'], 'Párisz a trójai háború kirobbantója.', 'mitológia'),
+    _q('Ki Trója legnagyobb harcosa? (Priamosz fia, akit Akhilleusz ölt meg)', 1, ['Párisz', 'Hektór', 'Aineiasz', 'Agamemnón'], 'Hektór Trója legnagyobb harcosa.', 'mitológia'),
+    _q('Ki a görög mitológiában a tűz ellopója? (titán, aki ellopta a tüzet az istenektől és az embereknek adta)', 1, ['Héphaisztosz', 'Prométheusz', 'Hermész', 'Apollón'], 'Prométheusz a görög mitológiában a tűz ellopója.', 'mitológia'),
+    _q('Ki az első nő a görög mitológiában? (Zeus ajándéka az embereknek, aki kinyitotta a tiltott szelencét)', 1, ['Héra', 'Pandóra', 'Eurüdiké', 'Thetisz'], 'Pandóra az első nő a görög mitológiában.', 'mitológia'),
+    _q('Ki a görög mitológiában a szépséges ifjú, aki beleszeretett saját tükörképébe? (belőle lett a nárciszvirág)', 1, ['Adonisz', 'Narkisszosz', 'Apollón', 'Orpheusz'], 'Narkisszosz a görög mitológiában a szépséges ifjú.', 'mitológia'),
+    _q('Ki a görög mitológiában a ravasz király, aki kijátszotta a halált? (büntetésül örökké gördítenie kell egy követ a hegyre)', 1, ['Tantalosz', 'Sziszüphosz', 'Prométheusz', 'Orpheusz'], 'Sziszüphosz a görög mitológiában a ravasz király.', 'mitológia'),
+    _q('Ki a görög mitológiában a király, akit örök éhség és szomjúság gyötör? (a víz és gyümölcs mindig elérhetetlen marad számára)', 1, ['Tantalosz', 'Sziszüphosz', 'Prométheusz', 'Orpheusz'], 'Tantalosz a görög mitológiában a király, akit örök éhség gyötör.', 'mitológia'),
+    _q('Ki a római mitológiában a főisten? (az ég és mennydörgés ura, Zeus megfelelője)', 1, ['Mars', 'Jupiter', 'Neptunusz', 'Apollo'], 'Jupiter a római mitológiában a főisten, Zeus megfelelője.', 'mitológia'),
+    _q('Ki a római mitológiában a házasság istennője? (Jupiter felesége, a nők és szülés védőistennője)', 2, ['Venus', 'Minerva', 'Juno', 'Diana'], 'Juno a római mitológiában a házasság istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a tenger istene? (aki tridentjével uralja a tengereket, Poszeidón megfelelője)', 2, ['Jupiter', 'Mars', 'Neptunusz', 'Pluto'], 'Neptunusz a római mitológiában a tenger istene.', 'mitológia'),
+    _q('Ki a római mitológiában a háború istene? (a római hadsereg védőistene, aki a mezők és termékenység istene is)', 1, ['Jupiter', 'Mars', 'Neptunusz', 'Pluto'], 'Mars a római mitológiában a háború istene.', 'mitológia'),
+    _q('Ki a római mitológiában a bölcsesség istennője? (a bölcsesség és háború istennője, Athéné megfelelője)', 1, ['Juno', 'Minerva', 'Venus', 'Diana'], 'Minerva a római mitológiában a bölcsesség istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a szerelem istennője? (a szépség és szerelem istennője, Aphrodité megfelelője)', 2, ['Juno', 'Minerva', 'Venus', 'Diana'], 'Venus a római mitológiában a szerelem istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a nap istene? (a nap, zene, jóslás és orvoslás istene, görög eredetű)', 2, ['Jupiter', 'Mars', 'Apollo', 'Neptunusz'], 'Apollo a római mitológiában a nap istene.', 'mitológia'),
+    _q('Ki a római mitológiában a vadászat istennője? (a vadászat és szűziesség istennője, Artemisz megfelelője)', 3, ['Juno', 'Minerva', 'Venus', 'Diana'], 'Diana a római mitológiában a vadászat istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a kereskedelem istene? (az istenek hírnöke, Hermész megfelelője)', 1, ['Apollo', 'Mars', 'Mercurius', 'Vulcanus'], 'Mercurius a római mitológiában a kereskedelem istene.', 'mitológia'),
+    _q('Ki a római mitológiában a tűz istene? (a kovácsmesterség istene, Héphaisztosz megfelelője)', 1, ['Mars', 'Apollo', 'Mercurius', 'Vulcanus'], 'Vulcanus a római mitológiában a tűz istene.', 'mitológia'),
+    _q('Ki a római mitológiában az otthon istennője? (otthon és tűzhely istennője, Hesztia megfelelője)', 1, ['Juno', 'Vesta', 'Ceres', 'Diana'], 'Vesta a római mitológiában az otthon istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a földművelés istennője? (földművelés és termékenység istennője, Démétér megfelelője)', 1, ['Juno', 'Vesta', 'Ceres', 'Diana'], 'Ceres a római mitológiában a földművelés istennője.', 'mitológia'),
+    _q('Ki a római mitológiában a bor istene? (bor, mámor és ünnepség istene, Dionüszosz megfelelője)', 1, ['Apollo', 'Mercurius', 'Bacchus', 'Vulcanus'], 'Bacchus a római mitológiában a bor istene.', 'mitológia'),
+    _q('Ki a római mitológiában Róma legendás alapítója? (trójai hős, Róma legendás alapítója)', 2, ['Romulus', 'Remus', 'Aeneas', 'Numitor'], 'Aeneas a római mitológiában Róma legendás alapítója.', 'mitológia'),
+    _q('Ki a római mitológiában Róma egyik alapítója? (Remus testvére, Róma egyik alapítója)', 2, ['Romulus', 'Remus', 'Aeneas', 'Numitor'], 'Romulus a római mitológiában Róma egyik alapítója.', 'mitológia'),
+    _q('Ki a római mitológiában a természet istene? (természet, erdők és pásztorok istene, Pán megfelelője)', 1, ['Silvanus', 'Faunus', 'Mercurius', 'Apollo'], 'Faunus a római mitológiában a természet istene.', 'mitológia'),
+    _q('Ki a római mitológiában a szerencse istennője? (szerencse és végzet istennője)', 1, ['Venus', 'Fortuna', 'Vesta', 'Diana'], 'Fortuna a római mitológiában a szerencse istennője.', 'mitológia'),
+    _q('Ki az északi mitológiában a menny istene? (az istenek atyja, aki egy szemét feláldozta a bölcsességért)', 1, ['Thor', 'Odin', 'Loki', 'Freyr'], 'Odin az északi mitológiában a menny istene, az istenek atyja.', 'mitológia'),
+    _q('Ki az északi mitológiában a mennydörgés istene? (aki Mjölnir kalapácsával harcol, Odin fia)', 1, ['Odin', 'Thor', 'Loki', 'Freyr'], 'Thor az északi mitológiában a mennydörgés istene.', 'mitológia'),
+    _q('Ki az északi mitológiában a csalárdság istene? (a trükkös isten, aki gyakran bajt okoz az isteneknek)', 2, ['Thor', 'Odin', 'Loki', 'Freyr'], 'Loki az északi mitológiában a csalárdság istene.', 'mitológia'),
+    _q('Ki az északi mitológiában a szerelem istennője? (a szerelem és szépség istennője, aki a Valkürök vezetője)', 1, ['Frigg', 'Freya', 'Sif', 'Hel'], 'Freya az északi mitológiában a szerelem istennője.', 'mitológia'),
+    _q('Ki az északi mitológiában a termékenység istene? (a termékenység és béke istene, Freya testvére)', 3, ['Thor', 'Odin', 'Loki', 'Freyr'], 'Freyr az északi mitológiában a termékenység istene.', 'mitológia'),
+    _q('Ki az északi mitológiában a házasság istennője? (Odin felesége, a házasság és anyaság istennője)', 1, ['Freya', 'Frigg', 'Sif', 'Hel'], 'Frigg az északi mitológiában a házasság istennője.', 'mitológia'),
+    _q('Ki az északi mitológiában a termékenység istennője? (Thor felesége, aranyhajú istennő)', 2, ['Freya', 'Frigg', 'Sif', 'Hel'], 'Sif az északi mitológiában a termékenység istennője.', 'mitológia'),
+    _q('Ki az északi mitológiában a halál istennője? (a halottak istennője, Loki lánya, aki az alvilágban uralkodik)', 3, ['Freya', 'Frigg', 'Sif', 'Hel'], 'Hel az északi mitológiában a halál istennője.', 'mitológia'),
+    _q('Mi az északi mitológiában a világfa neve? (a három világot összekötő óriási kőrisfa)', 1, ['Bifröst', 'Yggdrasil', 'Valhalla', 'Asgard'], 'Yggdrasil az északi mitológiában a világfa.', 'mitológia'),
+    _q('Mi az északi mitológiában a mennyország neve? (az istenek otthona, ahol Odin uralkodik)', 1, ['Valhalla', 'Asgard', 'Midgard', 'Helheim'], 'Asgard az északi mitológiában a mennyország.', 'mitológia'),
+    _q('Mi az északi mitológiában a harcosok mennyországának neve? (ahol a hősi halott harcosok élnek)', 1, ['Asgard', 'Valhalla', 'Midgard', 'Helheim'], 'Valhalla az északi mitológiában a harcosok mennyországa.', 'mitológia'),
+    _q('Mi az északi mitológiában a szivárványhíd neve? (a menny és a föld közötti híd)', 0, ['Bifröst', 'Yggdrasil', 'Valhalla', 'Asgard'], 'Bifröst az északi mitológiában a szivárványhíd.', 'mitológia'),
+    _q('Mi az északi mitológiában az emberek világának neve? (a középső világ, ahol az emberek élnek)', 2, ['Asgard', 'Valhalla', 'Midgard', 'Helheim'], 'Midgard az északi mitológiában az emberek világa.', 'mitológia'),
+    _q('Mi az északi mitológiában az alvilág neve? (a halottak világa, ahol Hel uralkodik)', 3, ['Asgard', 'Valhalla', 'Midgard', 'Helheim'], 'Helheim az északi mitológiában az alvilág.', 'mitológia'),
+    _q('Mi az északi mitológiában Thor kalapácsának neve? (a mennydörgés és villámok fegyvere)', 1, ['Gungnir', 'Mjölnir', 'Sleipnir', 'Bifröst'], 'Mjölnir az északi mitológiában Thor kalapácsának neve.', 'mitológia'),
+    _q('Mi az északi mitológiában Odin lándzsájának neve? (a soha nem tévedő lándzsa)', 0, ['Gungnir', 'Mjölnir', 'Sleipnir', 'Bifröst'], 'Gungnir az északi mitológiában Odin lándzsájának neve.', 'mitológia'),
+    _q('Ki az északi mitológiában a háború istene? (aki egy kezét feláldozta a farkas Fenrir megkötéséért)', 2, ['Thor', 'Odin', 'Tyr', 'Freyr'], 'Tyr az északi mitológiában a háború istene.', 'mitológia'),
+    _q('Ki az északi mitológiában a tenger istene? (a tengerek és halászat istene, Freya és Freyr apja)', 2, ['Thor', 'Odin', 'Njord', 'Freyr'], 'Njord az északi mitológiában a tenger istene.', 'mitológia'),
+    _q('Ki az északi mitológiában a történetek istennője? (a történetek és bölcsesség istennője)', 2, ['Freya', 'Frigg', 'Saga', 'Sif'], 'Saga az északi mitológiában a történetek istennője.', 'mitológia'),
+    _q('Mi az északi mitológiában a világ végének neve? (az istenek és a világ pusztulása)', 2, ['Helheim', 'Valhalla', 'Ragnarök', 'Yggdrasil'], 'Ragnarök az északi mitológiában a világ végének neve.', 'mitológia'),
+    _q('Ki az északi mitológiában a hatalmas farkas? (Loki fia, aki a Ragnarök során Odint elnyeli)', 1, ['Jormungandr', 'Fenrir', 'Sleipnir', 'Hel'], 'Fenrir az északi mitológiában a hatalmas farkas.', 'mitológia'),
+    _q('Mi az északi mitológiában Odin lovának neve? (nyolclábú ló, Loki fia)', 0, ['Sleipnir', 'Fenrir', 'Jormungandr', 'Hel'], 'Sleipnir az északi mitológiában Odin lovának neve.', 'mitológia'),
+    _q('Ki az északi mitológiában a világkígyó? (Loki fia, aki a világot öleli körül)', 0, ['Jormungandr', 'Fenrir', 'Sleipnir', 'Hel'], 'Jormungandr az északi mitológiában a világkígyó.', 'mitológia'),
+    _q('Ki az északi mitológiában a hollók istene? (Odin hollói, a gondolat és az emlékezet)', 1, ['Thor', 'Odin', 'Loki', 'Freyr'], 'Huginn és Muninn az északi mitológiában Odin hollói.', 'mitológia'),
+    _q('Mi az északi mitológiában a Valkürök feladata? (A hősi halott harcosokat kiválasztják Valhallába)', 1, ['Az istenek védelme', 'A harcosok kiválasztása', 'A halottak kísérése', 'A háborúk vezetése'], 'A Valkürök feladata a hősi halott harcosok kiválasztása Valhallába.', 'mitológia'),
+    _q('Ki az északi mitológiában a szkald költészet és zene istene? (aki a költészet, zene és bölcsesség istene, Odin fia)', 2, ['Odin', 'Thor', 'Bragi', 'Loki'], 'Bragi az északi mitológiában a szkald költészet és zene istene.', 'mitológia'),
+    _q('Ki a kínai mitológiában a menny istene? (ti - a menny ura, aki a világot uralja)', 0, ['Jü-ti', 'Jade Császár', 'Pangu', 'Nuwa'], 'Jü-ti a kínai mitológiában a menny istene.', 'mitológia'),
+    _q('Ki a kínai mitológiában a világ teremtője? (aki a káoszból létrehozta a világot)', 2, ['Jü-ti', 'Jade Császár', 'Pangu', 'Nuwa'], 'Pangu a kínai mitológiában a világ teremtője.', 'mitológia'),
+    _q('Ki a kínai mitológiában az emberiség teremtője? (aki agyagból formálta az embereket)', 3, ['Jü-ti', 'Jade Császár', 'Pangu', 'Nuwa'], 'Nuwa a kínai mitológiában az emberiség teremtője.', 'mitológia'),
+    _q('Ki a kínai mitológiában a hold istennője? (e - aki a holdban él és a halhatatlanság elixírjét őrzi)', 0, ['Csang-e', 'Hszien-nü', 'Kuan-jin', 'Ma-cu'], 'Csang-e a kínai mitológiában a hold istennője.', 'mitológia'),
+    _q('Ki a kínai mitológiában a kegyesség istennője? (jin - a kegyesség és irgalom istennője)', 2, ['Csang-e', 'Hszien-nü', 'Kuan-jin', 'Ma-cu'], 'Kuan-jin a kínai mitológiában a kegyesség istennője.', 'mitológia'),
+    _q('Ki a kínai mitológiában a tenger istennője? (cu - a tenger és hajózás védelmezője)', 3, ['Csang-e', 'Hszien-nü', 'Kuan-jin', 'Ma-cu'], 'Ma-cu a kínai mitológiában a tenger istennője.', 'mitológia'),
+    _q('Ki a kínai mitológiában a háború istene? (jü - a hűség és bátorság istene)', 0, ['Kuan-jü', 'Csang Fej', 'Li Tien', 'Vang Mu'], 'Kuan-jü a kínai mitológiában a háború istene.', 'mitológia'),
+    _q('Ki a kínai mitológiában a gazdagság istene? (a gazdagság és szerencse istene)', 1, ['Kuan-jü', 'Csaj Seng', 'Li Tien', 'Vang Mu'], 'Csaj Seng a kínai mitológiában a gazdagság istene.', 'mitológia'),
+    _q('Ki a kínai mitológiában a tűz istene? (a tűz és kovácsmesterség istene)', 2, ['Kuan-jü', 'Csaj Seng', 'Li Tien', 'Vang Mu'], 'Li Tien a kínai mitológiában a tűz istene.', 'mitológia'),
+    _q('Ki a kínai mitológiában a halhatatlanság istennője? (a halhatatlanság és gyógyítás istennője)', 3, ['Kuan-jü', 'Csaj Seng', 'Li Tien', 'Vang Mu'], 'Vang Mu a kínai mitológiában a halhatatlanság istennője.', 'mitológia'),
+    _q('Ki a japán mitológiában a nap istennője? (a nap istennője, a japán császár család ősanyja)', 0, ['Amateraszu', 'Suszanoo', 'Cukujomi', 'Inari'], 'Amateraszu a japán mitológiában a nap istennője.', 'mitológia'),
+    _q('Ki a japán mitológiában a vihar istene? (a vihar és tenger istene, Amateraszu testvére)', 1, ['Amateraszu', 'Suszanoo', 'Cukujomi', 'Inari'], 'Suszanoo a japán mitológiában a vihar istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a hold istene? (a hold istene, Amateraszu és Suszanoo testvére)', 2, ['Amateraszu', 'Suszanoo', 'Cukujomi', 'Inari'], 'Cukujomi a japán mitológiában a hold istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a rizs istennője? (a rizs, termékenység és rókák istennője)', 3, ['Amateraszu', 'Suszanoo', 'Cukujomi', 'Inari'], 'Inari a japán mitológiában a rizs istennője.', 'mitológia'),
+    _q('Ki a japán mitológiában a harcos isten? (a harcosok és íjászat istene)', 0, ['Hacsiman', 'Benzaiten', 'Bisamon', 'Daiszoku'], 'Hacsiman a japán mitológiában a harcos isten.', 'mitológia'),
+    _q('Ki a japán mitológiában a szerencse istennője? (a szerencse, művészetek és bölcsesség istennője)', 1, ['Hacsiman', 'Benzaiten', 'Bisamon', 'Daiszoku'], 'Benzaiten a japán mitológiában a szerencse istennője.', 'mitológia'),
+    _q('Ki a japán mitológiában a háború istene? (a háború és védelmező isten)', 2, ['Hacsiman', 'Benzaiten', 'Bisamon', 'Daiszoku'], 'Bisamon a japán mitológiában a háború istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a gazdagság istene? (a gazdagság és termékenység istene)', 3, ['Hacsiman', 'Benzaiten', 'Bisamon', 'Daiszoku'], 'Daiszoku a japán mitológiában a gazdagság istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a halál istennője? (a halál és föld alatti világ istennője)', 0, ['Izanami', 'Izanagi', 'Kagucucsi', 'Amida'], 'Izanami a japán mitológiában a halál istennője.', 'mitológia'),
+    _q('Ki a japán mitológiában a teremtés istene? (aki Izanamival együtt teremtette a japán szigeteket)', 1, ['Izanami', 'Izanagi', 'Kagucucsi', 'Amida'], 'Izanagi a japán mitológiában a teremtés istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a tűz istene? (a tűz istene, akinek születése Izanami halálát okozta)', 2, ['Izanami', 'Izanagi', 'Kagucucsi', 'Amida'], 'Kagucucsi a japán mitológiában a tűz istene.', 'mitológia'),
+    _q('Ki a japán mitológiában a halhatatlanság istene? (a halhatatlanság és megváltás istene)', 3, ['Izanami', 'Izanagi', 'Kagucucsi', 'Amida'], 'Amida a japán mitológiában a halhatatlanság istene.', 'mitológia'),
 ]

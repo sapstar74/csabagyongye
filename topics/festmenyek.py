@@ -4,695 +4,105 @@ Festmény kérdések a quiz alkalmazáshoz
 Népszerű festmények és festők
 """
 
-FESTMENY_QUESTIONS = [
-    {
-'question': 'Nézd meg ezt a festményt: "Mona Lisa" és válaszd ki a festő nevét:',
-        'options': ['Pablo Picasso', 'Marc Chagall', 'John Constable', 'Leonardo da Vinci'],
-        'correct': 3,
-        'explanation': 'Mona Lisa - Leonardo da Vinci (1503-1519)',
-        'image_file': 'mona-lisa---Leonardo-Da-Vinci-1519.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Starry Night" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Leonardo da Vinci', 'Raphael', 'Sandro Botticelli'],
-        'correct': 0,
-        'explanation': 'The Starry Night - Vincent van Gogh (1889)',
-        'image_file': 'the-starry-night---vincent-van-gogh-1889.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Scream" és válaszd ki a festő nevét:',
-        'options': ['Andy Warhol', 'Edvard Munch', 'Claude Monet', 'Johannes Vermeer'],
-        'correct': 1,
-        'explanation': 'The Scream - Edvard Munch (1893)',
-        'image_file': 'the-scream---edvard-munch-1893.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Persistence of Memory" és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', "Georgia O'Keeffe", 'Frida Kahlo', 'Salvador Dalí'],
-        'correct': 3,
-        'explanation': 'The Persistence of Memory - Salvador Dalí (1931)',
-        'image_file': 'the-persistence-of-memory---salvador-dal-1931.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Girl with a Pearl Earring" és válaszd ki a festő nevét:',
-        'options': ['Pierre-Auguste Renoir', 'Raphael', 'Johannes Vermeer', 'Sandro Botticelli'],
-        'correct': 2,
-        'explanation': 'Girl with a Pearl Earring - Johannes Vermeer (1665)',
-        'image_file': 'girl-with-a-pearl-earring---johannes-vermeer-1665.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Birth of Venus" és válaszd ki a festő nevét:',
-        'options': ['Eugène Delacroix', 'Sandro Botticelli', 'Wassily Kandinsky', 'Édouard Manet'],
-        'correct': 1,
-        'explanation': 'The Birth of Venus - Sandro Botticelli (1485)',
-        'image_file': 'the-birth-of-venus---sandro-botticelli-1485.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Guernica" és válaszd ki a festő nevét:',
-        'options': ['Pablo Picasso', 'Hieronymus Bosch', 'Vincent van Gogh', 'Frida Kahlo'],
-        'correct': 0,
-        'explanation': 'Guernica - Pablo Picasso (1937)',
-        'image_file': 'guernica---pablo-picasso-1937.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Night Watch" és válaszd ki a festő nevét:',
-        'options': ['Rembrandt', 'Marc Chagall', 'Hieronymus Bosch', 'Georges Seurat'],
-        'correct': 0,
-        'explanation': 'The Night Watch - Rembrandt (1642)',
-        'image_file': 'the-night-watch---rembrandt-1642.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Water Lilies" és válaszd ki a festő nevét:',
-        'options': ['Gustav Klimt', 'Claude Monet', 'Edvard Munch', 'John Constable'],
-        'correct': 1,
-        'explanation': 'Water Lilies - Claude Monet (1916)',
-        'image_file': 'water-lilies---claude-monet-1916.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Kiss" és válaszd ki a festő nevét:',
-        'options': ['Grant Wood', 'Jackson Pollock', 'Gustav Klimt', 'Rembrandt'],
-        'correct': 2,
-        'explanation': 'The Kiss - Gustav Klimt (1908)',
-        'image_file': 'the-kiss---gustav-klimt-1908.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Self-Portrait with Bandaged Ear" és válaszd ki a festő nevét:',
-        'options': ['Pierre-Auguste Renoir', 'John Constable', 'Vincent van Gogh', 'René Magritte'],
-        'correct': 2,
-        'explanation': 'Self-Portrait with Bandaged Ear - Vincent van Gogh (1889)',
-        'image_file': 'self-portrait-with-bandaged-ear---vincent-van-gogh-1889.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Last Supper" és válaszd ki a festő nevét:',
-        'options': ['Pablo Picasso', 'Raphael', 'Hieronymus Bosch', 'Leonardo da Vinci'],
-        'correct': 3,
-        'explanation': 'The Last Supper - Leonardo da Vinci (1495-1498)',
-        'image_file': 'the-last-supper---Leonardo-da-Vinci-1495.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Garden of Earthly Delights" és válaszd ki a festő nevét:',
-        'options': ['Rembrandt', 'Jackson Pollock', 'Hieronymus Bosch', 'René Magritte'],
-        'correct': 2,
-        'explanation': 'The Garden of Earthly Delights - Hieronymus Bosch (1503-1515)',
-        'image_file': 'the-garden-of-earthly-delights---hierno1515.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Jackson Pollock', 'Marc Chagall', 'Pablo Picasso', 'Raphael'],
-        'correct': 2,
-        'explanation': "Les Demoiselles d'Avignon - Pablo Picasso (1907)",
-        'image_file': 'les-demoiselles-davignon---pablo-picasso-1907.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Arnolfini Portrait" és válaszd ki a festő nevét:',
-        'options': ['Edvard Munch', 'Jan van Eyck', 'Sandro Botticelli', 'Eugène Delacroix'],
-        'correct': 1,
-        'explanation': 'The Arnolfini Portrait - Jan van Eyck (1434)',
-        'image_file': 'the-arnolfini-portrait---jan-van-eyck-1434.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Creation of Adam" és válaszd ki a festő nevét:',
-        'options': ['Michelangelo', 'Pablo Picasso', 'Pierre-Auguste Renoir', 'Raphael'],
-        'correct': 0,
-        'explanation': 'The Creation of Adam - Michelangelo (1512)',
-        'image_file': 'the-creation-of-adam---michelangelo-1512.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The School of Athens" és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', 'Michelangelo', 'Raphael', 'Auguste Rodin'],
-        'correct': 2,
-        'explanation': 'The School of Athens - Raphael (1509-1511)',
-        'image_file': 'the-school-of-athens---raphael-1511.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Impression, Sunrise" és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', 'Edgar Degas', 'Edvard Munch', 'Pierre-Auguste Renoir'],
-        'correct': 0,
-        'explanation': 'Impression, Sunrise - Claude Monet (1872)',
-        'image_file': 'impression-sunrise---claude-monet-1872.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Son of Man" és válaszd ki a festő nevét:',
-        'options': ['Edvard Munch', 'Katsushika Hokusai', 'Paul Cézanne', 'René Magritte'],
-        'correct': 3,
-        'explanation': 'The Son of Man - René Magritte (1964)',
-        'image_file': 'the-son-of-man---ren-magritte-1964.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "American Gothic" és válaszd ki a festő nevét:',
-        'options': ['Johannes Vermeer', 'Grant Wood', 'Andy Warhol', 'Jan van Eyck'],
-        'correct': 1,
-        'explanation': 'American Gothic - Grant Wood (1930)',
-        'image_file': 'american-gothic---grant-wood-1930.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Great Wave off Kanagawa" és válaszd ki a festő nevét:',
-        'options': ['Frida Kahlo', 'Katsushika Hokusai', 'Rembrandt', 'Wassily Kandinsky'],
-        'correct': 1,
-        'explanation': 'The Great Wave off Kanagawa - Katsushika Hokusai (1831)',
-        'image_file': 'the-great-wave-off-kanagawa---katsushika-hokusai-1831.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Thinker" és válaszd ki a festő nevét:',
-        'options': ['Edgar Degas', 'Johannes Vermeer', 'Auguste Rodin', 'Pablo Picasso'],
-        'correct': 2,
-        'explanation': 'The Thinker - Auguste Rodin (1904)',
-        'image_file': 'the-thinker---auguste-rodin-1904.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Dance" és válaszd ki a festő nevét:',
-        'options': ['Andy Warhol', 'Henri Matisse', 'Leonardo da Vinci', 'René Magritte'],
-        'correct': 1,
-        'explanation': 'The Dance - Henri Matisse (1910)',
-        'image_file': 'the-dance---henri-matisse-1910.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Composition VII" és válaszd ki a festő nevét:',
-        'options': ['Leonardo da Vinci', 'Georges Seurat', 'Wassily Kandinsky', 'Edvard Munch'],
-        'correct': 2,
-        'explanation': 'Composition VII - Wassily Kandinsky (1913)',
-        'image_file': 'composition-vii---wassily-kandinsky-1913.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Two Fridas" és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', 'Henri Matisse', 'Raphael', 'Frida Kahlo'],
-        'correct': 3,
-        'explanation': 'The Two Fridas - Frida Kahlo (1939)',
-        'image_file': 'the-two-fridas---frida-kahlo-1939.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Auguste Rodin', 'Jackson Pollock', 'Andy Warhol', 'Vincent van Gogh'],
-        'correct': 2,
-        'explanation': "Campbell's Soup Cans - Andy Warhol (1962)",
-        'image_file': 'campbells-soup-cans---andy-warhol-1962.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Number 1 (Lavender Mist)" és válaszd ki a festő nevét:',
-        'options': ['Johannes Vermeer', 'John Constable', 'Jackson Pollock', 'Pierre-Auguste Renoir'],
-        'correct': 2,
-        'explanation': 'Number 1 (Lavender Mist) - Jackson Pollock (1950)',
-        'image_file': 'number-1-lavender-mist---jackson-pollock-1950.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Card Players" és válaszd ki a festő nevét:',
-        'options': ['Pablo Picasso', 'Auguste Rodin', 'Paul Cézanne', 'Leonardo da Vinci'],
-        'correct': 2,
-        'explanation': 'The Card Players - Paul Cézanne (1892)',
-        'image_file': 'the-card-players---paul-czanne-1892.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Luncheon on the Grass" és válaszd ki a festő nevét:',
-        'options': ['Édouard Manet', 'Marc Chagall', 'Hieronymus Bosch', 'Michelangelo'],
-        'correct': 0,
-        'explanation': 'The Luncheon on the Grass - Édouard Manet (1863)',
-        'image_file': 'the-luncheon-on-the-grass---douard-manet-1863.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Hay Wain" és válaszd ki a festő nevét:',
-        'options': ['Pierre-Auguste Renoir', 'John Constable', 'Jackson Pollock', 'Johannes Vermeer'],
-        'correct': 1,
-        'explanation': 'The Hay Wain - John Constable (1821)',
-        'image_file': 'the-hay-wain---john-constable-1821.jpg',
-        'topic': 'festmények'
-    },
-    # Új festmény kérdések
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Jacques-Louis David', 'Jean-Auguste-Dominique Ingres', 'Eugène Delacroix', 'Théodore Géricault'],
-        'correct': 0,
-        'explanation': 'Antoine Laurent Lavoisier and Marie Anne Lavoisier - Jacques-Louis David',
-        'image_file': 'antoine-laurent-lavoisier-and-marie-anne-lavoisier---jacques-louis-david.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Banquet of the Officers of the St George" és válaszd ki a festő nevét:',
-        'options': ['Frans Hals', 'Rembrandt', 'Jan Steen', 'Gerard van Honthorst'],
-        'correct': 0,
-        'explanation': 'Banquet of the Officers of the St George - Frans Hals (1616)',
-        'image_file': 'banquet-of-the-officers-of-the-st-george---frans-hals-1616.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Bedroom in Arles" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
-        'correct': 0,
-        'explanation': 'Bedroom in Arles - Vincent van Gogh (1889)',
-        'image_file': 'bedroom-in-arles---vincent-van-gogh-1889.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Charles I at the Hunt" és válaszd ki a festő nevét:',
-        'options': ['Anthony van Dyck', 'Peter Paul Rubens', 'Frans Hals', 'Rembrandt'],
-        'correct': 0,
-        'explanation': 'Charles I at the Hunt - Anthony van Dyck (1635)',
-        'image_file': 'charles-i-at-the-hunt---anthony-van-dyck-1635.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Oreste Cortazzo', 'Giovanni Boldini', 'Giacomo Favretto', 'Vincenzo Gemito'],
-        'correct': 0,
-        'explanation': 'Cortazzo - Oreste Cortazzo',
-        'image_file': 'cortazzo---oreste-cortazzo.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "El Expolio" és válaszd ki a festő nevét:',
-        'options': ['El Greco', 'Tintoretto', 'Titian', 'Veronese'],
-        'correct': 0,
-        'explanation': 'El Expolio - El Greco (1577)',
-        'image_file': 'el-expolio---el-greco-1577.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "El Tres de Mayo" és válaszd ki a festő nevét:',
-        'options': ['Francisco Goya', 'Diego Velázquez', 'El Greco', 'Bartolomé Esteban Murillo'],
-        'correct': 0,
-        'explanation': 'El Tres de Mayo - Francisco Goya (1808)',
-        'image_file': 'el-tres-de-mayothe---francisco-goya-1808.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Feast in the House of Levi" és válaszd ki a festő nevét:',
-        'options': ['Paolo Veronese', 'Tintoretto', 'Titian', 'Giorgione'],
-        'correct': 0,
-        'explanation': 'Feast in the House of Levi - Paolo Veronese (1573)',
-        'image_file': 'feast-in-the-house-of-levi---paolo-veronese-1573.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Finding of the Body of St Mark" és válaszd ki a festő nevét:',
-        'options': ['Jacopo Tintoretto', 'Titian', 'Veronese', 'Giorgione'],
-        'correct': 0,
-        'explanation': 'Finding of the Body of St Mark - Jacopo Tintoretto (1562)',
-        'image_file': 'finding-of-the-body-of-st-markl---jacopo-tintoretto-1562.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "French Portrait de Madame Duvaucey" és válaszd ki a festő nevét:',
-        'options': ['Jean-Auguste-Dominique Ingres', 'Jacques-Louis David', 'Théodore Géricault', 'Eugène Delacroix'],
-        'correct': 0,
-        'explanation': 'French Portrait de Madame Duvaucey - Jean-Auguste-Dominique Ingres (1807)',
-        'image_file': 'french-portrait-de-madame-duvaucey---jean-auguste-dominique-ingres-1807.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'],
-        'correct': 0,
-        'explanation': 'Le Pont d\'Argenteuil - Claude Monet',
-        'image_file': 'le-pont-dargenteuil---claude-monet.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Sailesh Chatterjee', 'Raja Ravi Varma', 'Amrita Sher-Gil', 'Jamini Roy'],
-        'correct': 0,
-        'explanation': 'Lotus Serenity - Sailesh Chatterjee',
-        'image_file': 'lotus-serenity----sailesh-chatterjee.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Daniel Volterra', 'Michelangelo', 'Raphael', 'Leonardo da Vinci'],
-        'correct': 0,
-        'explanation': 'Michelangelo Buonarroti - Daniel Volterra',
-        'image_file': 'michelangelo-buonarroti---daniel-volterra.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Paradise with the Creation and Fall of Man" és válaszd ki a festő nevét:',
-        'options': ['Jan Brueghel the Elder', 'Pieter Brueghel the Elder', 'Pieter Brueghel the Younger', 'Jan Brueghel the Younger'],
-        'correct': 0,
-        'explanation': 'Paradise with the Creation and Fall of Man - Jan Brueghel the Elder (1615)',
-        'image_file': 'paradise-with-the-creation-and-fall-of-man---jan-brueghel-the-elder-1615.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Titian', 'Tintoretto', 'Veronese', 'Giorgione'],
-        'correct': 0,
-        'explanation': 'Portrait of Charles V Seated - Titian',
-        'image_file': 'portrait-of-charles-v-seated---titian.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Portraits of the Duke and Duchess of Urbino" és válaszd ki a festő nevét:',
-        'options': ['Piero della Francesca', 'Masaccio', 'Fra Angelico', 'Sandro Botticelli'],
-        'correct': 0,
-        'explanation': 'Portraits of the Duke and Duchess of Urbino - Piero della Francesca (1473)',
-        'image_file': 'portraits-of-the-duke-and-duchess-of-urbino-federico-da-montefeltro-and-battista-sforza---piero-della-rancesca-1473.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Seaport with the Embarkation of the Queen of Sheba" és válaszd ki a festő nevét:',
-        'options': ['Claude Lorrain', 'Nicolas Poussin', 'Gaspard Dughet', 'Salvator Rosa'],
-        'correct': 0,
-        'explanation': 'Seaport with the Embarkation of the Queen of Sheba - Claude Lorrain (1648)',
-        'image_file': 'seaport-with-the-embarkation-of-the-queen-of-sheba---claude-lorrain-1648.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Self Portrait" és válaszd ki a festő nevét:',
-        'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
-        'correct': 0,
-        'explanation': 'Self Portrait - Rembrandt (1659)',
-        'image_file': 'selfportrait---rembrandt-1659.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Sorrow" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
-        'correct': 0,
-        'explanation': 'Sorrow - Vincent van Gogh (1882)',
-        'image_file': 'sorrow---vincent-van-gogh-1882.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Art of Painting" és válaszd ki a festő nevét:',
-        'options': ['Johannes Vermeer', 'Pieter de Hooch', 'Gabriel Metsu', 'Gerard ter Borch'],
-        'correct': 0,
-        'explanation': 'The Art of Painting - Johannes Vermeer (1666)',
-        'image_file': 'the-art-of-painting---johannes-vermeer-1666.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Calling of Saint Matthew" és válaszd ki a festő nevét:',
-        'options': ['Caravaggio', 'Orazio Gentileschi', 'Artemisia Gentileschi', 'Carlo Saraceni'],
-        'correct': 0,
-        'explanation': 'The Calling of Saint Matthew - Caravaggio (1599)',
-        'image_file': 'the-calling-of-saint-matthew---caravaggio-1599.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Jan van Eyck', 'Rogier van der Weyden', 'Hans Memling', 'Dieric Bouts'],
-        'correct': 0,
-        'explanation': 'The Crucifixion - Jan van Eyck',
-        'image_file': 'the-crucifiction ---jan-van-eyck.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Holy Family" és válaszd ki a festő nevét:',
-        'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
-        'correct': 0,
-        'explanation': 'The Holy Family - Rembrandt (2023)',
-        'image_file': 'the-holy-family-rembrandt---goldenartists-2023.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Lady with an Ermine" és válaszd ki a festő nevét:',
-        'options': ['Leonardo da Vinci', 'Raphael', 'Sandro Botticelli', 'Piero della Francesca'],
-        'correct': 0,
-        'explanation': 'The Lady with an Ermine - Leonardo da Vinci (1490)',
-        'image_file': 'the-lady-with-an-ermine-portrait-of-cecilia-gallerani---leonardo-da-vinci-1490.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Oath of the Horatii" és válaszd ki a festő nevét:',
-        'options': ['Jacques-Louis David', 'Jean-Auguste-Dominique Ingres', 'Théodore Géricault', 'Eugène Delacroix'],
-        'correct': 0,
-        'explanation': 'The Oath of the Horatii - Jacques-Louis David (1784)',
-        'image_file': 'the-oath-of-the-horatii---jacqueslouis-david-1784.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Rape of the Daughters of Leucippus" és válaszd ki a festő nevét:',
-        'options': ['Peter Paul Rubens', 'Anthony van Dyck', 'Frans Hals', 'Rembrandt'],
-        'correct': 0,
-        'explanation': 'The Rape of the Daughters of Leucippus - Peter Paul Rubens (1618)',
-        'image_file': 'the-rape-of-the-daughters-of-leucippus---peter-paul-rubens-1618.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Wheat Field with Cypresses" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
-        'correct': 0,
-        'explanation': 'Wheat Field with Cypresses - Vincent van Gogh (1899)',
-        'image_file': 'wheat-field-with-cypresses---vincent-van-gogh-1899.jpg',
-        'topic': 'festmények'
-    },
-    # További új festmény kérdések
-    {
-'question': 'Nézd meg ezt a festményt: "Two Tahitian Women" és válaszd ki a festő nevét:',
-        'options': ['Paul Gauguin', 'Vincent van Gogh', 'Henri de Toulouse-Lautrec', 'Émile Bernard'],
-        'correct': 0,
-        'explanation': 'Two Tahitian Women - Paul Gauguin (1899)',
-        'image_file': 'two-tahitian-women---paul-gaugin-1899.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Villa R" és válaszd ki a festő nevét:',
-        'options': ['Paul Klee', 'Wassily Kandinsky', 'Franz Marc', 'August Macke'],
-        'correct': 0,
-        'explanation': 'Villa R - Paul Klee (1919)',
-        'image_file': 'villa-r---paul-klee-1919.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Woman with Black Cravat" és válaszd ki a festő nevét:',
-        'options': ['Amedeo Modigliani', 'Pablo Picasso', 'Henri Matisse', 'Georges Braque'],
-        'correct': 0,
-        'explanation': 'Woman with Black Cravat - Amedeo Modigliani (1917)',
-        'image_file': 'woman-with-black-cravat---amedeo-modigliani-1917.jpg',
-        'topic': 'festmények'
-    },
-    # További hiányzó festmény kérdések
-    {
-'question': 'Nézd meg ezt a festményt: "Low Tide at Pourville, near Dieppe" és válaszd ki a festő nevét:',
-        'options': ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'],
-        'correct': 0,
-        'explanation': 'Low Tide at Pourville, near Dieppe - Claude Monet (1882)',
-        'image_file': 'Claude_Monet-Low_Tide_at_Pourville__near_Dieppe__1882.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "A Sunday on La Grande Jatte" és válaszd ki a festő nevét:',
-        'options': ['Georges Seurat', 'Paul Signac', 'Camille Pissarro', 'Henri-Edmond Cross'],
-        'correct': 0,
-        'explanation': 'A Sunday on La Grande Jatte - Georges Seurat (1884)',
-        'image_file': 'a-sunday-on-la-grande-jatte---georges-seurat-1884.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "At the Moulin Rouge" és válaszd ki a festő nevét:',
-        'options': ['Henri de Toulouse-Lautrec', 'Edgar Degas', 'Pierre-Auguste Renoir', 'Édouard Manet'],
-        'correct': 0,
-        'explanation': 'At the Moulin Rouge - Henri de Toulouse-Lautrec (1892)',
-        'image_file': 'at-the-moulin-rouge---henri-de-toulouselautrec-1892.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Gabrielle with Jewellery" és válaszd ki a festő nevét:',
-        'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
-        'correct': 0,
-        'explanation': 'Gabrielle with Jewellery - Pierre-Auguste Renoir (1910)',
-        'image_file': 'gabrielle-with-jewellery---pierreauguste-renoir-1910.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Pablo Picasso', 'Georges Braque', 'Juan Gris', 'Fernand Léger'],
-        'correct': 0,
-        'explanation': 'Guernica - Pablo Picasso (1937) - Alternatív verzió',
-        'image_file': 'guernica-pablo-picasso-1937.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Improvisation 26" és válaszd ki a festő nevét:',
-        'options': ['Wassily Kandinsky', 'Franz Marc', 'August Macke', 'Paul Klee'],
-        'correct': 0,
-        'explanation': 'Improvisation 26 - Wassily Kandinsky (1912)',
-        'image_file': 'improvisation-26---wassily-kandinsky-1912.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "La Classe de Danse" és válaszd ki a festő nevét:',
-        'options': ['Edgar Degas', 'Pierre-Auguste Renoir', 'Claude Monet', 'Édouard Manet'],
-        'correct': 0,
-        'explanation': 'La Classe de Danse - Edgar Degas (1871)',
-        'image_file': 'la-classe-de-danse---edgar-degas-1871.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "La Liseuse" és válaszd ki a festő nevét:',
-        'options': ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'],
-        'correct': 0,
-        'explanation': 'La Liseuse - Pierre-Auguste Renoir (1874)',
-        'image_file': 'la-liseuse---pierreauguste-renoir-1874.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Lake Geneva as Seen from Chexbres" és válaszd ki a festő nevét:',
-        'options': ['Ferdinand Hodler', 'Claude Monet', 'Camille Pissarro', 'Alfred Sisley'],
-        'correct': 0,
-        'explanation': 'Lake Geneva as Seen from Chexbres - Ferdinand Hodler (1905)',
-        'image_file': 'lake-geneva-as-seen-from-chexbres---ferdinand-hodler-1905.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "People by a Blue Lake" és válaszd ki a festő nevét:',
-        'options': ['August Macke', 'Franz Marc', 'Wassily Kandinsky', 'Paul Klee'],
-        'correct': 0,
-        'explanation': 'People by a Blue Lake - August Macke (1913)',
-        'image_file': 'people-by-a-blue-lake---august-macke-1913.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Summer Evening in Murnau" és válaszd ki a festő nevét:',
-        'options': ['Alexej von Jawlensky', 'Wassily Kandinsky', 'Franz Marc', 'Paul Klee'],
-        'correct': 0,
-        'explanation': 'Summer Evening in Murnau - Alexej von Jawlensky (1908)',
-        'image_file': 'summer-evening-in-murnau---alexej-von-jawlensky-1908.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Girls on the Bridge" és válaszd ki a festő nevét:',
-        'options': ['Edvard Munch', 'Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec'],
-        'correct': 0,
-        'explanation': 'The Girls on the Bridge - Edvard Munch (1905)',
-        'image_file': 'the-girls-on-the-bridge---edward-munch-1905.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Man with the Golden Helmet" és válaszd ki a festő nevét:',
-        'options': ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'],
-        'correct': 0,
-        'explanation': 'The Man with the Golden Helmet - Rembrandt (1650)',
-        'image_file': 'the-man-with-the-golden-helmet---rembrandt-1650.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Peaceable Kingdom" és válaszd ki a festő nevét:',
-        'options': ['Edward Hicks', 'Thomas Cole', 'Asher Brown Durand', 'Frederic Edwin Church'],
-        'correct': 0,
-        'explanation': 'The Peaceable Kingdom - Edward Hicks (1833)',
-        'image_file': 'the-peaceable-kingdom---edward-hicks-1833.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Peasant Wedding" és válaszd ki a festő nevét:',
-        'options': ['Pieter Bruegel the Elder', 'Jan Brueghel the Elder', 'Hieronymus Bosch', 'Jan van Eyck'],
-        'correct': 0,
-        'explanation': 'The Peasant Wedding - Pieter Bruegel the Elder (1568)',
-        'image_file': 'the-peasant-wedding---pieter-bruegel-the-elder-1568.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Einschiffung Nach Kythera" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Henri Matisse', 'Salvador Dalí', 'Jean-Antoine Watteau'],
-        'correct': 3,
-        'explanation': 'Einschiffung Nach Kythera - Jean-Antoine Watteau (1719)',
-        'image_file': 'einschiffung-nach-kythera---jeanantoine-watteau-1719.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "The Bridge At Narni" és válaszd ki a festő nevét:',
-        'options': ['Francisco Goya', 'Gustav Klimt', 'Jeanbaptiste Camille Corot', 'Claude Monet'],
-        'correct': 2,
-        'explanation': 'The Bridge At Narni - Jeanbaptiste Camille Corot (1826)',
-        'image_file': 'the-bridge-at-narni---jeanbaptiste-camille-corot-1826.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "De Molen Bij Wijk Bij Duurstede" és válaszd ki a festő nevét:',
-        'options': ['Jacob Isaacksz van Ruisdael', 'Wassily Kandinsky', 'Frida Kahlo', 'Pablo Picasso'],
-        'correct': 0,
-        'explanation': 'De Molen Bij Wijk Bij Duurstede - Jacob Isaacksz van Ruisdael (1668)',
-        'image_file': 'de-molen-bij-wijk-bij-duurstede----jacob-isaacksz-van-ruisdael-1668.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Schlummernde Venus" és válaszd ki a festő nevét:',
-        'options': ['Johannes Vermeer', 'Giorgione', 'Claude Monet', 'Titian'],
-        'correct': 1,
-        'explanation': 'Schlummernde Venus - Giorgione (1508)',
-        'image_file': 'schlummernde-venus---titian-giorgione-1508.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Het Papegaaienlaantje" és válaszd ki a festő nevét:',
-        'options': ['Wassily Kandinsky', 'El Greco', 'Max Liebermann', 'Rembrandt'],
-        'correct': 2,
-        'explanation': 'Het Papegaaienlaantje - Max Liebermann (1902)',
-        'image_file': 'het-papegaaienlaantje---max-liebermann-1902.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Giudizio Universale" és válaszd ki a festő nevét:',
-        'options': ['Vincent van Gogh', 'Michelangelo', 'Claude Monet', 'Wassily Kandinsky'],
-        'correct': 1,
-        'explanation': 'Giudizio Universale - Michelangelo (1536)',
-        'image_file': 'giudizio-universale---michelangelo-1536.jpg',
-        'topic': 'festmények'
-    },
-    {
-        'question': 'Nézd meg ezt a festményt és válaszd ki a festő nevét:',
-        'options': ['Paul Cézanne', 'René Magritte', 'Francesco Guardi', 'Claude Monet'],
-        'correct': 2,
-        'explanation': 'View Of Piazzetta San Marco Towards The San Giorgio Maggiore - Francesco Guardi',
-        'image_file': 'view-of-piazzetta-san-marco-towards-the-san-giorgio-maggiore---francesco-guardi-unknown.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "A Langlois Hd Arles Mellett" és válaszd ki a festő nevét:',
-        'options': ['Vincent Van Gogh', 'Pierre-Auguste Renoir', 'Rembrandt', 'Andy Warhol'],
-        'correct': 0,
-        'explanation': 'A Langlois Hd Arles Mellett - Vincent Van Gogh (1888)',
-        'image_file': 'a-langlois-hd-arles-mellett---vincent-van-gogh-1888.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "La Bohémienne Endormie" és válaszd ki a festő nevét:',
-        'options': ['Henri Matisse', 'Francisco Goya', 'Edvard Munch', 'Henri Rousseau'],
-        'correct': 3,
-        'explanation': 'La Bohémienne Endormie - Henri Rousseau (1897)',
-        'image_file': 'la-bohémienne-endormie---henri_rousseau-1897.jpg',
-        'topic': 'festmények'
-    },
-    {
-'question': 'Nézd meg ezt a festményt: "Pelzhndler Auf Dem Missouri" és válaszd ki a festő nevét:',
-        'options': ['Jackson Pollock', 'George Caleb Bingham', 'Michelangelo', 'Salvador Dalí'],
-        'correct': 1,
-        'explanation': 'Pelzhndler Auf Dem Missouri - George Caleb Bingham (1845)',
-        'image_file': 'pelzhndler-auf-dem-missouri---george-caleb-bingham-1845.jpg',
-        'topic': 'festmények'
-    }
-]
+_TOPIC = "festmények"
 
-if __name__ == "__main__":
-    print(f"Festmény kérdések száma: {len(FESTMENY_QUESTIONS)}")
-    print("Első 5 kérdés:")
-    for i, q in enumerate(FESTMENY_QUESTIONS[:5]):
-        print(f"{i+1}. {q['explanation']}")
-        print(f"   Fájl: {q['image_file']}")
+
+def _q(question, correct, options, explanation, image_file, topic=_TOPIC):
+    """Segédfüggvény: kompakt kérdés létrehozása."""
+    return {
+        "question": question,
+        "options": options,
+        "correct": correct,
+        "explanation": explanation,
+        "image_file": image_file,
+        "topic": topic,
+    }
+
+
+FESTMENY_QUESTIONS = [
+    _q('Nézd meg ezt a festményt: "Mona Lisa" és válaszd ki a festő nevét:', 3, ['Pablo Picasso', 'Marc Chagall', 'John Constable', 'Leonardo da Vinci'], 'Mona Lisa - Leonardo da Vinci (1503-1519)', 'mona-lisa---Leonardo-Da-Vinci-1519.jpg'),
+    _q('Nézd meg ezt a festményt: "The Starry Night" és válaszd ki a festő nevét:', 0, ['Vincent van Gogh', 'Leonardo da Vinci', 'Raphael', 'Sandro Botticelli'], 'The Starry Night - Vincent van Gogh (1889)', 'the-starry-night---vincent-van-gogh-1889.jpg'),
+    _q('Nézd meg ezt a festményt: "The Scream" és válaszd ki a festő nevét:', 1, ['Andy Warhol', 'Edvard Munch', 'Claude Monet', 'Johannes Vermeer'], 'The Scream - Edvard Munch (1893)', 'the-scream---edvard-munch-1893.jpg'),
+    _q('Nézd meg ezt a festményt: "The Persistence of Memory" és válaszd ki a festő nevét:', 3, ['Claude Monet', "Georgia O'Keeffe", 'Frida Kahlo', 'Salvador Dalí'], 'The Persistence of Memory - Salvador Dalí (1931)', 'the-persistence-of-memory---salvador-dal-1931.jpg'),
+    _q('Nézd meg ezt a festményt: "Girl with a Pearl Earring" és válaszd ki a festő nevét:', 2, ['Pierre-Auguste Renoir', 'Raphael', 'Johannes Vermeer', 'Sandro Botticelli'], 'Girl with a Pearl Earring - Johannes Vermeer (1665)', 'girl-with-a-pearl-earring---johannes-vermeer-1665.jpg'),
+    _q('Nézd meg ezt a festményt: "The Birth of Venus" és válaszd ki a festő nevét:', 1, ['Eugène Delacroix', 'Sandro Botticelli', 'Wassily Kandinsky', 'Édouard Manet'], 'The Birth of Venus - Sandro Botticelli (1485)', 'the-birth-of-venus---sandro-botticelli-1485.jpg'),
+    _q('Nézd meg ezt a festményt: "Guernica" és válaszd ki a festő nevét:', 0, ['Pablo Picasso', 'Hieronymus Bosch', 'Vincent van Gogh', 'Frida Kahlo'], 'Guernica - Pablo Picasso (1937)', 'guernica---pablo-picasso-1937.jpg'),
+    _q('Nézd meg ezt a festményt: "The Night Watch" és válaszd ki a festő nevét:', 0, ['Rembrandt', 'Marc Chagall', 'Hieronymus Bosch', 'Georges Seurat'], 'The Night Watch - Rembrandt (1642)', 'the-night-watch---rembrandt-1642.jpg'),
+    _q('Nézd meg ezt a festményt: "Water Lilies" és válaszd ki a festő nevét:', 1, ['Gustav Klimt', 'Claude Monet', 'Edvard Munch', 'John Constable'], 'Water Lilies - Claude Monet (1916)', 'water-lilies---claude-monet-1916.jpg'),
+    _q('Nézd meg ezt a festményt: "The Kiss" és válaszd ki a festő nevét:', 2, ['Grant Wood', 'Jackson Pollock', 'Gustav Klimt', 'Rembrandt'], 'The Kiss - Gustav Klimt (1908)', 'the-kiss---gustav-klimt-1908.jpg'),
+    _q('Nézd meg ezt a festményt: "Self-Portrait with Bandaged Ear" és válaszd ki a festő nevét:', 2, ['Pierre-Auguste Renoir', 'John Constable', 'Vincent van Gogh', 'René Magritte'], 'Self-Portrait with Bandaged Ear - Vincent van Gogh (1889)', 'self-portrait-with-bandaged-ear---vincent-van-gogh-1889.jpg'),
+    _q('Nézd meg ezt a festményt: "The Last Supper" és válaszd ki a festő nevét:', 3, ['Pablo Picasso', 'Raphael', 'Hieronymus Bosch', 'Leonardo da Vinci'], 'The Last Supper - Leonardo da Vinci (1495-1498)', 'the-last-supper---Leonardo-da-Vinci-1495.jpg'),
+    _q('Nézd meg ezt a festményt: "The Garden of Earthly Delights" és válaszd ki a festő nevét:', 2, ['Rembrandt', 'Jackson Pollock', 'Hieronymus Bosch', 'René Magritte'], 'The Garden of Earthly Delights - Hieronymus Bosch (1503-1515)', 'the-garden-of-earthly-delights---hierno1515.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 2, ['Jackson Pollock', 'Marc Chagall', 'Pablo Picasso', 'Raphael'], "Les Demoiselles d'Avignon - Pablo Picasso (1907)", 'les-demoiselles-davignon---pablo-picasso-1907.jpg'),
+    _q('Nézd meg ezt a festményt: "The Arnolfini Portrait" és válaszd ki a festő nevét:', 1, ['Edvard Munch', 'Jan van Eyck', 'Sandro Botticelli', 'Eugène Delacroix'], 'The Arnolfini Portrait - Jan van Eyck (1434)', 'the-arnolfini-portrait---jan-van-eyck-1434.jpg'),
+    _q('Nézd meg ezt a festményt: "The Creation of Adam" és válaszd ki a festő nevét:', 0, ['Michelangelo', 'Pablo Picasso', 'Pierre-Auguste Renoir', 'Raphael'], 'The Creation of Adam - Michelangelo (1512)', 'the-creation-of-adam---michelangelo-1512.jpg'),
+    _q('Nézd meg ezt a festményt: "The School of Athens" és válaszd ki a festő nevét:', 2, ['Claude Monet', 'Michelangelo', 'Raphael', 'Auguste Rodin'], 'The School of Athens - Raphael (1509-1511)', 'the-school-of-athens---raphael-1511.jpg'),
+    _q('Nézd meg ezt a festményt: "Impression, Sunrise" és válaszd ki a festő nevét:', 0, ['Claude Monet', 'Edgar Degas', 'Edvard Munch', 'Pierre-Auguste Renoir'], 'Impression, Sunrise - Claude Monet (1872)', 'impression-sunrise---claude-monet-1872.jpg'),
+    _q('Nézd meg ezt a festményt: "The Son of Man" és válaszd ki a festő nevét:', 3, ['Edvard Munch', 'Katsushika Hokusai', 'Paul Cézanne', 'René Magritte'], 'The Son of Man - René Magritte (1964)', 'the-son-of-man---ren-magritte-1964.jpg'),
+    _q('Nézd meg ezt a festményt: "American Gothic" és válaszd ki a festő nevét:', 1, ['Johannes Vermeer', 'Grant Wood', 'Andy Warhol', 'Jan van Eyck'], 'American Gothic - Grant Wood (1930)', 'american-gothic---grant-wood-1930.jpg'),
+    _q('Nézd meg ezt a festményt: "The Great Wave off Kanagawa" és válaszd ki a festő nevét:', 1, ['Frida Kahlo', 'Katsushika Hokusai', 'Rembrandt', 'Wassily Kandinsky'], 'The Great Wave off Kanagawa - Katsushika Hokusai (1831)', 'the-great-wave-off-kanagawa---katsushika-hokusai-1831.jpg'),
+    _q('Nézd meg ezt a festményt: "The Thinker" és válaszd ki a festő nevét:', 2, ['Edgar Degas', 'Johannes Vermeer', 'Auguste Rodin', 'Pablo Picasso'], 'The Thinker - Auguste Rodin (1904)', 'the-thinker---auguste-rodin-1904.jpg'),
+    _q('Nézd meg ezt a festményt: "The Dance" és válaszd ki a festő nevét:', 1, ['Andy Warhol', 'Henri Matisse', 'Leonardo da Vinci', 'René Magritte'], 'The Dance - Henri Matisse (1910)', 'the-dance---henri-matisse-1910.jpg'),
+    _q('Nézd meg ezt a festményt: "Composition VII" és válaszd ki a festő nevét:', 2, ['Leonardo da Vinci', 'Georges Seurat', 'Wassily Kandinsky', 'Edvard Munch'], 'Composition VII - Wassily Kandinsky (1913)', 'composition-vii---wassily-kandinsky-1913.jpg'),
+    _q('Nézd meg ezt a festményt: "The Two Fridas" és válaszd ki a festő nevét:', 3, ['Claude Monet', 'Henri Matisse', 'Raphael', 'Frida Kahlo'], 'The Two Fridas - Frida Kahlo (1939)', 'the-two-fridas---frida-kahlo-1939.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 2, ['Auguste Rodin', 'Jackson Pollock', 'Andy Warhol', 'Vincent van Gogh'], "Campbell's Soup Cans - Andy Warhol (1962)", 'campbells-soup-cans---andy-warhol-1962.jpg'),
+    _q('Nézd meg ezt a festményt: "Number 1 (Lavender Mist)" és válaszd ki a festő nevét:', 2, ['Johannes Vermeer', 'John Constable', 'Jackson Pollock', 'Pierre-Auguste Renoir'], 'Number 1 (Lavender Mist) - Jackson Pollock (1950)', 'number-1-lavender-mist---jackson-pollock-1950.jpg'),
+    _q('Nézd meg ezt a festményt: "The Card Players" és válaszd ki a festő nevét:', 2, ['Pablo Picasso', 'Auguste Rodin', 'Paul Cézanne', 'Leonardo da Vinci'], 'The Card Players - Paul Cézanne (1892)', 'the-card-players---paul-czanne-1892.jpg'),
+    _q('Nézd meg ezt a festményt: "The Luncheon on the Grass" és válaszd ki a festő nevét:', 0, ['Édouard Manet', 'Marc Chagall', 'Hieronymus Bosch', 'Michelangelo'], 'The Luncheon on the Grass - Édouard Manet (1863)', 'the-luncheon-on-the-grass---douard-manet-1863.jpg'),
+    _q('Nézd meg ezt a festményt: "The Hay Wain" és válaszd ki a festő nevét:', 1, ['Pierre-Auguste Renoir', 'John Constable', 'Jackson Pollock', 'Johannes Vermeer'], 'The Hay Wain - John Constable (1821)', 'the-hay-wain---john-constable-1821.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Jacques-Louis David', 'Jean-Auguste-Dominique Ingres', 'Eugène Delacroix', 'Théodore Géricault'], 'Antoine Laurent Lavoisier and Marie Anne Lavoisier - Jacques-Louis David', 'antoine-laurent-lavoisier-and-marie-anne-lavoisier---jacques-louis-david.jpg'),
+    _q('Nézd meg ezt a festményt: "Banquet of the Officers of the St George" és válaszd ki a festő nevét:', 0, ['Frans Hals', 'Rembrandt', 'Jan Steen', 'Gerard van Honthorst'], 'Banquet of the Officers of the St George - Frans Hals (1616)', 'banquet-of-the-officers-of-the-st-george---frans-hals-1616.jpg'),
+    _q('Nézd meg ezt a festményt: "Bedroom in Arles" és válaszd ki a festő nevét:', 0, ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'], 'Bedroom in Arles - Vincent van Gogh (1889)', 'bedroom-in-arles---vincent-van-gogh-1889.jpg'),
+    _q('Nézd meg ezt a festményt: "Charles I at the Hunt" és válaszd ki a festő nevét:', 0, ['Anthony van Dyck', 'Peter Paul Rubens', 'Frans Hals', 'Rembrandt'], 'Charles I at the Hunt - Anthony van Dyck (1635)', 'charles-i-at-the-hunt---anthony-van-dyck-1635.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Oreste Cortazzo', 'Giovanni Boldini', 'Giacomo Favretto', 'Vincenzo Gemito'], 'Cortazzo - Oreste Cortazzo', 'cortazzo---oreste-cortazzo.jpg'),
+    _q('Nézd meg ezt a festményt: "El Expolio" és válaszd ki a festő nevét:', 0, ['El Greco', 'Tintoretto', 'Titian', 'Veronese'], 'El Expolio - El Greco (1577)', 'el-expolio---el-greco-1577.jpg'),
+    _q('Nézd meg ezt a festményt: "El Tres de Mayo" és válaszd ki a festő nevét:', 0, ['Francisco Goya', 'Diego Velázquez', 'El Greco', 'Bartolomé Esteban Murillo'], 'El Tres de Mayo - Francisco Goya (1808)', 'el-tres-de-mayothe---francisco-goya-1808.jpg'),
+    _q('Nézd meg ezt a festményt: "Feast in the House of Levi" és válaszd ki a festő nevét:', 0, ['Paolo Veronese', 'Tintoretto', 'Titian', 'Giorgione'], 'Feast in the House of Levi - Paolo Veronese (1573)', 'feast-in-the-house-of-levi---paolo-veronese-1573.jpg'),
+    _q('Nézd meg ezt a festményt: "Finding of the Body of St Mark" és válaszd ki a festő nevét:', 0, ['Jacopo Tintoretto', 'Titian', 'Veronese', 'Giorgione'], 'Finding of the Body of St Mark - Jacopo Tintoretto (1562)', 'finding-of-the-body-of-st-markl---jacopo-tintoretto-1562.jpg'),
+    _q('Nézd meg ezt a festményt: "French Portrait de Madame Duvaucey" és válaszd ki a festő nevét:', 0, ['Jean-Auguste-Dominique Ingres', 'Jacques-Louis David', 'Théodore Géricault', 'Eugène Delacroix'], 'French Portrait de Madame Duvaucey - Jean-Auguste-Dominique Ingres (1807)', 'french-portrait-de-madame-duvaucey---jean-auguste-dominique-ingres-1807.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'], "Le Pont d'Argenteuil - Claude Monet", 'le-pont-dargenteuil---claude-monet.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Sailesh Chatterjee', 'Raja Ravi Varma', 'Amrita Sher-Gil', 'Jamini Roy'], 'Lotus Serenity - Sailesh Chatterjee', 'lotus-serenity----sailesh-chatterjee.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Daniel Volterra', 'Michelangelo', 'Raphael', 'Leonardo da Vinci'], 'Michelangelo Buonarroti - Daniel Volterra', 'michelangelo-buonarroti---daniel-volterra.jpg'),
+    _q('Nézd meg ezt a festményt: "Paradise with the Creation and Fall of Man" és válaszd ki a festő nevét:', 0, ['Jan Brueghel the Elder', 'Pieter Brueghel the Elder', 'Pieter Brueghel the Younger', 'Jan Brueghel the Younger'], 'Paradise with the Creation and Fall of Man - Jan Brueghel the Elder (1615)', 'paradise-with-the-creation-and-fall-of-man---jan-brueghel-the-elder-1615.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Titian', 'Tintoretto', 'Veronese', 'Giorgione'], 'Portrait of Charles V Seated - Titian', 'portrait-of-charles-v-seated---titian.jpg'),
+    _q('Nézd meg ezt a festményt: "Portraits of the Duke and Duchess of Urbino" és válaszd ki a festő nevét:', 0, ['Piero della Francesca', 'Masaccio', 'Fra Angelico', 'Sandro Botticelli'], 'Portraits of the Duke and Duchess of Urbino - Piero della Francesca (1473)', 'portraits-of-the-duke-and-duchess-of-urbino-federico-da-montefeltro-and-battista-sforza---piero-della-rancesca-1473.jpg'),
+    _q('Nézd meg ezt a festményt: "Seaport with the Embarkation of the Queen of Sheba" és válaszd ki a festő nevét:', 0, ['Claude Lorrain', 'Nicolas Poussin', 'Gaspard Dughet', 'Salvator Rosa'], 'Seaport with the Embarkation of the Queen of Sheba - Claude Lorrain (1648)', 'seaport-with-the-embarkation-of-the-queen-of-sheba---claude-lorrain-1648.jpg'),
+    _q('Nézd meg ezt a festményt: "Self Portrait" és válaszd ki a festő nevét:', 0, ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'], 'Self Portrait - Rembrandt (1659)', 'selfportrait---rembrandt-1659.jpg'),
+    _q('Nézd meg ezt a festményt: "Sorrow" és válaszd ki a festő nevét:', 0, ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'], 'Sorrow - Vincent van Gogh (1882)', 'sorrow---vincent-van-gogh-1882.jpg'),
+    _q('Nézd meg ezt a festményt: "The Art of Painting" és válaszd ki a festő nevét:', 0, ['Johannes Vermeer', 'Pieter de Hooch', 'Gabriel Metsu', 'Gerard ter Borch'], 'The Art of Painting - Johannes Vermeer (1666)', 'the-art-of-painting---johannes-vermeer-1666.jpg'),
+    _q('Nézd meg ezt a festményt: "The Calling of Saint Matthew" és válaszd ki a festő nevét:', 0, ['Caravaggio', 'Orazio Gentileschi', 'Artemisia Gentileschi', 'Carlo Saraceni'], 'The Calling of Saint Matthew - Caravaggio (1599)', 'the-calling-of-saint-matthew---caravaggio-1599.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Jan van Eyck', 'Rogier van der Weyden', 'Hans Memling', 'Dieric Bouts'], 'The Crucifixion - Jan van Eyck', 'the-crucifiction ---jan-van-eyck.jpg'),
+    _q('Nézd meg ezt a festményt: "The Holy Family" és válaszd ki a festő nevét:', 0, ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'], 'The Holy Family - Rembrandt (2023)', 'the-holy-family-rembrandt---goldenartists-2023.jpg'),
+    _q('Nézd meg ezt a festményt: "The Lady with an Ermine" és válaszd ki a festő nevét:', 0, ['Leonardo da Vinci', 'Raphael', 'Sandro Botticelli', 'Piero della Francesca'], 'The Lady with an Ermine - Leonardo da Vinci (1490)', 'the-lady-with-an-ermine-portrait-of-cecilia-gallerani---leonardo-da-vinci-1490.jpg'),
+    _q('Nézd meg ezt a festményt: "The Oath of the Horatii" és válaszd ki a festő nevét:', 0, ['Jacques-Louis David', 'Jean-Auguste-Dominique Ingres', 'Théodore Géricault', 'Eugène Delacroix'], 'The Oath of the Horatii - Jacques-Louis David (1784)', 'the-oath-of-the-horatii---jacqueslouis-david-1784.jpg'),
+    _q('Nézd meg ezt a festményt: "The Rape of the Daughters of Leucippus" és válaszd ki a festő nevét:', 0, ['Peter Paul Rubens', 'Anthony van Dyck', 'Frans Hals', 'Rembrandt'], 'The Rape of the Daughters of Leucippus - Peter Paul Rubens (1618)', 'the-rape-of-the-daughters-of-leucippus---peter-paul-rubens-1618.jpg'),
+    _q('Nézd meg ezt a festményt: "Wheat Field with Cypresses" és válaszd ki a festő nevét:', 0, ['Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec', 'Émile Bernard'], 'Wheat Field with Cypresses - Vincent van Gogh (1899)', 'wheat-field-with-cypresses---vincent-van-gogh-1899.jpg'),
+    _q('Nézd meg ezt a festményt: "Two Tahitian Women" és válaszd ki a festő nevét:', 0, ['Paul Gauguin', 'Vincent van Gogh', 'Henri de Toulouse-Lautrec', 'Émile Bernard'], 'Two Tahitian Women - Paul Gauguin (1899)', 'two-tahitian-women---paul-gaugin-1899.jpg'),
+    _q('Nézd meg ezt a festményt: "Villa R" és válaszd ki a festő nevét:', 0, ['Paul Klee', 'Wassily Kandinsky', 'Franz Marc', 'August Macke'], 'Villa R - Paul Klee (1919)', 'villa-r---paul-klee-1919.jpg'),
+    _q('Nézd meg ezt a festményt: "Woman with Black Cravat" és válaszd ki a festő nevét:', 0, ['Amedeo Modigliani', 'Pablo Picasso', 'Henri Matisse', 'Georges Braque'], 'Woman with Black Cravat - Amedeo Modigliani (1917)', 'woman-with-black-cravat---amedeo-modigliani-1917.jpg'),
+    _q('Nézd meg ezt a festményt: "Low Tide at Pourville, near Dieppe" és válaszd ki a festő nevét:', 0, ['Claude Monet', 'Pierre-Auguste Renoir', 'Alfred Sisley', 'Camille Pissarro'], 'Low Tide at Pourville, near Dieppe - Claude Monet (1882)', 'Claude_Monet-Low_Tide_at_Pourville__near_Dieppe__1882.jpg'),
+    _q('Nézd meg ezt a festményt: "A Sunday on La Grande Jatte" és válaszd ki a festő nevét:', 0, ['Georges Seurat', 'Paul Signac', 'Camille Pissarro', 'Henri-Edmond Cross'], 'A Sunday on La Grande Jatte - Georges Seurat (1884)', 'a-sunday-on-la-grande-jatte---georges-seurat-1884.jpg'),
+    _q('Nézd meg ezt a festményt: "At the Moulin Rouge" és válaszd ki a festő nevét:', 0, ['Henri de Toulouse-Lautrec', 'Edgar Degas', 'Pierre-Auguste Renoir', 'Édouard Manet'], 'At the Moulin Rouge - Henri de Toulouse-Lautrec (1892)', 'at-the-moulin-rouge---henri-de-toulouselautrec-1892.jpg'),
+    _q('Nézd meg ezt a festményt: "Gabrielle with Jewellery" és válaszd ki a festő nevét:', 0, ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'], 'Gabrielle with Jewellery - Pierre-Auguste Renoir (1910)', 'gabrielle-with-jewellery---pierreauguste-renoir-1910.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 0, ['Pablo Picasso', 'Georges Braque', 'Juan Gris', 'Fernand Léger'], 'Guernica - Pablo Picasso (1937) - Alternatív verzió', 'guernica-pablo-picasso-1937.jpg'),
+    _q('Nézd meg ezt a festményt: "Improvisation 26" és válaszd ki a festő nevét:', 0, ['Wassily Kandinsky', 'Franz Marc', 'August Macke', 'Paul Klee'], 'Improvisation 26 - Wassily Kandinsky (1912)', 'improvisation-26---wassily-kandinsky-1912.jpg'),
+    _q('Nézd meg ezt a festményt: "La Classe de Danse" és válaszd ki a festő nevét:', 0, ['Edgar Degas', 'Pierre-Auguste Renoir', 'Claude Monet', 'Édouard Manet'], 'La Classe de Danse - Edgar Degas (1871)', 'la-classe-de-danse---edgar-degas-1871.jpg'),
+    _q('Nézd meg ezt a festményt: "La Liseuse" és válaszd ki a festő nevét:', 0, ['Pierre-Auguste Renoir', 'Claude Monet', 'Alfred Sisley', 'Camille Pissarro'], 'La Liseuse - Pierre-Auguste Renoir (1874)', 'la-liseuse---pierreauguste-renoir-1874.jpg'),
+    _q('Nézd meg ezt a festményt: "Lake Geneva as Seen from Chexbres" és válaszd ki a festő nevét:', 0, ['Ferdinand Hodler', 'Claude Monet', 'Camille Pissarro', 'Alfred Sisley'], 'Lake Geneva as Seen from Chexbres - Ferdinand Hodler (1905)', 'lake-geneva-as-seen-from-chexbres---ferdinand-hodler-1905.jpg'),
+    _q('Nézd meg ezt a festményt: "People by a Blue Lake" és válaszd ki a festő nevét:', 0, ['August Macke', 'Franz Marc', 'Wassily Kandinsky', 'Paul Klee'], 'People by a Blue Lake - August Macke (1913)', 'people-by-a-blue-lake---august-macke-1913.jpg'),
+    _q('Nézd meg ezt a festményt: "Summer Evening in Murnau" és válaszd ki a festő nevét:', 0, ['Alexej von Jawlensky', 'Wassily Kandinsky', 'Franz Marc', 'Paul Klee'], 'Summer Evening in Murnau - Alexej von Jawlensky (1908)', 'summer-evening-in-murnau---alexej-von-jawlensky-1908.jpg'),
+    _q('Nézd meg ezt a festményt: "The Girls on the Bridge" és válaszd ki a festő nevét:', 0, ['Edvard Munch', 'Vincent van Gogh', 'Paul Gauguin', 'Henri de Toulouse-Lautrec'], 'The Girls on the Bridge - Edvard Munch (1905)', 'the-girls-on-the-bridge---edward-munch-1905.jpg'),
+    _q('Nézd meg ezt a festményt: "The Man with the Golden Helmet" és válaszd ki a festő nevét:', 0, ['Rembrandt', 'Frans Hals', 'Jan Steen', 'Gerard van Honthorst'], 'The Man with the Golden Helmet - Rembrandt (1650)', 'the-man-with-the-golden-helmet---rembrandt-1650.jpg'),
+    _q('Nézd meg ezt a festményt: "The Peaceable Kingdom" és válaszd ki a festő nevét:', 0, ['Edward Hicks', 'Thomas Cole', 'Asher Brown Durand', 'Frederic Edwin Church'], 'The Peaceable Kingdom - Edward Hicks (1833)', 'the-peaceable-kingdom---edward-hicks-1833.jpg'),
+    _q('Nézd meg ezt a festményt: "The Peasant Wedding" és válaszd ki a festő nevét:', 0, ['Pieter Bruegel the Elder', 'Jan Brueghel the Elder', 'Hieronymus Bosch', 'Jan van Eyck'], 'The Peasant Wedding - Pieter Bruegel the Elder (1568)', 'the-peasant-wedding---pieter-bruegel-the-elder-1568.jpg'),
+    _q('Nézd meg ezt a festményt: "Einschiffung Nach Kythera" és válaszd ki a festő nevét:', 3, ['Vincent van Gogh', 'Henri Matisse', 'Salvador Dalí', 'Jean-Antoine Watteau'], 'Einschiffung Nach Kythera - Jean-Antoine Watteau (1719)', 'einschiffung-nach-kythera---jeanantoine-watteau-1719.jpg'),
+    _q('Nézd meg ezt a festményt: "The Bridge At Narni" és válaszd ki a festő nevét:', 2, ['Francisco Goya', 'Gustav Klimt', 'Jeanbaptiste Camille Corot', 'Claude Monet'], 'The Bridge At Narni - Jeanbaptiste Camille Corot (1826)', 'the-bridge-at-narni---jeanbaptiste-camille-corot-1826.jpg'),
+    _q('Nézd meg ezt a festményt: "De Molen Bij Wijk Bij Duurstede" és válaszd ki a festő nevét:', 0, ['Jacob Isaacksz van Ruisdael', 'Wassily Kandinsky', 'Frida Kahlo', 'Pablo Picasso'], 'De Molen Bij Wijk Bij Duurstede - Jacob Isaacksz van Ruisdael (1668)', 'de-molen-bij-wijk-bij-duurstede----jacob-isaacksz-van-ruisdael-1668.jpg'),
+    _q('Nézd meg ezt a festményt: "Schlummernde Venus" és válaszd ki a festő nevét:', 1, ['Johannes Vermeer', 'Giorgione', 'Claude Monet', 'Titian'], 'Schlummernde Venus - Giorgione (1508)', 'schlummernde-venus---titian-giorgione-1508.jpg'),
+    _q('Nézd meg ezt a festményt: "Het Papegaaienlaantje" és válaszd ki a festő nevét:', 2, ['Wassily Kandinsky', 'El Greco', 'Max Liebermann', 'Rembrandt'], 'Het Papegaaienlaantje - Max Liebermann (1902)', 'het-papegaaienlaantje---max-liebermann-1902.jpg'),
+    _q('Nézd meg ezt a festményt: "Giudizio Universale" és válaszd ki a festő nevét:', 1, ['Vincent van Gogh', 'Michelangelo', 'Claude Monet', 'Wassily Kandinsky'], 'Giudizio Universale - Michelangelo (1536)', 'giudizio-universale---michelangelo-1536.jpg'),
+    _q('Nézd meg ezt a festményt és válaszd ki a festő nevét:', 2, ['Paul Cézanne', 'René Magritte', 'Francesco Guardi', 'Claude Monet'], 'View Of Piazzetta San Marco Towards The San Giorgio Maggiore - Francesco Guardi', 'view-of-piazzetta-san-marco-towards-the-san-giorgio-maggiore---francesco-guardi-unknown.jpg'),
+    _q('Nézd meg ezt a festményt: "A Langlois Hd Arles Mellett" és válaszd ki a festő nevét:', 0, ['Vincent Van Gogh', 'Pierre-Auguste Renoir', 'Rembrandt', 'Andy Warhol'], 'A Langlois Hd Arles Mellett - Vincent Van Gogh (1888)', 'a-langlois-hd-arles-mellett---vincent-van-gogh-1888.jpg'),
+    _q('Nézd meg ezt a festményt: "La Bohémienne Endormie" és válaszd ki a festő nevét:', 3, ['Henri Matisse', 'Francisco Goya', 'Edvard Munch', 'Henri Rousseau'], 'La Bohémienne Endormie - Henri Rousseau (1897)', 'la-bohémienne-endormie---henri_rousseau-1897.jpg'),
+    _q('Nézd meg ezt a festményt: "Pelzhndler Auf Dem Missouri" és válaszd ki a festő nevét:', 1, ['Jackson Pollock', 'George Caleb Bingham', 'Michelangelo', 'Salvador Dalí'], 'Pelzhndler Auf Dem Missouri - George Caleb Bingham (1845)', 'pelzhndler-auf-dem-missouri---george-caleb-bingham-1845.jpg'),
+]
