@@ -3,6 +3,7 @@
 Automatikusan elindítja az audio lejátszást a kérdések megjelenésekor
 """
 
+import base64
 import streamlit as st
 import streamlit.components.v1 as components
 import os
@@ -11,32 +12,33 @@ from pathlib import Path
 def auto_audio_player(audio_file_path, audio_filename=None):
     """
     Automatikus audio lejátszó komponens
-    
+
     Args:
         audio_file_path (str): Az audio fájl elérési útja
         audio_filename (str, optional): Az audio fájl neve megjelenítéshez
     """
-    
+
     if not audio_file_path or not os.path.exists(audio_file_path):
         st.warning("⚠️ Audio fájl nem található")
         return
-    
+
     # Audio fájlnév kinyerése, ha nincs megadva
     if audio_filename is None:
         audio_filename = os.path.basename(audio_file_path)
-    
-    # Audio fájl beolvasása
-    with open(audio_file_path, "rb") as f:
-        audio_bytes = f.read()
-    
+
     # Audio fájlnév megjelenítése
     st.markdown(f"### 🎵 Hallgasd meg a zenét: **{audio_filename}**")
-    
+
+    # Base64 kódolás (data URI-hoz base64 kell, hex nem megfelelő)
+    with open(audio_file_path, "rb") as f:
+        audio_bytes = f.read()
+    b64_audio = base64.b64encode(audio_bytes).decode()
+
     # HTML és JavaScript az automatikus lejátszáshoz
     html_code = f"""
     <div style="margin: 10px 0;">
         <audio id="autoAudio" controls autoplay style="width: 100%;">
-            <source src="data:audio/mp3;base64,{audio_bytes.hex()}" type="audio/mp3">
+            <source src="data:audio/mp3;base64,{b64_audio}" type="audio/mp3">
             A böngésződ nem támogatja az audio lejátszást.
         </audio>
     </div>
@@ -85,10 +87,10 @@ def auto_audio_player(audio_file_path, audio_filename=None):
     
     # Komponens megjelenítése
     components.html(html_code, height=100)
-    
+
     # Fallback: Streamlit audio komponens
     st.markdown("**Vagy használd ezt a lejátszót:**")
-    st.audio(audio_bytes, format="audio/mp3")
+    st.audio(audio_file_path, format="audio/mp3")
 
 def auto_audio_player_simple(audio_file_path, audio_filename=None):
     """
@@ -109,13 +111,9 @@ def auto_audio_player_simple(audio_file_path, audio_filename=None):
     
     # Audio fájlnév megjelenítése
     st.markdown(f"### 🎵 Hallgasd meg a zenét: **{audio_filename}**")
-    
-    # Audio fájl beolvasása és lejátszás
-    with open(audio_file_path, "rb") as f:
-        audio_bytes = f.read()
-    
-    # Streamlit audio komponens automatikus indítással
-    st.audio(audio_bytes, format="audio/mp3")
+
+    # Path alapú lejátszás – memóriaoptimalizált (nem olvassuk be a teljes fájlt)
+    st.audio(audio_file_path, format="audio/mp3")
     
     # JavaScript az automatikus lejátszáshoz
     st.markdown("""

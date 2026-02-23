@@ -8,6 +8,7 @@ enableXsrfProtection = false
 gatherUsageStats = false
 
 [theme]
+base = "light"
 primaryColor = "#e7e5e4"
 backgroundColor = "#fafaf9"
 secondaryBackgroundColor = "#f5f5f4"
