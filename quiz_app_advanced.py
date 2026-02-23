@@ -55,8 +55,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Theme init (Light/Dark) – a CSS előtt kell
-if "theme" not in st.session_state:
+# Theme init (Light/Dark) – query_params + session_state a deployolt környezetben való megmaradásért
+# URL-ben: ?theme=light vagy ?theme=dark – így a session state elvesztése nem befolyásolja
+_theme_from_url = st.query_params.get("theme")
+if _theme_from_url in ("light", "dark"):
+    st.session_state.theme = _theme_from_url
+elif "theme" not in st.session_state:
     st.session_state.theme = "light"
 
 apply_styles(st.session_state.get("theme", "light"))
@@ -437,6 +441,8 @@ def main():
         )
         if new_theme != current_theme:
             st.session_state.theme = new_theme
+            # URL-be is mentjük – így a deployolt app (internet) is megőrzi a témát
+            st.query_params["theme"] = new_theme
             st.rerun()
         st.markdown("---")
         st.markdown(t("## 🧭 Navigáció"))

@@ -5,6 +5,7 @@ Quiz CSS styles: theme overrides and base design system.
 import streamlit as st
 
 _LIGHT_OVERRIDES = """
+    html, body { color-scheme: light !important; }
     :root {
         --color-bg: #ffffff;
         --color-card: #ffffff;
@@ -139,6 +140,15 @@ def get_theme_css(theme: str) -> str:
 
 _BASE_CSS_TEMPLATE = """
 <style>
+    /* Force light mode - override browser prefers-color-scheme: dark */
+    html, body { color-scheme: light !important; }
+    @media (prefers-color-scheme: dark) {
+        html, body, .stApp, [data-testid="stAppViewContainer"] {
+            color-scheme: light !important;
+            background-color: #ffffff !important;
+        }
+    }
+    
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     
     /* === SZÍNPALETTA === */
