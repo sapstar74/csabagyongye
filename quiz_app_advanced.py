@@ -60,9 +60,6 @@ st.set_page_config(
 _theme_from_url = st.query_params.get("theme")
 if _theme_from_url is not None and isinstance(_theme_from_url, (list, tuple)):
     _theme_from_url = _theme_from_url[0] if _theme_from_url else None
-if not _theme_from_url and hasattr(st, "experimental_get_query_params"):
-    _qp = st.experimental_get_query_params()
-    _theme_from_url = (_qp.get("theme") or ["light"])[0] if isinstance(_qp.get("theme"), list) else _qp.get("theme")
 if _theme_from_url in ("light", "dark"):
     st.session_state.theme = _theme_from_url
 elif "theme" not in st.session_state:
