@@ -5,7 +5,25 @@ Quiz CSS styles: theme overrides and base design system.
 import streamlit as st
 
 _LIGHT_OVERRIDES = """
-    html, body { color-scheme: light !important; }
+    /* Világos téma: minden felülírás – Streamlit, böngésző dark mode, prefers-color-scheme */
+    html, body, html[data-theme="dark"], body[data-theme="dark"],
+    [data-theme="dark"] html, [data-theme="dark"] body,
+    body:has([data-quiz-theme="light"]), html:has([data-quiz-theme="light"]) {
+        color-scheme: light !important;
+        background-color: #ffffff !important;
+    }
+    @media (prefers-color-scheme: dark) {
+        html, body, .stApp, [data-testid="stAppViewContainer"],
+        section[data-testid="stAppViewContainer"], [data-theme="dark"] .stApp,
+        [data-theme="dark"] [data-testid="stAppViewContainer"],
+        body:has([data-quiz-theme="light"]) .stApp,
+        body:has([data-quiz-theme="light"]) [data-testid="stAppViewContainer"],
+        html:has([data-quiz-theme="light"]) .stApp,
+        html:has([data-quiz-theme="light"]) [data-testid="stAppViewContainer"] {
+            color-scheme: light !important;
+            background-color: #ffffff !important;
+        }
+    }
     :root {
         --color-bg: #ffffff;
         --color-card: #ffffff;
@@ -14,10 +32,22 @@ _LIGHT_OVERRIDES = """
         --color-muted: #44403c;
         --color-sidebar: #f5f5f4;
     }
-    .stApp, [data-testid="stAppViewContainer"], .main .block-container {
+    /* Világos téma: erős felülírás – magasabb specificitás a Streamlit dark mode ellen */
+    html body .stApp, html body [data-testid="stAppViewContainer"],
+    body .stApp, body [data-testid="stAppViewContainer"],
+    .stApp, [data-testid="stAppViewContainer"], .main .block-container,
+    section[data-testid="stAppViewContainer"], section.main,
+    [data-theme="dark"] .stApp, [data-theme="dark"] [data-testid="stAppViewContainer"],
+    div[data-testid="stAppViewContainer"], .stApp > div,
+    body:has([data-quiz-theme="light"]) .stApp,
+    body:has([data-quiz-theme="light"]) [data-testid="stAppViewContainer"],
+    body:has([data-quiz-theme="light"]) .main .block-container,
+    body:has([data-quiz-theme="light"]) section.main {
         background-color: #ffffff !important;
     }
-    [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+    [data-testid="stSidebar"], [data-testid="stSidebar"] > div,
+    [data-theme="dark"] [data-testid="stSidebar"],
+    body:has([data-quiz-theme="light"]) [data-testid="stSidebar"] {
         background-color: #f5f5f4 !important;
     }
     [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label,
@@ -25,7 +55,11 @@ _LIGHT_OVERRIDES = """
     [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] .stRadio label, [data-testid="stSidebar"] .stRadio div,
     [data-testid="stSidebar"] div[data-testid="stRadio"] label,
-    [data-testid="stSidebar"] div[data-testid="stRadio"] div {
+    [data-testid="stSidebar"] div[data-testid="stRadio"] div,
+    body:has([data-quiz-theme="light"]) [data-testid="stSidebar"] .stMarkdown,
+    body:has([data-quiz-theme="light"]) [data-testid="stSidebar"] label,
+    body:has([data-quiz-theme="light"]) [data-testid="stSidebar"] .stRadio label, 
+    body:has([data-quiz-theme="light"]) [data-testid="stSidebar"] .stRadio label * {
         color: #1a1a1a !important;
     }
     [data-testid="stSidebar"] .stRadio > div,
@@ -48,6 +82,22 @@ _LIGHT_OVERRIDES = """
 """
 
 _DARK_OVERRIDES = """
+    html, body, body:has([data-quiz-theme="dark"]) { color-scheme: dark !important; }
+    @media (prefers-color-scheme: dark) {
+        html, body, .stApp, [data-testid="stAppViewContainer"] {
+            color-scheme: dark !important;
+            background-color: #1a1a1a !important;
+        }
+    }
+    body:has([data-quiz-theme="dark"]) .stApp,
+    body:has([data-quiz-theme="dark"]) [data-testid="stAppViewContainer"],
+    body:has([data-quiz-theme="dark"]) .main .block-container {
+        background-color: #1a1a1a !important;
+    }
+    body:has([data-quiz-theme="dark"]) [data-testid="stSidebar"],
+    body:has([data-quiz-theme="dark"]) [data-testid="stSidebar"] > div {
+        background-color: #171717 !important;
+    }
     :root {
         --color-bg: #1a1a1a;
         --color-card: #2d2d2d;
@@ -62,8 +112,28 @@ _DARK_OVERRIDES = """
     [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
         background-color: #171717 !important;
     }
-    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label {
+    [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] .stRadio label, [data-testid="stSidebar"] .stRadio div,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] div,
+    [data-testid="stSidebar"] .stSelectbox label, [data-testid="stSidebar"] .stSelectbox span,
+    [data-testid="stSidebar"] div[data-testid="stSelectbox"] label,
+    [data-testid="stSidebar"] div[data-testid="stSelectbox"] span {
         color: #fafaf9 !important;
+    }
+    [data-testid="stSidebar"] .stRadio label p,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label p,
+    [data-testid="stSidebar"] .stRadio label span,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label span,
+    [data-testid="stSidebar"] .stRadio label *,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] label * {
+        color: #fafaf9 !important;
+    }
+    [data-testid="stSidebar"] .stRadio > div,
+    [data-testid="stSidebar"] div[data-testid="stRadio"] > div {
+        background-color: transparent !important;
     }
     .main-header, .question-text, .summary-box p, .summary-box strong,
     div[data-testid="stMarkdown"] p, .stMarkdown p {
@@ -140,15 +210,7 @@ def get_theme_css(theme: str) -> str:
 
 _BASE_CSS_TEMPLATE = """
 <style>
-    /* Force light mode - override browser prefers-color-scheme: dark */
-    html, body { color-scheme: light !important; }
-    @media (prefers-color-scheme: dark) {
-        html, body, .stApp, [data-testid="stAppViewContainer"] {
-            color-scheme: light !important;
-            background-color: #ffffff !important;
-        }
-    }
-    
+    /* Theme-specific color-scheme and background: __THEME_OVERRIDES__ contains them */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     
     /* === SZÍNPALETTA === */

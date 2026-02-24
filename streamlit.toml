@@ -7,6 +7,10 @@ enableXsrfProtection = false
 [browser]
 gatherUsageStats = false
 
+# Rejtett menü – a Streamlit natív téma váltó ne írja felül a saját Megjelenésünket
+[client]
+toolbarMode = "minimal"
+
 [theme]
 base = "light"
 primaryColor = "#e7e5e4"

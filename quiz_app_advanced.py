@@ -58,12 +58,23 @@ st.set_page_config(
 # Theme init (Light/Dark) – query_params + session_state a deployolt környezetben való megmaradásért
 # URL-ben: ?theme=light vagy ?theme=dark – így a session state elvesztése nem befolyásolja
 _theme_from_url = st.query_params.get("theme")
+if _theme_from_url is not None and isinstance(_theme_from_url, (list, tuple)):
+    _theme_from_url = _theme_from_url[0] if _theme_from_url else None
+if not _theme_from_url and hasattr(st, "experimental_get_query_params"):
+    _qp = st.experimental_get_query_params()
+    _theme_from_url = (_qp.get("theme") or ["light"])[0] if isinstance(_qp.get("theme"), list) else _qp.get("theme")
 if _theme_from_url in ("light", "dark"):
     st.session_state.theme = _theme_from_url
 elif "theme" not in st.session_state:
     st.session_state.theme = "light"
 
-apply_styles(st.session_state.get("theme", "light"))
+_current_theme = st.session_state.get("theme", "light")
+# Téma marker a legelső elem – a CSS :has() így biztosan működik
+st.markdown(
+    f'<div data-quiz-theme="{_current_theme}" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none" aria-hidden="true"></div>',
+    unsafe_allow_html=True,
+)
+apply_styles(_current_theme)
 
 # Initialize session state
 if 'quiz_state' not in st.session_state:
