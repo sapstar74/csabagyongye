@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-24 21:08:14
+# Generated on: 2026-02-24 21:22:39
 
 QUESTIONS = [
     {
@@ -12,7 +12,8 @@ QUESTIONS = [
         ],
         "correct": 0,
         "explanation": "Alvin és a Mókusok magyar punk zenekar",
-        "audio_file": "41_Alvin_és_a_Mókusok.mp3",
+        "audio_file": "01. Alvin és a Mókusok - .mp3",
+        "song_title": "",
         "topic": "magyar_zenekarok_uj",
     },
     {
