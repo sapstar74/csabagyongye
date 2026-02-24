@@ -1277,8 +1277,12 @@ def show_topic_selection():
             # Összes zenei kérdés számának kiszámítása
             total_music_questions = sum(len(QUIZ_DATA_BY_TOPIC.get(topic, [])) for topic in music_topics)
             
-            # Jelenlegi zenei kérdések összege a témakör oszlop csúszkák alapján
+            # Összes zenei: ha auto elosztás, music_total_questions a forrás (ne a témakör csúszkák 3-as alapértelmezése)
             current_music_total = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
+            if st.session_state.get('music_auto_distribute', True):
+                music_slider_default = st.session_state.get('music_total_questions', st.session_state.get('default_music_questions', 10))
+            else:
+                music_slider_default = current_music_total if current_music_total > 0 else st.session_state.get('music_total_questions', 10)
             
             col1, col2 = st.columns(2)
             with col1:
@@ -1286,7 +1290,7 @@ def show_topic_selection():
                     t("Összes zenei kérdés száma"),
                     1,
                     total_music_questions,
-                    st.session_state.get('default_music_questions', current_music_total) if current_music_total > 0 else st.session_state.get('music_total_questions', 10),
+                    music_slider_default,
                     key="music_total_questions",
                 )
             with col2:
@@ -1373,9 +1377,8 @@ def show_topic_selection():
         current_total = 0
         if music_topics:
             if st.session_state.get('music_auto_distribute', True):
-                # Auto: témakör oszlop csúszkák összege VAGY Összes zenei csúszka (ha témakörök összege 0)
-                music_from_topics = sum(st.session_state.get(f'final_{t}_questions', 0) for t in music_topics)
-                current_total += music_from_topics if music_from_topics > 0 else st.session_state.get('music_total_questions', 10)
+                # Auto: Összes zenei kérdés száma a forrás – a témakör csúszkák NEM írják felül
+                current_total += st.session_state.get('music_total_questions', 10)
             else:
                 for topic in music_topics:
                     max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
@@ -1383,9 +1386,8 @@ def show_topic_selection():
                     current_total += q
         if other_topics:
             if st.session_state.get('other_auto_distribute', True):
-                # Auto: témakör oszlop csúszkák összege VAGY Összes egyéb csúszka
-                other_from_topics = sum(st.session_state.get(f'final_{t}_questions', 0) for t in other_topics)
-                current_total += other_from_topics if other_from_topics > 0 else st.session_state.get('other_total_questions', 40)
+                # Auto: Összes egyéb kérdés száma a forrás – a témakör csúszkák NEM írják felül
+                current_total += st.session_state.get('other_total_questions', 40)
             else:
                 for topic in other_topics:
                     max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
