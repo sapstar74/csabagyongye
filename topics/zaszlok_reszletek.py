@@ -201,7 +201,7 @@ def _load_crop_questions() -> list[dict]:
                 "options": options,
                 "correct": correct,
                 "explanation": EXPLANATION_TEMPLATE_HU.format(country=country_name),
-                "topic": "zaszlok_reszletek",
+                "topic": "zászlórészlet",
                 "_country_name": country_name,
             })
 

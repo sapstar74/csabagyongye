@@ -164,9 +164,9 @@ from topics.magyar_tortenelm import MAGYAR_TORTENELM_QUESTIONS
 from topics.biologia import BIOLOGIA_QUESTIONS
 from topics.sport import SPORT_QUESTIONS
 
-# Összevont témakörök: Magyar királyok+Magyar történelem, Zászlók+Zászló részletek, Háborúk+Világtörténelem, Földrajz+Természettudomány
+# Összevont témakörök: Magyar királyok+Magyar történelem, Háborúk+Világtörténelem, Földrajz+Természettudomány
+# Zászlók és zászlórészlet külön témakörök
 MAGYAR_TORTENELM_OSSZES = list(KIRALYOK_QUESTIONS) + list(MAGYAR_TORTENELM_QUESTIONS)
-ZASZLOK_OSSZES = list(ZASZLOK_QUESTIONS_ALL) + list(ZASZLOK_RESZLETEK_QUESTIONS)
 VILAGTORTENELM_OSSZES = list(HABORU_QUESTIONS_ALL) + list(VILAGTORTENELM_QUESTIONS)
 TERMESZETTUDOMANY_OSSZES = list(FOLDRAJZ_QUESTIONS) + list(TERMESZETTUDOMANY_QUESTIONS)
 
@@ -180,7 +180,8 @@ QUIZ_DATA_BY_TOPIC = {
     "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,
     "sport_logók": SPORT_LOGOK_QUESTIONS,
-    "zászlók": ZASZLOK_OSSZES,
+    "zászlók": list(ZASZLOK_QUESTIONS_ALL),
+    "zászlórészlet": list(ZASZLOK_RESZLETEK_QUESTIONS),
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,
