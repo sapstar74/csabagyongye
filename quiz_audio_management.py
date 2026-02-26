@@ -261,7 +261,34 @@ def show_audio_track_management_page():
                         filenames.append("N/A")
                         row_numbers.append("N/A")
 
-                display_df = df[["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]].copy()
+                # Magyar Zenekarok: nincs "Szám címe" oszlop
+                if selected_category == "magyar_zenekarok":
+                    display_cols = ["Előadó", "Opció1", "Opció2", "Opció3", "Opció4"]
+                    column_config = {
+                        "Sorszám": st.column_config.TextColumn("Sorszám", width="small"),
+                        "Fájlnév": st.column_config.TextColumn("Fájlnév", width="medium"),
+                        "Előadó": st.column_config.TextColumn("Előadó", width="medium"),
+                        "Opció1": st.column_config.TextColumn("Opció1", width="medium"),
+                        "Opció2": st.column_config.TextColumn("Opció2", width="medium"),
+                        "Opció3": st.column_config.TextColumn("Opció3", width="medium"),
+                        "Opció4": st.column_config.TextColumn("Opció4", width="medium")
+                    }
+                    row_options = [f"{i+1}. {row['Előadó']}" for i, row in enumerate(table_data)]
+                else:
+                    display_cols = ["Előadó", "Szám címe", "Opció1", "Opció2", "Opció3", "Opció4"]
+                    column_config = {
+                        "Sorszám": st.column_config.TextColumn("Sorszám", width="small"),
+                        "Fájlnév": st.column_config.TextColumn("Fájlnév", width="medium"),
+                        "Előadó": st.column_config.TextColumn("Előadó", width="medium"),
+                        "Szám címe": st.column_config.TextColumn("Szám címe", width="large"),
+                        "Opció1": st.column_config.TextColumn("Opció1", width="medium"),
+                        "Opció2": st.column_config.TextColumn("Opció2", width="medium"),
+                        "Opció3": st.column_config.TextColumn("Opció3", width="medium"),
+                        "Opció4": st.column_config.TextColumn("Opció4", width="medium")
+                    }
+                    row_options = [f"{i+1}. {row['Előadó']} - {row['Szám címe']}" for i, row in enumerate(table_data)]
+
+                display_df = df[display_cols].copy()
                 display_df.insert(0, "Sorszám", row_numbers)
                 display_df.insert(1, "Fájlnév", filenames)
 
@@ -278,37 +305,29 @@ def show_audio_track_management_page():
                         df,
                         use_container_width=True,
                         hide_index=True,
-                        column_config={
-                            "Sorszám": st.column_config.TextColumn("Sorszám", width="small"),
-                            "Fájlnév": st.column_config.TextColumn("Fájlnév", width="medium"),
-                            "Előadó": st.column_config.TextColumn("Előadó", width="medium"),
-                            "Szám címe": st.column_config.TextColumn("Szám címe", width="large"),
-                            "Opció1": st.column_config.TextColumn("Opció1", width="medium"),
-                            "Opció2": st.column_config.TextColumn("Opció2", width="medium"),
-                            "Opció3": st.column_config.TextColumn("Opció3", width="medium"),
-                            "Opció4": st.column_config.TextColumn("Opció4", width="medium")
-                        }
+                        column_config=column_config
                     )
                 style_dataframe(display_df)
 
                 selected_row_index = st.selectbox(
                     "Válassz egy sort:",
-                    options=[f"{i+1}. {row['Előadó']} - {row['Szám címe']}" for i, row in enumerate(table_data)],
+                    options=row_options,
                     key="audio_row_selector"
                 )
 
                 if selected_row_index:
                     selected_index = int(selected_row_index.split('.')[0]) - 1
                     selected_data = table_data[selected_index]
+                    play_label = selected_data['Előadó'] if selected_category == "magyar_zenekarok" else f"{selected_data['Előadó']} - {selected_data['Szám címe']}"
                     col1, col2, col3 = st.columns([1, 2, 1])
                     with col2:
-                        if st.button(f"🎵 Play {selected_data['Előadó']} - {selected_data['Szám címe']}", type="primary", use_container_width=True):
+                        if st.button(f"🎵 Play {play_label}", type="primary", use_container_width=True):
                             if selected_data['matching_track'] and 'audio_path' in selected_data['matching_track']:
                                 audio_path = selected_data['matching_track']['audio_path']
                                 st.audio(audio_path, format='audio/mp3')
-                                st.success(f"✅ Lejátszás: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                                st.success(f"✅ Lejátszás: {play_label}")
                             else:
-                                st.warning(f"⚠️ Nincs audio fájl: {selected_data['Előadó']} - {selected_data['Szám címe']}")
+                                st.warning(f"⚠️ Nincs audio fájl: {play_label}")
 
                 st.markdown("### ✏️ Szerkesztés")
                 if 'modified_questions' not in st.session_state:
@@ -335,7 +354,7 @@ def show_audio_track_management_page():
 
                     for i, row in enumerate(table_data):
                         is_modified = row['question_index'] in st.session_state.modified_questions
-                        expander_title = f"📝 {i+1}. {row['Előadó']} - {row['Szám címe']}"
+                        expander_title = f"📝 {i+1}. {row['Előadó']}" if selected_category == "magyar_zenekarok" else f"📝 {i+1}. {row['Előadó']} - {row['Szám címe']}"
                         if is_modified:
                             expander_title += " ✏️ (módosítva)"
 
@@ -347,8 +366,12 @@ def show_audio_track_management_page():
                             current_question = questions[question_index]
 
                             question_text = st.text_input("Kérdés:", value=current_question['question'], key=f"question_edit_{i}")
-                            current_song_title = row['Szám címe']
-                            song_title = st.text_input("Szám címe:", value=current_song_title, key=f"song_title_edit_{i}")
+                            # Magyar Zenekarok: nincs "Szám címe" mező
+                            if selected_category == "magyar_zenekarok":
+                                song_title = ""
+                            else:
+                                current_song_title = row['Szám címe']
+                                song_title = st.text_input("Szám címe:", value=current_song_title, key=f"song_title_edit_{i}")
 
                             st.markdown("**Válaszopciók:**")
                             col1, col2 = st.columns(2)

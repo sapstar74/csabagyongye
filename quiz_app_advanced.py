@@ -165,20 +165,28 @@ def show_answer_popup(question, user_answer, correct_answer, is_correct=True):
     """Tartós popup üzenet a válaszról és helyes válaszról"""
     music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek"}
     topic = question.get("topic") if isinstance(question, dict) else None
-    show_piece_title = bool(
-        topic in music_topics
-        or (isinstance(question, dict) and (question.get("audio_file") or question.get("spotify_embed")))
+    # Magyar Zenekarok: ne jelenjen meg a "Darab címe" / "A szám címe" mező
+    magyar_zenekarok_topics = {"magyar_zenekarok", "magyar_zenekarok_uj"}
+    show_piece_title = (
+        topic not in magyar_zenekarok_topics
+        and (
+            topic in music_topics
+            or (isinstance(question, dict) and (question.get("audio_file") or question.get("spotify_embed")))
+        )
     )
     piece_title = _get_piece_title_for_question(question) if show_piece_title else None
     if piece_title:
         piece_title = translate_text(piece_title)
 
-    st.session_state.answer_popup = {
+    # Magyar Zenekarok: soha ne tároljuk a piece_title-t („A szám címe” mező)
+    popup_data = {
         "user_answer": user_answer if user_answer else t("N/A"),
         "correct_answer": correct_answer if correct_answer else t("N/A"),
-        "piece_title": piece_title,
         "is_correct": is_correct,
     }
+    if topic not in magyar_zenekarok_topics:
+        popup_data["piece_title"] = piece_title
+    st.session_state.answer_popup = popup_data
 
 def render_answer_popup():
     """Popup megjelenítése, amíg a felhasználó be nem zárja. Hibás válasz esetén mindig figyelemfelhívó üzenet."""
@@ -1199,7 +1207,8 @@ def show_topic_selection():
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions"
+                        key=f"final_{topic_key}_questions",
+                        on_change=lambda: st.rerun(),
                     )
     
     with col2:
@@ -1229,7 +1238,8 @@ def show_topic_selection():
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions"
+                        key=f"final_{topic_key}_questions",
+                        on_change=lambda: st.rerun(),
                     )
     
     with col3:
@@ -1258,7 +1268,8 @@ def show_topic_selection():
                         min_value=0,
                         max_value=max_questions,
                         value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions"
+                        key=f"final_{topic_key}_questions",
+                        on_change=lambda: st.rerun(),
                     )
     
     # Kérdésszámok beállítása
@@ -1289,12 +1300,14 @@ def show_topic_selection():
                     total_music_questions,
                     music_slider_default,
                     key="music_total_questions",
+                    on_change=lambda: st.rerun(),
                 )
             with col2:
                 music_auto_distribute = st.checkbox(
                     t("Automatikus elosztás a zenei témakörök között"),
                     True,
                     key="music_auto_distribute",
+                    on_change=lambda: st.rerun(),
                 )
             
             if not music_auto_distribute:
@@ -1310,6 +1323,7 @@ def show_topic_selection():
                         0,
                         max_questions,
                         key=f"{topic}_questions",
+                        on_change=lambda: st.rerun(),
                     )
         
         if other_topics:
@@ -1322,8 +1336,9 @@ def show_topic_selection():
                     t("Összes egyéb kérdés száma"),
                     1,
                     200,
-                    st.session_state.get('default_other_questions', 40),
+                    st.session_state.get('other_total_questions', st.session_state.get('default_other_questions', 40)),
                     key="other_total_questions",
+                    on_change=lambda: st.rerun(),
                 )
             
             with col2:
@@ -1331,6 +1346,7 @@ def show_topic_selection():
                     t("Automatikus elosztás az egyéb témakörök között"),
                     True,
                     key="other_auto_distribute",
+                    on_change=lambda: st.rerun(),
                 )
             
             if not other_auto_distribute:
@@ -1345,6 +1361,7 @@ def show_topic_selection():
                             0,
                             max_questions,
                             key=f"{topic}_questions",
+                            on_change=lambda: st.rerun(),
                         )
         
 
@@ -1770,7 +1787,11 @@ def show_quiz():
         st.session_state.question_options = {}
     
     # Válaszlehetőségek randomizálása - csak többválasztós kérdések esetén
+    # Magyar Zenekarok: mindig 4 válaszopció (soha szöveges bevitel)
+    magyar_zenekarok_topics = {"magyar_zenekarok", "magyar_zenekarok_uj"}
     question_type = question.get("question_type", "multiple_choice")
+    if topic in magyar_zenekarok_topics and question.get("options"):
+        question_type = "multiple_choice"
     
     if question_type == "text_input":
         # Text input kérdések esetén nincs szükség options randomizálásra
@@ -1895,8 +1916,12 @@ def show_quiz():
         difficulty = st.session_state.mode_manager.current_difficulty
         question_type = question.get("question_type", "multiple_choice")
         
+        # Magyar Zenekarok: mindig a 4 válaszopció gombok (soha szöveges bevitel)
+        magyar_zenekarok_topics = {"magyar_zenekarok", "magyar_zenekarok_uj"}
+        force_options_for_magyar = topic in magyar_zenekarok_topics and 'options' in locals() and 'new_correct_index' in locals()
+
         # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
-        if question_type == "text_input":
+        if question_type == "text_input" and not force_options_for_magyar:
             # Text input kérdések mindig szöveges bevitellel
             st.markdown(t("### 💬 Írd be a válaszod:"))
             
@@ -1936,7 +1961,9 @@ def show_quiz():
                     st.rerun()
                 else:
                     st.warning(t("Kérlek, írj be egy választ!"))
-        elif difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia" and 'options' in locals() and 'new_correct_index' in locals():
+        elif (difficulty == DifficultyLevel.HARD and question.get("topic") != "mitológia"
+              and topic not in ("magyar_zenekarok", "magyar_zenekarok_uj")
+              and 'options' in locals() and 'new_correct_index' in locals()):
             # Nehéz mód: feleletválasztós kérdések szöveges bevitellel
             st.markdown(t("### 💬 Írd be a válaszod:"))
             
@@ -2994,7 +3021,11 @@ def show_youtube_search_tab():
             fallback_artist = pending.get("track_info", {}).get("channel", "")
         fallback_title = question.get("song_title") or pending.get("track_info", {}).get("title", "") or result_title
         approved_artist = st.text_input("Előadó / Szerző:", value=fallback_artist)
-        approved_title = st.text_input("Szám címe:", value=fallback_title)
+        # Magyar Zenekarok: nincs "Szám címe" mező
+        if category != "magyar_zenekarok":
+            approved_title = st.text_input("Szám címe:", value=fallback_title)
+        else:
+            approved_title = ""
         
         options = question.get("options", []) + [""] * (4 - len(question.get("options", [])))
         option_1 = st.text_input("Opció 1 (helyes):", value=approved_artist or (options[0] if len(options) > 0 else ""))
