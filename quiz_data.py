@@ -163,6 +163,7 @@ from topics.vilagtortenelm import VILAGTORTENELM_QUESTIONS
 from topics.magyar_tortenelm import MAGYAR_TORTENELM_QUESTIONS
 from topics.biologia import BIOLOGIA_QUESTIONS
 from topics.sport import SPORT_QUESTIONS
+from topics.hires_magyarok import HIRES_MAGYAROK_QUESTIONS
 
 # Összevont témakörök: Magyar királyok+Magyar történelem, Háborúk+Világtörténelem, Földrajz+Természettudomány
 # Zászlók és zászlórészlet külön témakörök
@@ -196,6 +197,7 @@ QUIZ_DATA_BY_TOPIC = {
     "magyar történelem": MAGYAR_TORTENELM_OSSZES,
     "biológia": BIOLOGIA_QUESTIONS,
     "sport": SPORT_QUESTIONS,
+    "híres magyarok": HIRES_MAGYAROK_QUESTIONS,
 }
 
 __all__ = ["QUIZ_DATA_BY_TOPIC", "KOMOLYZENE_QUESTIONS", "MAGYAR_TORTENELM_OSSZES", "ZASZLOK_OSSZES", "VILAGTORTENELM_OSSZES", "TERMESZETTUDOMANY_OSSZES"]
