@@ -153,6 +153,7 @@ def reset_quiz():
         "politika": "🏛️ Politika",
         "világtörténelem": "🌐 Világtörténelem",
         "magyar történelem": "🇭🇺 Magyar történelem",
+        "híres magyarok": "🌟 Híres magyarok",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
     }
@@ -974,6 +975,7 @@ def show_topic_selection():
         "politika": "🏛️ Politika",
         "világtörténelem": "🌐 Világtörténelem",
         "magyar történelem": "🇭🇺 Magyar történelem",
+        "híres magyarok": "🌟 Híres magyarok",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
     }
