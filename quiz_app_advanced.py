@@ -47,6 +47,35 @@ import subprocess
 import json
 import glob
 
+
+def _topic_session_key(topic: str) -> str:
+    """Biztonságos session_state/widget kulcs témakörökhöz (szóközök eltávolítása, Streamlit konfliktus elkerülésére)."""
+    return topic.replace(" ", "_")
+
+
+def _get_topic_question_count(topic: str, default: int = 0) -> int:
+    """Kategória kérdésszáma – perzisztens tárolóból (nem törlődik kikapcsoláskor)."""
+    counts = st.session_state.get("_topic_question_counts", {})
+    if topic in counts:
+        return counts[topic]
+    key = f"final_{_topic_session_key(topic)}_questions"
+    return st.session_state.get(key, default)
+
+
+def _set_topic_question_count(topic: str, value: int) -> None:
+    """Kategória kérdésszám mentése perzisztens tárolóba."""
+    if "_topic_question_counts" not in st.session_state:
+        st.session_state["_topic_question_counts"] = {}
+    st.session_state["_topic_question_counts"][topic] = value
+
+
+def _save_topic_count_before_deselect(topic_key: str) -> None:
+    """Aktuális kérdésszám mentése kikapcsolás előtt (widget kulcs törlődik)."""
+    key = f"final_{_topic_session_key(topic_key)}_questions"
+    if key in st.session_state:
+        _set_topic_question_count(topic_key, st.session_state[key])
+
+
 # Page config
 st.set_page_config(
     page_title=t("Csabagyöngye Tréning Center"),
@@ -276,12 +305,10 @@ def start_quiz():
         if topic in QUIZ_DATA_BY_TOPIC:
             topic_questions = QUIZ_DATA_BY_TOPIC[topic]
             default_count = min(3, len(topic_questions))
-            # Először _pending_question_counts (gomb kattintáskor), majd widget kulcsok
+            # Először _pending_question_counts (gomb kattintáskor), majd perzisztens tároló
             questions_count = pending_counts.get(topic)
             if questions_count is None:
-                questions_count = st.session_state.get(f'final_{topic}_questions')
-            if questions_count is None:
-                questions_count = st.session_state.get(f'{topic}_questions', default_count)
+                questions_count = _get_topic_question_count(topic, default_count)
             # Ha nincs beállítva slider érték, használjuk az alapértelmezett értéket
             if questions_count == 0:
                 questions_count = min(3, len(topic_questions))
@@ -980,30 +1007,10 @@ def show_topic_selection():
         "sport": "🏅 Sport",
     }
     
-    # Randomizáló funkció
+    # Randomizáló funkció – minden kategória önállóan kap alapértelmezett kérdésszámot (min 3 / max)
     st.markdown(t("### 🎲 Randomizáló Funkció"))
     
-    # Kérdésszám beállítás csúszkával
-    col1, col2 = st.columns(2)
-    with col1:
-        random_question_count = st.slider(
-            t("Randomizáláshoz használandó kérdésszám"),
-            10,
-            100,
-            st.session_state.get('default_other_questions', 40),
-            key="random_question_count",
-        )
-    
-    with col2:
-        random_music_question_count = st.slider(
-            t("Zenei randomizáláshoz használandó kérdésszám"),
-            5,
-            50,
-            st.session_state.get('default_music_questions', 10),
-            key="random_music_question_count",
-        )
-    
-    # Randomizáló gombok egy sorban
+    # Randomizáló gombok – kategóriánként önálló alapértelmezés (nem összesítő elosztás)
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -1011,50 +1018,20 @@ def show_topic_selection():
             # Összes témakör kiválasztása
             st.session_state.selected_topics = list(topics.keys())
             
-            # Zenei és egyéb témakörök szétválasztása
-            music_topics = [tk for tk in topics.keys() if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
-            other_topics = [tk for tk in topics.keys() if "zene" not in tk and "zenekar" not in tk and tk not in {"one_hit_wonders", "sorozat_focimek"}]
-            
-            # Kérdések elosztása a zenei témakörök között
-            if music_topics:
-                questions_per_music_topic = random_music_question_count // len(music_topics)
-                remaining_music_questions = random_music_question_count % len(music_topics)
-                
-                # Random kiválasztás, hogy melyik témakörök kapjanak extra kérdést
-                extra_questions_topics = random.sample(music_topics, remaining_music_questions) if remaining_music_questions > 0 else []
-                
-                for topic_key in music_topics:
-                    max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    topic_questions = questions_per_music_topic + (1 if topic_key in extra_questions_topics else 0)
-                    topic_questions = min(topic_questions, max_questions)
-                    st.session_state[f'final_{topic_key}_questions'] = topic_questions
-            
-            # Kérdések elosztása az egyéb témakörök között
-            if other_topics:
-                questions_per_other_topic = random_question_count // len(other_topics)
-                remaining_other_questions = random_question_count % len(other_topics)
-                
-                # Random kiválasztás, hogy melyik témakörök kapjanak extra kérdést
-                extra_questions_topics = random.sample(other_topics, remaining_other_questions) if remaining_other_questions > 0 else []
-                
-                for topic_key in other_topics:
-                    max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    topic_questions = questions_per_other_topic + (1 if topic_key in extra_questions_topics else 0)
-                    topic_questions = min(topic_questions, max_questions)
-                    st.session_state[f'final_{topic_key}_questions'] = topic_questions
-            
-            # Összesítő értékek beállítása
-            total_music_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
-            st.session_state['music_total_questions'] = total_music_questions
-            
-            total_other_questions = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in other_topics)
-            st.session_state['other_total_questions'] = total_other_questions
+            # Minden kategória önállóan kap alapértelmezett kérdésszámot (min 3, max)
+            total_questions = 0
+            for topic_key in topics.keys():
+                max_questions = len(MAGYAR_AUDIO_MAPPING_UJ) if topic_key == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
+                q = min(3, max_questions) if max_questions > 0 else 0
+                st.session_state[f'final_{_topic_session_key(topic_key)}_questions'] = q
+                _set_topic_question_count(topic_key, q)
+                total_questions += q
             
             st.success(
                 t(
-                    "✅ Teljes kvíz létrehozva! {topic_count} témakör kiválasztva, összesen {question_count} kérdés!",
+                    "✅ Teljes kvíz létrehozva! {topic_count} témakör kiválasztva, összesen {question_count} kérdés. Kategóriánként önállóan állítható!",
                     topic_count=len(topics),
-                    question_count=total_music_questions + total_other_questions,
+                    question_count=total_questions,
                 )
             )
             st.rerun()
@@ -1066,46 +1043,25 @@ def show_topic_selection():
             num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
             selected_music_topics = random.sample(music_topics, num_music_topics)
             
-            # Kérdések elosztása a zenei témakörök között
-            questions_per_music_topic = random_music_question_count // num_music_topics
-            remaining_music_questions = random_music_question_count % num_music_topics
-            
             # Meglévő nem-zenei témakörök megtartása
             existing_other_topics = [topic for topic in st.session_state.selected_topics if topic not in music_topics]
             
             # Témakörök kiválasztása (nem-zenei + új zenei)
             st.session_state.selected_topics = existing_other_topics + selected_music_topics
             
-            # Gomb állapotok frissítése (checkbox helyett)
-            for topic_key in topics.keys():
-                if topic_key in selected_music_topics or topic_key in existing_other_topics:
-                    # A gombok állapota automatikusan frissül a selected_topics alapján
-                    pass
-                elif topic_key in music_topics:  # Csak zenei témakörök törlése
-                    if topic_key in st.session_state.selected_topics:
-                        st.session_state.selected_topics.remove(topic_key)
-            
-            # Kérdésszámok beállítása
-            # Random kiválasztás, hogy melyik témakörök kapjanak extra kérdést
-            extra_questions_topics = random.sample(selected_music_topics, remaining_music_questions) if remaining_music_questions > 0 else []
-            
+            # Minden új zenei kategória önállóan kap alapértelmezett kérdésszámot (min 3, max)
+            total_music = 0
             for topic in selected_music_topics:
-                topic_questions = questions_per_music_topic + (1 if topic in extra_questions_topics else 0)
-                max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                topic_questions = min(topic_questions, max_available)
-                st.session_state[f'{topic}_questions'] = topic_questions
-                # Ne módosítsuk a final_ értékeket, ha már létrejöttek a slider-ek
-                if f'final_{topic}_questions' not in st.session_state:
-                    st.session_state[f'final_{topic}_questions'] = topic_questions
-            
-            # Alapértelmezett értékek beállítása
-            st.session_state['music_total_questions'] = random_music_question_count
+                max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                q = min(3, max_q) if max_q > 0 else 0
+                st.session_state[f'final_{_topic_session_key(topic)}_questions'] = q
+                _set_topic_question_count(topic, q)
+                total_music += q
             
             st.success(
                 t(
-                    "✅ {topic_count} zenei témakör kiválasztva + meglévő nem-zenei témakörök megtartva, {question_count} kérdés elosztva!",
+                    "✅ {topic_count} zenei témakör kiválasztva + meglévő nem-zenei megtartva. Kategóriánként önállóan állítható!",
                     topic_count=num_music_topics,
-                    question_count=random_music_question_count,
                 )
             )
             st.rerun()
@@ -1118,47 +1074,25 @@ def show_topic_selection():
             num_topics = random.randint(5, min(8, len(available_topics)))  # 5-8 témakör között
             selected_random_topics = random.sample(available_topics, num_topics)
             
-            # Kérdések elosztása a kiválasztott témakörök között
-            questions_per_topic = random_question_count // num_topics
-            remaining_questions = random_question_count % num_topics
-            
             # Meglévő zenei témakörök megtartása
             existing_music_topics = [topic for topic in st.session_state.selected_topics if topic in music_topics]
             
             # Témakörök kiválasztása (zenei + új random)
             st.session_state.selected_topics = existing_music_topics + selected_random_topics
             
-            # Gomb állapotok frissítése (checkbox helyett)
-            for topic_key in topics.keys():
-                if topic_key in selected_random_topics or topic_key in existing_music_topics:
-                    # A gombok állapota automatikusan frissül a selected_topics alapján
-                    pass
-                elif topic_key not in music_topics:  # Csak nem-zenei témakörök törlése
-                    if topic_key in st.session_state.selected_topics:
-                        st.session_state.selected_topics.remove(topic_key)
-            
-            # Kérdésszámok beállítása
-            # Random kiválasztás, hogy melyik témakörök kapjanak extra kérdést
-            extra_questions_topics = random.sample(selected_random_topics, remaining_questions) if remaining_questions > 0 else []
-            
+            # Minden új kategória önállóan kap alapértelmezett kérdésszámot (min 3, max)
+            total_other = 0
             for topic in selected_random_topics:
-                topic_questions = questions_per_topic + (1 if topic in extra_questions_topics else 0)
-                max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                topic_questions = min(topic_questions, max_available)
-                st.session_state[f'{topic}_questions'] = topic_questions
-                # Ne módosítsuk a final_ értékeket, ha már létrejöttek a slider-ek
-                if f'final_{topic}_questions' not in st.session_state:
-                    st.session_state[f'final_{topic}_questions'] = topic_questions
-            
-            # Alapértelmezett értékek beállítása
-            st.session_state['other_total_questions'] = random_question_count
-            st.session_state['music_total_questions'] = random_music_question_count
+                max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                q = min(3, max_q) if max_q > 0 else 0
+                st.session_state[f'final_{_topic_session_key(topic)}_questions'] = q
+                _set_topic_question_count(topic, q)
+                total_other += q
             
             st.success(
                 t(
-                    "✅ {topic_count} témakör kiválasztva (zene nélkül) + meglévő zenei témakörök megtartva, {question_count} kérdés elosztva!",
+                    "✅ {topic_count} témakör kiválasztva (zene nélkül) + meglévő zenei megtartva. Kategóriánként önállóan állítható!",
                     topic_count=num_topics,
-                    question_count=random_question_count,
                 )
             )
             st.rerun()
@@ -1174,16 +1108,9 @@ def show_topic_selection():
     # Témakörök kiválasztása
     col1, col2, col3 = st.columns(3)
     
-    # Egyenlő elosztás kiszámítása a kiválasztott témakörök között
     selected_topics = st.session_state.selected_topics if 'selected_topics' in st.session_state else []
-    num_selected = len(selected_topics)
-    final_question_count = st.session_state.get('final_question_count', 40)
-    fair_share = final_question_count // num_selected if num_selected > 0 else 0
-    remainder = final_question_count % num_selected if num_selected > 0 else 0
-    fair_distribution = {}
-    for i, topic in enumerate(selected_topics):
-        fair_distribution[topic] = fair_share + (1 if i < remainder else 0)
 
+    # Minden kategória kérdésszáma önállóan állítható a témakör melletti sliderekkel
 
     with col1:
         st.markdown(t("### 🎵 Zenei témakörök"))
@@ -1193,9 +1120,10 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{_topic_session_key(topic_key)}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
+                        _save_topic_count_before_deselect(topic_key)
                         st.session_state.selected_topics.remove(topic_key)
                     else:
                         st.session_state.selected_topics.append(topic_key)
@@ -1204,15 +1132,20 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
+                    slider_val = _get_topic_question_count(topic_key, default_questions)
+                    def _on_slider_change(tk=topic_key):
+                        key = f"final_{_topic_session_key(tk)}_questions"
+                        if key in st.session_state:
+                            _set_topic_question_count(tk, st.session_state[key])
+                        st.rerun()
                     final_topic_questions = st.slider(
                         t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
-                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions",
-                        on_change=lambda: st.rerun(),
+                        value=slider_val,
+                        key=f"final_{_topic_session_key(topic_key)}_questions",
+                        on_change=_on_slider_change,
                     )
     
     with col2:
@@ -1224,9 +1157,10 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{_topic_session_key(topic_key)}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
+                        _save_topic_count_before_deselect(topic_key)
                         st.session_state.selected_topics.remove(topic_key)
                     else:
                         st.session_state.selected_topics.append(topic_key)
@@ -1235,15 +1169,20 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
+                    slider_val = _get_topic_question_count(topic_key, default_questions)
+                    def _on_slider_change(tk=topic_key):
+                        key = f"final_{_topic_session_key(tk)}_questions"
+                        if key in st.session_state:
+                            _set_topic_question_count(tk, st.session_state[key])
+                        st.rerun()
                     final_topic_questions = st.slider(
                         t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
-                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions",
-                        on_change=lambda: st.rerun(),
+                        value=slider_val,
+                        key=f"final_{_topic_session_key(topic_key)}_questions",
+                        on_change=_on_slider_change,
                     )
     
     with col3:
@@ -1254,9 +1193,10 @@ def show_topic_selection():
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
                 
-                if st.button(t(topic_name), key=f"btn_{topic_key}", type=button_style, use_container_width=True):
+                if st.button(t(topic_name), key=f"btn_{_topic_session_key(topic_key)}", type=button_style, use_container_width=True):
                     # Témakör hozzáadása/eltávolítása a listából
                     if topic_key in st.session_state.selected_topics:
+                        _save_topic_count_before_deselect(topic_key)
                         st.session_state.selected_topics.remove(topic_key)
                     else:
                         st.session_state.selected_topics.append(topic_key)
@@ -1265,111 +1205,27 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    # Alapértelmezett érték: 3 minden témakörnél
                     default_questions = min(3, max_questions)
+                    slider_val = _get_topic_question_count(topic_key, default_questions)
+                    def _on_slider_change(tk=topic_key):
+                        key = f"final_{_topic_session_key(tk)}_questions"
+                        if key in st.session_state:
+                            _set_topic_question_count(tk, st.session_state[key])
+                        st.rerun()
                     final_topic_questions = st.slider(
                         t("{topic_name} kérdések száma", topic_name=t(topic_name)),
                         min_value=0,
                         max_value=max_questions,
-                        value=st.session_state.get(f"final_{topic_key}_questions", default_questions),
-                        key=f"final_{topic_key}_questions",
-                        on_change=lambda: st.rerun(),
+                        value=slider_val,
+                        key=f"final_{_topic_session_key(topic_key)}_questions",
+                        on_change=_on_slider_change,
                     )
     
-    # Kérdésszámok beállítása
+    # Minden kategória kérdésszáma a fenti sliderekkel önállóan állítható (nincs összesítő elosztás)
     if st.session_state.selected_topics:
         st.markdown('<div id="final-question-settings"></div>', unsafe_allow_html=True)
-        st.markdown(t("### ⚙️ Kérdésszámok beállítása"))
-        
-        music_topics = [tk for tk in st.session_state.selected_topics if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
-        other_topics = [tk for tk in st.session_state.selected_topics if "zene" not in tk and "zenekar" not in tk and tk not in {"one_hit_wonders", "sorozat_focimek"}]
-        
-        if music_topics:
-            st.markdown(t("#### 🎵 Zenei kérdések beállításai"))
-            # Összes zenei kérdés számának kiszámítása
-            total_music_questions = sum(len(QUIZ_DATA_BY_TOPIC.get(topic, [])) for topic in music_topics)
-            
-            # Összes zenei: ha auto elosztás, music_total_questions a forrás (ne a témakör csúszkák 3-as alapértelmezése)
-            current_music_total = sum(st.session_state.get(f'final_{topic}_questions', 0) for topic in music_topics)
-            if st.session_state.get('music_auto_distribute', True):
-                music_slider_default = st.session_state.get('music_total_questions', st.session_state.get('default_music_questions', 10))
-            else:
-                music_slider_default = current_music_total if current_music_total > 0 else st.session_state.get('music_total_questions', 10)
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                music_total_questions = st.slider(
-                    t("Összes zenei kérdés száma"),
-                    1,
-                    total_music_questions,
-                    music_slider_default,
-                    key="music_total_questions",
-                    on_change=lambda: st.rerun(),
-                )
-            with col2:
-                music_auto_distribute = st.checkbox(
-                    t("Automatikus elosztás a zenei témakörök között"),
-                    True,
-                    key="music_auto_distribute",
-                    on_change=lambda: st.rerun(),
-                )
-            
-            if not music_auto_distribute:
-                st.markdown(t("##### Manuális elosztás:"))
-                for topic in music_topics:
-                    topic_name = topics.get(topic, topic)
-                    if topic == "magyar_zenekarok":
-                        max_questions = len(MAGYAR_AUDIO_MAPPING_UJ)
-                    else:
-                        max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                    questions_count = st.slider(
-                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
-                        0,
-                        max_questions,
-                        key=f"{topic}_questions",
-                        on_change=lambda: st.rerun(),
-                    )
-        
-        if other_topics:
-            st.markdown(t("#### 📚 Egyéb témakörök kérdésszámai"))
-            
-            # Automatikus elosztás egyéb témakörök között
-            col1, col2 = st.columns(2)
-            with col1:
-                other_total_questions = st.slider(
-                    t("Összes egyéb kérdés száma"),
-                    1,
-                    200,
-                    st.session_state.get('other_total_questions', st.session_state.get('default_other_questions', 40)),
-                    key="other_total_questions",
-                    on_change=lambda: st.rerun(),
-                )
-            
-            with col2:
-                other_auto_distribute = st.checkbox(
-                    t("Automatikus elosztás az egyéb témakörök között"),
-                    True,
-                    key="other_auto_distribute",
-                    on_change=lambda: st.rerun(),
-                )
-            
-            if not other_auto_distribute:
-                st.markdown(t("##### Manuális elosztás:"))
-                cols = st.columns(3)
-                for i, topic in enumerate(other_topics):
-                    topic_name = topics.get(topic, topic)
-                    max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                    with cols[i % 3]:
-                        questions_count = st.slider(
-                            t("{topic_name} kérdések száma", topic_name=t(topic_name)),
-                            0,
-                            max_questions,
-                            key=f"{topic}_questions",
-                            on_change=lambda: st.rerun(),
-                        )
-        
-
     
+
     # Quiz indítása
     if st.session_state.selected_topics:
         st.markdown(f'<h3 style="color:#1a1a1a;font-family:Inter,sans-serif;">{t("🎯 Végleges Kérdésszám Beállítása")}</h3>', unsafe_allow_html=True)
@@ -1387,30 +1243,17 @@ def show_topic_selection():
                 other_questions += topic_questions
             total_available_questions += topic_questions
         
-        # Jelenlegi beállított kérdésszámok: MINDKÉT forrás figyelembe vétele
-        # 1) Témakör oszlop csúszkák (final_{topic}_questions) - minden témakör gombja alatt
-        # 2) Kérdésszámok beállítása: music_total_questions, other_total_questions, {topic}_questions
+        # Automatikus elosztás már a témakör sliderek előtt lefutott (Streamlit widget key konfliktus elkerülésére)
         music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek"}]
         other_topics = [t for t in st.session_state.selected_topics if t not in music_topics]
+        # Végleges kérdésszám: MINDIG a kategóriánkénti csúszkák összege (minden kategória önállóan állítható)
         current_total = 0
-        if music_topics:
-            if st.session_state.get('music_auto_distribute', True):
-                # Auto: Összes zenei kérdés száma a forrás – a témakör csúszkák NEM írják felül
-                current_total += st.session_state.get('music_total_questions', 10)
-            else:
-                for topic in music_topics:
-                    max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                    q = st.session_state.get(f'{topic}_questions', st.session_state.get(f'final_{topic}_questions', min(3, max_q)))
-                    current_total += q
-        if other_topics:
-            if st.session_state.get('other_auto_distribute', True):
-                # Auto: Összes egyéb kérdés száma a forrás – a témakör csúszkák NEM írják felül
-                current_total += st.session_state.get('other_total_questions', 40)
-            else:
-                for topic in other_topics:
-                    max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                    q = st.session_state.get(f'{topic}_questions', st.session_state.get(f'final_{topic}_questions', min(3, max_q)))
-                    current_total += q
+        for topic in st.session_state.selected_topics:
+            max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+            if max_q == 0:
+                continue
+            q = _get_topic_question_count(topic, min(3, max_q))
+            current_total += q
         if current_total == 0:
             for topic in st.session_state.selected_topics:
                 max_available = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
@@ -1418,19 +1261,11 @@ def show_topic_selection():
                     current_total += min(3, max_available)
         final_question_count = current_total
         
-        # Kiválasztott zenei és egyéb kérdésszámok (slider értékek alapján)
-        music_selected = 0
-        other_selected = 0
-        if music_topics:
-            if st.session_state.get('music_auto_distribute', True):
-                music_selected = st.session_state.get('music_total_questions', 10)
-            else:
-                music_selected = sum(st.session_state.get(f'{t}_questions', st.session_state.get(f'final_{t}_questions', 0)) for t in music_topics)
-        if other_topics:
-            if st.session_state.get('other_auto_distribute', True):
-                other_selected = st.session_state.get('other_total_questions', 40)
-            else:
-                other_selected = sum(st.session_state.get(f'{t}_questions', st.session_state.get(f'final_{t}_questions', 0)) for t in other_topics)
+        # Kiválasztott zenei és egyéb kérdésszámok (perzisztens tárolóból)
+        def _get_topic_count(t, is_music):
+            return _get_topic_question_count(t, 0)
+        music_selected = sum(_get_topic_count(t, True) for t in music_topics)
+        other_selected = sum(_get_topic_count(t, False) for t in other_topics)
         
         # Információk megjelenítése (inline stílus: mindig olvasható sötét szöveg)
         col1, col2, col3, col4 = st.columns(4)
@@ -1452,50 +1287,12 @@ def show_topic_selection():
                 st.rerun()
         with btn_col2:
             if st.button(t("🚀 Quiz indítása"), type="primary", use_container_width=True):
-                # Kérdésszámok összegyűjtése _pending_question_counts-ba (widget kulcsok nem módosíthatók)
+                # Kérdésszámok összegyűjtése: mindig a kategóriánkénti sliderekből (final_{topic}_questions)
                 pending = {}
-                music_topics = [tk for tk in st.session_state.selected_topics if "zene" in tk or "zenekar" in tk or tk in {"one_hit_wonders", "sorozat_focimek"}]
-                other_topics = [tk for tk in st.session_state.selected_topics if tk not in music_topics]
-                if music_topics:
-                    if st.session_state.get('music_auto_distribute', True):
-                        total = st.session_state.get('music_total_questions', 10)
-                        per_topic = total // len(music_topics)
-                        remainder = total % len(music_topics)
-                        extra = random.sample(music_topics, remainder) if remainder else []
-                        for topic in music_topics:
-                            max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                            q = min(per_topic + (1 if topic in extra else 0), max_q)
-                            pending[topic] = q
-                    else:
-                        for topic in music_topics:
-                            max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                            if f'{topic}_questions' in st.session_state:
-                                q = st.session_state[f'{topic}_questions']
-                            elif f'final_{topic}_questions' in st.session_state:
-                                q = st.session_state[f'final_{topic}_questions']
-                            else:
-                                q = min(3, max_q)
-                            pending[topic] = min(q, max_q) if max_q > 0 else 0
-                if other_topics:
-                    if st.session_state.get('other_auto_distribute', True):
-                        total = st.session_state.get('other_total_questions', 40)
-                        per_topic = total // len(other_topics)
-                        remainder = total % len(other_topics)
-                        extra = random.sample(other_topics, remainder) if remainder else []
-                        for topic in other_topics:
-                            max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                            q = min(per_topic + (1 if topic in extra else 0), max_q)
-                            pending[topic] = q
-                    else:
-                        for topic in other_topics:
-                            max_q = len(QUIZ_DATA_BY_TOPIC.get(topic, []))
-                            if f'{topic}_questions' in st.session_state:
-                                q = st.session_state[f'{topic}_questions']
-                            elif f'final_{topic}_questions' in st.session_state:
-                                q = st.session_state[f'final_{topic}_questions']
-                            else:
-                                q = min(3, max_q)
-                            pending[topic] = min(q, max_q) if max_q > 0 else 0
+                for topic in st.session_state.selected_topics:
+                    max_q = len(MAGYAR_AUDIO_MAPPING_UJ) if topic == "magyar_zenekarok" else len(QUIZ_DATA_BY_TOPIC.get(topic, []))
+                    q = _get_topic_question_count(topic, min(3, max_q))
+                    pending[topic] = min(q, max_q) if max_q > 0 else 0
                 st.session_state['_pending_question_counts'] = pending
                 st.session_state.final_question_count = final_question_count
                 start_quiz()
