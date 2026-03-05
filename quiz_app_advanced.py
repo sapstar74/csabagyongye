@@ -76,13 +76,15 @@ def _save_topic_count_before_deselect(topic_key: str) -> None:
         _set_topic_question_count(topic_key, st.session_state[key])
 
 
-# Page config
-st.set_page_config(
-    page_title=t("Csabagyöngye Tréning Center"),
-    page_icon="🎯",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+# Page config (kihagyva ha streamlit_app.py-ból importáljuk – ott már be van állítva)
+import sys
+if "streamlit_app" not in sys.modules:
+    st.set_page_config(
+        page_title="Csabagyöngye",
+        page_icon="🎯",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 
 # Theme init (Light/Dark) – query_params + session_state a deployolt környezetben való megmaradásért
 # URL-ben: ?theme=light vagy ?theme=dark – így a session state elvesztése nem befolyásolja
