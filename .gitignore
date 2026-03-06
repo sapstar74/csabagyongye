@@ -160,6 +160,7 @@ s
 *.bat
 *.sh
 *.json
+!static/manifest.json
 *.yml
 *.yaml
 
