@@ -1,0 +1,35 @@
+[server]
+headless = true
+port = 8501
+address = "0.0.0.0"
+enableCORS = false
+enableXsrfProtection = false
+enableStaticServing = true
+
+[browser]
+gatherUsageStats = false
+
+# Rejtett menü – csak a saját témaváltónk használható (Streamlit Cloud ne írja felül)
+[client]
+toolbarMode = "minimal"
+
+[theme]
+base = "light"
+primaryColor = "#e7e5e4"
+backgroundColor = "#fafaf9"
+secondaryBackgroundColor = "#f5f5f4"
+textColor = "#1a1a1a"
+font = "sans serif"
+
+# Világos és sötét téma színei – a deployolt app ne használja a rendszer preferenciát
+[theme.light]
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f5f5f4"
+textColor = "#1a1a1a"
+primaryColor = "#2c3e50"
+
+[theme.dark]
+backgroundColor = "#1a1a1a"
+secondaryBackgroundColor = "#171717"
+textColor = "#fafaf9"
+primaryColor = "#e7e5e4"
