@@ -185,6 +185,7 @@ def reset_quiz():
         "világtörténelem": "🌐 Világtörténelem",
         "magyar történelem": "🇭🇺 Magyar történelem",
         "híres magyarok": "🌟 Híres magyarok",
+        "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
     }
@@ -1005,6 +1006,7 @@ def show_topic_selection():
         "világtörténelem": "🌐 Világtörténelem",
         "magyar történelem": "🇭🇺 Magyar történelem",
         "híres magyarok": "🌟 Híres magyarok",
+        "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
     }

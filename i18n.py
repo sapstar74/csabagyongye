@@ -113,6 +113,8 @@ _EN_TRANSLATIONS = {
     "🐾 Állatok": "🐾 Animals",
     "🎭 Drámák": "🎭 Dramas",
     "🏆 Sport logók": "🏆 Sports logos",
+    "🌟 Híres magyarok": "🌟 Famous Hungarians",
+    "🏷️ Becenevek, ragadványnevek": "🏷️ Nicknames & epithets",
     "🏁 Zászlók": "🏁 Flags",
     "🔍 Zászlók részlete": "🔍 Flag details",
     "Melyik ország zászlajából származik a részlet?": "Which country's flag does this detail come from?",
