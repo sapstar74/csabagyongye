@@ -105,4 +105,5 @@ FESTMENY_QUESTIONS = [
     _q('Nézd meg ezt a festményt: "A Langlois Hd Arles Mellett" és válaszd ki a festő nevét:', 0, ['Vincent Van Gogh', 'Pierre-Auguste Renoir', 'Rembrandt', 'Andy Warhol'], 'A Langlois Hd Arles Mellett - Vincent Van Gogh (1888)', 'a-langlois-hd-arles-mellett---vincent-van-gogh-1888.jpg'),
     _q('Nézd meg ezt a festményt: "La Bohémienne Endormie" és válaszd ki a festő nevét:', 3, ['Henri Matisse', 'Francisco Goya', 'Edvard Munch', 'Henri Rousseau'], 'La Bohémienne Endormie - Henri Rousseau (1897)', 'la-bohémienne-endormie---henri_rousseau-1897.jpg'),
     _q('Nézd meg ezt a festményt: "Pelzhndler Auf Dem Missouri" és válaszd ki a festő nevét:', 1, ['Jackson Pollock', 'George Caleb Bingham', 'Michelangelo', 'Salvador Dalí'], 'Pelzhndler Auf Dem Missouri - George Caleb Bingham (1845)', 'pelzhndler-auf-dem-missouri---george-caleb-bingham-1845.jpg'),
+    _q('Nézd meg ezt a festményt: "A Friend in Need" és válaszd ki a festő nevét:', 2, ['Norman Rockwell', 'Grant Wood', 'Cassius Marcellus Coolidge', 'Edward Hopper'], 'A Friend in Need - Cassius Marcellus Coolidge (1903)', 'a-friend-in-need---cassius-marcellus-coolidge-1903.jpg'),
 ]
