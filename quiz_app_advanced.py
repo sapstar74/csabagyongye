@@ -337,36 +337,21 @@ def start_quiz():
                     question['topic'] = topic
                     
 
-                    # --- Magyar zenekarok: opciók és helyes válasz igazítása ---
+                    # --- Magyar zenekarok: original_index beállítása ---
                     if topic == "magyar_zenekarok" or topic == "magyar_zenekarok_uj":
-                        # A fájlnév alapján keressük meg a mapping indexét
                         audio_file = question.get("audio_file", "")
                         if audio_file:
-                            # Keressük meg a fájlt a mappingben
                             mapping_index = None
                             for map_idx, map_fname in MAGYAR_AUDIO_MAPPING_UJ.items():
                                 if map_fname == audio_file:
                                     mapping_index = map_idx
                                     break
-                            
                             if mapping_index is not None:
                                 question['original_index'] = mapping_index
-                                # A mappingből kinyerjük a helyes előadót
-                                mapping_fname = MAGYAR_AUDIO_MAPPING_UJ.get(mapping_index)
-                                if mapping_fname:
-                                    # Előadó név a fájlnévből (első kétjegyű szám + _ levágva, .mp3 nélkül)
-                                    artist = mapping_fname.split('_', 1)[-1].replace('.mp3', '').replace('_', ' ')
-                                    # Csak akkor adjuk hozzá, ha nincs már a listában
-                                    if artist not in question["options"]:
-                                        question["options"].append(artist)
-                                    # A helyes válasz indexét állítjuk be
-                                    if artist in question["options"]:
-                                        question["correct"] = question["options"].index(artist)
                             else:
-                                print(f"[DEBUG] Fájl nem található a mappingben: {audio_file}")
-                                question['original_index'] = idx  # Fallback
+                                question['original_index'] = idx
                         else:
-                            question['original_index'] = idx  # Fallback
+                            question['original_index'] = idx
                     else:
                         # One Hit Wonders esetén megtartjuk az eredeti original_index-et
                         if topic == "one_hit_wonders":

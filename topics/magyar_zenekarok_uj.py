@@ -87,7 +87,7 @@ QUESTIONS = [
             "Magashegyi Underground",
             "Blahalouisiana",
             "Biorobot",
-            "PBox",
+            "P. Box",
         ],
         "correct": 0,
         "explanation": "",
@@ -123,13 +123,13 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "PBox",
+            "P. Box",
             "Dalriada",
             "Thy Catafalque",
             "Sear Bliss",
         ],
         "correct": 0,
-        "explanation": "PBox magyar metal zenekar",
+        "explanation": "P. Box magyar metal zenekar",
         "audio_file": "49_PBox.mp3",
         "topic": "magyar_zenekarok_uj",
     },
@@ -241,7 +241,7 @@ QUESTIONS = [
         "question": "Ki az előadó?",
         "options": [
             "P. Mobil",
-            "P.Box",
+            "P. Box",
             "Republic",
             "Omega",
         ],
@@ -253,7 +253,7 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Bonanza Banzaiii",
+            "Bonanza Banzai",
             "P. Mobil",
             "Republic",
             "Omega",
@@ -630,13 +630,13 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Follow the flow",
+            "Follow the Flow",
             "4Street",
             "Bagossy Brothers",
             "Lóci játszik",
         ],
         "correct": 0,
-        "explanation": "Follow the flow magyar zenekar",
+        "explanation": "Follow the Flow magyar zenekar",
         "audio_file": "00_Follow_the_flow.mp3",
         "topic": "magyar_zenekarok_uj",
     },
@@ -644,7 +644,7 @@ QUESTIONS = [
         "question": "Ki az előadó?",
         "options": [
             "4Street",
-            "Follow the flow",
+            "Follow the Flow",
             "Bagossy Brothers",
             "Csaknekedkislány",
         ],
@@ -658,7 +658,7 @@ QUESTIONS = [
         "options": [
             "Bagossy Brothers",
             "4Street",
-            "Follow the flow",
+            "Follow the Flow",
             "Csaknekedkislány",
         ],
         "correct": 0,
@@ -672,7 +672,7 @@ QUESTIONS = [
             "Csaknekedkislány",
             "Bagossy Brothers",
             "4Street",
-            "Follow the flow",
+            "Follow the Flow",
         ],
         "correct": 0,
         "explanation": "Csaknekedkislány magyar zenekar",
@@ -878,7 +878,7 @@ QUESTIONS = [
         "question": "Ki az előadó?",
         "options": [
             "Bagossy Brothers Company",
-            "Bagossy Brothers",
+            "Quimby",
             "Republic",
             "Korai Öröm",
         ],
@@ -892,7 +892,7 @@ QUESTIONS = [
         "options": [
             "Neoton Família",
             "Bagossy Brothers Company",
-            "Bagossy Brothers",
+            "Tankcsapda",
             "Republic",
         ],
         "correct": 0,
@@ -906,7 +906,7 @@ QUESTIONS = [
             "Follow the Flow",
             "Neoton Família",
             "Bagossy Brothers Company",
-            "Bagossy Brothers",
+            "P. Mobil",
         ],
         "correct": 0,
         "explanation": "Follow the Flow magyar zenekar",
@@ -1228,7 +1228,7 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Radics Béla",
+            "P. Box",
             "P. Mobile",
             "Beatrice",
             "Vikidál Gyula",
@@ -1241,13 +1241,13 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "P.Box",
-            "P.Mobile",
+            "P. Box",
+            "P. Mobile",
             "Vikidál Gyula",
             "Deák Bill Gyula",
         ],
         "correct": 0,
-        "explanation": "P.Box - Magyar Zenekarok",
+        "explanation": "P. Box - Magyar Zenekarok",
         "audio_file": "97. PBox - A zöld a bibor és a fekete.mp3",
         "topic": "magyar_zenekarok_uj",
     },
@@ -1260,7 +1260,7 @@ QUESTIONS = [
             "Soho Party",
         ],
         "correct": 0,
-        "explanation": "30Y - Magyar Zenekarok",
+        "explanation": "4F Club - Magyar Zenekarok",
         "audio_file": "audio_files/magyar_zenekarok/4F-Club - Balatoni Láz.mp3",
         "topic": "magyar_zenekarok_uj",
     },
