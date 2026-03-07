@@ -473,6 +473,24 @@ def show_audio_track_management_page():
                                         st.error(f"❌ Hiba a mentés során: {e}")
 
                             st.markdown("---")
+                            st.markdown("### ▶️ Lejátszás")
+                            _audio_path_play = None
+                            if row.get('matching_track') and row['matching_track'].get('audio_path'):
+                                _audio_path_play = row['matching_track']['audio_path']
+                            elif 'audio_file' in current_question and current_question['audio_file']:
+                                _candidate = os.path.join(
+                                    os.path.dirname(question_file_path or ""),
+                                    "..", "audio_files", selected_category,
+                                    os.path.basename(current_question['audio_file'])
+                                )
+                                if os.path.exists(_candidate):
+                                    _audio_path_play = _candidate
+                            if _audio_path_play and os.path.exists(_audio_path_play):
+                                st.audio(_audio_path_play, format='audio/mp3')
+                            else:
+                                st.caption("⚠️ Nincs elérhető audio fájl ehhez a trackhez.")
+
+                            st.markdown("---")
                             st.markdown("### 🗑️ Törlés")
                             st.warning("⚠️ Ez a művelet visszavonhatatlan: a kérdés és az audio fájl is törlődik.")
                             confirm_delete = st.checkbox("Igen, törlöm ezt a tracket és a kérdést", key=f"confirm_delete_{i}")
