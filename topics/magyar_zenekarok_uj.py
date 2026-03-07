@@ -1,5 +1,5 @@
 # Auto-generated questions file
-# Generated on: 2026-02-24 21:22:39
+# Generated on: 2026-03-07 10:04:46
 
 QUESTIONS = [
     {
@@ -13,7 +13,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Alvin és a Mókusok magyar punk zenekar",
         "audio_file": "01. Alvin és a Mókusok - .mp3",
-        "song_title": "",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -118,19 +117,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Blahalouisiana magyar metal zenekar",
         "audio_file": "57_Blahalouisiana.mp3",
-        "topic": "magyar_zenekarok_uj",
-    },
-    {
-        "question": "Ki az előadó?",
-        "options": [
-            "P. Box",
-            "Dalriada",
-            "Thy Catafalque",
-            "Sear Bliss",
-        ],
-        "correct": 0,
-        "explanation": "P. Box magyar metal zenekar",
-        "audio_file": "49_PBox.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
