@@ -38,8 +38,8 @@ QUESTIONS = [
             "Tankcsapda",
         ],
         "correct": 0,
-        "explanation": "",
-        "audio_file": "",
+        "explanation": "Tudósok magyar alternatív zenekar",
+        "audio_file": "31_Tudósok.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -77,8 +77,8 @@ QUESTIONS = [
             "Dalriada",
         ],
         "correct": 0,
-        "explanation": "",
-        "audio_file": "",
+        "explanation": "Ossian magyar metal zenekar",
+        "audio_file": "60_Ossian.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -90,8 +90,8 @@ QUESTIONS = [
             "P. Box",
         ],
         "correct": 0,
-        "explanation": "",
-        "audio_file": "",
+        "explanation": "Magashegyi Underground magyar alternatív zenekar",
+        "audio_file": "61_Magashegyi_Underground.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
@@ -103,8 +103,8 @@ QUESTIONS = [
             "Carson Coma",
         ],
         "correct": 0,
-        "explanation": "",
-        "audio_file": "",
+        "explanation": "Biorobot magyar elektronikus zenekar",
+        "audio_file": "58_Biorobot.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
