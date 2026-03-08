@@ -621,6 +621,14 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "The Cranberries - Ír alternatív rock zenekar",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "98_Garbage.mp3",
+        "options": ['Garbage', 'Hole', 'Alanis Morissette', 'Shirley Manson'],
+        "correct": 0,
+        "explanation": "Garbage - Skót-amerikai alternatív rock zenekar (Only Happy When It Rains)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
