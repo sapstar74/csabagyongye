@@ -127,6 +127,8 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'What's Up' című dalban?", 0, ['4 Non Blondes', 'Alanis Morissette', 'Sheryl Crow', 'Melissa Etheridge'], "'What's Up' – 4 Non Blondes (1992)"),
     _q("Ki az előadó az 'I Want Candy' című dalban?", 0, ['Bow Wow Wow', 'Blondie', 'The B-52s', 'The Bangles'], "'I Want Candy' – Bow Wow Wow (1982)"),
     _q("Ki az előadó a 'Kung Fu Fighting' című dalban?", 0, ['Carl Douglas', 'David Bowie', 'T. Rex', 'Slade'], "'Kung Fu Fighting' – Carl Douglas (1974)"),
+    _q("Ki az előadó az 'Everytime We Touch' című dalban?", 0, ['Cascada', 'Basshunter', 'Scooter', 'ATB'], "'Everytime We Touch' – Cascada (2005)"),
+    _q("Ki az előadó a 'Living Next Door to Alice' című dalban?", 0, ['Smokie', 'Sweet', 'Mud', 'Bay City Rollers'], "'Living Next Door to Alice' – Smokie (1976)"),
 ]
 
 # Export alias for quiz_app
