@@ -5104,13 +5104,17 @@ def main():
         with col:
             # Checkbox + logó + név formátum
             if st.checkbox(f"{topic['icon']} {topic['name']}", key=f"enable_{topic['key']}"):
-                questions = st.slider(
-                    f"{topic['name']} kérdések:", 
-                    min_value=0, 
-                    max_value=topic['max_questions'], 
-                    value=3 if topic['key'] in ['földrajz', 'komolyzene', 'sport_logók', 'hegységek', 'us_államok', 'világzászlók', 'magyar_királyok', 'háborúk', 'drámák'] else 2,
-                    key=f"{topic['key']}_count"
-                )
+                if topic['max_questions'] > 0:
+                    questions = st.slider(
+                        f"{topic['name']} kérdések:", 
+                        min_value=0, 
+                        max_value=topic['max_questions'], 
+                        value=3 if topic['key'] in ['földrajz', 'komolyzene', 'sport_logók', 'hegységek', 'us_államok', 'világzászlók', 'magyar_királyok', 'háborúk', 'drámák'] else 2,
+                        key=f"{topic['key']}_count"
+                    )
+                else:
+                    st.warning("Nincs elérhető kérdés ebben a témakörben.")
+                    questions = 0
                 topic_question_counts[topic['key']] = questions
                 total_questions += questions
             else:

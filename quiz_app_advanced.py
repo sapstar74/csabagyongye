@@ -1125,21 +1125,24 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    default_questions = min(3, max_questions)
-                    slider_val = _get_topic_question_count(topic_key, default_questions)
-                    def _on_slider_change(tk=topic_key):
-                        key = f"final_{_topic_session_key(tk)}_questions"
-                        if key in st.session_state:
-                            _set_topic_question_count(tk, st.session_state[key])
-                        st.rerun()
-                    final_topic_questions = st.slider(
-                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
-                        min_value=0,
-                        max_value=max_questions,
-                        value=slider_val,
-                        key=f"final_{_topic_session_key(topic_key)}_questions",
-                        on_change=_on_slider_change,
-                    )
+                    if max_questions > 0:
+                        default_questions = min(3, max_questions)
+                        slider_val = _get_topic_question_count(topic_key, default_questions)
+                        def _on_slider_change(tk=topic_key):
+                            key = f"final_{_topic_session_key(tk)}_questions"
+                            if key in st.session_state:
+                                _set_topic_question_count(tk, st.session_state[key])
+                            st.rerun()
+                        final_topic_questions = st.slider(
+                            t("{topic_name} kérdések száma", topic_name=t(topic_name)),
+                            min_value=0,
+                            max_value=max_questions,
+                            value=slider_val,
+                            key=f"final_{_topic_session_key(topic_key)}_questions",
+                            on_change=_on_slider_change,
+                        )
+                    else:
+                        st.warning(t("Nincs elérhető kérdés ebben a témakörben."))
     
     with col2:
         st.markdown(t("### 📚 Egyéb témakörök"))
@@ -1162,21 +1165,24 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    default_questions = min(3, max_questions)
-                    slider_val = _get_topic_question_count(topic_key, default_questions)
-                    def _on_slider_change(tk=topic_key):
-                        key = f"final_{_topic_session_key(tk)}_questions"
-                        if key in st.session_state:
-                            _set_topic_question_count(tk, st.session_state[key])
-                        st.rerun()
-                    final_topic_questions = st.slider(
-                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
-                        min_value=0,
-                        max_value=max_questions,
-                        value=slider_val,
-                        key=f"final_{_topic_session_key(topic_key)}_questions",
-                        on_change=_on_slider_change,
-                    )
+                    if max_questions > 0:
+                        default_questions = min(3, max_questions)
+                        slider_val = _get_topic_question_count(topic_key, default_questions)
+                        def _on_slider_change(tk=topic_key):
+                            key = f"final_{_topic_session_key(tk)}_questions"
+                            if key in st.session_state:
+                                _set_topic_question_count(tk, st.session_state[key])
+                            st.rerun()
+                        final_topic_questions = st.slider(
+                            t("{topic_name} kérdések száma", topic_name=t(topic_name)),
+                            min_value=0,
+                            max_value=max_questions,
+                            value=slider_val,
+                            key=f"final_{_topic_session_key(topic_key)}_questions",
+                            on_change=_on_slider_change,
+                        )
+                    else:
+                        st.warning(t("Nincs elérhető kérdés ebben a témakörben."))
     
     with col3:
         st.markdown("### &nbsp;")  # Üres cím a cím magasságához
@@ -1198,21 +1204,24 @@ def show_topic_selection():
                 # Egyedi slider közvetlenül a gomb alatt
                 if topic_key in st.session_state.selected_topics:
                     max_questions = len(QUIZ_DATA_BY_TOPIC.get(topic_key, []))
-                    default_questions = min(3, max_questions)
-                    slider_val = _get_topic_question_count(topic_key, default_questions)
-                    def _on_slider_change(tk=topic_key):
-                        key = f"final_{_topic_session_key(tk)}_questions"
-                        if key in st.session_state:
-                            _set_topic_question_count(tk, st.session_state[key])
-                        st.rerun()
-                    final_topic_questions = st.slider(
-                        t("{topic_name} kérdések száma", topic_name=t(topic_name)),
-                        min_value=0,
-                        max_value=max_questions,
-                        value=slider_val,
-                        key=f"final_{_topic_session_key(topic_key)}_questions",
-                        on_change=_on_slider_change,
-                    )
+                    if max_questions > 0:
+                        default_questions = min(3, max_questions)
+                        slider_val = _get_topic_question_count(topic_key, default_questions)
+                        def _on_slider_change(tk=topic_key):
+                            key = f"final_{_topic_session_key(tk)}_questions"
+                            if key in st.session_state:
+                                _set_topic_question_count(tk, st.session_state[key])
+                            st.rerun()
+                        final_topic_questions = st.slider(
+                            t("{topic_name} kérdések száma", topic_name=t(topic_name)),
+                            min_value=0,
+                            max_value=max_questions,
+                            value=slider_val,
+                            key=f"final_{_topic_session_key(topic_key)}_questions",
+                            on_change=_on_slider_change,
+                        )
+                    else:
+                        st.warning(t("Nincs elérhető kérdés ebben a témakörben."))
     
     # Minden kategória kérdésszáma a fenti sliderekkel önállóan állítható (nincs összesítő elosztás)
     if st.session_state.selected_topics:
