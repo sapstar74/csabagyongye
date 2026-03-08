@@ -63,6 +63,12 @@ def get_audio_file_for_question(question, topic):
                     return str(audio_path)
             except Exception:
                 pass
+    elif topic == "hip_hop":
+        if "audio_file" in question and question["audio_file"]:
+            audio_dir = _PROJECT_ROOT / "audio_files/hip_hop"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
     elif topic == "sorozat_focimek":
         if "audio_file" in question and question["audio_file"]:
             audio_dir = _PROJECT_ROOT / "audio_files/sorozat_focimek"
@@ -246,6 +252,11 @@ def get_audio_tracks_by_category():
             "title": "📺 Sorozat főcímek",
             "audio_dirs": ["audio_files/sorozat_focimek", "audio_files"],
             "question_file": "topics/sorozat_focimek.py"
+        },
+        "hip_hop": {
+            "title": "🎤 Hip-hop / Rap",
+            "audio_dirs": ["audio_files/hip_hop"],
+            "question_file": "topics/hip_hop.py"
         }
     }
 
