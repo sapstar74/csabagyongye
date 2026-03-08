@@ -107,7 +107,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Lovefool' című dalban?", 0, ['The Cardigans', 'Roxette', 'Ace of Base', 'Robyn'], "'Lovefool' – The Cardigans (1996)"),
     _q("Ki az előadó a 'Don't Worry, Be Happy' című dalban?", 0, ['Bobby McFerrin', 'Jimmy Cliff', 'Bob Marley', 'UB40'], "'Don't Worry, Be Happy' – Bobby McFerrin (1988)"),
     _q("Ki az előadó a 'True' című dalban?", 0, ['Spandau Ballet', 'Duran Duran', 'Wham!', 'Culture Club'], "'True' – Spandau Ballet (1983)"),
-    _q("Ki az előadó az 'I'm Gonna Be (500 Miles)' című dalban?", 0, ['The Proclaimers', 'Deacon Blue', 'The Waterboys', 'Aztec Camera'], "'I'm Gonna Be (500 Miles)' – The Proclaimers (1988)"),
+    _q("Ki az előadó a '500 Miles' (I'm Gonna Be) című dalban?", 0, ['The Proclaimers', 'Deacon Blue', 'The Waterboys', 'Aztec Camera'], "The Proclaimers – I'm Gonna Be (500 Miles) (1988)"),
     _q("Ki az előadó az 'It's Raining Men' című dalban?", 0, ['The Weather Girls', 'Gloria Gaynor', 'Sister Sledge', 'Pointer Sisters'], "'It's Raining Men' – The Weather Girls (1982)"),
     _q("Ki az előadó a 'What Is Love' című dalban?", 0, ['Haddaway', 'Snap!', 'Real McCoy', '2 Unlimited'], "'What Is Love' – Haddaway (1993)"),
     _q("Ki az előadó a 'The Future's So Bright, I Gotta Wear Shades' című dalban?", 0, ['Timbuk 3', 'They Might Be Giants', 'R.E.M.', 'The B-52s'], "'The Future's So Bright' – Timbuk 3 (1986)"),
