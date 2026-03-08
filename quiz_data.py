@@ -165,6 +165,8 @@ from topics.biologia import BIOLOGIA_QUESTIONS
 from topics.sport import SPORT_QUESTIONS
 from topics.hires_magyarok import HIRES_MAGYAROK_QUESTIONS
 from topics.becenevek import BECENEVEK_QUESTIONS
+from topics.hip_hop import HIP_HOP_QUESTIONS
+from topics.rock_metal import ROCK_METAL_QUESTIONS
 
 # Összevont témakörök: Magyar királyok+Magyar történelem, Háborúk+Világtörténelem, Földrajz+Természettudomány
 # Zászlók és zászlórészlet külön témakörök
@@ -178,6 +180,8 @@ QUIZ_DATA_BY_TOPIC = {
     "nemzetkozi_zenekarok": NEMZETKOZI_ZENEKAROK_QUESTIONS,
     "one_hit_wonders": ONE_HIT_WONDERS_QUESTIONS,
     "sorozat_focimek": SOROZAT_FOCIMEK_QUESTIONS,
+    "hip_hop": HIP_HOP_QUESTIONS,
+    "rock_metal": ROCK_METAL_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
     "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,
