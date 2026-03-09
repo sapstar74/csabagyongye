@@ -168,6 +168,7 @@ def reset_quiz():
         "sorozat_focimek": "📺 Sorozat főcímek",
         "hip_hop": "🎤 Hip-hop / Rap",
         "rock_metal": "🤘 Rock és Metal",
+        "dj_producer": "🎧 DJ / Producer",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -199,7 +200,7 @@ def reset_quiz():
 
 def show_answer_popup(question, user_answer, correct_answer, is_correct=True):
     """Tartós popup üzenet a válaszról és helyes válaszról"""
-    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}
+    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}
     topic = question.get("topic") if isinstance(question, dict) else None
     # Magyar Zenekarok: ne jelenjen meg a "Darab címe" / "A szám címe" mező
     magyar_zenekarok_topics = {"magyar_zenekarok", "magyar_zenekarok_uj"}
@@ -375,7 +376,7 @@ def start_quiz():
         return
     
     # Zenei kérdések csoportosítása: egymás után, a sor ~60%-ánál kezdődjenek
-    _MUSIC_TOPICS = {"komolyzene", "magyar_zenekarok", "magyar_zenekarok_uj", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}
+    _MUSIC_TOPICS = {"komolyzene", "magyar_zenekarok", "magyar_zenekarok_uj", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}
     music_questions = [q for q in all_questions if q.get("topic") in _MUSIC_TOPICS]
     other_questions = [q for q in all_questions if q.get("topic") not in _MUSIC_TOPICS]
     
@@ -561,7 +562,7 @@ def show_artist_list_page():
     )
     
     tracks_by_category = get_audio_tracks_by_category()
-    music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"]
+    music_categories = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"]
     music_options = {k: v["title"] for k, v in tracks_by_category.items() if k in music_categories}
     
     if not music_options:
@@ -718,7 +719,7 @@ def load_questions_from_file(file_path):
             spec.loader.exec_module(module)
             
             # Különböző kérdés változók keresése
-            question_vars = ["QUESTIONS", "NEMZETKOZI_ZENEKAROK_QUESTIONS", "ONE_HIT_WONDERS_QUESTIONS", "MAGYAR_ZENEKAROK_QUESTIONS", "KOMOLYZENE_QUESTIONS", "HIP_HOP_QUESTIONS", "ROCK_METAL_QUESTIONS"]
+            question_vars = ["QUESTIONS", "NEMZETKOZI_ZENEKAROK_QUESTIONS", "ONE_HIT_WONDERS_QUESTIONS", "MAGYAR_ZENEKAROK_QUESTIONS", "KOMOLYZENE_QUESTIONS", "HIP_HOP_QUESTIONS", "ROCK_METAL_QUESTIONS", "DJ_PRODUCER_QUESTIONS"]
             
             for var_name in question_vars:
                 if hasattr(module, var_name):
@@ -976,6 +977,7 @@ def show_topic_selection():
         "sorozat_focimek": "📺 Sorozat főcímek",
         "hip_hop": "🎤 Hip-hop / Rap",
         "rock_metal": "🤘 Rock és Metal",
+        "dj_producer": "🎧 DJ / Producer",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -1032,7 +1034,7 @@ def show_topic_selection():
     with col2:
         if st.button(t("🎵 Random zenei témakörök kiválasztása"), type="secondary", use_container_width=True):
             # Zenei témakörök kiválasztása
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"]
             num_music_topics = random.randint(2, 3)  # 2-3 zenei témakör
             selected_music_topics = random.sample(music_topics, num_music_topics)
             
@@ -1062,7 +1064,7 @@ def show_topic_selection():
     with col3:
         if st.button(t("🎲 Random témakörök kiválasztása (zene nélkül)"), type="secondary", use_container_width=True):
             # Legalább 5 témakör kiválasztása (zenei témakörök nélkül)
-            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"]
+            music_topics = ["komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"]
             available_topics = [topic for topic in topics.keys() if topic not in music_topics]
             num_topics = random.randint(5, min(8, len(available_topics)))  # 5-8 témakör között
             selected_random_topics = random.sample(available_topics, num_topics)
@@ -1108,7 +1110,7 @@ def show_topic_selection():
     with col1:
         st.markdown(t("### 🎵 Zenei témakörök"))
         for topic_key, topic_name in topics.items():
-            if "zene" in topic_key or "zenekar" in topic_key or topic_key in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}:
+            if "zene" in topic_key or "zenekar" in topic_key or topic_key in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}:
                 # Kattintható gomb a checkbox helyett
                 is_selected = topic_key in st.session_state.selected_topics
                 button_style = "primary" if is_selected else "secondary"
@@ -1146,7 +1148,7 @@ def show_topic_selection():
     
     with col2:
         st.markdown(t("### 📚 Egyéb témakörök"))
-        other_topics_list = [item for item in topics.items() if "zene" not in item[0] and "zenekar" not in item[0] and item[0] not in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}]
+        other_topics_list = [item for item in topics.items() if "zene" not in item[0] and "zenekar" not in item[0] and item[0] not in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}]
         for i, (topic_key, topic_name) in enumerate(other_topics_list):
             if i % 2 == 0:
                 # Kattintható gomb a checkbox helyett
@@ -1246,7 +1248,7 @@ def show_topic_selection():
             total_available_questions += topic_questions
         
         # Automatikus elosztás már a témakör sliderek előtt lefutott (Streamlit widget key konfliktus elkerülésére)
-        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}]
+        music_topics = [t for t in st.session_state.selected_topics if "zene" in t or "zenekar" in t or t in {"one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}]
         other_topics = [t for t in st.session_state.selected_topics if t not in music_topics]
         # Végleges kérdésszám: MINDIG a kategóriánkénti csúszkák összege (minden kategória önállóan állítható)
         current_total = 0
@@ -1475,7 +1477,7 @@ def show_quiz():
     
     # Audio, Spotify embed vagy kép megjelenítése
     audio_file = get_audio_file_for_question(question, topic)
-    if topic in {"nemzetkozi_zenekarok", "magyar_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}:
+    if topic in {"nemzetkozi_zenekarok", "magyar_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}:
         # Minden zenei kérdésnél megpróbáljuk megjeleníteni az audio playert
         if audio_file and os.path.exists(audio_file):
             try:
@@ -2208,7 +2210,7 @@ def show_results():
     answer_time_label = t("Válaszidő:")
     time_up_text = t("Idő lejárt")
     quiz_questions = st.session_state.get("quiz_questions", [])
-    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal"}
+    music_topics = {"komolyzene", "magyar_zenekarok", "nemzetkozi_zenekarok", "one_hit_wonders", "sorozat_focimek", "hip_hop", "rock_metal", "dj_producer"}
 
     for i, answer in enumerate(st.session_state.answers):
         is_correct = answer['is_correct']
@@ -2398,6 +2400,7 @@ def show_bulk_youtube_upload_tab():
         "sorozat_focimek": "📺 Sorozat főcímek",
         "hip_hop": "🎤 Hip-hop / Rap",
         "rock_metal": "🤘 Rock és Metal",
+        "dj_producer": "🎧 DJ / Producer",
     }
     category_options = ["— Válassz kategóriát —"] + list(music_categories.keys())
     selected_category = st.selectbox(
@@ -2501,6 +2504,7 @@ def show_bulk_youtube_upload_tab():
                 "sorozat_focimek": "topics/sorozat_focimek.py",
                 "hip_hop": "topics/hip_hop.py",
                 "rock_metal": "topics/rock_metal.py",
+                "dj_producer": "topics/dj_producer.py",
             }
             question_file_path = question_file_by_category.get(selected_category)
             try:
@@ -2709,6 +2713,7 @@ def show_youtube_search_tab():
                         "sorozat_focimek": "📺 Sorozat főcímek",
         "hip_hop": "🎤 Hip-hop / Rap",
         "rock_metal": "🤘 Rock és Metal",
+        "dj_producer": "🎧 DJ / Producer",
                     }
                     
                     selected_category = st.selectbox(
@@ -2900,6 +2905,7 @@ def show_youtube_search_tab():
                     "sorozat_focimek": "topics/sorozat_focimek.py",
                 "hip_hop": "topics/hip_hop.py",
                 "rock_metal": "topics/rock_metal.py",
+                "dj_producer": "topics/dj_producer.py",
                 }
                 question_file_path = question_file_by_category.get(category)
                 final_audio_path = new_path if new_path and os.path.exists(new_path) else None

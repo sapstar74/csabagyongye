@@ -75,6 +75,12 @@ def get_audio_file_for_question(question, topic):
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
                 return str(audio_path)
+    elif topic == "dj_producer":
+        if "audio_file" in question and question["audio_file"]:
+            audio_dir = _PROJECT_ROOT / "audio_files/dj_producer"
+            audio_path = audio_dir / question["audio_file"]
+            if audio_path.exists():
+                return str(audio_path)
     elif topic == "sorozat_focimek":
         if "audio_file" in question and question["audio_file"]:
             audio_dir = _PROJECT_ROOT / "audio_files/sorozat_focimek"
@@ -268,6 +274,11 @@ def get_audio_tracks_by_category():
             "title": "🤘 Rock és Metal",
             "audio_dirs": ["audio_files/rock_metal"],
             "question_file": "topics/rock_metal.py"
+        },
+        "dj_producer": {
+            "title": "🎧 DJ / Producer",
+            "audio_dirs": ["audio_files/dj_producer"],
+            "question_file": "topics/dj_producer.py"
         }
     }
 

@@ -167,6 +167,7 @@ from topics.hires_magyarok import HIRES_MAGYAROK_QUESTIONS
 from topics.becenevek import BECENEVEK_QUESTIONS
 from topics.hip_hop import HIP_HOP_QUESTIONS
 from topics.rock_metal import ROCK_METAL_QUESTIONS
+from topics.dj_producer import DJ_PRODUCER_QUESTIONS
 
 # Összevont témakörök: Magyar királyok+Magyar történelem, Háborúk+Világtörténelem, Földrajz+Természettudomány
 # Zászlók és zászlórészlet külön témakörök
@@ -182,6 +183,7 @@ QUIZ_DATA_BY_TOPIC = {
     "sorozat_focimek": SOROZAT_FOCIMEK_QUESTIONS,
     "hip_hop": HIP_HOP_QUESTIONS,
     "rock_metal": ROCK_METAL_QUESTIONS,
+    "dj_producer": DJ_PRODUCER_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
     "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,
