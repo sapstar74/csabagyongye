@@ -645,6 +645,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Dua Lipa - Levitating (2020)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "101_Daft_Punk_Get_Lucky.mp3",
+        "options": ['Daft Punk', 'Justice', 'The Chemical Brothers', 'Basement Jaxx'],
+        "correct": 0,
+        "explanation": "Daft Punk - Get Lucky ft. Pharrell Williams (2013)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "102_Harry_Styles_As_It_Was.mp3",
+        "options": ['Harry Styles', 'One Direction', 'Niall Horan', 'Liam Payne'],
+        "correct": 0,
+        "explanation": "Harry Styles - As It Was (2022)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
