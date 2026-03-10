@@ -6,9 +6,34 @@ Kiegészített funkciókkal: Analytics, Quiz módok, Nehézségi szintek
 import streamlit as st
 import random
 import time
+import json
 from datetime import datetime
 import os
 from pathlib import Path
+
+_PLAYED_TRACKS_FILE = Path(__file__).parent / "played_tracks.json"
+
+def _load_played_tracks() -> dict:
+    """Betölti a már lejátszott track-ek nyilvántartását."""
+    try:
+        if _PLAYED_TRACKS_FILE.exists():
+            with open(_PLAYED_TRACKS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+def _save_played_tracks(played: dict):
+    """Elmenti a lejátszott track-ek nyilvántartását."""
+    try:
+        with open(_PLAYED_TRACKS_FILE, "w", encoding="utf-8") as f:
+            json.dump(played, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+def _get_question_key(question: dict) -> str:
+    """Egyedi kulcs egy kérdéshez (audio_file vagy kérdés szövege)."""
+    return question.get("audio_file") or question.get("question", "")[:120]
 from typing import Optional
 
 from i18n import init_i18n, render_language_selector, t, translate_text
@@ -305,6 +330,9 @@ def start_quiz():
     total_selected_questions = 0
     invalid_questions = 0
     
+    # Lejátszott track-ek betöltése
+    played_tracks = _load_played_tracks()
+
     # Minden témakör kezelése egyedi sliders alapján
     pending_counts = st.session_state.get('_pending_question_counts', {})
     for topic in st.session_state.selected_topics:
@@ -319,11 +347,24 @@ def start_quiz():
             if questions_count == 0:
                 questions_count = min(3, len(topic_questions))
             questions_count = min(questions_count, len(topic_questions))
-            
+
             if questions_count > 0:
                 total_selected_questions += questions_count
-                # Véletlenszerű kérdések kiválasztása
-                selected_indices = random.sample(range(len(topic_questions)), questions_count)
+                # Kizárjuk a már lejátszott track-eket
+                played_keys = set(played_tracks.get(topic, []))
+                available_indices = [
+                    i for i, q in enumerate(topic_questions)
+                    if _get_question_key(q) not in played_keys
+                ]
+                # Ha már mindenki lejátszott ebben a témakörben, nullázzuk a nyilvántartást
+                if len(available_indices) < questions_count:
+                    played_tracks[topic] = []
+                    _save_played_tracks(played_tracks)
+                    available_indices = list(range(len(topic_questions)))
+                # Véletlenszerű kérdések kiválasztása (csak nem-lejátszottakból)
+                selected_indices = random.sample(
+                    available_indices, min(questions_count, len(available_indices))
+                )
                 for idx in selected_indices:
                     question = topic_questions[idx].copy()
                     # Ellenőrizzük, hogy a kérdés rendelkezik-e a szükséges mezőkkel
@@ -407,6 +448,18 @@ def start_quiz():
     if invalid_questions > 0:
         st.warning(t("{count} érvénytelen kérdés kihagyva", count=invalid_questions))
     
+    # Elmentjük a kiválasztott kérdéseket lejátszottként
+    played_tracks = _load_played_tracks()
+    for q in all_questions:
+        topic = q.get("topic", "")
+        key = _get_question_key(q)
+        if topic and key:
+            if topic not in played_tracks:
+                played_tracks[topic] = []
+            if key not in played_tracks[topic]:
+                played_tracks[topic].append(key)
+    _save_played_tracks(played_tracks)
+
     st.session_state.quiz_questions = all_questions
     st.session_state.current_question = 0
     st.session_state.score = 0

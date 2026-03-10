@@ -89,7 +89,6 @@ QUESTIONS = [
     _q('68. Queen - 39.mp3', 0, ['Queen', 'Bastille', 'Imagine Dragons', 'Beatles'], 'Queen - Nemzetkozi Zenekarok'),
     _q('69. The Beatles - For No One.mp3', 0, ['The Beatles', 'Rolling Stones', 'Beach Boys', 'Ringo Starr'], 'The Beatles - Nemzetkozi Zenekarok'),
     _q('70. The Rolling Stones - Paint It Black Official Lyric Video.mp3', 0, ['The Rolling Stones', 'The Beatles', 'T-Rex', 'Ramones'], 'The Rolling Stones - Nemzetkozi Zenekarok'),
-    _q('71. Stakka Bo - Here We Go.mp3', 0, ['Stakka Bo', 'Ultravox', 'New Order', 'Yello'], "'Here We Go' egy nemzetközi dal az előadótól: Stakka Bo"),
     _q('72. Depeche Mode - Policy Of Truth.mp3', 0, ['Depeche Mode', 'Tears for Fears', 'Spandau Ballet', 'New Order'], 'Depeche Mode - Nemzetkozi Zenekarok'),
     _q('73. Yazoo - Dont Go.mp3', 0, ['Yazoo', 'Nouvelle Vague', 'Pink Martini', 'Bananarama'], 'Yazoo - Nemzetkozi Zenekarok'),
     _q('74. Cypress Hill - Dr Greenthumb.mp3', 0, ['Cypress Hill', 'Naughty By Nature', 'Public Enemy', 'Wu-Tang Clan'], 'Cypress Hill - Nemzetkozi Zenekarok'),
