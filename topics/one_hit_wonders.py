@@ -133,6 +133,16 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó az 'I've Been Thinking About You' (Ive Been Thinking About You) című dalban?", 0, ['London Beat', 'Swing Out Sister', 'Lisa Stansfield', 'Soul II Soul'], "'I've Been Thinking About You' – London Beat (1990)"),
     _q("Ki az előadó a 'Boom, Boom, Boom, Boom!!' (Boom Boom Boom Boom) című dalban?", 0, ['Vengaboys', '2 Unlimited', 'Haddaway', 'Corona'], "'Boom, Boom, Boom, Boom!!' – Vengaboys (1998)"),
     _q("Ki az előadó a 'Somewhere in My Heart' című dalban?", 0, ['Aztec Camera', 'The Blue Nile', 'Prefab Sprout', 'Lloyd Cole'], "'Somewhere in My Heart' – Aztec Camera (1988)"),
+    _q("Ki az előadó a 'Wicked Game' című dalban?", 0, ['Chris Isaak', 'Lenny Kravitz', 'Bryan Adams', 'Chris Rea'], "'Wicked Game' – Chris Isaak (1990)"),
+    _q("Ki az előadó a 'Tubthumping' című dalban?", 0, ['Chumbawamba', 'Carter USM', 'Pop Will Eat Itself', 'The Levellers'], "'Tubthumping' – Chumbawamba (1997)"),
+    _q("Ki az előadó a 'Baby I Love Your Way' (Baby, I Love Your Way) című dalban?", 0, ['Big Mountain', 'UB40', 'Maxi Priest', 'Bitty McLean'], "'Baby, I Love Your Way' – Big Mountain (1994)"),
+    _q("Ki az előadó a 'Groove Is in the Heart' című dalban?", 0, ['Deee-Lite', 'C+C Music Factory', 'Black Box', 'Technotronic'], "'Groove Is in the Heart' – Deee-Lite (1990)"),
+    _q("Ki az előadó a 'Sleeping Satellite' című dalban?", 0, ['Tasmin Archer', 'Tanita Tikaram', 'Lisa Stansfield', 'Alison Moyet'], "'Sleeping Satellite' – Tasmin Archer (1992)"),
+    _q("Ki az előadó a 'Save Tonight' című dalban?", 0, ['Eagle-Eye Cherry', 'Semisonic', 'Fastball', 'Wheatus'], "'Save Tonight' – Eagle-Eye Cherry (1997)"),
+    _q("Ki az előadó a 'Breakfast at Tiffanys' (Breakfast at Tiffany's) című dalban?", 0, ['Deep Blue Something', 'Toad the Wet Sprocket', 'Dishwalla', 'Gin Blossoms'], "'Breakfast at Tiffany's' – Deep Blue Something (1995)"),
+    _q("Ki az előadó a 'Steal My Sunshine' című dalban?", 0, ['Len', 'Smash Mouth', 'Fountains of Wayne', 'Sugar Ray'], "'Steal My Sunshine' – Len (1999)"),
+    _q("Ki az előadó a 'Your Woman' című dalban?", 0, ['White Town', 'Saint Etienne', 'Pulp', 'Menswe@r'], "'Your Woman' – White Town (1997)"),
+    _q("Ki az előadó a 'Connected' című dalban?", 0, ['Stereo MCs', 'Massive Attack', 'Portishead', 'Tricky'], "'Connected' – Stereo MCs (1992)"),
 ]
 
 # Export alias for quiz_app
