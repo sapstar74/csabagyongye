@@ -650,24 +650,19 @@ _BASE_CSS_TEMPLATE = """
     [data-testid="stMarkdown"]:has(#final-question-settings) ~ * div[data-testid="stButton"] > button span {
         color: #1a1a1a !important;
     }
-    /* Kérdésszám csúszkák: piros */
-    div[data-testid="stSlider"] input[type="range"] {
-        accent-color: #dc2626 !important;
+    /* Kérdésszám csúszkák: piros gomb (thumb) */
+    div[data-testid="stSlider"] [role="slider"] {
+        background-color: #dc2626 !important;
+        border: 2px solid #991b1b !important;
     }
-    div[data-testid="stSlider"] [data-testid="stThumbValue"],
-    div[data-testid="stSlider"] [data-testid="stThumbValue"] * {
+    /* Thumb felirat (érték buborék) */
+    div[data-testid="stSlider"] [data-testid="stSliderThumbValue"] {
         background-color: #dc2626 !important;
         color: #ffffff !important;
         border-color: #dc2626 !important;
     }
-    div[data-testid="stSlider"] [role="slider"] {
-        background-color: #dc2626 !important;
-        border-color: #dc2626 !important;
-    }
-    /* Títkor kitöltött sáv (Streamlit 1.x) */
-    div[data-testid="stSlider"] div[data-baseweb="slider"] [role="slider"]::before,
-    div[data-testid="stSlider"] div[class*="Track"] > div {
-        background-color: #dc2626 !important;
+    div[data-testid="stSlider"] [data-testid="stSliderThumbValue"] * {
+        color: #ffffff !important;
     }
     /* Címsor hierarchia */
     h1, h2, h3, h4 {
