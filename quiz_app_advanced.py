@@ -2046,8 +2046,8 @@ def handle_time_up():
         st.session_state.answers.append({
             'question': question.get("question", t("Ismeretlen kérdés")),
             'selected': -1,
-            'correct': -1,
-            'options': [],
+            'correct': corr,
+            'options': opts,
             'is_correct': False,
             'time_taken': st.session_state.mode_manager.time_limit
         })
@@ -2270,16 +2270,26 @@ def show_results():
         status = "✅" if is_correct else "❌"
         question_heading = t("{status} Kérdés {index}", status=status, index=i + 1)
         display_question = translate_text(answer.get('question', ''))
-        selected_answer = (
-            answer['selected']
-            if isinstance(answer['selected'], str)
-            else (translate_text(answer['options'][answer['selected']]) if answer['selected'] >= 0 else time_up_text)
-        )
-        correct_answer = (
-            translate_text(answer['correct'])
-            if isinstance(answer['correct'], str)
-            else translate_text(answer['options'][answer['correct']])
-        )
+        try:
+            if isinstance(answer['selected'], str):
+                selected_answer = answer['selected']
+            elif answer['selected'] < 0:
+                selected_answer = time_up_text
+            elif answer.get('options') and answer['selected'] < len(answer['options']):
+                selected_answer = translate_text(answer['options'][answer['selected']])
+            else:
+                selected_answer = time_up_text
+        except Exception:
+            selected_answer = time_up_text
+        try:
+            if isinstance(answer['correct'], str):
+                correct_answer = translate_text(answer['correct'])
+            elif answer.get('options') and 0 <= answer['correct'] < len(answer['options']):
+                correct_answer = translate_text(answer['options'][answer['correct']])
+            else:
+                correct_answer = "–"
+        except Exception:
+            correct_answer = "–"
         answer_time = t("{seconds} másodperc", seconds=f"{answer['time_taken']:.1f}")
         
         st.markdown(f"""
