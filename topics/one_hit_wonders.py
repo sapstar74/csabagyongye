@@ -132,6 +132,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Groove Me' című dalban?", 0, ['Fun Factory', 'Corona', '2 Unlimited', 'Haddaway'], "'Groove Me' – Fun Factory (1994)"),
     _q("Ki az előadó az 'I've Been Thinking About You' (Ive Been Thinking About You) című dalban?", 0, ['London Beat', 'Swing Out Sister', 'Lisa Stansfield', 'Soul II Soul'], "'I've Been Thinking About You' – London Beat (1990)"),
     _q("Ki az előadó a 'Boom, Boom, Boom, Boom!!' (Boom Boom Boom Boom) című dalban?", 0, ['Vengaboys', '2 Unlimited', 'Haddaway', 'Corona'], "'Boom, Boom, Boom, Boom!!' – Vengaboys (1998)"),
+    _q("Ki az előadó a 'Somewhere in My Heart' című dalban?", 0, ['Aztec Camera', 'The Blue Nile', 'Prefab Sprout', 'Lloyd Cole'], "'Somewhere in My Heart' – Aztec Camera (1988)"),
 ]
 
 # Export alias for quiz_app
