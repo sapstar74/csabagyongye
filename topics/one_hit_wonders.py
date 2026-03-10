@@ -143,6 +143,18 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Steal My Sunshine' című dalban?", 0, ['Len', 'Smash Mouth', 'Fountains of Wayne', 'Sugar Ray'], "'Steal My Sunshine' – Len (1999)"),
     _q("Ki az előadó a 'Your Woman' című dalban?", 0, ['White Town', 'Saint Etienne', 'Pulp', 'Menswe@r'], "'Your Woman' – White Town (1997)"),
     _q("Ki az előadó a 'Connected' című dalban?", 0, ['Stereo MCs', 'Massive Attack', 'Portishead', 'Tricky'], "'Connected' – Stereo MCs (1992)"),
+    _q("Ki az előadó a 'Life Is a Highway' című dalban?", 0, ['Tom Cochrane', 'Bryan Adams', 'John Mellencamp', 'Bob Seger'], "'Life Is a Highway' – Tom Cochrane (1991)"),
+    _q("Ki az előadó a 'You Get What You Give' című dalban?", 0, ['New Radicals', 'Semisonic', 'Tal Bachman', 'Third Eye Blind'], "'You Get What You Give' – New Radicals (1998)"),
+    _q("Ki az előadó a 'One of Us' című dalban?", 0, ['Joan Osborne', 'Alanis Morissette', 'Sheryl Crow', 'Tracy Chapman'], "'One of Us' – Joan Osborne (1995)"),
+    _q("Ki az előadó a 'Bad Boys' című dalban?", 0, ['Inner Circle', 'UB40', 'Shaggy', 'Ini Kamoze'], "'Bad Boys' – Inner Circle (1994)"),
+    _q("Ki az előadó a 'Walking in Memphis' című dalban?", 0, ['Marc Cohn', 'Chris Isaak', 'Bruce Hornsby', 'Don Henley'], "'Walking in Memphis' – Marc Cohn (1991)"),
+    _q("Ki az előadó a 'Baby Got Back' című dalban?", 0, ['Sir Mix-a-Lot', 'MC Hammer', 'Vanilla Ice', 'Biz Markie'], "'Baby Got Back' – Sir Mix-a-Lot (1992)"),
+    _q("Ki az előadó a 'Pump Up the Jam' című dalban?", 0, ['Technotronic', 'Black Box', 'C+C Music Factory', '2 Unlimited'], "'Pump Up the Jam' – Technotronic (1989)"),
+    _q("Ki az előadó az 'I Try' (Macy Gray I Try) című dalban?", 0, ['Macy Gray', 'Erykah Badu', 'Jill Scott', 'India.Arie'], "'I Try' – Macy Gray (1999)"),
+    _q("Ki az előadó a 'Here Comes the Hotstepper' című dalban?", 0, ['Ini Kamoze', 'Inner Circle', 'Shaggy', 'Chaka Demus'], "'Here Comes the Hotstepper' – Ini Kamoze (1994)"),
+    _q("Ki az előadó a 'Rhythm of the Night' (The Rhythm of the Night) című dalban?", 0, ['Corona', 'Haddaway', '2 Unlimited', 'Robin S.'], "'The Rhythm of the Night' – Corona (1993)"),
+    _q("Ki az előadó a 'Femme Like You' (Kmaro Femme Like You) című dalban?", 0, ["K'maro", 'Rohff', 'Booba', 'Sinik'], "'Femme Like You' – K'maro (2004)"),
+    _q("Ki az előadó a 'Missing' (Everything but the Girl Missing) című dalban?", 0, ['Everything but the Girl', 'Portishead', 'Sneaker Pimps', 'Lamb'], "'Missing' – Everything but the Girl (1994)"),
 ]
 
 # Export alias for quiz_app
