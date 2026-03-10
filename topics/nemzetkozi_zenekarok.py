@@ -629,6 +629,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Garbage - Skót-amerikai alternatív rock zenekar (Only Happy When It Rains)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "99_Dua_Lipa_New_Rules.mp3",
+        "options": ['Dua Lipa', 'Rita Ora', 'Charli XCX', 'Anne-Marie'],
+        "correct": 0,
+        "explanation": "Dua Lipa - New Rules (2017)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "100_Dua_Lipa_Levitating.mp3",
+        "options": ['Dua Lipa', 'Rita Ora', 'Charli XCX', 'Lizzo'],
+        "correct": 0,
+        "explanation": "Dua Lipa - Levitating (2020)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
