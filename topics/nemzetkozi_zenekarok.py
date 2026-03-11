@@ -661,6 +661,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Harry Styles - As It Was (2022)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "103_Teddy_Swims.mp3",
+        "options": ['Teddy Swims', 'Charlie Puth', 'Giveon', 'Benson Boone'],
+        "correct": 0,
+        "explanation": "Teddy Swims - Lose Control (2023)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "104_Hozier.mp3",
+        "options": ['Hozier', 'James Bay', 'Ben Howard', 'Passenger'],
+        "correct": 0,
+        "explanation": "Hozier - Take Me to Church (2013)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
