@@ -677,6 +677,30 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Hozier - Take Me to Church (2013)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "105_Jefferson_Airplane.mp3",
+        "options": ['Jefferson Airplane', 'The Doors', 'Janis Joplin', 'Grateful Dead'],
+        "correct": 0,
+        "explanation": "Jefferson Airplane - Somebody to Love (1967)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "106_Marvin_Gaye.mp3",
+        "options": ['Marvin Gaye', 'Otis Redding', 'Al Green', 'Sam Cooke'],
+        "correct": 0,
+        "explanation": "Marvin Gaye - Heard It Through the Grapevine (1968)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "107_Green_Day.mp3",
+        "options": ['Green Day', 'Blink-182', 'The Offspring', 'Sum 41'],
+        "correct": 0,
+        "explanation": "Green Day - Boulevard of Broken Dreams (2004)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
