@@ -145,6 +145,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Rhythm of the Night' című dalban?", 0, ['Corona', 'Haddaway', '2 Unlimited', 'Robin S.'], "'The Rhythm of the Night' – Corona (1993)"),
     _q("Ki az előadó a 'Femme Like You' című dalban?", 0, ["K'maro", 'Rohff', 'Booba', 'Sinik'], "'Femme Like You' – K'maro (2004)"),
     _q("Ki az előadó a 'Missing' című dalban?", 0, ['Everything but the Girl', 'Portishead', 'Sneaker Pimps', 'Lamb'], "'Missing' – Everything but the Girl (1994)"),
+    _q("Ki az előadó az 'I Can See Clearly Now' című dalban?", 0, ['Jimmy Cliff', 'Johnny Nash', 'Bob Marley', 'Toots and the Maytals'], "'I Can See Clearly Now' – Jimmy Cliff (1993, Cool Runnings)"),
 ]
 
 # Export alias for quiz_app

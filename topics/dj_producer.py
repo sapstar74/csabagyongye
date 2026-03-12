@@ -66,6 +66,7 @@ QUESTIONS = [
     _q("47_Reinier_Zonneveld.mp3",    0, ["Reinier Zonneveld", "Boris Brejcha", "Richie Hawtin", "Adam Beyer"],    "Reinier Zonneveld – How Long",                       song_title="How Long"),
     _q("48_Gordo.mp3",                0, ["Gordo", "Dom Dolla", "James Hype", "Michael Bibi"],                     "Gordo – Buff Riff",                                  song_title="Buff Riff"),
     _q("49_Paul_van_Dyk.mp3",         0, ["Paul van Dyk", "Armin van Buuren", "Above & Beyond", "Kaskade"],        "Paul van Dyk – For an Angel",                        song_title="For an Angel"),
+    _q("50_Burak_Yeter.mp3",          0, ["Burak Yeter", "Kungs", "Robin Schulz", "Felix Jaehn"],                 "Burak Yeter – Tuesday ft. Danelle Sandoval",         song_title="Tuesday"),
 ]
 
 DJ_PRODUCER_QUESTIONS = QUESTIONS

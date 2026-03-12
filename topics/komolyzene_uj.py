@@ -91,6 +91,7 @@ QUESTIONS = [
     _q("Verdi_Triumphal_March_from_Aida.mp3", 0, ["Verdi", "Puccini", "Donizetti", "Rossini"], "Verdi - Komolyzene", question="Ki a zeneszerző?", song_title="Triumphal March from Aida"),
     _q("69. Rossini - Cat Duet.mp3", 0, ["Rossini", "Donizetti", "Puccini", "Verdi"], "Rossini: Macskaduett (Duetto buffo di due gatti)", question="Ki a zeneszerző?", song_title="Macskaduett"),
     _q("70. Handel - Water Music.mp3", 0, ["Handel", "Bach", "Vivaldi", "Telemann"], "Handel: Vízizene (Water Music Suite)", question="Ki a zeneszerző?", song_title="Vízizene"),
+    _q("71. Liszt - Hungarian Rhapsody No 2.mp3", 0, ["Liszt", "Brahms", "Chopin", "Bartók"], "Liszt: 2. Magyar Rapszódia", question="Ki a zenszerző?", song_title="Magyar Rapszódia"),
 ]
 
 # Export alias for compatibility
