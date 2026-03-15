@@ -96,6 +96,7 @@ QUESTIONS = [
     _q("73. Pachelbel - Canon in D.mp3", 0, ["Pachelbel", "Vivaldi", "Handel", "Telemann"], "Pachelbel: Canon in D-dúr", question="Ki a zenszerző?", song_title="Canon in D"),
     _q("74. Shostakovich - 2nd Waltz.mp3", 0, ["Sosztakovics", "Prokofjev", "Sztravinszkij", "Rahmaninov"], "Sosztakovics: 2. Keringő (Suite for Variety Orchestra)", question="Ki a zenszerző?", song_title="2nd Waltz"),
     _q("75. Elgar - Pomp and Circumstance.mp3", 0, ["Elgar", "Holst", "Vaughan Williams", "Britten"], "Elgar: Pomp and Circumstance – 1. induló (Land of Hope and Glory)", question="Ki a zenszerző?", song_title="Pomp and Circumstance"),
+    _q("76. Liszt - Hungarian Rhapsody No 1.mp3", 0, ["Liszt", "Brahms", "Chopin", "Bartók"], "Liszt: 1. Magyar Rapszódia (cisz-moll)", question="Ki a zenszerző?", song_title="Hungarian Rhapsody No 1"),
 ]
 
 # Export alias for compatibility
