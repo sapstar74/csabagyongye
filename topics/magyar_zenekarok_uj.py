@@ -239,19 +239,6 @@ QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "options": [
-            "Bonanza Banzai",
-            "P. Mobil",
-            "Republic",
-            "Omega",
-        ],
-        "correct": 0,
-        "explanation": "Bonanza Banzai magyar mainstream zenekar",
-        "audio_file": "24_Bonanza_Banzai.mp3",
-        "topic": "magyar_zenekarok_uj",
-    },
-    {
-        "question": "Ki az előadó?",
-        "options": [
             "Caramel",
             "Bon-Bon",
             "Republic",
@@ -1144,19 +1131,6 @@ QUESTIONS = [
         "correct": 0,
         "explanation": "Republic magyar zenekar",
         "audio_file": "92_Republic.mp3",
-        "topic": "magyar_zenekarok_uj",
-    },
-    {
-        "question": "Ki az előadó?",
-        "options": [
-            "Bonanza Banzai",
-            "Republic",
-            "P. Mobil",
-            "Tankcsapda",
-        ],
-        "correct": 0,
-        "explanation": "Bonanza Banzai magyar zenekar",
-        "audio_file": "93_Bonanza_Banzai.mp3",
         "topic": "magyar_zenekarok_uj",
     },
     {
