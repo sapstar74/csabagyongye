@@ -97,6 +97,11 @@ QUESTIONS = [
     _q("74. Shostakovich - 2nd Waltz.mp3", 0, ["Sosztakovics", "Prokofjev", "Sztravinszkij", "Rahmaninov"], "Sosztakovics: 2. Keringő (Suite for Variety Orchestra)", question="Ki a zenszerző?", song_title="2nd Waltz"),
     _q("75. Elgar - Pomp and Circumstance.mp3", 0, ["Elgar", "Holst", "Vaughan Williams", "Britten"], "Elgar: Pomp and Circumstance – 1. induló (Land of Hope and Glory)", question="Ki a zenszerző?", song_title="Pomp and Circumstance"),
     _q("76. Liszt - Hungarian Rhapsody No 1.mp3", 0, ["Liszt", "Brahms", "Chopin", "Bartók"], "Liszt: 1. Magyar Rapszódia (cisz-moll)", question="Ki a zenszerző?", song_title="Hungarian Rhapsody No 1"),
+    _q("77. Grieg - Peer Gynt Morning Mood.mp3", 0, ["Grieg", "Sibelius", "Nielsen", "Svendsen"], "Grieg: Peer Gynt – Reggeli hangulat (Morning Mood)", question="Ki a zenszerző?", song_title="Morning Mood"),
+    _q("78. Tchaikovsky - Waltz of the Flowers.mp3", 0, ["Csajkovszkij", "Prokofjev", "Sosztakovics", "Sztravinszkij"], "Csajkovszkij: Diótörő – Virágok keringője (Waltz of the Flowers)", question="Ki a zenszerző?", song_title="Waltz of the Flowers"),
+    _q("79. Brahms - Hungarian Dance No 5.mp3", 0, ["Brahms", "Liszt", "Dvořák", "Bartók"], "Brahms: 5. Magyar tánc", question="Ki a zenszerző?", song_title="Hungarian Dance No 5"),
+    _q("80. Monti - Csardas.mp3", 0, ["Monti", "Sarasate", "Wieniawski", "Kreisler"], "Monti: Csárdás (hegedűre és zongorára)", question="Ki a zenszerző?", song_title="Csardas"),
+    _q("81. Strauss I - Radetzky March.mp3", 0, ["Strauss I", "Strauss II", "Brahms", "Suppé"], "Johann Strauss I: Radetzky-induló (op. 228)", question="Ki a zenszerző?", song_title="Radetzky March"),
 ]
 
 # Export alias for compatibility
