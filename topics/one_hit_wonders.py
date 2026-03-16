@@ -146,6 +146,8 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Femme Like You' című dalban?", 0, ["K'maro", 'Rohff', 'Booba', 'Sinik'], "'Femme Like You' – K'maro (2004)"),
     _q("Ki az előadó a 'Missing' című dalban?", 0, ['Everything but the Girl', 'Portishead', 'Sneaker Pimps', 'Lamb'], "'Missing' – Everything but the Girl (1994)"),
     _q("Ki az előadó az 'I Can See Clearly Now' című dalban?", 0, ['Jimmy Cliff', 'Johnny Nash', 'Bob Marley', 'Toots and the Maytals'], "'I Can See Clearly Now' – Jimmy Cliff (1993, Cool Runnings)"),
+    _q("Ki az előadó a 'Hey There Delilah' című dalban?", 0, ['Plain White Ts', 'The Fray', 'Secondhand Serenade', 'Augustana'], "'Hey There Delilah' – Plain White T's (2006)"),
+    _q("Ki az előadó a 'Dont Stop Believin' című dalban?", 0, ['Journey', 'Foreigner', 'Boston', 'REO Speedwagon'], "'Don't Stop Believin'' – Journey (1981)"),
 ]
 
 # Export alias for quiz_app
