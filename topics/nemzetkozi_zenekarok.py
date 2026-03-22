@@ -713,9 +713,9 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
     {
         "question": "Ki az előadó?",
         "audio_file": "109_Relight_My_Fire.mp3",
-        "options": ['Dan Hartman', 'Bee Gees', 'Earth, Wind & Fire', 'Heatwave'],
+        "options": ['Take That', 'Boyzone', 'Westlife', 'Backstreet Boys'],
         "correct": 0,
-        "explanation": "Dan Hartman – Relight My Fire (1979)",
+        "explanation": "Take That ft. Lulu – Relight My Fire (1993)",
         "topic": "nemzetkozi_zenekarok"
     }
 ]
