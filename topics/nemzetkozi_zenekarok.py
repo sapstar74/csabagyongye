@@ -701,6 +701,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Green Day - Boulevard of Broken Dreams (2004)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "108_Sugarhill_Gang_Rappers_Delight.mp3",
+        "options": ['The Sugarhill Gang', 'Run-D.M.C.', 'Grandmaster Flash', 'Kurtis Blow'],
+        "correct": 0,
+        "explanation": "The Sugarhill Gang – Rapper's Delight (1979)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "109_Relight_My_Fire.mp3",
+        "options": ['Dan Hartman', 'Bee Gees', 'Earth, Wind & Fire', 'Heatwave'],
+        "correct": 0,
+        "explanation": "Dan Hartman – Relight My Fire (1979)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
