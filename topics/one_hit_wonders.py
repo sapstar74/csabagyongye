@@ -148,6 +148,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó az 'I Can See Clearly Now' című dalban?", 0, ['Jimmy Cliff', 'Johnny Nash', 'Bob Marley', 'Toots and the Maytals'], "'I Can See Clearly Now' – Jimmy Cliff (1993, Cool Runnings)"),
     _q("Ki az előadó a 'Hey There Delilah' című dalban?", 0, ['Plain White Ts', 'The Fray', 'Secondhand Serenade', 'Augustana'], "'Hey There Delilah' – Plain White T's (2006)"),
     _q("Ki az előadó a 'Dont Stop Believin' című dalban?", 0, ['Journey', 'Foreigner', 'Boston', 'REO Speedwagon'], "'Don't Stop Believin'' – Journey (1981)"),
+    _q("Ki az előadó a 'Take Me Home Country Roads' című dalban?", 0, ['John Denver', 'Willie Nelson', 'Glen Campbell', 'Kenny Rogers'], "'Take Me Home, Country Roads' – John Denver (1971)"),
 ]
 
 # Export alias for quiz_app
