@@ -733,6 +733,14 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Luke Combs – Fast Car (Tracy Chapman-feldolgozás, 2023)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "112_Aphrodites_Child_End_of_the_World.mp3",
+        "options": ["Aphrodite's Child", 'The Moody Blues', 'Procol Harum', 'Cream'],
+        "correct": 0,
+        "explanation": "Aphrodite's Child – End of the World (1968)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
