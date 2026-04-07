@@ -149,6 +149,11 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Hey There Delilah' című dalban?", 0, ['Plain White Ts', 'The Fray', 'Secondhand Serenade', 'Augustana'], "'Hey There Delilah' – Plain White T's (2006)"),
     _q("Ki az előadó a 'Dont Stop Believin' című dalban?", 0, ['Journey', 'Foreigner', 'Boston', 'REO Speedwagon'], "'Don't Stop Believin'' – Journey (1981)"),
     _q("Ki az előadó a 'Take Me Home Country Roads' című dalban?", 0, ['John Denver', 'Willie Nelson', 'Glen Campbell', 'Kenny Rogers'], "'Take Me Home, Country Roads' – John Denver (1971)"),
+    _q("Ki az előadó az 'Another Night' című dalban?", 0, ['Real McCoy', 'La Bouche', 'Captain Jack', 'Corona'], "Real McCoy – Another Night (1993)"),
+    _q("Ki az előadó a 'Be My Lover' című dalban?", 0, ['La Bouche', 'Real McCoy', 'Alexia', 'Corona'], "La Bouche – Be My Lover (1995)"),
+    _q("Ki az előadó a 'Captain Jack' című dalban?", 0, ['Captain Jack', 'Real McCoy', 'Scooter', 'Fun Factory'], "Captain Jack – Captain Jack (1996)"),
+    _q("Ki az előadó a 'Coco Jamboo' című dalban?", 0, ['Mr President', 'Vengaboys', 'Captain Jack', 'La Bouche'], "Mr President – Coco Jamboo (1996)"),
+    _q("Ki az előadó a 'No Limit' című dalban?", 0, ['2 Unlimited', 'Technotronic', 'Snap!', 'Haddaway'], "2 Unlimited – No Limit (1993)"),
 ]
 
 # Export alias for quiz_app
