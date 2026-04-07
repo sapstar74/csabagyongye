@@ -101,6 +101,7 @@ QUESTIONS = [
     _q("80. Futurama - Futurama.mp3", 0, ["Futurama", "Euphoria", "Family Guy", "Rick And Morty"], "Futurama - Futurama (1999-2013) - Intro"),
     _q("81. Beverly Hills 90210 - Beverly Hills 90210.mp3", 0, ["Beverly Hills, 90210", "Gossip Girl", "Orange County", "Buffy the Vampire Slayer"], "Beverly Hills, 90210 - Beverly Hills, 90210 - Intro [HQ]"),
     _q("82. MacGyver - MacGyver.mp3", 0, ["MacGyver", "The A-Team", "Knight Rider", "Baywatch"], "MacGyver - MacGyver - Intro [HQ]", song_title="MacGyver"),
+    _q("83. ALF - ALF.mp3", 0, ["ALF", "Mork & Mindy", "Family Ties", "The Golden Girls"], "ALF – főcímdal (NBC, 1986–1990)", song_title="ALF"),
 ]
 
 # Export alias for compatibility
