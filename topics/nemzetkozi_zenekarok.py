@@ -717,6 +717,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Take That ft. Lulu – Relight My Fire (1993)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "110_Toy_Dolls_Nellie_the_Elephant.mp3",
+        "options": ['Toy Dolls', 'The Damned', 'Buzzcocks', 'The Undertones'],
+        "correct": 0,
+        "explanation": "Toy Dolls – Nellie the Elephant (1984)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "111_Luke_Combs_Fast_Car.mp3",
+        "options": ['Luke Combs', 'Morgan Wallen', 'Chris Stapleton', 'Jason Aldean'],
+        "correct": 0,
+        "explanation": "Luke Combs – Fast Car (Tracy Chapman-feldolgozás, 2023)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
