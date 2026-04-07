@@ -741,6 +741,14 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Aphrodite's Child – End of the World (1968)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "113_Bluemchen_Herz_an_Herz.mp3",
+        "options": ['Blümchen', 'Cascada', 'DJ Bobo', 'E-Rotic'],
+        "correct": 0,
+        "explanation": "Blümchen – Herz an Herz (1995)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 

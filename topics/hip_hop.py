@@ -52,6 +52,7 @@ QUESTIONS = [
     _q("33_Arrested_Development.mp3", 0, ["Arrested Development", "De La Soul", "The Fugees", "OutKast"],     "Arrested Development – Tennessee",                     song_title="Tennessee"),
     _q("34_Kool_Keith.mp3",           0, ["Kool Keith", "Afrika Bambaataa", "Grandmaster Flash", "Kurtis Blow"], "Kool Keith (Ultramagnetic MCs) – Ego Trippin'",      song_title="Ego Trippin'"),
     _q("35_Eve.mp3",                  0, ["Eve", "Missy Elliott", "Lauryn Hill", "Salt-N-Pepa"],              "Eve – Let Me Blow Ya Mind",                            song_title="Let Me Blow Ya Mind"),
+    _q("36_Bad_Bunny.mp3",            0, ["Bad Bunny", "J Balvin", "Ozuna", "Maluma"],                        "Bad Bunny – Dakiti (ft. Jhay Cortez)",                   song_title="Dakiti"),
 ]
 
 HIP_HOP_QUESTIONS = QUESTIONS

@@ -51,6 +51,7 @@ QUESTIONS = [
     _q("32_Twisted_Sister.mp3",  0, ["Twisted Sister", "W.A.S.P.", "Mötley Crüe", "Skid Row"], "Twisted Sister – We're Not Gonna Take It", song_title="We're Not Gonna Take It"),
     _q("33_Mastodon.mp3",        0, ["Mastodon", "Tool", "Machine Head", "Alice in Chains"], "Mastodon – Blood and Thunder",            song_title="Blood and Thunder"),
     _q("34_Skid_Row.mp3",        0, ["Skid Row", "Mötley Crüe", "Twisted Sister", "Scorpions"], "Skid Row – 18 and Life",             song_title="18 and Life"),
+    _q("35_System_of_a_Down.mp3", 0, ["System of a Down", "Korn", "Slipknot", "Disturbed"],     "System of a Down – Chop Suey!",      song_title="Chop Suey!"),
 ]
 
 ROCK_METAL_QUESTIONS = QUESTIONS
