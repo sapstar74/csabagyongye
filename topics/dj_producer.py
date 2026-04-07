@@ -67,6 +67,7 @@ QUESTIONS = [
     _q("48_Gordo.mp3",                0, ["Gordo", "Dom Dolla", "James Hype", "Michael Bibi"],                     "Gordo – Buff Riff",                                  song_title="Buff Riff"),
     _q("49_Paul_van_Dyk.mp3",         0, ["Paul van Dyk", "Armin van Buuren", "Above & Beyond", "Kaskade"],        "Paul van Dyk – For an Angel",                        song_title="For an Angel"),
     _q("50_Burak_Yeter.mp3",          0, ["Burak Yeter", "Kungs", "Robin Schulz", "Felix Jaehn"],                 "Burak Yeter – Tuesday ft. Danelle Sandoval",         song_title="Tuesday"),
+    _q("51_Bob_Sinclair.mp3",         0, ["Bob Sinclair", "David Guetta", "Martin Solveig", "Fedde Le Grand"],   "Bob Sinclair – Open Up Your Heart",                   song_title="Open Up Your Heart"),
 ]
 
 DJ_PRODUCER_QUESTIONS = QUESTIONS
