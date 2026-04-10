@@ -749,6 +749,54 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Blümchen – Herz an Herz (1995)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "114_Green_Day_Basket_Case.mp3",
+        "options": ['Green Day', 'Blink-182', 'Sum 41', 'Good Charlotte'],
+        "correct": 0,
+        "explanation": "Green Day – Basket Case (1994)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "115_Lynyrd_Skynyrd_Sweet_Home_Alabama.mp3",
+        "options": ['Lynyrd Skynyrd', 'ZZ Top', 'The Allman Brothers Band', 'Creedence Clearwater Revival'],
+        "correct": 0,
+        "explanation": "Lynyrd Skynyrd – Sweet Home Alabama (1974)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "116_Goo_Goo_Dolls_Iris.mp3",
+        "options": ['Goo Goo Dolls', 'Third Eye Blind', 'Matchbox Twenty', 'Counting Crows'],
+        "correct": 0,
+        "explanation": "Goo Goo Dolls – Iris (1998)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "117_T_Rex_20th_Century_Boy.mp3",
+        "options": ['T. Rex', 'Slade', 'Sweet', 'Mott the Hoople'],
+        "correct": 0,
+        "explanation": "T. Rex – 20th Century Boy (1973)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "118_Boston_More_Than_a_Feeling.mp3",
+        "options": ['Boston', 'Journey', 'REO Speedwagon', 'Styx'],
+        "correct": 0,
+        "explanation": "Boston – More Than a Feeling (1976)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "119_Smash_Mouth_Walking_on_the_Sun.mp3",
+        "options": ['Smash Mouth', 'Third Eye Blind', 'Sugar Ray', 'Barenaked Ladies'],
+        "correct": 0,
+        "explanation": "Smash Mouth – Walking on the Sun (1997)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
