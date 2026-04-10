@@ -34,7 +34,7 @@ QUESTIONS = [
     _q("one_hit_wonders/Inner Circle - Bad Boys.mp3", 0, ["Inner Circle", "Shaggy", "Sean Paul", "Bob Marley"], "Inner Circle – Bad Boys"),
     _q("one_hit_wonders/66. RamJam - Black Betty.mp3", 0, ["Ram Jam", "Led Zeppelin", "CCR", "Steppenwolf"], "Ram Jam – Black Betty"),
     _q("one_hit_wonders/Billy Paul - Me And Mrs. Jones.mp3", 0, ["Billy Paul", "Barry White", "Marvin Gaye", "Bill Withers"], "Billy Paul – Me and Mrs. Jones"),
-    _q("one_hit_wonders/marc cohn - walking in memphis.mp3", 0, ["Marc Cohn", "Bruce Springsteen", "Billy Joel", "Elton John"], "Marc Cohn – Walking in Memphis"),
+    _q("one_hit_wonders/Marc Cohn - Walking in Memphis.mp3", 0, ["Marc Cohn", "Bruce Springsteen", "Billy Joel", "Elton John"], "Marc Cohn – Walking in Memphis"),
     _q("nemzetkozi_zenekarok/117_T_Rex_20th_Century_Boy.mp3", 0, ["T. Rex", "Slade", "Sweet", "Mott the Hoople"], "T. Rex – 20th Century Boy"),
     _q("one_hit_wonders/Carl Douglas - Kung Fu Fighting.mp3", 0, ["Carl Douglas", "Boney M.", "Village People", "KC and the Sunshine Band"], "Carl Douglas – Kung Fu Fighting"),
     _q("one_hit_wonders/London Beat - Ive Been Thinking About You.mp3", 0, ["London Beat", "Swing Out Sister", "Lisa Stansfield", "Soul II Soul"], "London Beat – I've Been Thinking About You"),
