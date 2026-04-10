@@ -69,6 +69,8 @@ QUESTIONS = [
     _q("one_hit_wonders/Wild Cherry - Play That Funky Music.mp3", 0, ["Wild Cherry", "Kool & the Gang", "Earth, Wind & Fire", "Commodores"], "Wild Cherry – Play That Funky Music"),
     _q("one_hit_wonders/Deep Blue Something - Breakfast at Tiffanys.mp3", 0, ["Deep Blue Something", "Toad the Wet Sprocket", "Gin Blossoms", "Dishwalla"], "Deep Blue Something – Breakfast at Tiffany's"),
     _q("one_hit_wonders/36_Foster the People_Pumped Up Kicks.mp3", 0, ["Foster the People", "MGMT", "Two Door Cinema Club", "Passion Pit"], "Foster the People – Pumped Up Kicks"),
+    _q("nemzetkozi_zenekarok/120_Counting_Crows_Mr_Jones.mp3", 0, ["Counting Crows", "Gin Blossoms", "Matchbox Twenty", "Third Eye Blind"], "Counting Crows – Mr. Jones"),
+    _q("nemzetkozi_zenekarok/121_Counting_Crows_Big_Yellow_Taxi.mp3", 0, ["Counting Crows", "Joni Mitchell", "Sheryl Crow", "Alanis Morissette"], "Counting Crows – Big Yellow Taxi"),
 ]
 
 ALMOMBOL_FELEBRESZTVE_QUESTIONS = QUESTIONS

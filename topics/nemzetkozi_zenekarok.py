@@ -797,6 +797,22 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Smash Mouth – Walking on the Sun (1997)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki énekli ezt a dalt?",
+        "audio_file": "120_Counting_Crows_Mr_Jones.mp3",
+        "options": ['Counting Crows', 'Gin Blossoms', 'Matchbox Twenty', 'Third Eye Blind'],
+        "correct": 0,
+        "explanation": "Counting Crows – Mr. Jones (1993)",
+        "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki énekli ezt a dalt?",
+        "audio_file": "121_Counting_Crows_Big_Yellow_Taxi.mp3",
+        "options": ['Counting Crows', 'Joni Mitchell', 'Sheryl Crow', 'Alanis Morissette'],
+        "correct": 0,
+        "explanation": "Counting Crows – Big Yellow Taxi (Joni Mitchell-feldolgozás, 2002)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
