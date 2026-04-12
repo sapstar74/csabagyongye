@@ -813,6 +813,14 @@ NEMZETKOZI_ZENEKAROK_QUESTIONS = [
         "correct": 0,
         "explanation": "Counting Crows – Big Yellow Taxi (Joni Mitchell-feldolgozás, 2002)",
         "topic": "nemzetkozi_zenekarok"
+    },
+    {
+        "question": "Ki az előadó?",
+        "audio_file": "122_Guano_Apes_Big_In_Japan.mp3",
+        "options": ['Guano Apes', 'H-Blockx', 'Beatsteaks', 'Donots'],
+        "correct": 0,
+        "explanation": "Guano Apes – Big in Japan (Alphaville-feldolgozás, 2000)",
+        "topic": "nemzetkozi_zenekarok"
     }
 ]
 
