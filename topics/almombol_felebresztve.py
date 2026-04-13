@@ -71,6 +71,7 @@ QUESTIONS = [
     _q("one_hit_wonders/36_Foster the People_Pumped Up Kicks.mp3", 0, ["Foster the People", "MGMT", "Two Door Cinema Club", "Passion Pit"], "Foster the People – Pumped Up Kicks"),
     _q("nemzetkozi_zenekarok/120_Counting_Crows_Mr_Jones.mp3", 0, ["Counting Crows", "Gin Blossoms", "Matchbox Twenty", "Third Eye Blind"], "Counting Crows – Mr. Jones"),
     _q("nemzetkozi_zenekarok/121_Counting_Crows_Big_Yellow_Taxi.mp3", 0, ["Counting Crows", "Joni Mitchell", "Sheryl Crow", "Alanis Morissette"], "Counting Crows – Big Yellow Taxi"),
+    _q("one_hit_wonders/Goodboys - Bongo Cha Cha Cha.mp3", 0, ["Goodboys", "Vize", "Felix Jaehn", "Topic"], "Goodboys – Bongo Cha Cha Cha"),
 ]
 
 ALMOMBOL_FELEBRESZTVE_QUESTIONS = QUESTIONS

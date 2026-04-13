@@ -154,6 +154,7 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q("Ki az előadó a 'Captain Jack' című dalban?", 0, ['Captain Jack', 'Real McCoy', 'Scooter', 'Fun Factory'], "Captain Jack – Captain Jack (1996)"),
     _q("Ki az előadó a 'Coco Jamboo' című dalban?", 0, ['Mr President', 'Vengaboys', 'Captain Jack', 'La Bouche'], "Mr President – Coco Jamboo (1996)"),
     _q("Ki az előadó a 'No Limit' című dalban?", 0, ['2 Unlimited', 'Technotronic', 'Snap!', 'Haddaway'], "2 Unlimited – No Limit (1993)"),
+    _q("Ki az előadó a 'Bongo Cha Cha Cha' című dalban?", 0, ['Goodboys', 'Vize', 'Felix Jaehn', 'Topic'], "Goodboys – Bongo Cha Cha Cha (2020)"),
 ]
 
 # Export alias for quiz_app
