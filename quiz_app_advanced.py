@@ -204,7 +204,7 @@ def reset_quiz():
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
         "zászlórészlet": "🏴 Zászlórészlet",
-        "idióta_szavak": "🤪 Idióta szavak",
+        "idióta_szavak": "🥋 Fekete Öves",
         "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
         "vallás és egyháztörténet": "⛪ Vallás és egyháztörténet",
         "művészet": "🎨 Művészet",
@@ -1042,7 +1042,7 @@ def show_topic_selection():
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
         "zászlórészlet": "🏴 Zászlórészlet",
-        "idióta_szavak": "🤪 Idióta szavak",
+        "idióta_szavak": "🥋 Fekete Öves",
         "labdarugo_palyafutas": "⚽ Labdarúgó pályafutás",
         "vallás és egyháztörténet": "⛪ Vallás és egyháztörténet",
         "művészet": "🎨 Művészet",
@@ -1780,12 +1780,12 @@ def show_quiz():
         magyar_zenekarok_topics = {"magyar_zenekarok", "magyar_zenekarok_uj"}
         force_options_for_magyar = topic in magyar_zenekarok_topics and 'options' in locals() and 'new_correct_index' in locals()
 
-        # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
+        # Fekete Öves (idióta szavak) kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
         if question_type == "text_input" and not force_options_for_magyar:
             # Text input kérdések mindig szöveges bevitellel
             st.markdown(t("### 💬 Írd be a válaszod:"))
             
-            # Idióta szavak kérdéseknél a correct_answer mezőt használjuk
+            # Szöveges kérdéseknél (pl. Fekete Öves) a correct_answer mezőt használjuk
             correct_answer_raw = question.get("correct_answer", "")
             user_answer = st.text_input(t("Válasz:"), key=f"text_input_{st.session_state.current_question}")
             

@@ -1,4 +1,4 @@
-# Idióta szavak kérdések megfordítva (jelentés -> szó)
+# Fekete Öves (korábban: Idióta szavak) – megfordított kérdések (jelentés -> szó)
 
 IDIOTA_SZAVAK_QUESTIONS = [
     {
@@ -187,6 +187,13 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question": """**Kína sivataga** - melyik idióta szóra gondolok?""",
         "correct_answer": """Takla-Makán""",
         "explanation": """A(z) 'Takla-Makán' jelentése: Kína sivataga""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**(Kéretlenül) tanácsokat, ötleteket adó személy; bizalmas vagy gúnyosan: ötletgyártó** - melyik idióta szóra gondolok?""",
+        "correct_answer": """éceszgéber""",
+        "explanation": """Az 'éceszgéber' jiddis eredetű szlengszó: olyan személy, aki gyakran kéretlenül ad tanácsot vagy ötletet.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     }

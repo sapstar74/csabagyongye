@@ -320,7 +320,7 @@ def show_topic_selection():
                 st.session_state.selected_topics.append("zászlók")
             st.rerun()
         
-        if st.button("🤪 Idióta szavak", key="idióta_szavak"):
+        if st.button("🥋 Fekete Öves", key="idióta_szavak"):
             if "idióta_szavak" not in st.session_state.selected_topics:
                 st.session_state.selected_topics.append("idióta_szavak")
             st.rerun()

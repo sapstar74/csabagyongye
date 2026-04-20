@@ -131,7 +131,7 @@ _EN_TRANSLATIONS = {
     "Koldulórendek": "Mendicant orders",
     "Pénitensek": "Penitents",
     "A flagellánsok középkori mozgalom tagjai voltak, akik önkéntes testi önfenyítéssel (ostorozással) kívánták bűneiket vezekelni. A szó a latin 'flagello' (ostoroz) szóból ered. A mozgalom a 14. századi pestisjárvány idején érte el legnagyobb felfutását.": "The flagellants were members of a medieval movement who sought to atone for their sins through voluntary self-flagellation. The word derives from the Latin 'flagello' (to whip). The movement reached its peak during the 14th-century plague.",
-    "🤪 Idióta szavak": "🤪 Silly words",
+    "🥋 Fekete Öves": "🥋 Black belt",
     "⚽ Labdarúgó pályafutás": "⚽ Football career",
     "🎵 Magyar": "🎵 Hungarian",
     "🌍 Nemzetközi": "🌍 International",

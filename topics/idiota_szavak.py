@@ -1,4 +1,4 @@
-# Idióta szavak kérdések többválasztós opciókkal
+# Fekete Öves (korábban: Idióta szavak) – többválasztós kérdések
 
 _TOPIC = 'idiota_szavak'
 
@@ -56,4 +56,5 @@ IDIOTA_SZAVAK_QUESTIONS = [
     _q('Melyik állítás jellemző leginkább a **kadesi csata**ra (Kr. e. 1274 körül)?', 0, ['II. Ramszesz egyiptomi fáraó és a hettiták Muwatalli II. királya csaptak össze Kádesznél; a későbbi egyetértés az első ismert írásos békeszerződések egyike lett', 'Perzsia lerombolta Ninivét', 'Alexandrosz Nagy győzött Isszosnál', 'A pun háborúk vége'], 'A **kadesi csata** a történelem egyik legkorábbi részletesen dokumentált nagy ütközete volt: az egyiptomi (II. Ramszesz) és a hettita (Muwatalli II.) seregek Kádesz (Kadesh) mellett vívtak döntetlennek mondott csatát. Később a két birodalom békét kötött (Kr. e. 1258 körüli egyezmény – az egyik legrégebbi fennmaradt békeszerződés).'),
     _q('Mit jelent az ökológiában az **abundancia** (gazdagság)?', 0, ['Egy faj egyedeinek száma vagy sűrűsége egy adott területen vagy mintában', 'Csak a biomassza tömeg', 'Csak a fajok száma (fajgazdagság)', 'A környezeti stressz mértéke'], 'Az **abundancia** (gazdagság) ökológiában egy populáció vagy faj egyedeinek mennyiségét jelenti (pl. egyedszám vagy sűrűség adott területen vagy mintában). Ne keverjük össze a „fajgazdagsággal” (species richness), amely a fajok számát méri.'),
     _q('Mit jelent a matematikában az **Erdős-szám** (köznyelvben: egy matematikus „Erdős-foka”)?', 0, ['Paul Erdőshöz vezető legkisebb közös publikációs lánc hossza (Erdős = 0)', 'Egy gráf csúcsának fokszáma', 'Egy prímszám Erdős szerinti definíciója', 'A Fibonacci-sorozat egy tagja'], 'Az **Erdős-szám** egy matematikus (vagy közös szerző) távolsága Paul Erdőstől: Erdős saját száma 0, azoké 1, akik vele közös cikket írtak, stb. A „fok” szó itt nem gráfelméleti fokszám, hanem köznyelvi hasonlat a „távolságra”.'),
+    _q('Mit jelent az alábbi idióta szó: **éceszgéber**?', 0, ['(Kéretlenül) tanácsokat, ötleteket adó személy; ötletgyártó (bizalmas, gúnyos is)', 'Színházi súgó', 'Hivatalos közvetítő diplomáciai ügyekben', 'Közvélemény-kutató'], "Az **éceszgéber** jiddis eredetű szlengszó: olyan személy, aki (gyakran kéretlenül) tanácsokat, ötleteket osztogat; bizalmas vagy gúnyos értelemben a „mindent jobban tudó” ötletadó is."),
 ]

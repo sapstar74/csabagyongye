@@ -414,7 +414,7 @@ def reset_quiz():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
-        "idióta_szavak": "🤪 Idióta szavak",
+        "idióta_szavak": "🥋 Fekete Öves",
     }
     
     for topic_key in topics.keys():
@@ -1715,7 +1715,7 @@ def show_topic_selection():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
-        "idióta_szavak": "🤪 Idióta szavak",
+        "idióta_szavak": "🥋 Fekete Öves",
     }
     
     # Randomizáló funkció
@@ -2487,12 +2487,12 @@ def show_quiz():
         difficulty = st.session_state.mode_manager.current_difficulty
         question_type = question.get("question_type", "multiple_choice")
         
-        # Idióta szavak kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
+        # Fekete Öves (idióta szavak) kérdések vagy nehéz mód (kivéve mitológia): szöveges bevitel
         if question_type == "text_input":
             # Text input kérdések mindig szöveges bevitellel
             st.markdown("### 💬 Írd be a válaszod:")
             
-            # Idióta szavak kérdéseknél a correct_answer mezőt használjuk
+            # Szöveges kérdéseknél (pl. Fekete Öves) a correct_answer mezőt használjuk
             correct_answer = question.get("correct_answer", "").lower().strip()
             user_answer = st.text_input("Válasz:", key=f"text_input_{st.session_state.current_question}")
             

@@ -306,7 +306,7 @@ def show_topic_selection():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏈 Sport Logók",
         "zászlók": "🏳️ Zászlók",
-        "idióta_szavak": "🤪 Idióta Szavak"
+        "idióta_szavak": "🥋 Fekete Öves"
     }
     
     if 'topic_num_questions' not in st.session_state:
@@ -597,9 +597,9 @@ def show_quiz():
         else:
             st.warning(f"⚠️ YouTube audio fájl nem található ehhez a kérdéshez. (Topic: {topic}, Original Index: {question_index})")
 
-    # Check if this is a text input question (idióta szavak)
+    # Check if this is a text input question (Fekete Öves / idióta szavak)
     if current_q.get("question_type") == "text_input":
-        # Text input for idióta szavak
+        # Text input for Fekete Öves (text_input questions)
         user_answer = st.text_input(
             "Írd be a válaszod:",
             key=f"text_input_{st.session_state.current_question}",

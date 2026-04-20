@@ -304,7 +304,7 @@ def show_topic_selection():
         "drámák": "🎭 Drámák",
         "sport_logók": "🏆 Sport logók",
         "zászlók": "🏁 Zászlók",
-        "idióta_szavak": "🤪 Idióta szavak",
+        "idióta_szavak": "🥋 Fekete Öves",
     }
     
     # Randomizáló funkció
