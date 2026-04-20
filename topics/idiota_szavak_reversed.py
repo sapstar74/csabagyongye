@@ -196,5 +196,19 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """Az 'éceszgéber' jiddis eredetű szlengszó: olyan személy, aki gyakran kéretlenül ad tanácsot vagy ötletet.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Törpebolygó az aszteroidaövben; a római panteonban Démétér megfelelője (vetés, termés istennője)** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Ceres""",
+        "explanation": """A 'Ceres' a 1 Ceres törpebolygó neve és egyben a római Cerés istennő neve, a görög Démétér megfelelője.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Görög mitológiai szereplő: a szelek ura** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Aiolosz""",
+        "explanation": """Az 'Aiolosz' (Aiölosz / Aeolus) a görög mitológiában a szelek ura, Aiolia királya.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
