@@ -82,7 +82,7 @@ def verdict(p: int) -> tuple[str, str]:
         return "Szép termés.", "Néhány szem még savanyú – nézd meg lent, melyek."
     if p >= 40:
         return "Érik még.", "A hibás válaszokat egy kattintással újragyakorolhatod."
-    return "Ez most savanyú volt.", "Próbáld újra Gyakorlás módban, ott magyarázatot is kapsz."
+    return "Ez most savanyú volt.", "Lent átnézheted a hibákat, és egy kattintással újragyakorolhatod őket."
 
 
 __all__ = ["pearl_string", "cluster", "mark", "esc", "pct", "verdict"]

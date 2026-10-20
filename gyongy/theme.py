@@ -101,11 +101,49 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
 .cg-topic { font-size: .95rem; color: var(--muted); margin-bottom: .2rem; }
 .cg-q { font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 4.4vw, 2.05rem);
   line-height: 1.18; margin: 0 0 1.2rem; letter-spacing: -0.015em; }
+.cg-q.long { font-size: clamp(1.15rem, 3.2vw, 1.5rem); line-height: 1.3; letter-spacing: 0; }
 .cg-caption { color: var(--muted); margin: -.6rem 0 1rem; }
 
 [data-testid="stImage"] img { max-height: 380px; width: auto !important; object-fit: contain;
   border-radius: 10px; background: var(--surface); padding: 8px; border: 1px solid var(--line); }
 [data-testid="stAudio"] { margin-bottom: 1rem; }
+
+/* haladásjelző sok kérdésnél */
+[data-testid="stProgress"] [role="progressbar"] > div > div { background-color: var(--line) !important; }
+[data-testid="stProgress"] [role="progressbar"] > div > div > div { background-color: var(--pearl-deep) !important; }
+
+/* számbevitel */
+[data-testid="stNumberInput"] [data-baseweb="input"] { border-radius: 12px !important; border: 1.5px solid var(--line) !important;
+  background: var(--surface) !important; }
+[data-testid="stNumberInput"] [data-baseweb="input"] > div, [data-testid="stNumberInput"] input,
+[data-testid="stNumberInput"] button { background: var(--surface) !important; }
+[data-testid="stNumberInput"] input { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+[data-testid="stNumberInput"] [data-baseweb="input"]:focus-within { border-color: var(--ink) !important; }
+[data-testid="stNumberInput"] [data-testid="InputInstructions"] { display: none; }
+
+/* rádiógombok */
+[data-testid="stRadio"] label p { font-size: 1rem; }
+[data-testid="stRadio"] [role="radiogroup"] { gap: .4rem 1.4rem; }
+
+/* szabad szöveges válasz */
+[data-testid="stForm"] { padding: 0; }
+[data-testid="stTextInput"] input { font-family: var(--body); font-size: 1.15rem; font-weight: 600; color: var(--ink);
+  min-height: 3.4rem; padding: .6rem 1rem; }
+[data-testid="stTextInput"] [data-baseweb="input"] { border-radius: 12px !important; border: 1.5px solid var(--line) !important;
+  background: var(--surface) !important; }
+[data-testid="stTextInput"] [data-baseweb="input"] > div, [data-testid="stTextInput"] input { background: var(--surface) !important; }
+[data-testid="stTextInput"] [data-baseweb="input"]:focus-within { border-color: var(--ink) !important;
+  box-shadow: 0 0 0 3px rgba(30,51,40,.12); }
+[data-testid="stTextInput"] [data-testid="InputInstructions"] { display: none; }
+.stFormSubmitButton > button { border-radius: 12px; font-weight: 600; min-height: 3.2rem; font-size: 1.05rem; }
+.stFormSubmitButton > button[kind="primaryFormSubmit"], .stFormSubmitButton > button[kind="primary"] {
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.stFormSubmitButton > button:hover { background: #2C4A3A; color: var(--paper); }
+.cg-typed .lbl { flex: none; font-family: var(--display); font-size: .85rem; color: var(--muted);
+  border: 1.5px solid var(--line); border-radius: 99px; padding: .1rem .6rem; }
+.cg-typed.ok .lbl { background: var(--pearl-deep); border-color: var(--pearl-deep); color: #fff; }
+.cg-typed.bad .lbl { background: var(--wrong); border-color: var(--wrong); color: #fff; }
+.cg-mc-note { margin: -.4rem 0 .8rem; }
 
 /* visszajelzés utáni, már nem kattintható válaszok */
 .cg-opts { display: grid; gap: .75rem; margin-bottom: .2rem; }
