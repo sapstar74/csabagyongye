@@ -53,6 +53,11 @@ QUESTIONS = [
     _q("34_Kool_Keith.mp3",           0, ["Kool Keith", "Afrika Bambaataa", "Grandmaster Flash", "Kurtis Blow"], "Kool Keith (Ultramagnetic MCs) – Ego Trippin'",      song_title="Ego Trippin'"),
     _q("35_Eve.mp3",                  0, ["Eve", "Missy Elliott", "Lauryn Hill", "Salt-N-Pepa"],              "Eve – Let Me Blow Ya Mind",                            song_title="Let Me Blow Ya Mind"),
     _q("36_Bad_Bunny.mp3",            0, ["Bad Bunny", "J Balvin", "Ozuna", "Maluma"],                        "Bad Bunny – Dakiti (ft. Jhay Cortez)",                   song_title="Dakiti"),
+    # áthelyezve a One hit wonders témakörből (nem egyslágeres előadók)
+    _q('one_hit_wonders/42_Macklemore & Ryan Lewis_Thrift Shop.mp3', 3, ['Flo Rida', 'LMFAO', 'Pitbull', 'Macklemore & Ryan Lewis'], 'Az előadó: Macklemore & Ryan Lewis.'),
+    _q("one_hit_wonders/43_Macklemore & Ryan Lewis_Can't Hold Us.mp3", 0, ['Macklemore & Ryan Lewis', 'LMFAO', 'Kid Cudi', 'B.o.B'], 'Az előadó: Macklemore & Ryan Lewis.'),
+    _q('one_hit_wonders/51_Wiz Khalifa ft. Charlie Puth_See You Again.mp3', 2, ['Lukas Graham', 'Flo Rida ft. Sia', 'Wiz Khalifa ft. Charlie Puth', 'Pitbull ft. Ne-Yo'], 'Az előadó: Wiz Khalifa ft. Charlie Puth.'),
+    _q('one_hit_wonders/52_Iggy Azalea ft. Charli XCX_Fancy.mp3', 1, ['Jessie J', 'Iggy Azalea ft. Charli XCX', 'Nicki Minaj', 'Rita Ora'], 'Az előadó: Iggy Azalea ft. Charli XCX.'),
 ]
 
 HIP_HOP_QUESTIONS = QUESTIONS
