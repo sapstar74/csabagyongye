@@ -61,7 +61,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("regények", "Regények", "Kultúra"),
     TopicMeta("művészet", "Művészet", "Kultúra"),
     TopicMeta("mitológia", "Mitológia", "Kultúra"),
-    TopicMeta("építészek", "20. századi építészek", "Kultúra"),
+    TopicMeta("építészek", "20–21. századi építészek", "Kultúra"),
     TopicMeta("sport", "Sport", "Sport"),
     TopicMeta("labdarugo_palyafutas", "Labdarúgó-pályafutások", "Sport"),
     TopicMeta("híres magyarok", "Híres magyarok", "Nyelv és emberek"),

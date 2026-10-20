@@ -25,7 +25,7 @@ Streamlit Cloudon az app beállításaiban a **Main file path** legyen `gyongy_a
   vagy állítás-kiválasztós a kérdés (kb. a kérdések 7%-a), ott automatikusan választani kell. A „Nem tudom” gombbal
   bármikor kérhetők a lehetőségek.
 - Távoli képek is használhatók (`image_url` + kötelező `credit`, `credit_url`) – így készült a
-  *20. századi építészek* témakör Wikimedia Commons-képekkel; a képek a böngészőbe töltődnek, a repóba nem kerülnek
+  *20–21. századi építészek* témakör Wikimedia Commons-képekkel; a képek a böngészőbe töltődnek, a repóba nem kerülnek
 - A zászlós témák országnevei magyarul jelennek meg (`countries.py`); beírásnál az angol alak is elfogadott
 - Billentyűk: `1`–`4` a válaszokhoz, `Enter` a beküldéshez és a továbblépéshez
 - Eredmény szőlőfürtként, témánkénti bontás, a hibás kérdések átnézése és újragyakorlása

@@ -1,4 +1,4 @@
-# 20. századi építészek – magyar és nemzetközi, 1900-tól
+# 20–21. századi építészek – magyar és nemzetközi, 1900-tól napjainkig
 #
 # A képek a Wikimedia Commonsról jönnek (szabad licenc), közvetlenül a
 # böngészőbe töltve – a repóba nem kerülnek. Minden képnél ott a szerző
@@ -21,6 +21,19 @@ HU = [
     "Makovecz Imre", "Szendrői Jenő", "Kós Károly", "Lajta Béla", "Medgyaszay István", "Molnár Farkas",
     "Hültl Dezső", "Csete György", "Málnai Béla", "Hauszmann Alajos", "Pecz Samu", "Baumgarten Sándor",
 ]
+INT21 = [
+    "Norman Foster", "Frank Gehry", "Rem Koolhaas", "Renzo Piano", "Santiago Calatrava", "Jean Nouvel", "Zaha Hadid",
+    "Moshe Safdie", "Snøhetta", "Herzog & de Meuron", "Bjarke Ingels", "Kengo Kuma", "C. Y. Lee", "Daniel Libeskind",
+    "David Childs", "Adrian Smith", "Alejandro Aravena", "Tadao Ando",
+]
+HU21 = [
+    "Siklós Mária", "Zoboki Gábor", "Skardelli György", "Gutowski Robert", "Fujimoto Sou", "Kas Oosterhuis",
+    "Norman Foster", "Makovecz Imre", "Csete György", "Finta József",
+]
+BUILD21 = [
+    "30 St Mary Axe", "The Shard", "Burj Khalifa", "One World Trade Center", "Taipei 101", "Turning Torso",
+    "Torre Glòries", "Elbphilharmonie",
+]
 HU_PAIRS = [
     "Komor Marcell és Jakab Dezső", "Árkay Aladár és Árkay Bertalan", "Bálint Zoltán és Jámbor Lajos",
     "Kármán Aladár és Ullmann Gyula", "Vágó László és Vágó József",
@@ -35,6 +48,12 @@ ACCEPT = {
     "William F. Lamb": ["Lamb", "Shreve, Lamb & Harmon"],
     "Komor Marcell és Jakab Dezső": ["Komor és Jakab", "Komor Marcell, Jakab Dezső"],
     "Árkay Aladár és Árkay Bertalan": ["Árkay", "Árkay Aladár és Bertalan", "Árkayak"],
+    "Herzog & de Meuron": ["Herzog és de Meuron", "Herzog de Meuron"],
+    "Fujimoto Sou": ["Fujimoto", "Sou Fujimoto"],
+    "C. Y. Lee": ["Lee", "C.Y. Lee", "Lee Zuyuan"],
+    "Kas Oosterhuis": ["Oosterhuis", "ONL"],
+    "Snøhetta": ["Snohetta"],
+    "30 St Mary Axe": ["Gherkin", "Uborka"],
 }
 
 _rng = random.Random(1900)
@@ -146,6 +165,55 @@ EPITESZEK_QUESTIONS = [
     _img("Varosmajor_Church.JPG", "Városmajori Jézus Szíve-templom", 1933, "Budapest", "Árkay Aladár és Árkay Bertalan",
          HU_PAIRS, "MOs810", "CC BY-SA 4.0", "Apa és fia közös műve; Árkay Aladár halála után Bertalan fejezte be."),
 
+    # --- 21. század, nemzetközi, képpel -------------------------------------
+    _img("London,_England_(15513446165).jpg", "London Aquatics Centre", 2011, "London", "Zaha Hadid", INT21,
+         "Rick Ligthelm", "CC BY 2.0", "A 2012-es londoni olimpia úszóarénája."),
+    _img("30_St_Mary_Axe,_'Gherkin'.JPG", "30 St Mary Axe („az Uborka”)", 2004, "London", "Norman Foster", INT21,
+         "Paste", "közkincs"),
+    _img("The_Shard_at_sunset_2017_(cropped).jpg", "The Shard", 2012, "London", "Renzo Piano", INT21,
+         "Colin", "CC BY-SA 4.0", "Átadásakor az Európai Unió legmagasabb épülete volt."),
+    _img("Walt_Disney_Concert_Hall,_LA,_CA,_jjron_22.03.2012.jpg", "Walt Disney Concert Hall", 2003, "Los Angeles",
+         "Frank Gehry", INT21, "jjron", "GFDL 1.2"),
+    _img("Seattle_Library_01.jpg", "Seattle-i Központi Könyvtár", 2004, "Seattle", "Rem Koolhaas", INT21,
+         "Ɱ", "CC BY-SA 4.0", "Az OMA iroda terve, Joshua Prince-Ramus közreműködésével."),
+    _img("Turning_Torso2.jpg", "Turning Torso", 2005, "Malmö", "Santiago Calatrava", INT21,
+         "Amjad Sheikh", "CC BY-SA 4.0", "A 90 fokban elcsavart torony Skandinávia egyik legmagasabb épülete."),
+    _img("Torre_Agbar_-_Barcelona,_Spain_-_Jan_2007.jpg", "Torre Glòries (korábban Torre Agbar)", 2005, "Barcelona",
+         "Jean Nouvel", INT21, "Diliff", "CC BY 2.5"),
+    _img("Marina_Bay_Sands_(I).jpg", "Marina Bay Sands", 2010, "Szingapúr", "Moshe Safdie", INT21,
+         "Supanut Arunoprayote", "CC BY 4.0"),
+    _img("Oslo_Opera_House_-_2025.jpg", "Oslói Operaház", 2008, "Oslo", "Snøhetta", INT21,
+         "Pierre Blaché", "CC0", "A Snøhetta norvég építésziroda terve; a tetején végig lehet sétálni."),
+    _img("Elbphilharmonie_2025.jpg", "Elbphilharmonie", 2017, "Hamburg", "Herzog & de Meuron", INT21,
+         "Evgenii Salganik", "CC BY 4.0", "Egy régi kikötői raktárépületre emelt üveg koncertterem."),
+    _img("Beijing_China_Beijing-National-Stadium-01.jpg", "Pekingi Nemzeti Stadion („Madárfészek”)", 2008, "Peking",
+         "Herzog & de Meuron", INT21, "CEphoto, Uwe Aranas", "CC BY-SA 3.0",
+         "A 2008-as olimpia stadionja; Ai Weiwei képzőművész is közreműködött."),
+    _img("VIA_57_West_-_exterior.jpg", "VIA 57 West", 2016, "New York", "Bjarke Ingels", INT21,
+         "Razvan Dinu", "CC BY-SA 4.0"),
+    _img("Japan_National_Stadium_C-gate_on_2021_July_28.jpg", "Japán Nemzeti Stadion", 2019, "Tokió", "Kengo Kuma", INT21,
+         "Syced", "CC0", "A 2020-as (2021-ben megtartott) tokiói olimpia stadionja, sok fával."),
+    _img("Taipei Taiwan Taipei-101-Tower-01.jpg", "Taipei 101", 2004, "Tajpej", "C. Y. Lee", INT21,
+         "CEphoto, Uwe Aranas", "CC BY-SA 3.0", "2004 és 2010 között a világ legmagasabb épülete."),
+    _img("Berlin Jüdisches Museum und der Libeskind-Bau (cropped).jpg", "Zsidó Múzeum (Libeskind-épület)", 2001,
+         "Berlin", "Daniel Libeskind", INT21, "Marek Śliwecki", "CC BY-SA 4.0"),
+    _img("One World Trade Center from New York Harbor, New York City.jpg", "One World Trade Center", 2014, "New York",
+         "David Childs", INT21, "Christian David", "CC BY-SA 4.0", "A Skidmore, Owings & Merrill iroda terve."),
+
+    # --- 21. század, magyar, képpel -----------------------------------------
+    _img("Nemzeti-Szinhaz-P5120700.jpg", "Nemzeti Színház", 2002, "Budapest", "Siklós Mária", HU21,
+         "Misibacsi", "CC BY-SA 3.0"),
+    _img("Balna_Budapest_2014_2.jpg", "Bálna", 2013, "Budapest", "Kas Oosterhuis", HU21,
+         "VargaA", "CC BY-SA 4.0", "A holland ONL iroda a régi Közraktárakat kapcsolta össze egy üveg-acél héjjal."),
+    _img("Budapest,_Néprajzi_Múzeum_2022_01.jpg", "Néprajzi Múzeum", 2022, "Budapest", "Gutowski Robert", HU21,
+         "Pasztilla aka Attila Terbócs", "CC BY-SA 4.0", "A Napur Architect iroda terve a Városligetben."),
+    _img("Magyar_Zene_háza_2021_12_27.jpg", "Magyar Zene Háza", 2022, "Budapest", "Fujimoto Sou", HU21,
+         "Pan Peter12", "CC BY-SA 4.0", "A japán építész lombkoronát idéző, lyukacsos tetőt tervezett."),
+    _img("Puskás_Aréna_05.jpg", "Puskás Aréna", 2019, "Budapest", "Skardelli György", HU21,
+         "OD Pictures", "CC BY-SA 4.0"),
+    _img("Mol_Campus.jpg", "MOL Campus", 2022, "Budapest", "Norman Foster", HU21,
+         "Levairichard", "CC BY-SA 4.0", "A Foster + Partners és a Finta Stúdió terve; Magyarország legmagasabb épülete."),
+
     # --- szöveges kérdések ---------------------------------------------------
     _txt("Melyik építész nevéhez fűződik a „kevesebb több” (less is more) jelmondat?", "Ludwig Mies van der Rohe", INT,
          "Ludwig Mies van der Rohe, a Bauhaus utolsó igazgatója."),
@@ -179,4 +247,16 @@ EPITESZEK_QUESTIONS = [
          "Molnár Farkas a magyar modernizmus egyik vezéralakja volt."),
     _txt("Ki tervezte a veszprémi Petőfi Színházat (1908), Magyarország egyik első vasbeton színházát?",
          "Medgyaszay István", HU, "Medgyaszay István a vasbeton és a népi formakincs ötvözésének úttörője."),
+    _txt("Ki tervezte a bakui Heydar Aliyev Centert (2012)?", "Zaha Hadid", INT21,
+         "Zaha Hadid; az épületen egyetlen hullámzó felület fut végig, egyenes vonalak nélkül."),
+    _txt("Ki tervezte a római MAXXI – 21. századi művészetek nemzeti múzeumát (2010)?", "Zaha Hadid", INT21,
+         "Zaha Hadid; a MAXXI-ért 2010-ben Stirling-díjat kapott."),
+    _txt("Melyik építész volt a dubaji Burj Khalifa, a világ legmagasabb épületének vezető tervezője?", "Adrian Smith",
+         INT21, "Adrian Smith, a Skidmore, Owings & Merrill munkatársaként (átadás: 2010)."),
+    _txt("Melyik londoni felhőkarcolót becézik „Uborkának” (Gherkin)?", "30 St Mary Axe", BUILD21,
+         "A 30 St Mary Axe Norman Foster terve (2004)."),
+    _txt("Ki kapta 2016-ban a Pritzker-díjat a chilei szociális lakásprogramjaiért?", "Alejandro Aravena", INT21,
+         "Alejandro Aravena „félkész házai” a lakók által bővíthetők."),
+    _txt("Ki tervezte a budapesti Müpát (Művészetek Palotája, 2005)?", "Zoboki Gábor", HU21,
+         "Zoboki Gábor; a Bartók Béla Nemzeti Hangversenyterem akusztikája nemzetközi hírű."),
 ]
