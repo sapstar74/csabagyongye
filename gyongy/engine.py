@@ -7,7 +7,25 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional
 
+from .answers import Verdict, check, typeable
 from .catalog import Question
+
+
+class Input(str, Enum):
+    CHOICE = "choice"   # négy lehetőség közül
+    TYPE = "type"       # szabad szöveges beírás
+
+    @property
+    def label(self) -> str:
+        return {"choice": "Választás", "type": "Beírás"}[self.value]
+
+    @property
+    def hint(self) -> str:
+        return {
+            "choice": "Négy lehetőség közül választasz.",
+            "type": "Magad írod be a választ. Az ékezet- és kisebb elírási hibát elfogadjuk; "
+                    "ahol a válasz túl hosszú lenne, ott választani kell.",
+        }[self.value]
 
 
 class Mode(str, Enum):
@@ -33,7 +51,10 @@ class Item:
     """Egy kérdés a menetben, megkevert válaszokkal."""
     question: Question
     order: list[int]                    # order[i] = eredeti index az i. helyen
-    picked: Optional[int] = None        # a megjelenített sorrend szerinti index
+    picked: Optional[int] = None        # a megjelenített sorrend szerinti index; -1 = hibás beírás
+    typed: Optional[str] = None         # a beírt válasz szövege
+    verdict: Optional[Verdict] = None   # beírásnál: pontos / elfogadott / hibás
+    hinted: bool = False                # beírás helyett megnézte a lehetőségeket
 
     @property
     def options(self) -> list[str]:
@@ -51,6 +72,12 @@ class Item:
     def is_correct(self) -> bool:
         return self.picked == self.correct_pos
 
+    @property
+    def your_answer(self) -> str:
+        if self.typed is not None:
+            return self.typed
+        return self.options[self.picked] if self.picked is not None and self.picked >= 0 else ""
+
 
 @dataclass
 class Session:
@@ -59,6 +86,12 @@ class Session:
     reserve: list[Question] = field(default_factory=list)  # hirtelen halálhoz
     cursor: int = 0
     seed: int = 0
+    input: Input = Input.CHOICE
+
+    def typing_now(self) -> bool:
+        """Az aktuális kérdésnél beviteli mezőt mutatunk-e."""
+        it = self.current
+        return bool(it and self.input is Input.TYPE and not it.hinted and typeable(it.question))
 
     # -- állapot ----------------------------------------------------------
     @property
@@ -82,6 +115,19 @@ class Session:
         return len(self.items)
 
     # -- műveletek --------------------------------------------------------
+    def answer_text(self, text: str) -> bool:
+        it = self.current
+        if it is None or it.answered or not text.strip():
+            return False
+        q = it.question
+        others = []
+        for i, o in enumerate(it.options):
+            if i != it.correct_pos:
+                others += [o] + q.aliases.get(o, [])
+        it.typed = text.strip()
+        it.verdict = check(text, q.correct_text, others, q.aliases.get(q.correct_text, []))
+        return self.answer(it.correct_pos if it.verdict is not Verdict.WRONG else -1)
+
     def answer(self, pos: int) -> bool:
         it = self.current
         if it is None or it.answered:
@@ -126,6 +172,7 @@ def build_session(
     mode: Mode,
     seed: Optional[int] = None,
     only: Optional[list[Question]] = None,
+    input: Input = Input.CHOICE,
 ) -> Session:
     """Új menet.
 
@@ -153,4 +200,4 @@ def build_session(
         rng.shuffle(reserve)
 
     items = [_make_item(q, rng) for q in picked]
-    return Session(mode=mode, items=items, reserve=reserve if mode is Mode.SUDDEN else [], seed=seed)
+    return Session(mode=mode, items=items, reserve=reserve if mode is Mode.SUDDEN else [], seed=seed, input=input)

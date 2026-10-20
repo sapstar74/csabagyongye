@@ -15,6 +15,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
+from .countries import COUNTRY_HU, EXTRA_ALIASES, FLAG_TOPICS
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -84,6 +86,7 @@ class Question:
     audio: Optional[str] = None   # abszolút útvonal, ha van
     image: Optional[str] = None   # abszolút útvonal, ha van
     caption: str = ""             # pl. dal- vagy műcím, ha külön adott
+    aliases: dict[str, list[str]] = field(default_factory=dict)  # opció → beírásnál elfogadott más alakok
     extra: dict = field(default_factory=dict)
 
     @property
@@ -186,13 +189,26 @@ def _normalize(topic: str, i: int, raw: dict) -> Optional[Question]:
     if topic in _VISUAL_TOPICS and not image:
         return None
 
+    explanation = str(raw.get("explanation", "")).strip()
+    aliases: dict[str, list[str]] = {}
+    if topic in FLAG_TOPICS:
+        # angol országnevek → magyar; az angol alak beírásnál továbbra is jó
+        en = options[correct]
+        hu_opts = [COUNTRY_HU.get(o, o) for o in options]
+        for o_en, o_hu in zip(options, hu_opts):
+            aliases[o_hu] = ([o_en] if o_en != o_hu else []) + EXTRA_ALIASES.get(o_hu, [])
+        options = hu_opts
+        if en in explanation:
+            explanation = explanation.replace(en, options[correct])
+
     return Question(
         uid=f"{topic}#{i}",
         topic=topic,
         text=str(raw.get("question", "")).strip(),
         options=options,
         correct=correct,
-        explanation=str(raw.get("explanation", "")).strip(),
+        explanation=explanation,
+        aliases=aliases,
         audio=audio,
         image=image,
         caption=str(raw.get("song_title", "") or "").strip(),

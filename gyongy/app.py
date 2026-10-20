@@ -5,10 +5,12 @@ from __future__ import annotations
 import random
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 from . import theme
 from .catalog import GROUPS, TOPIC_BY_KEY, TOPICS, load_bank
-from .engine import Mode, Session, build_session
+from .answers import Verdict
+from .engine import Input, Mode, Session, build_session
 from .visuals import cluster, esc, mark, pct, pearl_string, verdict
 
 COUNTS = [5, 10, 15, 20, 30, 50]
@@ -46,9 +48,9 @@ def _go(view: str) -> None:
     S.view = view
 
 
-def _start(topics: list[str], count: int, mode: Mode, only=None) -> None:
-    S.session = build_session(_bank(), topics, count, mode, only=only)
-    S.last = {"topics": topics, "count": count, "mode": mode}
+def _start(topics: list[str], count: int, mode: Mode, inp: Input = Input.CHOICE, only=None) -> None:
+    S.session = build_session(_bank(), topics, count, mode, only=only, input=inp)
+    S.last = {"topics": topics, "count": count, "mode": mode, "input": inp}
     _go("quiz")
 
 
@@ -101,6 +103,14 @@ def home() -> None:
     S.mode = mode
     st.markdown(f'<p class="cg-hint">{mode.hint}</p>', unsafe_allow_html=True)
 
+    st.markdown('<div class="cg-group">Válaszadás</div>', unsafe_allow_html=True)
+    inp = st.segmented_control(
+        "Válaszadás", list(Input), default=S.get("inp", Input.CHOICE), format_func=lambda m: m.label,
+        key="inp_ctl", label_visibility="collapsed",
+    ) or Input.CHOICE
+    S.inp = inp
+    st.markdown(f'<p class="cg-hint">{inp.hint}</p>', unsafe_allow_html=True)
+
     available = sum(len(bank[k]) for k in picked)
     count = S.get("count", 10)
     if mode is not Mode.SUDDEN:
@@ -119,7 +129,7 @@ def home() -> None:
     else:
         label = f"Indítás – {real} kérdés"
     if st.button(label, type="primary", disabled=not picked, width="stretch"):
-        _start(picked, count, mode)
+        _start(picked, count, mode, inp)
         st.rerun()
 
 
@@ -143,6 +153,31 @@ def _states(s: Session) -> list[str]:
 
 def _two_col(opts: list[str]) -> bool:
     return len(opts) == 4 and all(len(o) < 34 for o in opts)
+
+
+def _typed_input(s: Session) -> None:
+    """Beviteli mező; Enterrel is beküldhető."""
+    with st.form(key=f"type_{s.cursor}", border=False, enter_to_submit=True):
+        text = st.text_input("Válaszod", key=f"t_{s.cursor}", placeholder="Írd be a választ…",
+                             label_visibility="collapsed", autocomplete="off")
+        sent = st.form_submit_button("Ellenőrzés", type="primary", width="stretch")
+    if sent:
+        if text.strip():
+            s.answer_text(text)
+            if s.mode is Mode.EXAM:
+                s.advance()
+            st.rerun()
+        else:
+            st.markdown('<p class="cg-hint">Írj be valamit, vagy kérd a lehetőségeket.</p>', unsafe_allow_html=True)
+    # a beviteli mező kapjon fókuszt, hogy rögtön lehessen gépelni
+    components.html(
+        f"<script>/* {s.cursor} */const d=window.parent.document;"
+        "setTimeout(()=>{const i=d.querySelector('[data-testid=\"stTextInput\"] input');if(i)i.focus();},150);</script>",
+        height=0,
+    )
+    if st.button("Nem tudom – mutasd a lehetőségeket", type="tertiary", key=f"hint_{s.cursor}"):
+        s.current.hinted = True
+        st.rerun()
 
 
 def quiz() -> None:
@@ -173,7 +208,7 @@ def quiz() -> None:
 
     st.markdown(
         f'<div class="cg-topic">{esc(TOPIC_BY_KEY[q.topic].name)}</div>'
-        f'<h2 class="cg-q">{esc(q.text)}</h2>',
+        f'<h2 class="cg-q{" long" if len(q.text) > 120 else ""}">{esc(q.text)}</h2>',
         unsafe_allow_html=True,
     )
     if q.audio:
@@ -181,7 +216,13 @@ def quiz() -> None:
     if q.image:
         st.image(q.image)
 
+    if not it.answered and s.typing_now():
+        _typed_input(s)
+        return
+
     if not it.answered:
+        if s.input is Input.TYPE and not it.hinted:
+            st.markdown('<p class="cg-hint cg-mc-note">Ennél a kérdésnél a lehetőségek közül válassz.</p>', unsafe_allow_html=True)
         opts = it.options
         # Soronként rakjuk ki, így keskeny kijelzőn is 1-2-3-4 a sorrend.
         per_row = 2 if _two_col(opts) else 1
@@ -200,15 +241,25 @@ def quiz() -> None:
         return
 
     # --- visszajelzés (gyakorlás / hirtelen halál) ---
-    rows = []
-    for i, o in enumerate(it.options):
-        cls = "ok" if i == it.correct_pos else "bad" if i == it.picked else "dim"
-        rows.append(f'<div class="cg-opt {cls}"><span class="k">{LETTERS[i]}</span>{esc(o)}</div>')
-    two = " two" if _two_col(it.options) else ""
-    st.markdown(f'<div class="cg-opts{two}">{"".join(rows)}</div>', unsafe_allow_html=True)
-
     good = it.is_correct
-    word = "Helyes." if good else f"Nem, a helyes válasz: {esc(it.question.correct_text)}."
+    right = esc(it.question.correct_text)
+    if it.typed is not None:
+        cls = "ok" if good else "bad"
+        st.markdown(f'<div class="cg-opt cg-typed {cls}"><span class="lbl">Te</span>{esc(it.typed)}</div>', unsafe_allow_html=True)
+        if it.verdict is Verdict.EXACT:
+            word = "Helyes."
+        elif it.verdict is Verdict.CLOSE:
+            word = f"Elfogadva. A pontos alak: {right}."
+        else:
+            word = f"Nem, a helyes válasz: {right}."
+    else:
+        rows = []
+        for i, o in enumerate(it.options):
+            cls = "ok" if i == it.correct_pos else "bad" if i == it.picked else "dim"
+            rows.append(f'<div class="cg-opt {cls}"><span class="k">{LETTERS[i]}</span>{esc(o)}</div>')
+        two = " two" if _two_col(it.options) else ""
+        st.markdown(f'<div class="cg-opts{two}">{"".join(rows)}</div>', unsafe_allow_html=True)
+        word = "Helyes." if good else f"Nem, a helyes válasz: {right}."
     st.markdown(f'<div class="cg-verdict {"ok" if good else "bad"}">{word}</div>', unsafe_allow_html=True)
     if q.explanation:
         st.markdown(f'<div class="cg-expl {"" if good else "bad"}">{esc(q.explanation)}</div>', unsafe_allow_html=True)
@@ -237,6 +288,14 @@ def result() -> None:
     else:
         big = f'{good}<small> / {n}</small>'
 
+    if s.input is Input.TYPE:
+        typed = [it for it in answered if it.typed is not None]
+        hinted = sum(1 for it in answered if it.hinted)
+        extra = f"{len(typed)} választ írtál be"
+        if hinted:
+            extra += f", {hinted} kérdésnél a lehetőségek közül választottál"
+        sub = f"{sub} {extra}."
+
     st.markdown(
         f'<div class="cg-result"><div>{cluster([it.is_correct for it in answered], 220)}</div>'
         f'<div><div class="cg-score">{big}</div><div class="cg-word">{head}</div>'
@@ -248,10 +307,10 @@ def result() -> None:
     c1, c2 = st.columns(2)
     last = S.get("last", {})
     if c1.button("Új menet ugyanezekkel", type="primary", width="stretch"):
-        _start(last["topics"], last["count"], last["mode"])
+        _start(last["topics"], last["count"], last["mode"], last.get("input", Input.CHOICE))
         st.rerun()
     if misses and c2.button(f"Hibák újragyakorlása ({len(misses)})", width="stretch"):
-        S.session = build_session(_bank(), [], 0, Mode.PRACTICE, only=misses)
+        S.session = build_session(_bank(), [], 0, Mode.PRACTICE, only=misses, input=s.input)
         _go("quiz")
         st.rerun()
     if st.button("‹ Vissza a témákhoz", type="tertiary"):
@@ -279,7 +338,7 @@ def result() -> None:
             thumb = f'<img src="{_thumb(q.image)}" alt="">' if q.image else ""
             out.append(
                 f'<div class="cg-miss">{thumb}<div><p class="q">{esc(q.text)}</p>'
-                f'<p class="you">Te: {esc(it.options[it.picked])}</p>'
+                f'<p class="you">Te: {esc(it.your_answer) or "–"}</p>'
                 f'<p class="right">Helyes: {esc(q.correct_text)}</p>{ex}</div></div>'
             )
         st.markdown("".join(out), unsafe_allow_html=True)
