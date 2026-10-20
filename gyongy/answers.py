@@ -20,7 +20,16 @@ from typing import Iterable
 from .catalog import Question
 
 ARTICLES = {"a", "az", "the", "le", "la", "les", "der", "die", "das", "el", "il"}
-PARTICLES = {"van", "von", "de", "da", "di", "du", "der", "del", "la", "le", "y", "és", "and", "of"}
+PARTICLES = {"van", "von", "de", "da", "di", "du", "der", "del", "la", "le", "y", "of"}
+# Gyakori magyar utónevek: ha egy név ezzel végződik, magyar sorrendű (vezetéknév elöl).
+HU_GIVEN = set("""
+ádám ákos albert alajos aladár andor andrás antal árpád artúr attila balázs bálint béla bence benedek bertalan
+csaba dániel dávid dénes dezső domokos ede elek endre erik ernő ervin ferenc frigyes gábor gellért géza gyula győző
+gusztáv györgy henrik ignác imre istván jakab jános jenő józsef kálmán károly kristóf lajos lászló levente lőrinc
+marcell márk márton mátyás mihály miklós mór nándor norbert ödön oszkár pál péter rezső richárd róbert sámuel
+sándor szabolcs tamás tibor tivadar vilmos viktor vince zoltán zsigmond zsolt farkas
+anna mária erzsébet katalin éva ilona margit zsuzsanna júlia ágnes judit irén klára magda piroska rozália terézia
+""".split())
 _ROMAN = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv",
           "xvi", "xvii", "xviii", "xix", "xx"]
 _ROMAN_SET = set(_ROMAN[1:])
@@ -75,10 +84,13 @@ def variants(answer: str) -> list[str]:
         if n and n not in out:
             out.append(n)
         # vezetéknév, ha személynévnek látszik és nincs benne sorszám
-        if _person_like(r) and not _numerals(n):
-            last = normalize(r.split()[-1])
-            if len(last) >= 4 and last not in out:
-                out.append(last)
+        if _person_like(r) and not _numerals(n) and " és " not in r:
+            words = r.split()
+            # magyar névsorrend: „Lechner Ödön” → „Lechner”; egyébként „Ludwig van Beethoven” → „Beethoven”
+            fam = words[0] if words[-1].lower() in HU_GIVEN else words[-1]
+            fam = normalize(fam)
+            if len(fam) >= 4 and fam not in out:
+                out.append(fam)
     return out
 
 

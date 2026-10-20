@@ -61,6 +61,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("regények", "Regények", "Kultúra"),
     TopicMeta("művészet", "Művészet", "Kultúra"),
     TopicMeta("mitológia", "Mitológia", "Kultúra"),
+    TopicMeta("építészek", "20. századi építészek", "Kultúra"),
     TopicMeta("sport", "Sport", "Sport"),
     TopicMeta("labdarugo_palyafutas", "Labdarúgó-pályafutások", "Sport"),
     TopicMeta("híres magyarok", "Híres magyarok", "Nyelv és emberek"),
@@ -86,6 +87,8 @@ class Question:
     audio: Optional[str] = None   # abszolút útvonal, ha van
     image: Optional[str] = None   # abszolút útvonal, ha van
     caption: str = ""             # pl. dal- vagy műcím, ha külön adott
+    credit: str = ""              # kép forrása/licence (távoli képeknél kötelező)
+    credit_url: str = ""
     aliases: dict[str, list[str]] = field(default_factory=dict)  # opció → beírásnál elfogadott más alakok
     extra: dict = field(default_factory=dict)
 
@@ -177,8 +180,10 @@ def _normalize(topic: str, i: int, raw: dict) -> Optional[Question]:
         audio = _resolve(raw["audio_file"], topic, [f"audio_files/{topic}", "audio_files"])
 
     image = None
-    img_raw = raw.get("logo_path") or raw.get("image_file")
-    if img_raw:
+    img_raw = raw.get("logo_path") or raw.get("image_file") or raw.get("image_url")
+    if raw.get("image_url"):
+        image = str(raw["image_url"])          # távoli kép: a böngésző tölti be
+    elif img_raw:
         image = _resolve(img_raw, topic, _IMAGE_ROOTS.get(topic, []))
 
     # Hang- vagy képkérdés, aminek nincs meg a fájlja, nem játszható.
@@ -191,6 +196,8 @@ def _normalize(topic: str, i: int, raw: dict) -> Optional[Question]:
 
     explanation = str(raw.get("explanation", "")).strip()
     aliases: dict[str, list[str]] = {}
+    if raw.get("accept"):
+        aliases[options[correct]] = [str(a) for a in raw["accept"]]
     if topic in FLAG_TOPICS:
         # angol országnevek → magyar; az angol alak beírásnál továbbra is jó
         en = options[correct]
@@ -212,6 +219,8 @@ def _normalize(topic: str, i: int, raw: dict) -> Optional[Question]:
         audio=audio,
         image=image,
         caption=str(raw.get("song_title", "") or "").strip(),
+        credit=str(raw.get("credit", "") or ""),
+        credit_url=str(raw.get("credit_url", "") or ""),
     )
 
 

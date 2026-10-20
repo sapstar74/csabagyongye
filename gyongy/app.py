@@ -5,7 +5,6 @@ from __future__ import annotations
 import random
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 from . import theme
 from .catalog import GROUPS, TOPIC_BY_KEY, TOPICS, load_bank
@@ -193,10 +192,10 @@ def _typed_input(s: Session) -> None:
         else:
             st.markdown('<p class="cg-hint">Írj be valamit, vagy kérd a lehetőségeket.</p>', unsafe_allow_html=True)
     # a beviteli mező kapjon fókuszt, hogy rögtön lehessen gépelni
-    components.html(
+    st.iframe(
         f"<script>/* {s.cursor} */const d=window.parent.document;"
         "setTimeout(()=>{const i=d.querySelector('[data-testid=\"stTextInput\"] input');if(i)i.focus();},150);</script>",
-        height=0,
+        height=1,
     )
     if st.button("Nem tudom – mutasd a lehetőségeket", type="tertiary", key=f"hint_{s.cursor}"):
         s.current.hinted = True
@@ -245,6 +244,9 @@ def quiz() -> None:
         st.audio(q.audio, autoplay=not it.answered)
     if q.image:
         st.image(q.image)
+        if q.credit:
+            link = f'<a href="{esc(q.credit_url)}" target="_blank" rel="noopener">{esc(q.credit)}</a>' if q.credit_url else esc(q.credit)
+            st.markdown(f'<p class="cg-credit">{link}</p>', unsafe_allow_html=True)
 
     if not it.answered and s.typing_now():
         _typed_input(s)
@@ -380,7 +382,8 @@ def result() -> None:
         for it in wrong[:REVIEW_LIMIT]:
             q = it.question
             ex = f'<p class="ex">{esc(q.explanation)}</p>' if q.explanation else ""
-            thumb = f'<img src="{_thumb(q.image)}" alt="">' if q.image else ""
+            src = q.image if q.image and q.image.startswith("http") else (_thumb(q.image) if q.image else "")
+            thumb = f'<img src="{esc(src)}" alt="">' if src else ""
             out.append(
                 f'<div class="cg-miss">{thumb}<div><p class="q">{esc(q.text)}</p>'
                 f'<p class="you">Te: {esc(it.your_answer) or "–"}</p>'
