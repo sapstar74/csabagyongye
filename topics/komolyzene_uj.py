@@ -102,6 +102,8 @@ QUESTIONS = [
     _q("79. Brahms - Hungarian Dance No 5.mp3", 0, ["Brahms", "Liszt", "Dvořák", "Bartók"], "Brahms: 5. Magyar tánc", question="Ki a zenszerző?", song_title="Hungarian Dance No 5"),
     _q("80. Monti - Csardas.mp3", 0, ["Monti", "Sarasate", "Wieniawski", "Kreisler"], "Monti: Csárdás (hegedűre és zongorára)", question="Ki a zenszerző?", song_title="Csardas"),
     _q("81. Strauss I - Radetzky March.mp3", 0, ["Strauss I", "Strauss II", "Brahms", "Suppé"], "Johann Strauss I: Radetzky-induló (op. 228)", question="Ki a zenszerző?", song_title="Radetzky March"),
+    # áthelyezve a One hit wonders témakörből (nem egyslágeres előadók)
+    _q('one_hit_wonders/Scott Joplin - The Entertainer.mp3', 3, ['Eubie Blake', 'Jelly Roll Morton', 'George Gershwin', 'Scott Joplin'], 'Zeneszerző: Scott Joplin.', question='Hallgasd meg ezt a zeneművet és válaszd ki a zeneszerzőjét:'),
 ]
 
 # Export alias for compatibility
