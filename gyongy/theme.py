@@ -102,6 +102,9 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
 .cg-q { font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 4.4vw, 2.05rem);
   line-height: 1.18; margin: 0 0 1.2rem; letter-spacing: -0.015em; }
 .cg-q.long { font-size: clamp(1.15rem, 3.2vw, 1.5rem); line-height: 1.3; letter-spacing: 0; }
+.stElementContainer:has(> [data-testid="stIFrame"][height="1"]), .stElementContainer:has(iframe[height="1"]) { display: none; }
+.cg-credit { font-size: .78rem; color: var(--muted); margin: -.6rem 0 1rem; }
+.cg-credit a { color: inherit; text-decoration: none; } .cg-credit a:hover { text-decoration: underline; }
 .cg-caption { color: var(--muted); margin: -.6rem 0 1rem; }
 
 [data-testid="stImage"] img { max-height: 380px; width: auto !important; object-fit: contain;
