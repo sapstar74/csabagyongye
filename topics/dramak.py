@@ -33,30 +33,30 @@ DRAMAK_QUESTIONS = [
     },
     {
         "question": "Melyik drámában szerepel két szerelmes, akik családjuk ellenségeskedése miatt nem lehetnek együtt? (Romeo, Júlia, Mercutio, Tybalt)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 0,
         "explanation": "Romeo és Júlia - a két szerelmes, akik a Capulet és Montague családok ellenségeskedése miatt nem lehetnek együtt.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki férfi ruhában menekül az erdőbe? (Rosalind, Orlando, Celia, Jacques)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 2,
         "explanation": "Ahogy tetszik - Rosalind, aki férfi ruhában menekül az erdőbe, miután elűzték a udvarból.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki férfi ruhában szolgál egy hercegnél? (Viola, Orsino, Olivia, Sebastian)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 3,
         "explanation": "Vízkereszt - Viola, aki férfi ruhában szolgál Orsino hercegnél, miután hajótörést szenvedett.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki férfi ruhában védi barátját a bíróságon? (Portia, Bassanio, Antonio, Shylock)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 1,
-        "explanation": "Szeget szeggel - Portia, aki férfi ruhában védi Bassanio barátját a bíróságon.",
+        "explanation": "A velencei kalmár - Portia, aki férfi ruhában védi Bassanio barátját a bíróságon.",
         "topic": "drámák"
     },
     {
@@ -75,28 +75,28 @@ DRAMAK_QUESTIONS = [
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki álomba hullatja magát, hogy meghaljon? (Júlia, Romeo, Mercutio, Tybalt)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 0,
         "explanation": "Romeo és Júlia - Júlia álomba hullatja magát, hogy meghaljon, de Romeo nem tudja és megmérgezi magát.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki három ládikából választ? (Portia, Bassanio, Antonio, Shylock)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 1,
-        "explanation": "Szeget szeggel - Portia, aki három ládikából választ: arany, ezüst, ólom, és csak az ólomban van a kép.",
+        "explanation": "A velencei kalmár - Portia, aki három ládikából választ: arany, ezüst, ólom, és csak az ólomban van a kép.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy nő, aki ikerhúga után kutat? (Viola, Sebastian, Orsino, Olivia)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 3,
         "explanation": "Vízkereszt - Viola, aki ikerhúga, Sebastian után kutat, miután hajótörést szenvedett.",
         "topic": "drámák"
     },
     {
         "question": "Melyik drámában szerepel egy férfi, aki 'A világ egy színház' monológot mond? (Jacques, Rosalind, Orlando, Celia)",
-        "options": ["Romeo és Júlia", "Szeget szeggel", "Ahogy tetszik", "Vízkereszt"],
+        "options": ["Romeo és Júlia", "A velencei kalmár", "Ahogy tetszik", "Vízkereszt"],
         "correct": 2,
         "explanation": "Ahogy tetszik - Jacques, aki a híres 'A világ egy színház' monológot mondja.",
         "topic": "drámák"
