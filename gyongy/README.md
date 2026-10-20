@@ -15,7 +15,8 @@ Streamlit Cloudon az app beállításaiban a **Main file path** legyen `gyongy_a
 ## Mit tud
 
 - Témaválasztó csoportosítva (Zene, Kép, Történelem …), témánkénti kérdésszámmal
-- Három mód: **Gyakorlás** (azonnali visszajelzés + magyarázat), **Teszt** (kiértékelés a végén), **Hirtelen halál** (az első hibáig)
+- Két mód: **Kérdéssor** (szabadon megadott számú kérdés, akár a kiválasztott témák összes kérdése) és **Hirtelen halál** (az első hibáig)
+- Rádiógombbal állítható, mikor derüljön ki, jó-e a válasz: **rögtön a válasz után** (magyarázattal) vagy **csak a végén**
 - A kérdések a választott témák között egyenletesen oszlanak el
 - Hang- és képkérdések (zene, festmények, zászlók, logók) – a hiányzó fájlú kérdéseket kihagyja
 - Két válaszadási mód: **Választás** (4 lehetőség) vagy **Beírás** (szabad szöveg). Beírásnál a kis- és nagybetű,

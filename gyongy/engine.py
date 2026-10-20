@@ -29,21 +29,28 @@ class Input(str, Enum):
 
 
 class Mode(str, Enum):
-    PRACTICE = "practice"   # minden válasz után visszajelzés és magyarázat
-    EXAM = "exam"           # visszajelzés csak a végén
-    SUDDEN = "sudden"       # az első hibáig tart
+    SERIES = "series"   # adott számú kérdés
+    SUDDEN = "sudden"   # az első hibáig tart
 
     @property
     def label(self) -> str:
-        return {"practice": "Gyakorlás", "exam": "Teszt", "sudden": "Hirtelen halál"}[self.value]
+        return {"series": "Kérdéssor", "sudden": "Hirtelen halál"}[self.value]
 
     @property
     def hint(self) -> str:
         return {
-            "practice": "Minden válasz után látod, mi a helyes, és miért.",
-            "exam": "Végig nincs visszajelzés, a végén kapsz kiértékelést.",
+            "series": "Annyi kérdés, amennyit beállítasz.",
             "sudden": "Addig megy, amíg nem hibázol. Meddig jutsz?",
         }[self.value]
+
+
+class Feedback(str, Enum):
+    NOW = "now"         # minden válasz után kiderül, jó-e (magyarázattal)
+    END = "end"         # csak a menet végén
+
+    @property
+    def label(self) -> str:
+        return {"now": "Rögtön a válasz után", "end": "Csak a végén"}[self.value]
 
 
 @dataclass
@@ -87,6 +94,11 @@ class Session:
     cursor: int = 0
     seed: int = 0
     input: Input = Input.CHOICE
+    feedback: Feedback = Feedback.NOW
+
+    @property
+    def instant(self) -> bool:
+        return self.feedback is Feedback.NOW
 
     def typing_now(self) -> bool:
         """Az aktuális kérdésnél beviteli mezőt mutatunk-e."""
@@ -173,6 +185,7 @@ def build_session(
     seed: Optional[int] = None,
     only: Optional[list[Question]] = None,
     input: Input = Input.CHOICE,
+    feedback: Feedback = Feedback.NOW,
 ) -> Session:
     """Új menet.
 
@@ -200,4 +213,4 @@ def build_session(
         rng.shuffle(reserve)
 
     items = [_make_item(q, rng) for q in picked]
-    return Session(mode=mode, items=items, reserve=reserve if mode is Mode.SUDDEN else [], seed=seed, input=input)
+    return Session(mode=mode, items=items, reserve=reserve if mode is Mode.SUDDEN else [], seed=seed, input=input, feedback=feedback)

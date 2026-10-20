@@ -10,10 +10,9 @@ import streamlit.components.v1 as components
 from . import theme
 from .catalog import GROUPS, TOPIC_BY_KEY, TOPICS, load_bank
 from .answers import Verdict
-from .engine import Input, Mode, Session, build_session
+from .engine import Feedback, Input, Mode, Session, build_session
 from .visuals import cluster, esc, mark, pct, pearl_string, verdict
 
-COUNTS = [5, 10, 15, 20, 30, 50]
 LETTERS = "12345678"
 
 
@@ -48,9 +47,10 @@ def _go(view: str) -> None:
     S.view = view
 
 
-def _start(topics: list[str], count: int, mode: Mode, inp: Input = Input.CHOICE, only=None) -> None:
-    S.session = build_session(_bank(), topics, count, mode, only=only, input=inp)
-    S.last = {"topics": topics, "count": count, "mode": mode, "input": inp}
+def _start(topics: list[str], count: int, mode: Mode, inp: Input = Input.CHOICE,
+           fb: Feedback = Feedback.NOW, only=None) -> None:
+    S.session = build_session(_bank(), topics, count, mode, only=only, input=inp, feedback=fb)
+    S.last = {"topics": topics, "count": count, "mode": mode, "input": inp, "feedback": fb}
     _go("quiz")
 
 
@@ -97,11 +97,32 @@ def home() -> None:
 
     st.markdown('<div class="cg-section">Hogyan játszol?</div>', unsafe_allow_html=True)
     mode = st.segmented_control(
-        "Mód", list(Mode), default=S.get("mode", Mode.PRACTICE), format_func=lambda m: m.label,
+        "Mód", list(Mode), default=S.get("mode", Mode.SERIES), format_func=lambda m: m.label,
         key="mode_ctl", label_visibility="collapsed",
-    ) or Mode.PRACTICE
+    ) or Mode.SERIES
     S.mode = mode
     st.markdown(f'<p class="cg-hint">{mode.hint}</p>', unsafe_allow_html=True)
+
+    available = sum(len(bank[k]) for k in picked)
+    count = S.get("count", 10)
+    if mode is Mode.SERIES:
+        st.markdown('<div class="cg-group">Kérdések száma</div>', unsafe_allow_html=True)
+        if available:
+            c_num, c_all = st.columns([1, 2], vertical_alignment="center")
+            every = c_all.checkbox(f"Az összes kérdés ({_num(available)})", value=S.get("all", False), key="all_ctl")
+            S.all = every
+            if every:
+                count = available
+                c_num.number_input("Kérdések száma", value=available, disabled=True, label_visibility="collapsed")
+            else:
+                count = int(c_num.number_input(
+                    "Kérdések száma", min_value=1, max_value=available, value=max(1, min(count, available)),
+                    step=1, label_visibility="collapsed",
+                ))
+                S.count = count
+        else:
+            st.markdown('<p class="cg-hint">Előbb válassz témát – utána beállíthatod, hány kérdést kérsz, akár az összeset.</p>',
+                        unsafe_allow_html=True)
 
     st.markdown('<div class="cg-group">Válaszadás</div>', unsafe_allow_html=True)
     inp = st.segmented_control(
@@ -111,25 +132,27 @@ def home() -> None:
     S.inp = inp
     st.markdown(f'<p class="cg-hint">{inp.hint}</p>', unsafe_allow_html=True)
 
-    available = sum(len(bank[k]) for k in picked)
-    count = S.get("count", 10)
-    if mode is not Mode.SUDDEN:
-        st.markdown('<div class="cg-group">Kérdések száma</div>', unsafe_allow_html=True)
-        count = st.segmented_control(
-            "Kérdések száma", COUNTS, default=count, key="count_ctl", label_visibility="collapsed",
-        ) or 10
-        S.count = count
-    real = min(count, available) if mode is not Mode.SUDDEN else available
+    st.markdown('<div class="cg-group">Mikor derüljön ki, hogy jó-e a válasz?</div>', unsafe_allow_html=True)
+    fbs = list(Feedback)
+    fb = st.radio(
+        "Visszajelzés", fbs, index=fbs.index(S.get("fb", Feedback.NOW)), format_func=lambda f: f.label,
+        horizontal=True, key="fb_ctl", label_visibility="collapsed",
+    )
+    S.fb = fb
+    hint = ("Minden válasz után látod a helyes választ és a magyarázatot." if fb is Feedback.NOW
+            else "Menet közben nincs visszajelzés; a végén mindent átnézhetsz.")
+    st.markdown(f'<p class="cg-hint">{hint}</p>', unsafe_allow_html=True)
 
+    real = min(count, available)
     st.write("")
     if not picked:
         label = "Válassz legalább egy témát"
     elif mode is Mode.SUDDEN:
         label = "Indítás – az első hibáig"
     else:
-        label = f"Indítás – {real} kérdés"
+        label = f"Indítás – {_num(real)} kérdés"
     if st.button(label, type="primary", disabled=not picked, width="stretch"):
-        _start(picked, count, mode, inp)
+        _start(picked, real if mode is Mode.SERIES else 10, mode, inp, fb)
         st.rerun()
 
 
@@ -144,7 +167,7 @@ def _states(s: Session) -> list[str]:
             out.append("now")
         elif not it.answered:
             out.append("")
-        elif s.mode is Mode.EXAM:
+        elif not s.instant:
             out.append("done")
         else:
             out.append("ok" if it.is_correct else "bad")
@@ -164,7 +187,7 @@ def _typed_input(s: Session) -> None:
     if sent:
         if text.strip():
             s.answer_text(text)
-            if s.mode is Mode.EXAM:
+            if not s.instant:
                 s.advance()
             st.rerun()
         else:
@@ -193,7 +216,9 @@ def quiz() -> None:
     if left.button("‹ Kilépés", type="tertiary", key="quit"):
         _go("result" if s.answered_items else "home")
         st.rerun()
-    if s.mode is Mode.EXAM:
+    if s.mode is Mode.SUDDEN and not s.instant:
+        status = f"<b>{s.cursor + 1}</b>.&nbsp;kérdés"
+    elif not s.instant:
         status = f"<b>{s.cursor + 1}</b>&nbsp;/ {s.total}"
     elif s.mode is Mode.SUDDEN:
         status = f"sorozat:&nbsp;<b>{s.score}</b>"
@@ -202,9 +227,14 @@ def quiz() -> None:
     right.markdown(f'<div class="cg-topbar" style="justify-content:flex-end">{status}</div>', unsafe_allow_html=True)
 
     if s.mode is not Mode.SUDDEN:
-        st.markdown(pearl_string(_states(s)), unsafe_allow_html=True)
+        if s.total <= 60:
+            st.markdown(pearl_string(_states(s)), unsafe_allow_html=True)
+        else:
+            st.progress(s.cursor / s.total)
+    elif s.instant:
+        st.markdown(pearl_string(["ok"] * min(s.score, 60) + ["now"]), unsafe_allow_html=True)
     else:
-        st.markdown(pearl_string(["ok"] * s.score + ["now"]), unsafe_allow_html=True)
+        st.markdown(pearl_string(["done"] * min(s.cursor, 60) + ["now"]), unsafe_allow_html=True)
 
     st.markdown(
         f'<div class="cg-topic">{esc(TOPIC_BY_KEY[q.topic].name)}</div>'
@@ -235,7 +265,7 @@ def quiz() -> None:
                 with st.container(key=f"ans_{i}"):
                     if st.button(o, key=f"a_{s.cursor}_{i}", width="stretch", shortcut=LETTERS[i] if i < 9 else None):
                         s.answer(i)
-                        if s.mode is Mode.EXAM:
+                        if not s.instant:
                             s.advance()
                         st.rerun()
         return
@@ -274,6 +304,18 @@ def quiz() -> None:
 # Eredmény
 # ---------------------------------------------------------------------------
 
+def _cluster_marks(answered) -> list[bool]:
+    """Sok kérdésnél a fürt arányosan kicsinyítve (legfeljebb 120 szem)."""
+    marks = [it.is_correct for it in answered]
+    if len(marks) <= 120:
+        return marks
+    ok = round(120 * sum(marks) / len(marks))
+    return [True] * ok + [False] * (120 - ok)
+
+
+REVIEW_LIMIT = 100
+
+
 def result() -> None:
     s: Session = S.session
     answered = s.answered_items
@@ -297,7 +339,7 @@ def result() -> None:
         sub = f"{sub} {extra}."
 
     st.markdown(
-        f'<div class="cg-result"><div>{cluster([it.is_correct for it in answered], 220)}</div>'
+        f'<div class="cg-result"><div>{cluster(_cluster_marks(answered), 220)}</div>'
         f'<div><div class="cg-score">{big}</div><div class="cg-word">{head}</div>'
         f'<p class="cg-hint">{sub}</p></div></div>',
         unsafe_allow_html=True,
@@ -307,10 +349,11 @@ def result() -> None:
     c1, c2 = st.columns(2)
     last = S.get("last", {})
     if c1.button("Új menet ugyanezekkel", type="primary", width="stretch"):
-        _start(last["topics"], last["count"], last["mode"], last.get("input", Input.CHOICE))
+        _start(last["topics"], last["count"], last["mode"], last.get("input", Input.CHOICE),
+               last.get("feedback", Feedback.NOW))
         st.rerun()
     if misses and c2.button(f"Hibák újragyakorlása ({len(misses)})", width="stretch"):
-        S.session = build_session(_bank(), [], 0, Mode.PRACTICE, only=misses, input=s.input)
+        S.session = build_session(_bank(), [], 0, Mode.SERIES, only=misses, input=s.input, feedback=Feedback.NOW)
         _go("quiz")
         st.rerun()
     if st.button("‹ Vissza a témákhoz", type="tertiary"):
@@ -330,9 +373,11 @@ def result() -> None:
     if misses:
         st.markdown('<div class="cg-section">Ezeket érdemes átnézni</div>', unsafe_allow_html=True)
         out = []
-        for it in answered:
-            if it.is_correct:
-                continue
+        wrong = [it for it in answered if not it.is_correct]
+        if len(wrong) > REVIEW_LIMIT:
+            st.markdown(f'<p class="cg-hint">Az első {REVIEW_LIMIT} hibás válasz látszik a {_num(len(wrong))}-ból; '
+                        'a „Hibák újragyakorlása” mindet tartalmazza.</p>', unsafe_allow_html=True)
+        for it in wrong[:REVIEW_LIMIT]:
             q = it.question
             ex = f'<p class="ex">{esc(q.explanation)}</p>' if q.explanation else ""
             thumb = f'<img src="{_thumb(q.image)}" alt="">' if q.image else ""

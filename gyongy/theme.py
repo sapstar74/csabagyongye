@@ -108,6 +108,23 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
   border-radius: 10px; background: var(--surface); padding: 8px; border: 1px solid var(--line); }
 [data-testid="stAudio"] { margin-bottom: 1rem; }
 
+/* haladásjelző sok kérdésnél */
+[data-testid="stProgress"] [role="progressbar"] > div > div { background-color: var(--line) !important; }
+[data-testid="stProgress"] [role="progressbar"] > div > div > div { background-color: var(--pearl-deep) !important; }
+
+/* számbevitel */
+[data-testid="stNumberInput"] [data-baseweb="input"] { border-radius: 12px !important; border: 1.5px solid var(--line) !important;
+  background: var(--surface) !important; }
+[data-testid="stNumberInput"] [data-baseweb="input"] > div, [data-testid="stNumberInput"] input,
+[data-testid="stNumberInput"] button { background: var(--surface) !important; }
+[data-testid="stNumberInput"] input { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+[data-testid="stNumberInput"] [data-baseweb="input"]:focus-within { border-color: var(--ink) !important; }
+[data-testid="stNumberInput"] [data-testid="InputInstructions"] { display: none; }
+
+/* rádiógombok */
+[data-testid="stRadio"] label p { font-size: 1rem; }
+[data-testid="stRadio"] [role="radiogroup"] { gap: .4rem 1.4rem; }
+
 /* szabad szöveges válasz */
 [data-testid="stForm"] { padding: 0; }
 [data-testid="stTextInput"] input { font-family: var(--body); font-size: 1.15rem; font-weight: 600; color: var(--ink);
