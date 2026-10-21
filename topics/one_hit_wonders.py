@@ -66,7 +66,6 @@ ONE_HIT_WONDERS_QUESTIONS = [
     _q('Hallgasd meg! Ki az előadó?', 0, ['Van McCoy', 'KC and the Sunshine Band', 'Barry White', 'Chic'], 'Az előadó: Van McCoy.', 'one_hit_wonders/Van McCoy - The Hustle.mp3'),
     _q('Hallgasd meg! Ki az előadó?', 1, ['Snap!', 'Deee-Lite', '2 Unlimited', 'C+C Music Factory'], 'Az előadó: Deee-Lite.', 'one_hit_wonders/Deee-Lite - Groove Is In The Heart.mp3'),
     _q('Hallgasd meg! Ki az előadó?', 3, ['Grandmaster Flash', 'Kurtis Blow', 'Afrika Bambaataa', 'The Sugarhill Gang'], 'Az előadó: The Sugarhill Gang.', 'one_hit_wonders/Sugarhill Gang - Rappers Delight.mp3'),
-    _q('Hallgasd meg! Ki az előadó?', 3, ['Poison', 'W.A.S.P.', 'Quiet Riot', 'Twisted Sister'], 'Az előadó: Twisted Sister.', 'one_hit_wonders/Twisted Sister - Were Not Gonna Take It.mp3'),
     _q('Hallgasd meg! Ki az előadó?', 3, ['Tracy Chapman', 'Annie Lennox', 'k.d. lang', "Sinéad O'Connor"], "Az előadó: Sinéad O'Connor.", 'one_hit_wonders/Sinead OConnor - Nothing Compares 2 U.mp3'),
     _q('Hallgasd meg! Ki az előadó?', 2, ['Tower of Power', 'War', 'Wild Cherry', 'Average White Band'], 'Az előadó: Wild Cherry.', 'one_hit_wonders/Wild Cherry - Play That Funky Music.mp3'),
     _q('Hallgasd meg! Ki az előadó?', 1, ['Boyz II Men', 'K-Ci & JoJo', '112', 'Brian McKnight'], 'Az előadó: K-Ci & JoJo.', 'one_hit_wonders/K-Ci and JoJo - All My Life.mp3'),
