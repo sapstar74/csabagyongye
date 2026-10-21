@@ -111,4 +111,10 @@ QUESTIONS = [
     _q('one_hit_wonders/68_Morgan Wallen_Last Night.mp3', 1, ['Blake Shelton', 'Morgan Wallen', 'Luke Combs', 'Florida Georgia Line'], 'Az előadó: Morgan Wallen.'),
     _q('one_hit_wonders/a-ha - Take On Me.mp3', 3, ['Duran Duran', 'Talk Talk', 'The Human League', 'a-ha'], 'Az előadó: a-ha.'),
     _q('one_hit_wonders/Spandau Ballet - True.mp3', 0, ['Spandau Ballet', 'Culture Club', 'Wham!', 'Duran Duran'], 'Az előadó: Spandau Ballet.'),
+    _q('one_hit_wonders/04_Soft Cell_Tainted Love.mp3', 2, ['Heaven 17', 'Yazoo', 'Soft Cell', 'The Human League'], 'Az előadó: Soft Cell.'),
+    _q('one_hit_wonders/34_Carly Rae Jepsen_Call Me Maybe.mp3', 2, ['Kesha', 'Icona Pop', 'Carly Rae Jepsen', 'Owl City'], 'Az előadó: Carly Rae Jepsen.'),
+    _q('one_hit_wonders/The Verve - Bitter Sweet Symphony.mp3', 1, ['Pulp', 'The Verve', 'Blur', 'Oasis'], 'Az előadó: The Verve.'),
+    _q('one_hit_wonders/Frankie Goes to Hollywood - Relax.mp3', 1, ['Yazoo', 'Frankie Goes to Hollywood', 'Pet Shop Boys', 'Bronski Beat'], 'Az előadó: Frankie Goes to Hollywood.'),
+    _q('one_hit_wonders/Falco - Rock Me Amadeus.mp3', 3, ['Nena', 'Klaus Nomi', 'Peter Schilling', 'Falco'], 'Az előadó: Falco.'),
+    _q('one_hit_wonders/The Cardigans - Lovefool.mp3', 0, ['The Cardigans', 'Robyn', 'Ace of Base', 'Roxette'], 'Az előadó: The Cardigans.'),
 ]
