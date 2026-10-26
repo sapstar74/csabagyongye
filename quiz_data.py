@@ -170,6 +170,7 @@ from topics.rock_metal import ROCK_METAL_QUESTIONS
 from topics.dj_producer import DJ_PRODUCER_QUESTIONS
 from topics.almombol_felebresztve import ALMOMBOL_FELEBRESZTVE_QUESTIONS
 from topics.epiteszek import EPITESZEK_QUESTIONS
+from topics.kalandorok import FELFEDEZOK_QUESTIONS, URSZONDAK_QUESTIONS
 
 # Összevont témakörök: Magyar királyok+Magyar történelem, Háborúk+Világtörténelem, Földrajz+Természettudomány
 # Zászlók és zászlórészlet külön témakörök
@@ -210,6 +211,8 @@ QUIZ_DATA_BY_TOPIC = {
     "híres magyarok": HIRES_MAGYAROK_QUESTIONS,
     "becenevek": BECENEVEK_QUESTIONS,
     "építészek": EPITESZEK_QUESTIONS,
+    "felfedezők": FELFEDEZOK_QUESTIONS,
+    "űrszondák": URSZONDAK_QUESTIONS,
 }
 
 __all__ = ["QUIZ_DATA_BY_TOPIC", "KOMOLYZENE_QUESTIONS", "MAGYAR_TORTENELM_OSSZES", "ZASZLOK_OSSZES", "VILAGTORTENELM_OSSZES", "TERMESZETTUDOMANY_OSSZES"]

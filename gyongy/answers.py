@@ -27,7 +27,7 @@ HU_GIVEN = set("""
 csaba dániel dávid dénes dezső domokos ede elek endre erik ernő ervin ferenc frigyes gábor gellért géza gyula győző
 gusztáv györgy henrik ignác imre istván jakab jános jenő józsef kálmán károly kristóf lajos lászló levente lőrinc
 marcell márk márton mátyás mihály miklós mór nándor norbert ödön oszkár pál péter rezső richárd róbert sámuel
-sándor szabolcs tamás tibor tivadar vilmos viktor vince zoltán zsigmond zsolt farkas
+sándor szabolcs ferdinánd ármin tamás tibor tivadar vilmos viktor vince zoltán zsigmond zsolt farkas
 anna mária erzsébet katalin éva ilona margit zsuzsanna júlia ágnes judit irén klára magda piroska rozália terézia
 """.split())
 _ROMAN = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv",
