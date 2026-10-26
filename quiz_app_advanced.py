@@ -217,7 +217,7 @@ def reset_quiz():
         "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
-        "felfedezők": "⛵ Felfedezők és hajóik",
+        "felfedezők": "⛵ Felfedezők és híres hajók",
         "űrszondák": "🛰️ Űrszondák",
     }
     
@@ -1057,7 +1057,7 @@ def show_topic_selection():
         "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
-        "felfedezők": "⛵ Felfedezők és hajóik",
+        "felfedezők": "⛵ Felfedezők és híres hajók",
         "űrszondák": "🛰️ Űrszondák",
     }
     

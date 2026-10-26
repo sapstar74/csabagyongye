@@ -26,7 +26,7 @@ Streamlit Cloudon az app beállításaiban a **Main file path** legyen `gyongy_a
   bármikor kérhetők a lehetőségek.
 - Távoli képek is használhatók (`image_url` + kötelező `credit`, `credit_url`) – így készült a
   *20–21. századi építészek* témakör Wikimedia Commons-képekkel; a képek a böngészőbe töltődnek, a repóba nem kerülnek
-- *Kalandorok* csoport (`topics/kalandorok.py`): **Felfedezők és hajóik** (Kolumbusztól Heyerdahlig) és
+- *Kalandorok* csoport (`topics/kalandorok.py`): **Felfedezők és híres hajók** (Kolumbusztól Heyerdahlig, a Mayflowertől a Titanicig) és
   **Űrszondák** (Luna–2-től a Parker Solar Probe-ig) – kézzel válogatott, azonos kategóriájú zavaró opciókkal
 - A zászlós témák országnevei magyarul jelennek meg (`countries.py`); beírásnál az angol alak is elfogadott
 - Billentyűk: `1`–`4` a válaszokhoz, `Enter` a beküldéshez és a továbblépéshez

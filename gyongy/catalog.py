@@ -62,7 +62,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("művészet", "Művészet", "Kultúra"),
     TopicMeta("mitológia", "Mitológia", "Kultúra"),
     TopicMeta("építészek", "20–21. századi építészek", "Kultúra"),
-    TopicMeta("felfedezők", "Felfedezők és hajóik", "Kalandorok"),
+    TopicMeta("felfedezők", "Felfedezők és híres hajók", "Kalandorok"),
     TopicMeta("űrszondák", "Űrszondák", "Kalandorok"),
     TopicMeta("sport", "Sport", "Sport"),
     TopicMeta("labdarugo_palyafutas", "Labdarúgó-pályafutások", "Sport"),
