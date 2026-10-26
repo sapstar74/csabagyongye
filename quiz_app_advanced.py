@@ -217,6 +217,8 @@ def reset_quiz():
         "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
+        "felfedezők": "⛵ Felfedezők és hajóik",
+        "űrszondák": "🛰️ Űrszondák",
     }
     
     for topic_key in topics.keys():
@@ -1055,6 +1057,8 @@ def show_topic_selection():
         "becenevek": "🏷️ Becenevek, ragadványnevek",
         "biológia": "🧬 Biológia",
         "sport": "🏅 Sport",
+        "felfedezők": "⛵ Felfedezők és hajóik",
+        "űrszondák": "🛰️ Űrszondák",
     }
     
     # Randomizáló funkció – minden kategória önállóan kap alapértelmezett kérdésszámot (min 3 / max)

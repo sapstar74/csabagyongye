@@ -32,7 +32,7 @@ class TopicMeta:
 
 
 # A sorrend a választóban is ez lesz.
-GROUPS = ["Zene", "Kép", "Történelem", "Tudomány és természet", "Kultúra", "Sport", "Nyelv és emberek"]
+GROUPS = ["Zene", "Kép", "Történelem", "Tudomány és természet", "Kultúra", "Kalandorok", "Sport", "Nyelv és emberek"]
 
 TOPICS: list[TopicMeta] = [
     TopicMeta("komolyzene", "Komolyzene", "Zene"),
@@ -62,6 +62,8 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("művészet", "Művészet", "Kultúra"),
     TopicMeta("mitológia", "Mitológia", "Kultúra"),
     TopicMeta("építészek", "20–21. századi építészek", "Kultúra"),
+    TopicMeta("felfedezők", "Felfedezők és hajóik", "Kalandorok"),
+    TopicMeta("űrszondák", "Űrszondák", "Kalandorok"),
     TopicMeta("sport", "Sport", "Sport"),
     TopicMeta("labdarugo_palyafutas", "Labdarúgó-pályafutások", "Sport"),
     TopicMeta("híres magyarok", "Híres magyarok", "Nyelv és emberek"),
