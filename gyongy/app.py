@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+import time
 
 import streamlit as st
 
@@ -13,6 +14,7 @@ from .engine import Feedback, Input, Mode, Session, build_session
 from .visuals import cluster, esc, mark, pct, pearl_string, verdict
 
 LETTERS = "12345678"
+AUTO_NEXT_SECONDS = 1.5   # a visszajelzés után ennyi idő múlva jön magától a következő kérdés
 
 
 def _num(n: int) -> str:
@@ -138,7 +140,7 @@ def home() -> None:
         horizontal=True, key="fb_ctl", label_visibility="collapsed",
     )
     S.fb = fb
-    hint = ("Minden válasz után látod a helyes választ és a magyarázatot." if fb is Feedback.NOW
+    hint = ("Minden válasz után 1,5 másodpercig látod a helyes választ, aztán magától jön a következő kérdés." if fb is Feedback.NOW
             else "Menet közben nincs visszajelzés; a végén mindent átnézhetsz.")
     st.markdown(f'<p class="cg-hint">{hint}</p>', unsafe_allow_html=True)
 
@@ -296,10 +298,11 @@ def quiz() -> None:
     if q.explanation:
         st.markdown(f'<div class="cg-expl {"" if good else "bad"}">{esc(q.explanation)}</div>', unsafe_allow_html=True)
 
-    last = s.cursor == s.total - 1 or (s.mode is Mode.SUDDEN and not good)
-    if st.button("Eredmény" if last else "Következő kérdés", type="primary", width="stretch", key=f"next_{s.cursor}", shortcut="Enter"):
-        s.advance()
-        st.rerun()
+    # Nincs „Következő” gomb: a visszajelzés után magától lépünk tovább
+    # (az utolsó kérdés, illetve hirtelen halálnál a hiba után az eredményre).
+    time.sleep(AUTO_NEXT_SECONDS)
+    s.advance()
+    st.rerun()
 
 
 # ---------------------------------------------------------------------------

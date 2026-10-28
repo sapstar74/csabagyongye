@@ -8,6 +8,8 @@ import random
 import time
 import json
 from datetime import datetime
+
+AUTO_NEXT_SECONDS = 1.5  # válasz után ennyi idő múlva jön magától a következő kérdés
 import os
 from pathlib import Path
 
@@ -1756,7 +1758,7 @@ def show_quiz():
                     else:
                         st.markdown(f'<div style="background:#f5f5f4;color:#1a1a1a;padding:20px;border-radius:12px;margin:10px 0;font-size:1.1rem;">{opt}</div>', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
-            time.sleep(2)
+            time.sleep(AUTO_NEXT_SECONDS)
             st.session_state.pop('_show_answer_feedback', None)
             if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                 st.session_state.current_question += 1
@@ -1817,8 +1819,8 @@ def show_quiz():
                     # Streak frissítése
                     st.session_state.mode_manager.update_streak(is_correct)
                     
-                    # 2 mp várakozás, majd továbblépés
-                    time.sleep(2)
+                    # 1,5 mp várakozás, majd továbblépés
+                    time.sleep(AUTO_NEXT_SECONDS)
                     if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                         st.session_state.current_question += 1
                         st.session_state.question_start_time = datetime.now()
@@ -1860,8 +1862,8 @@ def show_quiz():
                         # Streak frissítése
                         st.session_state.mode_manager.update_streak(is_correct)
                         
-                        # 2 mp várakozás, majd továbblépés
-                        time.sleep(2)
+                        # 1,5 mp várakozás, majd továbblépés
+                        time.sleep(AUTO_NEXT_SECONDS)
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
@@ -1897,8 +1899,8 @@ def show_quiz():
                         # Streak frissítése
                         st.session_state.mode_manager.update_streak(is_correct)
                         
-                        # 2 mp várakozás, majd továbblépés
-                        time.sleep(2)
+                        # 1,5 mp várakozás, majd továbblépés
+                        time.sleep(AUTO_NEXT_SECONDS)
                         if st.session_state.current_question < len(st.session_state.quiz_questions) - 1:
                             st.session_state.current_question += 1
                             st.session_state.question_start_time = datetime.now()
