@@ -29,7 +29,8 @@ Streamlit Cloudon az app beállításaiban a **Main file path** legyen `gyongy_a
 - *Kalandorok* csoport (`topics/kalandorok.py`): **Felfedezők és híres hajók** (Kolumbusztól Heyerdahlig, a Mayflowertől a Titanicig) és
   **Űrszondák** (Luna–2-től a Parker Solar Probe-ig) – kézzel válogatott, azonos kategóriájú zavaró opciókkal
 - A zászlós témák országnevei magyarul jelennek meg (`countries.py`); beírásnál az angol alak is elfogadott
-- Billentyűk: `1`–`4` a válaszokhoz, `Enter` a beküldéshez és a továbblépéshez
+- Billentyűk: `1`–`4` a válaszokhoz, `Enter` a beíráshoz
+- Nincs „Következő” gomb: a válasz után 1,5 másodperccel magától jön a következő kérdés (`AUTO_NEXT_SECONDS` az `app.py`-ban)
 - Eredmény szőlőfürtként, témánkénti bontás, a hibás kérdések átnézése és újragyakorlása
 
 ## Felépítés
