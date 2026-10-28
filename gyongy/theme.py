@@ -112,8 +112,8 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
 [data-testid="stAudio"] { margin-bottom: 1rem; }
 
 /* haladásjelző sok kérdésnél */
-[data-testid="stProgress"] [role="progressbar"] > div > div { background-color: var(--line) !important; }
-[data-testid="stProgress"] [role="progressbar"] > div > div > div { background-color: var(--pearl-deep) !important; }
+[data-testid="stProgressBarTrack"] { background-color: var(--line) !important; }
+[data-testid="stProgressBarTrack"] > div { background-color: var(--pearl-deep) !important; }
 
 /* számbevitel */
 [data-testid="stNumberInput"] [data-baseweb="input"] { border-radius: 12px !important; border: 1.5px solid var(--line) !important;
@@ -127,6 +127,22 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
 /* rádiógombok */
 [data-testid="stRadio"] label p { font-size: 1rem; }
 [data-testid="stRadio"] [role="radiogroup"] { gap: .4rem 1.4rem; }
+
+/* Sötét rendszertéma mellett a Streamlit világos feliratot és világos kijelölést adna ezeknek a
+   widgeteknek, ami a mindig világos lapon eltűnik. Itt az app saját palettáját rögzítjük. */
+[data-testid="stRadioOption"] p, [data-testid="stCheckbox"] p { color: var(--ink) !important; }
+[data-testid="stRadioOption"] > div > div:first-child { background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important; }
+[data-testid="stRadioOption"][data-selected="true"] > div > div:first-child { background: var(--ink) !important;
+  border-color: var(--ink) !important; }
+[data-testid="stRadioOption"] > div > div:first-child > div { background: var(--surface) !important; }
+[data-testid="stCheckbox"] label > div:first-of-type { background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important; }
+[data-testid="stCheckbox"] label[data-selected="true"] > div:first-of-type { background: var(--ink) !important;
+  border-color: var(--ink) !important; }
+[data-testid="stCheckbox"] label > div:first-of-type svg { color: var(--paper) !important; }
+[data-testid="stNumberInput"] button { color: var(--ink) !important; }
+[data-testid="stNumberInput"] input:disabled { color: var(--muted) !important; -webkit-text-fill-color: var(--muted) !important; }
 
 /* szabad szöveges válasz */
 [data-testid="stForm"] { padding: 0; }
