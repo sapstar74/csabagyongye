@@ -48,6 +48,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("magyar_festmenyek", "Magyar festmények", "Kép"),
     TopicMeta("zászlók", "Zászlók", "Kép"),
     TopicMeta("zászlórészlet", "Zászlórészletek", "Kép"),
+    TopicMeta("zászlórészlet_nehéz", "Zászlórészletek – nehéz (Afrika, arab, Óceánia)", "Kép"),
     TopicMeta("sport_logók", "Sportlogók", "Kép"),
     TopicMeta("magyar történelem", "Magyar történelem", "Történelem"),
     TopicMeta("világtörténelem", "Világtörténelem", "Történelem"),
@@ -116,7 +117,7 @@ _IMAGE_ROOTS = {
     "festmények": ["festmény_képek"],
     "magyar_festmenyek": ["magyar_festmeny_kepek", "magyar_festmény_képek copy"],
 }
-_VISUAL_TOPICS = {"festmények", "magyar_festmenyek", "zászlók", "zászlórészlet", "sport_logók"}
+_VISUAL_TOPICS = {"festmények", "magyar_festmenyek", "zászlók", "zászlórészlet", "zászlórészlet_nehéz", "sport_logók"}
 _MEDIA_EXT ={".mp3", ".m4a", ".wav", ".ogg", ".png", ".jpg", ".jpeg", ".webp", ".gif"}
 
 

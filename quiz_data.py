@@ -145,6 +145,7 @@ from topics.dramak import DRAMAK_QUESTIONS
 from topics.sport_logok import SPORT_LOGOK_QUESTIONS
 from topics.zaszlok_all_questions import ZASZLOK_QUESTIONS_ALL
 from topics.zaszlok_reszletek import ZASZLOK_RESZLETEK_QUESTIONS
+from topics.zaszlok_reszletek_nehez import ZASZLOK_RESZLETEK_NEHEZ_QUESTIONS
 from topics.magyar_zenekarok_uj import QUESTIONS as MAGYAR_ZENEKAROK_QUESTIONS_UJ
 from topics.nemzetkozi_zenekarok_final_fixed_with_real_audio import QUESTIONS as NEMZETKOZI_ZENEKAROK_QUESTIONS
 from topics.idiota_szavak import IDIOTA_SZAVAK_QUESTIONS
@@ -194,6 +195,7 @@ QUIZ_DATA_BY_TOPIC = {
     "sport_logók": SPORT_LOGOK_QUESTIONS,
     "zászlók": list(ZASZLOK_QUESTIONS_ALL),
     "zászlórészlet": list(ZASZLOK_RESZLETEK_QUESTIONS),
+    "zászlórészlet_nehéz": list(ZASZLOK_RESZLETEK_NEHEZ_QUESTIONS),
     "idióta_szavak": IDIOTA_SZAVAK_QUESTIONS,
     "festmények": FESTMENY_QUESTIONS,
     "magyar_festmenyek": MAGYAR_FESTMENYEK_QUESTIONS,

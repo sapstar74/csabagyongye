@@ -93,4 +93,4 @@ EXTRA_ALIASES = {
     "Kelet-Timor": ["Timor-Leste"],
 }
 
-FLAG_TOPICS = {"zászlók", "zászlórészlet"}
+FLAG_TOPICS = {"zászlók", "zászlórészlet", "zászlórészlet_nehéz"}
