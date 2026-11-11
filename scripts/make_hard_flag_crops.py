@@ -22,6 +22,7 @@ from topics.zaszlok_reszletek_nehez import CROPS, CROP_SUBDIR  # noqa: E402
 SRC = ROOT / "zaszlo_kepek"
 DST = ROOT / CROP_SUBDIR
 MAX_SIDE = 480
+MIN_SIDE = 320
 
 
 def crop_one(code: str, box: tuple) -> Image.Image:
@@ -30,6 +31,9 @@ def crop_one(code: str, box: tuple) -> Image.Image:
     x0, y0, x1, y1 = box
     out = im.crop((round(x0 * w), round(y0 * h), round(x1 * w), round(y1 * h)))
     out.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
+    if max(out.size) < MIN_SIDE:  # apró címerrészlet: felnagyítjuk, hogy ne legyen bélyegnyi
+        k = MIN_SIDE / max(out.size)
+        out = out.resize((round(out.width * k), round(out.height * k)), Image.LANCZOS)
     return out
 
 

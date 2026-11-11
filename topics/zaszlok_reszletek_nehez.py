@@ -1,5 +1,5 @@
 # Zászlórészletek – nehéz blokk
-# Könnyen összetéveszthető afrikai, arab és ritka óceániai zászlók részletei.
+# Könnyen összetéveszthető afrikai, arab, közép-amerikai és ritka óceániai zászlók részletei.
 #
 # Az eredeti "zászlórészlet" témakör (topics/zaszlok_reszletek.py, data/flags/crop/)
 # változatlan; ez külön témakör, saját képekkel a data/flags/crop_nehez/ mappában.
@@ -101,6 +101,52 @@ CROPS: list[dict] = [
      "tip": "Fehér kard zöld mezőn."},
     {"code": "LY", "box": (0.28, 0.12, 0.76, 0.82), "wrong": ["TR", "TN", "DZ"], "region": "Arab világ",
      "tip": "Fehér félhold és csillag fekete sávban, felül piros."},
+
+    # --- Közép-Amerika (földszoros, Mexikó, Karib-térség) -------------------
+    {"code": "SV", "box": (0.452, 0.39, 0.548, 0.60), "wrong": ["NI", "HN", "GT"], "region": "Közép-Amerika",
+     "tip": "A háromszög mögött kék-fehér zászlók, alatta babérág és szalag – Nicaraguánál a háromszög üresen áll, benne szivárvány."},
+    {"code": "NI", "box": (0.455, 0.385, 0.545, 0.585), "wrong": ["SV", "HN", "AR"], "region": "Közép-Amerika",
+     "tip": "Háromszög öt vulkánnal és szivárvánnyal, körülötte semmi – Salvadornál zászlók és babérág övezi."},
+    {"code": "HN", "box": (0.00, 0.12, 0.56, 0.72), "wrong": ["NI", "SV", "AR"], "region": "Közép-Amerika",
+     "tip": "Türkizkék csillagok a fehér sávban, címer nélkül – a többi kék-fehér-kék zászló közepén címer vagy nap van."},
+    {"code": "GT", "box": (0.18, 0.10, 0.60, 0.90), "wrong": ["AR", "SV", "NI"], "region": "Közép-Amerika",
+     "tip": "Függőleges égszínkék sáv, mellette a címer széle – a hasonmások kék-fehér sávjai vízszintesek."},
+    {"code": "CR", "box": (0.00, 0.08, 0.30, 0.92), "wrong": ["TH", "KP", "HT"], "region": "Közép-Amerika",
+     "tip": "Kék kívül, széles piros középen, fehér csíkokkal – Thaiföldnél fordítva: piros kívül, kék középen."},
+    {"code": "PA", "box": (0.00, 0.00, 0.56, 0.56), "wrong": ["CL", "CU", "PR"], "region": "Közép-Amerika",
+     "tip": "Fehér mező kék csillaggal, mellette piros, alatta kék negyed – Chilénél fehér csillag a kék négyzetben."},
+    {"code": "BZ", "box": (0.16, 0.00, 0.56, 0.56), "wrong": ["HT", "CR", "KP"], "region": "Közép-Amerika",
+     "tip": "Keskeny piros csík felül, sötétkék mező és zöld lombkoszorú – Haitinél fehér négyzetben van a címer."},
+    {"code": "MX", "box": (0.24, 0.18, 0.64, 0.84), "wrong": ["IT", "IR", "HU"], "region": "Közép-Amerika",
+     "tip": "Kaktuszon ülő sas a fehér sávban, balra zöld – Olaszországnál a fehér üres."},
+    {"code": "CU", "box": (0.00, 0.14, 0.54, 0.86), "wrong": ["PR", "PH", "CZ"], "region": "Közép-Amerika",
+     "tip": "Piros háromszög, kék csíkok – Puerto Ricónál pont fordítva: kék háromszög, piros csíkok."},
+    {"code": "PR", "box": (0.00, 0.14, 0.54, 0.86), "wrong": ["CU", "PH", "CZ"], "region": "Közép-Amerika",
+     "tip": "Kék háromszög, piros csíkok – Kubánál piros háromszög, kék csíkok."},
+    {"code": "DO", "box": (0.30, 0.20, 0.70, 0.80), "wrong": ["DM", "PA", "HT"], "region": "Közép-Amerika",
+     "tip": "Fehér kereszt, kék és piros negyedek, középen címer – a Dominikai Közösség (Dominika) egészen más: zöld mező papagájjal."},
+    {"code": "DM", "box": (0.30, 0.18, 0.74, 0.82), "wrong": ["DO", "GD", "JM"], "region": "Közép-Amerika",
+     "tip": "Piros korongban császáramazon (papagáj), körülötte zöld csillagok, sárga-fekete-fehér kereszt."},
+    {"code": "HT", "box": (0.30, 0.30, 0.70, 0.80), "wrong": ["LI", "DO", "BZ"], "region": "Közép-Amerika",
+     "tip": "Fehér négyzetben pálmafa és ágyúk, felül kék, alul piros – Liechtensteinnél korona van a felső sarokban."},
+    {"code": "JM", "box": (0.00, 0.00, 0.56, 0.56), "wrong": ["KN", "BS", "TZ"], "region": "Közép-Amerika",
+     "tip": "Sárga átlós kereszt, a rúdnál fekete, felül zöld."},
+    {"code": "BS", "box": (0.00, 0.14, 0.54, 0.86), "wrong": ["JM", "LC", "KN"], "region": "Közép-Amerika",
+     "tip": "Fekete háromszög a rúdnál, akvamarin–arany–akvamarin sávok."},
+    {"code": "BB", "box": (0.30, 0.10, 0.70, 0.90), "wrong": ["VC", "UA", "GD"], "region": "Közép-Amerika",
+     "tip": "Fekete háromágú szigony a sárga sávban, két oldalt kék – Saint Vincentnél jobbra zöld, középen zöld rombuszok."},
+    {"code": "VC", "box": (0.26, 0.10, 0.76, 0.90), "wrong": ["BB", "GD", "LC"], "region": "Közép-Amerika",
+     "tip": "Három zöld rombusz V alakban a sárga sávon, balra kék, jobbra zöld."},
+    {"code": "LC", "box": (0.24, 0.10, 0.76, 0.96), "wrong": ["AG", "BS", "VC"], "region": "Közép-Amerika",
+     "tip": "Fekete és sárga háromszög fehér szegéllyel, világoskék mezőn."},
+    {"code": "AG", "box": (0.20, 0.00, 0.80, 0.76), "wrong": ["LC", "KN", "GD"], "region": "Közép-Amerika",
+     "tip": "Felkelő arany nap fekete sávon, alatta kék és fehér, két oldalt piros ék."},
+    {"code": "KN", "box": (0.24, 0.14, 0.80, 0.86), "wrong": ["JM", "TZ", "TT"], "region": "Közép-Amerika",
+     "tip": "Sárga szegélyű fekete átló két fehér csillaggal, zöld és piros között – Tanzániánál nincs csillag, alul kék."},
+    {"code": "GD", "box": (0.25, 0.00, 0.75, 0.62), "wrong": ["DM", "VC", "AG"], "region": "Közép-Amerika",
+     "tip": "Piros keret sárga csillagokkal, középen piros korongban sárga csillag, sárga-zöld háromszögek."},
+    {"code": "TT", "box": (0.20, 0.10, 0.80, 0.90), "wrong": ["TZ", "KN", "NA"], "region": "Közép-Amerika",
+     "tip": "Fehér szegélyű fekete átló piros mezőn – Tanzániánál sárga szegély, zöld és kék mező."},
 
     # --- Óceánia (ritkák) ---------------------------------------------------
     {"code": "TV", "box": (0.55, 0.30, 0.97, 0.97), "wrong": ["FJ", "CK", "NU"], "region": "Óceánia",
