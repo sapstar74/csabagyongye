@@ -170,6 +170,7 @@ from topics.hip_hop import HIP_HOP_QUESTIONS
 from topics.rock_metal import ROCK_METAL_QUESTIONS
 from topics.dj_producer import DJ_PRODUCER_QUESTIONS
 from topics.almombol_felebresztve import ALMOMBOL_FELEBRESZTVE_QUESTIONS
+from topics.rock_70s import ROCK_70S_QUESTIONS
 from topics.epiteszek import EPITESZEK_QUESTIONS
 from topics.kalandorok import FELFEDEZOK_QUESTIONS, URSZONDAK_QUESTIONS
 
@@ -189,6 +190,7 @@ QUIZ_DATA_BY_TOPIC = {
     "rock_metal": ROCK_METAL_QUESTIONS,
     "dj_producer": DJ_PRODUCER_QUESTIONS,
     "almombol_felebresztve": ALMOMBOL_FELEBRESZTVE_QUESTIONS,
+    "rock_70s": ROCK_70S_QUESTIONS,
     "tudósok": TUDOSOK_QUESTIONS,
     "mitológia": MITOLOGIA_QUESTIONS_ALL,
     "állatok": ALLATOK_QUESTIONS_BALANCED,

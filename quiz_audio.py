@@ -81,7 +81,7 @@ def get_audio_file_for_question(question, topic):
             audio_path = audio_dir / question["audio_file"]
             if audio_path.exists():
                 return str(audio_path)
-    elif topic == "almombol_felebresztve":
+    elif topic in ("almombol_felebresztve", "rock_70s"):
         if "audio_file" in question and question["audio_file"]:
             audio_path = _PROJECT_ROOT / "audio_files" / question["audio_file"]
             if audio_path.exists():
@@ -289,6 +289,11 @@ def get_audio_tracks_by_category():
             "title": "😴 Álmomból felébresztve",
             "audio_dirs": ["audio_files/one_hit_wonders", "audio_files/nemzetkozi_zenekarok"],
             "question_file": "topics/almombol_felebresztve.py"
+        },
+        "rock_70s": {
+            "title": "🎸 70s Rock",
+            "audio_dirs": ["audio_files/rock_70s"],
+            "question_file": "topics/rock_70s.py"
         }
     }
 
