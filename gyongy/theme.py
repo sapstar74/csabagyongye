@@ -143,6 +143,19 @@ header[data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSideb
 [data-testid="stCheckbox"] label > div:first-of-type svg { color: var(--paper) !important; }
 [data-testid="stNumberInput"] button { color: var(--ink) !important; }
 [data-testid="stNumberInput"] input:disabled { color: var(--muted) !important; -webkit-text-fill-color: var(--muted) !important; }
+/* Kérdésszám-csúszka. Sötét rendszertémánál a Streamlit szinte fehér (#e7e5e4) sávot, pöttyöt és értéket
+   rajzolna a mindig világos lapra. A sáv színátmenetét nem lehet témától függően átszínezni, ezért a sáv
+   egyszínű, a kitöltést pedig a pötty bal oldalára húzott vonal adja; így mindkét témában ugyanúgy néz ki. */
+[data-testid="stSlider"] [role="group"] > div { clip-path: inset(-3rem -3rem -3rem 0); }
+[data-testid="stSlider"] [role="group"] > div > div:first-child { background: var(--line) !important; }
+[data-testid="stSlider"] [role="group"] > div > div[style*="left"] { background: var(--ink) !important; }
+[data-testid="stSlider"] [role="group"] > div > div[style*="left"]::before { content: ""; position: absolute;
+  top: 50%%; right: 50%%; width: 2000px; height: 4px; margin-top: -2px; background: var(--ink); pointer-events: none; }
+[data-testid="stSliderThumbValue"] p { color: var(--ink) !important; font-weight: 700; }
+[data-testid="stSlider"] [role="group"][data-disabled] > div > div[style*="left"],
+[data-testid="stSlider"] [role="group"][data-disabled] > div > div[style*="left"]::before { background: var(--muted) !important; }
+[data-testid="stSlider"] [role="group"][data-disabled] [data-testid="stSliderThumbValue"] p { color: var(--muted) !important; }
+[data-testid="stSliderTickBar"] p { color: var(--muted) !important; }
 
 /* szabad szöveges válasz */
 [data-testid="stForm"] { padding: 0; }

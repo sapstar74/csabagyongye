@@ -15,6 +15,7 @@ from .visuals import cluster, esc, mark, pct, pearl_string, verdict
 
 LETTERS = "12345678"
 AUTO_NEXT_SECONDS = 1.5   # a visszajelzés után ennyi idő múlva jön magától a következő kérdés
+SLIDER_MIN, SLIDER_MAX = 3, 50   # a kérdésszám-csúszka tartománya
 
 
 def _num(n: int) -> str:
@@ -46,6 +47,14 @@ def _thumb(path: str, size: int = 160) -> str:
 
 def _go(view: str) -> None:
     S.view = view
+
+
+def _count_from_slider() -> None:
+    S.count = S.cnt_slider
+
+
+def _count_from_input() -> None:
+    S.count = int(S.cnt_num)
 
 
 def _start(topics: list[str], count: int, mode: Mode, inp: Input = Input.CHOICE,
@@ -109,18 +118,29 @@ def home() -> None:
     if mode is Mode.SERIES:
         st.markdown('<div class="cg-group">Kérdések száma</div>', unsafe_allow_html=True)
         if available:
-            c_num, c_all = st.columns([1, 2], vertical_alignment="center")
-            every = c_all.checkbox(f"Az összes kérdés ({_num(available)})", value=S.get("all", False), key="all_ctl")
-            S.all = every
-            if every:
-                count = available
-                c_num.number_input("Kérdések száma", value=available, disabled=True, label_visibility="collapsed")
-            else:
-                count = int(c_num.number_input(
-                    "Kérdések száma", min_value=1, max_value=available, value=max(1, min(count, available)),
-                    step=1, label_visibility="collapsed",
-                ))
+            every = S.get("all", False)
+            # Fő bevitel: csúszka 3–50 között (ha kevesebb kérdés van, addig).
+            # Mellette szabad beviteli mező: ebbe bármennyi írható 1-től az elérhető kérdésszámig;
+            # 50 fölötti értéknél a csúszka a végén áll.
+            s_min, s_max = min(SLIDER_MIN, available), min(SLIDER_MAX, available)
+            count = max(1, min(count, available))
+            if not every:
                 S.count = count
+                S.cnt_num = count
+                S.cnt_slider = max(s_min, min(count, s_max))
+            if s_max > s_min:
+                st.slider("Kérdések száma", s_min, s_max, key="cnt_slider", step=1, disabled=every,
+                          on_change=_count_from_slider, label_visibility="collapsed")
+            c_num, c_all = st.columns([1, 2], vertical_alignment="center")
+            if every:
+                c_num.number_input("Pontos szám", value=available, disabled=True, label_visibility="collapsed")
+            else:
+                c_num.number_input("Pontos szám", min_value=1, max_value=available, step=1, key="cnt_num",
+                                   on_change=_count_from_input, label_visibility="collapsed")
+            S.all = c_all.checkbox(f"Az összes kérdés ({_num(available)})", value=every, key="all_ctl")
+            if S.all != every:
+                st.rerun()
+            count = available if S.all else S.count
         else:
             st.markdown('<p class="cg-hint">Előbb válassz témát – utána beállíthatod, hány kérdést kérsz, akár az összeset.</p>',
                         unsafe_allow_html=True)
