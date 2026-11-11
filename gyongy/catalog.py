@@ -49,7 +49,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("magyar_festmenyek", "Magyar festmények", "Kép"),
     TopicMeta("zászlók", "Zászlók", "Kép"),
     TopicMeta("zászlórészlet", "Zászlórészletek", "Kép"),
-    TopicMeta("zászlórészlet_nehéz", "Zászlórészletek – nehéz (Afrika, arab, Óceánia)", "Kép"),
+    TopicMeta("zászlórészlet_nehéz", "Zászlórészletek – nehéz (Afrika, arab, Közép-Amerika, Óceánia)", "Kép"),
     TopicMeta("sport_logók", "Sportlogók", "Kép"),
     TopicMeta("magyar történelem", "Magyar történelem", "Történelem"),
     TopicMeta("világtörténelem", "Világtörténelem", "Történelem"),
