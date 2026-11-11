@@ -1,4 +1,4 @@
-# „Klasszikus rock” (korábban: 70s Rock) – zenei kategória; súlypontja a 70-es évek, de 1964–1988 közötti dalok is vannak benne.
+# „Klasszikus rock” (korábban: 70s Rock) – zenei kategória; súlypontja a 70-es évek, de 1964–1988 közötti dalok (és egy 2003-as retró rock: Jet) is vannak benne.
 #
 # Az audio útvonalak az audio_files mappához képest értendők.
 #   * A már meglévő felvételeket (one_hit_wonders/, nemzetkozi_zenekarok/, rock_metal/) újrahasznosítjuk.
@@ -116,6 +116,8 @@ _ALL = [
     _q(_new(54, "The_Police_Message_in_a_Bottle"), "The Police", ["Dire Straits", "The Knack", "The Cars"], "Message in a Bottle", 1979),
     _q(_new(55, "Bob_Seger_Old_Time_Rock_and_Roll"), "Bob Seger", ["Bruce Springsteen", "Thin Lizzy", "Tom Petty"], "Old Time Rock and Roll", 1978),
     _q(_new(56, "Joni_Mitchell_Big_Yellow_Taxi"), "Joni Mitchell", ["Carole King", "Joan Baez", "Fleetwood Mac"], "Big Yellow Taxi", 1970),
+    _q(_new(57, "Jet_Are_You_Gonna_Be_My_Girl"), "Jet", ["The Vines", "The Hives", "Wolfmother"], "Are You Gonna Be My Girl", 2003),
+    _q(_new(58, "John_Denver_Take_Me_Home_Country_Roads"), "John Denver", ["Glen Campbell", "James Taylor", "Kenny Rogers"], "Take Me Home, Country Roads", 1971),
 ]
 
 # Csak a lejátszható kérdések (meglévő mp3) kerülnek a kvízbe.
