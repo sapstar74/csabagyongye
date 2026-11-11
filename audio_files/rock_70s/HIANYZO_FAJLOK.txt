@@ -5,14 +5,4 @@ Ellenőrzés: python3 -m topics.rock_70s
 
 
 audio_files/rock_70s/01_ACDC_TNT.mp3   ←  AC/DC – T.N.T. (1975)
-audio_files/rock_70s/02_ACDC_Highway_to_Hell.mp3   ←  AC/DC – Highway to Hell (1979)
-audio_files/rock_70s/03_Iggy_Pop_The_Passenger.mp3   ←  Iggy Pop – The Passenger (1977)
-audio_files/rock_70s/04_CCR_Bad_Moon_Rising.mp3   ←  Creedence Clearwater Revival – Bad Moon Rising (1969)
-audio_files/rock_70s/05_Pink_Floyd_Another_Brick_in_the_Wall.mp3   ←  Pink Floyd – Another Brick in the Wall, Part 2 (1979)
-audio_files/rock_70s/06_Pink_Floyd_Money.mp3   ←  Pink Floyd – Money (1973)
-audio_files/rock_70s/07_Led_Zeppelin_Whole_Lotta_Love.mp3   ←  Led Zeppelin – Whole Lotta Love (1969)
-audio_files/rock_70s/08_Led_Zeppelin_Stairway_to_Heaven.mp3   ←  Led Zeppelin – Stairway to Heaven (1971)
-audio_files/rock_70s/09_Jethro_Tull_Aqualung.mp3   ←  Jethro Tull – Aqualung (1971)
 audio_files/rock_70s/18_Eagles_Hotel_California.mp3   ←  Eagles – Hotel California (1977)
-audio_files/rock_70s/49_ZZ_Top_La_Grange.mp3   ←  ZZ Top – La Grange (1973)
-audio_files/rock_70s/56_Joni_Mitchell_Big_Yellow_Taxi.mp3   ←  Joni Mitchell – Big Yellow Taxi (1970)
