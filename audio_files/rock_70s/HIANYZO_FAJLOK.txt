@@ -1,0 +1,8 @@
+Klasszikus rock (rock_70s) – még hiányzó hangfájlok
+
+Ide kerülnek a topics/rock_70s.py új számai. Egy kérdés akkor jelenik meg a kvízben, ha az mp3 pontosan ezen a néven itt van.
+Ellenőrzés: python3 -m topics.rock_70s
+
+
+audio_files/rock_70s/01_ACDC_TNT.mp3   ←  AC/DC – T.N.T. (1975)
+audio_files/rock_70s/18_Eagles_Hotel_California.mp3   ←  Eagles – Hotel California (1977)
