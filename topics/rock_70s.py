@@ -1,4 +1,4 @@
-# „70s Rock” – zenei kategória.
+# „Klasszikus rock” (korábban: 70s Rock) – zenei kategória; súlypontja a 70-es évek, de 1964–1988 közötti dalok is vannak benne.
 #
 # Az audio útvonalak az audio_files mappához képest értendők.
 #   * A már meglévő felvételeket (one_hit_wonders/, nemzetkozi_zenekarok/, rock_metal/) újrahasznosítjuk.
@@ -49,6 +49,15 @@ _ALL = [
     _q("rock_metal/06_Alice_Cooper.mp3", "Alice Cooper", ["Kiss", "Iggy Pop", "Ozzy Osbourne"], "School's Out", 1972),
     _q("rock_metal/07_Black_Sabbath.mp3", "Black Sabbath", ["Deep Purple", "Led Zeppelin", "Uriah Heep"], "Iron Man", 1970),
     _q("rock_metal/32_Twisted_Sister.mp3", "Twisted Sister", ["Kiss", "Quiet Riot", "Mötley Crüe"], "We're Not Gonna Take It", 1984),
+    _q("nemzetkozi_zenekarok/69. The Beatles - For No One.mp3", "The Beatles", ["The Kinks", "The Zombies", "The Hollies"], "For No One", 1966),
+    _q("nemzetkozi_zenekarok/112_Aphrodites_Child_End_of_the_World.mp3", "Aphrodite's Child", ["Procol Harum", "The Moody Blues", "King Crimson"], "End of the World", 1968),
+    _q("nemzetkozi_zenekarok/68. Queen - 39.mp3", "Queen", ["Electric Light Orchestra", "10cc", "Supertramp"], "'39", 1975),
+    _q("one_hit_wonders/Smokie - Living Next Door to Alice.mp3", "Smokie", ["Racey", "Mud", "The Rubettes"], "Living Next Door to Alice", 1976),
+    _q("one_hit_wonders/Suzi Quatro - Stumblin In.mp3", "Suzi Quatro", ["Bonnie Tyler", "Pat Benatar", "Joan Jett"], "Stumblin' In", 1978),
+    _q("rock_metal/09_Judas_Priest.mp3", "Judas Priest", ["Iron Maiden", "Saxon", "Motörhead"], "Breaking the Law", 1980),
+    _q("rock_metal/10_Motorhead.mp3", "Motörhead", ["Saxon", "Judas Priest", "AC/DC"], "Ace of Spades", 1980),
+    _q("rock_metal/13_Ozzy_Osbourne.mp3", "Ozzy Osbourne", ["Alice Cooper", "Rainbow", "Dio"], "Crazy Train", 1980),
+    _q("rock_metal/08_Iron_Maiden.mp3", "Iron Maiden", ["Judas Priest", "Saxon", "Def Leppard"], "The Trooper", 1983),
 
     # --- Új felvételek: audio_files/rock_70s/ ---
     _q(_new(1, "ACDC_TNT"), "AC/DC", ["Rose Tattoo", "Thin Lizzy", "Aerosmith"], "T.N.T.", 1975),

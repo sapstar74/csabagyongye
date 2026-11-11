@@ -197,7 +197,7 @@ def reset_quiz():
         "rock_metal": "🤘 Rock és Metal",
         "dj_producer": "🎧 DJ / Producer",
         "almombol_felebresztve": "😴 Álmomból felébresztve",
-        "rock_70s": "🎸 70s Rock",
+        "rock_70s": "🎸 Klasszikus rock",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -1039,7 +1039,7 @@ def show_topic_selection():
         "rock_metal": "🤘 Rock és Metal",
         "dj_producer": "🎧 DJ / Producer",
         "almombol_felebresztve": "😴 Álmomból felébresztve",
-        "rock_70s": "🎸 70s Rock",
+        "rock_70s": "🎸 Klasszikus rock",
         "festmények": "🎨 Festmények",
         "magyar_festmenyek": "🇭🇺 Magyar festmények",
         "regények": "📚 Regények",
@@ -2477,7 +2477,7 @@ def show_bulk_youtube_upload_tab():
         "rock_metal": "🤘 Rock és Metal",
         "dj_producer": "🎧 DJ / Producer",
         "almombol_felebresztve": "😴 Álmomból felébresztve",
-        "rock_70s": "🎸 70s Rock",
+        "rock_70s": "🎸 Klasszikus rock",
     }
     category_options = ["— Válassz kategóriát —"] + list(music_categories.keys())
     selected_category = st.selectbox(
@@ -2794,7 +2794,7 @@ def show_youtube_search_tab():
                         "rock_metal": "🤘 Rock és Metal",
                         "dj_producer": "🎧 DJ / Producer",
                         "almombol_felebresztve": "😴 Álmomból felébresztve",
-                        "rock_70s": "🎸 70s Rock",
+                        "rock_70s": "🎸 Klasszikus rock",
                     }
                     
                     selected_category = st.selectbox(

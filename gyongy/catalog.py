@@ -44,7 +44,7 @@ TOPICS: list[TopicMeta] = [
     TopicMeta("rock_metal", "Rock és metal", "Zene"),
     TopicMeta("dj_producer", "DJ-k és producerek", "Zene"),
     TopicMeta("almombol_felebresztve", "Álmomból felébresztve", "Zene"),
-    TopicMeta("rock_70s", "70s Rock", "Zene"),
+    TopicMeta("rock_70s", "Klasszikus rock", "Zene"),
     TopicMeta("festmények", "Festmények", "Kép"),
     TopicMeta("magyar_festmenyek", "Magyar festmények", "Kép"),
     TopicMeta("zászlók", "Zászlók", "Kép"),
