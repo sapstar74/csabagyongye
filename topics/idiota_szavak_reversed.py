@@ -210,5 +210,33 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """Az 'Aiolosz' (Aiölosz / Aeolus) a görög mitológiában a szelek ura, Aiolia királya.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Mezopotámiai lépcsőzetes templomtorony, tetején szentéllyel** - melyik idióta szóra gondolok?""",
+        "correct_answer": """zikkurat""",
+        "explanation": """A 'zikkurat' az ókori Mezopotámia teraszos templomtornya; a legismertebb az uri zikkurat.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Svéd erjesztett balti hering, híresen átható szagú, konzervdobozban** - melyik idióta szóra gondolok?""",
+        "correct_answer": """surströmming""",
+        "explanation": """A 'surströmming' (svédül 'savanyú hering') sóban erjesztett balti hering, amely a dobozban tovább erjed.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Izlandi erjesztett, majd hónapokig szárított cápahús** - melyik idióta szóra gondolok?""",
+        "correct_answer": """hákarl""",
+        "explanation": """A 'hákarl' izlandi nemzeti étel: grönlandi cápa erjesztett, szárított húsa, erős ammóniaszaggal.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Szláv mitológiai vízitündér, gyakran vízbe fúlt lány szelleme (Dvořák operájának címe is)** - melyik idióta szóra gondolok?""",
+        "correct_answer": """ruszalka""",
+        "explanation": """A 'ruszalka' a szláv néphitben vízben élő női lény, aki a férfiakat a vízbe csalja; Dvořák 1901-es operájának címszereplője.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
