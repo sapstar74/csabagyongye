@@ -54,4 +54,5 @@ ALLATOK_QUESTIONS_BALANCED = [
     _q('Melyik állat nem veszélyeztetett?', 3, ['Kakapo', 'Takahe', 'Tuatara', 'Tardigrad'], 'A tardigrad nem veszélyeztetett, a többi igen.'),
     _q('Mi a zorilla másik neve?', 0, ['Csíkos görény', 'Fekete görény', 'Európai görény', 'Amerikai görény'], 'A zorilla más néven csíkos görény, Afrikában élő ragadozó.'),
     _q('Mi a burunduk?', 0, ['Sibériai csíkos mókus', 'Kínai mókus', 'Japán mókus', 'Mongol mókus'], 'A burunduk egy sibériai csíkos mókus, amely a tűlevelű erdőkben él és a föld alatt is mozog.'),
+    _q('Mi a trogon?', 0, ['Trópusi madár', 'Dél-amerikai majom', 'Ausztrál erszényes', 'Afrikai antilop'], 'A trogon a trogonalakúak rendjébe tartozó, élénk színű trópusi madár, amely Amerika, Afrika és Ázsia esőerdeiben él. Legismertebb képviselője a quetzal, Guatemala nemzeti madara.'),
 ]
