@@ -1,0 +1,74 @@
+name: Webes felület közzététele (GitHub Pages)
+
+# A main ágra kerülő minden változás után újraépíti és közzéteszi az oldalt.
+# Kézzel is indítható az Actions fülön („Run workflow”).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - "scripts/export_web.py"
+      - "scripts/build_site.py"
+      - "gyongy/**"
+      - "topics/**"
+      - "quiz_data.py"
+      - "audio_files/**"
+      - "data/**"
+      - "static/icon-*.png"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: ffmpeg telepítése
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+
+      # A kódolt hangok megmaradnak két futás között: csak az új vagy
+      # megváltozott dalokat kell újra kódolni.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/audio
+          key: audio-90s-96k-${{ hashFiles('audio_files/**') }}
+          restore-keys: audio-90s-96k-
+
+      - name: Kérdésbank exportálása
+        run: python scripts/export_web.py
+
+      - name: Oldal összeállítása
+        run: python scripts/build_site.py --jobs "$(nproc)"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

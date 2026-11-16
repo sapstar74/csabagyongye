@@ -186,3 +186,8 @@ audio_files_backup/
 
 # A webes felület exportált kérdésbankja verziózva van
 !web/data/questions.json
+
+# GitHub Pages összeállítás (scripts/build_site.py)
+_site/
+.cache/
+!.github/workflows/*.yml

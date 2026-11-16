@@ -19,6 +19,22 @@ képest vannak megadva (`audio_files/…`, `data/flags/…`). Fájlként megnyit
 Új vagy módosított kérdés után futtasd újra az exportot, és a `questions.json`-t
 is commitold.
 
+## Közzététel (GitHub Pages)
+
+A `.github/workflows/pages.yml` a `main` ág minden érintett változása után
+újraépíti és közzéteszi az oldalt: `https://sapstar74.github.io/csabagyongye/`.
+
+- Egyszeri beállítás: a repó **Settings → Pages → Build and deployment → Source**
+  mezőjében a **GitHub Actions** legyen kiválasztva.
+- Az összeállítás (`scripts/build_site.py`) a hangokat 90 másodpercre vágja és
+  96 kbps-os AAC-re kódolja, így az oldal kb. 0,8 GB, a Pages 1 GB-os korlátja alatt.
+  A repó eredeti fájljai nem változnak. 1 GB felett az összeállítás hibával leáll.
+- Az oldal **nyilvános**: bárki megnyithatja, akinek megvan a linkje.
+- Helyben kipróbálni: `python scripts/build_site.py`, majd
+  `python -m http.server 8000 -d _site` és `http://localhost:8000/`.
+
+Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) appként is kitehető.
+
 ## Mit tud
 
 - Egy játékmód: a kiválasztott témákból sorsolt, csúszkán beállított számú kérdés (5–50),
@@ -42,3 +58,5 @@ A beírós válaszadás és a „Hirtelen halál” mód ebben a felületben nin
 | `data/questions.json` | az exportált kérdésbank (generált fájl) |
 | `fonts/` | Archivo és Inter betűk helyben (SIL OFL 1.1) |
 | `../scripts/export_web.py` | export a `gyongy.catalog` egységesített kérdéseiből |
+| `../scripts/build_site.py` | a közzétehető oldal összeállítása `_site/`-ba |
+| `manifest.webmanifest` | telefonos telepíthetőség (kezdőképernyő) |
