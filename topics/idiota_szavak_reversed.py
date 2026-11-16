@@ -238,5 +238,19 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A 'ruszalka' a szláv néphitben vízben élő női lény, aki a férfiakat a vízbe csalja; Dvořák 1901-es operájának címszereplője.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Alumínium-oxid ásvány, a Mohs-skálán 9-es keménységű; drágakő-változatai a rubin és a zafír** - melyik idióta szóra gondolok?""",
+        "correct_answer": """korund""",
+        "explanation": """A(z) 'korund' jelentése: Alumínium-oxid ásvány, a Mohs-skálán 9-es keménységű; drágakő-változatai a rubin és a zafír""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Etióp és eritreai savanykás, szivacsos lepénykenyér teffből, amely tányérként is szolgál** - melyik idióta szóra gondolok?""",
+        "correct_answer": """indzsera""",
+        "explanation": """A(z) 'indzsera' jelentése: Etióp és eritreai savanykás, szivacsos lepénykenyér teffből, amely tányérként is szolgál""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
