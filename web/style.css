@@ -173,15 +173,20 @@ button { cursor: pointer; }
   display: flex; align-items: center; justify-content: center;
 }
 .player.big .play { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
-.meter { flex: 1; min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
-.player.big .meter { width: 100%; flex-direction: row; align-items: flex-end; }
+.meter { flex: 1; min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.player.big .meter { width: 100%; }
+.meter-top { display: flex; align-items: flex-end; gap: 10px; }
+.player:not(.big) .meter-top { flex-direction: column; align-items: stretch; gap: 6px; }
+.seek { display: flex; align-items: center; gap: 10px; }
+.seek input { flex: 1; min-width: 0; height: 44px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.dur { font-size: 14px; font-weight: 600; color: var(--dim); font-variant-numeric: tabular-nums; }
 .eq { flex: 1; height: 44px; display: flex; align-items: flex-end; gap: 3px; }
 .eq i { flex: 1; border-radius: 2px; background: var(--accent); transform-origin: 50% 100%; animation: eq 0.9s ease-in-out infinite; animation-play-state: paused; transform: scaleY(0.25); }
 .time { font-size: 24px; min-width: 48px; }
 .player.playing .disc, .player.playing .eq i { animation-play-state: running; }
 .audio-err { margin: 0; font-size: 14px; color: var(--bad-line); }
 
-.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: auto; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px; }
 .opts.wide { grid-template-columns: minmax(0, 1fr); }
 .opt {
   min-width: 0; min-height: 86px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 6px;
@@ -207,7 +212,10 @@ button { cursor: pointer; }
 .why.good h2 { color: var(--pearl); }
 .why .cap { margin: 0; font-size: 20px; line-height: 1.25; font-weight: 600; }
 .why p { margin: 0; font-size: 15px; }
-.next { position: sticky; bottom: max(12px, env(safe-area-inset-bottom)); min-height: 60px; }
+.next { position: sticky; bottom: max(12px, env(safe-area-inset-bottom)); min-height: 60px; overflow: hidden; }
+.next.auto::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 6px; background: var(--on-accent); opacity: 0.35; transform-origin: left; animation: countdown var(--adv, 2s) linear forwards; }
+.hold { align-self: flex-start; min-height: 44px; margin-top: 2px; padding: 0 12px; display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255, 255, 255, 0.35); border-radius: 22px; background: transparent; font-size: 14px; font-weight: 600; }
+.hold svg { width: 16px; height: 16px; }
 
 /* ---------- Eredmény ---------- */
 .rhead { display: flex; align-items: center; gap: 8px; min-height: 44px; }
@@ -242,6 +250,7 @@ button { cursor: pointer; }
 @keyframes fall { 0% { transform: translateY(-420px) scale(0.6); opacity: 0; } 70% { transform: translateY(8px) scale(1.08); opacity: 1; } 100% { transform: translateY(0) scale(1); opacity: 1; } }
 @keyframes slam { 0% { transform: scale(2.4); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes countdown { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes eq { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
 
 @media (prefers-reduced-motion: reduce) {
