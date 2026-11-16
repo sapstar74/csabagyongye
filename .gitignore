@@ -183,3 +183,11 @@ uploads/
 *_mapping_backup.py
 *_mapping_old.py
 audio_files_backup/
+
+# A webes felület exportált kérdésbankja verziózva van
+!web/data/questions.json
+
+# GitHub Pages összeállítás (scripts/build_site.py)
+_site/
+.cache/
+!.github/workflows/*.yml
