@@ -9,6 +9,7 @@ A repó gyökeréből:
 
 ```bash
 python scripts/export_web.py     # kérdésbank → web/data/questions.json
+python scripts/export_kilenc_plusz_egy.py   # 9+1 játékok → web/data/kilenc_plusz_egy.json
 python -m http.server 8000       # majd a böngészőben: http://localhost:8000/web/
 ```
 
@@ -17,7 +18,7 @@ képest vannak megadva (`audio_files/…`, `data/flags/…`). Fájlként megnyit
 (`file://`) nem működik.
 
 Új vagy módosított kérdés után futtasd újra az exportot, és a `questions.json`-t
-is commitold.
+is commitold. Ugyanez igaz a 9+1 játékokra és a `kilenc_plusz_egy.json`-ra.
 
 ## Közzététel (GitHub Pages)
 
@@ -37,7 +38,7 @@ Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) 
 
 ## Mit tud
 
-- Egy játékmód: a kiválasztott témákból sorsolt, csúszkán beállított számú kérdés (5–50),
+- Kérdéssor: a kiválasztott témákból sorsolt, csúszkán beállított számú kérdés (5–50),
   a témák között egyenletesen elosztva
 - Minden válasz után visszajelzés és magyarázat; 2 másodperc múlva magától jön a következő
   kérdés (`ADVANCE_MS` az `app.js` elején). A „Várj, elolvasom” gomb vagy a zene tekerése megállítja
@@ -49,7 +50,28 @@ Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) 
   kiválasztott témák és a kérdésszám a böngészőben megmarad
 - Billentyűk: `1`–`4` vagy `A`–`D` a válaszhoz, `Enter` a következő kérdéshez
 
-A beírós válaszadás és a „Hirtelen halál” mód ebben a felületben nincs benne.
+A kérdéssorban beírós válaszadás és „Hirtelen halál” mód ebben a felületben nincs.
+
+## 9+1
+
+Külön játék a témaválasztó tetején, saját kártyával (a témák kijelölésétől független).
+
+- Tíz beírós kérdés egy oldalon; a kiértékelésig bármelyik válasz javítható
+- **9+1**: kilenc kérdés válaszai összefüggnek, a +1 kérdésre az a válasz jó, amelyik ebbe az
+  összefüggésbe illik. Az összefüggést a játék csak a kiértékelés után írja ki
+- **Párok**: tíz kérdés, az 1–6., 2–7., 3–8., 4–9. és 5–10. válasz együtt egy ismert nevet,
+  címet vagy kifejezést ad ki
+- Hét kategória (összetett szó, művek, földrajz, személyiségek, ételek, párok, rejtett lista);
+  a játék véletlenszerűen jön, kategóriát nem lehet választani, és játék közben nem is látszik
+- A válaszoknál a kis- és nagybetű, az ékezet, az írásjel és a névelő nem számít; elgépelést
+  nem fogad el, csak a forrásban felsorolt alakokat
+- A már játszott játékok nem jönnek újra, amíg van új; a félbehagyott játék megmarad
+  (mindkettő a böngészőben tárolódik)
+- Üres válasznál az első koppintásra csak figyelmeztet, a második értékel ki
+
+Új játék: a `kilenc_plusz_egy/` megfelelő fájljába kell beírni (a formátum leírása a
+`scripts/export_kilenc_plusz_egy.py` elején), majd az exportot újra futtatni. Az export
+ellenőriz is: kérdésszám, két nehéz kérdés, összetételek, rejtett elemek, ételek átfedése.
 
 ## Felépítés
 
@@ -57,7 +79,10 @@ A beírós válaszadás és a „Hirtelen halál” mód ebben a felületben nin
 |---|---|
 | `index.html`, `style.css`, `app.js` | a teljes felület, build lépés nélkül |
 | `data/questions.json` | az exportált kérdésbank (generált fájl) |
+| `data/kilenc_plusz_egy.json` | az exportált 9+1 játékok (generált fájl) |
 | `fonts/` | Archivo és Inter betűk helyben (SIL OFL 1.1) |
 | `../scripts/export_web.py` | export a `gyongy.catalog` egységesített kérdéseiből |
+| `../kilenc_plusz_egy/` | a 9+1 játékok forrása, kategóriánként egy szövegfájl |
+| `../scripts/export_kilenc_plusz_egy.py` | a 9+1 játékok ellenőrzése és exportja |
 | `../scripts/build_site.py` | a közzétehető oldal összeállítása `_site/`-ba |
 | `manifest.webmanifest` | telefonos telepíthetőség (kezdőképernyő) |

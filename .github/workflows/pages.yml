@@ -8,6 +8,8 @@ on:
     paths:
       - "web/**"
       - "scripts/export_web.py"
+      - "scripts/export_kilenc_plusz_egy.py"
+      - "kilenc_plusz_egy/**"
       - "scripts/build_site.py"
       - "gyongy/**"
       - "topics/**"
@@ -53,6 +55,9 @@ jobs:
 
       - name: Kérdésbank exportálása
         run: python scripts/export_web.py
+
+      - name: 9+1 játékok exportálása
+        run: python scripts/export_kilenc_plusz_egy.py
 
       - name: Oldal összeállítása
         run: python scripts/build_site.py --jobs "$(nproc)"
