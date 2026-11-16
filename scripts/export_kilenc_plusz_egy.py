@@ -21,10 +21,11 @@ Sorformátum (a mezőket " | " választja el, az üres záró mezők elhagyható
 
 "N" = nehéz kérdés (játékonként pontosan kettő). A "kapcsolat" a kiértékelés
 után jelenik meg: összetett szónál maga az összetétel, rejtett listánál a
-válaszban megbúvó listaelem.
+válaszban megbúvó listaelem. A „közös kezdőbetűk” játékokban az összefüggés a
+három közös kezdőbetű (ékezet szerint is egyezniük kell).
 
 A szkript ellenőrzi is a játékokat (kérdésszám, két nehéz kérdés, ismétlődő
-válasz, összetételek, rejtett elemek, az ételek hozzávalóinak átfedése), és
+válasz, összetételek, rejtett elemek, közös kezdőbetűk, az ételek hozzávalóinak átfedése), és
 hibánál nem ír fájlt.
 """
 
@@ -41,6 +42,7 @@ SRC = ROOT / "kilenc_plusz_egy"
 OUT = ROOT / "web" / "data" / "kilenc_plusz_egy.json"
 
 COMPOUND, PAIRS, HIDDEN, FOOD = "összetett szó", "párok", "rejtett lista", "híres étel összetevői"
+PREFIX = "közös kezdőbetűk"
 SOURCES = [
     ("osszetett_szo.txt", COMPOUND),
     ("muvek.txt", "mű címe, szereplői, helyszínei"),
@@ -49,6 +51,7 @@ SOURCES = [
     ("etelek.txt", FOOD),
     ("parok.txt", PAIRS),
     ("rejtett_lista.txt", HIDDEN),
+    ("kozos_kezdet.txt", PREFIX),
 ]
 
 
@@ -162,6 +165,13 @@ def validate(games: list[dict]) -> list[str]:
             for it in g["items"] + [g["closer"]]:
                 if normalize(it.get("k", "")) not in normalize(it["a"][0]) or not it.get("k"):
                     err(g, f"a rejtett elem nincs benne a válaszban: {it['a'][0]!r}")
+        if g["type"] == PREFIX:
+            start = g["link"].lower()
+            if len(start) != 3:
+                err(g, "az összefüggés három betű legyen")
+            for it in g["items"] + [g["closer"]]:
+                if not it["a"][0].lower().startswith(start):
+                    err(g, f"nem {g['link']} betűkkel kezdődik: {it['a'][0]!r}")
         if g["type"] == FOOD:
             for it in g["items"] + [g["closer"]]:
                 a = normalize(it["a"][0])
