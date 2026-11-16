@@ -1,5 +1,6 @@
-/* Csabagyöngye – webes felület. Egy játékmód: választott számú kérdés,
-   minden válasz után visszajelzés és magyarázat, a végén szőlőfürt. */
+/* Csabagyöngye – webes felület. Kérdéssor: választott számú kérdés, minden válasz
+   után visszajelzés és magyarázat, a végén szőlőfürt. Külön játék a 9+1: tíz beírós
+   kérdés egy oldalon, a válaszokat összefüggés köti össze, kiértékelés a végén. */
 (function () {
   'use strict';
 
@@ -17,6 +18,8 @@
   var sel = new Set();               // kiválasztott témakulcsok
   var wantN = 10;
   var round = null;                  // { items, idx, results, off }
+  var npData = null;                 // 9+1 játékok: { games } (ha a fájl hiányzik, a kártya nem jelenik meg)
+  var nine = null;                   // folyó 9+1 játék: { game, answers, result, warned }
   var advanceTimer = null;          // automatikus továbblépés időzítője
   var scrubbing = false;            // éppen húzza-e a lejátszási csúszkát
   var audio = new Audio();
@@ -128,6 +131,7 @@
     holdAdvance();
     stopAudio();
     round = null;
+    nine = null;
     var bulbs = '';
     for (var b = 0; b < 14; b++) bulbs += '<i class="bulb" style="animation-delay:' + (b * 0.09).toFixed(2) + 's"></i>';
     var groups = data.groups.map(function (g) {
@@ -144,7 +148,7 @@
       '<header class="sign"><div class="bulbs" aria-hidden="true">' + bulbs + '</div>' +
       '<div class="sign-text"><small>Ma este műsoron</small><h1 class="disp">Csabagyöngye</h1></div>' +
       '<div class="bulbs" aria-hidden="true">' + bulbs + '</div></header>' +
-      '<div class="groups">' + groups + '</div>' +
+      '<div class="groups">' + npHomeHTML() + groups + '</div>' +
       '<div class="startbar"><label for="n"><span>Kérdések száma a körben</span><output class="disp" id="nout" for="n"></output></label>' +
       '<input id="n" type="range" step="1"><p class="hint" id="hint"></p>' +
       '<button class="cta" id="start">Függöny fel</button></div>';
@@ -326,6 +330,141 @@
     window.scrollTo(0, 0);
   }
 
+  /* ---------- 9+1 ---------- */
+  // Kilenc kérdés válaszai összefüggnek, a +1 kérdés válasza is ebbe az összefüggésbe illik.
+  // A „párok" játékban tíz kérdés van: az 1–6., 2–7., 3–8., 4–9. és 5–10. válasz alkot párt.
+  // Beírós válaszok; a kiértékelésig mind javítható. Adat: data/kilenc_plusz_egy.json.
+  var NP_RULE = 'Kilenc kérdés, amelyek válaszai összefüggnek. A tizedikre az a válasz jó, amelyik ebbe az összefüggésbe illik.';
+  var NP_PAIRS_RULE = 'Tíz kérdés, öt pár: az 1–6., 2–7., 3–8., 4–9. és 5–10. válasz együtt egy ismert nevet, címet vagy kifejezést ad ki.';
+
+  // Elnéző összehasonlítás: kis- és nagybetű, ékezet, írásjel és névelő nem számít.
+  // Ugyanez a szabály fut a scripts/export_kilenc_plusz_egy.py ellenőrzésében (normalize).
+  function norm(s) {
+    var w = String(s).trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+    if (w.length > 1 && (w[0] === 'a' || w[0] === 'az')) w.shift();
+    return w.join('');
+  }
+  function npCorrect(given, item) {
+    var g = norm(given);
+    return !!g && item.a.some(function (a) { return norm(a) === g; });
+  }
+  function npItems(game) { return game.closer ? game.items.concat([game.closer]) : game.items; }
+  function npLabel(game, i) { return game.closer && i === game.items.length ? '+1' : pad2(i + 1); }
+  function npGame(id) { return npData.games.filter(function (g) { return g.id === id; })[0] || null; }
+  function npPlayed() { var p = load('np.played', []); return Array.isArray(p) ? p : []; }
+  function npLeft() { var played = npPlayed(); return npData.games.filter(function (g) { return played.indexOf(g.id) < 0; }); }
+  function npDraft() {
+    var d = load('np.draft', null);
+    var game = d && npData ? npGame(d.id) : null;
+    return game && Array.isArray(d.answers) && d.answers.length === npItems(game).length ? { game: game, answers: d.answers } : null;
+  }
+  function npPick() {
+    var left = npLeft();
+    if (!left.length) { store('np.played', []); left = npData.games; }   // elfogytak: új kör
+    return left[Math.floor(Math.random() * left.length)];
+  }
+
+  function npHomeHTML() {
+    if (!npData || !npData.games.length) return '';
+    var draft = npDraft(), left = npLeft().length, all = npData.games.length;
+    return '<section><div class="group-head np-head"><h2>9+1</h2></div>' +
+      '<button class="np-card" id="np"><span class="name disp">Kilenc kérdés, egy összefüggés</span>' +
+      '<span class="sub">' + (draft ? 'Félbehagyott játék folytatása' : all + ' játék' + (left && left < all ? ', ebből ' + left + ' új' : '')) +
+      ' · beírós válaszok</span></button></section>';
+  }
+
+  function startNine(fresh) {
+    holdAdvance();
+    stopAudio();
+    round = null;
+    var draft = fresh ? null : npDraft();
+    var game = draft ? draft.game : npPick();
+    var answers = npItems(game).map(function (_, i) { return draft && typeof draft.answers[i] === 'string' ? draft.answers[i] : ''; });
+    nine = { game: game, answers: answers, result: null, warned: false };
+    renderNine();
+  }
+
+  function renderNine() {
+    var game = nine.game, items = npItems(game), n = items.length, pairs = !game.closer;
+    var filled = nine.answers.filter(function (a) { return a.trim(); }).length;
+    var cl = clusterHTML(n, nine.answers.map(function (a) { return a.trim() ? 'set' : ''; }), {
+      W: 96, H: 112, top: 22, rmax: 11, roll: false, cur: 0, anim: 'pop', label: 'Kitöltve ' + filled + ' a ' + n + ' válaszból'
+    });
+    var rows = items.map(function (it, i) {
+      var label = npLabel(game, i);
+      return ((pairs ? i === 5 : i === n - 1) ? '<hr class="np-sep">' : '') +
+        '<label class="np-item"><span class="np-num disp" aria-hidden="true">' + label + '</span>' +
+        '<span class="np-q"><span class="sr">' + label + '. kérdés: </span>' + rich(it.q) + '</span>' +
+        '<input class="np-in" type="text" data-i="' + i + '" value="' + esc(nine.answers[i]) + '" autocomplete="off" autocapitalize="off" ' +
+        'autocorrect="off" spellcheck="false" enterkeyhint="' + (i === n - 1 ? 'done' : 'next') + '"></label>';
+    }).join('');
+    app.innerHTML =
+      '<div class="qhead"><div class="qhead-left"><div class="qhead-row">' +
+      '<button class="close" id="quit" aria-label="Kilépés a játékból">' + ICON.x + '</button>' +
+      '<span class="topic-label">9+1' + (pairs ? ' · párok' : '') + '</span></div>' + palsHTML() + '</div>' + cl.html + '</div>' +
+      '<p class="np-rule">' + (pairs ? NP_PAIRS_RULE : NP_RULE) + ' A kiértékelésig bármelyik válaszodat javíthatod.</p>' +
+      '<div class="np-form" id="npform">' + rows + '</div>' +
+      '<p class="np-warn" id="npwarn" role="status"></p>' +
+      '<button class="cta next" id="np-check">Kiértékelés</button>';
+    window.scrollTo(0, 0);
+  }
+
+  function npInput(el) {
+    var i = Number(el.getAttribute('data-i'));
+    nine.answers[i] = el.value;
+    nine.warned = false;
+    var warn = document.getElementById('npwarn');
+    if (warn) warn.textContent = '';
+    store('np.draft', { id: nine.game.id, answers: nine.answers });
+    var berry = app.querySelector('.berry[data-i="' + i + '"]');
+    if (berry) berry.className = 'berry' + (el.value.trim() ? ' set' : '');
+  }
+
+  function checkNine() {
+    var game = nine.game, items = npItems(game);
+    var empty = nine.answers.filter(function (a) { return !a.trim(); }).length;
+    if (empty && !nine.warned) {       // véletlen koppintás ellen: üres válasznál egyszer visszakérdez
+      nine.warned = true;
+      document.getElementById('npwarn').textContent = empty + ' válasz még üres. Ha így is kéred a kiértékelést, koppints újra.';
+      return;
+    }
+    nine.result = items.map(function (it, i) { return npCorrect(nine.answers[i], it); });
+    var played = npPlayed();
+    if (played.indexOf(game.id) < 0) played.push(game.id);
+    store('np.played', played);
+    store('np.draft', null);
+    renderNineResult();
+  }
+
+  function renderNineResult() {
+    var game = nine.game, items = npItems(game), n = items.length, pairs = !game.closer;
+    var okN = nine.result.filter(Boolean).length, bad = n - okN;
+    var cl = clusterHTML(n, nine.result.map(function (ok) { return ok ? 'ok' : 'bad'; }), {
+      W: 240, H: 250, top: 44, rmax: 27, roll: false, cur: 0, anim: 'fall',
+      label: 'A játék fürtje: ' + okN + ' helyes, ' + bad + ' hibás válasz'
+    });
+    var link = pairs
+      ? '<div class="why good"><h2 class="disp">' + esc(game.theme) + '</h2><p>' + esc(game.pairs.join(' · ')) + '</p></div>'
+      : '<div class="why good"><h2 class="disp">Összefüggés: ' + esc(game.link) + '</h2>' + (game.note ? '<p>' + esc(game.note) + '</p>' : '') + '</div>';
+    var review = items.map(function (it, i) {
+      var ok = nine.result[i], given = nine.answers[i].trim();
+      return '<li><p class="rq">' + npLabel(game, i) + '. ' + rich(it.q) + '</p>' +
+        '<p class="' + (ok ? 'ra' : 'rb') + '">A te válaszod: ' + (given ? esc(given) : '–') + '</p>' +
+        (ok ? '' : '<p class="ra">Helyes: ' + esc(it.a[0]) + '</p>') +
+        (it.k ? '<p class="rk">' + esc(it.k) + '</p>' : '') + '</li>';
+    }).join('');
+    app.innerHTML =
+      '<div class="rhead"><span class="topic-label">9+1 · ' + esc(game.type) + '</span>' + palsHTML() + '</div>' +
+      '<div class="rcluster">' + cl.html + '</div>' +
+      '<div class="score disp"><b>' + okN + '</b><span aria-hidden="true">/' + n + '</span></div>' +
+      '<h1 class="verdict disp">' + (bad ? okN + ' gyöngyszem, ' + bad + ' mazsola' : 'Hibátlan szüret: ' + n + ' gyöngyszem') + '</h1>' +
+      link +
+      '<section class="review-wrap"><h2>A tíz válasz</h2><ul class="review">' + review + '</ul></section>' +
+      '<div class="actions"><button class="cta" id="np-again">Új 9+1</button><button class="ghost" id="home">Vissza a témákhoz</button></div>';
+    window.scrollTo(0, 0);
+  }
+
   /* ---------- hang ---------- */
   function playAudio(url) {
     audio.src = url;
@@ -394,6 +533,9 @@
       if (qs.length) startRound(qs);
       return;
     }
+    if (t.id === 'np') return startNine(false);
+    if (t.id === 'np-check') return checkNine();
+    if (t.id === 'np-again') return startNine(true);
     if (t.id === 'next') return nextQuestion();
     if (t.id === 'hold') return holdAdvance();
     if (t.id === 'play') { if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); } else audio.pause(); return; }
@@ -405,6 +547,7 @@
   });
 
   app.addEventListener('input', function (ev) {
+    if (nine && ev.target.classList.contains('np-in')) return npInput(ev.target);
     if (ev.target.id === 'seek') {
       scrubbing = true;
       holdAdvance();
@@ -428,6 +571,12 @@
   });
 
   document.addEventListener('keydown', function (ev) {
+    if (nine && ev.key === 'Enter' && ev.target.classList && ev.target.classList.contains('np-in')) {
+      ev.preventDefault();             // Enter: a következő mezőre, az utolsóról a Kiértékelés gombra
+      var ins = app.querySelectorAll('.np-in'), at = Number(ev.target.getAttribute('data-i'));
+      (ins[at + 1] || document.getElementById('np-check')).focus();
+      return;
+    }
     if (!round || ev.altKey || ev.ctrlKey || ev.metaKey) return;
     if (ev.target.id === 'seek') return;
     var it = round.items[round.idx];
@@ -442,9 +591,14 @@
   /* ---------- indulás ---------- */
   setPal(load('pal', 'green'));
   wantN = Math.max(1, Math.min(MAX_N, Number(load('n', 10)) || 10));
+  // A 9+1 játékok fájlja nem kötelező: ha nem tölthető be, a felület nélküle indul.
+  var npReady = fetch('data/kilenc_plusz_egy.json').then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { npData = d && Array.isArray(d.games) ? d : null; }).catch(function () { npData = null; });
   fetch('data/questions.json').then(function (r) {
     if (!r.ok) throw new Error(r.status);
     return r.json();
+  }).then(function (d) {
+    return npReady.then(function () { return d; });
   }).then(function (d) {
     data = d;
     d.questions.forEach(function (q) { (byTopic[q.t] = byTopic[q.t] || []).push(q); });

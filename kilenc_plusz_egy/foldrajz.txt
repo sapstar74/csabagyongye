@@ -1,0 +1,119 @@
+# fold-hidak | hidak | A budapesti közúti Duna-hidak a Megyeritől a Deák Ferenc hídig.
+Melyik honfoglaló törzs nevéből ered a „magyar” népnév? | Megyer | megyeri | Megyeri híd | N
+Ki vezette a honfoglaló magyarokat a Kárpát-medencébe? | Árpád | Árpád fejedelem | Árpád híd
+IV. Béla melyik lánya élt apácaként a Nyulak szigetén? | Margit | Szent Margit;Árpád-házi Szent Margit | Margit híd
+Kit nevezett Kossuth „a legnagyobb magyarnak”? | Széchenyi | Széchenyi István;gróf Széchenyi István | Széchenyi lánchíd
+Mi volt a Sisi néven ismert királyné keresztneve? | Erzsébet |  | Erzsébet híd
+Mi áll az egyenlőség és a testvériség előtt a francia forradalom jelszavában? | szabadság |  | Szabadság híd
+Ki írta Az apostol című elbeszélő költeményt? | Petőfi | Petőfi Sándor | Petőfi híd
+Melyik fejedelem halt meg 1735-ben Rodostóban? | Rákóczi | II. Rákóczi Ferenc;Rákóczi Ferenc | Rákóczi híd | N
+Kit neveztek „a haza bölcsének”? | Deák | Deák Ferenc | Deák Ferenc híd (M0)
++ Ferenc József melyik lánya illik az összefüggésbe? | Mária Valéria | Valéria | Mária Valéria híd (Esztergom–Párkány)
+
+# fold-duna | Duna | A Duna a Fekete-erdőtől Belgrádig.
+Melyik német hegységről nevezték el a meggyes-csokoládés tortát? | Fekete-erdő | Feketeerdő;Schwarzwald | itt ered a folyó
+Melyik német városban született Albert Einstein? | Ulm |  |  | N
+Melyik osztrák városról nevezték el a rácsos tetejű lekváros tortát? | Linz
+Melyik várost ostromolta sikertelenül az oszmán sereg 1529-ben és 1683-ban is? | Bécs
+Melyik városban koronázták a magyar királyok többségét 1563 és 1830 között? | Pozsony | Bratislava
+Melyik város bazilikája Magyarország legnagyobb temploma? | Esztergom
+Hol szenvedett döntő vereséget II. Lajos serege 1526-ban? | Mohács | Mohácsnál
+Melyik vajdasági város péterváradi erődjében rendezték 2000 és 2025 között az EXIT fesztivált? | Újvidék | Novi Sad |  | N
+Melyik mai fővárost védte meg Hunyadi János 1456-ban? | Belgrád | Nándorfehérvár
++ Melyik főváros illik az összefüggésbe? | Budapest |  | a folyó a városon át folyik
+
+# fold-balaton | Balaton | Folyó, parti települések, hal, vitorlásverseny és a tó vizét levezető csatorna.
+Melyik megye székhelye Zalaegerszeg? | Zala | Zala megye;Zala vármegye | a Zala folyó táplálja a tavat
+Melyik városban áll a Festetics-kastély? | Keszthely
+Melyik görög hegyet tartották a múzsák lakhelyének? | Helikon | Helikón | a keszthelyi Helikon ünnepségek | N
+Melyik tanúhegy borvidékének jellegzetes fajtája a kéknyelű? | Badacsony
+Melyik bencés apátság 1055-ös alapítólevele a legrégebbi eredetiben fennmaradt magyar szórványemlék? | Tihany | tihanyi apátság;tihanyi
+Melyik városban született Kálmán Imre operettszerző? | Siófok |  |  | N
+Hogyan nevezik a nagyobb süllőt – és azt a bútort, amelyre a kabátot akasztjuk? | fogas | fogassüllő
+Mi a neve az óceánjárók atlanti gyorsasági díjának – és Európa leghosszabb tókerülő vitorlásversenyének? | Kékszalag | Kék Szalag
+Melyik gyümölcslémárka viseli egy dunántúli csatorna nevét? | Sió |  | a Sió-csatorna vezeti le a tó vizét
++ Melyik Fekete István-regény illik az összefüggésbe? | Tüskevár |  | a Kis-Balatonon játszódik
+
+# fold-euro | euró | Mind az euró elődje volt valahol Európában.
+Hogyan mondjuk magyarul a „brand” szót – az árucikkek megkülönböztető nevét? | márka | márkanév | német és finn márka
+Melyik germán nép királya volt Klodvig és Nagy Károly? | frank | frankok | francia, belga, luxemburgi frank
+Melyik a harmadik műnem az epika és a dráma mellett? | líra |  | olasz és máltai líra
+Milyen uralkodói fejéket nevezünk a magyar történelemben „Szent”-nek? | korona | Szent Korona | szlovák és észt korona
+Melyik angolszász tömegmérték felel meg nagyjából 45 dekagrammnak? | font |  | ír és ciprusi font
+Melyik ezüstpénz nevéből ered a „dollár” szó? | tallér | Thaler;tolár | szlovén tolár | N
+Melyik ókori görög pénz nevét őrzi az arab dirham? | drachma |  | görög drachma | N
+Melyik váltópénzből volt húsz egy angol fontban 1971-ig? | shilling | schilling | osztrák schilling
+Mi a Zöld-foki Köztársaság pénzneme? | escudo | zöld-foki escudo | portugál escudo
++ Melyik menyétféle horvát neve illik az összefüggésbe? | kuna | nyest | horvát kuna (2023-ig)
+
+# fold-foldkozi | Földközi-tenger | A Földközi-tenger szigetei.
+Melyik szigeten magasodik az Etna? | Szicília
+Melyik szigeten állt a mítosz szerint a Minótaurosz labirintusa? | Kréta
+Melyik szigeten állt az ókori világ hét csodájának egyike, a Kolosszus? | Rodosz | Rhodosz;Rhodos
+Melyik szigetország fővárosa a kettéosztott Nicosia? | Ciprus
+Melyik szigetre költöztek 1530-ban a johannita lovagok? | Málta
+Melyik sziget királya volt Odüsszeusz? | Ithaka | Itháka
+Melyik szigeten található a Kék-barlang és Tiberius császár villája? | Capri
+Melyik sziget székhelye Cagliari? | Szardínia | Sardegna |  | N
+Melyik szigeten töltötte az 1838–39-es telet Chopin és George Sand? | Mallorca | Majorca |  | N
++ Melyik francia sziget illik az összefüggésbe? | Korzika | Corse;Corsica
+
+# fold-afrika | Afrika | Hegység, sivatag, folyók, város, tó és vízesés, hegy, sziget és fok – mind Afrikában.
+Melyik titán tartja vállán az égboltot a görög mitológiában? | Atlasz | Atlas | Atlasz-hegység
+Melyik sivatag neve jelenti arabul egyszerűen azt: „sivatag”? | Szahara
+Melyik folyón játszódik Agatha Christie „Halál a …on” című regénye? | Nílus | Níluson
+Melyik mali város neve lett a „világ vége” szinonimája? | Timbuktu | Tombouctou
+Melyik afrikai folyó ihlette Marlow hajóútját Joseph Conrad A sötétség mélyén című kisregényében? | Kongó |  |  | N
+Melyik brit királynő uralkodott 1837-től 1901-ig? | Viktória | Victoria | Viktória-tó és Viktória-vízesés
+Melyik hegy „hava” szerepel Hemingway 1936-os elbeszélésének címében? | Kilimandzsáró | Kilimanjaro
+Melyik szigeten született Freddie Mercury? | Zanzibár
+Melyik fokot kerülte meg elsőként európai hajósként Bartolomeu Dias 1488-ban? | Jóreménység foka | Jóreménység-fok;Jó reménység foka;Jóreménység fok;Viharok foka |  | N
++ Melyik csatorna illik az összefüggésbe? | Szuezi-csatorna | Szuezi csatorna;Szuez
+
+# fold-tenger | tenger | Fekete-, Vörös-, Sárga-, Holt-, Márvány-, Korall-, Ír-, Arab- és Jón-tenger.
+Milyen színű „péntek” a novemberi leárazások napja? | fekete |  | Fekete-tenger
+Milyen színű volt a szovjet zászló? | vörös | piros | Vörös-tenger
+Milyen színű trikót visel a Tour de France összetett éllovasa? | sárga |  | Sárga-tenger
+Milyen „lelkek” szerepelnek Gogol regényének címében? | holt | holtak | Holt-tenger
+Milyen kőzet a világhírű carrarai? | márvány |  | Márvány-tenger | N
+Milyen virágállatok váza építi fel az atollokat? | korall | korallok | Korall-tenger
+Milyen nemzetiségű volt James Joyce és Oscar Wilde? | ír |  | Ír-tenger
+Milyennek nevezzük a ma használt számjegyeket a rómaiakkal szemben: … számok? | arab |  | Arab-tenger
+Melyik görög oszloprend ismertetőjele a csigás (volutás) oszlopfő? | ión | jón | Jón-tenger | N
++ Melyik égtáj illik az összefüggésbe? | észak | északi | Északi-tenger
+
+# fold-folyo | folyó | Jordán, Don, Léna, Tisza, Rába, Colorado, Paraguay, Niger, Gambia – mind folyó.
+Melyik 23-as mezszámú kosárlabdázó nyert hat NBA-bajnoki címet a Chicago Bullsszal? | Jordan | Michael Jordan;Jordán | Jordán
+Milyen megszólítás illeti meg Vito Corleonét A keresztapában? | Don
+Melyik női név a Heléna és a Magdaléna önállósult becézője – Headey angol színésznő keresztneve is? | Léna | Lena
+Melyik volt miniszterelnök ellen követtek el halálos merényletet 1918. október 31-én? | Tisza | Tisza István
+Melyik győri járműgyár gyártott kamionokat, motorokat és futóműveket? | Rába
+Melyik amerikai állam fővárosa Denver? | Colorado
+Melyik dél-amerikai ország fővárosa Asunción? | Paraguay
+Melyik ország fővárosa Niamey? | Niger |  |  | N
+Melyik a kontinentális Afrika legkisebb országa, fővárosa Banjul? | Gambia |  |  | N
++ Melyik szovjet autómárka illik az összefüggésbe? | Volga
+
+# fold-sziget | sziget | Húsvét-sziget, Kanári-szigetek, Bermuda, Jáva, Jersey, Ibiza, Mauritius, Ceylon, Jamaica.
+Melyik ünnepen szokás locsolkodni? | húsvét |  | Húsvét-sziget
+Melyik sárga énekesmadarat vitték le a bányászok a sújtólég jelzésére? | kanári | kanárimadár | Kanári-szigetek
+Milyen térdig érő rövidnadrág viseli egy atlanti „háromszög” nevét? | bermuda | bermudanadrág | Bermuda
+Melyik programozási nyelv logója egy gőzölgő kávéscsésze? | Java | Jáva | Jáva
+Melyik angol szó jelenti a sportolók mezét – és egy tejelő szarvasmarhafajtát is? | jersey |  | Jersey | N
+Melyik kisautó a spanyol Seat legismertebb modellje 1984 óta? | Ibiza | Seat Ibiza | Ibiza
+Melyik egykori brit gyarmat 1847-es „kék” és „piros” kiadása a bélyeggyűjtés legendás ritkasága? | Mauritius |  | Mauritius | N
+Milyen néven ismerték 1972-ig Srí Lankát – a teáját ma is így árulják? | Ceylon |  | Ceylon
+Melyik ország színeiben futott világcsúcsot Usain Bolt? | Jamaica |  | Jamaica
++ Melyik likőr illik az összefüggésbe? | Curaçao | Curacao;Blue Curaçao;Blue Curacao
+
+# fold-fovaros | főváros | Washington, Wellington, Róma, Havanna, Dakar, Szófia, Monaco, San Marino és Luxembourg egyaránt főváros.
+Ki volt az Egyesült Államok első elnöke? | Washington | George Washington | Washington (USA)
+Melyik herceg győzte le Napóleont Waterloonál? | Wellington | Wellington hercege;Arthur Wellesley | Wellington (Új-Zéland)
+Hová vezet a közmondás szerint minden út? | Róma | Rómába | Róma (Olaszország)
+Milyen szivart szívott legszívesebben Churchill – a világ leghíresebb szivarfajtáját? | havanna | Havanna;kubai | Havanna (Kuba)
+Melyik szó egészíti ki a legendás tereprali nevét: Párizs–…? | Dakar |  | Dakar (Szenegál)
+Melyik női név jelent görögül bölcsességet? | Szófia | Zsófia;Sophia;Sofia | Szófia (Bulgária) | N
+Melyik hercegség uralkodóháza a Grimaldi? | Monaco |  | Monaco
+Melyik, Olaszországba ékelt miniállam tartja magát a világ legrégebbi köztársaságának? | San Marino |  | San Marino
+Mi volt a vezetékneve Rosának, az 1919-ben Berlinben meggyilkolt forradalmárnak? | Luxemburg | Luxembourg;Rosa Luxemburg | Luxembourg | N
++ Melyik brit királynő illik az összefüggésbe? | Viktória | Victoria | Victoria (Seychelle-szigetek)

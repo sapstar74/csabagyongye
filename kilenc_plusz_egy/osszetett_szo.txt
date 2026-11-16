@@ -1,0 +1,259 @@
+# osszetett-viz | víz
+Milyen csapadék szerepel Gene Kelly 1952-es filmmusicaljének magyar címében: Ének az …ben? | eső |  | esővíz
+Mi a közös neve a természetben előforduló, többnyire kristályos szervetlen anyagoknak, amilyen a kvarc vagy a kalcit? | ásvány | ásványok | ásványvíz
+Mi a hiányzó szó Hemingway kisregényének címéből: Az öreg halász és a …? | tenger |  | tengervíz
+Melyik virág szerepel Umberto Eco első regényének címében? | rózsa |  | rózsavíz
+Hogyan nevezzük azt a helyet, ahol egy patak vagy folyó a felszínre tör, vagyis ered? | forrás |  | forrásvíz
+---
+Milyen építményt ábrázol a tarot XVI. számú nagy arkánuma? | torony | a torony;villámsújtotta torony | víztorony | N
+Milyen fehér jelkép látható Svájc vörös zászlaján? | kereszt |  | vízkereszt
+Milyen domború tárgy függ a hátsó falon Jan van Eyck Az Arnolfini házaspár című festményén, benne két további alakkal? | tükör | domború tükör | víztükör | N
+Mivé változott a görög mítosz szerint, aki Medusza szemébe nézett? | kő | kővé;szobor;kőszobor | vízkő
++ Melyik csillagjegy illik az összefüggésbe? | Vízöntő |  | vízöntő
+
+# osszetett-haz | ház
+Melyik italt főzik az arabica és a robusta fajták pörkölt magvaiból? | kávé |  | kávéház
+Minek az árnyalatait azonosítja kódszámokkal a Pantone-rendszer? | szín | színek;színárnyalat | színház | N
+Melyik zenés színpadi műfaj nagy mesterei Verdi és Puccini? | opera |  | operaház
+Melyik puhatestű állat kerül „escargot” néven a francia asztalra? | csiga | éticsiga;éti csiga | csigaház
+Milyen anyagot fújnak hagyományosan Murano szigetének mesterei? | üveg |  | üvegház
+---
+Ki Margarita szerelme Bulgakov regényében? | Mester | a Mester | házmester | N
+Mi hiányzik a Pamír és Tibet ismert nevéből: „a világ …je”? | tető | teteje | háztető
+Milyen tisztséget töltött be elsőként George Washington az Egyesült Államokban? | elnök | amerikai elnök;az USA elnöke;államelnök | házelnök
+Mit jelent a „populus” szó a „Vox populi, vox Dei” mondásban? | nép | a nép | háznép
++ Melyik Duna-parti budapesti épület illik az összefüggésbe? | Országház | az Országház | országház
+
+# osszetett-nap | nap
+Milyen csapadékból rakják az iglut? | hó |  | hónap
+Mit jelent a latin „nomen” szó? | név |  | névnap
+Melyik fizikai mennyiség az erő és az irányába eső elmozdulás szorzata? | munka |  | munkanap | N
+Mi a hiányzó szó Botticelli festményének címéből: Vénusz …e? | születés | születése | születésnap
+Mi a hiányzó szó Hemingway párizsi emlékiratának magyar címéből: Vándor…? | ünnep |  | ünnepnap | N
+---
+Minek a sebessége légüres térben közel 300 000 km/s? | fény | a fény | napfény
+Milyen tárgyak „folynak szét” Dalí Az emlékezet állandósága című képén? | óra | órák;zsebóra;zsebórák | napóra
+Mit rendezett táblázatba Mengyelejev 1869-ben? | elem | elemek;kémiai elemek;a kémiai elemek | napelem
+Minek az erősségét méri a Beaufort-skála? | szél | szélerősség;a szél | napszél
++ A hét melyik napja illik az összefüggésbe? | vasárnap |  | vasárnap
+
+# osszetett-ko | kő
+Melyik táblás játékban kell három korongot egy vonalba állítani? | malom |  | malomkő
+Melyik állat alakjában tisztelték az egyiptomiak Básztet istennőt? | macska |  | macskakő
+Melyik égitestre lépett Neil Armstrong 1969-ben? | Hold | a Hold | holdkő
+Melyik angolszász hosszmérték felel meg nagyjából 1609 méternek? | mérföld |  | mérföldkő
+Melyik szervünk működési egysége a nefron? | vese |  | vesekő | N
+---
+Melyik kémiai elem vegyjele C? | szén |  | kőszén
+Mivel kenték fel az ószövetségi királyokat? | olaj | olajjal;szent olaj | kőolaj | N
+Mi a nátrium-klorid köznapi neve? | só | konyhasó | kősó
+Mit építtetett Hadrianus császár Britannia északi határán? | fal | falat;Hadrianus fala | kőfal
++ Melyik budapesti kerület illik az összefüggésbe? | Kőbánya |  | Kőbánya (X. kerület)
+
+# osszetett-fa | fa
+Mi az első szó Engels művének címében: A …, a magántulajdon és az állam eredete? | család | a család | családfa | N
+Melyik hónap első napja a munka ünnepe? | május |  | májusfa
+Milyen építmény a berlini Brandenburgi …? | kapu |  | kapufa
+Mit veszített el Keresztelő Szent János Salome kívánságára? | fej | fejét;a fejét | fejfa
+Melyik ünnep előestéje a szenteste? | karácsony |  | karácsonyfa
+---
+Milyen állat volt Nagy Sándor Bukephalosza? | ló |  | faló | N
+Melyik evőeszközt hajlította meg mutatványaiban Uri Geller? | kanál | kanalat | fakanál
+Melyik végtagunkon található a térd és a boka? | láb | lábunk | faláb
+Milyen állat volt Lajka, az első élőlény Föld körüli pályán? | kutya |  | fakutya
++ Melyik kivégzőeszköz illik az összefüggésbe? | akasztófa | bitófa | akasztófa
+
+# osszetett-var | vár
+Mi borítja Frank Herbert Dűne című regényében az Arrakis bolygót? | homok | homoksivatag | homokvár
+Mivel játsszák a bridzset és a pókert? | kártya | kártyával;francia kártya | kártyavár
+Melyik a Naprendszer harmadik bolygója? | Föld | a Föld | földvár
+Mi a felhő régies, költői szinonimája? | felleg |  | fellegvár | N
+Milyen ranggal jár a briteknél a „Sir” megszólítás? | lovag | lovagi | lovagvár
+---
+Milyen ranggal szólítják Nemót a Nautilus fedélzetén? | kapitány |  | várkapitány
+Mit jelent a latin „dominus” szó? | úr |  | várúr | N
+Milyen épület a londoni Buckingham és a firenzei Pitti? | palota |  | várpalota
+Milyen földrajzi képződmény a Csendes-óceán legmélyebb pontját rejtő Mariana-…? | árok | mélytengeri árok | várárok
++ Melyik megyeszékhely illik az összefüggésbe? | Székesfehérvár | Kaposvár | Székesfehérvár, Kaposvár
+
+# osszetett-tuz | tűz
+Melyik galileai hegyet tartja a hagyomány Jézus színeváltozása helyszínének? | Tábor | Tábor-hegy;Tábor hegy | tábortűz | N
+Milyen nemzetiségű volt Arkhimédész és Püthagorasz? | görög |  | görögtűz
+Milyen növénytársulás a tajga? | erdő | fenyőerdő;tűlevelű erdő | erdőtűz
+Mi volt Dávid foglalkozása, mielőtt Izrael királya lett? | pásztor |  | pásztortűz
+Melyik jelzővel illetik Rómát: az „… város”? | örök |  | öröktűz
+---
+Mit tartanak a színészek a bemutató előtt – a legutolsó a „fő…”? | próba | főpróba | tűzpróba
+Mit jelöl a kottában a „pauza”? | szünet | szünetjel | tűzszünet
+Melyik stilizált virág volt a francia királyok címerjelképe? | liliom |  | tűzliliom
+Milyen üvegszerű, kemény réteg borítja a fogkoronát? | zománc | fogzománc | tűzzománc | N
++ Melyik Stravinsky-balett illik az összefüggésbe? | A tűzmadár | Tűzmadár | Tűzmadár
+
+# osszetett-szem | szem
+Melyik madár szerepel a tojás mellett a „melyik volt előbb?” dilemmában? | tyúk |  | tyúkszem
+Melyik állat áll a hagyomány szerint a szamár mellett a betlehemi jászolnál? | ökör |  | ökörszem
+Melyik ragadozó madár az Egyesült Államok címerállata? | sas | rétisas;fehérfejű rétisas | sasszem
+Mivel verték a Kaukázus sziklájához Prométheuszt? | lánc | lánccal;láncok;láncokkal | láncszem | N
+Milyen ékszert visel a fülében Vermeer híres leányalakja? | gyöngy | igazgyöngy;gyöngy fülbevaló | gyöngyszem
+---
+Miből van a felnőtt embernek rendesen 32, a kutyának 42? | fog | fogak;foga | szemfog
+Mi a címe Bacsó Péter 1969-ben forgatott, Pelikán József gátőrről szóló szatírájának? | A tanú | tanú | szemtanú
+Egy tál miért adta el Ézsau az elsőszülöttségi jogát? | lencse | lencséért;lencsefőzelék | szemlencse | N
+Milyen írásjel zárja a kijelentő mondatot? | pont |  | szempont
++ Milyen magashegyi tó illik az összefüggésbe? | tengerszem |  | tengerszem
+
+# osszetett-ut | út
+Melyik fém vegyjele Fe? | vas |  | vasút
+Melyik a legkisebb értékű sakkfigura? | gyalog | paraszt | gyalogút
+Milyen textilanyagot adnak a Bombyx mori lepke hernyójának gubói? | selyem |  | selyemút | N
+Melyik síkidom kerülete 2rπ? | kör |  | körút
+Milyen jármű volt a Ford T-modell? | autó | személyautó;gépkocsi;automobil | autóút
+---
+Mit ír Tatjána Anyeginnek Puskin verses regényében? | levél | levelet;szerelmes levél | útlevél | N
+Mi a hiányzó szó: „Ép …ben ép lélek”? | test |  | úttest
+Mi a közös neve a geometriában az egyenesnek és a görbének? | vonal | vonalak | útvonal
+Mi jelzi az időt az óra számlapján (van kis- és nagy…)? | mutató | óramutató | útmutató
++ Melyik galaxis illik az összefüggésbe? | Tejút | Tejútrendszer | Tejút
+
+# osszetett-sziv | szív
+Melyik állatot győzte le Héraklész Nemeában? | oroszlán | nemeai oroszlán | oroszlánszív
+Milyen állat siet zsebórával Alice Csodaországában? | nyúl | fehér nyúl;nyuszi | nyúlszív
+Melyik nemesfém vegyjele Au? | arany |  | aranyszív
+Mi a címe Gorkij 1906-os regényének, amelynek hőse Pelageja Nyilovna? | Az anya | anya | anyaszív | N
+Mit lőtt ki parittyájából Dávid Góliátra? | kő | követ;kavics | kőszív
+---
+Mi a „camera obscura” magyar megfelelőjének második szava: sötét…? | kamra | sötétkamra | szívkamra | N
+Mit üt le a zongorista – a hangszeren 88 van belőle? | billentyű | billentyűk | szívbillentyű
+Melyik zenei alapelem a dallam és a harmónia mellett a hangok időbeli rendje? | ritmus |  | szívritmus
+Mi terjed a levegőben nagyjából 340 m/s sebességgel? | hang | a hang | szívhang
++ Melyik hirtelen fellépő, életveszélyes rosszullét illik az összefüggésbe? | szívroham | szívinfarktus;szívmegállás | szívroham
+
+# osszetett-korona | korona
+Mi a hiányzó szó a szólásból: „Nincsen rózsa … nélkül”? | tövis |  | töviskorona
+Melyik növény latin neve, a „laurus” rejlik a „laureátus” szóban? | babér |  | babérkorona | N
+Melyik szó jelenti a fa leveleinek összességét? | lomb | lombozat | lombkorona
+Milyen uralkodói címet jelöl az orosz „cár” és a német „Kaiser” szó? | császár |  | császárkorona
+Melyik csillag körül kering a Föld? | Nap | a Nap | napkorona
+---
+Milyen rangú uralkodó áll Monaco élén? | herceg |  | koronaherceg
+Milyen kórokozó okozza az influenzát és a kanyarót? | vírus | vírusok | koronavírus
+Mi a közös neve a gyűrűnek, a nyakláncnak és a brossnak? | ékszer | ékszerek | koronaékszer
+Milyen jogállású brit terület volt Hongkong 1997-ig? | gyarmat | koronagyarmat | koronagyarmat | N
++ Milyen tanú illik az összefüggésbe? | koronatanú |  | koronatanú
+
+# osszetett-csillag | csillag
+Mit vetítenek a moziban? | film | filmet;filmek | filmcsillag
+Melyik a legerősebb sakkfigura? | vezér |  | vezércsillag
+Melyik szó áll az „Északi-” és a „Déli-” után a Föld forgástengelyének két végpontját jelölve? | sark | sarkpont | sarkcsillag
+Mit jelent a római Fortuna istennő neve? | szerencse |  | szerencsecsillag
+Melyik napszak istennője a római Aurora? | hajnal |  | hajnalcsillag | N
+---
+Melyik fűszer adja az ouzo és a pastis jellegzetes ízét? | ánizs |  | csillagánizs | N
+Mi a hiányzó szó a temetési szertartásból: „…ból lettél, …rá leszel”? | por |  | csillagpor
+Minek a gyűjteménye az atlasz? | térkép | térképek | csillagtérkép
+Milyen jármű volt a Titanic? | hajó | óceánjáró;gőzhajó | csillaghajó
++ Melyik George Lucas-filmsorozat illik az összefüggésbe? | Csillagok háborúja |  | Csillagok háborúja
+
+# osszetett-kiraly | király
+Mi volt Simon Péter foglalkozása, mielőtt Jézus tanítványa lett? | halász |  | halászkirály
+Milyen állat Breki a Muppet Show-ban? | béka |  | békakirály
+Mit ünnepelnek a futballisták, ha a labda a hálóba kerül? | gól |  | gólkirály
+Milyen állat Mickey és Jerry a rajzfilmekben? | egér |  | egérkirály
+Milyen mesebeli lény Csingiling a Pán Péterben? | tündér |  | tündérkirály
+---
+Melyik mérgeskígyó tárja szét „csuklyáját”, ha fenyegetve érzi magát? | kobra | pápaszemes kobra | királykobra
+Melyik röpképtelen madár a Linux kabalája? | pingvin |  | királypingvin | N
+Melyik a harmadik műnem a líra és az epika mellett? | dráma |  | királydráma
+Milyen színnel jelölik Picasso 1901 és 1904 közötti korszakát? | kék |  | királykék | N
++ Melyik Disney-rajzfilm illik az összefüggésbe? | Az oroszlánkirály | Oroszlánkirály | Az oroszlánkirály
+
+# osszetett-vilag | világ
+Minek a „fejtéséről” szól Freud 1899-ben megjelent főműve? | álom | álmok | álomvilág | N
+Milyen műfajú a Hamupipőke és a Csizmás Kandúr? | mese | tündérmese;népmese | mesevilág
+Melyik élőlénycsoport tudománya a zoológia? | állat | állatok | állatvilág
+Melyik élőlénycsoportot rendszerezte Linné Species Plantarum című műve? | növény | növények | növényvilág | N
+Mennyi az ötven százalék törtként kimondva? | fél | egy fél;fele | félvilág
+---
+Mit jelent magyarul a „champion” szó? | bajnok |  | világbajnok
+Mi az első szó Tolsztoj Napóleon korában játszódó nagyregényének címében? | háború | Háború és béke | világháború
+Mit sző a pók? | háló | pókháló | világháló
+Mit hagy az örökhagyó az örököseire? | örökség |  | világörökség
++ Melyik Aldous Huxley-regény illik az összefüggésbe? | Szép új világ |  | Szép új világ
+
+# osszetett-arany | arany
+Milyen színű ház az amerikai elnök rezidenciája? | fehér |  | fehérarany
+---
+Milyen állat a guppi és a neonhal? | hal | díszhal;halak | aranyhal
+Mit csillapít az aszpirin a fájdalom mellett? | láz | lázat | aranyláz
+Mit nyírnak le a juhról? | gyapjú | gyapjút | aranygyapjú
+Mit akasztanak az olimpiai dobogósok nyakába? | érem | érmet;érmek | aranyérem
+Melyik gyümölcsöt ítélte Parisz Aphroditének? | alma |  | aranyalma
+Melyik kutyaféle fejével ábrázolták az egyiptomiak Anubiszt? | sakál |  | aranysakál
+Milyen ünnepélyes pápai oklevél kapta nevét a függőpecsétjéről? | bulla | pápai bulla | aranybulla | N
+Milyen kertészeti munkát végeznek kora tavasszal a szőlőn és a gyümölcsfákon? | metszés |  | aranymetszés | N
++ Melyik Jókai-regény illik az összefüggésbe? | Az arany ember | Aranyember;Arany ember | Az arany ember
+
+# osszetett-kereszt | kereszt
+Milyen színű volt a szovjet zászló? | vörös | piros | vöröskereszt
+Melyik apostol volt Péter testvére, Skócia védőszentje? | András | Szent András | andráskereszt | N
+Mire tűzi a horgász a csalit? | horog | horogra | horogkereszt
+Mit jelent a francia „mérite” szó a porosz Pour le Mérite kitüntetés nevében? | érdem |  | érdemkereszt | N
+---
+Mit jelent a latin „pater” szó? | apa | atya | keresztapa
+Mi a közös neve a szudokunak és a rébusznak? | rejtvény | fejtörő | keresztrejtvény
+Miből áll a csontváz – a felnőtt emberben 206 van belőle? | csont | csontok | keresztcsont
+Mit érzünk a szobában, ha két szemközti ablak nyitva van? | huzat | léghuzat | kereszthuzat
+Mit tesz fel a kvízmester a játékosnak? | kérdés | kérdést;kérdések | keresztkérdés
++ Milyen középkori hadjáratok illenek az összefüggésbe? | keresztes hadjáratok | keresztes hadjárat;keresztes háborúk;keresztes háború | keresztes hadjáratok
+
+# osszetett-tenger | tenger
+Mi lobog a gyertya kanócán? | láng |  | lángtenger
+Mi a közös neve a tulipánnak és a nárcisznak? | virág | virágok | virágtenger
+Mi a Homo sapiens magyar neve? | ember |  | embertenger
+A „szmog” szó az angol füst (smoke) és melyik időjárási jelenség nevének összevonása? | köd |  | ködtenger | N
+Mit hullat a szólás szerint az álszent krokodil? | könny | könnyek;krokodilkönny | könnytenger
+---
+Milyen földrajzi képződmény a Boszporusz és a Dardanellák? | szoros | tengerszoros | tengerszoros
+Mi a közös mellékneve Sándor makedón királynak és Péter orosz cárnak? | nagy |  | tengernagy
+Milyen földrajzi képződmény a Vizcayai- és a Bengáli-…? | öböl | tengeröböl | tengeröböl
+Melyik érzékszervünk része a retina és az írisz? | szem |  | tengerszem | N
++ Melyik rágcsáló házi kedvenc illik az összefüggésbe? | tengerimalac | tengeri malac | tengerimalac
+
+# osszetett-ver | vér
+Milyen állattal küzd a matador? | bika |  | bikavér
+Milyen „háború” zajlott az Egyesült Államok és a Szovjetunió között 1947 és 1991 között? | hideg | hidegháború | hidegvér
+Milyen a hold, amikor teljes korongja világít: …hold? | teli | telihold | telivér
+---
+Melyik állat nevelte fel a monda szerint Romulust és Remust? | farkas | anyafarkas;nőstényfarkas | vérfarkas
+Melyik gyümölcs nevével cseng össze a holland királyi ház neve (Oranje)? | narancs |  | vérnarancs | N
+Mi a lakodalom, menyegző rövid, régies szinonimája (pl. …út, …ajándék)? | nász |  | vérnász | N
+Mi a kutya hivatalos, régies megnevezése (pl. …adó, …oltás)? | eb |  | véreb
+Melyik fa nevét viseli a Mátra és a Zempléni-hegység közötti hegységünk? | bükk | bükkfa | vérbükk
+Milyen intézmény Budapesten a Széchenyi, a Gellért és a Rudas? | fürdő | gyógyfürdő | vérfürdő
++ Melyik honfoglalás előtti esemény illik az összefüggésbe? | vérszerződés |  | vérszerződés
+
+# osszetett-torony | torony
+Milyen értékes anyagból van az elefánt agyara? | elefántcsont |  | elefántcsonttorony
+Mi szól minden délben a nándorfehérvári diadal emlékére? | harang | harangszó | harangtorony | N
+Milyen épület a párizsi Notre-Dame? | templom | székesegyház | templomtorony
+Milyen hadművelet zajlott 1552-ben Egernél és 1566-ban Szigetvárnál? | ostrom | várostrom | ostromtorony
+Melyik készüléken nézzük a híradót és a sorozatokat? | tévé | televízió;tv | tévétorony
+---
+Melyik hosszú lábú madár gyülekezik ősszel tízezrével a Hortobágyon? | daru | darvak | toronydaru | N
+Mit visel a fején a motoros és a római légiós? | sisak |  | toronysisak
+Mivel záródik az ing és a kabát? | gomb | gombok | toronygomb
+Mi a közös szó a távol-, a magas- és a rúd- kezdetű atlétikai számok nevében? | ugrás |  | toronyugrás
++ Melyik párizsi építmény illik az összefüggésbe? | Eiffel-torony | Eiffel torony | Eiffel-torony
+
+# osszetett-kulcs | kulcs
+Milyen nemzetiségű volt Molière és Voltaire? | francia |  | franciakulcs
+Melyik a legmélyebb férfi énekhang? | basszus |  | basszuskulcs | N
+Ki „a bagdadi …” az Ezeregyéjszaka nyomán készült klasszikus kalandfilmek címszereplője? | tolvaj |  | tolvajkulcs
+Mit húzunk meg a csavarhúzóval? | csavar | csavart | csavarkulcs
+---
+Milyen égitest nyel el mindent, még a fényt is: fekete …? | lyuk |  | kulcslyuk
+Mi a mondat legkisebb, önálló jelentésű egysége? | szó | szavak | kulcsszó
+Mit játszik a színész a darabban? | szerep | szerepet | kulcsszerep
+Milyen sebességegységet használnak a hajósok (tengeri mérföld per óra)? | csomó |  | kulcscsomó | N
+Milyen műfajú A kőszívű ember fiai? | regény | történelmi regény | kulcsregény
++ Melyik csontunk illik az összefüggésbe? | kulcscsont |  | kulcscsont

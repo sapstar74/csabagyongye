@@ -1,0 +1,59 @@
+# etel-somloi | somlói galuska | Háromféle piskóta, dió, rumos mazsola, vaníliakrém, baracklekvár, kakaó, csokoládéöntet és tejszínhab.
+Melyik könnyű, tojáshabbal lazított tészta a legtöbb torta alapja? | piskóta | piskótatészta
+Melyik csonthéjas termés feltörésére szolgál Csajkovszkij karácsonyi balettjének címszereplője? | dió
+Mi a szárított szőlő neve? | mazsola
+Melyik ital cukra a laktóz? | tej
+Melyik orchideaféle termése a sáfrány után a legdrágább fűszerek egyike? | vanília |  |  | N
+Melyik növény tudományos nemzetségneve, a Theobroma jelenti azt: „istenek eledele”? | kakaó | kakaófa;kakaóbab |  | N
+Mit gyárt Willy Wonka? | csokoládé | csoki
+Miből verik a habot a kávé és a sütemények tetejére? | tejszín | habtejszín;tejszínhab
+Melyik gyümölcs kecskeméti pálinkáját nevezik „fütyülősnek”? | barack | sárgabarack;kajszi;kajszibarack | baracklekvár
++ Melyik szeszes ital illik az összefüggésbe? | rum |  | rumos mazsola
+
+# etel-pizza | pizza | Pizza: kelt tészta, paradicsom, sonka, mozzarella, bazsalikom, olívaolaj, oregánó.
+Mit őrölnek a malomban a búzából? | liszt | búzaliszt
+Melyik egysejtű gomba keleszti a kenyeret és erjeszti a sört? | élesztő | élesztőgomba;sörélesztő
+Minek a képlete H₂O? | víz
+Mivé változott Lót felesége, amikor visszanézett Szodomára? | só | sóbálvány;sóbálvánnyá;sóoszlop
+Mit sajtolnak az olajfa terméséből? | olívaolaj | olivaolaj;olaj;olíva olaj
+Melyik zöldség olasz neve, a pomodoro jelent szó szerint „aranyalmát”? | paradicsom
+Melyik pácolt, érlelt disznóhús híres fajtája a pármai és a Serrano? | sonka
+Melyik fűszernövény neve ered a görög „királyi” szóból? | bazsalikom |  |  | N
+Melyik mediterrán fűszer a szurokfű, más néven vadmajoránna? | oregánó | oregano |  | N
++ Melyik sajt illik az összefüggésbe? | mozzarella | mozarella
+
+# etel-paella | paella | Paella: sáfrányos rizs húsokkal, tenger gyümölcseivel, zöldbabbal, rozmaringgal, paprikával.
+Melyik gabonát termesztik vízzel elárasztott földeken? | rizs
+Melyik fűszer egy krókuszfaj bibéje, a világ legdrágábbja? | sáfrány
+Melyik szárnyas húsából készül a klasszikus magyar paprikás? | csirke | csirkehús;tyúk
+Milyen állat Bugs Bunny? | nyúl
+Melyik hüvelyes zsenge termését esszük hüvelyestül főzelékként és levesként? | zöldbab | bab
+Melyik állat héjában terem az igazgyöngy? | kagyló | gyöngykagyló
+Melyik apró tengeri rák spanyol neve „gamba”? | garnéla | garnélarák;garnéla rák |  | N
+Melyik puhatestű hordja a hátán a házát? | csiga | éticsiga;éti csiga
+Melyik fűszernövény latin neve jelent „tengeri harmatot”? | rozmaring |  |  | N
++ Melyik őrölt piros fűszer illik az összefüggésbe? | paprika | fűszerpaprika;pirospaprika;füstölt paprika
+
+# etel-caesar | Caesar-saláta | Caesar-saláta: római saláta, pirított kenyérkocka, parmezán és a jellegzetes öntet.
+Melyik leveles zöldségnek van fejes, jég- és római fajtája? | saláta
+Mit szaporított meg Jézus a halak mellett? | kenyér | kenyeret;kenyerek | pirított kenyérkocka
+Melyik sárga citrusféle a limonádé alapja? | citrom
+Melyik apró, sózva érlelt hal angol neve anchovy? | szardella | ajóka |  | N
+Mit formáznak Fabergé húsvéti ékszerremekei? | tojás | tojások;húsvéti tojás
+Melyik növény gerezdjeit használjuk fűszerként? | fokhagyma
+Melyik ételízesítő „fővárosa” a burgundiai Dijon? | mustár
+Melyik angol város nevét viseli a híres sötét, pikáns szósz? | Worcester | Worcestershire | Worcester-szósz | N
+Melyik fűszert őröljük frissen az asztalnál a só párjaként? | bors | feketebors;fekete bors
++ Melyik sajt illik az összefüggésbe? | parmezán | parmezán sajt;Parmigiano Reggiano;parmigiano
+
+# etel-borscs | borscs | Borscs: céklás-káposztás húsleves kaporral, tejföllel.
+Melyik zöldség a hóember hagyományos orra? | sárgarépa | répa
+Melyik zöldség savanyított változata a Sauerkraut? | káposzta | fejes káposzta;fehér káposzta
+Melyik növényből készül a pommes frites? | burgonya | krumpli
+Milyen húsból készül hagyományosan a tatárbifsztek? | marhahús | marha;bélszín
+Melyik fűszernövény ízesíti a kovászos uborkát és a tökfőzeléket? | kapor
+Mivel itatták meg a keresztre feszített Jézust egy szivacsról? | ecet | ecettel |  | N
+Melyik növény leveleiből fonták az ókori győztesek koszorúját? | babér | babérlevél
+Mi a magyar megfelelője a szláv konyhák „szmetanájának”? | tejföl | tejfel |  | N
+Melyik zöldségre emlékeztet az orosz ortodox templomok kupolája? | hagyma | vöröshagyma
++ Melyik gyökérzöldség illik az összefüggésbe? | cékla

@@ -1,0 +1,119 @@
+# mu-ember-tragediaja | Az ember tragédiája | Madách Imre műve: a válaszok a történeti színek helyszínei, illetve Ádám alakjai, a mű sorrendjében.
+Melyik országban áll a gízai nagy piramis? | Egyiptom |  | 4. szín: Ádám fáraó Egyiptomban
+Ki vezette győzelemre az athéni sereget a marathóni csatában? | Miltiadész | Miltiades;Miltiádes | 5. szín: Ádám Miltiadészként Athénban
+Melyik várost alapította a monda szerint Romulus? | Róma |  | 6. szín: Róma
+Milyen néven ismerték évszázadokon át a mai Isztambult, Nagy Konstantin császár után? | Konstantinápoly |  | 7. szín: Ádám Tankréd lovagként Konstantinápolyban
+Melyik csillagász lett Tycho Brahe utódjaként II. Rudolf császár udvari matematikusa? | Kepler | Johannes Kepler | 8. és 10. szín: Ádám Keplerként Prágában | N
+Melyik francia forradalmárt, a Cordeliers klub vezéralakját végezték ki 1794 áprilisában? | Danton | Georges Danton;Georges Jacques Danton | 9. szín: Ádám Dantonként Párizsban
+Melyik városban játszódik Dickens Twist Olivér című regényének nagy része? | London |  | 11. szín: London
+Hogyan nevezte Charles Fourier az általa elképzelt eszményi közösségek közös lakó- és munkatelepét? | falanszter | phalanstère;phalanster | 12. szín: falanszter | N
+Melyik sarkvidéki nép hagyományos, hótömbökből épített kunyhója az iglu? | eszkimó | eszkimók;inuit;inuitok | 14. szín: az eszkimó a kihűlő Földön
++ Melyik közép-európai főváros illik az összefüggésbe? | Prága |  | 8. és 10. szín: Prága
+
+# mu-hamlet | Hamlet | Shakespeare tragédiája: helyszínek, szereplők és a „színház a színházban” jelenet.
+Melyik ország zászlaja a Dannebrog? | Dánia |  | a dráma helyszíne
+Melyik dán városban áll a Kronborg-kastély? | Helsingőr | Helsingör;Helsingor;Helsingør;Elsinore | a királyi vár | N
+Melyik német város vártemplomának kapujára tűzte ki Luther a 95 tételét? | Wittenberg |  | a királyfi és Horatio egyeteme
+Melyik császár követte Caligulát Róma trónján? | Claudius |  | a trónbitorló király
+Melyik vízbe fúlt leányalakot festette meg John Everett Millais 1852-ben? | Ophelia | Ofélia | Polonius lánya
+Ki volt Odüsszeusz apja? | Laertész | Laertes;Láertész | Ophelia bátyja | N
+Mi volt Nelson admirális keresztneve? | Horatio |  | a királyfi barátja
+Mi az első név Tom Stoppard darabjának címében: … és Guildenstern halott? | Rosencrantz |  | egykori iskolatárs
+Mi a címe Agatha Christie 1952 óta játszott londoni színdarabjának? | Egérfogó | Az egérfogó;The Mousetrap | így nevezi a királyfi az előadatott jelenetet
++ Melyik udvari bolond illik az összefüggésbe? | Yorick |  | a koponya gazdája a temetőjelenetben
+
+# mu-pal-utcai | A Pál utcai fiúk | Molnár Ferenc regénye.
+Mi lett a damaszkuszi úton megtért Saul neve? | Pál | Pál apostol;Szent Pál;Paulus | Pál utca
+Melyik német eredetű szó jelenti a pesti nyelvben az üres telket? | grund |  | a grund
+Milyen képlékeny anyaggal rögzítették hagyományosan az üveget az ablakkeretbe? | gitt |  | gittegylet
+Hogyan nevezték hagyományosan a rendfokozat nélküli, legalacsonyabb rangú katonát? | közlegény | közkatona | Nemecsek az egyetlen közlegény
+Minek a tudománya a vexillológia? | zászló | zászlók;lobogó;lobogók | a grund zászlaja | N
+Mi a botanikus kert régies magyar neve? | füvészkert |  | a vörösingesek tanyája
+Milyen ruhadarabról kapták nevüket Garibaldi önkéntesei? | vörös ing | vörösing;ing;vörösingesek;piros ing | a vörösingesek | N
+Melyik ízületünk köti össze a lábszárat a lábfejjel? | boka | bokaízület | Boka János
+Mi a pneumonia magyar neve? | tüdőgyulladás |  | Nemecsek betegsége
++ Melyik gyerekjáték illik az összefüggésbe? | üveggolyó | golyó;golyózás;üveggolyók;golyók | az „einstand” tárgya
+
+# mu-egri-csillagok | Egri csillagok | Gárdonyi Géza regénye.
+Melyik pápa nevét viseli a ma használt naptár? | Gergely | XIII. Gergely | Bornemissza Gergely
+Ki az első asszony a Biblia szerint? | Éva |  | Cecey Éva
+Melyik főurat ejtette foglyul Szulejmán 1541-ben, Buda elfoglalásakor? | Török Bálint |  | Gergely pártfogója
+Melyik szultán halt meg Szigetvár 1566-os ostroma alatt? | Szulejmán | I. Szulejmán;Nagy Szulejmán | a szultán
+Mi a magyar neve az isztambuli Yedikule erődnek? | Héttorony | Jedikula | Török Bálint börtöne | N
+Melyik 16. századi lantos énekmondó műve a Cronica? | Tinódi | Tinódi Lantos Sebestyén;Tinódi Sebestyén | az egri ostrom megéneklője
+Hogyan hívták az oszmán szultánok keresztény fiúkból nevelt elit gyalogosait? | janicsár | janicsárok | az ostromló sereg
+Melyik évben esett el Temesvár és Drégely vára? | 1552 |  | az egri ostrom éve | N
+Melyik város borvidékének vörösbora az egyik bikavér a szekszárdi mellett? | Eger | egri | a vár
++ Melyik várkapitány illik az összefüggésbe? | Dobó István | Dobó | Eger kapitánya
+
+# mu-verdi | Verdi | Giuseppe Verdi operái a Nabuccótól a Falstaffig.
+Melyik babiloni király hurcolta fogságba Júda népét Kr. e. 586-ban? | Nabukodonozor | Nabucco;II. Nabukodonozor;Nebukadneccar | Nabucco (1842)
+Kit neveztek „Isten ostorának”? | Attila | Attila hun király;Etele | Attila (1846)
+Melyik skót király a címszereplője Shakespeare legrövidebb tragédiájának? | Macbeth |  | Macbeth (1847)
+Hogyan nevezték a középkori provanszál lovagi költő-énekeseket? | trubadúr | trubadúrok | A trubadúr (1853)
+Milyen mulatságon viselnek maszkot a velencei karnevál vendégei? | álarcosbál | álarcos bál;maszkabál | Az álarcosbál (1859)
+Melyik spanyol trónörökösről írt drámát Schiller 1787-ben? | Don Carlos | Carlos | Don Carlos (1867) | N
+Melyik núbiai hercegnő a címszereplője Elton John és Tim Rice 2000-ben bemutatott musicaljének? | Aida |  | Aida (1871) | N
+Ki „a velencei mór” Shakespeare tragédiájában? | Othello | Otello | Otello (1887)
+Ki a kövér, iszákos lovag A windsori víg nőkben? | Falstaff | Sir John Falstaff;John Falstaff | Falstaff (1893)
++ Melyik udvari bolond illik az összefüggésbe? | Rigoletto |  | Rigoletto (1851)
+
+# mu-casablanca | Casablanca | Helyszínek, a híres jelenetek kellékei, a két főszereplő és a rendező.
+Melyik ország fővárosa Rabat? | Marokkó |  | a film helyszíne
+Melyik város jelképe az Eiffel-torony? | Párizs |  | a szerelmesek közös emléke
+Melyik európai főváros fekszik a Tejo torkolatánál? | Lisszabon |  | ide repülnek a menekülők, hogy továbbjussanak Amerikába
+Mi a francia himnusz címe? | Marseillaise | La Marseillaise;A Marseillaise | a kávéház közönsége énekli
+Melyik fürdővárosban székelt Pétain marsall kormánya 1940 és 1944 között? | Vichy |  | a várost a Vichy-kormány uralja | N
+Melyik hangszeren van 88 billentyű? | zongora |  | Sam hangszere
+Ki játszotta Sam Spade-et A máltai sólyomban és Philip Marlowe-t A hosszú álomban? | Humphrey Bogart | Bogart | Rick
+Melyik svéd színésznő volt Isabella Rossellini édesanyja? | Ingrid Bergman | Bergman | Ilsa
+Milyen magyar néven forgatott itthon némafilmeket a később Michael Curtizként Oscar-díjat nyerő rendező? | Kertész Mihály | Kertész | a film rendezője | N
++ Melyik amerikai dal illik az összefüggésbe? | As Time Goes By | Múlnak az évek | Sam ezt játssza
+
+# mu-janos-vitez | János vitéz | Petőfi Sándor műve, Kukorica Jancsi útja a falutól Tündérországig.
+Melyik növényt nevezik tengerinek és málénak is? | kukorica |  | Kukorica Jancsi
+Ki őrzi hivatásszerűen a juhnyájat? | juhász |  | Jancsi mestersége
+Ki sanyargatja Hamupipőkét a mesében? | mostoha | mostohaanya;mostohája;a mostohája | Iluska mostohája
+Melyik magyar eredetű könnyűlovas katona nevét viseli a sakkban a ló? | huszár |  | Jancsi huszárnak áll
+Melyik ország jelképe a gall kakas? | Franciaország |  | a francia királyt menti meg
+Milyen rangot viselt az Oszmán Birodalom tartományainak élén álló főméltóság, például a budai …? | pasa | basa | a török basa | N
+Milyen lények Brobdingnag lakói Gulliver szemében? | óriás | óriások | az óriások országa
+Kikről mondta ki Könyves Kálmán törvénye, hogy „nincsenek”? | boszorkány | boszorkányok;strigák | a boszorkányok országa
+Melyik mesebeli lénynek van sasfeje, szárnya és oroszlánteste? | griff | griffmadár | a griffmadár viszi Jancsit | N
++ Melyik női név illik az összefüggésbe? | Iluska | Ilus;Ilona | Jancsi szerelme
+
+# mu-micimacko | Micimackó | A. A. Milne könyve, Karinthy Frigyes fordításában.
+Milyen állat Balu A dzsungel könyvében? | medve |  | Micimackó
+Mit készítenek a méhek a nektárból? | méz |  | a mackó kedvence
+Milyen állat Babe a róla szóló 1995-ös filmben? | malac | disznó;sertés | Malacka
+Milyen állattá változik a főhős Apuleius ókori regényében? | szamár |  | Füles | N
+Melyik madár Pallasz Athéné szent állata? | bagoly | kuvik | Bagoly | N
+Milyen állat Tapsi Hapsi? | nyúl | nyuszi | Nyuszi
+Melyik erszényes Ausztrália címerállata az emu mellett? | kenguru |  | Kanga és Zsebibaba
+Milyen állat Sir Kán A dzsungel könyvében? | tigris |  | Tigris
+Mi a közös keresztneve De Nirónak és Redfordnak? | Robert | Róbert | Róbert Gida
++ Melyik erdő illik az összefüggésbe? | Százholdas Pagony | Százholdas Pagony;Pagony | a történetek helyszíne
+
+# mu-varazsfuvola | A varázsfuvola | Mozart operája.
+Milyen rangú a „kis” címszereplő Saint-Exupéry meséjében? | herceg |  | Tamino herceg
+Milyen állat tekeredik Aszklépiosz botjára? | kígyó |  | a nyitójelenet kígyója
+Mi volt a mellékneve szerint I. Henrik német király (Heinrich der Vogler)? | madarász |  | Papageno | N
+Melyik fafúvós hangszer készül ma többnyire fémből, és oldalra tartva fújják? | fuvola | harántfuvola | a varázshangszer
+Mit tesznek a szerelmesek a hidak korlátjára hűségük jeléül? | lakat | lakatot | Papageno száján a büntetés
+Melyik napszak megszemélyesítője a görög Nüx? | éj | éjszaka;az éj;az éjszaka | az Éj királynője | N
+Ki Shakespeare Othellója: „a velencei …”? | mór |  | Monostatos
+Ki volt Ozirisz testvére és felesége? | Ízisz | Isis;Izisz | a papok istennője
+Milyen, toronyból szóló hangszer a „carillon”? | harangjáték |  | Papageno hangszere
++ Melyik zeneszerző illik az összefüggésbe? | Mozart | Wolfgang Amadeus Mozart | az opera szerzője
+
+# mu-romeo-julia | Rómeó és Júlia | Shakespeare tragédiája.
+Melyik olasz város római amfiteátrumában rendeznek nyaranta operafesztivált? | Verona |  | a helyszín
+Milyen eseményen veszíti el a cipőjét Hamupipőke? | bál | a bálon;bálon | a Capulet-bál
+Mi a balkon magyar neve? | erkély |  | az erkélyjelenet
+Mi a címe Kosztolányi regényének, amely egy sárszegi vénlány becenevét viseli? | Pacsirta |  | pacsirta vagy csalogány – a hajnali búcsú
+Melyik vértanú diakónust égették meg a hagyomány szerint rostélyon? | Lőrinc | Szent Lőrinc | Lőrinc barát | N
+Ki szöktette meg Szép Helénát Spártából? | Parisz | Páris;Párisz | Páris gróf, a kérő
+Melyik lombardiai város urai voltak a Gonzagák? | Mantova | Mantua | a száműzetés helye | N
+Hol dolgozik a gyógyszerész? | patika | gyógyszertár;patikában | a méregárus patikárius
+Hogyan nevezik a templom alatti sírboltot? | kripta | altemplom | a zárójelenet helyszíne
++ Melyik női név illik az összefüggésbe? | Júlia | Julia | a címszereplő

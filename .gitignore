@@ -186,6 +186,7 @@ audio_files_backup/
 
 # A webes felület exportált kérdésbankja verziózva van
 !web/data/questions.json
+!web/data/kilenc_plusz_egy.json
 
 # GitHub Pages összeállítás (scripts/build_site.py)
 _site/
