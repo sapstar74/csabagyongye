@@ -39,8 +39,9 @@ Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) 
 
 - Egy játékmód: a kiválasztott témákból sorsolt, csúszkán beállított számú kérdés (5–50),
   a témák között egyenletesen elosztva
-- Minden válasz után visszajelzés és magyarázat, utána „Következő” gomb
-- Szöveges, képes és zenés kérdések; a hang a válasz után is szól
+- Minden válasz után visszajelzés és magyarázat; 2 másodperc múlva magától jön a következő
+  kérdés (`ADVANCE_MS` az `app.js` elején). A „Várj, elolvasom” gomb vagy a zene tekerése megállítja
+- Szöveges, képes és zenés kérdések; a hang a válasz után is szól, csúszkával tekerhető
 - Szőlőfürt: a helyes válasz gyöngyszem, a hibás mazsola. 10 kérdésig lefelé keskenyedő
   fürt, fölötte négy szem széles, gördülő füzér; az eredményoldalon a teljes fürt
 - Eredmény: pontszám, a hibák áttekintése, a hibás kérdések újrajátszása

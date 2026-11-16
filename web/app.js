@@ -5,6 +5,7 @@
 
   var MEDIA_BASE = '../';            // a médiafájlok a repó gyökeréhez képest vannak megadva
   var MIN_N = 5, MAX_N = 50;
+  var ADVANCE_MS = 2000;            // válasz után ennyi idővel jön a következő kérdés
   var PALS = [['black', 'Fekete'], ['green', 'Zöld'], ['wine', 'Borvörös']];
   var GROUND = { black: '#0B0D13', green: '#0F3B2C', wine: '#4A1226' };
   var KEYS = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -16,6 +17,8 @@
   var sel = new Set();               // kiválasztott témakulcsok
   var wantN = 10;
   var round = null;                  // { items, idx, results, off }
+  var advanceTimer = null;          // automatikus továbblépés időzítője
+  var scrubbing = false;            // éppen húzza-e a lejátszási csúszkát
   var audio = new Audio();
   audio.preload = 'auto';
 
@@ -122,6 +125,7 @@
   }
 
   function renderHome() {
+    holdAdvance();
     stopAudio();
     round = null;
     var bulbs = '';
@@ -213,7 +217,9 @@
       for (var b = 0; b < 22; b++) bars += '<i style="height:' + (16 + (b * 37) % 28) + 'px;animation-delay:' + (((b * 137) % 900) / 1000).toFixed(2) + 's"></i>';
       media = '<div class="player big" id="player"><div class="deck"><div class="disc" aria-hidden="true"><i></i></div>' +
         '<button class="play" id="play" aria-label="Lejátszás">' + ICON.play + '</button></div>' +
-        '<div class="meter"><span class="time disp" id="time">0:00</span><div class="eq" aria-hidden="true">' + bars + '</div></div></div>' +
+        '<div class="meter"><div class="meter-top"><span class="time disp" id="time">0:00</span><div class="eq" aria-hidden="true">' + bars + '</div></div>' +
+        '<div class="seek"><input type="range" id="seek" min="0" max="90" step="0.1" value="0" aria-label="Lejátszási pozíció" aria-valuetext="0:00">' +
+        '<span class="dur" id="dur">–:––</span></div></div></div>' +
         '<p class="audio-err" id="aerr" hidden>A hangfájl nem tölthető be.</p>';
     } else if (q.i) {
       media = '<figure class="picture"><img src="' + esc(mediaUrl(q.i)) + '" alt="A kérdéshez tartozó kép">' +
@@ -265,14 +271,29 @@
       '<div class="why' + (ok ? ' good' : '') + '" id="after"><h2 class="disp">' +
       (ok ? 'Talált!' : 'Nem talált. A helyes válasz: ' + esc(correctText)) + '</h2>' +
       (q.cap ? '<p class="cap">' + esc(q.cap) + '</p>' : '') +
-      (q.e ? '<p>' + rich(q.e) + '</p>' : '') + '</div>' +
-      '<button class="cta next" id="next">' + (last ? 'Eredmény' : 'Következő') + '</button>';
+      (q.e ? '<p>' + rich(q.e) + '</p>' : '') +
+      '<button class="hold" id="hold">' + ICON.pause + '<span>Várj, elolvasom</span></button></div>' +
+      '<button class="cta next auto" id="next" style="--adv:' + ADVANCE_MS + 'ms">' + (last ? 'Eredmény' : 'Következő') + '</button>';
     var next = document.getElementById('next');
     next.focus({ preventScroll: true });
     next.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    clearTimeout(advanceTimer);
+    advanceTimer = setTimeout(nextQuestion, ADVANCE_MS);
+  }
+
+  // Megállítja az automatikus továbblépést (Várj gomb, csúszka, kilépés).
+  function holdAdvance() {
+    if (advanceTimer === null) return;
+    clearTimeout(advanceTimer);
+    advanceTimer = null;
+    var next = document.getElementById('next'), hold = document.getElementById('hold');
+    if (next) next.classList.remove('auto');
+    if (hold) hold.remove();
   }
 
   function nextQuestion() {
+    clearTimeout(advanceTimer);
+    advanceTimer = null;
     if (!round || round.items[round.idx].pick === null) return;
     if (round.idx < round.items.length - 1) { round.idx++; renderQuestion(); }
     else renderResult();
@@ -322,7 +343,20 @@
     btn.setAttribute('aria-label', playing ? 'Szünet' : 'Lejátszás');
   }
   ['play', 'playing', 'pause', 'ended'].forEach(function (ev) { audio.addEventListener(ev, syncPlayer); });
-  audio.addEventListener('timeupdate', function () { var t = document.getElementById('time'); if (t) t.textContent = mmss(audio.currentTime); });
+  function syncTime() {
+    var t = document.getElementById('time'), sk = document.getElementById('seek');
+    if (t) t.textContent = mmss(audio.currentTime);
+    if (sk && !scrubbing) { sk.value = audio.currentTime; sk.setAttribute('aria-valuetext', mmss(audio.currentTime)); }
+  }
+  function syncDuration() {
+    var sk = document.getElementById('seek'), d = document.getElementById('dur');
+    if (!isFinite(audio.duration) || !audio.duration) return;
+    if (sk) sk.max = audio.duration;
+    if (d) d.textContent = mmss(audio.duration);
+  }
+  audio.addEventListener('timeupdate', syncTime);
+  audio.addEventListener('loadedmetadata', syncDuration);
+  audio.addEventListener('durationchange', syncDuration);
   audio.addEventListener('error', function () {
     var e = document.getElementById('aerr');
     if (e && audio.getAttribute('src')) e.hidden = false;
@@ -361,6 +395,7 @@
       return;
     }
     if (t.id === 'next') return nextQuestion();
+    if (t.id === 'hold') return holdAdvance();
     if (t.id === 'play') { if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); } else audio.pause(); return; }
     if (t.id === 'quit' || t.id === 'home') return renderHome();
     if (t.id === 'retry') {
@@ -370,14 +405,31 @@
   });
 
   app.addEventListener('input', function (ev) {
+    if (ev.target.id === 'seek') {
+      scrubbing = true;
+      holdAdvance();
+      var v = Number(ev.target.value);
+      document.getElementById('time').textContent = mmss(v);
+      ev.target.setAttribute('aria-valuetext', mmss(v));
+      if (isFinite(audio.duration)) audio.currentTime = v;
+      return;
+    }
     if (ev.target.id !== 'n') return;
     wantN = Number(ev.target.value);
     document.getElementById('nout').textContent = wantN;
     store('n', wantN);
   });
 
+  app.addEventListener('change', function (ev) {
+    if (ev.target.id !== 'seek') return;
+    scrubbing = false;
+    if (isFinite(audio.duration)) audio.currentTime = Number(ev.target.value);
+    if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
+  });
+
   document.addEventListener('keydown', function (ev) {
     if (!round || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+    if (ev.target.id === 'seek') return;
     var it = round.items[round.idx];
     if (!it || !document.getElementById('opts')) return;
     if (it.pick === null) {
