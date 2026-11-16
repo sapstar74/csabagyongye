@@ -61,7 +61,8 @@ Külön játék a témaválasztó tetején, saját kártyával (a témák kijel�
   összefüggésbe illik. Az összefüggést a játék csak a kiértékelés után írja ki
 - **Párok**: tíz kérdés, az 1–6., 2–7., 3–8., 4–9. és 5–10. válasz együtt egy ismert nevet,
   címet vagy kifejezést ad ki
-- Hét kategória (összetett szó, művek, földrajz, személyiségek, ételek, párok, rejtett lista);
+- Nyolc kategória (összetett szó, művek, földrajz, személyiségek, ételek, párok, rejtett lista,
+  közös kezdőbetűk);
   a játék véletlenszerűen jön, kategóriát nem lehet választani, és játék közben nem is látszik
 - A válaszoknál a kis- és nagybetű, az ékezet, az írásjel és a névelő nem számít; elgépelést
   nem fogad el, csak a forrásban felsorolt alakokat
