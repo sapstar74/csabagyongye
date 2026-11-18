@@ -91,7 +91,7 @@ Melyik hagyományos energiaegységben adják meg az ételek tápértékét? | ka
 Ki tervezte az AK–47 gépkarabélyt? | Kalasnyikov | Mihail Kalasnyikov
 Melyik tükrös optikai játékban állnak össze színes üvegdarabok szimmetrikus mintákká? | kaleidoszkóp
 Mi a finn nemzeti eposz címe? | Kalevala ||| N
-Melyik félsivatag terül el főként Botswana területén? | Kalahári | Kalahári-sivatag || N
+Melyik félsivatag borítja Botswana területének nagy részét? | Kalahári | Kalahári-sivatag || N
 + Melyik fonott húsvéti péksütemény illik az összefüggésbe? | kalács
 
 # kezdet-mar | MAR | Mind a tíz válasz a MAR betűkkel kezdődik.
@@ -160,7 +160,7 @@ Milyen pusztító forgószelek erősségét méri a Fujita-skála? | tornádó |
 Melyik csípős gyökeret reszelik a húsvéti sonka mellé? | torma
 Melyik Kanada legnépesebb városa? | Toronto
 Milyen víz alatti lövedéket indítanak a tengeralattjárók? | torpedó
-Melyik olasz városban őrzik a halotti leplet, és itt van a Fiat központja? | Torino
+Melyik olasz városban őrzik a halotti leplet, és itt alapították 1899-ben a Fiatot? | Torino
 Mi Escamillo foglalkozása Bizet Carmen című operájában? | torreádor | toreádor;torero
 Hogyan nevezik a fej és végtagok nélküli szobortöredéket? | torzó ||| N
 Melyik spanyol városban osztotta fel 1494-ben egy szerződés az Újvilágot Spanyolország és Portugália között? | Tordesillas ||| N
