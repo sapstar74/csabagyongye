@@ -252,5 +252,19 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'indzsera' jelentése: Etióp és eritreai savanykás, szivacsos lepénykenyér teffből, amely tányérként is szolgál""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Megszűnt amerikai közösségi alkalmazás, amelyen legfeljebb 6 másodperces, ismétlődő videókat lehetett megosztani** - melyik idióta szóra gondolok?""",
+        "correct_answer": """vine""",
+        "explanation": """A(z) 'vine' jelentése: Megszűnt amerikai közösségi alkalmazás, amelyen legfeljebb 6 másodperces, ismétlődő videókat lehetett megosztani""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Színlátásvizsgáló teszt: színes pöttyökből álló táblák, amelyeken a vörös-zöld színtévesztő nem vagy másként látja a rejtett számot** - melyik idióta szóra gondolok?""",
+        "correct_answer": """ishihara""",
+        "explanation": """A(z) 'ishihara' jelentése: Színlátásvizsgáló teszt: színes pöttyökből álló táblák, amelyeken a vörös-zöld színtévesztő nem vagy másként látja a rejtett számot""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
