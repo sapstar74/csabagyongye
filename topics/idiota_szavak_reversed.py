@@ -266,5 +266,12 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'ishihara' jelentése: Színlátásvizsgáló teszt: színes pöttyökből álló táblák, amelyeken a vörös-zöld színtévesztő nem vagy másként látja a rejtett számot""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Kénhidrogén-csoportot (–SH) tartalmazó, rendkívül büdös szerves kénvegyület; a szagtalan földgázt ilyennel szagosítják** - melyik idióta szóra gondolok?""",
+        "correct_answer": """merkaptán""",
+        "explanation": """A(z) 'merkaptán' jelentése: Kénhidrogén-csoportot (–SH) tartalmazó, rendkívül büdös szerves kénvegyület; a szagtalan földgázt ilyennel szagosítják""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
