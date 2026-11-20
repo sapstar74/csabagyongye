@@ -273,5 +273,26 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A(z) 'merkaptán' jelentése: Kénhidrogén-csoportot (–SH) tartalmazó, rendkívül büdös szerves kénvegyület; a szagtalan földgázt ilyennel szagosítják""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Angol város Kentben, normann várral és katedrálissal; New York állami névrokona a Kodak szülővárosa** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Rochester""",
+        "explanation": """A 'Rochester' a kenti, Medway-parti angol város (vár, 604-ben alapított katedrális, Dickens-kötődés), és New York állam egyik nagyvárosa is, ahol a Kodak és a Xerox indult.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Londoni stadion, az angol rögbi-válogatott otthona, a világ legnagyobb rögbistadionja** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Twickenham""",
+        "explanation": """A 'Twickenham' Stadium 1909 óta az angol rögbi-válogatott otthona, kb. 82 000 férőhellyel; 2024 óta Allianz Stadium, Twickenham néven.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Illinois fővárosa (Lincoln városa), a kosárlabda massachusettsi szülővárosa és a Simpson család kitalált lakóhelye** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Springfield""",
+        "explanation": """A 'Springfield' több amerikai város neve: Illinois fővárosa és a massachusettsi kosárlabda-szülőváros is; a Simpsonok kitalált városa szintén ez.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
