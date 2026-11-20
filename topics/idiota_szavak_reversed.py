@@ -275,9 +275,9 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "question_type": "text_input"
     },
     {
-        "question": """**Angol város Kentben, normann várral és katedrálissal; New York állami névrokona a Kodak szülővárosa** - melyik idióta szóra gondolok?""",
+        "question": """**New York állami város az Ontario-tó partján, a Kodak és a Xerox szülővárosa** - melyik idióta szóra gondolok?""",
         "correct_answer": """Rochester""",
-        "explanation": """A 'Rochester' a kenti, Medway-parti angol város (vár, 604-ben alapított katedrális, Dickens-kötődés), és New York állam egyik nagyvárosa is, ahol a Kodak és a Xerox indult.""",
+        "explanation": """A 'Rochester' New York állam nyugati részén, az Ontario-tó partján fekszik; itt alapította George Eastman a Kodakot, és itt indult a Xerox is.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
     },
