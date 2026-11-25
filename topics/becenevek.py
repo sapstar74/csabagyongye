@@ -683,4 +683,10 @@ BECENEVEK_QUESTIONS = [
         ["Czibor Zoltán", "Puskás Ferenc", "Kocsis Sándor", "Bozsik József"],
         "Czibor Zoltán (1929–1997) az Aranycsapat szélsője. Rendkívüli gyorsasága miatt kapta a 'Szélső Villám' ragadványnevet. 1956 után a Barcelonában játszott.",
     ),
+    _q(
+        "Kit neveztek 'a Megvesztegethetetlen'-nek? Francia forradalmi vezető, a jakobinusok és a Közjóléti Bizottság meghatározó alakja, a jakobinus terror irányítója.",
+        0,
+        ["Maximilien Robespierre", "Georges Danton", "Jean-Paul Marat", "Louis Antoine de Saint-Just"],
+        "Maximilien Robespierre (1758–1794) puritán életmódja és pénzzel megvehetetlen elvhűsége miatt kapta 'a Megvesztegethetetlen' (l'Incorruptible) nevet. 1793–94-ben a Közjóléti Bizottság vezető alakjaként irányította a terrort; a thermidori fordulat után, 1794. július 28-án guillotine-nal kivégezték. Szövetségesét, Saint-Just-öt 'a terror angyalá'-nak hívták.",
+    ),
 ]
