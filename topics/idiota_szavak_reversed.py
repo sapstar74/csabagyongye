@@ -315,12 +315,5 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """Az 'ohana' (ʻohana) hawaii szó a tágabb értelemben vett családra; világszerte a Disney Lilo és Stitch (2002) című rajzfilmje tette ismertté.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
-    },
-    {
-        "question": """**Argentin teniszező, a 2009-es US Open bajnoka; azóta ő az utolsó nem európai férfi Grand Slam-győztes egyesben** - melyik idióta szóra gondolok?""",
-        "correct_answer": """del Potro""",
-        "explanation": """A 'del Potro' (Juan Martín del Potro) 2009-ben, 20 évesen nyerte meg a US Opent, a döntőben Federert verte; azóta minden férfi egyes Grand Slam-tornát európai játékos nyert.""",
-        "topic": "idiota_szavak",
-        "question_type": "text_input"
     }
 ]
