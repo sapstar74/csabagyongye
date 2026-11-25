@@ -1,4 +1,4 @@
-# Fekete Öves (korábban: Idióta szavak) – megfordított kérdések (jelentés -> szó)
+# Idióta szavak – megfordított, beírós kérdések (jelentés -> szó; korábban: Fekete Öves)
 
 IDIOTA_SZAVAK_QUESTIONS = [
     {
