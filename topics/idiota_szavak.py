@@ -1,4 +1,4 @@
-# Fekete Öves (korábban: Idióta szavak) – többválasztós kérdések
+# Idióta szavak – többválasztós kérdések (a régi Streamlit-felületen korábban: Fekete Öves)
 
 _TOPIC = 'idiota_szavak'
 
