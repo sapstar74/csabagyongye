@@ -151,7 +151,7 @@
       '<div class="sign-text"><small>Ma este műsoron</small><h1 class="disp">Csabagyöngye</h1></div>' +
       '<div class="bulbs" aria-hidden="true">' + bulbs + '</div></header>' +
       '<div class="groups">' + npHomeHTML() +
-      '<label class="mode"><input type="checkbox" id="free"' + (free ? ' checked' : '') + '><span>3. blokk</span></label>' +
+      '<label class="mode"><input type="checkbox" id="free"' + (free ? ' checked' : '') + '><span>3. blokk – szabad szöveges válasszal</span></label>' +
       groups + '</div>' +
       '<div class="startbar"><label for="n"><span>Kérdések száma a körben</span><output class="disp" id="nout" for="n"></output></label>' +
       '<input id="n" type="range" step="1"><p class="hint" id="hint"></p>' +
