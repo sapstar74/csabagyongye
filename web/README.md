@@ -59,7 +59,7 @@ Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) 
   nélküli alakot, a helyes válasz tulajdonnév-részét önmagában is (pl. „Hecker” a „Friedrich
   Hecker”, „del Potro” a „Juan Martín del Potro” helyett, ha egyik rossz lehetőségben sem
   szerepel), és 5 betűtől egy, 10 betűtől két elgépelést (számot tartalmazó válasznál
-  soha). Hibás válasznál nincs automatikus továbblépés, és a „Mégis jó volt” gombbal a
+  soha). A válasz Enterrel vagy a mező alatti kerek „Mehet” gombbal küldhető be. Hibás válasznál nincs automatikus továbblépés, és a „Mégis jó volt” gombbal a
   játékos elfogadtathatja a válaszát
 
 A kérdéssorban „Hirtelen halál” mód ebben a felületben nincs.
