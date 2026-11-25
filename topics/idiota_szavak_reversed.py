@@ -294,5 +294,26 @@ IDIOTA_SZAVAK_QUESTIONS = [
         "explanation": """A 'Springfield' több amerikai város neve: Illinois fővárosa és a massachusettsi kosárlabda-szülőváros is; a Simpsonok kitalált városa szintén ez.""",
         "topic": "idiota_szavak",
         "question_type": "text_input"
+    },
+    {
+        "question": """**Észak-ausztráliai sziklás sivatag az Északi terület és Nyugat-Ausztrália határán, aranybányáiról ismert** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Tanami""",
+        "explanation": """A 'Tanami' (Tanami-sivatag) kb. 260 000 km²-es sziklás sivatag Ausztrália északi részén, a warlpiri őslakók földje; itt működik az ország egyik legnagyobb föld alatti aranybányája.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Római császár (96–98), az öt „jó császár” közül az első; Traianust fogadta örökbe utódjául** - melyik idióta szóra gondolok?""",
+        "correct_answer": """Nerva""",
+        "explanation": """A 'Nerva' (Marcus Cocceius Nerva) Domitianus meggyilkolása után lett császár; 97-ben örökbe fogadta Traianust, ezzel indult a Nerva–Antoninus-dinasztia.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
+    },
+    {
+        "question": """**Hawaii szó: család, tágabb értelemben – a vér szerinti, örökbe fogadott és választott rokonokkal együtt** - melyik idióta szóra gondolok?""",
+        "correct_answer": """ohana""",
+        "explanation": """Az 'ohana' (ʻohana) hawaii szó a tágabb értelemben vett családra; világszerte a Disney Lilo és Stitch (2002) című rajzfilmje tette ismertté.""",
+        "topic": "idiota_szavak",
+        "question_type": "text_input"
     }
 ]
