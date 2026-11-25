@@ -50,7 +50,16 @@ Telefonon a böngésző menüjéből („Hozzáadás a kezdőképernyőhöz”) 
   kiválasztott témák és a kérdésszám a böngészőben megmarad
 - Billentyűk: `1`–`4` vagy `A`–`D` a válaszhoz, `Enter` a következő kérdéshez
 
-A kérdéssorban beírós válaszadás és „Hirtelen halál” mód ebben a felületben nincs.
+- **3. blokk** (jelölőnégyzet a 9+1 kártya alatt, a böngészőben megmarad): a kérdéssorban
+  válaszlehetőségek helyett beírós válasz. Csak a rövid (legfeljebb 40 karakteres) válaszú
+  kérdések jönnek; az állításos, tagadó („Melyik NEM…”) és kakukktojásos kérdések kimaradnak.
+  Az összevetés a 9+1 szabályát követi (kis- és nagybetű, ékezet, írásjel, névelő nem számít),
+  emellett elfogadja a „/” jellel elválasztott alakokat, a zárójel és a „ft.” utáni rész
+  nélküli alakot, és 5 betűtől egy, 10 betűtől két elgépelést (számot tartalmazó válasznál
+  soha). Hibás válasznál nincs automatikus továbblépés, és a „Mégis jó volt” gombbal a
+  játékos elfogadtathatja a válaszát
+
+A kérdéssorban „Hirtelen halál” mód ebben a felületben nincs.
 
 ## 9+1
 

@@ -20,6 +20,7 @@
   var round = null;                  // { items, idx, results, off }
   var npData = null;                 // 9+1 játékok: { games } (ha a fájl hiányzik, a kártya nem jelenik meg)
   var nine = null;                   // folyó 9+1 játék: { game, answers, result, warned }
+  var free = false;                  // „3. blokk”: beírós válaszok a kérdéssorban
   var advanceTimer = null;          // automatikus továbblépés időzítője
   var scrubbing = false;            // éppen húzza-e a lejátszási csúszkát
   var audio = new Audio();
@@ -121,9 +122,10 @@
   }
 
   /* ---------- témaválasztó ---------- */
+  function pool(k) { return (byTopic[k] || []).filter(function (q) { return !free || freeFits(q); }); }
   function available() {
     var n = 0;
-    sel.forEach(function (k) { n += (byTopic[k] || []).length; });
+    sel.forEach(function (k) { n += pool(k).length; });
     return n;
   }
 
@@ -148,7 +150,9 @@
       '<header class="sign"><div class="bulbs" aria-hidden="true">' + bulbs + '</div>' +
       '<div class="sign-text"><small>Ma este műsoron</small><h1 class="disp">Csabagyöngye</h1></div>' +
       '<div class="bulbs" aria-hidden="true">' + bulbs + '</div></header>' +
-      '<div class="groups">' + npHomeHTML() + groups + '</div>' +
+      '<div class="groups">' + npHomeHTML() +
+      '<label class="mode"><input type="checkbox" id="free"' + (free ? ' checked' : '') + '><span>3. blokk</span></label>' +
+      groups + '</div>' +
       '<div class="startbar"><label for="n"><span>Kérdések száma a körben</span><output class="disp" id="nout" for="n"></output></label>' +
       '<input id="n" type="range" step="1"><p class="hint" id="hint"></p>' +
       '<button class="cta" id="start">Függöny fel</button></div>';
@@ -167,8 +171,8 @@
     slider.value = n;
     document.getElementById('nout').textContent = avail ? n : '–';
     document.getElementById('hint').textContent = avail
-      ? sel.size + ' témakör, ' + avail + ' kérdés közül sorsolunk.'
-      : 'Válassz legalább egy témakört.';
+      ? sel.size + ' témakör, ' + avail + (free ? ' beírós' : '') + ' kérdés közül sorsolunk.'
+      : sel.size && free ? 'A kiválasztott témákban nincs beírós kérdés.' : 'Válassz legalább egy témakört.';
     document.getElementById('start').disabled = avail === 0;
     var heads = document.querySelectorAll('.group-all');
     for (var i = 0; i < heads.length; i++) {
@@ -184,14 +188,14 @@
     return { q: q, order: order, correctPos: order.indexOf(q.c), pick: null };
   }
 
-  function startRound(questions) {
-    round = { items: questions.map(makeItem), idx: 0, results: [], off: 0 };
+  function startRound(questions, isFree) {
+    round = { items: questions.map(makeItem), idx: 0, results: [], off: 0, free: !!isFree };
     renderQuestion();
   }
 
   function drawQuestions(n) {
     // A kérdések a kiválasztott témák között egyenletesen oszlanak el.
-    var pools = shuffle(Array.from(sel)).map(function (k) { return shuffle((byTopic[k] || []).slice()); }).filter(function (p) { return p.length; });
+    var pools = shuffle(Array.from(sel)).map(function (k) { return shuffle(pool(k)); }).filter(function (p) { return p.length; });
     var out = [];
     while (out.length < n && pools.length) {
       for (var i = 0; i < pools.length && out.length < n; i++) { if (pools[i].length) out.push(pools[i].pop()); }
@@ -233,14 +237,17 @@
       return '<button class="opt" data-pos="' + pos + '"><span class="key disp">' + KEYS[pos] + '</span><span class="lbl">' + esc(q.o[oi]) + '</span></button>';
     }).join('');
     var wide = q.o.some(function (o) { return o.length > 26; });
+    var answerBox = round.free
+      ? '<div class="free"><input class="free-in" id="freein" type="text" aria-label="A válaszod" placeholder="Írd be a választ" autocomplete="off" ' +
+        'autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"><button class="cta free-go" id="freego">Tipp</button></div>'
+      : '<div class="opts' + (wide ? ' wide' : '') + '" id="opts">' + opts + '</div>';
     app.innerHTML =
       '<div class="qhead"><div class="qhead-left"><div class="qhead-row">' +
       '<button class="close" id="quit" aria-label="Kilépés a körből">' + ICON.x + '</button>' +
       '<span class="topic-label">' + esc(topicName[q.t] || q.t) + '</span></div>' + palsHTML() + '</div>' + cl.html + '</div>' +
       '<div class="qline' + (tclass === ' long' ? ' stack' : '') + '"><div class="qnum disp" aria-hidden="true">' + pad2(round.idx + 1) + '<small>/' + n + '</small></div>' +
       '<h1 class="qtext disp' + tclass + '"><span class="sr">' + (round.idx + 1) + '. kérdés a ' + n + '-ből: </span>' + rich(q.q) + '</h1></div>' +
-      media +
-      '<div class="opts' + (wide ? ' wide' : '') + '" id="opts">' + opts + '</div>' +
+      media + answerBox +
       '<div id="after"></div>';
     window.scrollTo(0, 0);
     if (newOff !== round.off) {
@@ -249,13 +256,15 @@
       round.off = newOff;
     }
     if (q.a) playAudio(mediaUrl(q.a)); else stopAudio();
+    // Telefonon nem fókuszál magától, mert a billentyűzet eltakarná a képet.
+    if (round.free && window.matchMedia && matchMedia('(pointer: fine)').matches) document.getElementById('freein').focus({ preventScroll: true });
   }
 
   function answer(pos) {
     var it = round.items[round.idx];
     if (!it || it.pick !== null || pos < 0 || pos >= it.order.length) return;
     it.pick = pos;
-    var ok = pos === it.correctPos, q = it.q;
+    var ok = pos === it.correctPos;
     round.results.push(ok);
     var box = document.getElementById('opts');
     box.classList.add('answered');
@@ -265,24 +274,63 @@
       if (i === it.correctPos) { btns[i].classList.add('correct'); btns[i].insertAdjacentHTML('beforeend', ICON.check); }
       else if (i === pos) { btns[i].classList.add('wrong'); btns[i].insertAdjacentHTML('beforeend', ICON.cross); }
     }
+    feedback(it, ok);
+  }
+
+  // Beírós válasz (3. blokk).
+  function answerFree() {
+    var it = round.items[round.idx], el = document.getElementById('freein');
+    if (!it || it.pick !== null || !el) return;
+    if (!el.value.trim()) { el.focus(); return; }
+    it.pick = -1;
+    it.typed = el.value.trim();
+    var ok = freeCorrect(it.typed, it.q);
+    round.results.push(ok);
+    el.disabled = true;
+    el.classList.add(ok ? 'ok' : 'bad');
+    var go = document.getElementById('freego');
+    if (go) go.remove();
+    feedback(it, ok);
+  }
+
+  // Ha a gép tévesen hibásnak ítélte a beírt választ, a játékos elfogadtathatja.
+  function acceptFree() {
+    var it = round.items[round.idx];
+    if (!round.free || !it || it.pick === null || round.results[round.idx]) return;
+    round.results[round.idx] = true;
+    var el = document.getElementById('freein');
+    if (el) { el.classList.remove('bad'); el.classList.add('ok'); }
+    var berry = app.querySelector('.berry[data-i="' + round.idx + '"]');
+    if (berry) berry.className = 'berry ok';
+    var why = document.getElementById('after');
+    why.classList.add('good');
+    why.querySelector('h2').textContent = 'Elfogadva: ' + it.q.o[it.q.c];
+    document.getElementById('accept').remove();
+  }
+
+  function feedback(it, ok) {
+    var q = it.q;
     var berry = app.querySelector('.berry[data-i="' + round.idx + '"]');
     if (berry) { berry.className = 'berry pop ' + (ok ? 'ok' : 'bad'); berry.style.animationDelay = '0s'; }
     var player = document.getElementById('player');
     if (player) player.classList.remove('big');
     var last = round.idx === round.items.length - 1;
     var correctText = q.o[q.c];
+    // Beírós hibás válasznál nincs automatikus továbblépés: össze kell tudni vetni a kettőt.
+    var auto = !(round.free && !ok);
     document.getElementById('after').outerHTML =
       '<div class="why' + (ok ? ' good' : '') + '" id="after"><h2 class="disp">' +
-      (ok ? 'Talált!' : 'Nem talált. A helyes válasz: ' + esc(correctText)) + '</h2>' +
+      (ok ? 'Talált!' + (round.free && norm(it.typed) !== norm(correctText) ? ' ' + esc(correctText) : '') : 'Nem talált. A helyes válasz: ' + esc(correctText)) + '</h2>' +
       (q.cap ? '<p class="cap">' + esc(q.cap) + '</p>' : '') +
       (q.e ? '<p>' + rich(q.e) + '</p>' : '') +
-      '<button class="hold" id="hold">' + ICON.pause + '<span>Várj, elolvasom</span></button></div>' +
-      '<button class="cta next auto" id="next" style="--adv:' + ADVANCE_MS + 'ms">' + (last ? 'Eredmény' : 'Következő') + '</button>';
+      (auto ? '<button class="hold" id="hold">' + ICON.pause + '<span>Várj, elolvasom</span></button>'
+            : '<button class="hold" id="accept">' + ICON.check + '<span>Mégis jó volt</span></button>') + '</div>' +
+      '<button class="cta next' + (auto ? ' auto' : '') + '" id="next" style="--adv:' + ADVANCE_MS + 'ms">' + (last ? 'Eredmény' : 'Következő') + '</button>';
     var next = document.getElementById('next');
     next.focus({ preventScroll: true });
     next.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     clearTimeout(advanceTimer);
-    advanceTimer = setTimeout(nextQuestion, ADVANCE_MS);
+    advanceTimer = auto ? setTimeout(nextQuestion, ADVANCE_MS) : null;
   }
 
   // Megállítja az automatikus továbblépést (Várj gomb, csúszka, kilépés).
@@ -315,7 +363,7 @@
     var review = round.items.filter(function (it, i) { return !round.results[i]; }).map(function (it) {
       var q = it.q;
       return '<li><p class="rq">' + rich(q.q) + (q.cap ? ' (' + esc(q.cap) + ')' : '') + '</p>' +
-        '<p class="rb">A te válaszod: ' + esc(q.o[it.order[it.pick]]) + '</p>' +
+        '<p class="rb">A te válaszod: ' + esc(it.pick < 0 ? it.typed : q.o[it.order[it.pick]]) + '</p>' +
         '<p class="ra">Helyes: ' + esc(q.o[q.c]) + '</p>' + (q.e ? '<p>' + rich(q.e) + '</p>' : '') + '</li>';
     }).join('');
     app.innerHTML =
@@ -349,6 +397,48 @@
     var g = norm(given);
     return !!g && item.a.some(function (a) { return norm(a) === g; });
   }
+
+  /* ---------- 3. blokk: beírós válaszok a kérdéssorban ---------- */
+  // Csak rövid, egyértelműen beírható válaszú kérdések jönnek: a kifejtős állításos,
+  // tagadó („Melyik NEM…”) és kakukktojásos kérdések kimaradnak.
+  var FREE_MAX = 40;
+  var FREE_SKIP = /állítás|kakukk|(?:melyik|mi|ki)\s+(?:\*\*)?nem\s/i;
+  function freeRaw(q) {
+    var c = q.o[q.c], out = [c];
+    c.split(/\s+\/\s+/).forEach(function (p) {
+      out.push(p, p.replace(/\s*\([^)]*\)/g, ''), p.split(/\s+(?:ft|feat|featuring)\.?\s+/i)[0], p.replace(/^the\s+/i, ''));
+    });
+    return out;
+  }
+  function freeFits(q) {
+    if (q._ff === undefined) {
+      var shortest = Math.min.apply(null, freeRaw(q).map(function (a) { return a.trim().length; }));
+      q._ff = shortest <= FREE_MAX && !FREE_SKIP.test(q.q) && !/\bNEM\b/.test(q.q);
+    }
+    return q._ff;
+  }
+  function lev(a, b) {
+    var prev = [], cur, i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur = [i];
+      for (j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+  // Ugyanaz az elnéző összevetés, mint a 9+1-ben, plusz kis elgépelés (számoknál soha).
+  function freeCorrect(given, q) {
+    var g = norm(given);
+    if (!g) return false;
+    return freeRaw(q).map(norm).some(function (a) {
+      if (!a) return false;
+      if (a === g) return true;
+      if (/\d/.test(a) || a.length < 5) return false;
+      return lev(a, g) <= (a.length >= 10 ? 2 : 1);
+    });
+  }
+
   function npItems(game) { return game.closer ? game.items.concat([game.closer]) : game.items; }
   function npLabel(game, i) { return game.closer && i === game.items.length ? '+1' : pad2(i + 1); }
   function npGame(id) { return npData.games.filter(function (g) { return g.id === id; })[0] || null; }
@@ -530,19 +620,21 @@
     if (t.id === 'start') {
       var n = Number(document.getElementById('n').value);
       var qs = drawQuestions(n);
-      if (qs.length) startRound(qs);
+      if (qs.length) startRound(qs, free);
       return;
     }
     if (t.id === 'np') return startNine(false);
     if (t.id === 'np-check') return checkNine();
     if (t.id === 'np-again') return startNine(true);
+    if (t.id === 'freego') return answerFree();
+    if (t.id === 'accept') return acceptFree();
     if (t.id === 'next') return nextQuestion();
     if (t.id === 'hold') return holdAdvance();
     if (t.id === 'play') { if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); } else audio.pause(); return; }
     if (t.id === 'quit' || t.id === 'home') return renderHome();
     if (t.id === 'retry') {
       var wrong = round.items.filter(function (it, i) { return !round.results[i]; }).map(function (it) { return it.q; });
-      return startRound(shuffle(wrong));
+      return startRound(shuffle(wrong), round.free);
     }
   });
 
@@ -564,6 +656,7 @@
   });
 
   app.addEventListener('change', function (ev) {
+    if (ev.target.id === 'free') { free = ev.target.checked; store('free', free); return updateBar(); }
     if (ev.target.id !== 'seek') return;
     scrubbing = false;
     if (isFinite(audio.duration)) audio.currentTime = Number(ev.target.value);
@@ -579,8 +672,14 @@
     }
     if (!round || ev.altKey || ev.ctrlKey || ev.metaKey) return;
     if (ev.target.id === 'seek') return;
+    if (ev.target.id === 'freein') { if (ev.key === 'Enter') { ev.preventDefault(); answerFree(); } return; }
     var it = round.items[round.idx];
-    if (!it || !document.getElementById('opts')) return;
+    if (!it) return;
+    if (round.free) {
+      if (it.pick !== null && ev.key === 'Enter' && ev.target.tagName !== 'BUTTON') { ev.preventDefault(); nextQuestion(); }
+      return;
+    }
+    if (!document.getElementById('opts')) return;
     if (it.pick === null) {
       var k = ev.key.toUpperCase();
       var pos = '1234'.indexOf(k) >= 0 ? Number(k) - 1 : KEYS.indexOf(k);
@@ -591,6 +690,7 @@
   /* ---------- indulás ---------- */
   setPal(load('pal', 'green'));
   wantN = Math.max(1, Math.min(MAX_N, Number(load('n', 10)) || 10));
+  free = load('free', false) === true;
   // A 9+1 játékok fájlja nem kötelező: ha nem tölthető be, a felület nélküle indul.
   var npReady = fetch('data/kilenc_plusz_egy.json').then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) { npData = d && Array.isArray(d.games) ? d : null; }).catch(function () { npData = null; });

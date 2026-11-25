@@ -258,6 +258,20 @@ button { cursor: pointer; }
 .berry.set { border-color: var(--accent); background: rgba(245, 184, 61, 0.35); }
 .review .rk { font-size: 14px; color: var(--dim); }
 
+/* ---------- 3. blokk: beírós válaszok ---------- */
+.mode { min-height: 48px; display: flex; align-items: center; gap: 12px; margin-top: -6px; font-size: 16px; font-weight: 600; color: var(--ink); cursor: pointer; }
+.mode input { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--accent); cursor: pointer; }
+.free { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; animation: rise 0.45s both; }
+.free-in {
+  width: 100%; min-height: 60px; padding: 0 14px; border: 3px solid var(--line); border-radius: 10px;
+  background: var(--panel); color: var(--ink); font-size: 20px; font-weight: 600;
+}
+.free-in:focus { border-color: var(--accent); }
+.free-in:disabled { opacity: 1; -webkit-text-fill-color: currentColor; }
+.free-in.ok { border-color: var(--pearl); background: var(--pearl); color: var(--on-pearl); }
+.free-in.bad { border-style: dashed; border-color: var(--bad-line); background: var(--bad-tile); }
+.free-go { min-height: 56px; font-size: 26px; }
+
 /* ---------- Mozgás ---------- */
 @keyframes chase { 0%, 100% { opacity: 0.22; } 50% { opacity: 1; } }
 @keyframes sweep { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
