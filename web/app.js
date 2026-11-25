@@ -428,10 +428,34 @@
     return prev[b.length];
   }
   // Ugyanaz az elnéző összevetés, mint a 9+1-ben, plusz kis elgépelés (számoknál soha).
+  // A helyes válasz tulajdonnév-részei (pl. „Friedrich Hecker” → „Hecker”, „Juan Martín del Potro”
+  // → „del Potro”). Csak az a rész számít, amely nagybetűs szót tartalmaz, és egyik rossz
+  // válaszlehetőségben sem szerepel – így az „Ulászló” nem jó a „II. Ulászló” helyett, ha a
+  // lehetőségek között „I. Ulászló” is van. A római szám önmagában nem tulajdonnév.
+  function isName(w) { var c = w.charAt(0); return c !== c.toLowerCase() && !/^[IVXLCDM]+\.?$/.test(w); }
+  function freeNames(q) {
+    if (q._fn) return q._fn;
+    var others = q.o.filter(function (_, i) { return i !== q.c; }).map(norm), out = [];
+    freeRaw(q).forEach(function (alt) {
+      var w = alt.replace(/[(),]/g, ' ').split(/\s+/).filter(Boolean);
+      for (var i = 0; i < w.length; i++) {
+        for (var j = i + 1; j <= w.length; j++) {
+          if (i === 0 && j === w.length) continue;
+          var part = w.slice(i, j);
+          if (!part.some(isName)) continue;
+          var n = norm(part.join(' '));
+          if (n.length < 3 || /^\d+$/.test(n) || out.indexOf(n) >= 0) continue;
+          if (others.some(function (o) { return o.indexOf(n) >= 0; })) continue;
+          out.push(n);
+        }
+      }
+    });
+    return (q._fn = out);
+  }
   function freeCorrect(given, q) {
     var g = norm(given);
     if (!g) return false;
-    return freeRaw(q).map(norm).some(function (a) {
+    return freeRaw(q).map(norm).concat(freeNames(q)).some(function (a) {
       if (!a) return false;
       if (a === g) return true;
       if (/\d/.test(a) || a.length < 5) return false;
