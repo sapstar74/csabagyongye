@@ -52,6 +52,11 @@
     cross: '<svg class="ico" role="img" aria-label="A te válaszod, hibás" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l10 10M16 6L6 16"/></svg>',
     mark: '<svg class="mark" aria-hidden="true" width="14" height="18" viewBox="0 0 14 18" fill="currentColor"><path d="M1 1l12 8-12 8z"/></svg>',
     play: '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 28 28" fill="currentColor"><path d="M9 5l14 9-14 9z"/></svg>',
+    // Enter-nyíl egy szikrázó csillaggal: a szabad szöveges válasz beküldőgombja.
+    enter: '<svg aria-hidden="true" class="go-ico" width="40" height="34" viewBox="0 0 40 34" fill="none">' +
+      '<path d="M26 6v9a4 4 0 0 1-4 4H9" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="M14 13l-6 6 6 6" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path class="star" d="M34 1l1.6 4.1L40 6.5l-4.4 1.4L34 12l-1.6-4.1L28 6.5l4.4-1.4z" fill="currentColor"/></svg>',
     pause: '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 28 28" fill="currentColor"><rect x="6" y="5" width="6" height="18" rx="1.5"/><rect x="16" y="5" width="6" height="18" rx="1.5"/></svg>'
   };
 
@@ -238,9 +243,10 @@
     }).join('');
     var wide = q.o.some(function (o) { return o.length > 26; });
     var answerBox = round.free
-      // Beküldés Enterrel (telefonon a billentyűzet „Kész/Ugrás” gombjával); a form ezt mindenhol megbízhatóan jelzi.
+      // Beküldés Enterrel, a billentyűzet „Kész/Ugrás” gombjával vagy a kerek gyöngy-gombbal – mind a form submit eseménye.
       ? '<form class="free" id="freeform" autocomplete="off"><input class="free-in" id="freein" type="text" aria-label="A válaszod" ' +
-        'placeholder="Írd be a választ, majd Enter" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"></form>'
+        'placeholder="Írd be a választ" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done">' +
+        '<button class="free-go" id="freego" type="submit" aria-label="Beküldés (Enter)">' + ICON.enter + '<span class="disp">Mehet</span></button></form>'
       : '<div class="opts' + (wide ? ' wide' : '') + '" id="opts">' + opts + '</div>';
     app.innerHTML =
       '<div class="qhead"><div class="qhead-left"><div class="qhead-row">' +
@@ -289,6 +295,8 @@
     round.results.push(ok);
     el.disabled = true;
     el.classList.add(ok ? 'ok' : 'bad');
+    var go = document.getElementById('freego');
+    if (go) go.remove();
     feedback(it, ok);
   }
 
