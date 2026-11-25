@@ -238,8 +238,9 @@
     }).join('');
     var wide = q.o.some(function (o) { return o.length > 26; });
     var answerBox = round.free
-      ? '<div class="free"><input class="free-in" id="freein" type="text" aria-label="A válaszod" placeholder="Írd be a választ" autocomplete="off" ' +
-        'autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"><button class="cta free-go" id="freego">Tipp</button></div>'
+      // Beküldés Enterrel (telefonon a billentyűzet „Kész/Ugrás” gombjával); a form ezt mindenhol megbízhatóan jelzi.
+      ? '<form class="free" id="freeform" autocomplete="off"><input class="free-in" id="freein" type="text" aria-label="A válaszod" ' +
+        'placeholder="Írd be a választ, majd Enter" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"></form>'
       : '<div class="opts' + (wide ? ' wide' : '') + '" id="opts">' + opts + '</div>';
     app.innerHTML =
       '<div class="qhead"><div class="qhead-left"><div class="qhead-row">' +
@@ -288,8 +289,6 @@
     round.results.push(ok);
     el.disabled = true;
     el.classList.add(ok ? 'ok' : 'bad');
-    var go = document.getElementById('freego');
-    if (go) go.remove();
     feedback(it, ok);
   }
 
@@ -432,10 +431,13 @@
   // → „del Potro”). Csak az a rész számít, amely nagybetűs szót tartalmaz, és egyik rossz
   // válaszlehetőségben sem szerepel – így az „Ulászló” nem jó a „II. Ulászló” helyett, ha a
   // lehetőségek között „I. Ulászló” is van. A római szám önmagában nem tulajdonnév.
+  // A szabad szöveges összevetésben az „és”, az „and” és a „&” egyenértékű
+  // (pl. „Trinidad and Tobago” = „Trinidad és Tobago”, „Above and Beyond” = „Above & Beyond”).
+  function fnorm(s) { return norm(String(s).replace(/(^|\s)(?:és|and|&)(?=\s|$)/gi, '$1and')); }
   function isName(w) { var c = w.charAt(0); return c !== c.toLowerCase() && !/^[IVXLCDM]+\.?$/.test(w); }
   function freeNames(q) {
     if (q._fn) return q._fn;
-    var others = q.o.filter(function (_, i) { return i !== q.c; }).map(norm), out = [];
+    var others = q.o.filter(function (_, i) { return i !== q.c; }).map(fnorm), out = [];
     freeRaw(q).forEach(function (alt) {
       var w = alt.replace(/[(),]/g, ' ').split(/\s+/).filter(Boolean);
       for (var i = 0; i < w.length; i++) {
@@ -443,7 +445,7 @@
           if (i === 0 && j === w.length) continue;
           var part = w.slice(i, j);
           if (!part.some(isName)) continue;
-          var n = norm(part.join(' '));
+          var n = fnorm(part.join(' '));
           if (n.length < 3 || /^\d+$/.test(n) || out.indexOf(n) >= 0) continue;
           if (others.some(function (o) { return o.indexOf(n) >= 0; })) continue;
           out.push(n);
@@ -453,9 +455,9 @@
     return (q._fn = out);
   }
   function freeCorrect(given, q) {
-    var g = norm(given);
+    var g = fnorm(given);
     if (!g) return false;
-    return freeRaw(q).map(norm).concat(freeNames(q)).some(function (a) {
+    return freeRaw(q).map(fnorm).concat(freeNames(q)).some(function (a) {
       if (!a) return false;
       if (a === g) return true;
       if (/\d/.test(a) || a.length < 5) return false;
@@ -650,7 +652,6 @@
     if (t.id === 'np') return startNine(false);
     if (t.id === 'np-check') return checkNine();
     if (t.id === 'np-again') return startNine(true);
-    if (t.id === 'freego') return answerFree();
     if (t.id === 'accept') return acceptFree();
     if (t.id === 'next') return nextQuestion();
     if (t.id === 'hold') return holdAdvance();
@@ -660,6 +661,12 @@
       var wrong = round.items.filter(function (it, i) { return !round.results[i]; }).map(function (it) { return it.q; });
       return startRound(shuffle(wrong), round.free);
     }
+  });
+
+  app.addEventListener('submit', function (ev) {
+    if (ev.target.id !== 'freeform') return;
+    ev.preventDefault();
+    answerFree();
   });
 
   app.addEventListener('input', function (ev) {
@@ -696,7 +703,7 @@
     }
     if (!round || ev.altKey || ev.ctrlKey || ev.metaKey) return;
     if (ev.target.id === 'seek') return;
-    if (ev.target.id === 'freein') { if (ev.key === 'Enter') { ev.preventDefault(); answerFree(); } return; }
+    if (ev.target.id === 'freein') return;           // Enter: a form submit eseménye küldi be
     var it = round.items[round.idx];
     if (!it) return;
     if (round.free) {
